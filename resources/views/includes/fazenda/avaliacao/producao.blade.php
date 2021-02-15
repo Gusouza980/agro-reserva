@@ -1,0 +1,8 @@
+<div class="row py-4">
+    <div class="col-2 px-0 text-section2-fazenda">
+        <div class="text-center text-section2-fazenda">
+            <h1 class="mb-n1">10k</h1>
+            <span>litros produzidos</span>
+        </div>    
+    </div>
+</div>

@@ -1,0 +1,677 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;500;600&display=swap');
+@font-face {
+    font-family: 'TitilliumWeb Bold';
+    font-style: normal;
+    font-weight: bold;
+    src: local('TitilliumWeb Bold'), url('../fontes/TitilliumWeb-Bold.ttf') format('ttf');
+}
+
+
+/* GLOBALS */
+
+a,
+a:hover,
+a:focus,
+a:active {
+    color: white !important;
+    text-decoration: none;
+}
+
+
+/* UTILS */
+
+.cpointer {
+    cursor: pointer;
+}
+
+
+/* END UTILS */
+
+
+/* BACKGROUNDS */
+
+.bg-preto {
+    background-color: black;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.bg-cinza {
+    background-color: #F8F8F8;
+}
+
+
+/* END BACKGROUNDS */
+
+
+/* BUTTONS */
+
+.btn-outline-transparente {
+    border: 1px solid white;
+    font-family: 'Titillium Web', sans-serif;
+    background-color: transparent;
+    border-radius: 50px;
+    color: white;
+}
+
+.btn-outline-transparente:hover {
+    background-color: white;
+    color: black;
+}
+
+.btn-vermelho {
+    background: #E65454 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+    color: white;
+    border: 0px;
+}
+
+
+/* END BUTTONS */
+
+
+/* NAVBAR */
+
+.navbar-brand>img {
+    max-width: 200px;
+}
+
+.nav-link {
+    color: white !important;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.cart-icone:hover {
+    transform: scale(1.2);
+}
+
+.div-nav {
+    position: absolute;
+    top: 0px;
+}
+
+
+/* END NAVBAR */
+
+.titulo-landing>.negrito {
+    font-size: 1.7rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    color: white;
+}
+
+.titulo-landing>.normal {
+    font-size: 1.7rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+    color: white;
+}
+
+.texto-cadastro>span {
+    font-size: 1.8rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    color: white;
+}
+
+.texto-cadastro>p {
+    font-size: 1.5rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+    color: white;
+}
+
+.titulo-formulario {
+    font-size: 1.3rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    color: white;
+}
+
+.form-group>input[type=text],
+.form-group>input[type=email],
+.form-group>input[type=password] {
+    background-color: transparent;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0.3px solid #707070;
+    border-radius: 0px;
+    font-size: 1.0rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+    color: white;
+}
+
+.form-group>input[type=text]:hover {
+    background-color: transparent;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0.3px solid #707070;
+    border-radius: 0px;
+    font-size: 1.0rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+}
+
+.form-group>input[type=text]:focus {
+    background-color: transparent;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0.3px solid #707070;
+    border-radius: 0px;
+    font-size: 1.0rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.containerr {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* Hide the browser's default checkbox */
+
+.containerr input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+
+/* Create a custom checkbox */
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    border: 1px solid black;
+}
+
+
+/* On mouse-over, add a grey background color */
+
+.containerr:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+
+/* When the checkbox is checked, add a blue background */
+
+.containerr input:checked~.checkmark {
+    background-color: #E65454;
+}
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the checkmark when checked */
+
+.containerr input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/* Style the checkmark/indicator */
+
+.containerr .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+label {
+    font-size: 16px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    color: white;
+}
+
+.botao-cadastro {
+    background: #E65454 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+    width: 100%;
+    color: white;
+    border: 0px;
+}
+
+.botao-confirma {
+    background: black 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+    color: white;
+    border: 0px;
+}
+
+.btn-whats {
+    position: absolute;
+    right: 0%;
+    bottom: 5%;
+    background: url('../imagens/whatsapp-button.png');
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.btn-whats:hover {
+    background: url('../imagens/whatsapp-button-hover.png');
+    background-size: contain;
+    cursor: pointer;
+}
+
+.btn-whats-xs {
+    background: url('../imagens/whatsapp-button.png');
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.btn-whats-xs:hover {
+    background: url('../imagens/whatsapp-button-hover.png');
+    background-size: contain;
+    cursor: pointer;
+}
+
+.modal-body {
+    background-color: #6BFF8E;
+}
+
+.conteudo-modal>h3 {
+    font-size: 1.5rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+}
+
+.conteudo-modal>span {
+    font-size: 1.3rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+}
+
+.conteudo-modal>span>b {
+    font-size: 1.3rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+}
+
+
+/* INDEX */
+
+#header-index {
+    min-height: 100vh;
+    background: url(../imagens/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-header-index>h4 {
+    font-size: 1.7rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 400;
+}
+
+.text-header-index>h3 {
+    font-size: 2.0rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 400;
+}
+
+.text-header-index>h2 {
+    font-size: 2.5rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+}
+
+.text-section1-index>h2 {
+    font-size: 2.8rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    color: black;
+}
+
+.text-section1-index>span {
+    font-size: 1.5rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 400;
+    color: black;
+}
+
+.video-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.video-container::after {
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.text-section2-index>h2 {
+    font-size: 2.5rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    color: black;
+}
+
+.text-section2-index>h3 {
+    font-size: 2.3rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 400;
+    color: black;
+}
+
+
+/* END INDEX */
+
+
+/* FAZENDA */
+
+#nav-fazenda {
+    background: transparent linear-gradient(180deg, #000000 0%, #000000 40%, #00000000 100%) 0% 0% no-repeat padding-box;
+}
+
+.text-nav-fazenda {
+    color: white !important;
+    font-family: 'Titillium Web', sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    box-sizing: border-box;
+}
+
+.text-nav-fazenda>a {
+    transition: 0.2s;
+    border-bottom: 2px solid transparent;
+}
+
+.text-nav-fazenda>a.active {
+    border-bottom: 2px solid #E65454;
+    color: #E65454 !important;
+}
+
+.text-nav-fazenda>a:hover {
+    border-bottom: 2px solid #E65454;
+    color: #E65454 !important;
+}
+
+.div-section1-fazenda {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    cursor: pointer;
+}
+
+.div-section1-fazenda:hover {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    /* margin-bottom: -3px; */
+    border-bottom: 3px solid #E65454;
+}
+
+.div-section1-fazenda.active {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    /* margin-bottom: -3px; */
+    border-bottom: 3px solid #E65454;
+}
+
+.div-section1-fazenda:hover>.text-section1-fazenda>h4 {
+    color: #E65454 !important;
+}
+
+.text-section1-fazenda>a {
+    color: white !important;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.text-section1-fazenda>a,
+.text-section1-fazenda>a:hover,
+.text-section1-fazenda>a:focus,
+.text-section1-fazenda>a:active {
+    color: white !important;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+
+.div-section1-fazenda.active>.text-section1-fazenda>a {
+    color: #E65454 !important;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+
+.text-section2-fazenda>h4 {
+    color: white !important;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.text-section2-fazenda>h2 {
+    color: white !important;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+    font-size: 2.0rem;
+}
+
+.text-section2-fazenda>h1 {
+    color: white !important;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.text-section2-fazenda>span {
+    color: white !important;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+.text-avaliacao-section2-fazenda>span {
+    color: white !important;
+    font-family: 'Titillium Web', sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.text-avaliacao-section2-fazenda>span.active {
+    color: #eb6969 !important;
+    font-family: 'Titillium Web', sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 3px solid #eb6969;
+}
+
+.borda-triangular {
+    width: 20px;
+    height: 20px;
+    border-top: 10px solid #eb6969;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    left: calc(50% - 10px);
+}
+
+
+/* END FAZENDA */
+
+
+/* LOTES */
+
+.text-cadastro-lotes>h1 {
+    font: normal normal bold 64px/75px 'Titillium Web', sans-serif;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    color: white;
+}
+
+.text-cadastro-lotes>span {
+    text-align: center;
+    font: normal normal normal 20px/39px 'Titillium Web', sans-serif;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.text-lotes>h3 {
+    font: normal normal bold 30px 'Titillium Web', sans-serif;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.text-lotes>span {
+    font: normal normal bold 20px 'Titillium Web', sans-serif;
+    letter-spacing: 0px;
+    color: black;
+    opacity: 1;
+}
+
+.text-lotes>img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+
+/* END LOTES */
+
+
+/* CADASTRO */
+
+.form-cadastro0>.form-group>.btn {
+    width: 270px;
+}
+
+.form-cadastro0>span {
+    font: normal normal 600 15px 'Titillium Web', sans-serif;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.circulo-passo {
+    font: normal normal bold 23px 'Titillium Web', sans-serif;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.circulo-passo>div {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+}
+
+.circulo-passo>div.active {
+    background-color: #E65454;
+    color: white;
+    border: 1px solid transparent;
+}
+
+.form-cadastro1>.form-group>label {
+    color: black !important;
+    font: normal normal bold 15px 'Titillium Web', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.form-cadastro1>.form-group>input {
+    font: normal normal 600 'Titillium Web', sans-serif;
+    color: black;
+}
+
+.form-cadastro1>.form-group>.btn {
+    width: 270px;
+}
+
+.form-cadastro2>.form-group>label {
+    color: black !important;
+    font: normal normal bold 15px 'Titillium Web', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.form-cadastro2>.form-group>input {
+    font: normal normal 600 'Titillium Web', sans-serif;
+    color: black;
+}
+
+.form-cadastro2>.form-group>.btn {
+    width: 270px;
+}
+
+.form-cadastro3>.form-group>label {
+    color: black !important;
+    font: normal normal bold 15px 'Titillium Web', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.form-cadastro3>.form-group>input {
+    font: normal normal 600 'Titillium Web', sans-serif;
+    color: black;
+}
+
+.form-cadastro3>.form-group>.btn {
+    width: 270px;
+}
