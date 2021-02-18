@@ -57,11 +57,11 @@ Route::middleware(['fazenda_logada'])->group(function () {
     
 });
 
-Route::post('/cadastro/salvar', [\App\Http\Controllers\FazendaController::class, 'cadastro_inicial'])->name("cadastro.salvar");
-Route::post('/cadastro/finalizar', [\App\Http\Controllers\FazendaController::class, 'cadastro_final'])->name("cadastro.finalizar");
+Route::post('/cadastro/salvar', [\App\Http\Controllers\ClienteController::class, 'cadastro_inicial'])->name("cadastro.salvar");
+Route::post('/cadastro/finalizar', [\App\Http\Controllers\ClienteController::class, 'cadastro_final'])->name("cadastro.finalizar");
 
 
 Route::get('/painel/login', [\App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
 Route::get('/painel', [\App\Http\Controllers\PainelController::class, 'index'])->name("painel.index");
-
+Route::get('/painel/fazenda/cadastro', [\App\Http\Controllers\FazendaController::class, 'cadastro'])->name("painel.fazenda.cadastro");
 

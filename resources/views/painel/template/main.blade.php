@@ -135,8 +135,8 @@
                                     <span key="t-dashboards">Fazendas</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{route('painel.fazenda.cadastro')}}" key="t-default">Cadastro</a></li>
-                                    <li><a href="dashboard-saas.html" key="t-saas">Consulta</a></li>
+                                    <li><a href="{{route('painel.fazenda.cadastro')}}" key="t-saas">Cadastro</a></li>
+                                    <li><a href="dashboard-saas.html" key="t-saas">Consultar</a></li>
                                 </ul>
                             </li>
 
