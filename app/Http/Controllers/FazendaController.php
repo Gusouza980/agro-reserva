@@ -15,7 +15,7 @@ class FazendaController extends Controller
 {
 
     public function teste(){
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
 
 
         $slug = (isset($_GET['slug'])) ? $_GET['slug'] : ""; //get ou post

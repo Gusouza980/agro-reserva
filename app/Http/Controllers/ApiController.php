@@ -9,7 +9,7 @@ class ApiController extends Controller
     //
 
     public function getCidadesByUf($uf){
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
 
         /* link especifico */
         $url = 'https://api.bscommerce.com.br/cadastro/';
