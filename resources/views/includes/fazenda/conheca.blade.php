@@ -10,23 +10,24 @@
                     </div>
                     <div class="row">
                         <div class="col-12 px-0 text-section2-fazenda">
-                            <h2>Maior volume, mansidão e rendimento. Conheça o Sindi</h2>
+                            <h2>{{$fazenda_bd->titulo_conheca}}</h2>
                         </div>
                     </div>
                     <div class="row py-4">
                         <div class="col-12 px-0 text-section2-fazenda">
-                            <span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea</span>
+                            <span>{{$fazenda_bd->texto_conheca}}</span>
                         </div>
                     </div>
                     <div class="row py-4">
                         <div class="col-12 px-0 text-section2-fazenda">
-                            <a name="" id="" class="btn btn-vermelho py-2 px-4" href="#" role="button">Ver animais a venda</a>
+                            <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.lotes', ['fazenda' => $slug])}}" role="button">Ver animais a venda</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-7 video-container">
-                <iframe src="https://www.youtube.com/embed/klZNNUz4wPQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {{--  <iframe src="{{$fazenda_bd->video_conheca}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  --}}
+                {!! $fazenda_bd->video_conheca !!}
             </div>
         </div>
         

@@ -10,95 +10,42 @@
             </div>
         </div>
         <div class="container">
-            <div class="row py-5 justify-content-sm-center justify-content-md-start">
-                <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(imagens/boi1.jpg); background-size: cover;">
-                    <div class="py-3" style="background-color: rgba(0,0,0,0.7)">
-                        <div class="container-fluid">
-                            <div class="row justify-content-center">
-                                <div class="col-8 text-center">
-                                    <img src="{{asset('imagens/logo-porangaba.png')}}" style="max-width: 100%; max-height: 60px;" alt="">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-white text-center py-3">
-                                    <span>Acaba em</span>
-                                    <h3>23:36:21</h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <a name="" id="" class="btn btn-vermelho py-2 px-4" href="#" role="button">Ver animais a venda</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(imagens/boi1.jpg); background-size: cover;">
-                    <div class="py-3" style="background-color: rgba(0,0,0,0.7)">
-                        <div class="container-fluid">
-                            <div class="row justify-content-center">
-                                <div class="col-8 text-center">
-                                    <img src="{{asset('imagens/logo-porangaba.png')}}" style="max-width: 100%; max-height: 60px;" alt="">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-white text-center py-3">
-                                    <span>Acaba em</span>
-                                    <h3>23:36:21</h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <a name="" id="" class="btn btn-vermelho py-2 px-4" href="#" role="button">Ver animais a venda</a>
+            <div class="row py-5 justify-content-center">
+                @foreach($fazendas as $fazenda)
+                    @php
+                        $fazenda_bd = \App\Models\Fazenda::where("slug", $fazenda->nm_Slug)->first();
+                    @endphp
+                    @if($fazenda_bd)
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda_bd->fundo_destaque}}); background-size: cover;">
+                            <div class="py-3" style="background-color: rgba(0,0,0,0.7)">
+                                <div class="container-fluid">
+                                    <div class="row justify-content-center">
+                                        <div class="col-8 text-center">
+                                            <img src="{{asset($fazenda_bd->logo)}}" style="max-width: 100%; max-height: 60px;" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-white text-center py-3">
+                                            @if($fazenda_bd->data_inicio_reserva < date('Y-m-d H:i:s'))
+                                                <span>Iniciará</span>
+                                                <h3>{{date("d/m/Y", strtotime($fazenda_bd->data_inicio_reserva))}}</h3>
+                                            @else
+                                                <span>Terminará</span>
+                                                <h3>{{date("d/m/Y", strtotime($fazenda_bd->data_fim_reserva))}}</h3>
+                                            @endif
+                                        </div>
+                                    </div>       
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->nm_Slug])}}" role="button">Ver animais a venda</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(imagens/boi1.jpg); background-size: cover;">
-                    <div class="py-3" style="background-color: rgba(0,0,0,0.7)">
-                        <div class="container-fluid">
-                            <div class="row justify-content-center">
-                                <div class="col-8 text-center">
-                                    <img src="{{asset('imagens/logo-porangaba.png')}}" style="max-width: 100%; max-height: 60px;" alt="">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-white text-center py-3">
-                                    <span>Acaba em</span>
-                                    <h3>23:36:21</h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <a name="" id="" class="btn btn-vermelho py-2 px-4" href="#" role="button">Ver animais a venda</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(imagens/boi1.jpg); background-size: cover;">
-                    <div class="py-3" style="background-color: rgba(0,0,0,0.7)">
-                        <div class="container-fluid">
-                            <div class="row justify-content-center">
-                                <div class="col-8 text-center">
-                                    <img src="{{asset('imagens/logo-porangaba.png')}}" style="max-width: 100%; max-height: 60px;" alt="">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-white text-center py-3">
-                                    <span>Acaba em</span>
-                                    <h3>23:36:21</h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <a name="" id="" class="btn btn-vermelho py-2 px-4" href="#" role="button">Ver animais a venda</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
+                
             </div>
         </div>
         <div class="row">

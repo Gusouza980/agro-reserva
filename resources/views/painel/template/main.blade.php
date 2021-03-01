@@ -18,6 +18,7 @@
         <link href="{{asset('admin/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{asset('admin/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        @toastr_css
         @yield("styles")
     </head>
 
@@ -34,7 +35,7 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
-                            <a href="index.html" class="logo logo-light">
+                            <a href="{{route('painel.index')}}" class="logo logo-light">
                                 <span class="logo-sm text-white">
                                     <i class="fas fa-clock fa-2x"></i>
                                 </span>
@@ -100,17 +101,17 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="d-none d-xl-inline-block ms-1" key="t-henry">Henry</span>
+                                <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{session()->get("admin")["nome"]}}</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
+                                {{--  <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
                                 <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">My Wallet</span></a>
                                 <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
                                 <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
+                                <div class="dropdown-divider"></div>  --}}
+                                <a class="dropdown-item text-danger" href="{{route('painel.sair')}}"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Sair</span></a>
                             </div>
                         </div>
 
@@ -135,11 +136,20 @@
                                     <span key="t-dashboards">Fazendas</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{route('painel.fazenda.cadastro')}}" key="t-saas">Cadastro</a></li>
-                                    <li><a href="dashboard-saas.html" key="t-saas">Consultar</a></li>
+                                    {{--  <li><a href="{{route('painel.fazenda.cadastro')}}" key="t-saas">Cadastro</a></li>  --}}
+                                    <li><a href="{{route('painel.fazendas')}}" key="t-saas">Consultar</a></li>
                                 </ul>
                             </li>
 
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect">
+                                    <i class="fas fa-horse-head"></i>
+                                    <span key="t-dashboards">Raças</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{route('painel.racas')}}" key="t-saas">Consultar</a></li>
+                                </ul>
+                            </li>
 
                         </ul>
                     </div>
@@ -192,35 +202,6 @@
         </div>
         <!-- END layout-wrapper -->
 
-        <!-- Right Sidebar -->
-        <div class="right-bar">
-            <div data-simplebar class="h-100">
-                <div class="rightbar-title d-flex align-items-center px-3 py-4">
-            
-                    <h5 class="m-0 me-2">Settings</h5>
-
-                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
-                        <i class="mdi mdi-close noti-icon"></i>
-                    </a>
-                </div>
-
-                <!-- Settings -->
-                <hr class="mt-0" />
-                <h6 class="text-center mb-0">Choose Layouts</h6>
-
-                <div class="p-4">
-                    
-
-            
-                </div>
-
-            </div> <!-- end slimscroll-menu-->
-        </div>
-        <!-- /Right-bar -->
-
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
-
         <!-- JAVASCRIPT -->
         <script src="{{asset('admin/libs/jquery/jquery.min.js')}}"></script>
         <script src="{{asset('admin/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -230,6 +211,9 @@
 
         <!-- App js -->
         <script src="{{asset('admin/js/app.js')}}"></script>
+        @jquery
+        @toastr_js
+        @toastr_render
         @yield("scripts")
     </body>
 

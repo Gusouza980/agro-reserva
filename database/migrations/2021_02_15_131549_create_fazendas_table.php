@@ -15,7 +15,9 @@ class CreateFazendasTable extends Migration
     {
         Schema::create('fazendas', function (Blueprint $table) {
             $table->id();
-            $table->string("nome", 200)->nullable();
+            $table->string("nome_dono", 200)->nullable();
+            $table->string("nome_fazenda", 200)->nullable();
+            $table->string("slug", 200)->nullable();
             $table->string("logo", 255)->nullable();
             $table->string("cnpj", 50)->nullable();
             $table->string("email", 100)->unique();

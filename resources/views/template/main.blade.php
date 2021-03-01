@@ -12,90 +12,127 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 	<link rel="stylesheet" href="{{asset('css/main.css')}}"/>
+    @toastr_css
+    @yield("styles")
 </head>
 
 <body>
 
     <div class="container-fluid bg-preto">
         <div class="container">
-            {{--  <nav class="navbar d-block d-lg-none navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="#"><img src="{{asset('imagens/logo.png')}}" alt="Logo Agroreserva"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            <nav class="navbar d-block d-lg-none navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('imagens/logo.png')}}" alt="Logo Agroreserva"></a>
+                <button class="navbar-toggler float-right"  type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon text-white"><i class="fas fa-bars"></i>
+
+                    </span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav px-5">
+                    <ul class="navbar-nav px-5 text-center">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Ver todas as reservas</span></a>
+                            <a class="nav-link" href="{{route('index')}}">Ver todas as reservas</span></a>
                         </li>
-						<li class="nav-item active float-right">
-                            <a class="nav-link btn btn-outline-transparente px-4" href="#">Venda</span></a>
+						<li class="nav-item active">
+                            <a class="nav-link"  href="{{route('cadastro.fazenda')}}">Venda</span></a>
                         </li>
-                        <li class="nav-item active float-right">
-                            <a class="nav-link" href="#">Cadastre-se para comprar</span></a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{route('cadastro')}}">Cadastre-se para comprar</span></a>
                         </li>
-						<li class="nav-item active float-right">
-                            <a class="nav-link" href="#">Entrar</span></a>
+						<li class="nav-item active">
+                            <a class="nav-link" href="{{route('login')}}">Entrar</span></a>
                         </li>
-						<li class="nav-item active float-right">
-							<a class="nav-link" href="#"><i class="fas fa-shopping-cart text-white"></i></span></a>
+						<li class="nav-item active">
+							<a class="nav-link" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white"></i></span></a>
                         </li>
                     </ul>
                 </div>
-				<div class="align-self-end">
-					<ul class="navbar-nav px-5">
-						<li class="nav-item active">
-                            <a class="nav-link btn btn-outline-transparente px-4" href="#">Venda</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Cadastre-se para comprar</span></a>
-                        </li>
-                    </ul>
-				</div>
-				<div class="align-self-end">
-					<ul class="navbar-nav px-5">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Entrar</span></a>
-                        </li>
-						<li class="nav-item active">
-							<a class="nav-link" href="#"><i class="fas fa-shopping-cart text-white"></i></span></a>
-                        </li>
-                    </ul>
-				</div>
-            </nav>  --}}
+				
+            </nav>
 			<div class="row d-none d-lg-flex py-3">
 				<div class="col-lg-3">
-					<a class="navbar-brand" href="#"><img src="{{asset('imagens/logo.png')}}" alt="Logo Agroreserva"></a>
+					<a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('imagens/logo.png')}}" alt="Logo Agroreserva"></a>
 				</div>
 				<div class="col-lg-2 text-left d-flex text-white align-items-center">
-					<span>Ver todas as reservas</span> 
+					<span class="text-nav-header"><a href="{{route('index')}}"><span style="border-bottom: 2px solid #E65454;">Ver</span> todas as reservas</a></span> 
 				</div>
 				<div class="col-lg-5 d-flex text-white justify-content-end align-items-center">
-					<a class="btn btn-outline-transparente px-5 py-1 mx-3" href="#">Venda</span></a>
-					<span>Cadastre-se para comprar</span> 
-				</div>
+					<a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a>
+                    @if(!session()->get("userid"))
+					    <span  class="text-nav-header"><a href="{{route('cadastro')}}"><span style="border-bottom: 2px solid #E65454;">Cad</span>astre-se para comprar</a></span> 
+                    @endif
+                </div>
 				<div class="col-lg-2 d-flex text-white justify-content-end align-items-center">
 					<span>
-                        @if(isset($fazenda))
-                            Bem vindo, {{explode(" ", $fazenda->nome_dono)[0]}}
+                        {{--  @if($_SESSION["userid"])  --}}
+                        @if(session()->get("userid"))
+                            Bem vindo
                         @else
-                            Entrar
+                            <a href="{{route('login')}}">Entrar</a>
                         @endif
                     </span> 
-					<a class="mx-3" href="#"><i class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
+					<a class="mx-3" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
 				</div>
 			</div>
         </div>
     </div>
 
 	@yield('conteudo')
+
+    <div class="container-fluid" id="footer" style="background: url(/imagens/bg-footer.png); background-size: cover; background-position:center; background-repeat: no-repeat;">
+        <div class="row align-items-center py-5">
+            <div class="col-12 offset-lg-4 col-lg-4 text-center">
+                <img src="{{asset('imagens/logo-footer.png')}}" style="width:100%; max-width: 307px;" alt="">
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="row">
+                    <div class="col-12 text-nav-footer">
+                        <a class="" href="{{route('index')}}"><span><span style="border-bottom: 2px solid #E65454;">Que</span>m somos</span> </a>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 text-nav-footer">
+                        <a class="" href="{{route('cadastro.fazenda')}}"><span><span style="border-bottom: 2px solid #E65454;">Anu</span>ncie sua reserva</span> </a>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 text-nav-footer">
+                        <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #E65454;">Cad</span>astre-se para comprar</span> </a>
+                    </div>
+                </div>
+                {{--  <div class="row mt-3">
+                    <div class="col-12 text-nav-footer">
+                        <a class="" href=""><span><span style="border-bottom: 2px solid #E65454;">Ent</span>re em contato</span> </a>
+                    </div>
+                </div>  --}}
+                <div class="row mt-5">
+                    <div class="col-12 mt-5 text-nav-footer">
+                        <span>+55 34 9172-0996</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-nav-footer">
+                        <span>contato@agroreserva.com.br</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-nav-footer">
+                        <span>
+                            <i class="fab fa-instagram fa-lg"></i> 
+                            <i class="fab fa-facebook-square ml-4 fa-lg"></i>
+                            <i class="fab fa-youtube ml-4 fa-lg"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -107,7 +144,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-	
+    @toastr_js
+    @toastr_render
 	@yield("scripts")
 </body>
 

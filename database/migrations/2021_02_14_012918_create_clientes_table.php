@@ -18,11 +18,12 @@ class CreateClientesTable extends Migration
             $table->string("nome_dono", 100)->nullable();
             $table->string("nome_fazenda", 150)->nullable();
             $table->string("senha", 255);
-            $table->string("logo", 255)->nullable();
             $table->string("cnpj", 50)->nullable();
+            $table->string("cpf", 50)->nullable();
             $table->string("cep", 50)->nullable();
             $table->string("cidade", 50)->nullable();
             $table->string("interesses", 255)->nullable();
+            $table->string("racas", 255)->nullable();
             $table->string("estado", 5)->nullable();
             $table->string("bairro", 50)->nullable();
             $table->string("numero", 6)->nullable();

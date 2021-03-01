@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;500;600&display=swap');
+:root {
+    --vermelho: #E65454;
+}
+
 @font-face {
     font-family: 'TitilliumWeb Bold';
     font-style: normal;
@@ -26,6 +30,16 @@ a:active {
 
 
 /* END UTILS */
+
+
+/* TEXTS */
+
+.text-black {
+    color: black !important;
+}
+
+
+/* END TEXTS */
 
 
 /* BACKGROUNDS */
@@ -58,7 +72,7 @@ a:active {
 
 .btn-outline-transparente:hover {
     background-color: white;
-    color: black;
+    color: black !important;
 }
 
 .btn-vermelho {
@@ -261,6 +275,20 @@ label {
     color: white;
 }
 
+.text-black>label {
+    color: black !important;
+    font-size: 18px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+}
+
+.text-black>input {
+    color: black !important;
+    font-size: 18px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+}
+
 .botao-cadastro {
     background: #E65454 0% 0% no-repeat padding-box;
     border-radius: 30px;
@@ -277,9 +305,10 @@ label {
 }
 
 .btn-whats {
-    position: absolute;
-    right: 0%;
+    position: fixed;
+    right: 5%;
     bottom: 5%;
+    z-index: 99999;
     background: url('../imagens/whatsapp-button.png');
     height: 50px;
     width: 50px;
@@ -307,8 +336,12 @@ label {
     cursor: pointer;
 }
 
-.modal-body {
+.modal-body-sucesso {
     background-color: #6BFF8E;
+}
+
+.modal-body-erro {
+    background-color: var(--vermelho);
 }
 
 .conteudo-modal>h3 {
@@ -329,8 +362,50 @@ label {
     font-weight: 600;
 }
 
+.conteudo-modal-erro>h3 {
+    font-size: 1.5rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    color: white;
+}
+
+.conteudo-modal-erro>span {
+    font-size: 1.3rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+    color: white;
+}
+
+.conteudo-modal-erro>span>b {
+    font-size: 1.3rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    color: white;
+}
+
 
 /* INDEX */
+
+.text-nav-header {
+    letter-spacing: 0px;
+    color: white !important;
+    opacity: 1;
+}
+
+.text-nav-header>a {
+    transition: 0.2s;
+    border-bottom: 2px solid transparent;
+}
+
+.text-nav-header>a.active {
+    border-bottom: 2px solid #E65454;
+    color: #E65454 !important;
+}
+
+.text-nav-header>a:hover {
+    border-bottom: 2px solid #E65454;
+    color: #E65454 !important;
+}
 
 #header-index {
     min-height: 100vh;
@@ -403,6 +478,28 @@ label {
     font-family: 'Titillium Web', sans-serif;
     font-weight: 400;
     color: black;
+}
+
+.text-nav-footer {
+    font: normal normal normal 20px/47px 'Titillium Web', sans-serif;
+    letter-spacing: 0px;
+    color: white !important;
+    opacity: 1;
+}
+
+.text-nav-footer>a {
+    transition: 0.2s;
+    border-bottom: 2px solid transparent;
+}
+
+.text-nav-footer>a.active {
+    border-bottom: 2px solid #E65454;
+    color: #E65454 !important;
+}
+
+.text-nav-footer>a:hover {
+    border-bottom: 2px solid #E65454;
+    color: #E65454 !important;
 }
 
 
@@ -674,4 +771,41 @@ label {
 
 .form-cadastro3>.form-group>.btn {
     width: 270px;
+}
+
+
+/* CADASTRO PARA VENDA */
+
+.caixa-passo>i {
+    color: var(--vermelho) !important;
+}
+
+.caixa-passo>h3 {
+    font: normal normal 300 45px 'Titillium Web', sans-serif;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+
+.caixa-passo>span {
+    font: normal normal bold 20px 'Titillium Web', sans-serif;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+
+.caixa-passo>a {
+    font: normal normal bold 20px 'Titillium Web', sans-serif;
+    letter-spacing: 0px;
+    color: #14C656 !important;
+}
+
+.text-cadastro-fazenda h2 {
+    font: normal normal 300 40px 'Titillium Web', sans-serif;
+    letter-spacing: 0px;
+    color: #000000;
+}
+
+.text-cadastro-fazenda h4 {
+    font: normal normal bold 39px 'Titillium Web', sans-serif;
+    letter-spacing: 0px;
+    color: #000000;
 }

@@ -23,7 +23,7 @@
         <link href="{{asset('admin/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{asset('admin/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
-
+        @toastr_css
     </head>
 
     <body class="auth-body-bg">
@@ -100,17 +100,14 @@
                                         </div>
             
                                         <div class="mt-4">
-                                            <form action="https://themesbrand.com/skote/layouts/index.html">
-                
+                                            <form action="{{route('painel.logar')}}" method="POST">
+                                                @csrf
                                                 <div class="mb-3 text-white">
                                                     <label for="usuario" class="form-label">Usuário</label>
                                                     <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Informe o usuário">
                                                 </div>
                         
                                                 <div class="mb-3 text-white">
-                                                    <div class="float-end">
-                                                        <a href="auth-recoverpw-2.html" class="text-white"><span style="border-bottom: 2px solid #E65454;">Esq</span>ueci minha senha</a>
-                                                    </div>
                                                     <label class="form-label">Senha</label>
                                                     <div class="input-group auth-pass-inputgroup">
                                                         <input type="password" class="form-control" name="senha" placeholder="Informa a senha" aria-label="Password" aria-describedby="password-addon">
@@ -154,7 +151,9 @@
 
         <!-- auth-2-carousel init -->
         <script src="{{asset('admin/js/pages/auth-2-carousel.init.js')}}"></script>
-        
+        @jquery
+        @toastr_js
+        @toastr_render
         <!-- App js -->
         <script src="{{asset('admin/js/app.js')}}"></script>
 

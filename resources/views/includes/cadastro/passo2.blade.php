@@ -25,16 +25,26 @@
                 </div>
                 <div class="form-group col-12 col-lg-6">
                     <label for="estado">Estado</label>
-                    <input type="text" class="form-control" name="estado" id="estado" aria-describedby="" placeholder="Escolha seu estado" required>
+                    <select class="form-control" name="estado" id="" required>
+                        @foreach($estados as $key => $estado)
+                            <option value="{{$estado->sg_Uf}}">{{$estado->nm_Uf}}</option>
+                        @endforeach
+                    </select>
+                    {{--  <input type="text" class="form-control" name="estado" id="estado" aria-describedby="" placeholder="Escolha seu estado" required>  --}}
+                </div>
+                <div class="form-group col-12 col-lg-6">
+                    <label for="cidade">Cidade</label>
+                    <select class="form-control" name="cidade" required>
+                        @foreach($cidades as $key => $cidade)
+                            <option value="{{$cidade->ID_Cidade}}">{{$cidade->nm_Cidade}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group col-12 col-lg-6">
                     <label for="numero">Número</label>
                     <input type="text" class="form-control" name="numero" id="numero" aria-describedby="" placeholder="Digite seu numero" required>
                 </div>
-                <div class="form-group col-12 col-lg-6">
-                    <label for="cidade">Cidade</label>
-                    <input type="text" class="form-control" name="cidade" id="cidade" aria-describedby="" placeholder="Digite sua cidade" required>
-                </div>
+                
                 <div class="form-group col-12 col-lg-6">
                     <label for="complemento">Complemento</label>
                     <input type="text" class="form-control" name="complemento" id="complemento" aria-describedby="" placeholder="Digite seu complemento (se houver)">

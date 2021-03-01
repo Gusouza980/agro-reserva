@@ -20,8 +20,19 @@
                     <input type="text" class="form-control" name="nome" id="nome" aria-describedby="" placeholder="Digite seu nome" required>
                 </div>
                 <div class="form-group col-12 col-lg-6">
+                    <label for="sexo">Sexo</label>
+                    <select class="form-control" name="sexo" id="sexo" required>
+                        <option value="1">Masculino</option>
+                        <option value="0">Feminino</option>
+                    </select>
+                </div>
+                <div class="form-group col-12 col-lg-6">
                     <label for="cnpj">CNPJ</label>
                     <input type="text" class="form-control" name="cnpj" id="cnpj" aria-describedby="" placeholder="Digite seu cnpj" required>
+                </div>
+                <div class="form-group col-12 col-lg-6">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" name="cpf" id="cpf" aria-describedby="" placeholder="Digite o CPF do responsável" required>
                 </div>
                 <div class="form-group col-12 col-lg-6">
                     <label for="fazenda">Nome da sua fazenda</label>

@@ -10,7 +10,7 @@ $url = 'https://api.bscommerce.com.br/produto/';
 $data =  array(
 	"token" => $tokenapi,
 	"ope"   => "getProduto",
-  "code"  => $codigo
+  	"code"  => $codigo
 );
 
 /* envia dados e recebe retorno */

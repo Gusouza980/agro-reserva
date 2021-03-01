@@ -28,13 +28,16 @@
         </div>
     </div>
     @if ($errors->any())
+        @foreach($errors->all() as $error)
         <div class="row mt-5 justify-content-center justify-content-lg-start">
             <div class="col-10 col-lg-8 text-left">
                 <div class="alert alert-danger" id="div-erro-geral" role="alert">
-                    Por favor, preencha todos os campos para realizar seu cadastro.
+                    {{$error}}
+                    {{--  Por favor, preencha todos os campos para realizar seu cadastro.  --}}
                 </div>
             </div>
         </div>
+        @endforeach
     @endif
 
     <div class="container px-0 div-passo" passo="1">
@@ -84,6 +87,31 @@
         }
 
         $(document).ready(function(){
+            
+            $("select[name='estado']").change(function(){
+                var estado = $("select[name='estado']").val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/getCidadesByUf/' + estado,
+                    dataType: 'json',
+                    success: function (data) {
+                        html = "";
+                        var cidades = JSON.parse(data);
+                        for(var cidade in cidades){
+                            html += "<option value='"+cidades[cidade].ID_Cidade+"'>"+cidades[cidade].nm_Cidade+"</option>"
+                        }
+                        $("select[name='cidade']").html(html);
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
 
             $("input").each(function(){
                 var name = $(this).attr("name");
@@ -98,6 +126,23 @@
                     }
                 }
             })
+
+            $("select").each(function(){
+                var name = $(this).attr("name");
+                name = name.replace("[]", "");
+                if(name != "_token"){
+                    if($(".input-final[name='"+name+"']").length == 0){
+                        if($(this).attr("type") == "checkbox"){
+                            $("#form-final").append("<input class='input-final' type='hidden' name='"+name+"' checkbox='sim' value=''>");
+                        }else if($(this).is("select")){
+                            $("#form-final").append("<input class='input-final' type='hidden' name='"+name+"' select='sim' value=''>");
+                        }else{
+                            $("#form-final").append("<input class='input-final' type='hidden' name='"+name+"' value=''>");
+                        }
+                    }
+                }
+            })
+
             $("#btn-passo1").click(function(){
                 if(!testa_campos1()){
                     $("#div-erro-geral").hide(0);
@@ -138,6 +183,8 @@
                                 value += ","+$(this).val();
                                 $(input).val(value);
                             });
+                        }else if($(input).attr("select") == "sim"){
+                            $(input).val($("select[name='"+name+"']").val());
                         }else{
                             $(input).val($("input[name='"+name+"']").val());
                         }

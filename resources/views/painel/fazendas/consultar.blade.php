@@ -14,27 +14,39 @@
             <div class="card-body">
 
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
                             <th></th>
                             <th>Nome</th>
                             <th>Email</th>
                             <th>Telefone</th>
-                            <th>Usuários</th>
+                            <th>Reserva</th>
+                            <th>Ativo</th>
                             <th></th>
                         </tr>
                     </thead>
 
 
-                    <tbody>
+                    <tbody class="text-center">
                         @foreach($fazendas as $fazenda)
                             <tr>
-                                <td><a href="{{route('painel.fazenda.visualizar', ['fazenda' => $fazenda])}}"><i class="fa fa-search" aria-hidden="true"></i></a></td>
+                                <td><a href=""><i class="fa fa-search" aria-hidden="true"></i></a></td>
                                 <td>{{$fazenda->nome_fazenda}}</td>
                                 <td>{{$fazenda->email}}</td>
                                 <td>{{$fazenda->telefone}}</td>
-                                <td>{{$fazenda->usuarios()->count()}}</td>
-                                <td><a name="" id="" class="btn btn-warning" href="{{route('painel.academia.edicao', ['academia' => $academia])}}" role="button">Editar</a></td>
+                                <td>
+                                    @if($fazenda->data_inicio_reserva)
+                                        @if($fazenda->data_inicio_reserva > date('Y-m-d H:i:s'))
+                                            Iniciada em {{date("d/m/Y H:i:s", strtotime($fazenda->data_inicio_reserva))}}
+                                        @else
+                                            Iniciará em {{date("d/m/Y H:i:s", strtotime($fazenda->data_inicio_reserva))}}
+                                        @endif
+                                    @else
+                                        Sem reserva programada
+                                    @endif
+                                </td>
+                                <td><i class="fa fa-star" aria-hidden="true"></i></td>
+                                <td><a name="" id="" class="btn btn-warning" href="{{route('painel.fazenda.editar', ['fazenda' => $fazenda])}}" role="button">Editar</a></td>
                             </tr>
                         @endforeach
                     </tbody>

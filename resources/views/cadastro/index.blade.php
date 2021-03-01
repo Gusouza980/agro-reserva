@@ -28,7 +28,7 @@
                         <button type="submit" class="btn btn-vermelho py-2" role="button">Cadastrar</button>
                     </div>
                     <div class="col-12 text-center text-lg-left text-white form-cadastro0">
-                        <span>Já tem uma conta? <a href=""><u>Clique aqui</u></a></span>
+                        <span>Já tem uma conta? <a href="{{route('login')}}"><u>Clique aqui</u></a></span>
                     </div>
                 </form>
             </div>
