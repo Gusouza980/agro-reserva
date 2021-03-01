@@ -9,7 +9,7 @@ class SiteController extends Controller
 {
 
     public function index(){
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
 
 
         $setorpai = (isset($_GET['setor'])) ? $_GET['setor'] : "1"; //get ou post
