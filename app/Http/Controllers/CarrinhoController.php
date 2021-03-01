@@ -9,7 +9,7 @@ class CarrinhoController extends Controller
     //
 
     public function carrinho(){
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
 
         /* link especifico */
         $url = 'https://api.bscommerce.com.br/carrinho/';
@@ -36,7 +36,7 @@ class CarrinhoController extends Controller
     }
 
     public function adicionar($produto){
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
 
         $qtde = 1;
 
@@ -69,7 +69,7 @@ class CarrinhoController extends Controller
     }
 
     public function deletar($produto){
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
 
         /* link especifico */
         $url = 'https://api.bscommerce.com.br/carrinho/';
@@ -89,7 +89,7 @@ class CarrinhoController extends Controller
     }
 
     public function limpa(){
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
 
         /* link especifico */
         $url = 'https://api.bscommerce.com.br/carrinho/';

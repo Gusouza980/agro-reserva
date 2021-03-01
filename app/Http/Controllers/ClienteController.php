@@ -42,7 +42,7 @@ class ClienteController extends Controller
 
     public function cadastro_final(Request $request){
 
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
 
         $request->validate([
             'nome' => 'required|min:2|max:100',

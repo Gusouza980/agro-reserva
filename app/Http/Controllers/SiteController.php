@@ -35,7 +35,7 @@ class SiteController extends Controller
 
     public function conheca($slug){
 
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
 
         /* link especifico */
         $url = 'https://api.bscommerce.com.br/setor/';
@@ -61,7 +61,7 @@ class SiteController extends Controller
 
     public function lotes($slug){
 
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
 
         $page = "1"; //get ou post
         $rows = "-1"; //get ou post
@@ -107,7 +107,7 @@ class SiteController extends Controller
     }
 
     public function lote($slug, $lote){
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
         /* link especifico */
         $url = 'https://api.bscommerce.com.br/produto/';
 
@@ -152,7 +152,7 @@ class SiteController extends Controller
             return redirect()->route("cadastro");
         }
 
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
 
         /* link especifico */
         $url = 'https://api.bscommerce.com.br/cadastro/';
@@ -196,7 +196,7 @@ class SiteController extends Controller
     }
 
     public function logar(Request $request){
-        include_once(app_path() . '\Apis\_functions.php');
+        include_once(app_path() . '/Apis/_functions.php');
 
 
         /* link especifico */
