@@ -38,7 +38,7 @@
             <form class="row form-cadastro3 justify-content-start" action="" method="post">
                 @csrf
                 <div class="form-group col-6 col-md-3 col-sm-4 col-lg-2">
-                    <label class="containerr">Vender
+                    <label class="containerr">Comprar
                         <input type="checkbox" name="interesses[]" value="Compra">
                         <span class="checkmark"></span>
                     </label>
