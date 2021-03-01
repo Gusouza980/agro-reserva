@@ -81,6 +81,20 @@ class FazendaController extends Controller
         return redirect()->back();
     }
 
+    public function salvar_informacoes(Request $request, Fazenda $fazenda){
+
+        $fazenda->nome_dono = $request->nome_dono;
+        $fazenda->nome_fazenda = $request->nome_fazenda;
+        $fazenda->telefone = $request->telefone;
+        $fazenda->cnpj = $request->cnpj;
+        $fazenda->email = $request->email;
+        $fazenda->whatsapp = $request->whatsapp;
+        $fazenda->save();
+        toastr()->success("Conteúdo salvo com sucesso!");
+        return redirect()->back();
+
+    }
+
     public function salvar_slug(Request $request, Fazenda $fazenda){
 
         $fazenda->slug = $request->slug;

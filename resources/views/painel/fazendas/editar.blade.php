@@ -40,7 +40,7 @@
                 </div>
                 <h4 class="card-title mb-4">Informações Básicas</h4>
 
-                <form action="" method="POST">
+                <form action="{{route('painel.fazenda.salvar.informacoes', ['fazenda' => $fazenda])}}" method="POST">
                     @csrf
 
                     <div class="row">
@@ -87,8 +87,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="cnpj" class="form-label">Whatsapp *</label>
-                                <input type="text" class="form-control" name="cnpj" id="cnpj" value="{{$fazenda->whatsapp}}" required>
+                                <label for="whatsapp" class="form-label">Whatsapp *</label>
+                                <input type="text" class="form-control" name="whatsapp" id="whatsapp" value="{{$fazenda->whatsapp}}" required>
                             </div>
                         </div>
                     </div>

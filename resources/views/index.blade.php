@@ -13,7 +13,7 @@
             <div class="row py-5 justify-content-center">
                 @foreach($fazendas as $fazenda)
                     @php
-                        $fazenda_bd = \App\Models\Fazenda::where("slug", $fazenda->nm_Slug)->first();
+                        $fazenda_bd = \App\Models\Fazenda::where([["slug", $fazenda->nm_Slug], ['ativo', true]])->first();
                     @endphp
                     @if($fazenda_bd)
                         <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda_bd->fundo_destaque}}); background-size: cover;">
