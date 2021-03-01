@@ -17,7 +17,7 @@ class ClienteController extends Controller
             'senha' => 'required|min:5|max:15'
         ]);
 
-        $cliente = Cliente::where("email", $request->email)->get();
+        $cliente = Cliente::where("email", $request->email)->first();
 
         if($cliente){
             toastr()->error("Já existe um cliente cadastrado com esse e-mail.");
