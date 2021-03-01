@@ -5,7 +5,7 @@
 <head>
         
         <meta charset="utf-8" />
-        <title>Dashboard | Skote - Admin & Dashboard Template</title>
+        <title>Agroreserva - Painel Administrativo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
@@ -53,7 +53,7 @@
 
                     <div class="d-flex">
 
-                        <div class="dropdown d-inline-block">
+                        {{--  <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="bx bx-bell bx-tada"></i>
@@ -96,7 +96,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
+                        </div>  --}}
 
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"

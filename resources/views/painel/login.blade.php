@@ -5,9 +5,9 @@
 <head>
         
         <meta charset="utf-8" />
-        <title>Gefit - Painel Administrativo</title>
+        <title>Agroreserva - Painel Administrativo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Painel de controle da Gefit" name="description" />
+        <meta content="Painel de controle da Agroreserva" name="description" />
         <meta content="Luis Gustavo de Souza Carvalho" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{asset('admin/images/favicon.ico')}}">
