@@ -140,6 +140,15 @@ class FazendaController extends Controller
                 'imagens/fazendas/' . Str::slug($fazenda->nome_fazenda) . "/conheca", 'local'
             );
         }
+
+        if($request->file("miniatura_conheca")){
+            Storage::delete($fazenda->miniatura_conheca);
+            $fazenda->miniatura_conheca = $request->file('miniatura_conheca')->store(
+                'imagens/fazendas/' . Str::slug($fazenda->nome_fazenda) . "/conheca/miniatura", 'local'
+            );
+        }
+
+
         $fazenda->video_conheca = $request->video_conheca;
         $fazenda->titulo_conheca = $request->titulo_conheca;
         $fazenda->texto_conheca = $request->texto_conheca;
@@ -158,6 +167,14 @@ class FazendaController extends Controller
                 'imagens/fazendas/' . Str::slug($fazenda->nome_fazenda) . "/conheca/lotes", 'local'
             );
         }
+
+        if($request->file("miniatura_conheca_lotes")){
+            Storage::delete($fazenda->miniatura_conheca_lotes);
+            $fazenda->miniatura_conheca_lotes = $request->file('miniatura_conheca_lotes')->store(
+                'imagens/fazendas/' . Str::slug($fazenda->nome_fazenda) . "/conheca/lotes/miniatura", 'local'
+            );
+        }
+
         $fazenda->video_conheca_lotes = $request->video_conheca_lotes;
         $fazenda->titulo_conheca_lotes = $request->titulo_conheca_lotes;
         $fazenda->animais_conheca_lotes = $request->animais_conheca_lotes;
@@ -178,8 +195,39 @@ class FazendaController extends Controller
                 'imagens/fazendas/' . Str::slug($fazenda->nome_fazenda) . "/conheca/avaliacoes", 'local'
             );
         }
+
+        if($request->file("miniatura_conheca_avaliacao")){
+            Storage::delete($fazenda->miniatura_conheca_avaliacao);
+            $fazenda->miniatura_conheca_avaliacao = $request->file('miniatura_conheca_avaliacao')->store(
+                'imagens/fazendas/' . Str::slug($fazenda->nome_fazenda) . "/conheca/avaliacoes/miniatura", 'local'
+            );
+        }
+
         $fazenda->texto_conheca_avaliacao_resumo = $request->texto_conheca_avaliacao_resumo;
         $fazenda->quantidade_conheca_avaliacao_producao = $request->quantidade_conheca_avaliacao_producao;
+        $fazenda->save();
+        toastr()->success("Conteúdo salvo com sucesso!");
+
+        return redirect()->back();
+
+    }
+
+    public function salvar_conheca_depoimentos(Request $request, Fazenda $fazenda){
+
+        if($request->file("fundo_conheca_depoimentos")){
+            Storage::delete($fazenda->fundo_conheca_depoimentos);
+            $fazenda->fundo_conheca_depoimentos = $request->file('fundo_conheca_depoimentos')->store(
+                'imagens/fazendas/' . Str::slug($fazenda->nome_fazenda) . "/conheca/depoimentos", 'local'
+            );
+        }
+
+        if($request->file("miniatura_conheca_depoimentos")){
+            Storage::delete($fazenda->miniatura_conheca_depoimentos);
+            $fazenda->miniatura_conheca_depoimentos = $request->file('miniatura_conheca_depoimentos')->store(
+                'imagens/fazendas/' . Str::slug($fazenda->nome_fazenda) . "/conheca/depoimentos/miniatura", 'local'
+            );
+        }
+
         $fazenda->save();
         toastr()->success("Conteúdo salvo com sucesso!");
 

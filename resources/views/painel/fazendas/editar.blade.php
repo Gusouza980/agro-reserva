@@ -238,6 +238,21 @@
 
                     </div>
 
+                    <div class="row mt-3">
+                        
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="">Miniatura do Conheça a Fazenda</label>
+                                <input type="file" class="form-control-file" name="miniatura_conheca" id="" placeholder="" aria-describedby="fileHelpId" @if(!$fazenda->miniatura_conheca) required @endif>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            @if($fazenda->miniatura_conheca)
+                                <img src="{{asset($fazenda->miniatura_conheca)}}" style="max-height: 100px;" alt="">
+                            @endif
+                        </div>
+                    </div>
+
                     <div class="row">
                         
                         <div class="col-md-12">
@@ -315,6 +330,21 @@
                             @endif
                         </div>
 
+                    </div>
+
+                    <div class="row mt-3">
+                        
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="">Miniatura dos Lotes</label>
+                                <input type="file" class="form-control-file" name="miniatura_conheca_lotes" id="" placeholder="" aria-describedby="fileHelpId" @if(!$fazenda->miniatura_conheca_lotes) required @endif>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            @if($fazenda->miniatura_conheca_lotes)
+                                <img src="{{asset($fazenda->miniatura_conheca_lotes)}}" style="max-height: 100px;" alt="">
+                            @endif
+                        </div>
                     </div>
 
                     <div class="row">
@@ -414,6 +444,21 @@
 
                     </div>
 
+                    <div class="row mt-3">
+                        
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="">Miniatura das Avaliações</label>
+                                <input type="file" class="form-control-file" name="miniatura_conheca_avaliacao" id="" placeholder="" aria-describedby="fileHelpId" @if(!$fazenda->miniatura_conheca_avaliacao) required @endif>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            @if($fazenda->miniatura_conheca_depoimentos)
+                                <img src="{{asset($fazenda->miniatura_conheca_avaliacao)}}" style="max-height: 100px;" alt="">
+                            @endif
+                        </div>
+                    </div>
+
                     <div class="row">
                         
                         <div class="col-md-12">
@@ -452,6 +497,7 @@
 <!-- end row -->
 
 
+
 <div class="row mt-5 mb-3">
     <div class="col-12">
         <a name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovoDepoimento" role="button">Novo depoimento</a>
@@ -462,6 +508,44 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+                <h4 class="card-title mb-4">Depoimentos</h4>
+
+                <form action="{{route('painel.fazenda.salvar.conheca.depoimentos', ['fazenda' => $fazenda])}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="row">
+                        
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="">Fundo dos depoimentos</label>
+                                <input type="file" class="form-control-file" name="fundo_conheca_depoimentos" id="" placeholder="" aria-describedby="fileHelpId" @if(!$fazenda->fundo_conheca_depoimentos) required @endif>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            @if($fazenda->fundo_conheca_depoimentos)
+                                <img src="{{asset($fazenda->fundo_conheca_depoimentos)}}" style="max-height: 100px;" alt="">
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="">Miniatura dos depoimentos</label>
+                                <input type="file" class="form-control-file" name="miniatura_conheca_depoimentos" id="" placeholder="" aria-describedby="fileHelpId" @if(!$fazenda->miniatura_conheca_depoimentos) required @endif>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            @if($fazenda->miniatura_conheca_depoimentos)
+                                <img src="{{asset($fazenda->miniatura_conheca_depoimentos)}}" style="max-height: 100px;" alt="">
+                            @endif
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+                <hr>
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>

@@ -1,7 +1,25 @@
 @extends('template.main')
 
 @section('conteudo')
-    <div style="background: url(/{{$fazenda_bd->fundo_conheca}}); background-size: cover;">
+    @if(url()->current() == route('fazenda.conheca', ['fazenda' => $slug]))
+        @php
+            $background = $fazenda_bd->fundo_conheca;
+        @endphp
+    @elseif(url()->current() == route("fazenda.conheca.lotes", ['fazenda' => $slug]))
+        @php
+            $background = $fazenda_bd->fundo_conheca_lotes;
+        @endphp
+    @elseif(url()->current() == route("fazenda.conheca.depoimentos", ['fazenda' => $slug]))
+        @php
+            $background = $fazenda_bd->fundo_conheca_depoimentos;
+        @endphp
+    @elseif(url()->current() == route("fazenda.conheca.avaliacoes", ['fazenda' => $slug]))
+        @php
+            $background = $fazenda_bd->fundo_conheca_avaliacoes;
+        @endphp
+    @endif
+
+    <div style="background: url(/{{$background}}); background-size: cover;">
         <div class="py-5" style="background-color: rgba(0,0,0,0.5);">
             <div class="container-fluid py-5" id="nav-fazenda">
                 <div class="container">
@@ -29,7 +47,7 @@
                 </div>
                 <div class="container">
                     <div class="row py-5 justify-content-sm-center justify-content-md-start">
-                        <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/imagens/boi1.jpg); background-size: cover;">
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda_bd->miniatura_conheca}}); background-size: cover;">
                             <div class="container-fluid">
                                 <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca', ['fazenda' => $slug])) active @endif" style="background-color: rgba(0,0,0,0.7); height: 190px;">
                                     <div class="col-12 px-3 text-center text-white text-section1-fazenda">
@@ -40,7 +58,7 @@
                             </div>
                             <div class="borda-triangular @if(url()->current() != route('fazenda.conheca', ['fazenda' => $slug])) d-none @endif"></div>
                         </div>
-                        <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/imagens/boi1.jpg); background-size: cover;">
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda_bd->miniatura_conheca_lotes}}); background-size: cover;">
                             <div class="container-fluid">
                                 <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca.lotes', ['fazenda' => $slug])) active @endif" style="background-color: rgba(0,0,0,0.7); height: 190px;">
                                     <div class="col-12 px-3 text-center text-white text-section1-fazenda">
@@ -50,7 +68,7 @@
                             </div>
                             <div class="borda-triangular @if(url()->current() != route('fazenda.conheca.lotes', ['fazenda' => $slug])) d-none @endif"></div>
                         </div>
-                        <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/imagens/boi1.jpg); background-size: cover;">
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda_bd->miniatura_conheca_depoimentos}}); background-size: cover;">
                             <div class="container-fluid">
                                 <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca.depoimentos', ['fazenda' => $slug])) active @endif" style="background-color: rgba(0,0,0,0.7); height: 190px;">
                                     <div class="col-12 px-3 text-center text-white text-section1-fazenda">
@@ -60,7 +78,7 @@
                             </div>
                             <div class="borda-triangular @if(url()->current() != route('fazenda.conheca.depoimentos', ['fazenda' => $slug])) d-none @endif"></div>
                         </div>
-                        <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/imagens/boi1.jpg); background-size: cover;">
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda_bd->miniatura_conheca_avaliacao}}); background-size: cover;">
                             <div class="container-fluid">
                                 <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca.avaliacoes', ['fazenda' => $slug])) active @endif" style="background-color: rgba(0,0,0,0.7); height: 190px;">
                                     <div class="col-12 px-3 text-center text-white text-section1-fazenda">

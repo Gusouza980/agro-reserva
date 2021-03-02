@@ -24,10 +24,12 @@ class CreateFazendasTable extends Migration
             $table->string("telefone", 50)->nullable();
             $table->string("whatsapp", 50)->nullable();
             $table->string("fundo_destaque", 255)->nullable();
+            
             $table->string("titulo_conheca", 100)->nullable();
             $table->text("texto_conheca")->nullable();
             $table->string("video_conheca", 255)->nullable();
             $table->string("fundo_conheca", 255)->nullable();
+            
             $table->string("titulo_conheca_lotes", 100)->nullable();
             $table->string("animais_conheca_lotes", 10)->nullable();
             $table->string("embrioes_conheca_lotes", 10)->nullable();
