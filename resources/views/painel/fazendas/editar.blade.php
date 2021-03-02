@@ -226,7 +226,7 @@
                             <div class="mb-3">
                                 <div class="form-group">
                                     <label for="">Imagem de fundo</label>
-                                    <input type="file" class="form-control-file" name="fundo_conheca" id="" placeholder="" aria-describedby="fileHelpId" @if(!$fazenda->fundo_conheca) required @endif>
+                                    <input type="file" class="form-control-file" name="fundo_conheca" id="" placeholder="" aria-describedby="fileHelpId">
                                 </div>
                             </div>
                         </div>
@@ -243,7 +243,7 @@
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label for="">Miniatura do Conheça a Fazenda</label>
-                                <input type="file" class="form-control-file" name="miniatura_conheca" id="" placeholder="" aria-describedby="fileHelpId" @if(!$fazenda->miniatura_conheca) required @endif>
+                                <input type="file" class="form-control-file" name="miniatura_conheca" id="" placeholder="" aria-describedby="fileHelpId">
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
