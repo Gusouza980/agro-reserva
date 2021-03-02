@@ -26,7 +26,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-12 text-white text-center py-3">
-                                            @if($fazenda_bd->data_inicio_reserva < date('Y-m-d H:i:s'))
+                                            @if($fazenda_bd->data_inicio_reserva > date('Y-m-d H:i:s'))
                                                 <span>Iniciará</span>
                                                 <h3>{{date("d/m/Y", strtotime($fazenda_bd->data_inicio_reserva))}}</h3>
                                             @else
