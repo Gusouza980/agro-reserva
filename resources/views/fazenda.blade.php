@@ -15,12 +15,12 @@
         @endphp
     @elseif(url()->current() == route("fazenda.conheca.avaliacoes", ['fazenda' => $slug]))
         @php
-            $background = $fazenda_bd->fundo_conheca_avaliacoes;
+            $background = $fazenda_bd->fundo_conheca_avaliacao;
         @endphp
     @endif
 
     <div style="background: url(/{{$background}}); background-size: cover;">
-        <div class="py-5" style="background-color: rgba(0,0,0,0.5);">
+        <div class="pb-5" style="background-color: rgba(0,0,0,0.5);">
             <div class="container-fluid py-5" id="nav-fazenda">
                 <div class="container">
                     <div class="row">
