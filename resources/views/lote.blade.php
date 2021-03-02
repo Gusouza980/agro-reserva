@@ -1,12 +1,12 @@
 @extends('template.main')
 
 @section('conteudo')
-<div style="background: url(/imagens/background.png); background-size: cover; background-position: bottom;">
+<div style="background: url(/{{$fazenda_bd->fundo_conheca_lotes}}); background-size: cover; background-position: middle;">
     <div class="container-fluid bg-preto py-5 py-lg-2">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
-                    <img src="{{asset('/imagens/logo-porangaba.png')}}" style="max-width: 100%;" alt="">
+                    <img src="{{asset($fazenda_bd->logo)}}" style="max-width: 100%;" alt="">
                 </div>
                 <div class="col-12 col-lg-4 justify-content-center d-flex align-items-center text-white mt-4 mt-lg-0">
                     {{--  <span><span style="color:red;">Faltam 4 dias</span> para o fim dessa reserva</span>  --}}
@@ -37,7 +37,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid py-5" style="background: url({{asset('imagens/background.jpg')}}); background-position: bottom; background-size: cover;">
+    <div class="container-fluid py-5" style="">
         <div class="row justify-content-center mt-5">
             <div class="col-10 col-md-6 col-lg-4 text-center">
                 {{--  <iframe src="https://www.youtube.com/embed/klZNNUz4wPQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  --}}

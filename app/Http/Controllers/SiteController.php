@@ -100,9 +100,9 @@ class SiteController extends Controller
         /* converte json em array (opcional) */
         $fazenda = json_decode($retorno);
 
+        $fazenda_bd = Fazenda::where("slug", $slug)->first();
 
-
-        return view("lotes", ["fazenda" => $fazenda[0], "slug" => $slug, "produtos" => $produtos]);
+        return view("lotes", ["fazenda" => $fazenda[0], "slug" => $slug, "produtos" => $produtos, "fazenda_bd" => $fazenda_bd]);
 
     }
 
@@ -139,7 +139,8 @@ class SiteController extends Controller
         
         /* converte json em array (opcional) */
         $fazenda = json_decode($retorno);
-        return view("lote", ["produto" => $produto, "fazenda" => $fazenda]);
+        $fazenda_bd = Fazenda::where("slug", $slug)->first();
+        return view("lote", ["produto" => $produto, "fazenda" => $fazenda, "fazenda_bd" => $fazenda_bd]);
     }
 
     public function cadastro_fazenda(){

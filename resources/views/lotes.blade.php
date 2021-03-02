@@ -2,12 +2,12 @@
 
 @section('conteudo')
 @if(!session()->get("userid"))
-    <div style="background: url(/imagens/bg-porangaba.png); background-size: cover; min-height: 100vh;">
+    <div style="background: url(/{{$fazenda_bd->fundo_conheca_lotes}}); background-size: cover; background-position: middle; min-height: 100vh;">
         <div class="container-fluid py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-3">
-                        <img src="{{asset('/imagens/logo-porangaba.png')}}" style="max-width: 100%;" alt="">
+                        <img src="{{asset($fazenda_bd->logo)}}" style="max-width: 100%;" alt="">
                     </div>
                     <div class="col-12 col-md-9 d-flex align-items-center text-white text-nav-fazenda">
                         <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $slug])}}"><span><span style="border-bottom: 2px solid #E65454;">Con</span>heça a fazenda</span></a> 
@@ -35,12 +35,12 @@
         </div>
     </div>
 @else
-    <div class="pb-5" style="background: url(/imagens/bg-porangaba.png); background-size: cover; background-position: bottom;">
+    <div class="pb-5" style="background: url(/{{$fazenda_bd->fundo_conheca_lotes}}); background-size: cover; background-position: middle;">
         <div class="container-fluid py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-3">
-                        <img src="{{asset('/imagens/logo-porangaba.png')}}" style="max-width: 100%;" alt="">
+                        <img src="{{asset($fazenda_bd->logo)}}" style="max-width: 100%;" alt="">
                     </div>
                     <div class="col-12 col-md-9 d-flex align-items-center text-white text-nav-fazenda">
                         <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $slug])}}"><span><span style="border-bottom: 2px solid #E65454;">Con</span>heça a fazenda</span></a> 
