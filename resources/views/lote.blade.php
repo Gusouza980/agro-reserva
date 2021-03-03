@@ -61,7 +61,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 text-white">
-                        {{$produto->produto[0]->tx_Descricao}}
+                        {!! $produto->produto[0]->tx_Descricao !!}
                     </div>
                 </div>
                 {{--  <div class="row mt-4">

@@ -18,25 +18,22 @@ class FazendaController extends Controller
         include_once(app_path() . '/Apis/_functions.php');
 
 
-        $slug = (isset($_GET['slug'])) ? $_GET['slug'] : ""; //get ou post
+        $url = 'https://api.bscommerce.com.br/produto/';
 
-        /* link especifico */
-        $url = 'https://api.bscommerce.com.br/setor/';
-        
         /* array de dados */
         $data =  array(
             "token" => $tokenapi,
-            "ope"   => "getSetor",
-          "slug"  	=> "fazenda-poranga"
+            "ope"   => "getProduto",
+            "code"  => '1240'
         );
-        
+
         /* envia dados e recebe retorno */
         $retorno = callAPI($url, $data);
-        
+
         /* converte json em array (opcional) */
         $dados = json_decode($retorno);
         
-        var_dump($dados);
+        dd($dados);
         /*
         $dados[0]->ID_Cliente
             -1 	= E-mail não existe
