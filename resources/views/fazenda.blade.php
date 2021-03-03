@@ -112,7 +112,7 @@
                 </div>
             </div>
     
-            <div class="d-sm-none d-md-block">
+            <div class="d-sm-none d-md-block w-100">
                 @if(url()->current() == route('fazenda.conheca', ['fazenda' => $slug])))
                     @include('includes.fazenda.conheca')
                 @elseif(url()->current() == route("fazenda.conheca.lotes", ['fazenda' => $slug]))
