@@ -1,7 +1,7 @@
 <div class="container-fluid mt-5 mt-md-0">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-8 text-white pl-0 pr-5">
+            <div class="col-12 col-lg-8 text-white pl-0 pr-0 pr-md-5">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 px-0 text-section2-fazenda text-center text-md-left">
