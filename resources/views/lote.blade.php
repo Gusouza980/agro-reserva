@@ -59,11 +59,11 @@
                         <h2>{{$produto->produto[0]->nm_Produto}}</h2>
                     </div>
                 </div>
-                <div class="row">
+                {{--  <div class="row">
                     <div class="col-12 text-white">
-                        {!! $produto->produto[0]->tx_Descricao !!}
+                        
                     </div>
-                </div>
+                </div>  --}}
                 {{--  <div class="row mt-4">
                     <div class="col-12 text-white">
                         <i class="fas fa-chevron-down fa-lg"></i>
@@ -73,6 +73,15 @@
         </div>
     </div>
 </div>
+@if( $produto->produto[0]->tx_Descricao)
+<div class="container-fluid" style="background-color: white;">
+    <div class="row">
+        <div class="col-12 text-center py-5">
+            {!! $produto->produto[0]->tx_Descricao !!}
+        </div>
+    </div>
+</div>
+@endif
 
 
 @endsection
