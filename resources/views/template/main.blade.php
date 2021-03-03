@@ -90,19 +90,19 @@
             <div class="col-12 offset-lg-4 col-lg-4 text-center">
                 <img src="{{asset('imagens/logo-footer.png')}}" style="width:100%; max-width: 307px;" alt="">
             </div>
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-4 mt-5 mt-lg-0">
                 <div class="row">
-                    <div class="col-12 text-nav-footer">
+                    <div class="col-12 text-nav-footer text-center text-lg-left">
                         <a class="" href="{{route('index')}}"><span><span style="border-bottom: 2px solid #E65454;">Que</span>m somos</span> </a>
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-12 text-nav-footer">
+                    <div class="col-12 text-nav-footer text-center text-lg-left">
                         <a class="" href="{{route('cadastro.fazenda')}}"><span><span style="border-bottom: 2px solid #E65454;">Anu</span>ncie sua reserva</span> </a>
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-12 text-nav-footer">
+                    <div class="col-12 text-nav-footer text-center text-lg-left">
                         <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #E65454;">Cad</span>astre-se para comprar</span> </a>
                     </div>
                 </div>
@@ -112,17 +112,17 @@
                     </div>
                 </div>  --}}
                 <div class="row mt-5">
-                    <div class="col-12 mt-5 text-nav-footer">
+                    <div class="col-12 mt-5 text-nav-footer text-center text-lg-left">
                         <span>+55 34 9172-0996</span>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 text-nav-footer">
+                    <div class="col-12 text-nav-footer text-center text-lg-left">
                         <span>contato@agroreserva.com.br</span>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 text-nav-footer">
+                    <div class="col-12 text-nav-footer text-center text-lg-left">
                         <span>
                             <i class="fab fa-instagram fa-lg"></i> 
                             <i class="fab fa-facebook-square ml-4 fa-lg"></i>

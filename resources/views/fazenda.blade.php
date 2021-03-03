@@ -31,7 +31,7 @@
                             <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $slug])}}"><span><span style="border-bottom: 2px solid #E65454;">Con</span>heça a fazenda</span></a> 
                             <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $slug])}}"><span><span style="border-bottom: 2px solid #E65454;">Lot</span>es a venda</span> </a>
                         </div>
-                        <div class="col-12 d-black d-lg-none">
+                        <div class="col-12 d-block d-lg-none">
                             <div class="row">
                                 <div class="col-12 text-nav-fazenda text-center mt-4">
                                     <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $slug])}}"><span><span style="border-bottom: 2px solid #E65454;">Con</span>heça a fazenda</span></a> 
@@ -58,6 +58,11 @@
                             </div>
                             <div class="borda-triangular @if(url()->current() != route('fazenda.conheca', ['fazenda' => $slug])) d-none @endif"></div>
                         </div>
+                        <div class="d-block d-md-none">
+                            @if(url()->current() == route('fazenda.conheca', ['fazenda' => $slug])))
+                                @include('includes.fazenda.conheca')
+                            @endif
+                        </div>
                         <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda_bd->miniatura_conheca_lotes}}); background-size: cover;">
                             <div class="container-fluid">
                                 <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca.lotes', ['fazenda' => $slug])) active @endif" style="background-color: rgba(0,0,0,0.7); height: 190px;">
@@ -67,6 +72,11 @@
                                 </div>
                             </div>
                             <div class="borda-triangular @if(url()->current() != route('fazenda.conheca.lotes', ['fazenda' => $slug])) d-none @endif"></div>
+                        </div>
+                        <div class="d-block d-md-none">
+                            @if(url()->current() == route("fazenda.conheca.lotes", ['fazenda' => $slug]))
+                                @include('includes.fazenda.lotes')
+                            @endif
                         </div>
                         <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda_bd->miniatura_conheca_depoimentos}}); background-size: cover;">
                             <div class="container-fluid">
@@ -78,6 +88,11 @@
                             </div>
                             <div class="borda-triangular @if(url()->current() != route('fazenda.conheca.depoimentos', ['fazenda' => $slug])) d-none @endif"></div>
                         </div>
+                        <div class="d-block d-md-none">
+                            @if(url()->current() == route("fazenda.conheca.depoimentos", ['fazenda' => $slug]))
+                                @include('includes.fazenda.depoimentos_mobile')
+                            @endif
+                        </div>
                         <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda_bd->miniatura_conheca_avaliacao}}); background-size: cover;">
                             <div class="container-fluid">
                                 <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca.avaliacoes', ['fazenda' => $slug])) active @endif" style="background-color: rgba(0,0,0,0.7); height: 190px;">
@@ -88,19 +103,26 @@
                             </div>
                             <div class="borda-triangular @if(url()->current() != route('fazenda.conheca.avaliacoes', ['fazenda' => $slug])) d-none @endif"></div>
                         </div>
+                        <div class="d-block d-md-none">
+                            @if(url()->current() == route("fazenda.conheca.avaliacoes", ['fazenda' => $slug]))
+                                @include('includes.fazenda.avaliacao')
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
     
-            @if(url()->current() == route('fazenda.conheca', ['fazenda' => $slug])))
-                @include('includes.fazenda.conheca')
-            @elseif(url()->current() == route("fazenda.conheca.lotes", ['fazenda' => $slug]))
-                @include('includes.fazenda.lotes')
-            @elseif(url()->current() == route("fazenda.conheca.depoimentos", ['fazenda' => $slug]))
-                @include('includes.fazenda.depoimentos')
-            @elseif(url()->current() == route("fazenda.conheca.avaliacoes", ['fazenda' => $slug]))
-                @include('includes.fazenda.avaliacao')
-            @endif
+            <div class="d-sm-none d-md-block">
+                @if(url()->current() == route('fazenda.conheca', ['fazenda' => $slug])))
+                    @include('includes.fazenda.conheca')
+                @elseif(url()->current() == route("fazenda.conheca.lotes", ['fazenda' => $slug]))
+                    @include('includes.fazenda.lotes')
+                @elseif(url()->current() == route("fazenda.conheca.depoimentos", ['fazenda' => $slug]))
+                    @include('includes.fazenda.depoimentos')
+                @elseif(url()->current() == route("fazenda.conheca.avaliacoes", ['fazenda' => $slug]))
+                    @include('includes.fazenda.avaliacao')
+                @endif
+            </div>
         </div>
         
     </div>
