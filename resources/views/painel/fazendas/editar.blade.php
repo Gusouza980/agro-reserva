@@ -421,7 +421,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Conheça a fazenda - Avaliação</h4>
+                <h4 class="card-title mb-4">Conheça a fazenda - Avaliação - Imagens e Textos</h4>
 
                 <form action="{{route('painel.fazenda.salvar.conheca.avaliacoes', ['fazenda' => $fazenda])}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -474,16 +474,17 @@
 
                     <div class="row">
                         
-                        <div class="col-12">
+                        <div class="col-md-12">
                             <div class="mb-3">
                                 <div class="form-group">
-                                    <label for="animais_conheca_lotes">Quantidade Produzida em 2020</label>
-                                    <input type="text" class="form-control" name="quantidade_conheca_avaliacao_producao" value="{{$fazenda->quantidade_conheca_avaliacao_producao}}">
+                                    <label for="">Diferencial</label>
+                                    <textarea class="form-control" name="texto_conheca_avaliacao_diferencial" id="texto_diferencial" rows="3">{!! $fazenda->texto_conheca_avaliacao_diferencial !!}</textarea>
                                 </div>
                             </div>
                         </div>
 
                     </div>
+
                     
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
@@ -496,7 +497,47 @@
 </div>
 <!-- end row -->
 
+<div class="row mt-5 mb-3">
+    <div class="col-12">
+        <a name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovaProducao" role="button">Nova Produção</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Conheça a fazenda - Avaliação - Produção</h4>
+                <hr>
+                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                    <thead>
+                        <tr>
+                            <th>Texto Maior</th>
+                            <th>Texto Menor</th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
+
+                    <tbody>
+                        @foreach($fazenda->producoes as $producao)
+                            <tr>
+                                <td>{{$producao->titulo}}</td>
+                                <td>{{$producao->subtitulo}}</td>
+                                <td style="vertical-align: middle; text-align:center;">
+                                    <a name="" id="" class="btn btn-warning cpointer" data-bs-toggle="modal" data-bs-target="#modalEditaProducao{{$producao->id}}" role="button">Editar</a>
+                                    <a name="" id="" class="btn btn-danger" href="{{route('painel.fazenda.editar.producao.excluir', ['producao' => $producao])}}" role="button">Excluir</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
 
 <div class="row mt-5 mb-3">
     <div class="col-12">
@@ -692,6 +733,53 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalNovaProducao" tabindex="-1" role="dialog" aria-labelledby="modalNovaProducaoLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalNovaProducaoLabel">Cadastrar nova Produção</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('painel.fazenda.editar.producao.novo', ['fazenda' => $fazenda])}}" method="POST">
+                    @csrf
+
+                    <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                  <label for="">Texto maior</label>
+                                  <input type="text"
+                                    class="form-control" name="titulo" id="" aria-describedby="helpId" required>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                  <label for="">Texto menor</label>
+                                  <input type="text"
+                                    class="form-control" name="subtitulo" id="" aria-describedby="helpId" required>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @foreach($fazenda->depoimentos as $depoimento)
 <div class="modal fade" id="modalEditaDepoimento{{$depoimento->id}}" tabindex="-1" role="dialog" aria-labelledby="modalEditaDepoimento{{$depoimento->id}}Label" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -745,6 +833,53 @@
 
                     </div>
                     
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+
+@foreach($fazenda->producoes as $producao)
+<div class="modal fade" id="modalEditaProducao{{$producao->id}}" tabindex="-1" role="dialog" aria-labelledby="modalEditaProducao{{$producao->id}}Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEditaProducao{{$producao->id}}Label">Editar produção</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('painel.fazenda.editar.producao.salvar', ['producao' => $producao])}}" method="POST">
+                    @csrf
+
+                    <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                  <label for="">Texto Maior</label>
+                                  <input type="text"
+                                    class="form-control" name="titulo" id="" value="{{$producao->titulo}}" required>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                  <label for="">Texto Menor</label>
+                                  <input type="text"
+                                    class="form-control" name="subtitulo" id="" value="{{$producao->subtitulo}}" required>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>

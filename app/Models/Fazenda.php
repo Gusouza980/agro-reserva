@@ -12,4 +12,8 @@ class Fazenda extends Model
     public function depoimentos(){
         return $this->hasMany(Depoimento::class);
     }
+
+    public function producoes(){
+        return $this->hasMany(Producao::class);
+    }
 }

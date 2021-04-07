@@ -13,7 +13,7 @@
                             <span class="cpointer link-avaliacao-section2-fazenda active" num="0">Resumo</span>
                             <span class="ml-3 link-avaliacao-section2-fazenda cpointer" num="1">Produção 2020</span>
                             <span class="ml-3 link-avaliacao-section2-fazenda cpointer" num="2">Provas e Avaliações</span>
-                            <span class="ml-3 link-avaliacao-section2-fazenda cpointer" num="3">Premios</span>
+                            <span class="ml-3 link-avaliacao-section2-fazenda cpointer" num="3">Diferencial</span>
                         </div>
                     </div>
                     <div class="container-fluid px-0 conteudo-avaliacao" num="0">

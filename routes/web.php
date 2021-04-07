@@ -81,6 +81,9 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/fazenda/editar/{fazenda}/depoimento/novo', [\App\Http\Controllers\FazendaController::class, 'novo_depoimento'])->name("painel.fazenda.editar.depoimento.novo");        
     Route::post('/painel/fazenda/editar/{depoimento}/depoimento/salvar', [\App\Http\Controllers\FazendaController::class, 'salvar_depoimento'])->name("painel.fazenda.editar.depoimento.salvar");        
     Route::get('/painel/fazenda/editar/{depoimento}/depoimento/excluir', [\App\Http\Controllers\FazendaController::class, 'excluir_depoimento'])->name("painel.fazenda.editar.depoimento.excluir");        
+    Route::post('/painel/fazenda/editar/{fazenda}/producao/novo', [\App\Http\Controllers\FazendaController::class, 'novo_producao'])->name("painel.fazenda.editar.producao.novo");        
+    Route::post('/painel/fazenda/editar/{producao}/producao/salvar', [\App\Http\Controllers\FazendaController::class, 'salvar_producao'])->name("painel.fazenda.editar.producao.salvar");        
+    Route::get('/painel/fazenda/editar/{producao}/producao/excluir', [\App\Http\Controllers\FazendaController::class, 'excluir_producao'])->name("painel.fazenda.editar.producao.excluir");        
 
 
     //ROTAS RELACIONADAS A RAÇAS

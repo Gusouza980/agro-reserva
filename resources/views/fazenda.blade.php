@@ -133,6 +133,7 @@
 @section('scripts')
 
 <script>
+    var section = 0;
     function troca_avaliacao(element, num){
         $(element).addClass("active");
         $(element).siblings().removeClass("active");
@@ -151,13 +152,13 @@
 
     $(document).ready(function(){
         $(".link-avaliacao-section2-fazenda").click(function(){
-            var antigo = $(".link-avaliacao-section2-fazenda.active").attr("num");
-            $(this).siblings().removeClass("active");
+            $(this).siblings().removeClass("active");            
             $(this).addClass("active");
             var novo = $(this).attr("num");
-            $(".conteudo-avaliacao[num="+antigo+"]").hide(0, function(){
+            $(".conteudo-avaliacao[num="+section+"]").hide(0, function(){
                 $(".conteudo-avaliacao[num="+novo+"]").show(0);
             });
+            section = novo;
         })
     });
 </script>

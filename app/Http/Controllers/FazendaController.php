@@ -10,6 +10,7 @@ use App\Models\Fazenda;
 use App\Models\FazendaRaca;
 use App\Apis\Api;
 use App\Models\Depoimento;
+use App\Models\Producao;
 
 class FazendaController extends Controller
 {
@@ -201,7 +202,7 @@ class FazendaController extends Controller
         }
 
         $fazenda->texto_conheca_avaliacao_resumo = $request->texto_conheca_avaliacao_resumo;
-        $fazenda->quantidade_conheca_avaliacao_producao = $request->quantidade_conheca_avaliacao_producao;
+        $fazenda->texto_conheca_avaliacao_diferencial = $request->texto_conheca_avaliacao_diferencial;
         $fazenda->save();
         toastr()->success("Conteúdo salvo com sucesso!");
 
@@ -255,6 +256,30 @@ class FazendaController extends Controller
     public function excluir_depoimento(Depoimento $depoimento){
         $depoimento->delete();
         toastr()->success("Depoimento removido com sucesso!");
+        return redirect()->back();
+    }
+
+    public function novo_producao(Request $request, Fazenda $fazenda){
+        $producao = new Producao;
+        $producao->titulo = $request->titulo;
+        $producao->subtitulo = $request->subtitulo;
+        $producao->fazenda_id = $fazenda->id;
+        $producao->save();
+        toastr()->success("Produção salva com sucesso!");
+        return redirect()->back();
+    }
+
+    public function salvar_producao(Request $request, Producao $producao){
+        $producao->titulo = $request->titulo;
+        $producao->subtitulo = $request->subtitulo;
+        $producao->save();
+        toastr()->success("Produção salva com sucesso!");
+        return redirect()->back();
+    }
+
+    public function excluir_producao(Producao $producao){
+        $producao->delete();
+        toastr()->success("Produção removida com sucesso!");
         return redirect()->back();
     }
 

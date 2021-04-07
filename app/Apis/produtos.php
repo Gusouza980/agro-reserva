@@ -13,8 +13,8 @@ $data =  array(
 	"token" => $tokenapi,
 	"ope"   => "getProdutos",
 	"page"  => $page,
-  "rows"  => $rows,
-  "slug"  => $slug
+	"rows"  => $rows,
+	"slug"  => $slug
 );
 
 /* envia dados e recebe retorno */
