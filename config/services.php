@@ -33,7 +33,7 @@ return [
     'facebook' => [
         'client_id' => env('FACEBOOK_APP_ID'),
         'client_secret' => env('FACEBOOK_APP_SECRET'),
-        'redirect' => env('FACEBOOK_CALLBACK_URL'),
+        'redirect' => 'https://agro.luisgustavosc.com.br/facebook/callback',
     ],
 
 ];
