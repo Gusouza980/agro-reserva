@@ -5043,5 +5043,11 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
     margin: 0 auto
 }
 
+.iframe-lote > iframe{
+    max-width: 100%;
+    width: 500px;
+    height: 400px;
+}
+
 
 /*# sourceMappingURL=app.min.css.map */

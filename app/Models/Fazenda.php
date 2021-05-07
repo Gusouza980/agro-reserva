@@ -16,4 +16,8 @@ class Fazenda extends Model
     public function producoes(){
         return $this->hasMany(Producao::class);
     }
+
+    public function lotes(){
+        return $this->hasMany(Lote::class);
+    }
 }

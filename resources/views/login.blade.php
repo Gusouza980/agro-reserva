@@ -55,6 +55,9 @@
                             Não tem uma conta ? <a href="{{route('cadastro')}}" style="color: #E65454 !important;"><u>Clique aqui</u></a>
                         </div>
                     </form>
+                    <div class="mt-3 w-100 text-center">
+                        <a href="{{route('facebook.autenticar')}}" style="color:red !important;">Facebook</a>
+                    </div>
                 </div>
             </div>
             <div class="row mt-3">

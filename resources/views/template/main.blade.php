@@ -1,18 +1,16 @@
 <!doctype html>
 <html lang="pt-br">
 
-@php
-    if(session()->get("fazenda")){
-        $fazenda = \App\Models\Fazenda::find(session()->get("fazenda"));
-    }
-@endphp
-
 <head>
-    <title>Title</title>
+    <title>Agroreserva</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="Site de venda de gado">
+    <meta name="keywords" content="Gado, Agro, E-commerce, Lotes">
+    <meta name="author" content="Luis Gustavo de Souza Carvalho">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -36,9 +34,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav px-5 text-center">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{route('index')}}">Ver todas as reservas</span></a>
-                        </li>
 						<li class="nav-item active">
                             <a class="nav-link"  href="{{route('cadastro.fazenda')}}">Venda</span></a>
                         </li>
@@ -59,25 +54,30 @@
 				<div class="col-lg-3">
 					<a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('imagens/logo.png')}}" alt="Logo Agroreserva"></a>
 				</div>
-				<div class="col-lg-2 text-left d-flex text-white align-items-center">
+				{{--  <div class="col-lg-2 text-left d-flex text-white align-items-center">
 					<span class="text-nav-header"><a href="{{route('index')}}"><span style="border-bottom: 2px solid #E65454;">Ver</span> todas as reservas</a></span> 
-				</div>
+				</div>  --}}
 				<div class="col-lg-5 d-flex text-white justify-content-end align-items-center">
-					<a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a>
-                    @if(!session()->get("userid"))
+					{{--  <a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a>  --}}
+                    @if(!session()->get("cliente"))
 					    <span  class="text-nav-header"><a href="{{route('cadastro')}}"><span style="border-bottom: 2px solid #E65454;">Cad</span>astre-se para comprar</a></span> 
                     @endif
                 </div>
-				<div class="col-lg-2 d-flex text-white justify-content-end align-items-center">
+				<div class="col-lg-4 d-flex text-white justify-content-end align-items-center">
 					<span>
                         {{--  @if($_SESSION["userid"])  --}}
-                        @if(session()->get("userid"))
-                            Bem vindo
+                        @if(session()->get("cliente"))
+                            Bem vindo @if(isset(session()->get("cliente")["nome_dono"])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif
                         @else
-                            <a href="{{route('login')}}">Entrar</a>
+                            <a class="text-nav-header" href="{{route('login')}}">Entrar</a>
                         @endif
                     </span> 
-					<a class="mx-3" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
+                    @if(session()->get("carrinho"))
+					    <a class="mx-4" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
+                    @endif
+                    @if(session()->get("cliente"))
+                        <span class="text-nav-header"><a class="text-nav-header mx-4" href="{{route('sair')}}">Sair</a></span>
+                    @endif
 				</div>
 			</div>
         </div>

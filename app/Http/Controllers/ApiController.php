@@ -3,27 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cidade;
 
 class ApiController extends Controller
 {
     //
 
     public function getCidadesByUf($uf){
-        include_once(app_path() . '/Apis/_functions.php');
-
-        /* link especifico */
-        $url = 'https://api.bscommerce.com.br/cadastro/';
-
-        $data =  array(
-            "token" => $tokenapi,
-            "ope"   => "getCidades",
-            "cidade" => 0,
-            "uf" => $uf
-        );
-
-        /* envia dados e recebe retorno */
-        $retorno = callAPI($url, $data);
-        
-        return response()->json($retorno);   
+        $cidades = Cidade::where("id_estado", $uf)->get();
+        return response()->json($cidades->toJson());   
     }
 }

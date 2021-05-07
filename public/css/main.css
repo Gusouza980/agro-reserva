@@ -681,6 +681,12 @@ label {
     height: auto;
 }
 
+.video-lote > iframe{
+    max-width: 100%;
+    width: 500px;
+    height: 300px;
+}
+
 
 /* END LOTES */
 
@@ -717,6 +723,21 @@ label {
     background-color: #E65454;
     color: white;
     border: 1px solid transparent;
+}
+
+.input-cadastro > input::placeholder{
+    color: white;
+    opacity: 0.8; /* Firefox */
+}
+
+.input-cadastro > input::-ms-input-placeholder{
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+.input-cadastro > input:-ms-input-placeholder{
+    color: white;
+    opacity: 1; /* Firefox */
 }
 
 .form-cadastro1>.form-group>label {

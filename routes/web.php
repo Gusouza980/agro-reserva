@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +26,11 @@ Route::get('/login', function () {
     return view('login');
 })->name("login");
 
+Route::get('/sair', function () {
+    session()->forget("cliente");
+    return redirect()->route("index");
+})->name("sair");
+
 Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("index");
 Route::get('/cadastro/fazenda', [\App\Http\Controllers\SiteController::class, 'cadastro_fazenda'])->name("cadastro.fazenda");
 Route::get('/cadastro/passos', [\App\Http\Controllers\SiteController::class, 'cadastro_passos'])->name("cadastro.passos");
@@ -36,21 +40,15 @@ Route::get('/fazenda/{fazenda}/conheca/depoimentos', [\App\Http\Controllers\Site
 Route::get('/fazenda/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca.avaliacoes");
 Route::get('/fazenda/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes'])->name("fazenda.lotes");
 Route::get('/fazenda/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote'])->name("fazenda.lote");
-Route::get('/carrinho/adicionar/{produto}',  [\App\Http\Controllers\CarrinhoController::class, 'adicionar'])->name("carrinho.adicionar");
+Route::get('/carrinho/adicionar/{lote}',  [\App\Http\Controllers\CarrinhoController::class, 'adicionar'])->name("carrinho.adicionar");
 Route::get('/carrinho/deletar/{produto}',  [\App\Http\Controllers\CarrinhoController::class, 'deletar'])->name("carrinho.deletar");
 Route::get('/carrinho/limpa',  [\App\Http\Controllers\CarrinhoController::class, 'limpa'])->name("carrinho.limpa");
 Route::get('/carrinho',  [\App\Http\Controllers\CarrinhoController::class, 'carrinho'])->name("carrinho");
 Route::get('/carrinho/concluir',  [\App\Http\Controllers\CarrinhoController::class, 'concluir'])->name("carrinho.concluir");
-Route::post('/cadastro/fazenda/salvar', [\App\Http\Controllers\FazendaController::class, 'cadastro_site'])->name("cadastro.fazenda.salvar");        
 
 
-Route::middleware(['cadastro_finalizado'])->group(function () {
-    
-});
-
-Route::middleware(['fazenda_logada'])->group(function () {
-    
-});
+Route::get('/facebook/autenticar', [\App\Http\Controllers\FacebookController::class, 'autenticar'])->name("facebook.autenticar");
+Route::get('/facebook/callback', [\App\Http\Controllers\FacebookController::class, 'callback'])->name("facebook.callback");
 
 Route::post('/cadastro/salvar', [\App\Http\Controllers\ClienteController::class, 'cadastro_inicial'])->name("cadastro.salvar");
 Route::post('/cadastro/finalizar', [\App\Http\Controllers\ClienteController::class, 'cadastro_final'])->name("cadastro.finalizar");
@@ -66,6 +64,8 @@ Route::middleware(['admin'])->group(function () {
     
     //ROTAS RELACIONADAS A FAZENDAS
     Route::get('/painel/fazendas', [\App\Http\Controllers\FazendaController::class, 'index'])->name("painel.fazendas");        
+    Route::get('/painel/fazenda/cadastro', [\App\Http\Controllers\FazendaController::class, 'cadastro'])->name("painel.fazenda.cadastro");        
+    Route::post('/painel/fazenda/cadastrar', [\App\Http\Controllers\FazendaController::class, 'cadastrar'])->name("painel.fazenda.cadastrar");        
     Route::get('/painel/fazenda/editar/{fazenda}', [\App\Http\Controllers\FazendaController::class, 'editar'])->name("painel.fazenda.editar");        
     Route::get('/painel/fazenda/editar/{fazenda}/ativar', [\App\Http\Controllers\FazendaController::class, 'ativar'])->name("painel.fazenda.ativar");        
     Route::get('/painel/fazenda/editar/{fazenda}/desativar', [\App\Http\Controllers\FazendaController::class, 'desativar'])->name("painel.fazenda.desativar");        
@@ -84,6 +84,13 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/fazenda/editar/{fazenda}/producao/novo', [\App\Http\Controllers\FazendaController::class, 'novo_producao'])->name("painel.fazenda.editar.producao.novo");        
     Route::post('/painel/fazenda/editar/{producao}/producao/salvar', [\App\Http\Controllers\FazendaController::class, 'salvar_producao'])->name("painel.fazenda.editar.producao.salvar");        
     Route::get('/painel/fazenda/editar/{producao}/producao/excluir', [\App\Http\Controllers\FazendaController::class, 'excluir_producao'])->name("painel.fazenda.editar.producao.excluir");        
+
+    // ROTAS RELACIONADAS AOS LOTES DE FAZENDA
+    Route::get('/painel/fazenda/{fazenda}/lotes', [\App\Http\Controllers\LotesController::class, 'index'])->name("painel.fazenda.lotes");        
+    Route::get('/painel/fazenda/{fazenda}/lote/cadastro', [\App\Http\Controllers\LotesController::class, 'cadastro'])->name("painel.fazenda.lote.cadastro");        
+    Route::post('/painel/fazenda/{fazenda}/lote/cadastrar', [\App\Http\Controllers\LotesController::class, 'cadastrar'])->name("painel.fazenda.lote.cadastrar");        
+    Route::get('/painel/fazenda/lote/editar/{lote}', [\App\Http\Controllers\LotesController::class, 'editar'])->name("painel.fazenda.lote.editar");        
+    Route::post('/painel/fazenda/lote/salvar/{lote}', [\App\Http\Controllers\LotesController::class, 'salvar'])->name("painel.fazenda.lote.salvar");        
 
 
     //ROTAS RELACIONADAS A RAÇAS

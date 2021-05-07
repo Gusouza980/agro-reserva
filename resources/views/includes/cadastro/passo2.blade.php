@@ -26,8 +26,8 @@
                 <div class="form-group col-12 col-lg-6">
                     <label for="estado">Estado</label>
                     <select class="form-control" name="estado" id="" required>
-                        @foreach($estados as $key => $estado)
-                            <option value="{{$estado->sg_Uf}}">{{$estado->nm_Uf}}</option>
+                        @foreach(\App\Models\Estado::all() as $estado)
+                            <option value="{{$estado->id}}">{{$estado->nome}}</option>
                         @endforeach
                     </select>
                     {{--  <input type="text" class="form-control" name="estado" id="estado" aria-describedby="" placeholder="Escolha seu estado" required>  --}}
@@ -35,8 +35,8 @@
                 <div class="form-group col-12 col-lg-6">
                     <label for="cidade">Cidade</label>
                     <select class="form-control" name="cidade" required>
-                        @foreach($cidades as $key => $cidade)
-                            <option value="{{$cidade->ID_Cidade}}">{{$cidade->nm_Cidade}}</option>
+                        @foreach(\App\Models\Estado::first()->cidades as $cidade)
+                            <option value="{{$cidade->id}}">{{$cidade->nome}}</option>
                         @endforeach
                     </select>
                 </div>

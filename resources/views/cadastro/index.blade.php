@@ -12,15 +12,19 @@
             <div class="container-fluid px-0">
                 <form action="{{route('cadastro.salvar')}}" class="row form-cadastro0" method="post">
                     @csrf
-                    <div class="form-group col-12">
+                    <div class="form-group col-12 input-cadastro">
                         <label for="email">E-mail</label>
                         <input type="email" class="form-control" name="email" id="email" aria-describedby="" placeholder="exemplo@exemplo.com">
                     </div>
-                    <div class="form-group col-12">
+                    <div class="form-group col-12 input-cadastro">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" class="form-control" name="telefone" id="telefone" aria-describedby="" placeholder="(99) 99999-9999">
+                    </div>
+                    <div class="form-group col-12 input-cadastro">
                         <label for="senha">Crie uma senha de acesso</label>
                         <input type="password" class="form-control" name="senha" id="senha" aria-describedby="" placeholder="******">
                     </div>
-                    <div class="form-group col-12">
+                    <div class="form-group col-12 input-cadastro">
                         <label for="senha2">Confirme sua senha</label>
                         <input type="password" class="form-control" name="senha2" id="senha2" aria-describedby="" placeholder="******">
                     </div>
@@ -37,4 +41,13 @@
 </div>
 
 
+@endsection
+
+@section('scripts')
+    <script src="{{asset('js/jquery.mask.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            $('input[name="telefone"]').mask('(00) 00000-0000',);
+        })
+    </script>
 @endsection

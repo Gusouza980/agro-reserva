@@ -10,7 +10,7 @@
 @section('conteudo')
 <div class="row my-3">
     <div class="col-12">
-        <a href="{{route('painel.fazenda.cadastro')}}" class="btn btn-primary" role="button">Nova Fazenda</a>
+        <a href="{{route('painel.fazenda.lote.cadastro', ['fazenda' => $fazenda])}}" class="btn btn-primary" role="button">Novo Lote</a>
     </div>
 </div>
 <div class="row">
@@ -23,9 +23,10 @@
                         <tr>
                             <th></th>
                             <th>Nome</th>
-                            <th>Email</th>
-                            <th>Telefone</th>
-                            <th>Reserva</th>
+                            <th>Raça</th>
+                            <th>Registro</th>
+                            <th>Preço</th>
+                            <th>Visitas</th>
                             <th>Ativo</th>
                             <th></th>
                         </tr>
@@ -33,33 +34,24 @@
 
 
                     <tbody class="text-center">
-                        @foreach($fazendas as $fazenda)
+                        @foreach($fazenda->lotes as $lote)
                             <tr>
-                                <td><a href=""><i class="fa fa-search" aria-hidden="true"></i></a></td>
-                                <td>{{$fazenda->nome_fazenda}}</td>
-                                <td>{{$fazenda->email}}</td>
-                                <td>{{$fazenda->telefone}}</td>
+                                <td></td>
+                                <td>{{$lote->nome}}</td>
+                                <td>{{$lote->raca->nome}}</td>
+                                <td>{{$lote->registro}}</td>
+                                <td>R${{number_format($lote->preco, 2, ",", ".")}}</td>
+                                <td>{{$lote->visitas}}</td>
                                 <td>
-                                    @if($fazenda->data_inicio_reserva)
-                                        @if($fazenda->data_inicio_reserva > date('Y-m-d H:i:s'))
-                                            Iniciada em {{date("d/m/Y H:i:s", strtotime($fazenda->data_inicio_reserva))}}
-                                        @else
-                                            Iniciará em {{date("d/m/Y H:i:s", strtotime($fazenda->data_inicio_reserva))}}
-                                        @endif
-                                    @else
-                                        Sem reserva programada
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($fazenda->ativo)
+                                    @if($lote->ativo)
                                         <i class="fa fa-star" style="color: yellow;" aria-hidden="true"></i>
                                     @else
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     @endif
                                 </td>
                                 <td>
-                                    <a name="" id="" class="btn btn-warning" href="{{route('painel.fazenda.editar', ['fazenda' => $fazenda])}}" role="button">Editar</a>
-                                    <a name="" id="" class="btn btn-primary" href="{{route('painel.fazenda.lotes', ['fazenda' => $fazenda])}}" role="button">Lotes</a>
+                                    <a name="" id="" class="btn btn-warning" href="{{route('painel.fazenda.lote.editar', ['lote' => $lote])}}" role="button">Editar</a>
+                                    {{--  <a name="" id="" class="btn btn-primary" href="{{route('painel.fazenda.lotes', ['fazenda' => $fazenda])}}" role="button">Lotes</a>  --}}
                                 </td>
                             </tr>
                         @endforeach

@@ -30,7 +30,7 @@
                     </div>
                     <div class="row py-4">
                         <div class="col-12 px-0 text-section2-fazenda text-center text-md-left">
-                            <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.lotes', ['fazenda' => $slug])}}" role="button">Ver animais a venda</a>
+                            <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}" role="button">Ver animais a venda</a>
                         </div>
                     </div>
                 </div>

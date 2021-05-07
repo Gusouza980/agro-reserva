@@ -39,10 +39,6 @@
                     <input type="text" class="form-control" name="fazenda" id="fazenda" aria-describedby="" placeholder="Digite o nome da sua fazenda" required>
                 </div>
                 <div class="form-group col-12 col-lg-6">
-                    <label for="telefone">Telefone</label>
-                    <input type="text" class="form-control" name="telefone" id="telefone" aria-describedby="" placeholder="Digite seu telefone" required>
-                </div>
-                <div class="form-group col-12 col-lg-6">
                     <label for="whatsapp">Whatsapp</label>
                     <input type="text" class="form-control" name="whatsapp" id="whatsapp" aria-describedby="" placeholder="Digite seu whatsapp" required>
                 </div>

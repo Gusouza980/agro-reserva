@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFortegraoUsuariosTable extends Migration
+class CreateCarrinhosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateFortegraoUsuariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('fortegrao_usuarios', function (Blueprint $table) {
+        Schema::create('carrinhos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("cliente_id");
+            $table->boolean("aberto")->default(true);
+            $table->double("total")->default(0);
             $table->timestamps();
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
         });
     }
 
@@ -26,6 +30,6 @@ class CreateFortegraoUsuariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fortegrao_usuarios');
+        Schema::dropIfExists('carrinhos');
     }
 }

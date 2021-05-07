@@ -16,11 +16,22 @@
                 </div>
                 <h4 class="card-title mb-4">Informações Básicas</h4>
 
-                <form action="" method="POST">
+                <form action="{{route('painel.fazenda.cadastrar')}}" method="POST">
                     @csrf
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">Nome da Fazenda *</label>
-                        <input type="text" class="form-control" name="nome" id="nome" required>
+                    <div class="row">
+                        
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="nome_fazenda" class="form-label">Nome da Fazenda *</label>
+                                <input type="text" class="form-control" name="nome_fazenda" id="nome_fazenda" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="nome_dono" class="form-label">Nome do Dono *</label>
+                                <input type="text" class="form-control" name="nome_dono" id="nome_dono" required>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -48,8 +59,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label for="cnpj" class="form-label">Whatsapp *</label>
-                                <input type="text" class="form-control" name="cnpj" id="cnpj" required>
+                                <label for="whatsapp" class="form-label">Whatsapp *</label>
+                                <input type="text" class="form-control" name="whatsapp" id="whatsapp" required>
                             </div>
                         </div>
                     </div>

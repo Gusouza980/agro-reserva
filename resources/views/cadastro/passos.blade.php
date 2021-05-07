@@ -103,7 +103,7 @@
                         html = "";
                         var cidades = JSON.parse(data);
                         for(var cidade in cidades){
-                            html += "<option value='"+cidades[cidade].ID_Cidade+"'>"+cidades[cidade].nm_Cidade+"</option>"
+                            html += "<option value='"+cidades[cidade].id+"'>"+cidades[cidade].nome+"</option>"
                         }
                         $("select[name='cidade']").html(html);
                     },

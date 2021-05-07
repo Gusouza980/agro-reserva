@@ -53,6 +53,18 @@ class FazendaController extends Controller
         return view("painel.fazendas.cadastro");
     }
 
+    public function cadastrar(Request $request){
+        $fazenda = new Fazenda;
+        $fazenda->nome_dono = $request->nome_dono;
+        $fazenda->nome_fazenda = $request->nome_fazenda;
+        $fazenda->telefone = $request->telefone;
+        $fazenda->cnpj = $request->cnpj;
+        $fazenda->email = $request->email;
+        $fazenda->whatsapp = $request->whatsapp;
+        $fazenda->save();
+        return redirect()->route("painel.fazendas");
+    }
+
     public function editar(Fazenda $fazenda){
         return view("painel.fazendas.editar", ["fazenda" => $fazenda]);
     }
@@ -83,6 +95,7 @@ class FazendaController extends Controller
 
         $fazenda->nome_dono = $request->nome_dono;
         $fazenda->nome_fazenda = $request->nome_fazenda;
+        $fazenda->slug = Str::slug($request->nome_fazenda);
         $fazenda->telefone = $request->telefone;
         $fazenda->cnpj = $request->cnpj;
         $fazenda->email = $request->email;
@@ -283,15 +296,4 @@ class FazendaController extends Controller
         return redirect()->back();
     }
 
-    public function cadastro_site(Request $request){
-        $fazenda = new Fazenda;
-        $fazenda->nome_dono = $request->nome_dono;
-        $fazenda->nome_fazenda = $request->nome_fazenda;
-        $fazenda->telefone = $request->telefone;
-        $fazenda->cnpj = $request->cnpj;
-        $fazenda->email = $request->email;
-        $fazenda->whatsapp = $request->whatsapp;
-        $fazenda->save();
-        return response()->json("Sucesso");
-    }
 }

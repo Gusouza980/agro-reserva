@@ -13,7 +13,7 @@
 @section('conteudo')
 <div class="row my-3">
     <div class="col-12">
-        <a name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDataReserva" role="button">Definir data de reserva</a>
+        {{--  <a name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDataReserva" role="button">Definir data de reserva</a>  --}}
         @if($fazenda->ativo)
             <a name="" id="" class="btn btn-primary" href="{{route('painel.fazenda.desativar', ['fazenda' => $fazenda])}}" role="button">Desativar fazenda</a>
         @endif
@@ -92,44 +92,6 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                </form>
-            </div>
-            <!-- end card body -->
-        </div>
-        <!-- end card -->
-    </div>
-    <!-- end col -->
-</div>
-
-<!-- end row -->
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 text-left my-3" style="color:red;">
-                        * Importante que seja o mesmo do sistema ecommerce, pois será usado para fazer a ligação entre eles
-                    </div>
-                </div>
-                <h4 class="card-title mb-4">Link Amigável</h4>
-
-                <form action="{{route('painel.fazenda.salvar.slug', ['fazenda' => $fazenda])}}" method="POST">
-                    @csrf
-
-                    <div class="row">
-                        
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <div class="form-group">
-                                    <label for="slug">Link</label>
-                                    <input type="text" class="form-control" name="slug" value="{{$fazenda->slug}}">
-                                </div>
-                            </div>
-                        </div>
-   
-                    </div>
-                    
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>
