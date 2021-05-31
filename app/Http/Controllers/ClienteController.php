@@ -11,6 +11,11 @@ class ClienteController extends Controller
 {
     //
 
+    public function index(){
+        $clientes = Cliente::all();
+        return view("painel.clientes.consultar", ["clientes" => $clientes]);
+    }
+
     public function cadastro_inicial(Request $request){
         $request->validate([
             'email' => 'required|min:3|max:100',

@@ -13,17 +13,19 @@ class FacebookController extends Controller
     }
 
     public function callback(){
-	$user = Socialite::driver('facebook')->user();
+        
+        $user = Socialite::driver('facebook')->stateless()->user();
         $token = $user->token;
         $refreshToken = $user->refreshToken;
         $expiresIn = $user->expiresIn;
+        
         $cliente = Cliente::where('facebook_id', $user->getId())->first();
-	if(!$cliente){
+        if(!$cliente){
             $cliente = new Cliente();
             $cliente->nome_dono = $user->getName();
             $cliente->email = $user->getEmail();
             $cliente->facebook_id = $user->getId();
-	    $cliente->senha = '12345';
+            $cliente->senha = '12345';
             $cliente->save();
         }
         session(["cliente" => $cliente->toArray()]);

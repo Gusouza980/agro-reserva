@@ -7,6 +7,8 @@ use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Raca;
 use App\Models\Cliente;
+use App\Models\Visita;
+use App\Models\Venda;
 
 class PainelController extends Controller
 {
@@ -49,4 +51,10 @@ class PainelController extends Controller
         }
         return view("painel.index", ["data" => $data]);
     }
+
+    public function visitas(){
+        $visitas = Visita::all();
+        return view("painel.visitas.consultar", ["visitas" => $visitas]);
+    }
+
 }

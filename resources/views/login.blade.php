@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="row mt-5 justify-content-center">
-                <div class="col-5 mt-5 py-5 px-5" style="background-color: white; border-radius: 10px;">
+                <div class="col-12 col-md-7 col-lg-5 mt-5 py-5 px-5" style="background-color: white; border-radius: 10px;">
                     <h3 class="">Entre</h3>
                     <form id="form-cadastro" class="row" action="{{route('logar')}}" method="post">
                         @csrf
@@ -56,7 +56,7 @@
                         </div>
                     </form>
                     <div class="mt-3 w-100 text-center">
-                        <a href="{{route('facebook.autenticar')}}" style="color:red !important;">Facebook</a>
+                        <a href="{{route('facebook.autenticar')}}" style="color:red !important;"><img src="{{asset('imagens/icone-facebook.png')}}" width="30" alt="Login Facebook"></a>
                     </div>
                 </div>
             </div>

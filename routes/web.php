@@ -44,8 +44,7 @@ Route::get('/carrinho/adicionar/{lote}',  [\App\Http\Controllers\CarrinhoControl
 Route::get('/carrinho/deletar/{produto}',  [\App\Http\Controllers\CarrinhoController::class, 'deletar'])->name("carrinho.deletar");
 Route::get('/carrinho/limpa',  [\App\Http\Controllers\CarrinhoController::class, 'limpa'])->name("carrinho.limpa");
 Route::get('/carrinho',  [\App\Http\Controllers\CarrinhoController::class, 'carrinho'])->name("carrinho");
-Route::get('/carrinho/concluir',  [\App\Http\Controllers\CarrinhoController::class, 'concluir'])->name("carrinho.concluir");
-
+Route::get('/carrinho/concluir/{tipo}',  [\App\Http\Controllers\CarrinhoController::class, 'concluir'])->name("carrinho.concluir");
 
 Route::get('/facebook/autenticar', [\App\Http\Controllers\FacebookController::class, 'autenticar'])->name("facebook.autenticar");
 Route::get('/facebook/callback', [\App\Http\Controllers\FacebookController::class, 'callback'])->name("facebook.callback");
@@ -54,6 +53,8 @@ Route::post('/cadastro/salvar', [\App\Http\Controllers\ClienteController::class,
 Route::post('/cadastro/finalizar', [\App\Http\Controllers\ClienteController::class, 'cadastro_final'])->name("cadastro.finalizar");
 Route::post('/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
 
+Route::get('/conta', [\App\Http\Controllers\ContaController::class, 'index'])->name("conta.index");
+Route::get('/conta/boleto/download/{boleto}', [\App\Http\Controllers\ContaController::class, 'baixar_boleto'])->name("conta.boleto.download");
 
 Route::get('/painel/login', [\App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
 Route::post('/painel/logar', [\App\Http\Controllers\PainelController::class, 'logar'])->name("painel.logar");
@@ -99,7 +100,15 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/raca/editar/{raca}', [\App\Http\Controllers\RacasController::class, 'editar'])->name("painel.raca.editar");
     Route::get('/painel/raca/excluir/{raca}', [\App\Http\Controllers\RacasController::class, 'excluir'])->name("painel.raca.excluir");
 
+    Route::get('/painel/clientes', [\App\Http\Controllers\ClienteController::class, 'index'])->name("painel.clientes");
+
+    Route::get('/painel/visitas', [\App\Http\Controllers\PainelController::class, 'visitas'])->name("painel.visitas");
+    Route::get('/painel/vendas', [\App\Http\Controllers\VendasController::class, 'index'])->name("painel.vendas");
+    Route::get('/painel/venda/{venda}', [\App\Http\Controllers\VendasController::class, 'visualizar'])->name("painel.vendas.visualizar");
+    Route::post('/painel/venda/boleto/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_boleto'])->name("painel.vendas.boleto.adicionar");
+
 });
 
 Route::get('/teste', [\App\Http\Controllers\FazendaController::class, 'teste']);
 Route::get('/api/getCidadesByUf/{uf}', [\App\Http\Controllers\ApiController::class, 'getCidadesByUf']);
+Route::post('/api/calcDistanciaCep', [\App\Http\Controllers\ApiController::class, 'calcDistanciaCep']);

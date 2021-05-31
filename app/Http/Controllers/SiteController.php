@@ -14,8 +14,59 @@ class SiteController extends Controller
 {
 
     public function index(){
+        // $res = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?origins=37130000&destinations=37143000&mode=driving&language=pt-BR&sensor=false&key=AIzaSyCDJEB7uVGEkVU0Utm3p9kOeCnastPy01o");
+        // $res = file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=37130000&key=AIzaSyCDJEB7uVGEkVU0Utm3p9kOeCnastPy01o");
+        // die($res);
         $fazendas = Fazenda::where("ativo", true)->get();
         return view("index", ["fazendas" => $fazendas]);
+        // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(
+        //     [
+        //         'nome'      => 'Agroreserva',
+        //         'endereco'  => 'Rua Dom Pedro II, 74',
+        //         'cep'       => '37131-456',
+        //         'uf'        => 'MG',
+        //         'cidade'    => 'Alfenas',
+        //         'documento' => '41.893.302/0001-13',
+        //     ]
+        // );
+        
+        // $pagador = new \Eduardokum\LaravelBoleto\Pessoa(
+        //     [
+        //         'nome'      => 'Luis Gustavo',
+        //         'endereco'  => 'Rua Dom Pedro II, 74',
+        //         'bairro'    => 'Vila Formosa',
+        //         'cep'       => '37131-456',
+        //         'uf'        => 'MG',
+        //         'cidade'    => 'Alfenas',
+        //         'documento' => '111.021.656-46',
+        //     ]
+        // );
+        
+        // $boleto = new \Eduardokum\LaravelBoleto\Boleto\Banco\Caixa(
+        //     [
+        //         'logo'                   => asset('imagens/logo-caixa.png'),
+        //         'dataVencimento'         => new \Carbon\Carbon(),
+        //         'valor'                  => 100.41,
+        //         'multa'                  => false,
+        //         'juros'                  => false,
+        //         'numero'                 => 1,
+        //         'numeroDocumento'        => 1,
+        //         'pagador'                => $pagador,
+        //         'beneficiario'           => $beneficiario,
+        //         'agencia'                => 4393,
+        //         'conta'                  => 13319,
+        //         'carteira'               => 'RG',
+        //         'codigoCliente'          => 20,
+        //         'descricaoDemonstrativo' => ['demonstrativo 1', 'demonstrativo 2', 'demonstrativo 3'],
+        //         'instrucoes'             => ['instrucao 1', 'instrucao 2', 'instrucao 3'],
+        //         'aceite'                 => 'S',
+        //         'especieDoc'             => 'DM',
+        //     ]
+        // );
+        
+        // $pdf = new \Eduardokum\LaravelBoleto\Boleto\Render\Pdf();
+        // $pdf->addBoleto($boleto);
+        // $pdf->gerarBoleto($pdf::OUTPUT_SAVE, public_path('imagens/cef.pdf'));
     }
 
     public function conheca($slug){

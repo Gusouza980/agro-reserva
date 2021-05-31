@@ -1,14 +1,3 @@
-@php
-    include_once(app_path() . '\Apis\_functions.php');
-    $_SESSION["lojaid"] = session()->get("lojaid");
-    $_SESSION["userid"] = session()->get("userid");
-    $_SESSION["username"] = session()->get("username");
-    $_SESSION["useruuid"] = session()->get("useruuid");
-    $session = urlencode(session_encode());
-    //$session = urlencode("lojaid=".session("lojaid")."&"."userid=".session("userid")."&"."username=".session("username")."&"."useruuid=".str_replace("-","",session("useruuid")));
-    //dd($session);
-@endphp
-
 @extends('template.main')
 
 @section("styles")
@@ -16,17 +5,25 @@
 @endsection
 
 @section('conteudo')
-
-<form id="fSecure" name="fSecure" action="https://api.bscommerce.com.br/seguro/" method="post">
-	<input type="hidden" id="s" name="s" value="<?php echo $session; ?>">
-	<!-- <input type="submit" value="ok"> -->
-</form>
-
-<script>
-    function formAutoSubmit () {
-        var frm = document.getElementById("fSecure");
-        frm.submit();
-    }
-    window.onload = formAutoSubmit;
-</script>
+<div class="row justify-content-center justify-content-lg-start mt-5">
+    <div class="col-10 col-lg-5 text-center text-lg-left">
+        <h2>Obrigado, {{session()->get("cliente")["nome_dono"]}}</h2>
+    </div>
+</div>
+<div class="row justify-content-center justify-content-lg-start mt-5">
+    <div class="col-10 col-lg-5 d-flex justify-content-center justify-content-lg-start text-lg-left circulo-passo">
+        <p>Confirmação de pedido enviada para: {{session()->get("cliente")["email"]}}</p>
+        <p>O número do seu pedido é: {{$venda->codigo}}</p>
+    </div>
+</div>
+<div class="row justify-content-center justify-content-lg-start mt-5">
+    <div class="col-10 col-lg-5 d-flex justify-content-center justify-content-lg-start text-lg-left circulo-passo">
+        <p>Clique no botão a seguir para conversarmos sobre o pagamento pelo whatsapp.</p>
+    </div>
+</div>
+<div class="row justify-content-center justify-content-lg-start mt-3">
+    <div class="col-10 col-lg-5 d-flex justify-content-center justify-content-lg-start text-lg-left circulo-passo">
+        <a href="" class="btn btn-vermelho">Whatsapp</a>
+    </div>
+</div>
 @endsection

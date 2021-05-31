@@ -34,18 +34,23 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav px-5 text-center">
-						<li class="nav-item active">
-                            <a class="nav-link"  href="{{route('cadastro.fazenda')}}">Venda</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{route('cadastro')}}">Cadastre-se para comprar</span></a>
-                        </li>
-						<li class="nav-item active">
-                            <a class="nav-link" href="{{route('login')}}">Entrar</span></a>
-                        </li>
-						<li class="nav-item active">
-							<a class="nav-link" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white"></i></span></a>
-                        </li>
+                        @if(session()->get("cliente"))
+                            <li class="nav-item active text-white mt-4">
+                                Bem vindo @if(isset(session()->get("cliente")["nome_dono"])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif
+                            </li>
+                            <li class="nav-item active mt-2">
+                                <a class="nav-link" href="{{route('sair')}}">Sair</span></a>
+                            </li> 
+                        @else
+                            <li class="nav-item active mt-4">
+                                <a class="nav-link" href="{{route('login')}}">Entrar</span></a>
+                            </li>                        
+                        @endif
+                        @if(session()->get("carrinho"))
+                            <li class="nav-item active mt-2">
+                                <a class="nav-link" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white"></i></span></a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
 				
@@ -57,17 +62,19 @@
 				{{--  <div class="col-lg-2 text-left d-flex text-white align-items-center">
 					<span class="text-nav-header"><a href="{{route('index')}}"><span style="border-bottom: 2px solid #E65454;">Ver</span> todas as reservas</a></span> 
 				</div>  --}}
-				<div class="col-lg-5 d-flex text-white justify-content-end align-items-center">
+				<div class="col-lg-4 d-flex text-white justify-content-end align-items-center">
 					{{--  <a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a>  --}}
                     @if(!session()->get("cliente"))
 					    <span  class="text-nav-header"><a href="{{route('cadastro')}}"><span style="border-bottom: 2px solid #E65454;">Cad</span>astre-se para comprar</a></span> 
                     @endif
                 </div>
-				<div class="col-lg-4 d-flex text-white justify-content-end align-items-center">
+				<div class="col-lg-5 d-flex text-white justify-content-end align-items-center">
 					<span>
                         {{--  @if($_SESSION["userid"])  --}}
                         @if(session()->get("cliente"))
                             Bem vindo @if(isset(session()->get("cliente")["nome_dono"])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif
+                            <span class="ml-3 text-nav-header"><a href="{{route('conta.index')}}"><span style="border-bottom: 2px solid #E65454;">Min</span>ha conta</a></span> </span>
+                            
                         @else
                             <a class="text-nav-header" href="{{route('login')}}">Entrar</a>
                         @endif
@@ -76,7 +83,7 @@
 					    <a class="mx-4" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
                     @endif
                     @if(session()->get("cliente"))
-                        <span class="text-nav-header"><a class="text-nav-header mx-4" href="{{route('sair')}}">Sair</a></span>
+                        <span class="text-nav-header"><a class="text-nav-header mx-4" href="{{route('sair')}}"><span style="border-bottom: 2px solid #E65454;">Sai</span>r</a></span>
                     @endif
 				</div>
 			</div>

@@ -12,4 +12,12 @@ class Carrinho extends Model
     public function produtos(){
         return $this->hasMany(CarrinhoProduto::class);
     }
+
+    public function cliente(){
+        return $this->belongsTo(Cliente::class);
+    }
+
+    public function venda(){
+        return $this->hasOne(Venda::class);
+    }
 }

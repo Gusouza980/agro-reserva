@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Lote;
 use App\Models\Carrinho;
 use App\Models\CarrinhoProduto;
+use App\Models\Venda;
 
 class CarrinhoController extends Controller
 {
@@ -66,7 +67,16 @@ class CarrinhoController extends Controller
         return redirect()->back();
     }
 
-    public function concluir(){
-        return view("concluir");
+    public function concluir($tipo){
+        $venda = new Venda;
+        $carrinho = Carrinho::find(session()->get("carrinho"));
+        $venda->carrinho_id = $carrinho->id;
+        $venda->tipo = $tipo;
+        $venda->save();
+        $venda->codigo = str_pad($venda->id, 11, "0", STR_PAD_LEFT);
+        $venda->save();
+        $carrinho->aberto = false;
+        $carrinho->save();
+        return view("concluir", ["venda" => $venda]);
     }
 }

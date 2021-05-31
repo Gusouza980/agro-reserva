@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Visita extends Model
 {
     use HasFactory;
+
+    public function cliente(){
+        return $this->belongsTo(Cliente::class);
+    }
+
+    public function lote(){
+        return $this->belongsTo(Lote::class);
+    }
+
 }

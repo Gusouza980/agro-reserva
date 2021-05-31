@@ -47,20 +47,115 @@
                 @endif
             </div>
         </div>
+        <hr>
+        <div class="row mt-4">
+            <div class="col-12 col-md-6">
+                <h4>Formas de Pagamento</h4>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="text-nav-pagamento">
+                            <a id="link-boleto" class="cpointer"><i class="fas fa-barcode cpointer"></i> Boleto</a>
+                            <a id="link-whats" class="mx-3 cpointer" ><i class="fab fa-whatsapp-square cpointer"></i> Whatsapp</a>
+                        </div>
+                    </div>  
+                </div>
+                <hr>
+                <div class="row mt-4" id="div-boleto" style="display: none;">
+                    <div class="col-12">
+                        <h5>O prazo de validade é de 1 dia útil</h5>
+                        <a href="" class="btn btn-vermelho mt-3 px-3">Finalizar</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" id="div-whats" style="display: none;">
+                        <h6>O pedido será finalizado pelo whatsapp em contato com um de nossos representantes.</h6>
+                        <a href="{{route('carrinho.concluir', ['tipo' => 1])}}" class="btn btn-vermelho mt-3 px-3">Finalizar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 text-start">
+                <h4>Simular frete</h4>
+                <form id="form-cep" class="form-inline mt-4">
+                    <div class="form-group">
+                        <input style="color:black;" type="text" name="cep" id="" class="form-control" placeholder="CEP">
+                    </div>
+                    <div class="form-group ml-4">
+                        <button type="submit" class="btn btn-vermelho">Calcular</button>
+                    </div>
+                </form>
+                <div class="row mt-5" style="display: none;" id="card-frete">
+            
+                </div>
+            </div>
+        </div>
+        
     </div>
+@endsection
 
-
-
-
-
+@section('scripts')
     <script>
-        function deletaItem(cartid) {
-            //alert(cartid);
-            document.location.href = '/carrinho/deletar/' + cartid;
-            //document.location.href = '_carrinho_deleta.php?cartid='+cartid;
-        }
+        $(document).ready(function(){
 
+            $("#link-boleto").click(function(){
+                $("#div-whats").slideUp(300, function(){
+                    $("#div-boleto").slideDown(300);
+                });
+            });
+
+            $("#link-whats").click(function(){
+                $("#div-boleto").slideUp(300, function(){
+                    $("#div-whats").slideDown(300);
+                });
+            });
+
+            $("#form-cep").submit(function(e){
+                e.preventDefault();
+                var cep = $("input[name='cep']").val();
+                var _token = $('meta[name="csrf-token"]').attr('content');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': _token
+                    }
+                });  
+                $.ajax({
+                    url: '/api/calcDistanciaCep',
+                    type: 'POST',
+                    data: {
+                        origem: '37130000',
+                        destino: cep
+                    },
+                    dataType: 'JSON',
+                    success: function(data) {
+
+                        console.log(data);
+                        var data = JSON.parse(data);
+                        var status = data.status;
+                        var destino = data.destination_addresses;
+                        var origem = data.origin_addresses;
+                        var txt_distancia = data.rows[0].elements[0].distance.text;
+                        var distancia = data.rows[0].elements[0].distance.value;
+                        var valor = (distancia / 1000) * 4;
+                        html = "<div class='col-12 col-lg-12'>";
+                        html +=      "<div class='card' style='width: 100%;'>";
+                        html +=          "<ul class='list-group list-group-flush'>";
+                        html +=              "<li class='list-group-item'><b>Origem</b>: " + origem + "</li>";
+                        html +=              "<li class='list-group-item'><b>Destino</b>: " + destino + "</li>";
+                        html +=              "<li class='list-group-item'><b>Distância</b>: " + txt_distancia + "</li>";
+                        html +=              "<li class='list-group-item'><b>Valor Estimado</b>: R$" + valor.toFixed(2) + "</li>";
+                        html +=          "</ul>";
+                        html +=      "</div>";     
+                        html +="</div>";     
+                            
+                        $("#card-frete").append(html);
+                        $("#card-frete").slideDown(500);
+                    },
+                    error: function(){
+                        console.log("deu ruim");
+                    }
+                });
+            });
+
+        
+        })
     </script>
-
-
 @endsection
