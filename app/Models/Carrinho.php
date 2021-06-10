@@ -20,4 +20,8 @@ class Carrinho extends Model
     public function venda(){
         return $this->hasOne(Venda::class);
     }
+
+    public function lotes(){
+        return $this->belongsToMany(Lote::class, 'carrinho_produtos');
+    }
 }

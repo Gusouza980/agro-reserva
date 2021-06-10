@@ -20,4 +20,12 @@ class Fazenda extends Model
     public function lotes(){
         return $this->hasMany(Lote::class);
     }
+
+    public function usuarios(){
+        return $this->hasMany(Fazendeiro::class);
+    }
+
+    public function vendas(){
+        return $this->hasMany(Venda::class);
+    }
 }

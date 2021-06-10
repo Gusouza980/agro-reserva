@@ -11,6 +11,7 @@
     <meta name="description" content="Site de venda de gado">
     <meta name="keywords" content="Gado, Agro, E-commerce, Lotes">
     <meta name="author" content="Luis Gustavo de Souza Carvalho">
+    @yield("metas")
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -99,48 +100,94 @@
             </div>
             <div class="col-12 col-lg-4 mt-5 mt-lg-0">
                 <div class="row">
-                    <div class="col-12 text-nav-footer text-center text-lg-left">
-                        <a class="" href="{{route('index')}}"><span><span style="border-bottom: 2px solid #E65454;">Que</span>m somos</span> </a>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-12 text-nav-footer text-center text-lg-left">
-                        <a class="" href="{{route('cadastro.fazenda')}}"><span><span style="border-bottom: 2px solid #E65454;">Anu</span>ncie sua reserva</span> </a>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-12 text-nav-footer text-center text-lg-left">
-                        <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #E65454;">Cad</span>astre-se para comprar</span> </a>
-                    </div>
-                </div>
-                {{--  <div class="row mt-3">
-                    <div class="col-12 text-nav-footer">
-                        <a class="" href=""><span><span style="border-bottom: 2px solid #E65454;">Ent</span>re em contato</span> </a>
-                    </div>
-                </div>  --}}
-                <div class="row mt-5">
-                    <div class="col-12 mt-5 text-nav-footer text-center text-lg-left">
-                        <span>+55 34 9172-0996</span>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <a class="" href="{{route('index')}}"><span><span style="border-bottom: 2px solid #E65454;">Que</span>m somos</span> </a>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <a class="" href="{{route('cadastro.fazenda')}}"><span><span style="border-bottom: 2px solid #E65454;">Anu</span>ncie sua reserva</span> </a>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #E65454;">Cad</span>astre-se para comprar</span> </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 text-nav-footer text-center text-lg-left">
-                        <span>contato@agroreserva.com.br</span>
+                    <div class="col-12 col-lg-12">
+                        <div class="row mt-5">
+                            <div class="col-12 mt-5 text-nav-footer text-center text-lg-left">
+                                <span>+55 34 9172-0996</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <span>contato@agroreserva.com.br</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <span>
+                                    <i class="fab fa-instagram fa-lg"></i> 
+                                    <i class="fab fa-facebook-square ml-4 fa-lg"></i>
+                                    <i class="fab fa-youtube ml-4 fa-lg"></i>
+                                </span>
+                            </div>
+                        </div>
                     </div>
+                    {{-- <div class="col-12 col-lg-6">
+                        <div class="row mt-5">
+                            <div class="col-12 mt-5 text-nav-footer text-center text-lg-left">
+                                <span>AGRO RESERVA PECUARIA DIGITAL LTDA</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <span>41.893.302/0001-13</span>
+                            </div>
+                        </div>
+                    </div> --}}
                 </div>
-                <div class="row">
-                    <div class="col-12 text-nav-footer text-center text-lg-left">
-                        <span>
-                            <i class="fab fa-instagram fa-lg"></i> 
-                            <i class="fab fa-facebook-square ml-4 fa-lg"></i>
-                            <i class="fab fa-youtube ml-4 fa-lg"></i>
-                        </span>
+                
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-preto">
+        <div class="row">
+            <div class="col-12 text-center text-white py-4 px-0 px-lg-5" style="font-size: .6875rem;">
+                <span>Copyright ©️2021 www.agroreserva.com.br, TODOS OS DIREITOS RESERVADOS. Todo o conteúdo do site, todas as fotos, imagens, logotipos, marcas, dizeres, som, software, conjunto imagem, layout, trade dress, aqui veiculados são de propriedade exclusiva da AGRO RESERVA PECUARIA DIGITAL LTDA, ou de seus parceiros. É vedada qualquer reprodução, total ou parcial, de qualquer elemento de identidade, sem expressa autorização. A violação de qualquer direito mencionado implicará na responsabilização cível e criminal nos termos da Lei. AGRO RESERVA PECUARIA DIGITAL LTDA - CNPJ: 41.893.302/0001-13 - R JOAQUIM SARAIVA nº 40 - SALA 02 - CEP: 38400-210 - CENTRO - UBERLANDIA - MG - A inclusão no carrinho não garante o preço e/ou a disponibilidade do lote. Caso os lotes apresentem divergências de valores, o preço válido é o exibido na tela de pagamento. Vendas sujeitas a análise e disponibilidade de estoque.</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalSucesso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body modal-body-sucesso text-center py-4">
+                    <div class="row">
+                        <div class="col-12 conteudo-modal">
+                            <h3>Obrigado <span id="nome_modal"></span>.</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 conteudo-modal">
+                            <span class="mt-2">Seu cadastro foi realizado com sucesso. Você pode continuar navegando pelo site ou, caso precise de ajuda, falar com um de nossos consultores.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 conteudo-modal">
+                            <button class="botao-confirma py-2 px-5 mt-4" onclick="fechaModal()">Continuar Navegando</button>
+                            <button class="botao-confirma py-2 px-5 mt-4" onclick="fechaModal()">Falar com um consultor</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js">
@@ -154,6 +201,18 @@
     @toastr_js
     @toastr_render
 	@yield("scripts")
+
+    @if(session()->get("cadastro_finalizado"))
+        <script>
+            function fechaModal() {
+                $("#modalSucesso").modal("hide");
+            }
+
+            $(document).ready(function(){
+                $("#modalSucesso").modal();
+            });
+        </script>
+    @endif
 </body>
 
 </html>

@@ -11,6 +11,7 @@ use App\Models\FazendaRaca;
 use App\Apis\Api;
 use App\Models\Depoimento;
 use App\Models\Producao;
+use App\Models\Fazendeiro;
 
 class FazendaController extends Controller
 {
@@ -293,6 +294,23 @@ class FazendaController extends Controller
     public function excluir_producao(Producao $producao){
         $producao->delete();
         toastr()->success("Produção removida com sucesso!");
+        return redirect()->back();
+    }
+
+    public function salvar_usuario(Request $request, Fazendeiro $usuario = null){
+        if(!$usuario){
+            $usuario = new Fazendeiro;
+            $usuario->fazenda_id = $request->fazenda_id;
+        }
+
+        $usuario->nome = $request->nome;
+        $usuario->email = $request->email;
+        $usuario->usuario = $request->usuario;
+        $usuario->senha = Hash::make($request->senha);
+        $usuario->acesso = 0;
+        $usuario->save();
+
+        toastr()->success("Informações de usuário atualizadas.");
         return redirect()->back();
     }
 

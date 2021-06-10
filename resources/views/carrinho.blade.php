@@ -47,9 +47,14 @@
                 @endif
             </div>
         </div>
+        <div class="row">
+            <div class="col-12 text-right">
+                <a href="{{route('carrinho.checkout')}}"><button class="btn btn-vermelho btn-hover-preto">Prosseguir ao Checkout</button></a>
+            </div>
+        </div>
         <hr>
         <div class="row mt-4">
-            <div class="col-12 col-md-6">
+            {{--  <div class="col-12 col-md-6">
                 <h4>Formas de Pagamento</h4>
                 <div class="row mt-4">
                     <div class="col-12">
@@ -72,7 +77,7 @@
                         <a href="{{route('carrinho.concluir', ['tipo' => 1])}}" class="btn btn-vermelho mt-3 px-3">Finalizar</a>
                     </div>
                 </div>
-            </div>
+            </div>  --}}
             <div class="col-12 col-md-6 text-start">
                 <h4>Simular frete</h4>
                 <form id="form-cep" class="form-inline mt-4">
@@ -96,6 +101,9 @@
     <script>
         $(document).ready(function(){
 
+            var ceps = {!! json_encode($ceps) !!};
+            var fazendas = {!! json_encode($fazendas) !!};
+
             $("#link-boleto").click(function(){
                 $("#div-whats").slideUp(300, function(){
                     $("#div-boleto").slideDown(300);
@@ -110,52 +118,58 @@
 
             $("#form-cep").submit(function(e){
                 e.preventDefault();
-                var cep = $("input[name='cep']").val();
-                var _token = $('meta[name="csrf-token"]').attr('content');
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': _token
-                    }
-                });  
-                $.ajax({
-                    url: '/api/calcDistanciaCep',
-                    type: 'POST',
-                    data: {
-                        origem: '37130000',
-                        destino: cep
-                    },
-                    dataType: 'JSON',
-                    success: function(data) {
 
-                        console.log(data);
-                        var data = JSON.parse(data);
-                        var status = data.status;
-                        var destino = data.destination_addresses;
-                        var origem = data.origin_addresses;
-                        var txt_distancia = data.rows[0].elements[0].distance.text;
-                        var distancia = data.rows[0].elements[0].distance.value;
-                        var valor = (distancia / 1000) * 4;
-                        html = "<div class='col-12 col-lg-12'>";
-                        html +=      "<div class='card' style='width: 100%;'>";
-                        html +=          "<ul class='list-group list-group-flush'>";
-                        html +=              "<li class='list-group-item'><b>Origem</b>: " + origem + "</li>";
-                        html +=              "<li class='list-group-item'><b>Destino</b>: " + destino + "</li>";
-                        html +=              "<li class='list-group-item'><b>Distância</b>: " + txt_distancia + "</li>";
-                        html +=              "<li class='list-group-item'><b>Valor Estimado</b>: R$" + valor.toFixed(2) + "</li>";
-                        html +=          "</ul>";
-                        html +=      "</div>";     
-                        html +="</div>";     
-                            
-                        $("#card-frete").append(html);
-                        $("#card-frete").slideDown(500);
-                    },
-                    error: function(){
-                        console.log("deu ruim");
-                    }
-                });
+                var html = "";
+
+                for(var i = 0; i < ceps.length; i++){
+                    
+                    var cep = $("input[name='cep']").val();
+                    var _token = $('meta[name="csrf-token"]').attr('content');
+                    var pos = i;
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': _token
+                        }
+                    });  
+                    $.ajax({
+                        url: '/api/calcDistanciaCep',
+                        type: 'POST',
+                        data: {
+                            origem: ceps[pos],
+                            destino: cep
+                        },
+                        dataType: 'JSON',
+                        success: function(data) {
+
+                            var data = JSON.parse(data);
+                            var status = data.status;
+                            var destino = data.destination_addresses;
+                            var origem = data.origin_addresses;
+                            var txt_distancia = data.rows[0].elements[0].distance.text;
+                            var distancia = data.rows[0].elements[0].distance.value;
+                            var valor = (distancia / 1000) * 4;
+                            html = "<div class='col-12 col-lg-12'>";
+                            html +=      "<div class='card' style='width: 100%;'>";
+                            html +=          "<ul class='list-group list-group-flush'>";
+                            html +=              "<li class='list-group-item'><b>Fazenda</b>: " + fazendas[pos] + "</li>";
+                            html +=              "<li class='list-group-item'><b>Origem</b>: " + origem + "</li>";
+                            html +=              "<li class='list-group-item'><b>Destino</b>: " + destino + "</li>";
+                            html +=              "<li class='list-group-item'><b>Distância</b>: " + txt_distancia + "</li>";
+                            html +=              "<li class='list-group-item'><b>Valor Estimado</b>: R$" + valor.toFixed(2) + "</li>";
+                            html +=          "</ul>";
+                            html +=      "</div>";     
+                            html +="</div>";     
+                                
+                            $("#card-frete").append(html);
+                            $("#card-frete").slideDown(500);
+                        },
+                        error: function(){
+                            console.log("deu ruim");
+                        }
+                    });
+                }
+                
             });
-
-        
         })
     </script>
 @endsection

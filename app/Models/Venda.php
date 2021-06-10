@@ -16,4 +16,8 @@ class Venda extends Model
     public function boletos(){
         return $this->hasMany(Boleto::class);
     }
+
+    public function lote(){
+        return $this->belongsTo(Lote::class);
+    }
 }

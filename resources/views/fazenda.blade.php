@@ -111,7 +111,11 @@
                     </div>
                 </div>
             </div>
-    
+            <div class="row pb-4">
+                <div class="col-12 text-center">
+                    <a href="" class="btn btn-vermelho px-4 py-2">Falar com Consultor</a>
+                </div>
+            </div>
             <div class="d-sm-none d-md-block w-100">
                 @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])))
                     @include('includes.fazenda.conheca')

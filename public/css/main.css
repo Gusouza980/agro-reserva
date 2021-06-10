@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;500;600;800&display=swap');
 :root {
     --vermelho: #E65454;
 }
@@ -12,6 +12,10 @@
 
 
 /* GLOBALS */
+
+body{
+    font-family: 'Titillium Web', sans-serif;
+}
 
 a,
 a:hover,
@@ -93,6 +97,11 @@ a:active {
     border-radius: 30px;
     color: white;
     border: 0px;
+}
+
+.btn-hover-preto:hover{
+    background-color: black;
+    color: white;
 }
 
 
@@ -434,26 +443,58 @@ label {
 }
 
 .text-header-index>h3 {
-    font-size: 2.0rem;
+    font-size: 2.3rem;
     font-family: 'Titillium Web', sans-serif;
     font-weight: 400;
 }
 
 .text-header-index>h2 {
-    font-size: 2.5rem;
-    font-family: 'Titillium Web', sans-serif;
-    font-weight: 600;
-}
-
-.text-section1-index>h2 {
     font-size: 2.8rem;
     font-family: 'Titillium Web', sans-serif;
     font-weight: 600;
+}
+
+#cta1-index{
+    min-height: 15vh;
+}
+
+.section1-terra{
+    width: 300px;
+}
+
+@media (max-width: 1673px){
+    .section1-terra{
+        width: 200px;
+    }
+}
+
+@media (max-width: 1329px){
+    .section1-terra{
+        width: 150px;
+    }
+}
+
+.text-section1-index>h2 {
+    font-size: 3.2rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 800;
     color: black;
 }
 
+
+.text-section1-index-div{
+    margin: 0 auto;
+    max-width: 1016px;
+}
+
+@media (max-width: 1017px){
+    .text-section1-index-div{
+        max-width: 100%;
+    }
+}
+
 .text-section1-index>span {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     font-family: 'Titillium Web', sans-serif;
     font-weight: 400;
     color: black;
@@ -477,6 +518,10 @@ label {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+#section2-index{
+    min-height: 45vh;
 }
 
 .text-section2-index>h2 {
@@ -738,6 +783,11 @@ label {
     border: 1px solid transparent;
 }
 
+#container-form-cadastro{
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 .input-cadastro > input::placeholder{
     color: white;
     opacity: 0.8; /* Firefox */
@@ -751,6 +801,37 @@ label {
 .input-cadastro > input:-ms-input-placeholder{
     color: white;
     opacity: 1; /* Firefox */
+}
+
+
+.input-cadastro > select{
+    background-color: transparent;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 0.3px solid #707070;
+    color: white;
+}
+
+.input-cadastro > select:focus{
+    background-color: transparent;
+}
+
+.input-cadastro > select:focus{
+    background-color: transparent;
+    /* color: white; */
+}
+
+.input-cadastro > textarea{
+    background-color: transparent;
+    border: 1px solid #707070;
+    color: white;
+}
+
+.input-cadastro > textarea:focus{
+    background-color: transparent;
+    border: 1px solid #707070;
+    color: white;
 }
 
 .form-cadastro1>.form-group>label {
@@ -895,4 +976,109 @@ label {
 .link-card-conta.active{
     border-bottom: 2px solid #E65454;
     color: #E65454 !important;
+}
+
+/* .modal-body {
+    background-color: #6BFF8E;
+} */
+
+.conteudo-modal>h3 {
+    font-size: 1.5rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+}
+
+.conteudo-modal>span {
+    font-size: 1.3rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+}
+
+.conteudo-modal>span>b {
+    font-size: 1.3rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+}
+
+#container-form-contato{
+    max-width: 600px;
+}
+
+.form-conta{
+    color: black !important;
+}
+
+.form-conta > input{
+    color: black !important;
+}
+
+.form-conta > select{
+    color: black !important;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid black;
+}
+
+.form-conta > label{
+    color: black !important;
+}
+
+.sino-lote{
+    position: absolute; 
+    top: 20px; 
+    right: 10px; 
+    z-index: 10;
+    cursor: pointer;
+}
+
+.sino-lote:hover{
+    color: var(--vermelho);
+}
+
+.sino-lote.interessado{
+    color: var(--vermelho) !important;
+}
+
+.icone-curtir.marcado{
+    color: green;
+}
+
+.icone-curtir:hover{
+    color: green;
+}
+
+.icone-descurtir.marcado{
+    color: var(--vermelho);
+}
+
+.icone-descurtir:hover{
+    color: var(--vermelho);
+}
+
+.icone-compartilhamento,
+.icone-compartilhamento:focus,
+.icone-compartilhamento:active {
+    color: black !important;
+    text-decoration: none;
+}
+
+.icone-compartilhamento:hover{
+    color: black !important;
+}
+
+.icone-compartilhamento:hover > .fa-whatsapp{
+    color: #25D366 !important;
+}
+
+.icone-compartilhamento:hover > .fa-facebook{
+    color: #3b5998 !important;
+}
+
+.icone-compartilhamento:hover > .fa-instagram{
+    color: #C13584 !important;
+}
+
+.icone-compartilhamento:hover > .fa-twitter{
+    color: #1DA1F2 !important;
 }

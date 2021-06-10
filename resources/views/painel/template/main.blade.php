@@ -163,6 +163,16 @@
 
                             <li>
                                 <a href="javascript: void(0);" class="waves-effect">
+                                    <i class="fas fa-user-tie"></i>
+                                    <span key="t-dashboards">Assessores</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{route('painel.assessores')}}" key="t-saas">Consultar</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect">
                                     <i class="fas fa-user"></i>
                                     <span key="t-dashboards">Visitas</span>
                                 </a>
@@ -173,7 +183,7 @@
 
                             <li>
                                 <a href="javascript: void(0);" class="waves-effect">
-                                    <i class="fas fa-user"></i>
+                                    <i class="fas fa-money-bill-alt"></i>
                                     <span key="t-dashboards">Vendas</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">

@@ -14,7 +14,20 @@ class CarrinhoController extends Controller
 
     public function carrinho(){
         $carrinho = Carrinho::find(session()->get("carrinho"));
-        return view("carrinho", ["carrinho" => $carrinho]);
+        if(!$carrinho){
+            return redirect()->route("index");
+        }
+        $ceps = array();
+        $fazendas = array();
+
+        foreach($carrinho->lotes as $lote){
+            // dd($lote->fazenda);
+            if(!in_array($lote->fazenda->nome_fazenda, $fazendas)){
+                array_push($fazendas, $lote->fazenda->nome_fazenda);
+                array_push($ceps, $lote->fazenda->cep);
+            }
+        }
+        return view("carrinho", ["carrinho" => $carrinho, "ceps" => $ceps, "fazendas" => $fazendas]);
     }
 
     public function adicionar(Lote $lote){
@@ -43,6 +56,9 @@ class CarrinhoController extends Controller
     }
 
     public function deletar(CarrinhoProduto $produto){
+        $carrinho = Carrinho::find(session()->get("carrinho"));
+        $carrinho->total -= $produto->lote->preco;
+        $carrinho->save();
         $produto->delete();
         toastr()->success("Produto removido do carrinho.");
         return redirect()->back();
@@ -67,14 +83,47 @@ class CarrinhoController extends Controller
         return redirect()->back();
     }
 
-    public function concluir($tipo){
+    public function checkout(){
+        $carrinho = Carrinho::find(session()->get("carrinho"));
+        if(!$carrinho){
+            return redirect()->route("index");
+        }
+        return view("checkout", ["carrinho" => $carrinho]);
+    }
+
+    public function concluir(Request $request){
+        $aux = explode(";", $request->parcelas);
+        $produtos = array();
+        foreach($aux as $produto){
+            if($produto != ""){
+                $aux2 = explode(":", $produto);
+                array_push($produtos, [
+                    $aux2[0] => $aux2[1]
+                ]);
+            }
+        }
+        // round($produto->lote->preco / $i, 2);
         $venda = new Venda;
         $carrinho = Carrinho::find(session()->get("carrinho"));
-        $venda->carrinho_id = $carrinho->id;
-        $venda->tipo = $tipo;
-        $venda->save();
-        $venda->codigo = str_pad($venda->id, 11, "0", STR_PAD_LEFT);
-        $venda->save();
+        foreach($produtos as $produto){
+            foreach($produto as $lid => $parcelas){
+                $lote = $carrinho->lotes->where("id", $lid)->first();
+                $parcelas = $parcelas;
+            }
+            $venda->carrinho_id = $carrinho->id;
+            $venda->lote_id = $lote->id;
+            $venda->assessor_id = $request->assessor;
+            $venda->fazenda_id = $lote->fazenda_id;
+            $venda->cliente_id = $carrinho->cliente_id;
+            $venda->parcelas = $parcelas;
+            $valor_parcela = round($lote->preco / $venda->parcelas, 2);
+            $venda->total = $valor_parcela * $venda->parcelas;
+            $venda->tipo = 1;
+            $venda->save();
+            $venda->codigo = str_pad($venda->id, 11, "0", STR_PAD_LEFT);
+            $venda->save();
+        }
+        
         $carrinho->aberto = false;
         $carrinho->save();
         return view("concluir", ["venda" => $venda]);

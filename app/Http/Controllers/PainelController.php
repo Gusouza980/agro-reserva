@@ -44,12 +44,12 @@ class PainelController extends Controller
     }
 
     public function index(){
-        $racas = Raca::all();
-        $data =[];
-        foreach($racas as $raca){
-            $data[$raca->nome] = $clientes = Cliente::where("racas", "LIKE", "%".$raca->nome."%")->count();
-        }
-        return view("painel.index", ["data" => $data]);
+        // $racas = Raca::all();
+        // $data =[];
+        // foreach($racas as $raca){
+        //     $data[$raca->nome] = $clientes = Cliente::where("racas", "LIKE", "%".$raca->nome."%")->count();
+        // }
+        return view("painel.index");
     }
 
     public function visitas(){

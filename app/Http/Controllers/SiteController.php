@@ -76,7 +76,8 @@ class SiteController extends Controller
 
     public function lotes($slug){
         $fazenda = Fazenda::where("slug", $slug)->first();
-        return view("lotes", ["fazenda" => $fazenda]);
+        $cliente = Cliente::find(session()->get("cliente")["id"]);
+        return view("lotes", ["fazenda" => $fazenda, "cliente" => $cliente]);
     }
 
     public function lote($slug, Lote $lote){
@@ -147,5 +148,11 @@ class SiteController extends Controller
             }
             return redirect()->route("index");
         }
+        session()->flash("erro", "Usuário ou senha incorretos");
+        return redirect()->back();
+    }
+
+    public function contato(){
+        return view("contato");
     }
 }

@@ -12,4 +12,20 @@ class Cliente extends Model
     public function carrinhos(){
         return $this->hasMany(Carrinho::class);
     }
+
+    public function racas(){
+        return $this->belongsToMany(Raca::class, 'cliente_racas');
+    }
+
+    public function compras(){
+        return $this->hasMany(Venda::class);
+    }
+
+    public function lotes_interessados(){
+        return $this->hasMany(InteresseLote::class);
+    }
+
+    public function curtidas(){
+        return $this->hasMany(CurtidaLote::class);
+    }
 }

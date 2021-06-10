@@ -31,6 +31,12 @@
             <div class="row mt-5 justify-content-center">
                 <div class="col-12 col-md-7 col-lg-5 mt-5 py-5 px-5" style="background-color: white; border-radius: 10px;">
                     <h3 class="">Entre</h3>
+                    @if(session()->get("erro"))
+                        <div class="alert alert-danger" role="alert">
+                            <strong>{{session()->get("erro")}}</strong>
+                        </div>
+                    @endif
+                    
                     <form id="form-cadastro" class="row" action="{{route('logar')}}" method="post">
                         @csrf
                         <div class="form-group col-12 text-black mt-4">

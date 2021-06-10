@@ -16,7 +16,12 @@ class ClienteController extends Controller
         return view("painel.clientes.consultar", ["clientes" => $clientes]);
     }
 
-    public function cadastro_inicial(Request $request){
+    public function cadastro(Request $request){
+        $anterior = redirect()->back()->getTargetUrl();
+        return view('cadastro.index', ["anterior" => $anterior]);
+    }
+
+    public function cadastrar(Request $request){
         $request->validate([
             'email' => 'required|min:3|max:100',
             'senha' => 'required|min:5|max:15'
@@ -36,13 +41,24 @@ class ClienteController extends Controller
 
         $cliente = new Cliente;
         $cliente->email = $request->email;
+        $cliente->nome_dono = $request->nome;
+        $cliente->estado = $request->estado;
+        $cliente->cidade = $request->cidade;
         $cliente->senha = Hash::make($request->senha);
         $cliente->telefone = $request->telefone;
         $cliente->save();
 
+        foreach($request->racas as $raca){
+            $cliente_raca = new ClienteRaca;
+            $cliente_raca->cliente_id = $cliente->id;
+            $cliente_raca->raca_id = $raca;
+            $cliente_raca->save();
+        }
+
         session()->put(["cliente" => $cliente->toArray()]);
 
-        return redirect()->route("cadastro.passos");
+        session()->flash("cadastro_finalizado");
+        return redirect($request->anterior);
     
     }
 

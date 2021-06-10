@@ -136,6 +136,64 @@
     <!-- end col -->
 </div>
 <!-- end row -->
+@php
+    $admin = $fazenda->usuarios->first();
+@endphp
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Usuário do Sistema</h4>
+
+                <form action="{{route('painel.fazenda.editar.usuario.salvar', ['usuario' => $admin])}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="fazenda_id" value="{{$fazenda->id}}">
+                    <div class="row">
+                        
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" name="nome" id="nome" @if($admin) value="{{$admin->nome}}" @endif required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" name="email" id="email" @if($admin) value="{{$admin->email}}" @endif required>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+
+                    <div class="row">
+                        
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="usuario" class="form-label">Usuário</label>
+                                <input type="text" class="form-control" name="usuario" id="usuario" @if($admin) value="{{$admin->usuario}}" @endif required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="senha" class="form-label">Senha</label>
+                                <input type="password" name="senha" class="form-control" aria-describedby="password-addon">
+                                <small>Preencha apenas em caso de alteração</small>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
 
 <div class="row">
     <div class="col-12">

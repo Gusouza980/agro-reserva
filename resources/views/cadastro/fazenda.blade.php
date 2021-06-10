@@ -217,38 +217,6 @@
                     'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
                 }
             });
-            $.ajax({
-                type: 'POST',
-                url: '{!! route("cadastro.fazenda.salvar") !!}',
-                data: {
-                    nome_dono: nome_dono,
-                    nome_fazenda: nome_fazenda,
-                    telefone: telefone,
-                    cnpj: cnpj,
-                    email: email,
-                    whatsapp: whatsapp
-                },
-                dataType: 'json',
-                success: function (ret) {
-                    if (ret == "Sucesso") {
-                        $("#titulo-modal-sucesso").html("Oi, " + nome_dono + ". Bom te conhecer!");
-                        $("#modalSucesso").modal("show");
-                        $("input[name='nome_dono']").val("");
-                        $("input[name='nome_fazenda']").val("");
-                        $("input[name='telefone']").val("");
-                        $("input[name='cnpj']").val("");
-                        $("input[name='email']").val("");
-                        $("input[name='whatsapp']").val("");
-                    } else {
-                        $("#titulo-modal-erro").html("Oi, " + nome_dono + ".");
-                        $("#modalErro").modal("show");
-                    }
-                },
-                error: function (data) {
-                    $("#titulo-modal-erro").html("Oi, " + nome_dono + ".");
-                    $("#modalErro").modal("show");
-                }
-            });
         });
     });
 

@@ -51,10 +51,20 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
+                    <hr>
+                    <h4 class="card-title my-4">Informações de Pagamento</h4>
+                    <div class="row mb-3">
                         <div class="col-6 col-md-4">
                             <div class="mb-3">
                                 <label for="preco" class="form-label">Preço (R$) *</label>
                                 <input type="number" name="preco" class="form-control" min="0" step="0.01" value="{{$lote->preco}}" required>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="mb-3">
+                                <label for="parcelas" class="form-label">Parcelas</label>
+                                <input type="number" name="parcelas" class="form-control" min="0" step="1" value="{{$lote->parcelas}}" required>
                             </div>
                         </div>
                     </div>

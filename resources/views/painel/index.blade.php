@@ -2,13 +2,13 @@
 
 @section('conteudo')
 <div class="row">
-    <div class="col-xl-12">
+    {{-- <div class="col-xl-12">
         <div class="card">
             <div class="card-body">                
                 <div id="column_chart_datalabel" class="apex-charts" dir="ltr"></div>
             </div>
         </div><!--end card-->
-    </div>
+    </div> --}}
     {{--  <div class="col-xl-6">
         <div class="card">
             <div class="card-body">
@@ -27,7 +27,7 @@
 <script src="{{asset('admin/libs/apexcharts/apexcharts.min.js')}}"></script>
 <!-- apexcharts init -->
 {{--  <script src="{{asset('admin/js/pages/apexcharts.init.js')}}"></script>  --}}
-<script>
+{{-- <script>
     var json = {!! json_encode($data) !!};
     var data = [];
     var categoria = [];
@@ -137,5 +137,5 @@
         }
     };
     (chart = new ApexCharts(document.querySelector("#column_chart_datalabel"), options)).render();
-</script>
+</script> --}}
 @endsection

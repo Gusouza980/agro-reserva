@@ -32,6 +32,7 @@ Route::get('/sair', function () {
 })->name("sair");
 
 Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("index");
+Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");
 Route::get('/cadastro/fazenda', [\App\Http\Controllers\SiteController::class, 'cadastro_fazenda'])->name("cadastro.fazenda");
 Route::get('/cadastro/passos', [\App\Http\Controllers\SiteController::class, 'cadastro_passos'])->name("cadastro.passos");
 Route::get('/fazenda/{fazenda}/conheca', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca");
@@ -44,12 +45,14 @@ Route::get('/carrinho/adicionar/{lote}',  [\App\Http\Controllers\CarrinhoControl
 Route::get('/carrinho/deletar/{produto}',  [\App\Http\Controllers\CarrinhoController::class, 'deletar'])->name("carrinho.deletar");
 Route::get('/carrinho/limpa',  [\App\Http\Controllers\CarrinhoController::class, 'limpa'])->name("carrinho.limpa");
 Route::get('/carrinho',  [\App\Http\Controllers\CarrinhoController::class, 'carrinho'])->name("carrinho");
-Route::get('/carrinho/concluir/{tipo}',  [\App\Http\Controllers\CarrinhoController::class, 'concluir'])->name("carrinho.concluir");
+Route::get('/carrinho/checkout',  [\App\Http\Controllers\CarrinhoController::class, 'checkout'])->name("carrinho.checkout");
+Route::post('/carrinho/concluir',  [\App\Http\Controllers\CarrinhoController::class, 'concluir'])->name("carrinho.concluir");
+Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("contato");
 
 Route::get('/facebook/autenticar', [\App\Http\Controllers\FacebookController::class, 'autenticar'])->name("facebook.autenticar");
 Route::get('/facebook/callback', [\App\Http\Controllers\FacebookController::class, 'callback'])->name("facebook.callback");
 
-Route::post('/cadastro/salvar', [\App\Http\Controllers\ClienteController::class, 'cadastro_inicial'])->name("cadastro.salvar");
+Route::post('/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastrar'])->name("cadastro.salvar");
 Route::post('/cadastro/finalizar', [\App\Http\Controllers\ClienteController::class, 'cadastro_final'])->name("cadastro.finalizar");
 Route::post('/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
 
@@ -58,6 +61,14 @@ Route::get('/conta/boleto/download/{boleto}', [\App\Http\Controllers\ContaContro
 
 Route::get('/painel/login', [\App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
 Route::post('/painel/logar', [\App\Http\Controllers\PainelController::class, 'logar'])->name("painel.logar");
+
+Route::get('/fazenda/painel/login', [\App\Http\Controllers\FazendeiroController::class, 'login'])->name("painel.fazenda.login");
+Route::post('/fazenda/painel/logar', [\App\Http\Controllers\FazendeiroController::class, 'logar'])->name("painel.fazenda.logar");
+
+Route::middleware(['fazendeiro'])->group(function () {
+    Route::get('/fazenda/painel/sair', [\App\Http\Controllers\FazendeiroController::class, 'sair'])->name("painel.fazenda.sair");
+    Route::get('/fazenda/painel', [\App\Http\Controllers\FazendeiroController::class, 'index'])->name("painel.fazenda.index");
+});
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/painel/sair', [\App\Http\Controllers\PainelController::class, 'sair'])->name("painel.sair");
@@ -85,6 +96,8 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/fazenda/editar/{fazenda}/producao/novo', [\App\Http\Controllers\FazendaController::class, 'novo_producao'])->name("painel.fazenda.editar.producao.novo");        
     Route::post('/painel/fazenda/editar/{producao}/producao/salvar', [\App\Http\Controllers\FazendaController::class, 'salvar_producao'])->name("painel.fazenda.editar.producao.salvar");        
     Route::get('/painel/fazenda/editar/{producao}/producao/excluir', [\App\Http\Controllers\FazendaController::class, 'excluir_producao'])->name("painel.fazenda.editar.producao.excluir");        
+    Route::post('/painel/fazenda/editar/usuario/salvar/{usuario?}', [\App\Http\Controllers\FazendaController::class, 'salvar_usuario'])->name("painel.fazenda.editar.usuario.salvar");
+
 
     // ROTAS RELACIONADAS AOS LOTES DE FAZENDA
     Route::get('/painel/fazenda/{fazenda}/lotes', [\App\Http\Controllers\LotesController::class, 'index'])->name("painel.fazenda.lotes");        
@@ -93,12 +106,17 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/fazenda/lote/editar/{lote}', [\App\Http\Controllers\LotesController::class, 'editar'])->name("painel.fazenda.lote.editar");        
     Route::post('/painel/fazenda/lote/salvar/{lote}', [\App\Http\Controllers\LotesController::class, 'salvar'])->name("painel.fazenda.lote.salvar");        
 
-
     //ROTAS RELACIONADAS A RAÇAS
     Route::get('/painel/racas', [\App\Http\Controllers\RacasController::class, 'index'])->name("painel.racas");
     Route::post('/painel/raca/cadastrar', [\App\Http\Controllers\RacasController::class, 'cadastrar'])->name("painel.raca.cadastrar");
     Route::post('/painel/raca/editar/{raca}', [\App\Http\Controllers\RacasController::class, 'editar'])->name("painel.raca.editar");
     Route::get('/painel/raca/excluir/{raca}', [\App\Http\Controllers\RacasController::class, 'excluir'])->name("painel.raca.excluir");
+
+    //ROTAS RELACIONADAS A ASSESSORES
+    Route::get('/painel/assessores', [\App\Http\Controllers\AssessoresController::class, 'index'])->name("painel.assessores");
+    Route::post('/painel/assessor/cadastrar', [\App\Http\Controllers\AssessoresController::class, 'cadastrar'])->name("painel.assessor.cadastrar");
+    Route::post('/painel/assessor/editar/{assessor}', [\App\Http\Controllers\AssessoresController::class, 'editar'])->name("painel.assessor.editar");
+    Route::get('/painel/assessor/excluir/{assessor}', [\App\Http\Controllers\AssessoresController::class, 'excluir'])->name("painel.assessor.excluir");
 
     Route::get('/painel/clientes', [\App\Http\Controllers\ClienteController::class, 'index'])->name("painel.clientes");
 
@@ -112,3 +130,6 @@ Route::middleware(['admin'])->group(function () {
 Route::get('/teste', [\App\Http\Controllers\FazendaController::class, 'teste']);
 Route::get('/api/getCidadesByUf/{uf}', [\App\Http\Controllers\ApiController::class, 'getCidadesByUf']);
 Route::post('/api/calcDistanciaCep', [\App\Http\Controllers\ApiController::class, 'calcDistanciaCep']);
+Route::get('/api/declararInteresseLote/{lote}', [\App\Http\Controllers\ApiController::class, 'declararInteresseLote']);
+Route::get('/api/curtirLote/{lote}', [\App\Http\Controllers\ApiController::class, 'curtirLote']);
+Route::get('/api/descurtirLote/{lote}', [\App\Http\Controllers\ApiController::class, 'descurtirLote']);

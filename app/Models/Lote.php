@@ -16,4 +16,12 @@ class Lote extends Model
     public function fazenda(){
         return $this->belongsTo(Fazenda::class);
     }
+
+    public function carrinhos(){
+        return $this->belongsToMany(Carrinho::class, 'carrinho_produtos');
+    }
+
+    public function curtidas(){
+        return $this->hasMany(CurtidaLote::class);
+    }
 }

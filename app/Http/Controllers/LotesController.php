@@ -27,6 +27,7 @@ class LotesController extends Controller
         $lote->nascimento = $request->nascimento;
         $lote->raca_id = $request->raca;
         $lote->preco = $request->preco;
+        $lote->parcelas = $request->parcelas;
         $lote->fazenda_id = $fazenda->id;
         $lote->video = $request->video;
 
@@ -58,6 +59,7 @@ class LotesController extends Controller
         $lote->nascimento = $request->nascimento;
         $lote->raca_id = $request->raca;
         $lote->preco = $request->preco;
+        $lote->parcelas = $request->parcelas;
         $lote->video = $request->video;
 
         if($request->file("preview")){

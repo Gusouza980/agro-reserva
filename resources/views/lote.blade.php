@@ -1,10 +1,17 @@
 @extends('template.main')
 
+@section('metas')
+<meta property="og:title" content="{{$lote->nome}} - {{$lote->fazenda->nome_fazenda}}" />
+<meta property="og:description" content="{{$lote->nome}} da raça {{$lote->raca->nome}} na reserva da fazenda {{$lote->fazenda->nome_fazenda}}" />
+<meta property="og:url" content="{{url()->current()}}" />
+<meta property="og:image" content="{{asset($lote->preview)}}" />
+@endsection
+
 @section('conteudo')
     <div style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: middle;">
         <div class="container-fluid bg-preto py-5 py-lg-2">
             <div class="container">
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
                         <img src="{{asset($fazenda->logo)}}" style="max-width: 100%;" alt="">
                     </div>
@@ -19,7 +26,12 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-center text-lg-right">
-                                <span>R${{number_format($lote->preco, 2, ",", ".")}}</span>
+                                <h5>R${{number_format($lote->preco, 2, ",", ".")}}</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center text-lg-right">
+                                <span>ou até <b>{{$lote->parcelas}}x</b> de <b>R${{number_format(round(($lote->preco / $lote->parcelas), 2), 2, ",", ".")}}</b></span>
                             </div>
                         </div>
                         <div class="row">
@@ -86,6 +98,11 @@
                         </div>
                     </div>  --}}
                 </div>
+            </div>
+        </div>
+        <div class="row pb-4">
+            <div class="col-12 text-center">
+                <a href="" class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
             </div>
         </div>
     </div>

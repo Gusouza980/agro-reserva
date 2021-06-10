@@ -33,7 +33,7 @@
                                 </div>       
                                 <div class="row pt-5">
                                     <div class="col-12 text-center">
-                                        <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}" role="button">Ver animais a venda</a>
+                                        <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}" role="button">Mostrar a Reserva</a>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +60,16 @@
         </div>
         
     </div>
-    <div class="container-fluid bg-white" id="section1-index">
+    <div class="container-fluid bg-preto">
+        <div class="row d-flex align-items-center" id="cta1-index">
+            <div class="col-12 text-center text-white">
+                <h2><a href="{{route('cadastro')}}"><span style="border-bottom: 2px solid #E65454;">Cadastre-se</span></a> para receber ofertas feitas para você.</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-white" style="position: relative;" id="section1-index">
+        <img class="d-none d-xl-block section1-terra" style="position: absolute; left: 0px; bottom: 5%; transform: scaleX(-1);" src="{{asset('imagens/terralateral.png')}}" alt="Terra">
+        <img class="d-none d-xl-block section1-terra" style="position: absolute; right: 0px; top: 5%;" src="{{asset('imagens/terralateral.png')}}" alt="Terra">
         <div class="row mt-5 py-5 justify-content-center">
             <div class="col-12 px-3 col-md-10 col-lg-8 text-section1-index text-center">
                 <h2>
@@ -74,25 +83,30 @@
             </div>
         </div>
         <div class="row mt-5 py-5 justify-content-center">
-            <div class="col-12 px-3 col-md-10 col-lg-8 text-section1-index text-center">
-                <span>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata                </span>
+            <div class="col-12 text-section1-index text-center">
+                <div class="text-section1-index-div text-section1-index">
+                    <span>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata                
+                    </span>
+                </div>
             </div>
         </div>
     </div>
-    {{--  <div class="container-fluid bg-cinza" id="section2-index">
-        <div class="container">
-            <div class="row py-5">
-                <div class="col-12 col-lg-6 py-5 text-center text-section2-index">
-                    <h2>3% de comissão</h2>
-                    <h3>do vendedor</h3>
+     <div class="container-fluid bg-cinza">
+        <div class="row d-flex align-items-center" id="section2-index">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 text-center text-section2-index">
+                        <h2>0% de comissão</h2>
+                        <h3>do comprador</h3>
+                    </div>  
                 </div>
-                <div class="col-12 col-lg-6 py-5 text-center text-section2-index">
-                    <h2>0% de comissão</h2>
-                    <h3>do comprador</h3>
+                <div class="row mt-4">
+                    <div class="col-12 text-center">
+                        <a href="" class="btn btn-vermelho px-4 py-2">Descubra Como</a>
+                    </div>
                 </div>
             </div>
         </div>
-        
-    </div>  --}}
+    </div> 
 @endsection
