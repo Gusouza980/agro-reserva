@@ -1466,7 +1466,7 @@ body[data-layout=horizontal][data-layout-size=boxed] .navbar-header {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background-color: #556ee6;
+    /* background-color: #556ee6; */
     color: #fff;
     display: -webkit-box;
     display: -ms-flexbox;

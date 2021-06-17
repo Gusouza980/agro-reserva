@@ -2,8 +2,10 @@
 
 return [
     'situacoes' => [
-        0 => "Aguardando Pagamento",
-        1 => "Pago",
+        0 => "Em negociação",
+        1 => "Aguardando Pagamento",
+        2 => "Concluído",
+        3 => "Cancelado",
     ],
 ];
 

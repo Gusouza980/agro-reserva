@@ -1,4 +1,4 @@
-@extends('painel.template.main')
+@extends('painel.fazendeiro.template.main')
 
 @section('styles')
     <!-- DataTables -->
@@ -24,14 +24,7 @@
                         <b>Total:</b> R${{number_format($venda->carrinho->total, 2, ",", ".")}}
                     </div>
                     <div class="col-3 d-flex align-items-center">
-                        <div class="form-floating mb-3" style="width: 250px;">
-                            <select class="form-select" id="select-situacao">
-                                @foreach(config("globals.situacoes") as $chave => $situacao)
-                                    <option value="{{$chave}}" @if($chave = $venda->situacao) selected @endif>{{$situacao}}</option>
-                                @endforeach
-                            </select>
-                            <label for="select-situacao">Situação</label>
-                        </div>
+                        <b>Situação:</b> {{config("globals.situacoes")[$venda->situacao]}}
                     </div>
                 </div>
 
@@ -41,7 +34,7 @@
 </div> <!-- end row -->
 <div class="row justify-content-center">
     <div class="col-12">
-        <h5>Produtos</h5>
+        <h5>Produto</h5>
         <div class="card">
             
             <div class="card-body">
@@ -57,7 +50,6 @@
                             <th>Raça</th>
                             <th>Registro</th>
                             <th>Valor</th>
-                            <th>Qtd</th>
                         </tr>
                     </thead>
 
@@ -70,7 +62,6 @@
                                 <td><b>Raça:</b> {{$produto->lote->raca->nome}}</td>
                                 <td><b>Registro:</b> {{$produto->lote->registro}}</td>
                                 <td><b>Valor:</b> R${{number_format($produto->lote->preco, 2, ",", ".")}}</td>
-                                <td><b>Qtd:</b> {{$produto->quantidade}}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -80,7 +71,6 @@
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
-
 <div class="row mt-5 mb-3">
     <div class="col-12">
         <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovoBoleto">Adicionar Boleto</a>
@@ -175,6 +165,7 @@
     </div> <!-- end col -->
 </div> <!-- end row -->
 
+
 <div class="modal fade" id="modalNovoBoleto" tabindex="-1" role="dialog" aria-labelledby="modalNovoBoletoLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -183,7 +174,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('painel.vendas.boleto.adicionar', ['venda' => $venda])}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('painel.fazenda.vendas.boleto.adicionar', ['venda' => $venda])}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mb-3">
                         <label for="descricao">Descrição</label>
@@ -216,7 +207,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('painel.vendas.nota.adicionar', ['venda' => $venda])}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('painel.fazenda.vendas.nota.adicionar', ['venda' => $venda])}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mb-3">
                         <label for="descricao">Descrição</label>
