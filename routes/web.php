@@ -68,6 +68,13 @@ Route::post('/fazenda/painel/logar', [\App\Http\Controllers\FazendeiroController
 Route::middleware(['fazendeiro'])->group(function () {
     Route::get('/fazenda/painel/sair', [\App\Http\Controllers\FazendeiroController::class, 'sair'])->name("painel.fazenda.sair");
     Route::get('/fazenda/painel', [\App\Http\Controllers\FazendeiroController::class, 'index'])->name("painel.fazenda.index");
+
+    // ROTAS DE VENDAS DA FAZENDA
+    Route::get('/fazenda/painel/vendas', [\App\Http\Controllers\FazendeiroController::class, 'vendas'])->name("painel.fazenda.vendas");
+    Route::get('/fazenda/painel/venda/{venda}', [\App\Http\Controllers\FazendeiroController::class, 'visualizar_venda'])->name("painel.fazenda.vendas.visualizar");
+    Route::post('/fazenda/painel/venda/boleto/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_boleto'])->name("painel.fazenda.vendas.boleto.adicionar");
+    Route::post('/fazenda/painel/venda/nota/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_nota'])->name("painel.fazenda.vendas.nota.adicionar");
+
 });
 
 Route::middleware(['admin'])->group(function () {
@@ -124,6 +131,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/vendas', [\App\Http\Controllers\VendasController::class, 'index'])->name("painel.vendas");
     Route::get('/painel/venda/{venda}', [\App\Http\Controllers\VendasController::class, 'visualizar'])->name("painel.vendas.visualizar");
     Route::post('/painel/venda/boleto/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_boleto'])->name("painel.vendas.boleto.adicionar");
+    Route::post('/painel/venda/nota/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_nota'])->name("painel.vendas.nota.adicionar");
 
 });
 

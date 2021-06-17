@@ -135,7 +135,7 @@
                                     <span key="t-dashboards">Vendas</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{route('painel.vendas')}}" key="t-saas">Consultar</a></li>
+                                    <li><a href="{{route('painel.fazenda.vendas')}}" key="t-saas">Consultar</a></li>
                                 </ul>
                             </li>
                         </ul>
