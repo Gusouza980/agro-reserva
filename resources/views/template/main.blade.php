@@ -22,7 +22,8 @@
 </head>
 
 <body>
-
+    <a class="btn-whats d-sm-block" href="https://web.whatsapp.com/send?phone=5534991720996" target="_blank">
+    </a>
     <div class="container-fluid bg-preto">
         <div class="container">
             <nav class="navbar d-block d-lg-none navbar-expand-lg navbar-light">
