@@ -42,8 +42,13 @@
                     </div>
                     <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
                         <div class="text-center text-white">
-                            <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('carrinho.adicionar', ['lote' => $lote])}}" role="button">Comprar</a>
+                            @if(!$lote->reservado)
+                                <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('carrinho.adicionar', ['lote' => $lote])}}" role="button">Comprar</a>
+                            @else
+                                <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Reservado</button>
+                            @endif
                             {{--  <span>No boleto ou cartão de crédito</span>  --}}
+
                         </div>
                     </div>
                 </div>

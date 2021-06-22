@@ -337,7 +337,7 @@
 
 @section('scripts')
 
-@if(!session()->get("reserva_finalizada"))
+@if(session()->get("reserva_finalizada"))
 <script>
     function fechaModalVendaFinalizada() {
         $("#modalVendaFinalizada").modal("hide");
