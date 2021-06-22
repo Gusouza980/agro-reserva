@@ -308,9 +308,47 @@
         </div>
         
     </div>
+
+    <div class="modal fade" id="modalVendaFinalizada" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body modal-body-sucesso text-center py-4">
+                    <div class="row">
+                        <div class="col-12 conteudo-modal">
+                            <h3>Parabéns <span id="nome_modal">{{$cliente->nome_dono}}</span>.</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 conteudo-modal">
+                            <span class="mt-2">Os lotes estão reservados para você ! Um de nossos consultores entrará em contato para finalizar a venda ou, caso deseje, pode entrar em contato com um de nossos consultores pelo botão abaixo.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 conteudo-modal">
+                            <button class="botao-confirma py-2 px-5 mt-4" onclick="fechaModalVendaFinalizada()">Continuar no site</button>
+                            <button class="botao-confirma py-2 px-5 mt-4" onclick="fechaModalVendaFinalizada()">Falar com um consultor</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
+
+@if(!session()->get("reserva_finalizada"))
+<script>
+    function fechaModalVendaFinalizada() {
+        $("#modalVendaFinalizada").modal("hide");
+    }
+
+    $(document).ready(function(){
+        $("#modalVendaFinalizada").modal();
+    });
+</script>
+@endif
+
 <script>
     $(document).ready(function(){
         $(".ver_mais").click(function(){

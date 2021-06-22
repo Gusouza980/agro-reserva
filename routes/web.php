@@ -47,6 +47,7 @@ Route::get('/carrinho/limpa',  [\App\Http\Controllers\CarrinhoController::class,
 Route::get('/carrinho',  [\App\Http\Controllers\CarrinhoController::class, 'carrinho'])->name("carrinho");
 Route::get('/carrinho/checkout',  [\App\Http\Controllers\CarrinhoController::class, 'checkout'])->name("carrinho.checkout");
 Route::post('/carrinho/concluir',  [\App\Http\Controllers\CarrinhoController::class, 'concluir'])->name("carrinho.concluir");
+Route::get('/carrinho/concluido',  [\App\Http\Controllers\CarrinhoController::class, 'concluido'])->name("carrinho.concluido");
 Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("contato");
 
 Route::get('/facebook/autenticar', [\App\Http\Controllers\FacebookController::class, 'autenticar'])->name("facebook.autenticar");

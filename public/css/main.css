@@ -1,13 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;500;600;800&display=swap');
+
 :root {
     --vermelho: #E65454;
-}
-
-@font-face {
-    font-family: 'TitilliumWeb Bold';
-    font-style: normal;
-    font-weight: bold;
-    src: local('TitilliumWeb Bold'), url('../fontes/TitilliumWeb-Bold.ttf') format('ttf');
 }
 
 
@@ -1086,4 +1080,16 @@ label {
 
 .icone-compartilhamento:hover > .fa-twitter{
     color: #1DA1F2 !important;
+}
+
+/* .faixa-reservado{
+    width: 100%;
+    height: 100%;
+} */
+
+.faixa-reservado{
+    width:100%;
+    /* transform: rotate(-45deg); */
+    background-color: var(--vermelho);
+    font-size: 1.2rem;
 }

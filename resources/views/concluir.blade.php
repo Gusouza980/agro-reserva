@@ -13,7 +13,7 @@
 <div class="row justify-content-center justify-content-lg-start mt-5">
     <div class="col-10 col-lg-5 d-flex justify-content-center justify-content-lg-start text-lg-left circulo-passo">
         <p>Confirmação de pedido enviada para: {{session()->get("cliente")["email"]}}</p>
-        <p>O número do seu pedido é: {{$venda->codigo}}</p>
+        <p>O número do seu pedido é: 123456</p>
     </div>
 </div>
 <div class="row justify-content-center justify-content-lg-start mt-5">

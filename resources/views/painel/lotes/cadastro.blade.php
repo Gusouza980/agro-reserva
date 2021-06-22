@@ -53,6 +53,14 @@
                         </div>
                         
                     </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="observacoes" class="form-label">Observações</label>
+                                <textarea class="form-control" name-"observacoes" maxlength="250"></textarea>
+                            </div>
+                        </div>
+                    </div>
                     <hr>
                     <h4 class="card-title my-4">Informações de Pagamento</h4>
                     <div class="row mb-3">

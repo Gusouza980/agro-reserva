@@ -136,6 +136,7 @@ class CarrinhoController extends Controller
         
         $carrinho->aberto = false;
         $carrinho->save();
-        return view("concluir", ["venda" => $venda]);
+        session()->flash("reserva_finalizada");
+        return redirect()->route('conta.index');
     }
 }

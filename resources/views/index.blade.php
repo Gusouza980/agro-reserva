@@ -75,7 +75,7 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <h1>
-                        Por que vender? 
+                        Por que comprar? 
                     </h1>
                 </div>
             </div>

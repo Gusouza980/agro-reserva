@@ -25,6 +25,7 @@ class LotesController extends Controller
         $lote->nome = $request->nome;
         $lote->registro = $request->registro;
         $lote->nascimento = $request->nascimento;
+        $lote->observacoes = $request->observacoes;
         $lote->raca_id = $request->raca;
         $lote->preco = $request->preco;
         $lote->parcelas = $request->parcelas;
@@ -53,10 +54,10 @@ class LotesController extends Controller
     }
 
     public function salvar(Request $request, Lote $lote){
-
         $lote->nome = $request->nome;
         $lote->registro = $request->registro;
         $lote->nascimento = $request->nascimento;
+        $lote->observacoes = $request->observacoes;
         $lote->raca_id = $request->raca;
         $lote->preco = $request->preco;
         $lote->parcelas = $request->parcelas;
