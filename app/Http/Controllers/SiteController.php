@@ -76,7 +76,12 @@ class SiteController extends Controller
 
     public function lotes($slug){
         $fazenda = Fazenda::where("slug", $slug)->first();
-        $cliente = Cliente::find(session()->get("cliente")["id"]);
+        if(session()->get("cliente")){
+            $cliente = Cliente::find(session()->get("cliente")["id"]);
+        }else{
+            $cliente = null;
+        }
+        
         return view("lotes", ["fazenda" => $fazenda, "cliente" => $cliente]);
     }
 
