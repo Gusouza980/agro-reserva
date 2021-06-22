@@ -33,13 +33,9 @@
                     @if($cliente->compras->count() > 0)
                         <div class="row">
                             <div class="col-12">
-                                @foreach($cliente->carrinhos->where("aberto", 0) as $carrinho)
+                                @foreach($cliente->compras as $venda)
                                     <table class="table">
                                         <tbody>
-                                        
-                                            @php
-                                                $venda = $carrinho->venda;
-                                            @endphp
                                             <tr>
                                                 <td style="vertical-align: middle;"><b>Reserva: </b>{{date("d/m/Y", strtotime($venda->created_at))}}</td>
                                                 <td style="vertical-align: middle;">
@@ -51,7 +47,7 @@
                                                         <button class="btn btn-danger"> Cancelada</button>
                                                     @endif
                                                 </td>
-                                                <td style="vertical-align: middle;"><b>Total:</b> R${{number_format($carrinho->total, 2, ",", ".")}}</td>
+                                                <td style="vertical-align: middle;"><b>Total:</b> R${{number_format($venda->total, 2, ",", ".")}}</td>
                                                 <td> </td>
                                                 <td> </td>
                                                 <td> </td>
@@ -64,12 +60,12 @@
                                         <table class="table">
                                             <tbody>
                                                 <tr style="background-color:rgba(0,0,0,.05);">
-                                                    <td><img src="{{asset($venda->lote->fazenda->logo)}}" style="max-width: 100px;" alt=""></td>
-                                                    <td><b>{{$venda->lote->nome}}</b></td>
-                                                    <td><b>Raça:</b> {{$venda->lote->raca->nome}}</td>
-                                                    <td><b>Registro:</b> {{$venda->lote->registro}}</td>
-                                                    <td><b>Valor:</b> R${{number_format($venda->lote->preco, 2, ",", ".")}}</td>
-                                                    <td><b>Parcelas:</b> {{$venda->parcelas}}</td>
+                                                    <td style="vertical-align: middle;"><img src="{{asset($venda->lote->fazenda->logo)}}" style="max-width: 100px;" alt=""></td>
+                                                    <td style="vertical-align: middle;"><b>{{$venda->lote->nome}}</b></td>
+                                                    <td style="vertical-align: middle;"><b>Raça:</b> {{$venda->lote->raca->nome}}</td>
+                                                    <td style="vertical-align: middle;"><b>Registro:</b> {{$venda->lote->registro}}</td>
+                                                    <td style="vertical-align: middle;"><b>Valor:</b> R${{number_format($venda->lote->preco, 2, ",", ".")}}</td>
+                                                    <td style="vertical-align: middle;"><b>Parcelas:</b> {{$venda->parcelas}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -126,36 +122,36 @@
                                     <div class="form-group col-12 col-lg-6 form-conta">
                                       <label for="nome_dono">Nome</label>
                                       <input type="text"
-                                        class="form-control" name="nome_dono" id="nome_dono" aria-describedby="helpId" value={{$cliente->nome_dono}} required>
+                                        class="form-control" name="nome_dono" id="nome_dono" aria-describedby="helpId" value="{{$cliente->nome_dono}}" required>
                                     </div>
                                     <div class="form-group col-12 col-lg-6 form-conta">
                                         <label for="email">E-mail</label>
                                         <input type="email"
-                                          class="form-control" name="email" id="email" aria-describedby="helpId" value={{$cliente->email}} required>
+                                          class="form-control" name="email" id="email" aria-describedby="helpId" value="{{$cliente->email}}" required>
                                       </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="form-group col-12 col-lg-6 form-conta">
                                       <label for="cpf">CPF</label>
                                       <input type="text"
-                                        class="form-control" name="cpf" id="cpf" aria-describedby="helpId" value={{$cliente->cpf}} required>
+                                        class="form-control" name="cpf" id="cpf" aria-describedby="helpId" value="{{$cliente->cpf}}" required>
                                     </div>
                                     <div class="form-group col-12 col-lg-6 form-conta">
                                         <label for="cnpj">CNPJ</label>
                                         <input type="text"
-                                          class="form-control" name="cnpj" id="cnpj" aria-describedby="helpId" value={{$cliente->cnpj}} required>
+                                          class="form-control" name="cnpj" id="cnpj" aria-describedby="helpId" value="{{$cliente->cnpj}}" required>
                                       </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="form-group col-12 col-lg-6 form-conta">
                                       <label for="telefone">Telefone</label>
                                       <input type="text"
-                                        class="form-control" name="telefone" id="telefone" aria-describedby="helpId" value={{$cliente->telefone}} required>
+                                        class="form-control" name="telefone" id="telefone" aria-describedby="helpId" value="{{$cliente->telefone}}" required>
                                     </div>
                                     <div class="form-group col-12 col-lg-6 form-conta">
                                         <label for="whatsapp">Whatsapp</label>
                                         <input type="text"
-                                          class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value={{$cliente->whatsapp}} required>
+                                          class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value="{{$cliente->whatsapp}}" required>
                                       </div>
                                 </div>
                                 <div class="row my-4">

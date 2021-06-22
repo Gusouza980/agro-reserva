@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Assessor;
+use App\Models\Venda;
+use Illuminate\Support\Facades\DB;
 
 class AssessoresController extends Controller
 {
@@ -11,7 +13,9 @@ class AssessoresController extends Controller
     //
     public function index(){
         $assessores = Assessor::all();
-        return view("painel.assessores.index", ["assessores" => $assessores]);
+        $vendas = DB::table("vendas")->join('assessors', 'assessors.id', '=', 'vendas.assessor_id')->select("assessors.nome", DB::raw('count(*) as total'))->groupBy("assessors.nome")->get();
+        // dd($vendas);
+        return view("painel.assessores.index", ["assessores" => $assessores, "vendas" => $vendas]);
     }
 
     public function cadastrar(Request $request){

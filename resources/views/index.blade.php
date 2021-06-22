@@ -12,12 +12,15 @@
         <div class="container">
             <div class="row py-5 justify-content-center">
                 @foreach($fazendas as $fazenda)
+                    {{--  <div style="width: 285px; height:">
+
+                    </div>  --}}
                     <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda->fundo_destaque}}); background-size: cover;">
-                        <div class="py-3" style="background-color: rgba(0,0,0,0.7)">
-                            <div class="container-fluid">
+                        <div class="py-3" style="background-color: rgba(0,0,0,0.7)" >
+                            <div class="container-fluid" style="height: 185px;">
                                 <div class="row justify-content-center">
-                                    <div class="col-8 text-center">
-                                        <img src="{{asset($fazenda->logo)}}" style="max-width: 100%; max-height: 60px;" alt="">
+                                    <div class="col-10 text-center">
+                                        <img src="{{asset($fazenda->logo)}}" style="max-width: 100%; height: 60px;" alt="">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -64,6 +67,58 @@
         <div class="row d-flex align-items-center" id="cta1-index">
             <div class="col-12 text-center text-white">
                 <h2><a href="{{route('cadastro')}}"><span style="border-bottom: 2px solid #E65454;">Cadastre-se</span></a> para receber ofertas feitas para você.</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-5">
+        <div class="container1016">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1>
+                        Por que vender? 
+                    </h1>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 col-lg-6">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <img src="{{asset('imagens/no-cash.png')}}" width="70" alt="Sem custo">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12 text-center">
+                            <h2>Sem custo inicial</h2>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12 text-center">
+                            <p>Você não terá que pagar nada antes que a venda de um lote seja efetuada</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <img src="{{asset('imagens/camera.png')}}" width="70" alt="Sem custo">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12 text-center">
+                            <h2>Produção por nossa conta</h2>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12 text-center">
+                            <p>Você receberá <b>gratuitamente</b> toda a produção de conteúdo (fotos, vídeos e redação) de alta qualidade.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <a href="" class="btn btn-vermelho px-4 py-2">Quero vender</a>
+                </div>
             </div>
         </div>
     </div>

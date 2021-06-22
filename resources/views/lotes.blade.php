@@ -64,7 +64,7 @@
         <div class="container-fluid py-5">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8 text-center text-cadastro-lotes">
-                    <h1>Maior volume, mansidão e rendimento Conheça o Sindi</h1>
+                    <h1>Conheça nossos lotes</h1>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-12 col-lg-8 justify-content-center justify-content-lg-start text-center text-lg-left align-items-center text-lotes d-flex">
-                <h3>Reserva da Fazenda Porangaba</h3>
+                <h3>Reserva da {{$fazenda->nome_fazenda}}</h3>
             </div>
             <div class="col-12 col-lg-4 justify-content-center justify-content-lg-end align-items-center text-center text-lg-right text-lotes d-flex">
                 {{--  <span>fêmeas</span>
@@ -82,7 +82,7 @@
         </div>
         <div class="row">
             @foreach($fazenda->lotes->where("ativo", true) as $lote)
-                @for($i = 0; $i < 1; $i++)
+                {{--  @for($i = 0; $i < 30; $i++)  --}}
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-3 mt-4">
                         <div class="card mx-auto" style="width: 100%; max-width: 18rem;">
                             <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}"><img class="card-img-top" src="{{asset($lote->preview)}}" alt="{{$lote->nome}}"></a>
@@ -143,7 +143,7 @@
                             </div>
                         </div>
                     </div>
-                @endfor    
+                {{--  @endfor      --}}
             @endforeach
         </div>
     </div>

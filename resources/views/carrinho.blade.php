@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </div>  --}}
-            <div class="col-12 col-md-6 text-start">
+            {{--  <div class="col-12 col-md-6 text-start">
                 <h4>Simular frete</h4>
                 <form id="form-cep" class="form-inline mt-4">
                     <div class="form-group">
@@ -91,7 +91,7 @@
                 <div class="row mt-5" style="display: none;" id="card-frete">
             
                 </div>
-            </div>
+            </div>  --}}
         </div>
         
     </div>

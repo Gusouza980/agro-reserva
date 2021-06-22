@@ -32,6 +32,11 @@ a:active {
     cursor: pointer;
 }
 
+.container1016{
+    max-width: 1016px;
+    margin: 0 auto;
+}
+
 
 /* END UTILS */
 

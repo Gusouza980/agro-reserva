@@ -58,6 +58,7 @@ class FazendaController extends Controller
         $fazenda = new Fazenda;
         $fazenda->nome_dono = $request->nome_dono;
         $fazenda->nome_fazenda = $request->nome_fazenda;
+        $fazenda->slug = Str::slug($request->nome_fazenda);
         $fazenda->telefone = $request->telefone;
         $fazenda->cnpj = $request->cnpj;
         $fazenda->email = $request->email;

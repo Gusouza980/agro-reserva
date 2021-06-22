@@ -49,6 +49,16 @@
             </div>
         </div>
     </div> <!-- end col -->
+    <div class="col-12 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Ranking de Vendas</h4>
+                            
+                <div id="ranking_vendas" class="apex-charts" dir="ltr"></div>
+
+            </div>
+        </div>
+    </div>
 </div> <!-- end row -->
 
 <!-- Modal -->
@@ -118,6 +128,7 @@
     <!-- Required datatable js -->
     <script src="{{asset('admin/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('admin/libs/apexcharts/apexcharts.min.js')}}"></script>
     <script>
         $(document).ready(function() {
             $('#datatable').DataTable( {
@@ -253,6 +264,47 @@
                     "thousands": "."
                 } 
             } );
+
+            var vendas = {!! json_encode($vendas) !!};
+            var assessores = new Array();
+            var totais = new Array();
+
+            for(venda in vendas){
+                var dados = vendas[venda];
+                assessores.push(dados.nome);
+                totais.push(dados.total);
+            }
+
+            console.log(totais);
+
+            options = {
+                chart: {
+                    height: 350,
+                    type: "bar",
+                    toolbar: {
+                        show: !1
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: !0
+                    }
+                },
+                dataLabels: {
+                    enabled: !1
+                },
+                series: [{
+                    data: totais
+                }],
+                colors: ["#34c38f"],
+                grid: {
+                    borderColor: "#f1f1f1"
+                },
+                xaxis: {
+                    categories: assessores
+                }
+            };
+            (chart = new ApexCharts(document.querySelector("#ranking_vendas"), options)).render();
         } );    
     </script> 
 @endsection
