@@ -13,6 +13,14 @@ class Venda extends Model
         return $this->belongsTo(Carrinho::class);
     }
 
+    public function cliente(){
+        return $this->belongsTo(Cliente::class);
+    }
+
+    public function fazenda(){
+        return $this->belongsTo(Fazenda::class);
+    }
+
     public function boletos(){
         return $this->hasMany(Boleto::class);
     }

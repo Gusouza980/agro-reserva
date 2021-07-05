@@ -7,19 +7,20 @@ use App\Models\Fazenda;
 use App\Models\Lote;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Reserva;
 
 class LotesController extends Controller
 {
     //
-    public function index(Fazenda $fazenda){
-        return view("painel.lotes.consultar", ["fazenda" => $fazenda]);
+    public function index(Reserva $reserva){
+        return view("painel.lotes.consultar", ["reserva" => $reserva]);
     }
 
-    public function cadastro(Fazenda $fazenda){
-        return view("painel.lotes.cadastro", ["fazenda" => $fazenda]);
+    public function cadastro(Reserva $reserva){
+        return view("painel.lotes.cadastro", ["reserva" => $reserva]);
     }
 
-    public function cadastrar(Request $request, Fazenda $fazenda){
+    public function cadastrar(Request $request, Reserva $reserva){
         $lote = new Lote;
 
         $lote->nome = $request->nome;
@@ -29,7 +30,8 @@ class LotesController extends Controller
         $lote->raca_id = $request->raca;
         $lote->preco = $request->preco;
         $lote->parcelas = $request->parcelas;
-        $lote->fazenda_id = $fazenda->id;
+        $lote->fazenda_id = $reserva->fazenda_id;
+        $lote->reserva_id = $reserva->reserva_id;
         $lote->video = $request->video;
 
         if($request->file("preview")){
@@ -79,6 +81,6 @@ class LotesController extends Controller
 
         $lote->save();
 
-        return redirect()->route("painel.fazenda.lotes", ["fazenda" => $lote->fazenda]);
+        return redirect()->route("painel.fazenda.reserva.lotes", ["reserva" => $lote->reserva]);
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Cidade;
 use App\Models\Lote;
 use App\Models\InteresseLote;
 use App\Models\CurtidaLote;
+use App\Models\Venda;
 
 class ApiController extends Controller
 {
@@ -76,5 +77,15 @@ class ApiController extends Controller
             $curtida->save();
             return response()->json("marcado");
         }
+    }
+
+    public function trocaStatusVenda(Venda $venda, $status){
+        $venda->situacao = $status;
+        if(config("globals.situacoes")[$venda->situacao] == "Cancelado"){
+            $venda->lote->reservado = false;
+            $venda->lote->save();
+        }
+        $venda->save();
+        return response()->json("sucesso");
     }
 }

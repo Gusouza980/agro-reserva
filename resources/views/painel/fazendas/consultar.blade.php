@@ -26,7 +26,6 @@
                             <th>Email</th>
                             <th>Telefone</th>
                             <th>Reserva</th>
-                            <th>Ativo</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -40,26 +39,11 @@
                                 <td>{{$fazenda->email}}</td>
                                 <td>{{$fazenda->telefone}}</td>
                                 <td>
-                                    @if($fazenda->data_inicio_reserva)
-                                        @if($fazenda->data_inicio_reserva > date('Y-m-d H:i:s'))
-                                            Iniciada em {{date("d/m/Y H:i:s", strtotime($fazenda->data_inicio_reserva))}}
-                                        @else
-                                            Iniciará em {{date("d/m/Y H:i:s", strtotime($fazenda->data_inicio_reserva))}}
-                                        @endif
-                                    @else
-                                        Sem reserva programada
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($fazenda->ativo)
-                                        <i class="fa fa-star" style="color: yellow;" aria-hidden="true"></i>
-                                    @else
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    @endif
+                                    {{$fazenda->reservas->where("ativo", true)->count()}} reservas ativas
                                 </td>
                                 <td>
                                     <a name="" id="" class="btn btn-warning" href="{{route('painel.fazenda.editar', ['fazenda' => $fazenda])}}" role="button">Editar</a>
-                                    <a name="" id="" class="btn btn-primary" href="{{route('painel.fazenda.lotes', ['fazenda' => $fazenda])}}" role="button">Lotes</a>
+                                    <a name="" id="" class="btn btn-primary" href="{{route('painel.fazenda.reservas', ['fazenda' => $fazenda])}}" role="button">Reservas</a>
                                 </td>
                             </tr>
                         @endforeach

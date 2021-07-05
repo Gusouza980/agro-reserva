@@ -21,13 +21,16 @@
                         <b>Data:</b> {{date("d/m/Y H:i:s", strtotime($venda->created_at))}}
                     </div>
                     <div class="col-3 d-flex align-items-center">
-                        <b>Total:</b> R${{number_format($venda->carrinho->total, 2, ",", ".")}}
+                        <b>Total:</b> R${{number_format($venda->total, 2, ",", ".")}}
+                    </div>
+                    <div class="col-3 d-flex align-items-center">
+                        <b>Parcelas:</b> {{$venda->parcelas}}x de {{number_format($venda->valor_parcela, 2, ",", ".")}}
                     </div>
                     <div class="col-3 d-flex align-items-center">
                         <div class="form-floating mb-3" style="width: 250px;">
                             <select class="form-select" id="select-situacao">
                                 @foreach(config("globals.situacoes") as $chave => $situacao)
-                                    <option value="{{$chave}}" @if($chave = $venda->situacao) selected @endif>{{$situacao}}</option>
+                                    <option value="{{$chave}}" @if($chave == $venda->situacao) selected @endif>{{$situacao}}</option>
                                 @endforeach
                             </select>
                             <label for="select-situacao">Situação</label>
@@ -41,15 +44,10 @@
 </div> <!-- end row -->
 <div class="row justify-content-center">
     <div class="col-12">
-        <h5>Produtos</h5>
         <div class="card">
             
             <div class="card-body">
-                {{--  <h5 class="card-title">Produtos</h5>  --}}
-                @php
-                    $carrinho = $venda->carrinho;
-                @endphp
-                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                <table class="table table-bordered dt-responsive nowrap w-100">
                     <thead>
                         <tr>
                             <th>Imagem</th>
@@ -57,22 +55,18 @@
                             <th>Raça</th>
                             <th>Registro</th>
                             <th>Valor</th>
-                            <th>Qtd</th>
                         </tr>
                     </thead>
 
 
                     <tbody>
-                        @foreach($carrinho->produtos as $produto)
                             <tr>
-                                <td><img src="{{asset($produto->lote->fazenda->logo)}}" style="max-width: 100px;" alt=""></td>
-                                <td><b>{{$produto->lote->nome}}</b></td>
-                                <td><b>Raça:</b> {{$produto->lote->raca->nome}}</td>
-                                <td><b>Registro:</b> {{$produto->lote->registro}}</td>
-                                <td><b>Valor:</b> R${{number_format($produto->lote->preco, 2, ",", ".")}}</td>
-                                <td><b>Qtd:</b> {{$produto->quantidade}}</td>
+                                <td style="vertical-align: middle; text-align: center;"><img src="{{asset($venda->lote->fazenda->logo)}}" style="max-width: 100px;" alt=""></td>
+                                <td style="vertical-align: middle; text-align: center;"><b>{{$venda->lote->nome}}</b></td>
+                                <td style="vertical-align: middle; text-align: center;"><b>Raça:</b> {{$venda->lote->raca->nome}}</td>
+                                <td style="vertical-align: middle; text-align: center;"><b>Registro:</b> {{$venda->lote->registro}}</td>
+                                <td style="vertical-align: middle; text-align: center;"><b>Valor:</b> R${{number_format($venda->lote->preco, 2, ",", ".")}}</td>
                             </tr>
-                        @endforeach
                     </tbody>
                 </table>
 
@@ -376,6 +370,30 @@
                     "thousands": "."
                 } 
             } );
+
+            $("#select-situacao").change(function(){
+                var situacao = $("#select-situacao option:selected").val();
+                var venda = {!! $venda->id !!}
+                var _token = $('meta[name="csrf-token"]').attr('content');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': _token
+                    }
+                });  
+                $.ajax({
+                    url: '/api/trocaStatusVenda/' + venda + '/' + situacao,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success: function(data) {
+                        toastr.success('O status da venda foi alterado', 'Sucesso')
+                    },
+                    error: function(){
+                        console.log("deu ruim");
+                    }
+                });
+            });
+
+            
         } );    
     </script> 
 @endsection

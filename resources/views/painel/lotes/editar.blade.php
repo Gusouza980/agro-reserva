@@ -16,7 +16,7 @@
                 </div>
                 <h4 class="card-title mb-4">Informações Básicas</h4>
 
-                <form action="{{route('painel.fazenda.lote.salvar', ['lote' => $lote])}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('painel.fazenda.reserva.lote.salvar', ['lote' => $lote])}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         

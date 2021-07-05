@@ -28,4 +28,8 @@ class Fazenda extends Model
     public function vendas(){
         return $this->hasMany(Venda::class);
     }
+
+    public function reservas(){
+        return $this->hasMany(Reserva::class);
+    }
 }

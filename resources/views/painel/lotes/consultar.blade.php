@@ -10,7 +10,8 @@
 @section('conteudo')
 <div class="row my-3">
     <div class="col-12">
-        <a href="{{route('painel.fazenda.lote.cadastro', ['fazenda' => $fazenda])}}" class="btn btn-primary" role="button">Novo Lote</a>
+        <a href="{{route('painel.fazenda.reserva.lote.cadastro', ['reserva' => $reserva])}}" class="btn btn-primary" role="button">Novo Lote</a>
+        <a href="{{route('painel.fazendas')}}" class="btn btn-primary" role="button">Voltar</a>
     </div>
 </div>
 <div class="row">
@@ -34,7 +35,7 @@
 
 
                     <tbody class="text-center">
-                        @foreach($fazenda->lotes as $lote)
+                        @foreach($reserva->lotes as $lote)
                             <tr>
                                 <td></td>
                                 <td>{{$lote->nome}}</td>
@@ -50,7 +51,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a name="" id="" class="btn btn-warning" href="{{route('painel.fazenda.lote.editar', ['lote' => $lote])}}" role="button">Editar</a>
+                                    <a name="" id="" class="btn btn-warning" href="{{route('painel.fazenda.reserva.lote.editar', ['lote' => $lote])}}" role="button">Editar</a>
                                     {{--  <a name="" id="" class="btn btn-primary" href="{{route('painel.fazenda.lotes', ['fazenda' => $fazenda])}}" role="button">Lotes</a>  --}}
                                 </td>
                             </tr>

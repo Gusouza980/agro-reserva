@@ -7,43 +7,52 @@
 @endsection
 
 @section('titulo')
-    Listagem de Vendas
+    Listagem de Reservas da Fazenda: {{$fazenda->nome}}
 @endsection
 
 @section('conteudo')
-<div class="row justify-content-center">
+
+<div class="row my-3">
     <div class="col-12">
+        <a name="" id="" class="btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalCadastraReserva" role="button">Nova Reserva</a>
+    </div>
+</div>
+<div class="row justify-content-start">
+    <div class="col-12 col-lg-10">
         <div class="card">
             <div class="card-body">
 
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
-                            <th>Código</th>
-                            <th>Cliente</th>
-                            <th>Fazenda</th>
-                            <th>Lote</th>
-                            <th>Tipo</th>
-                            <th>Status</th>
-                            <th>Data</th>
+                            <th>Início</th>
+                            <th>Fim</th>
+                            <th>Ativo</th>
+                            <th>Lotes</th>
                             <th></th>
                         </tr>
                     </thead>
 
 
                     <tbody>
-                        @foreach($vendas as $venda)
+                        @foreach($reservas as $reserva)
                             <tr>
-                                <td style="vertical-align: middle; text-align:center;">{{$venda->codigo}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{$venda->cliente->nome_dono}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{$venda->fazenda->nome_fazenda}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{$venda->lote->nome}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{config("globals.tipos_pagamento")[$venda->tipo]}}</td>
+                                <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($reserva->inicio))}}</td>
+                                <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($reserva->fim))}}</td>
                                 <td style="vertical-align: middle; text-align:center;">
-                                    {{config("globals.situacoes")[$venda->situacao]}}
+                                    @if($reserva->ativo)
+                                        Sim
+                                    @else
+                                        Não
+                                    @endif
                                 </td>
-                                <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($venda->created_at))}}</td>
-                                <td><a href="{{route('painel.vendas.visualizar', ['venda' => $venda])}}" class="btn btn-primary"><i class="fas fa-search"></i></a></td>
+                                <td style="vertical-align: middle; text-align:center;">{{$reserva->lotes->count()}}</td>
+                                <td style="vertical-align: middle; text-align:center;">
+                                    <a name="" id="" class="btn btn-warning cpointer" data-bs-toggle="modal" data-bs-target="#modalEditaReserva{{$reserva->id}}" role="button">Editar</a>
+                                    <a name="" id="" class="btn btn-danger" href="{{route('painel.fazenda.reserva.excluir', ['reserva' => $reserva])}}" role="button">Excluir</a>
+                                    <a name="" id="" href="{{route('painel.fazenda.reserva.lotes', ['reserva' => $reserva])}}" class="btn btn-primary cpointer" role="button">Lotes</a>
+                                    <a name="" id="" href="{{route('painel.fazenda.reservas.relatorio', ['reserva' => $reserva])}}" class="btn btn-primary cpointer" role="button">Relatório</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -54,7 +63,80 @@
     </div> <!-- end col -->
 </div> <!-- end row -->
 
+<!-- Modal -->
+@foreach($reservas as $reserva)
+    <div class="modal fade" id="modalEditaReserva{{$reserva->id}}" tabindex="-1" role="dialog" aria-labelledby="modalEditaReserva{{$reserva->id}}Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditaReserva{{$reserva->id}}Label">Editando reserva</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('painel.fazenda.reserva.editar', ['reserva' => $reserva])}}" method="post">
+                        @csrf
+                        <div class="form-group mb-3">
+                            <label for="inicio">Início</label>
+                            <input type="date"
+                                class="form-control" name="inicio" value="{{date('Y-m-d', strtotime($reserva->inicio))}}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="fim">Fim</label>
+                            <input type="date"
+                                class="form-control" name="fim" value="{{date('Y-m-d', strtotime($reserva->fim))}}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="ativo">Ativo</label>
+                            <select class="form-control" name="ativo">
+                                <option value="0" @if(!$reserva->ativo) selected @endif>Não</option>
+                                <option value="1" @if($reserva->ativo) selected @endif>Sim</option>
+                            </select>
+                        </div>
+                        <div class="form-group text-end">
+                            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                        </div>                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
 
+<div class="modal fade" id="modalCadastraReserva" tabindex="-1" role="dialog" aria-labelledby="modalCadastraReservaLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCadastraReservaLabel">Cadastrar nova Reserva</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('painel.fazenda.reserva.cadastrar', ['fazenda' => $fazenda])}}" method="post">
+                    @csrf
+                    <div class="form-group mb-3">
+                        <label for="inicio">Início</label>
+                        <input type="date"
+                            class="form-control" name="inicio" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="fim">Fim</label>
+                        <input type="date"
+                            class="form-control" name="fim" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="ativo">Ativo</label>
+                        <select class="form-control" name="ativo">
+                            <option value="0">Não</option>
+                            <option value="1">Sim</option>
+                        </select>
+                    </div>
+                    <div class="form-group text-end">
+                        <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 

@@ -9,14 +9,21 @@ use App\Models\Lote;
 use App\Models\Visita;
 use App\Models\Carrinho;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class SiteController extends Controller
 {
 
     public function index(){
-        // $res = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?origins=37130000&destinations=37143000&mode=driving&language=pt-BR&sensor=false&key=AIzaSyCDJEB7uVGEkVU0Utm3p9kOeCnastPy01o");
-        // $res = file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=37130000&key=AIzaSyCDJEB7uVGEkVU0Utm3p9kOeCnastPy01o");
-        // die($res);
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ])->post('https://api.scccheck.com.br/login', [
+            "logon" => "3158814",
+            "senha" => "berrante40"
+        ]);
+
+        dd($response);
         $fazendas = Fazenda::where("ativo", true)->get();
         return view("index", ["fazendas" => $fazendas]);
         // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(

@@ -15,7 +15,7 @@
                     {{--  <div style="width: 285px; height:">
 
                     </div>  --}}
-                    <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda->fundo_destaque}}); background-size: cover;">
+                    <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0 mx-0 mx-lg-2" style="background: url(/{{$fazenda->fundo_destaque}}); background-size: cover;">
                         <div class="py-3" style="background-color: rgba(0,0,0,0.7)" >
                             <div class="container-fluid" style="height: 185px;">
                                 <div class="row justify-content-center">

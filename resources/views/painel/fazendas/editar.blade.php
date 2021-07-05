@@ -11,9 +11,8 @@
 @endsection
 
 @section('conteudo')
-<div class="row my-3">
+{{--  <div class="row my-3">
     <div class="col-12">
-        {{--  <a name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDataReserva" role="button">Definir data de reserva</a>  --}}
         @if($fazenda->ativo)
             <a name="" id="" class="btn btn-primary" href="{{route('painel.fazenda.desativar', ['fazenda' => $fazenda])}}" role="button">Desativar fazenda</a>
         @endif
@@ -27,7 +26,7 @@
             </div>
         </div>
     </div>
-@endif
+@endif  --}}
 
 <div class="row">
     <div class="col-12">

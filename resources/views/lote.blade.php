@@ -16,7 +16,7 @@
                         <img src="{{asset($fazenda->logo)}}" style="max-width: 100%;" alt="">
                     </div>
                     <div class="col-12 col-lg-4 justify-content-center d-flex align-items-center text-white mt-4 mt-lg-0">
-                        {{--  <span><span style="color:red;">Faltam 4 dias</span> para o fim dessa reserva</span>  --}}
+                        <button name="" id="" class="btn btn-vermelho py-2 px-5 mx-auto" style="max-width:350px;">Dar lance</button>
                     </div>
                     <div class="col-12 col-lg-3 text-white mt-4 mt-lg-0">
                         <div class="row">

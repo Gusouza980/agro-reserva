@@ -127,6 +127,7 @@ class CarrinhoController extends Controller
                 $venda->parcelas = $parcelas;
                 $valor_parcela = round($lote->preco / $venda->parcelas, 2);
                 $venda->total = $valor_parcela * $venda->parcelas;
+                $venda->valor_parcela = $valor_parcela;
                 $venda->tipo = 1;
                 $venda->save();
                 $venda->codigo = str_pad($venda->id, 11, "0", STR_PAD_LEFT);

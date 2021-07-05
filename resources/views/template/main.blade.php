@@ -215,6 +215,51 @@
         </script>
     @endif
 
+    <script>
+        $(document).ready(function(){
+            var settings = {
+                "url": "https://api.scccheck.com.br/login",
+                "method": "POST",
+                "headers": {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "logon": 3158814,
+                    "senha": "berrante40",
+                }),
+            };
+            /*
+            var settings = {
+                "url": "https://api.scccheck.com.br/consultas/crednet",
+                "method": "POST",
+                "headers": {
+                    "Accept": "application/json",
+                    "Authorization": "Bearer token",
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "achei_recheque": true,
+                    "tipo_pessoa": "F",
+                    "doc_consultado": "112.233.445-56",
+                    "ddd": "44",
+                    "telefone": "30303030",
+                    "cep": "88888888",
+                    "protesto_estadual": "PR",
+                    "cmc7": "010203040501020304050102030405",
+                    "vencimento": "2022-12-12",
+                    "valor_cheque": 12345,
+                    "adicionais": [1, 2, 3, 4, 5]
+                }),
+            };
+            */
+                
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+        });
+    </script>
+
 </body>
 
 </html>

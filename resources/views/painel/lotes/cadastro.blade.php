@@ -1,7 +1,7 @@
 @extends('painel.template.main')
 
 @section('titulo')
-    Cadastro de Lote - {{$fazenda->nome_fazenda}}
+    Cadastro de Lote - {{$reserva->fazenda->nome_fazenda}}
 @endsection
 
 @section('conteudo')
@@ -16,7 +16,7 @@
                 </div>
                 <h4 class="card-title mb-4">Informações Básicas</h4>
 
-                <form action="{{route('painel.fazenda.lote.cadastrar', ['fazenda' => $fazenda])}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('painel.fazenda.reserva.lote.cadastrar', ['reserva' => $reserva])}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         

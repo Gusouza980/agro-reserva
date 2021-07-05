@@ -7,6 +7,10 @@ return [
         2 => "Concluído",
         3 => "Cancelado",
     ],
+    'tipos_pagamento' => [
+        0 => 'Boleto',
+        1 => "Whatsapp"
+    ]
 ];
 
 ?>

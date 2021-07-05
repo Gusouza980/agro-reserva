@@ -28,4 +28,8 @@ class Lote extends Model
     public function visitas(){
         return $this->hasMany(Visita::class);
     }
+
+    public function reserva(){
+        return $this->belongsTo(Reserva::class);
+    }
 }
