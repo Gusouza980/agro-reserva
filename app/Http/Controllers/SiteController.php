@@ -19,7 +19,7 @@ class SiteController extends Controller
             'Accept' => 'application/json',
             'Content-Type' => 'application/json'
         ])->post('https://api.scccheck.com.br/login', [
-            "logon" => base64_encode("3158814"),
+            "logon" => "3158814",
             "senha" => base64_encode("berrante40")
         ]);
 
