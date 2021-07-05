@@ -19,10 +19,11 @@ class SiteController extends Controller
             'Accept' => 'application/json',
             'Content-Type' => 'application/json'
         ])->post('https://api.scccheck.com.br/login', [
-            "logon" => "3158814",
-            "senha" => "berrante40"
+            "logon" => base64_encode("3158814"),
+            "senha" => base64_encode("berrante40")
         ]);
 
+        // dd(base64_encode("berrante40"));
         dd($response);
         $fazendas = Fazenda::where("ativo", true)->get();
         return view("index", ["fazendas" => $fazendas]);
