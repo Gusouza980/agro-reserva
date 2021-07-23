@@ -15,34 +15,6 @@ class SiteController extends Controller
 {
 
     public function index(){
-        $response = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json'
-        ])->post('https://api.scccheck.com.br/login', [
-            "logon" => "3158814",
-            "senha" => "berrante40"
-        ]);
-        if($response->status() == 200){
-            $token = $response->object()->token;
-        }
-
-        $response = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer ' . $token
-        ])->post('https://api.scccheck.com.br/consultas/crednet', [
-            "achei_recheque" => false,
-            "tipo_pessoa" => "F",
-            "doc_consultado" => "111.021.656-46",
-            "adicionais" => [6, 19]
-        ]);
-
-        dd($response->object());
-
-        $res = json_decode($response->body());
-        dd($res->token);
-
-        // dd($response);
         $fazendas = Fazenda::where("ativo", true)->get();
         return view("index", ["fazendas" => $fazendas]);
         // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(
