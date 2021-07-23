@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <a class="btn-whats d-sm-block" href="https://web.whatsapp.com/send?phone=5534991720996" target="_blank">
+    <a class="btn-whats d-sm-block" href="https://api.whatsapp.com/send?phone=5534991720996" target="_blank">
     </a>
     <div class="container-fluid bg-preto">
         <div class="container">
@@ -225,10 +225,11 @@
                     "Content-Type": "application/json"
                 },
                 "data": JSON.stringify({
-                    "logon": 3158814,
+                    "logon": "3158814",
                     "senha": "berrante40",
                 }),
             };
+            
             /*
             var settings = {
                 "url": "https://api.scccheck.com.br/consultas/crednet",

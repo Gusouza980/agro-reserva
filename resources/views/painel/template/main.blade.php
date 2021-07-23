@@ -7,8 +7,8 @@
         <meta charset="utf-8" />
         <title>Agroreserva - Painel Administrativo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesbrand" name="author" />
+        <meta content="Painel Administrativo da Agroreserva" name="description" />
+        <meta content="Luis Gustavo de Souza Carvalho" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{asset('admin/images/favicon.ico')}}">
 
@@ -190,6 +190,15 @@
                                     <li><a href="{{route('painel.vendas')}}" key="t-saas">Consultar</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span key="t-dashboards">Carrinhos</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{route('painel.carrinhos.abertos')}}" key="t-saas">Abertos</a></li>
+                                </ul>
+                            </li>
 
                         </ul>
                     </div>
@@ -256,7 +265,4 @@
         @toastr_render
         @yield("scripts")
     </body>
-
-
-<!-- Mirrored from themesbrand.com/skote/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Feb 2021 12:50:10 GMT -->
 </html>

@@ -11,6 +11,11 @@
 @endsection
 
 @section('conteudo')
+<div class="row my-3">
+    <div class="col-12">
+        {{--  <a name="" id="" class="btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalCadastraRaca" role="button">Nova Reserva</a>  --}}
+    </div>
+</div>
 <div class="row justify-content-center">
     <div class="col-12">
         <div class="card">

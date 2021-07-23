@@ -28,4 +28,8 @@ class Cliente extends Model
     public function curtidas(){
         return $this->hasMany(CurtidaLote::class);
     }
+
+    public function analises(){
+        return $this->hasMany(CreditoAnalise::class);
+    }
 }

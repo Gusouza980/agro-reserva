@@ -136,6 +136,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/assessor/excluir/{assessor}', [\App\Http\Controllers\AssessoresController::class, 'excluir'])->name("painel.assessor.excluir");
 
     Route::get('/painel/clientes', [\App\Http\Controllers\ClienteController::class, 'index'])->name("painel.clientes");
+    Route::get('/painel/cliente/{cliente}', [\App\Http\Controllers\ClienteController::class, 'visualizar'])->name("painel.cliente.visualizar");
+    Route::get('/painel/cliente/{cliente}/credito/analistar', [\App\Http\Controllers\ClienteController::class, 'analise_credito'])->name("painel.cliente.credito.analise");
+    Route::post('/painel/cliente/{cliente}/dados/salvar', [\App\Http\Controllers\ClienteController::class, 'salvar_dados_gerais'])->name("painel.cliente.dados.salvar");
 
     // ROTAS RELACIONADAS A VENDAS
     Route::get('/painel/visitas', [\App\Http\Controllers\PainelController::class, 'visitas'])->name("painel.visitas");
@@ -144,6 +147,10 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/venda/boleto/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_boleto'])->name("painel.vendas.boleto.adicionar");
     Route::post('/painel/venda/nota/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_nota'])->name("painel.vendas.nota.adicionar");
     Route::get('/api/trocaStatusVenda/{venda}/{status}', [\App\Http\Controllers\ApiController::class, 'trocaStatusVenda']);
+
+    // ROTAS RELACIONADAS AOS CARRINHOS
+    Route::get('/painel/carrinhos/abertos', [\App\Http\Controllers\CarrinhoController::class, 'abertos'])->name("painel.carrinhos.abertos");
+
 
 });
 

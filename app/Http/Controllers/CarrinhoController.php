@@ -117,6 +117,7 @@ class CarrinhoController extends Controller
                 $carrinho->save();
             }else{
                 $lote->reservado = true;
+                $lote->fechado_por = 0;
                 $lote->save();
                 $venda = new Venda;
                 $venda->carrinho_id = $carrinho->id;
@@ -139,5 +140,10 @@ class CarrinhoController extends Controller
         $carrinho->save();
         session()->flash("reserva_finalizada");
         return redirect()->route('conta.index');
+    }
+
+    public function abertos(){
+        $carrinhos = Carrinho::where("aberto", true)->get();
+        return view("painel.carrinhos.index", ["carrinhos" => $carrinhos]);
     }
 }

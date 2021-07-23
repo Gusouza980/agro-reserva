@@ -44,7 +44,7 @@
                                 <td style="vertical-align: middle; text-align:center;">{{$cliente->whatsapp}}</td>
 
                                 <td style="vertical-align: middle; text-align:center;">
-                                    <a name="" id="" class="btn btn-warning cpointer" role="button">Visualizar</a>
+                                    <a href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}" name="" id="" class="btn btn-warning cpointer" role="button">Visualizar</a>
                                 </td>
                             </tr>
                         @endforeach

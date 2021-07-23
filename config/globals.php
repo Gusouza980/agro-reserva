@@ -10,6 +10,10 @@ return [
     'tipos_pagamento' => [
         0 => 'Boleto',
         1 => "Whatsapp"
+    ],
+    'fechamentos' => [
+        0 => 'Site',
+        1 => 'Consultor',
     ]
 ];
 

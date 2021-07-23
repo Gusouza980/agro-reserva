@@ -86,6 +86,6 @@ class ApiController extends Controller
             $venda->lote->save();
         }
         $venda->save();
-        return response()->json("sucesso");
+        return response()->json($status);
     }
 }

@@ -20,11 +20,29 @@ class SiteController extends Controller
             'Content-Type' => 'application/json'
         ])->post('https://api.scccheck.com.br/login', [
             "logon" => "3158814",
-            "senha" => base64_encode("berrante40")
+            "senha" => "berrante40"
+        ]);
+        if($response->status() == 200){
+            $token = $response->object()->token;
+        }
+
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer ' . $token
+        ])->post('https://api.scccheck.com.br/consultas/crednet', [
+            "achei_recheque" => false,
+            "tipo_pessoa" => "F",
+            "doc_consultado" => "111.021.656-46",
+            "adicionais" => [6, 19]
         ]);
 
-        // dd(base64_encode("berrante40"));
-        dd($response);
+        dd($response->object());
+
+        $res = json_decode($response->body());
+        dd($res->token);
+
+        // dd($response);
         $fazendas = Fazenda::where("ativo", true)->get();
         return view("index", ["fazendas" => $fazendas]);
         // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(
@@ -154,6 +172,8 @@ class SiteController extends Controller
     public function logar(Request $request){
         $usuario = Cliente::where("email", $request->email)->first();
         if(Hash::check($request->senha, $usuario->senha)){
+            $usuario->ultimo_acesso = date('Y-m-d');
+            $usuario->save();
             session(["cliente" => $usuario->toArray()]);
             $carrinho = Carrinho::where([["cliente_id", $usuario->id], ["aberto", true]])->first();
             if($carrinho){

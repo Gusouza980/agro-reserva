@@ -15,7 +15,7 @@ class CreateVendasTable extends Migration
     {
         Schema::create('vendas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("carrinho_id");
+            $table->unsignedBigInteger("carrinho_id")->nullable();
             $table->unsignedBigInteger("cliente_id");
             $table->unsignedBigInteger("assessor_id")->nullable();
             $table->unsignedBigInteger("lote_id");

@@ -27,14 +27,18 @@
                         <b>Parcelas:</b> {{$venda->parcelas}}x de {{number_format($venda->valor_parcela, 2, ",", ".")}}
                     </div>
                     <div class="col-3 d-flex align-items-center">
-                        <div class="form-floating mb-3" style="width: 250px;">
-                            <select class="form-select" id="select-situacao">
-                                @foreach(config("globals.situacoes") as $chave => $situacao)
-                                    <option value="{{$chave}}" @if($chave == $venda->situacao) selected @endif>{{$situacao}}</option>
-                                @endforeach
-                            </select>
-                            <label for="select-situacao">Situação</label>
-                        </div>
+                        @if($venda->situacao != 3)
+                            <div class="form-floating mb-3" style="width: 250px;">
+                                <select class="form-select" id="select-situacao">
+                                    @foreach(config("globals.situacoes") as $chave => $situacao)
+                                        <option value="{{$chave}}" @if($chave == $venda->situacao) selected @endif>{{$situacao}}</option>
+                                    @endforeach
+                                </select>
+                                <label for="select-situacao">Situação</label>
+                            </div>
+                        @else
+                            Reserva Cancelada
+                        @endif
                     </div>
                 </div>
 
@@ -385,6 +389,10 @@
                     type: 'GET',
                     dataType: 'JSON',
                     success: function(data) {
+                        if(data == 3){
+                            location.reload();
+                            return false;
+                        }
                         toastr.success('O status da venda foi alterado', 'Sucesso')
                     },
                     error: function(){

@@ -22,7 +22,6 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead class="text-center">
                         <tr>
-                            <th></th>
                             <th>Nome</th>
                             <th>Raça</th>
                             <th>Registro</th>
@@ -37,7 +36,6 @@
                     <tbody class="text-center">
                         @foreach($reserva->lotes as $lote)
                             <tr>
-                                <td></td>
                                 <td>{{$lote->nome}}</td>
                                 <td>{{$lote->raca->nome}}</td>
                                 <td>{{$lote->registro}}</td>
@@ -52,7 +50,9 @@
                                 </td>
                                 <td>
                                     <a name="" id="" class="btn btn-warning" href="{{route('painel.fazenda.reserva.lote.editar', ['lote' => $lote])}}" role="button">Editar</a>
-                                    {{--  <a name="" id="" class="btn btn-primary" href="{{route('painel.fazenda.lotes', ['fazenda' => $fazenda])}}" role="button">Lotes</a>  --}}
+                                    @if(!$lote->reservado)
+                                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalReservar" lid="{{$lote->id}}">Reservar</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -63,6 +63,47 @@
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
+<div class="modal fade" id="modalReservar" tabindex="-1" role="dialog" aria-labelledby="modalReservarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalReservarLabel">Reservar lote</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('painel.raca.cadastrar')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="lote_id" value="">
+                    <div class="form-floating mb-3">
+                        <select class="form-select" name="cliente">
+                            @foreach(\App\Models\Cliente::orderBy("nome_dono", "DESC")->get() as $cliente)
+                                <option value="{{$cliente->id}}">{{$cliente->nome_dono}}</option>
+                            @endforeach
+                        </select>
+                        <label for="select-situacao">Cliente</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" name="assessor">
+                            <option value="0">Nenhum</option>
+                            @foreach(\App\Models\Assessor::orderBy("nome", "DESC")->get() as $assessor)
+                                <option value="{{$assessor->id}}">{{$assessor->nome}}</option>
+                            @endforeach
+                        </select>
+                        <label for="select-situacao">Assessor</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Parcelas</label>
+                        <input type="number"
+                            class="form-control" name="parcelas" min="0" step="1">
+                    </div>
+                    <div class="form-group text-end">
+                        <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('scripts')
