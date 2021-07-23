@@ -162,7 +162,7 @@
                                                     <td style="vertical-align: middle; text-align:center;">{{$analise->doc_situacao}}</td>
                                                     <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y", strtotime($analise->data_situacao))}}</td>
                                                     <td style="vertical-align: middle; text-align:center;">
-                                                        {{--  <a href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}" name="" id="" class="btn btn-warning cpointer" role="button">Visualizar</a>  --}}
+                                                        <a name="" id="" class="btn btn-warning cpointer" data-bs-toggle="modal" data-bs-target="#modalAnalise{{$analise->id}}" role="button">Visualizar</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -181,7 +181,629 @@
     </div> <!-- end col -->
 </div> <!-- end row -->
 
+@foreach($cliente->analises as $analise)
 
+<div id="modalAnalise{{$analise->id}}" class="modal fade" tabindex="-1" aria-labelledby="#modalAnalise{{$analise->id}}Label" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="modalAnalise{{$analise->id}}Label">{{date("d/m/Y", strtotime($analise->created_at))}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#pessoais" role="tab">
+                                        <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                        <span class="d-none d-sm-block">Informações Pessoais</span> 
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#pendencias" role="tab">
+                                        <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                        <span class="d-none d-sm-block">Pendências</span> 
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#protestos" role="tab">
+                                        <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                        <span class="d-none d-sm-block">Protestos Estaduais</span> 
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#cheques" role="tab">
+                                        <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                        <span class="d-none d-sm-block">Cheques sem Fundo</span> 
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#consultas" role="tab">
+                                        <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                        <span class="d-none d-sm-block">Consultas</span> 
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#roubados" role="tab">
+                                        <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                        <span class="d-none d-sm-block">Documentos Roubados</span> 
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#relacionamento" role="tab">
+                                        <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                        <span class="d-none d-sm-block">Índice de Relacionamento</span> 
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#societaria" role="tab">
+                                        <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                        <span class="d-none d-sm-block">Participação Societária</span> 
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content p-3 text-muted">
+                                <div class="tab-pane active" id="pessoais" role="tabpanel">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <form class="mt-4" action="">
+                                                    <div class="row">
+                                                        <div class="form-group col-12 col-lg-6 mb-3">
+                                                            <label for="">Nome</label>
+                                                            <input type="text"
+                                                                class="form-control" name="" id="" readonly value="{{$analise->nome}}">
+                                                        </div>
+                                                        <div class="form-group col-12 col-lg-2 mb-3">
+                                                            <label for="">Nascimento</label>
+                                                            <input type="date"
+                                                                class="form-control" name="" id="" readonly value="{{$analise->nascimento}}">
+                                                        </div>
+                                                        <div class="form-group col-12 col-lg-2 mb-3">
+                                                            <label for="">Situação</label>
+                                                            <input type="text"
+                                                                class="form-control" name="" id="" readonly value="{{ucfirst($analise->doc_situacao)}}">
+                                                        </div>
+                                                        <div class="form-group col-12 col-lg-2 mb-3">
+                                                            <label for="">Data da Situação</label>
+                                                            <input type="date"
+                                                                class="form-control" name="" id="" readonly value="{{ucfirst($analise->data_situacao)}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-12 col-lg-2 mb-3">
+                                                            <label for="">CCF Indisponível</label>
+                                                            <input type="text"
+                                                                class="form-control" name="" id="" readonly value="@if($analise->ccf_disponivel) Sim @else Não @endif">
+                                                        </div>
+                                                        <div class="form-group col-12 col-lg-6 mb-3">
+                                                            <label for="">Nome da Mãe</label>
+                                                            <input type="text"
+                                                                class="form-control" name="" id="" readonly value="{{$analise->nome_mae}}">
+                                                        </div>
+                                                        <div class="form-group col-12 col-lg-4 mb-3">
+                                                            <label for="">Capacidade de Pagamento com Positivo</label>
+                                                            <input type="text"
+                                                                class="form-control" name="" id="" readonly value="@if($analise->capacidade_pagamento_com_positivo) R${{$analise->capacidade_pagamento_com_positivo}} @else Não Consultado @endif">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="pendencias" role="tabpanel">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <form class="mt-4" action="">
+                                                    @if($analise->pendencias->count() > 0)
+                                                        @foreach($analise->pendencias as $pendencia)
+                                                            <div class="row">
+                                                                <div class="form-group col-12 col-lg-4 mb-3">
+                                                                    <label for="">Modalidade</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$pendencia->modalidade}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Data da Ocorrência</label>
+                                                                    <input type="date"
+                                                                        class="form-control" name="" id="" readonly value="{{$pendencia->data_ocorrencia}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Valor</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$pendencia->tipo_moeda . number_format($pendencia->valor_pendencia, 2, ",", ".")}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Possui Avalista?</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="@if($pendencia->analista) Sim @else Não @endif">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Contrato</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$pendencia->contrato}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group col-12 col-lg-5 mb-3">
+                                                                    <label for="">Origem</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$pendencia->origem}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-3 mb-3">
+                                                                    <label for="">Tipo de Anotação</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$pendencia->tipo_anotacao}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-4 mb-3">
+                                                                    <label for="">Sigla Embratel da praça da ocorrência.</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$pendencia->praca_embratel}}">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                        @endforeach
+                                                    @else
+                                                        <div class="alert alert-primary text-center" role="alert">
+                                                            <strong>Não possui pendências</strong>
+                                                        </div>
+                                                    @endif
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="protestos" role="tabpanel">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <form class="mt-4" action="">
+                                                    @if($analise->protestos->count() > 0)
+                                                        @foreach($analise->protestos as $protesto)
+                                                            <div class="row">
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Data da Ocorrência</label>
+                                                                    <input type="date"
+                                                                        class="form-control" name="" id="" readonly value="{{$protesto->data_ocorrencia}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Valor</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$protesto->tipo_moeda . number_format($protesto->valor_protesto, 2, ",", ".")}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Cartório</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$protesto->cartorio}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Cidade</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$protesto->cidade}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-1 mb-3">
+                                                                    <label for="">UF</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$protesto->uf}}">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                        @endforeach
+                                                    @else
+                                                        <div class="alert alert-primary text-center" role="alert">
+                                                            <strong>Não possui protestos estaduais</strong>
+                                                        </div>
+                                                    @endif
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="cheques" role="tabpanel">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <form class="mt-4" action="">
+                                                    @if($analise->cheques->count() > 0)
+                                                        @foreach($analise->cheques as $cheque)
+                                                            <div class="row">
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Data da Ocorrência</label>
+                                                                    <input type="date"
+                                                                        class="form-control" name="" id="" readonly value="{{$cheque->data_ocorrencia}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Número</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$cheque->numero_cheque}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Alínea</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$cheque->alinea_cheque}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Qtd. CCF</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$cheque->quantidade_ccf}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Valor</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="R${{number_format($cheque->valor_cheque, 2, ',', '.')}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Número do Banco</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="R${{$cheque->numbero_banco}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group col-12 col-lg-4 mb-3">
+                                                                    <label for="">Nome do Banco</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$cheque->nome_banco}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Agência</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$cheque->agencia}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-3 mb-3">
+                                                                    <label for="">Cidade</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$cheque->cidade}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-1 mb-3">
+                                                                    <label for="">UF</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$cheque->uf}}">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                        @endforeach
+                                                    @else
+                                                        <div class="alert alert-primary text-center" role="alert">
+                                                            <strong>Não possui protestos estaduais</strong>
+                                                        </div>
+                                                    @endif
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="consultas" role="tabpanel">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <form class="mt-4" action="">
+                                                    @if($analise->cheque_interno)
+                                                        <div class="row mb-3">
+                                                            <div class="col-12">
+                                                                <h5>Cheque Interno</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-12 col-lg-4 mb-3">
+                                                                <label for="">Data do Primeiro Cheque a Vista</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_interno->dia_mes_primeiro_cheque_a_vista}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-4 mb-3">
+                                                                <label for="">Data do Último Cheque a Vista</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_interno->dia_mes_ultimo_cheque_a_vista}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-4 mb-3">
+                                                                <label for="">Total de 15 dias a Vista</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_interno->tot_15_dias_a_vista}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Total de 30 dias a Prazo</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_interno->tot_30_dias_a_prazo}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Total de 60 dias a Prazo</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_interno->tot_60_dias_a_prazo}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Total de 90 dias a Prazo</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_interno->tot_90_dias_a_prazo}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Total de Cheques a Prazo</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_interno->tot_cheques_prazo}}">
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @endif
+                                                    @if($analise->cheque_mercado)
+                                                        <div class="row mb-3">
+                                                            <div class="col-12">
+                                                                <h5>Cheque Mercado</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-12 col-lg-4 mb-3">
+                                                                <label for="">Data do Primeiro Cheque a Vista</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_mercado->dia_mes_primeiro_cheque_a_vista}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-4 mb-3">
+                                                                <label for="">Data do Último Cheque a Vista</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_mercado->dia_mes_ultimo_cheque_a_vista}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-4 mb-3">
+                                                                <label for="">Total de 15 dias a Vista</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_mercado->tot_15_dias_a_vista}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Total de 30 dias a Prazo</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_mercado->tot_30_dias_a_prazo}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Total de 60 dias a Prazo</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_mercado->tot_60_dias_a_prazo}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Total de 90 dias a Prazo</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_mercado->tot_90_dias_a_prazo}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Total de Cheques a Prazo</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->cheque_mercado->tot_cheques_prazo}}">
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @endif
+                                                    @if($analise->referencia_comercial)
+                                                        <div class="row mb-3">
+                                                            <div class="col-12">
+                                                                <h5>Referências Comerciais</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Consultante 1</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->referencia_comercial->consultante_1}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Data da Consulta 1</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->referencia_comercial->dia_mes_consulta_1}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Consultante 2</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->referencia_comercial->consultante_2}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Data da Consulta 2</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->referencia_comercial->dia_mes_consulta_2}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Consultante 3</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->referencia_comercial->consultante_3}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Data da Consulta 3</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->referencia_comercial->dia_mes_consulta_3}}">
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @endif
+                                                    @if($analise->sem_cheque)
+                                                        <div class="row mb-3">
+                                                            <div class="col-12">
+                                                                <h5>Sem Cheque</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Consultas em 15 dias</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->sem_cheque->qtd_consultas_15_dias}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Consultas em 30 dias</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->sem_cheque->qtd_consultas_30_dias}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Consultas em 60 dias</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->sem_cheque->qtd_consultas_60_dias}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-3 mb-3">
+                                                                <label for="">Consultas em 90 dias</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$analise->sem_cheque->qtd_consultas_90_dias}}">
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @endif
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="roubados" role="tabpanel">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <form class="mt-4" action="">
+                                                    @if($analise->documentos_roubados->count() > 0)
+                                                        @foreach($analise->documentos_roubados as $documento)
+                                                            <div class="row">
+                                                                <div class="form-group col-12 col-lg-3 mb-3">
+                                                                    <label for="">Tipo de Documento</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$documento->tipo_documento}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-3 mb-3">
+                                                                    <label for="">Número do Documento</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$documento->num_documento}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-3 mb-3">
+                                                                    <label for="">Data de Ocorrência</label>
+                                                                    <input type="date"
+                                                                        class="form-control" name="" id="" readonly value="{{$documento->dt_ocorrencia}}">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                        @endforeach
+                                                    @else
+                                                        <div class="alert alert-primary text-center" role="alert">
+                                                            <strong>Não possui alertas de documentos roubados</strong>
+                                                        </div>
+                                                    @endif
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="relacionamento" role="tabpanel">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <form class="mt-4" action="">
+                                                    @if($analise->indice_relacionamento->count() > 0)
+                                                        @foreach($analise->indice_relacionamento as $relacionamento)
+                                                            <div class="row">
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Código do Setor</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$relacionamento->cod_setor}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-3 mb-3">
+                                                                    <label for="">Descrição do Setor</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$relacionamento->desc_setor}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-1 mb-3">
+                                                                    <label for="">Faixa</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$relacionamento->faixa}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-3 mb-3">
+                                                                    <label for="">Relacionamento</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$relacionamento->relacionamento}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-3 mb-3">
+                                                                    <label for="">Tendência</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$relacionamento->tendencia}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-12 mb-3">
+                                                                    <label for="">Mensagem</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$relacionamento->mensagem}}">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                        @endforeach
+                                                    @else
+                                                        <div class="alert alert-primary text-center" role="alert">
+                                                            <strong>Não possui índices de relacionamento ou não foi consultado</strong>
+                                                        </div>
+                                                    @endif
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="societaria" role="tabpanel">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <form class="mt-4" action="">
+                                                    @if($analise->participacao_societaria->count() > 0)
+                                                        @foreach($analise->participacao_societaria as $participacao)
+                                                            <div class="row">
+                                                                <div class="form-group col-12 col-lg-6 mb-3">
+                                                                    <label for="">Nome da Empresa</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$participacao->nome_empresa}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-3 mb-3">
+                                                                    <label for="">CNPJ</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$participacao->cnpj_empresa}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-3 mb-3">
+                                                                    <label for="">Percentual de Participacao</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$participacao->percentual_participacao}}%">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-1 mb-3">
+                                                                    <label for="">UF</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$participacao->uf}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Início da Participação</label>
+                                                                    <input type="date"
+                                                                        class="form-control" name="" id="" readonly value="{{$participacao->dt_inicio_participacao}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-2 mb-3">
+                                                                    <label for="">Última Atualização</label>
+                                                                    <input type="date"
+                                                                        class="form-control" name="" id="" readonly value="{{$participacao->dt_atualizacao}}">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-1 mb-3">
+                                                                    <label for="">Restrição</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="@if($participacao->possui_restricao) Sim @else Não @endif">
+                                                                </div>
+                                                                <div class="form-group col-12 col-lg-4 mb-3">
+                                                                    <label for="">Situação</label>
+                                                                    <input type="text"
+                                                                        class="form-control" name="" id="" readonly value="{{$participacao->situacao_empresa}}">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                        @endforeach
+                                                    @else
+                                                        <div class="alert alert-primary text-center" role="alert">
+                                                            <strong>Não possui participações societárias</strong>
+                                                        </div>
+                                                    @endif
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+@endforeach
 
 @endsection
 

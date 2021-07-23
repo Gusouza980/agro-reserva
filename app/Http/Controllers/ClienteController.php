@@ -166,11 +166,9 @@ class ClienteController extends Controller
             "achei_recheque" => false,
             "tipo_pessoa" => "F",
             "doc_consultado" => "111.021.656-46",
-            "adicionais" => [6, 19]
+            // "adicionais" => [6, 19]
         ]);
         
-        dd($response->object());
-
         if($response->status() == 200){
 
             $res = $response->object();
@@ -184,8 +182,11 @@ class ClienteController extends Controller
             $analise->data_situacao = $res->confirmei->detalhe->dt_situacao;
             $analise->ccf_disponivel = $res->confirmei->detalhe->ccf_indisponivel;
             $analise->nome_mae = $res->confirmei->detalhe->nome_mae;
-            if($res->capacidade_pagamento_com_positivo->detalhe)
-                $analise->capacidade_pagamento_com_positivo = $res->capacidade_pagamento_com_positivo->detalhe->vlr_capacidade_pagamento;
+            if(isset($res->capacidade_pagamento_com_positivo)){
+                if(isset($res->capacidade_pagamento_com_positivo->detalhe)){
+                    $analise->capacidade_pagamento_com_positivo = $res->capacidade_pagamento_com_positivo->detalhe->vlr_capacidade_pagamento;
+                }
+            }
             $analise->save();
 
             foreach($res->pendencias_financeiras->detalhes as $pend){
@@ -238,48 +239,48 @@ class ClienteController extends Controller
             if(isset($res->consultas_serasa->consultas_cheques_interno)){
                 $consulta = new ConsultaChequeInterno;
                 $consulta->credito_analise_id = $analise->id;
-                $consulta->dia_mes_primeiro_cheque_a_vista = $$res->consultas_serasa->consultas_cheques_interno->dia_mes_primeiro_cheque_a_vista;
-                $consulta->dia_mes_ultimo_cheque_a_vista = $$res->consultas_serasa->consultas_cheques_interno->dia_mes_ultimo_cheque_a_vista;
-                $consulta->tot_15_dias_a_vista = $$res->consultas_serasa->consultas_cheques_interno->tot_15_dias_a_vista;
-                $consulta->tot_30_dias_a_prazo = $$res->consultas_serasa->consultas_cheques_interno->tot_30_dias_a_prazo;
-                $consulta->tot_60_dias_a_prazo = $$res->consultas_serasa->consultas_cheques_interno->tot_60_dias_a_prazo;
-                $consulta->tot_90_dias_a_prazo = $$res->consultas_serasa->consultas_cheques_interno->tot_90_dias_a_prazo;
-                $consulta->tot_cheques_prazo = $$res->consultas_serasa->consultas_cheques_interno->tot_cheques_prazo;
+                $consulta->dia_mes_primeiro_cheque_a_vista = $res->consultas_serasa->consultas_cheques_interno->dia_mes_primeiro_cheque_a_vista;
+                $consulta->dia_mes_ultimo_cheque_a_vista = $res->consultas_serasa->consultas_cheques_interno->dia_mes_ultimo_cheque_a_vista;
+                $consulta->tot_15_dias_a_vista = $res->consultas_serasa->consultas_cheques_interno->tot_15_dias_a_vista;
+                $consulta->tot_30_dias_a_prazo = $res->consultas_serasa->consultas_cheques_interno->tot_30_dias_a_prazo;
+                $consulta->tot_60_dias_a_prazo = $res->consultas_serasa->consultas_cheques_interno->tot_60_dias_a_prazo;
+                $consulta->tot_90_dias_a_prazo = $res->consultas_serasa->consultas_cheques_interno->tot_90_dias_a_prazo;
+                $consulta->tot_cheques_prazo = $res->consultas_serasa->consultas_cheques_interno->tot_cheques_prazo;
                 $consulta->save();
             }
 
             if(isset($res->consultas_serasa->consultas_cheques_mercado)){
                 $consulta = new ConsultaChequeMercado;
                 $consulta->credito_analise_id = $analise->id;
-                $consulta->dia_mes_primeiro_cheque_a_vista = $$res->consultas_serasa->consultas_cheques_mercado->dia_mes_primeiro_cheque_a_vista;
-                $consulta->dia_mes_ultimo_cheque_a_vista = $$res->consultas_serasa->consultas_cheques_mercado->dia_mes_ultimo_cheque_a_vista;
-                $consulta->tot_15_dias_a_vista = $$res->consultas_serasa->consultas_cheques_mercado->tot_15_dias_a_vista;
-                $consulta->tot_30_dias_a_prazo = $$res->consultas_serasa->consultas_cheques_mercado->tot_30_dias_a_prazo;
-                $consulta->tot_60_dias_a_prazo = $$res->consultas_serasa->consultas_cheques_mercado->tot_60_dias_a_prazo;
-                $consulta->tot_90_dias_a_prazo = $$res->consultas_serasa->consultas_cheques_mercado->tot_90_dias_a_prazo;
-                $consulta->tot_cheques_prazo = $$res->consultas_serasa->consultas_cheques_mercado->tot_cheques_prazo;
+                $consulta->dia_mes_primeiro_cheque_a_vista = $res->consultas_serasa->consultas_cheques_mercado->dia_mes_primeiro_cheque_a_vista;
+                $consulta->dia_mes_ultimo_cheque_a_vista = $res->consultas_serasa->consultas_cheques_mercado->dia_mes_ultimo_cheque_a_vista;
+                $consulta->tot_15_dias_a_vista = $res->consultas_serasa->consultas_cheques_mercado->tot_15_dias_a_vista;
+                $consulta->tot_30_dias_a_prazo = $res->consultas_serasa->consultas_cheques_mercado->tot_30_dias_a_prazo;
+                $consulta->tot_60_dias_a_prazo = $res->consultas_serasa->consultas_cheques_mercado->tot_60_dias_a_prazo;
+                $consulta->tot_90_dias_a_prazo = $res->consultas_serasa->consultas_cheques_mercado->tot_90_dias_a_prazo;
+                $consulta->tot_cheques_prazo = $res->consultas_serasa->consultas_cheques_mercado->tot_cheques_prazo;
                 $consulta->save();
             }
 
             if(isset($res->consultas_serasa->referencia_comercial)){
                 $consulta = new ConsultaReferenciaComercial;
                 $consulta->credito_analise_id = $analise->id;
-                $consulta->consultante_1 = $$res->consultas_serasa->referencia_comercial->consultante_1;
-                $consulta->dia_mes_consulta_1 = $$res->consultas_serasa->referencia_comercial->dia_mes_consulta_1;
-                $consulta->consultante_2 = $$res->consultas_serasa->referencia_comercial->consultante_2;
-                $consulta->dia_mes_consulta_2 = $$res->consultas_serasa->referencia_comercial->dia_mes_consulta_2;
-                $consulta->consultante_3 = $$res->consultas_serasa->referencia_comercial->consultante_3;
-                $consulta->dia_mes_consulta_3 = $$res->consultas_serasa->referencia_comercial->dia_mes_consulta_3;
+                $consulta->consultante_1 = $res->consultas_serasa->referencia_comercial->consultante_1;
+                $consulta->dia_mes_consulta_1 = $res->consultas_serasa->referencia_comercial->dia_mes_consulta_1;
+                $consulta->consultante_2 = $res->consultas_serasa->referencia_comercial->consultante_2;
+                $consulta->dia_mes_consulta_2 = $res->consultas_serasa->referencia_comercial->dia_mes_consulta_2;
+                $consulta->consultante_3 = $res->consultas_serasa->referencia_comercial->consultante_3;
+                $consulta->dia_mes_consulta_3 = $res->consultas_serasa->referencia_comercial->dia_mes_consulta_3;
                 $consulta->save();
             }
 
             if(isset($res->consultas_serasa->consultas_sem_cheques)){
                 $consulta = new ConsultaSemCheque;
                 $consulta->credito_analise_id = $analise->id;
-                $consulta->qtd_consultas_15_dias = $$res->consultas_serasa->consultas_sem_cheques->qtd_consultas_15_dias;
-                $consulta->qtd_consultas_30_dias = $$res->consultas_serasa->consultas_sem_cheques->qtd_consultas_30_dias;
-                $consulta->qtd_consultas_60_dias = $$res->consultas_serasa->consultas_sem_cheques->qtd_consultas_60_dias;
-                $consulta->qtd_consultas_90_dias = $$res->consultas_serasa->consultas_sem_cheques->qtd_consultas_90_dias;
+                $consulta->qtd_consultas_15_dias = $res->consultas_serasa->consultas_sem_cheques->qtd_consultas_15_dias;
+                $consulta->qtd_consultas_30_dias = $res->consultas_serasa->consultas_sem_cheques->qtd_consultas_30_dias;
+                $consulta->qtd_consultas_60_dias = $res->consultas_serasa->consultas_sem_cheques->qtd_consultas_60_dias;
+                $consulta->qtd_consultas_90_dias = $res->consultas_serasa->consultas_sem_cheques->qtd_consultas_90_dias;
                 $consulta->save();
             }
 
@@ -294,26 +295,28 @@ class ClienteController extends Controller
                 }
             }
 
-            if(isset($res->indice_relacionamento_mercado_setor->detalhes)){
-                foreach($res->indice_relacionamento_mercado_setor->detalhes as $indi){
-                    $indice = new IndiceRelacionamentoSetor;
-                    $indice->credito_analise_id = $analise->id;
-                    $indice->cod_setor = $indi->cod_setor;
-                    $indice->desc_setor = $indi->desc_setor;
-                    $indice->faixa = $indi->faixa;
-                    $indice->relacionamento = $indi->relacionamento;
-                    $indice->relacionamento = $indi->relacionamento;
-                    $indice->relacionamento = $indi->relacionamento;
-                    $indice->save();
+            if(isset($res->indice_relacionamento_mercado_setor)){
+                if(isset($res->indice_relacionamento_mercado_setor->detalhes)){
+                    foreach($res->indice_relacionamento_mercado_setor->detalhes as $indi){
+                        $indice = new IndiceRelacionamentoSetor;
+                        $indice->credito_analise_id = $analise->id;
+                        $indice->cod_setor = $indi->cod_setor;
+                        $indice->desc_setor = $indi->desc_setor;
+                        $indice->faixa = $indi->faixa;
+                        $indice->relacionamento = $indi->relacionamento;
+                        $indice->relacionamento = $indi->relacionamento;
+                        $indice->relacionamento = $indi->relacionamento;
+                        $indice->save();
+                    }
                 }
             }
-
+            
             if(isset($res->participacao_societaria->detalhes)){
                 foreach($res->participacao_societaria->detalhes as $part){
                     $participacao = new ParticipacaoSocietaria;
                     $participacao->credito_analise_id = $analise->id;
                     $participacao->nome_empresa = $part->nome_empresa;
-                    $participacao->nome_empresa = $part->nome_empresa;
+                    $participacao->cnpj_empresa = $part->cnpj_empresa;
                     $participacao->percentual_participacao = $part->percentual_participacao;
                     $participacao->uf = $part->uf;
                     $participacao->dt_inicio_participacao = $part->dt_inicio_participacao;
