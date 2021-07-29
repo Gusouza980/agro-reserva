@@ -64,21 +64,23 @@
 				{{--  <div class="col-lg-2 text-left d-flex text-white align-items-center">
 					<span class="text-nav-header"><a href="{{route('index')}}"><span style="border-bottom: 2px solid #E65454;">Ver</span> todas as reservas</a></span> 
 				</div>  --}}
-				<div class="col-lg-4 d-flex text-white justify-content-end align-items-center">
+				<div class="col-lg-4 d-flex text-white justify-content-start align-items-center">
 					{{--  <a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a>  --}}
                     @if(!session()->get("cliente"))
-					    <span  class="text-nav-header"><a href="{{route('cadastro')}}"><span style="border-bottom: 2px solid #E65454;">Cad</span>astre-se para comprar</a></span> 
+					    <span  class="text-nav-header"><a href="{{route('cadastro')}}">Blog</a></span> 
+                        <span  class="text-nav-header mx-4"><a href="{{route('cadastro')}}">Quem somos</a></span> 
+                        <span  class="text-nav-header"><a href="{{route('cadastro')}}">Como comprar</a></span> 
                     @endif
                 </div>
 				<div class="col-lg-5 d-flex text-white justify-content-end align-items-center">
-					<span>
+					<span class="text-nav-header">
                         {{--  @if($_SESSION["userid"])  --}}
                         @if(session()->get("cliente"))
                             Bem vindo @if(isset(session()->get("cliente")["nome_dono"])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif
                             <span class="ml-3 text-nav-header"><a href="{{route('conta.index')}}"><span style="border-bottom: 2px solid #E65454;">Min</span>ha conta</a></span> </span>
                             
                         @else
-                            <a class="text-nav-header" href="{{route('login')}}">Entrar</a>
+                            <a href="{{route('login')}}">Entrar</a>
                         @endif
                     </span> 
                     @if(session()->get("carrinho"))

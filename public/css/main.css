@@ -435,13 +435,13 @@ label {
 }
 
 .text-nav-header>a.active {
-    border-bottom: 2px solid #E65454;
-    color: #E65454 !important;
+    border-bottom: 2px solid #FEB000;
+    color: #FEB000 !important;
 }
 
 .text-nav-header>a:hover {
-    border-bottom: 2px solid #E65454;
-    color: #E65454 !important;
+    border-bottom: 2px solid #FEB000;
+    color: #FEB000 !important;
 }
 
 #header-index {
