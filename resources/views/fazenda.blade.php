@@ -20,7 +20,7 @@
     @endif
 
     <div style="background: url(/{{$background}}); background-size: cover;">
-        <div class="pb-5" style="background-color: rgba(0,0,0,0.5);">
+        <div class="" style="background-color: rgba(0,0,0,0.5);">
             <div class="container-fluid py-5" id="nav-fazenda">
                 <div class="container">
                     <div class="row">
@@ -28,18 +28,18 @@
                             <img src="{{asset($fazenda->logo)}}" style="max-width: 100%;" alt="">
                         </div>
                         <div class="col-12 col-md-9 d-none d-lg-flex align-items-center text-white text-nav-fazenda">
-                            <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #E65454;">Con</span>heça a fazenda</span></a> 
-                            <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #E65454;">Lot</span>es a venda</span> </a>
+                            <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #FEB000;">Con</span>heça a fazenda</span></a> 
+                            <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #FEB000;">Lot</span>es a venda</span> </a>
                         </div>
                         <div class="col-12 d-block d-lg-none">
                             <div class="row">
                                 <div class="col-12 text-nav-fazenda text-center mt-4">
-                                    <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #E65454;">Con</span>heça a fazenda</span></a> 
+                                    <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #FEB000;">Con</span>heça a fazenda</span></a> 
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 text-nav-fazenda text-center mt-4">
-                                    <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #E65454;">Lot</span>es a venda</span> </a>
+                                    <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #FEB000;">Lot</span>es a venda</span> </a>
                                 </div>
                             </div>
                         </div>
@@ -116,8 +116,8 @@
                     <a href="" class="btn btn-vermelho px-4 py-2">Falar com Consultor</a>
                 </div>
             </div>
-            <div class="d-sm-none d-md-block w-100">
-                @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])))
+            <div class="w-100 py-4">
+                @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug]))
                     @include('includes.fazenda.conheca')
                 @elseif(url()->current() == route("fazenda.conheca.lotes", ['fazenda' => $fazenda->slug]))
                     @include('includes.fazenda.lotes')
