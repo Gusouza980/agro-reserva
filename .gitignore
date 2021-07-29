@@ -1,7 +1,6 @@
 /node_modules
 /public/hot
 /public/storage
-/public/imagens/fazendas
 /storage/*.key
 /vendor
 .env
