@@ -464,6 +464,10 @@ label {
     #container-section1{
         margin-top: 40px;
     } 
+
+    #row-section1-fazendas{
+        margin-top: 0px;
+    }
 }
 
 .text-header-index>h4 {
