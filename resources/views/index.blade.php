@@ -5,37 +5,35 @@
     
         <div class="d-flex align-items-center" id="header-index">
             <div class="container-fluid py-5" >
-                {{--  <div class="container mt-auto">  --}}
-                    <div class="row py-5 justify-content-center">
-                        @foreach($reservas as $reserva)
-                            <div class="px-0 mt-4 mt-lg-0 mx-0 mx-lg-2">
-                                <div style="background: url(/{{$reserva->fazenda->fundo_destaque}}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
-                                    <div class="d-flex align-items-center" style="padding: 10px 0px; background-color: rgba(0,0,0,0.9); height: 250px; border-radius: 15px;">
-                                        <div class="container-fluid">
-                                            <div class="row" style="">
-                                                <div class="col-12 text-center">
-                                                    <img src="{{asset($reserva->fazenda->logo)}}" style="max-width: 100%; height: 80px;" alt="{{$reserva->fazenda->nome}}">
-                                                </div>
+                <div class="row py-5 justify-content-center">
+                    @foreach($reservas as $reserva)
+                        <div class="px-0 mt-4 mt-lg-0 mx-0 mx-lg-2">
+                            <div style="background: url(/{{$reserva->fazenda->fundo_destaque}}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
+                                <div class="d-flex align-items-center" style="padding: 10px 0px; background-color: rgba(0,0,0,0.9); height: 250px; border-radius: 15px;">
+                                    <div class="container-fluid">
+                                        <div class="row" style="">
+                                            <div class="col-12 text-center">
+                                                <img src="{{asset($reserva->fazenda->logo)}}" style="max-width: 100%; height: 80px;" alt="{{$reserva->fazenda->nome}}">
                                             </div>
-                                            <div class="row mt-3" style="">
-                                                <div class="col-12 text-center">
-                                                    <h1 class="text-abertura">Abertura</h1>
-                                                    <h2 class="data-abertura mt-n2">{{date("d/m/Y", strtotime($reserva->inicio))}}</h2>
-                                                </div>
+                                        </div>
+                                        <div class="row mt-3" style="">
+                                            <div class="col-12 text-center">
+                                                <h1 class="text-abertura">Abertura</h1>
+                                                <h2 class="data-abertura mt-n2">{{date("d/m/Y", strtotime($reserva->inicio))}}</h2>
                                             </div>
-                                            <div class="row mt-3" style="">
-                                                <div class="col-12 text-center">
-                                                    <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $reserva->fazenda->slug])}}" role="button">Mostrar a Reserva</a>
-                                                </div>
+                                        </div>
+                                        <div class="row mt-3" style="">
+                                            <div class="col-12 text-center">
+                                                <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $reserva->fazenda->slug])}}" role="button">Mostrar a Reserva</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                        
-                    </div>
-                {{--  </div>  --}}
+                        </div>
+                    @endforeach
+                    
+                </div>
                 <div class="row">
                     <div class="col-12 text-center text-white">
                         <i class="fas fa-mouse fa-2x"></i>
