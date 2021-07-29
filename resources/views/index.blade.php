@@ -7,8 +7,7 @@
             <div class="container-fluid py-5" id="container-section1">
                 <div class="row">
                     <div class="col-12 text-center text-header-index">
-                        <h3>SOMOS A AGRO RESERVA</h3>
-                        <h3>A PLATAFORMA DE COMPRA E VENDA DAS MARCAS QUE EVOLUEM A PECUÁRIA</h3>
+                        <h3>SOMOS A PLATAFORMA<br>DE COMPRA E VENDA DAS MARCAS QUE EVOLUEM A PECUÁRIA</h3>
                     </div>
                 </div>
                 <div class="row py-5 justify-content-center">

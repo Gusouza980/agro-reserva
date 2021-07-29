@@ -458,7 +458,7 @@ label {
 
 @media(max-width:768px){
     #container-section1{
-        margin-top: 50px;
+        margin-top: 40px;
     } 
 }
 
@@ -488,6 +488,15 @@ label {
 
 .section1-terra{
     width: 300px;
+}
+
+@media(max-width:768px){
+    .text-header-index > h3{
+        font-size: 1.7rem;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 400;
+        color: white;
+    }
 }
 
 @media (max-width: 1673px){
