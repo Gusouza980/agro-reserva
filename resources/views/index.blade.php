@@ -2,16 +2,22 @@
 
 
 @section('conteudo')
-    
-        <div class="d-flex align-items-center" id="header-index">
-            <div class="container-fluid py-5" >
+    <div class="container-fluid px-0">
+        <div class="d-flex" id="header-index">
+            <div class="container-fluid py-5" id="container-section1">
+                <div class="row">
+                    <div class="col-12 text-center text-header-index">
+                        <h3>SOMOS A AGRO RESERVA</h3>
+                        <h3>A PLATAFORMA DE COMPRA E VENDA DAS MARCAS QUE EVOLUEM A PECUÁRIA</h3>
+                    </div>
+                </div>
                 <div class="row py-5 justify-content-center">
                     @php
                         $first = $reservas->first();
                     @endphp
                     <div class="px-0 mt-4 mt-lg-0 mx-0 mx-lg-2">
                         <div style="background: url(/{{$first->fazenda->fundo_destaque}}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
-                            <div class="d-flex align-items-center" style="padding: 10px 0px; background-color: rgba(0,0,0,0.9); height: 250px; border-radius: 15px;">
+                            <div class="d-flex align-items-center" style="padding: 10px 0px; background-color: rgba(0,0,0,0.6); height: 250px; border-radius: 15px;">
                                 <div class="container-fluid">
                                     <div class="row" style="">
                                         <div class="col-12 text-center">

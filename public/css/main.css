@@ -445,22 +445,28 @@ label {
 }
 
 #header-index {
-    min-height: 90vh;
+    min-height: 110vh;
     background: url(../imagens/bg-home-min.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+#container-section1{
+    margin-top: 300px;
 }
 
 .text-header-index>h4 {
     font-size: 1.7rem;
     font-family: 'Titillium Web', sans-serif;
     font-weight: 400;
+    color: white;
 }
 
 .text-header-index>h3 {
     font-size: 2.3rem;
     font-family: 'Titillium Web', sans-serif;
     font-weight: 400;
+    color: white;
 }
 
 .text-header-index>h2 {
