@@ -5,7 +5,7 @@
     
         <div class="d-flex align-items-center" id="header-index">
             <div class="container-fluid py-5" >
-                <div class="container mt-auto">
+                {{--  <div class="container mt-auto">  --}}
                     <div class="row py-5 justify-content-center">
                         @foreach($reservas as $reserva)
                             <div class="px-0 mt-4 mt-lg-0 mx-0 mx-lg-2">
@@ -35,7 +35,7 @@
                         @endforeach
                         
                     </div>
-                </div>
+                {{--  </div>  --}}
                 <div class="row">
                     <div class="col-12 text-center text-white">
                         <i class="fas fa-mouse fa-2x"></i>
