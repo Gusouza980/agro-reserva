@@ -94,12 +94,12 @@
 
 	@yield('conteudo')
 
-    <div class="container-fluid" id="footer" style="background: url(/imagens/bg-footer.png); background-size: cover; background-position:center; background-repeat: no-repeat;">
+    <div class="container-fluid" id="footer" style="background: url(/imagens/rodape.jpg); background-size: cover; background-position:center; background-repeat: no-repeat;">
         <div class="row align-items-center py-5">
-            <div class="col-12 offset-lg-4 col-lg-4 text-center">
+            <div class="col-12 col-lg-4 text-center">
                 <img src="{{asset('imagens/logo-footer.png')}}" style="width:100%; max-width: 307px;" alt="">
             </div>
-            <div class="col-12 col-lg-4 mt-5 mt-lg-0">
+            <div class="col-12 offset-lg-4 col-lg-4 mt-5 mt-lg-0">
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
@@ -115,6 +115,11 @@
                         <div class="row mt-3">
                             <div class="col-12 text-nav-footer text-center text-lg-left">
                                 <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #E65454;">Cad</span>astre-se para comprar</span> </a>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #E65454;">Ent</span>re em contato</span> </a>
                             </div>
                         </div>
                     </div>

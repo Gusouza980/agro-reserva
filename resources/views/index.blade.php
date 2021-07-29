@@ -78,7 +78,7 @@
                         <div class="text-viva">
                             <h1>VIVA</h1>
                         </div>
-                        <div class="ml-3 text-viva">
+                        <div class="ml-3 text-viva text-center text-lg-left">
                             <h2>a nova era da<br>comercialização<br>de gado.</h2>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="w1200 mx-auto">
                     <div class="row">
-                        <div class="col-12 text-viva">
+                        <div class="col-12 text-viva text-center text-lg-left mt-5 mt-lg-0">
                             <span>Somos a Agro Reserva. A plataforma digital de comercialização de gado que conecta as grandes marcas produtoras de genética aos compradores do mundo inteiro, 365 dias por ano, 07 dias por semana, 24 horas por dia. Aqui você compra sem pressa, com um atendimento que te acompanha até o pós-venda. Aqui você vende com toda segurança, menor custo promocional e muito mais alcance. Aqui a gente respeita a sua jornada e a sua experiência vale cada @.</span>
                         </div>
                     </div>
@@ -99,104 +99,36 @@
         </div>
     </div>
     <div class="container-fluid px-0">
-        <div class="row mx-0" id="tarja-branca">
+        <div class="row align-items-center mx-0" id="tarja-branca">
             <div class="col-12">
-                
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid mt-5">
-        <div class="container1016">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h1>
-                        Por que comprar? 
-                    </h1>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-12 col-lg-6">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <img src="{{asset('imagens/no-cash.png')}}" width="70" alt="Sem custo">
+                <div class="w1200 mx-auto">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="text-digital text-left text-lg-right">
+                            <h1>100% Digital</h1>
+                            <h2>100% Pecuária</h2>
+                            <h3>100% Com você</h3>
+                        </div>
+                        <div class="px-3 px-lg-0 ml-lg-4 text-digital text-center text-lg-left">
+                            <span>
+                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr,<br>sed diam nonumy eirmod tempor invidunt ut labore et<br>dolore magna aliquyam erat, sed diam voluptua. At vero<br>eos et accusam et justo duo dolores et ea rebum. Stet clita<br>kasd gubergren, no sea takimata
+                            </span>
                         </div>
                     </div>
-                    <div class="row mt-2">
-                        <div class="col-12 text-center">
-                            <h2>Sem custo inicial</h2>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-12 text-center">
-                            <p>Você não terá que pagar nada antes que a venda de um lote seja efetuada</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <img src="{{asset('imagens/camera.png')}}" width="70" alt="Sem custo">
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-12 text-center">
-                            <h2>Produção por nossa conta</h2>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-12 text-center">
-                            <p>Você receberá <b>gratuitamente</b> toda a produção de conteúdo (fotos, vídeos e redação) de alta qualidade.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-12 text-center">
-                    <a href="" class="btn btn-vermelho px-4 py-2">Quero vender</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid bg-white" style="position: relative;" id="section1-index">
-        <img class="d-none d-xl-block section1-terra" style="position: absolute; left: 0px; bottom: 5%; transform: scaleX(-1);" src="{{asset('imagens/terralateral.png')}}" alt="Terra">
-        <img class="d-none d-xl-block section1-terra" style="position: absolute; right: 0px; top: 5%;" src="{{asset('imagens/terralateral.png')}}" alt="Terra">
-        <div class="row mt-5 py-5 justify-content-center">
-            <div class="col-12 px-3 col-md-10 col-lg-8 text-section1-index text-center">
-                <h2>
-                    Lorem ipsum dolor sit amet,<br> consetetur sadipscing elitr, sed
-                </h2>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-10 px-3 col-sm-8 col-md-8 col-lg-4 text-section1-index video-container text-center">
-                <iframe src="https://www.youtube.com/embed/klZNNUz4wPQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="row mt-5 py-5 justify-content-center">
-            <div class="col-12 text-section1-index text-center">
-                <div class="text-section1-index-div text-section1-index">
-                    <span>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata                
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-     <div class="container-fluid bg-cinza">
-        <div class="row d-flex align-items-center" id="section2-index">
+    <div class="container-fluid mt-n5">
+        <div class="row align-items-center" id="cta-comissao">
             <div class="col-12">
-                <div class="row">
-                    <div class="col-12 text-center text-section2-index">
-                        <h2>0% de comissão</h2>
-                        <h3>do comprador</h3>
-                    </div>  
-                </div>
-                <div class="row mt-4">
-                    <div class="col-12 text-center">
-                        <a href="" class="btn btn-vermelho px-4 py-2">Descubra Como</a>
+                <div class="w1200 mx-auto">
+                    <div class="row">
+                        <div class="col-12 text-cta-comissao text-center" style="background: url({{asset('imagens/brush-laranja.png')}}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                            <h1>COMPRE SEM COMISSÃO</h1>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 @endsection
