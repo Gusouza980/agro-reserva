@@ -6,10 +6,37 @@
         <div class="d-flex align-items-center" id="header-index">
             <div class="container-fluid py-5" >
                 <div class="row py-5 justify-content-center">
-                    @foreach($reservas as $reserva)
+                    @php
+                        $first = $reservas->first();
+                    @endphp
+                    <div class="px-0 mt-4 mt-lg-0 mx-0 mx-lg-2">
+                        <div style="background: url(/{{$first->fazenda->fundo_destaque}}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
+                            <div class="d-flex align-items-center" style="padding: 10px 0px; background-color: rgba(0,0,0,0.9); height: 250px; border-radius: 15px;">
+                                <div class="container-fluid">
+                                    <div class="row" style="">
+                                        <div class="col-12 text-center">
+                                            <img src="{{asset($first->fazenda->logo)}}" style="max-width: 100%; height: 80px;" alt="{{$first->fazenda->nome}}">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3" style="">
+                                        <div class="col-12 text-center">
+                                            <h1 class="text-abertura">Abertura</h1>
+                                            <h2 class="data-abertura mt-n2">{{date("d/m/Y", strtotime($first->inicio))}}</h2>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3" style="">
+                                        <div class="col-12 text-center">
+                                            <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $first->fazenda->slug])}}" role="button">Mostrar a Reserva</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @foreach($reservas->skip(1) as $reserva)
                         <div class="px-0 mt-4 mt-lg-0 mx-0 mx-lg-2">
                             <div style="background: url(/{{$reserva->fazenda->fundo_destaque}}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
-                                <div class="d-flex align-items-center" style="padding: 10px 0px; background-color: rgba(0,0,0,0.9); height: 250px; border-radius: 15px;">
+                                <div class="d-flex align-items-center" style="padding: 10px 0px; background-color: rgba(0,0,0,0.6); height: 250px; border-radius: 15px;">
                                     <div class="container-fluid">
                                         <div class="row" style="">
                                             <div class="col-12 text-center">
@@ -18,13 +45,7 @@
                                         </div>
                                         <div class="row mt-3" style="">
                                             <div class="col-12 text-center">
-                                                <h1 class="text-abertura">Abertura</h1>
-                                                <h2 class="data-abertura mt-n2">{{date("d/m/Y", strtotime($reserva->inicio))}}</h2>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-3" style="">
-                                            <div class="col-12 text-center">
-                                                <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $reserva->fazenda->slug])}}" role="button">Mostrar a Reserva</a>
+                                                <h2 class="data-abertura-futura mt-n2">Inicia em {{date("d/m", strtotime($reserva->inicio))}}</h2>
                                             </div>
                                         </div>
                                     </div>

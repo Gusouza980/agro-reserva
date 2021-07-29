@@ -1122,6 +1122,12 @@ label {
     color: white;
 }
 
+.data-abertura-futura{
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+}
+
 #div-brush-amarelo{
     height: 150px;
     width: 100%;
