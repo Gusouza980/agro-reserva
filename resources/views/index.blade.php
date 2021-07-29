@@ -108,7 +108,7 @@
                     </div>
                     <div class="row justify-content-center my-3 py-5">
                         <div class="col-12 d-flex justify-content-center text-section1-index video-container text-center">
-                            <iframe style="margin: 0 auto; max-width: 700px; max-height: 400px; width: 100%;" src="https://www.youtube.com/embed/klZNNUz4wPQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe style="margin: 0 auto; max-width: 700px; width: 100%;" src="https://www.youtube.com/embed/klZNNUz4wPQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
