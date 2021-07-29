@@ -126,7 +126,7 @@ a:active {
 /* NAVBAR */
 
 .navbar-brand>img {
-    max-width: 200px;
+    width: 130px;
 }
 
 .nav-link {
@@ -446,14 +446,18 @@ label {
 
 #header-index {
     min-height: 110vh;
-    background: url(../imagens/bg-home-min.jpg);
+    background: url(../imagens/bg-home-min-2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 #container-section1{
-    margin-top: 300px;
+    margin-top: 150px;
+}
+
+#row-section1-fazendas{
+    margin-top: 150px;
 }
 
 @media(max-width:768px){
@@ -474,6 +478,11 @@ label {
     font-family: 'Titillium Web', sans-serif;
     font-weight: 400;
     color: white;
+    font-weight: bold;
+}
+
+.text-header-index > h3 > .destaque{
+    color: #FEB000;
 }
 
 .text-header-index>h2 {
