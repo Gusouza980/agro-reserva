@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="row mt-3" style="">
                                             <div class="col-12 text-center">
-                                                <h2 class="data-abertura-futura mt-n2">Inicia em {{date("d/m", strtotime($reserva->inicio))}}</h2>
+                                                <h2 class="data-abertura-futura mt-n2">Inicia em {{date("d/m/Y", strtotime($reserva->inicio))}}</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -98,7 +98,7 @@
         <div class="row px-0 mx-0 align-items-center" id="div-viva">
             <div class="col-12">
                 <div class="w800 mx-auto">
-                    <div class="row justify-content-center align-items-center mx-0 px-0">
+                    <div class="row justify-content-center align-items-center py-5 mt-5 mt-lg-0 mx-0 px-0">
                         <div class="text-viva">
                             <h1>VIVA</h1>
                         </div>
@@ -106,7 +106,7 @@
                             <h2>a nova era da<br>comercialização<br>de gado.</h2>
                         </div>
                     </div>
-                    <div class="row justify-content-center mt-5">
+                    <div class="row justify-content-center my-3 py-5">
                         <div class="col-12 d-flex justify-content-center text-section1-index video-container text-center">
                             <iframe style="margin: 0 auto; max-width: 700px; max-height: 400px; width: 100%;" src="https://www.youtube.com/embed/klZNNUz4wPQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="w1200 mx-auto">
                     <div class="row">
-                        <div class="col-12 text-viva text-center text-lg-left mt-5 mt-lg-0">
+                        <div class="col-12 text-viva text-center pt-3 pb-lg-5 mb-lg-5">
                             <span>Somos a Agro Reserva. A plataforma digital de comercialização de gado que conecta as grandes marcas produtoras de genética aos compradores do mundo inteiro, 365 dias por ano, 07 dias por semana, 24 horas por dia.</span>
                         </div>
                     </div>
@@ -149,6 +149,11 @@
                     <div class="row">
                         <div class="col-12 text-cta-comissao text-center" style="background: url({{asset('imagens/brush-laranja.png')}}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                             <h1>COMPRE SEM COMISSÃO</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-cta-comissao text-center">
+                            <h2>Consulte condições</h2>
                         </div>
                     </div>
                 </div>

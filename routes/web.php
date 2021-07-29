@@ -28,6 +28,7 @@ Route::get('/login', function () {
 
 Route::get('/sair', function () {
     session()->forget("cliente");
+    session()->forget("carrinho");
     return redirect()->route("index");
 })->name("sair");
 

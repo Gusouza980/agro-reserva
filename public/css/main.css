@@ -136,6 +136,7 @@ a:active {
 
 .cart-icone:hover {
     transform: scale(1.2);
+    color: #FEB000 !important;
 }
 
 .div-nav {
@@ -601,13 +602,13 @@ label {
 }
 
 .text-nav-footer>a.active {
-    border-bottom: 2px solid #E65454;
-    color: #E65454 !important;
+    border-bottom: 2px solid #FEB000;
+    color: #FEB000 !important;
 }
 
 .text-nav-footer>a:hover {
-    border-bottom: 2px solid #E65454;
-    color: #E65454 !important;
+    border-bottom: 2px solid #FEB000;
+    color: #FEB000 !important;
 }
 
 
@@ -1152,7 +1153,7 @@ label {
 }
 
 .data-abertura{
-    font-size: 32px;
+    font-size: 25px;
     font-weight: bold;
     color: white;
 }
@@ -1331,6 +1332,13 @@ label {
     font-size: 96px;
     color: white;
     text-transform: uppercase;
+}
+
+.text-cta-comissao > h2{
+    font-family: Gobold Regular;
+    font-size: 37px;
+    line-height: 58px;
+    color: #222222;
 }
 
 @media(max-width:768px){

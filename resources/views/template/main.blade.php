@@ -45,6 +45,9 @@
                             </li> 
                         @else
                             <li class="nav-item active mt-4">
+                                <a class="nav-link" href="{{route('login')}}">Cadastre-se</span></a>
+                            </li> 
+                            <li class="nav-item active mt-4">
                                 <a class="nav-link" href="{{route('login')}}">Entrar</span></a>
                             </li>                        
                         @endif
@@ -66,29 +69,27 @@
 				</div>  --}}
 				<div class="col-lg-4 d-flex text-white justify-content-start align-items-center">
 					{{--  <a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a>  --}}
-                    @if(!session()->get("cliente"))
-					    <span  class="text-nav-header"><a href="{{route('cadastro')}}">Blog</a></span> 
-                        <span  class="text-nav-header mx-4"><a href="{{route('cadastro')}}">Quem somos</a></span> 
-                        <span  class="text-nav-header"><a href="{{route('cadastro')}}">Como comprar</a></span> 
-                    @endif
+                    <span  class="text-nav-header"><a href="{{route('cadastro')}}">Blog</a></span> 
+                    <span  class="text-nav-header mx-4"><a href="{{route('cadastro')}}">Quem somos</a></span> 
+                    <span  class="text-nav-header"><a href="{{route('cadastro')}}">Como comprar</a></span> 
                 </div>
 				<div class="col-lg-5 d-flex text-white justify-content-end align-items-center">
 					<span class="text-nav-header">
                         {{--  @if($_SESSION["userid"])  --}}
                         @if(session()->get("cliente"))
                             Bem vindo @if(isset(session()->get("cliente")["nome_dono"])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif
-                            <span class="ml-3 text-nav-header"><a href="{{route('conta.index')}}"><span style="border-bottom: 2px solid #E65454;">Min</span>ha conta</a></span> </span>
-                            
+                            <span class="ml-3 text-nav-header"><a href="{{route('conta.index')}}"><span style="border-bottom: 2px solid #FEB000;">Min</span>ha conta</a></span> </span>
+                            @if(session()->get("cliente"))
+                                <span class="ml-3 text-nav-header"><a class="text-nav-header" href="{{route('sair')}}"><span style="border-bottom: 2px solid #FEB000;">Sai</span>r</a></span>
+                            @endif
+                            @if(session()->get("carrinho"))
+                                <a class="ml-4" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
+                            @endif
                         @else
-                            <a href="{{route('login')}}">Entrar</a>
+                            <a href="{{route('login')}}"><span style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</a>
+                            <a class="ml-4" href="{{route('login')}}"><span style="border-bottom: 2px solid #FEB000;">Ent</span>rar</a>
                         @endif
                     </span> 
-                    @if(session()->get("carrinho"))
-					    <a class="mx-4" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
-                    @endif
-                    @if(session()->get("cliente"))
-                        <span class="text-nav-header"><a class="text-nav-header mx-4" href="{{route('sair')}}"><span style="border-bottom: 2px solid #E65454;">Sai</span>r</a></span>
-                    @endif
 				</div>
 			</div>
         </div>
@@ -106,22 +107,27 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <a class="" href="{{route('index')}}"><span><span style="border-bottom: 2px solid #E65454;">Que</span>m somos</span> </a>
+                                <a class="" href="{{route('index')}}"><span><span style="border-bottom: 2px solid #FEB000;">Blo</span>g</span> </a>
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <a class="" href="{{route('cadastro.fazenda')}}"><span><span style="border-bottom: 2px solid #E65454;">Anu</span>ncie sua reserva</span> </a>
+                                <a class="" href="{{route('cadastro.fazenda')}}"><span><span style="border-bottom: 2px solid #FEB000;">Que</span>m somos</span> </a>
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #E65454;">Cad</span>astre-se para comprar</span> </a>
+                                <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Com</span>o Comprar</span> </a>
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #E65454;">Ent</span>re em contato</span> </a>
+                                <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</span> </a>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Ent</span>rar</span> </a>
                             </div>
                         </div>
                     </div>
@@ -162,13 +168,6 @@
                     </div> --}}
                 </div>
                 
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-preto">
-        <div class="row">
-            <div class="col-12 text-center text-white py-4 px-0 px-lg-5" style="font-size: .6875rem;">
-                <span>Copyright ©️2021 www.agroreserva.com.br, TODOS OS DIREITOS RESERVADOS. Todo o conteúdo do site, todas as fotos, imagens, logotipos, marcas, dizeres, som, software, conjunto imagem, layout, trade dress, aqui veiculados são de propriedade exclusiva da AGRO RESERVA PECUARIA DIGITAL LTDA, ou de seus parceiros. É vedada qualquer reprodução, total ou parcial, de qualquer elemento de identidade, sem expressa autorização. A violação de qualquer direito mencionado implicará na responsabilização cível e criminal nos termos da Lei. AGRO RESERVA PECUARIA DIGITAL LTDA - CNPJ: 41.893.302/0001-13 - R JOAQUIM SARAIVA nº 40 - SALA 02 - CEP: 38400-210 - CENTRO - UBERLANDIA - MG - A inclusão no carrinho não garante o preço e/ou a disponibilidade do lote. Caso os lotes apresentem divergências de valores, o preço válido é o exibido na tela de pagamento. Vendas sujeitas a análise e disponibilidade de estoque.</span>
             </div>
         </div>
     </div>
