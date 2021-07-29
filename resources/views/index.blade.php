@@ -5,12 +5,12 @@
     <div class="container-fluid px-0">
         <div class="d-flex" id="header-index">
             <div class="container-fluid py-5" id="container-section1">
-                <div class="row">
+                <div class="row" id="row-section1-text">
                     <div class="col-12 text-center text-header-index">
-                        <h3>SOMOS A PLATAFORMA<br>DE COMPRA E VENDA DAS MARCAS QUE EVOLUEM A PECUÁRIA</h3>
+                        <h3><span class="destaque">SOMOS</span> A PLATAFORMA<br>DE <span class="destaque">COMPRA E VENDA</span> DAS MARCAS QUE EVOLUEM <span class="destaque">A PECUÁRIA</span></h3>
                     </div>
                 </div>
-                <div class="row py-5 justify-content-center">
+                <div class="row py-5 justify-content-center" id="row-section1-fazendas">
                     @php
                         $first = $reservas->first();
                     @endphp
@@ -72,7 +72,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-12 text-center text-white text-header-index">
-                        <h4>Conheça o Agro Reserva</h4>
+                        <h4>Conheça a Agro Reserva</h4>
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                 <div class="w1200 mx-auto">
                     <div class="row">
                         <div class="col-12 text-viva text-center text-lg-left mt-5 mt-lg-0">
-                            <span>Somos a Agro Reserva. A plataforma digital de comercialização de gado que conecta as grandes marcas produtoras de genética aos compradores do mundo inteiro, 365 dias por ano, 07 dias por semana, 24 horas por dia. Aqui você compra sem pressa, com um atendimento que te acompanha até o pós-venda. Aqui você vende com toda segurança, menor custo promocional e muito mais alcance. Aqui a gente respeita a sua jornada e a sua experiência vale cada @.</span>
+                            <span>Somos a Agro Reserva. A plataforma digital de comercialização de gado que conecta as grandes marcas produtoras de genética aos compradores do mundo inteiro, 365 dias por ano, 07 dias por semana, 24 horas por dia.</span>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="px-3 px-lg-0 ml-lg-4 text-digital text-center text-lg-left">
                             <span>
-                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr,<br>sed diam nonumy eirmod tempor invidunt ut labore et<br>dolore magna aliquyam erat, sed diam voluptua. At vero<br>eos et accusam et justo duo dolores et ea rebum. Stet clita<br>kasd gubergren, no sea takimata
+                                Aqui você compra sem pressa, com um atendimento que te<br>acompanha até o pós-venda. Aqui você vende com toda<br>segurança, menor custo promocional e muito mais alcance.<br>Aqui a gente respeita a sua jornada e a sua experiência<br>vale cada @.
                             </span>
                         </div>
                     </div>
