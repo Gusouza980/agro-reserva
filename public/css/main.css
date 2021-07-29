@@ -449,10 +449,17 @@ label {
     background: url(../imagens/bg-home-min.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 
 #container-section1{
     margin-top: 300px;
+}
+
+@media(max-width:768px){
+    #container-section1{
+        margin-top: 50px;
+    } 
 }
 
 .text-header-index>h4 {
