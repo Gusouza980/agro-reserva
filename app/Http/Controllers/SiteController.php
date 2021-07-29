@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Fazenda;
+use App\Models\Reserva;
 use App\Models\Cliente;
 use App\Models\Lote;
 use App\Models\Visita;
@@ -15,8 +16,8 @@ class SiteController extends Controller
 {
 
     public function index(){
-        $fazendas = Fazenda::where("ativo", true)->get();
-        return view("index", ["fazendas" => $fazendas]);
+        $reservas = Reserva::where("ativo", true)->get();
+        return view("index", ["reservas" => $reservas]);
         // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(
         //     [
         //         'nome'      => 'Agroreserva',

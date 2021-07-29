@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;500;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@font-face {
+    font-family: Gobold Regular;
+	font-display: swap;
+    src: url("/fontes/gobold/Gobold Regular.otf");
+}
 
 :root {
     --vermelho: #E65454;
@@ -75,6 +81,16 @@ a:active {
 
 /* END BACKGROUNDS */
 
+
+.w800{
+    width: 100%;
+    max-width: 800px;
+}
+
+.w1200{
+    width: 100%;
+    max-width: 1200px;
+}
 
 /* BUTTONS */
 
@@ -429,8 +445,8 @@ label {
 }
 
 #header-index {
-    min-height: 100vh;
-    background: url(../imagens/background.jpg);
+    min-height: 90vh;
+    background: url(../imagens/bg-home-min.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -510,14 +526,14 @@ label {
     display: block;
     content: '';
 }
-
+/* 
 .video-container iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-}
+} */
 
 #section2-index{
     min-height: 45vh;
@@ -1092,4 +1108,63 @@ label {
     /* transform: rotate(-45deg); */
     background-color: var(--vermelho);
     font-size: 1.2rem;
+}
+
+.text-abertura{
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.data-abertura{
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+#div-brush-amarelo{
+    height: 150px;
+    width: 100%;
+    background: url("/imagens/brush-amarelo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index: 9;
+    margin-top: -150px;
+}
+
+#div-viva{
+    min-height: 500px;
+    background-color: #FEB000;
+    width: 100%;
+    padding-bottom: 150px;
+}
+
+.text-viva > h1{
+    font-size: 156px;
+    line-height: 156px;
+    color: black;
+    font-family: Gobold Regular;
+}
+
+.text-viva > h2{
+    font-size: 55px;
+    color: #FFFFFF;
+    font-weight: bold;
+    line-height: 55px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.text-viva > span{
+    font-size: 36px;
+    font-weight: 300;
+    color: black;
+}
+
+#tarja-branca{
+    background: url("/imagens/brush-branco.png");
+    min-height: 500px;
+    width: 100%;
+    z-index: 9;
+    margin-top: -150px;
 }
