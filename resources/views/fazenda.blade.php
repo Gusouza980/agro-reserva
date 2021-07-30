@@ -116,7 +116,7 @@
                     <a href="" class="btn btn-vermelho px-4 py-2">Falar com Consultor</a>
                 </div>
             </div>  --}}
-            <div class="w-100 py-4">
+            <div class="w-100 py-4 d-none d-lg-block">
                 @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug]))
                     @include('includes.fazenda.conheca')
                 @elseif(url()->current() == route("fazenda.conheca.lotes", ['fazenda' => $fazenda->slug]))

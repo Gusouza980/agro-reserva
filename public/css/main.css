@@ -569,6 +569,7 @@ label {
 @media (max-width: 768px){
     .video-container > iframe{
         height: 300px;
+        max-width: 100%;
     }
 }
 
@@ -1238,13 +1239,13 @@ label {
     .text-viva > h1{
         font-size: 120px;
         line-height: 120px;
-        color: black;
+        color: #E8521B;
         font-family: Gobold Regular;
     }
     
     .text-viva > h2{
         font-size: 30px;
-        color: #FFFFFF;
+        color: #000;
         font-weight: bold;
         line-height: 30px;
         font-family: 'Montserrat', sans-serif;
