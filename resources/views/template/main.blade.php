@@ -39,17 +39,35 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav px-5 text-center">
                         @if(session()->get("cliente"))
-                            <li class="nav-item active text-white mt-4">
-                                Bem vindo @if(isset(session()->get("cliente")["nome_dono"])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif
-                            </li>
+                            <li class="nav-item active mt-4">
+                                <a class="nav-link" href="{{route('conta.index')}}">Blog</span></a>
+                            </li> 
+                            <li class="nav-item active mt-2">
+                                <a class="nav-link" href="{{route('conta.index')}}">Quem somos</span></a>
+                            </li> 
+                            <li class="nav-item active mt-2">
+                                <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
+                            </li> 
+                            <li class="nav-item active mt-2">
+                                <a class="nav-link" href="{{route('conta.index')}}">Minha Conta</span></a>
+                            </li> 
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('sair')}}">Sair</span></a>
                             </li> 
                         @else
                             <li class="nav-item active mt-4">
+                                <a class="nav-link" href="{{route('conta.index')}}">Blog</span></a>
+                            </li> 
+                            <li class="nav-item active mt-2">
+                                <a class="nav-link" href="{{route('conta.index')}}">Quem somos</span></a>
+                            </li> 
+                            <li class="nav-item active mt-2">
+                                <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
+                            </li>
+                            <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('login')}}">Cadastre-se</span></a>
                             </li> 
-                            <li class="nav-item active mt-4">
+                            <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('login')}}">Entrar</span></a>
                             </li>                        
                         @endif

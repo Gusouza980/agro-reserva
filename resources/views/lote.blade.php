@@ -15,10 +15,10 @@
                     <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
                         <img src="{{asset($fazenda->logo)}}" style="max-width: 100%;" alt="">
                     </div>
-                    <div class="col-12 col-lg-4 justify-content-center d-flex align-items-center text-white mt-4 mt-lg-0">
+                    {{--  <div class="col-12 col-lg-4 justify-content-center d-flex align-items-center text-white mt-4 mt-lg-0">
                         <button name="" id="" class="btn btn-vermelho py-2 px-5 mx-auto" style="max-width:350px;">Dar lance</button>
-                    </div>
-                    <div class="col-12 col-lg-3 text-white mt-4 mt-lg-0">
+                    </div>  --}}
+                    <div class="col-12 offset-lg-4 col-lg-3 text-white mt-4 mt-lg-0">
                         <div class="row">
                             <div class="col-12 text-center text-lg-right">
                                 <h2>{{$lote->nome}}</h2>
@@ -128,17 +128,20 @@
                 <h4>Qual informação você precisa?</h4>
             </div>
         </div>
-        <div class="row mt-4 mb-2">
+        <div class="row mt-4 mb-lg-2">
             <div class="col-12 text-center">
-                <button class="btn btn-vermelho px-3 py-2" data-toggle="modal" data-target="#modalFrete">Frete e Pagamento</button>
-                <button class="btn btn-vermelho px-3 py-2" data-toggle="modal" data-target="#modalSeguranca">Segurança e Garantia</button>
-                <button class="btn btn-vermelho px-3 py-2" data-toggle="modal" data-target="#modalAssessoria">Assessoria</button>
+                <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalFrete">Frete e Pagamento</button>
+                <br class="d-lg-none">
+                <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalSeguranca">Segurança e Garantia</button>
+                <br class="d-lg-none">
+                <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalAssessoria">Assessoria</button>
             </div>
         </div>
         <div class="row mb-4">
             <div class="col-12 text-center">
-                <button class="btn btn-vermelho px-3 py-2" data-toggle="modal" data-target="#modalFunciona">Como funciona</button>
-                <button class="btn btn-vermelho px-3 py-2" data-toggle="modal" data-target="#modalPapel">Papel da Agroreserva</button>
+                <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalFunciona">Como funciona</button>
+                <br class="d-lg-none">
+                <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalPapel">Papel da Agroreserva</button>
             </div>
         </div>
     </div>
