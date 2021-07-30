@@ -17,10 +17,10 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-12 text-center text-md-left card-conta-content">
-                        <span class="cpointer link-card-conta active" num="0"><span style="border-bottom: 2px solid #E65454;">Rese</span>rvas</span>
-                        <span class="ml-3 link-card-conta cpointer" num="1"><span style="border-bottom: 2px solid #E65454;">Seus</span> Dados</span>
-                        <span class="ml-3 link-card-conta cpointer" num="2"><span style="border-bottom: 2px solid #E65454;">Ende</span>reço de Correspondência</span>
-                        <span class="ml-3 link-card-conta cpointer" num="3"><span style="border-bottom: 2px solid #E65454;">Pref</span>erências</span>
+                        <span class="cpointer link-card-conta active" num="0"><span style="border-bottom: 2px solid #E8521B;">Rese</span>rvas</span>
+                        <span class="ml-3 link-card-conta cpointer" num="1"><span style="border-bottom: 2px solid #E8521B;">Seus</span> Dados</span>
+                        <span class="ml-3 link-card-conta cpointer" num="2"><span style="border-bottom: 2px solid #E8521B;">Ende</span>reço de Correspondência</span>
+                        <span class="ml-3 link-card-conta cpointer" num="3"><span style="border-bottom: 2px solid #E8521B;">Pref</span>erências</span>
                     </div>
                 </div>
                 <hr class="mt-5 mb-4">

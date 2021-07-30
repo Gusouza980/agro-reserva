@@ -20,6 +20,7 @@ class AlterTableClientes4 extends Migration
             // 2 => Víuvo(a)
             // 3 => União Estável
             $table->tinyInteger("estado_civil")->default(0);
+            $table->tinyInteger("aprovado")->default(0);
             $table->string("rg", 12)->nullable();
             $table->string("inscricicao_produtor_rural", 20)->nullable();
             $table->string("referencia_comercial1", 50)->nullable();

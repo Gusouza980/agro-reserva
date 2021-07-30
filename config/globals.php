@@ -14,6 +14,11 @@ return [
     'fechamentos' => [
         0 => 'Site',
         1 => 'Consultor',
+    ],
+    'aprovacao' => [
+        0 => "Em análise",
+        1 => "Aprovado",
+        2 => "Reprovado"
     ]
 ];
 

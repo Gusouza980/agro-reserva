@@ -11,8 +11,12 @@ class ContaController extends Controller
 {
     //
     public function index(){
-        $cliente = Cliente::find(session()->get("cliente")["id"]);
-        return view("cliente.index", ["cliente" => $cliente]);
+        if(session()->get("cliente")){
+            $cliente = Cliente::find(session()->get("cliente")["id"]);
+            return view("cliente.index", ["cliente" => $cliente]);
+        }else{
+            return rout("index");
+        }
     }
     
     public function baixar_boleto(Boleto $boleto){

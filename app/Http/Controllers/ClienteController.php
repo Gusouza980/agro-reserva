@@ -334,4 +334,17 @@ class ClienteController extends Controller
             return redirect()->back();
         }
     }
+
+    public function aprovacao(Cliente $cliente, $aprovacao){
+        if($aprovacao == "reprovado"){
+            $cliente->aprovado = -1;
+            toastr()->success("Cliente reprovado!");
+        }else{
+            $cliente->aprovado = 1;
+            toastr()->success("Cliente aprovado!");
+        }
+        $cliente->save();
+        
+        return redirect()->back();
+    }
 }

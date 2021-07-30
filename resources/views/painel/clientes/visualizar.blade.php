@@ -11,6 +11,35 @@
 @endsection
 
 @section('conteudo')
+@if($cliente->aprovado == 0)
+    <div class="row mb-3">
+        <div class="col-12">
+            <a name="" id="" class="btn btn-primary" href="{{route('painel.cliente.aprovacao', ['cliente' => $cliente, 'aprovacao' => 'aprovado'])}}" role="button">Aprovar</a>
+            <a name="" id="" class="btn btn-danger ml-3" href="{{route('painel.cliente.aprovacao', ['cliente' => $cliente, 'aprovacao' => 'reprovado'])}}" role="button">Reprovar</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-danger" role="alert">
+                Este cliente ainda está com o cadastro em análise.
+            </div>
+        </div>
+    </div>
+@endif
+@if($cliente->analises->count() == 0)
+<div class="row">
+    <div class="col-12">
+        <div class="alert alert-danger" role="alert">
+            Ainda não foram feitas análises de crédito para este cliente
+        </div>
+    </div>
+</div>
+@endif
+@if($cliente->aprovado == -1)
+    <div class="alert alert-danger" role="alert">
+        <strong>CLIENTE REPROVADO</strong>
+    </div>
+@endif
 <div class="row justify-content-center">
     <div class="col-12">
         <div class="card">

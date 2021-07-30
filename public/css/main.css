@@ -8,6 +8,7 @@
 
 :root {
     --vermelho: #F5B01F;
+    --laranja: #E8521B;
 }
 
 
@@ -1031,13 +1032,13 @@ label {
 }
 
 .card-conta-content > .link-card-conta:hover{
-    border-bottom: 2px solid #F5B01F;
-    color: #F5B01F !important;
+    border-bottom: 2px solid #E8521B;
+    color: #E8521B !important;
 }
 
 .link-card-conta.active{
-    border-bottom: 2px solid #F5B01F;
-    color: #F5B01F !important;
+    border-bottom: 2px solid #E8521B;
+    color: #E8521B !important;
 }
 
 /* .modal-body {
