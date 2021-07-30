@@ -141,7 +141,7 @@
                     <div class="col-12 col-lg-12">
                         <div class="row">
                             <div class="col-12 mt-5 text-nav-footer text-center text-lg-left">
-                                <span>+55 34 9172-0996</span>
+                                <span>+55 14 9 8180-9051</span>
                             </div>
                         </div>
                         <div class="row">
