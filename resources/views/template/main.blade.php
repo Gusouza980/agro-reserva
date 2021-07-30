@@ -18,8 +18,8 @@
     <meta property="og:description" content="Somos a plataforma de compra e venda das marcas que evoluem a pecuária">
     <meta property="og:image" content="dev.agroreserva.com.br/imagens/logo_agroreserva_leite.jpg">
     <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="799"> /** PIXELS **/
-    <meta property="og:image:height" content="294"> /** PIXELS **/
+    <meta property="og:image:width" content="799">
+    <meta property="og:image:height" content="294">
     @yield("metas")
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
