@@ -19,22 +19,26 @@
                 <form action="{{route('painel.fazenda.reserva.lote.salvar', ['lote' => $lote])}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="numero" class="form-label">Número</label>
+                                <input type="number" class="form-control" name="numero" id="numero" min="1" step="1" value="{{$lote->numero}}">
+                            </div>
+                        </div>
                         <div class="col-md-8">
                             <div class="mb-3">
                                 <label for="nome" class="form-label">Nome do Lote *</label>
                                 <input type="text" class="form-control" name="nome" id="nome" maxlength="100" value="{{$lote->nome}}" required>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="registro" class="form-label">Registro</label>
                                 <input type="text" class="form-control" name="registro" id="registro" value="{{$lote->registro}}" maxlength="30">
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-6 col-md-4">
                             <div class="mb-3">
                                 <label for="nascimento" class="form-label">Data de Nascimento</label>

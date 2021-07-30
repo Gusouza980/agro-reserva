@@ -211,7 +211,7 @@
         <div class="w1200 mx-auto">
             <div class="row py-0 justify-content-center">
                 <div class="text-center footer-links">
-                    <a href="" class="px-4 footer-links-superior">Termos e condições de uso</a>
+                    <a href="{{route('termos')}}" class="px-4 footer-links-superior">Termos e condições de uso</a>
                     |
                     <a href="" class="px-4 footer-links-superior">Políticas de Privacidade</a>
                 </div>

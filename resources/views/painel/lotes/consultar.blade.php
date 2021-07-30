@@ -22,6 +22,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead class="text-center">
                         <tr>
+                            <th></th>
                             <th>Nome</th>
                             <th>Raça</th>
                             <th>Registro</th>
@@ -36,6 +37,7 @@
                     <tbody class="text-center">
                         @foreach($reserva->lotes as $lote)
                             <tr>
+                                <td class="text-center">{{$lote->numero}}</td>
                                 <td>{{$lote->nome}}</td>
                                 <td>{{$lote->raca->nome}}</td>
                                 <td>{{$lote->registro}}</td>
