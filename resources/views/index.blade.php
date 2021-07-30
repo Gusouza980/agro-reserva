@@ -147,11 +147,11 @@
             <div class="col-12">
                 <div class="w1200 mx-auto">
                     <div class="row">
-                        <div class="col-12 text-cta-comissao text-center" style="background: url({{asset('imagens/brush-laranja.png')}}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                        <div class="col-12 text-cta-comissao text-center py-4 py-lg-0" style="background: url({{asset('imagens/brush-laranja.png')}}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                             <h1>COMPRE SEM COMISSÃO</h1>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col-12 text-cta-comissao text-center">
                             <h2>Consulte condições</h2>
                         </div>
