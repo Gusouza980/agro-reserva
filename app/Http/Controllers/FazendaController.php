@@ -12,6 +12,7 @@ use App\Apis\Api;
 use App\Models\Depoimento;
 use App\Models\Producao;
 use App\Models\Fazendeiro;
+use App\Models\LoteNumero;
 
 class FazendaController extends Controller
 {
@@ -198,6 +199,27 @@ class FazendaController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function novo_numero(Request $request, Fazenda $fazenda){
+        $numero = new LoteNumero;
+        $numero->fazenda_id = $fazenda->id;
+        $numero->titulo = $request->titulo;
+        $numero->valor = $request->valor;
+        $numero->save();
+        return redirect()->back();
+    }
+
+    public function salvar_numero(Request $request, LoteNumero $numero){
+        $numero->titulo = $request->titulo;
+        $numero->valor = $request->valor;
+        $numero->save();
+        return redirect()->back();
+    }
+
+    public function excluir_numero(LoteNumero $numero){
+        $numero->delete();
+        return redirect()->back();
     }
 
     public function salvar_conheca_avaliacoes(Request $request, Fazenda $fazenda){

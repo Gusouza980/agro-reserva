@@ -98,13 +98,20 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/fazenda/{fazenda}/conheca/salvar', [\App\Http\Controllers\FazendaController::class, 'salvar_conheca'])->name("painel.fazenda.salvar.conheca");        
     Route::post('/painel/fazenda/{fazenda}/conheca/lotes/salvar', [\App\Http\Controllers\FazendaController::class, 'salvar_conheca_lotes'])->name("painel.fazenda.salvar.conheca.lotes");        
     Route::post('/painel/fazenda/{fazenda}/conheca/avaliacoes/salvar', [\App\Http\Controllers\FazendaController::class, 'salvar_conheca_avaliacoes'])->name("painel.fazenda.salvar.conheca.avaliacoes");        
+    
     Route::post('/painel/fazenda/{fazenda}/conheca/depoimentos/salvar', [\App\Http\Controllers\FazendaController::class, 'salvar_conheca_depoimentos'])->name("painel.fazenda.salvar.conheca.depoimentos");        
     Route::post('/painel/fazenda/editar/{fazenda}/depoimento/novo', [\App\Http\Controllers\FazendaController::class, 'novo_depoimento'])->name("painel.fazenda.editar.depoimento.novo");        
     Route::post('/painel/fazenda/editar/{depoimento}/depoimento/salvar', [\App\Http\Controllers\FazendaController::class, 'salvar_depoimento'])->name("painel.fazenda.editar.depoimento.salvar");        
     Route::get('/painel/fazenda/editar/{depoimento}/depoimento/excluir', [\App\Http\Controllers\FazendaController::class, 'excluir_depoimento'])->name("painel.fazenda.editar.depoimento.excluir");        
+    
+    Route::post('/painel/fazenda/{fazenda}/conheca/numeros/novo', [\App\Http\Controllers\FazendaController::class, 'novo_numero'])->name("painel.fazenda.editar.numero.novo");        
+    Route::post('/painel/fazenda/editar/{numero}/numero/salvar', [\App\Http\Controllers\FazendaController::class, 'salvar_numero'])->name("painel.fazenda.editar.numero.salvar");        
+    Route::get('/painel/fazenda/editar/{numero}/numero/excluir', [\App\Http\Controllers\FazendaController::class, 'excluir_numero'])->name("painel.fazenda.editar.numero.excluir");        
+
     Route::post('/painel/fazenda/editar/{fazenda}/producao/novo', [\App\Http\Controllers\FazendaController::class, 'novo_producao'])->name("painel.fazenda.editar.producao.novo");        
     Route::post('/painel/fazenda/editar/{producao}/producao/salvar', [\App\Http\Controllers\FazendaController::class, 'salvar_producao'])->name("painel.fazenda.editar.producao.salvar");        
     Route::get('/painel/fazenda/editar/{producao}/producao/excluir', [\App\Http\Controllers\FazendaController::class, 'excluir_producao'])->name("painel.fazenda.editar.producao.excluir");        
+    
     Route::post('/painel/fazenda/editar/usuario/salvar/{usuario?}', [\App\Http\Controllers\FazendaController::class, 'salvar_usuario'])->name("painel.fazenda.editar.usuario.salvar");
 
 

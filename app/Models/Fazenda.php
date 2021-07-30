@@ -32,4 +32,12 @@ class Fazenda extends Model
     public function reservas(){
         return $this->hasMany(Reserva::class);
     }
+
+    public function numeros(){
+        return $this->hasMany(LoteNumero::class);
+    }
+
+    public function avaliacoes(){
+        return $this->hasMany(FazendaAvaliacao::class);
+    }
 }

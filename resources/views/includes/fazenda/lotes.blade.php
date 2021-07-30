@@ -13,19 +13,13 @@
                             <h2>{{$fazenda->titulo_conheca_lotes}}</h2>
                         </div>
                     </div>
-                    <div class="row py-4 text-center text-md-left">
-                        <div class="col text-center text-section2-fazenda text-center">
-                            <h1 class="mb-n1">{{$fazenda->animais_conheca_lotes}}</h1>
-                            <span>animais a venda</span>
-                        </div>
-                        <div class="col ml-4 text-center text-section2-fazenda text-center">
-                            <h1 class="mb-n1">{{$fazenda->embrioes_conheca_lotes}}</h1>
-                            <span>doses de embrião</span>
-                        </div>
-                        <div class="col ml-4 text-center text-section2-fazenda text-center">
-                            <h1 class="mb-n1">{{$fazenda->bezerros_conheca_lotes}}</h1>
-                            <span>bezerros</span>
-                        </div>
+                    <div class="row py-4 justify-content-start text-center text-md-left">
+                        @foreach($fazenda->numeros as $numero)
+                            <div class="mr-4 text-center text-section2-fazenda text-center">
+                                <h1 class="mb-n1">{{$numero->valor}}</h1>
+                                <span>{{$numero->titulo}}</span>
+                            </div>
+                        @endforeach
                     </div>
                     <div class="row py-4">
                         <div class="col-12 px-0 text-section2-fazenda text-center text-md-left">
