@@ -745,11 +745,11 @@ label {
 }
 
 .text-avaliacao-section2-fazenda>span.active {
-    color: #eb6969 !important;
+    color: #E8521B !important;
     font-family: 'Titillium Web', sans-serif;
     text-transform: uppercase;
     font-weight: 600;
-    border-bottom: 3px solid #eb6969;
+    border-bottom: 3px solid #E8521B;
 }
 
 .borda-triangular {

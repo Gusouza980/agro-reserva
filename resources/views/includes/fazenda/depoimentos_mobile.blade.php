@@ -18,7 +18,7 @@
                         <div class="row py-4">
                             <div class="col-12 px-0 text-section2-fazenda text-center text-md-left">
                                 <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}" role="button">Ver animais a venda</a>
-                                <a href="" class="btn btn-vermelho ml-4 px-4 py-2">Falar com Consultor</a>
+                                <a  href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank" class="btn btn-vermelho ml-4 px-4 py-2">Falar com Consultor</a>
                             </div>
                         </div>
                     </div>
