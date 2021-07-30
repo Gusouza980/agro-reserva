@@ -1179,7 +1179,7 @@ label {
 #div-brush-amarelo{
     height: 50px;
     width: 100%;
-    background: url("/imagens/brush-laranja-topo.png");
+    background: url("/imagens/brush-creme-topo.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
@@ -1189,7 +1189,7 @@ label {
 
 #div-viva{
     min-height: 500px;
-    background-color: #FE5820;
+    background-color: #F2EAD0;
     width: 100%;
     padding-bottom: 150px;
 }
@@ -1197,13 +1197,13 @@ label {
 .text-viva > h1{
     font-size: 156px;
     line-height: 156px;
-    color: black;
+    color: #E8521B;
     font-family: Gobold Regular;
 }
 
 .text-viva > h2{
     font-size: 55px;
-    color: #FFFFFF;
+    color: #000;
     font-weight: bold;
     line-height: 55px;
     font-family: 'Montserrat', sans-serif;
