@@ -16,7 +16,7 @@
     <meta property="og:title" content="Agroreserva - Respeito pela sua jornada">
     <meta property="og:site_name" content="Agroreserva">
     <meta property="og:description" content="Somos a plataforma de compra e venda das marcas que evoluem a pecuária">
-    <meta property="og:image" content="dev.agroreserva.com.br/imagens/logo_agroreserva_leite.jpg">
+    <meta property="og:image" content="https://dev.agroreserva.com.br/imagens/logo_agroreserva_leite.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="799">
     <meta property="og:image:height" content="294">
