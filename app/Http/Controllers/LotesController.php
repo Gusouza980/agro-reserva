@@ -22,7 +22,7 @@ class LotesController extends Controller
 
     public function cadastrar(Request $request, Reserva $reserva){
         $lote = new Lote;
-
+        $fazenda = $reserva->fazenda;
         $lote->nome = $request->nome;
         $lote->registro = $request->registro;
         $lote->nascimento = $request->nascimento;

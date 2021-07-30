@@ -26,6 +26,10 @@ Route::get('/login', function () {
     return view('login');
 })->name("login");
 
+Route::get('/termos', function () {
+    return view('termos');
+})->name("termos");
+
 Route::get('/sair', function () {
     session()->forget("cliente");
     session()->forget("carrinho");
