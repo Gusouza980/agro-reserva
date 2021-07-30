@@ -31,7 +31,7 @@ class LotesController extends Controller
         $lote->preco = $request->preco;
         $lote->parcelas = $request->parcelas;
         $lote->fazenda_id = $reserva->fazenda_id;
-        $lote->reserva_id = $reserva->reserva_id;
+        $lote->reserva_id = $reserva->id;
         $lote->video = $request->video;
 
         if($request->file("preview")){
