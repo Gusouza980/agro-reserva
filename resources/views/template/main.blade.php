@@ -17,6 +17,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 	<link rel="stylesheet" href="{{asset('css/main.css')}}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     @toastr_css
     @yield("styles")
 </head>
@@ -251,12 +253,14 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js">
     </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+
     @toastr_js
     @toastr_render
 	@yield("scripts")
@@ -272,53 +276,6 @@
             });
         </script>
     @endif
-
-    <script>
-        $(document).ready(function(){
-            var settings = {
-                "url": "https://api.scccheck.com.br/login",
-                "method": "POST",
-                "headers": {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                },
-                "data": JSON.stringify({
-                    "logon": "3158814",
-                    "senha": "berrante40",
-                }),
-            };
-            
-            /*
-            var settings = {
-                "url": "https://api.scccheck.com.br/consultas/crednet",
-                "method": "POST",
-                "headers": {
-                    "Accept": "application/json",
-                    "Authorization": "Bearer token",
-                    "Content-Type": "application/json"
-                },
-                "data": JSON.stringify({
-                    "achei_recheque": true,
-                    "tipo_pessoa": "F",
-                    "doc_consultado": "112.233.445-56",
-                    "ddd": "44",
-                    "telefone": "30303030",
-                    "cep": "88888888",
-                    "protesto_estadual": "PR",
-                    "cmc7": "010203040501020304050102030405",
-                    "vencimento": "2022-12-12",
-                    "valor_cheque": 12345,
-                    "adicionais": [1, 2, 3, 4, 5]
-                }),
-            };
-            */
-                
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-            });
-        });
-    </script>
-
 </body>
 
 </html>

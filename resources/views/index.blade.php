@@ -111,20 +111,20 @@
             <div class="col-12">
                 <div class="w800 mx-auto">
                     <div class="row justify-content-center align-items-center py-5 mt-5 mt-lg-0 mx-0 px-0">
-                        <div class="text-viva">
+                        <div data-aos="fade-in" class="text-viva">
                             <h1>VIVA</h1>
                         </div>
-                        <div class="ml-3 text-viva text-center text-lg-left">
+                        <div data-aos="fade-in" class="ml-3 text-viva text-center text-lg-left">
                             <h2>a nova era da<br>comercialização<br>de gado.</h2>
                         </div>
                     </div>
-                    <div class="row justify-content-center my-3 py-5">
+                    <div  class="row justify-content-center my-3 py-5">
                         <div class="col-12 d-flex justify-content-center text-section1-index video-container text-center">
-                            <iframe width="1280" height="720" src="https://www.youtube.com/embed/PFnjbweEEew" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe data-aos="fade-in" width="1280" height="720" src="https://www.youtube.com/embed/PFnjbweEEew" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
-                <div class="w1200 mx-auto">
+                <div data-aos="fade-in" class="w1200 mx-auto">
                     <div class="row">
                         <div class="col-12 text-viva text-center pt-3 pb-lg-5 mb-lg-5">
                             <span>Somos a Agro Reserva. A plataforma digital de comercialização de gado que conecta as grandes marcas produtoras de genética aos compradores do mundo inteiro, 365 dias por ano, 07 dias por semana, 24 horas por dia.</span>
@@ -139,13 +139,13 @@
             <div class="col-12">
                 <div class="w1200 mx-auto">
                     <div class="row align-items-center justify-content-center">
-                        <div class="text-digital text-left text-lg-right">
+                        <div data-aos="fade-in" class="text-digital text-left text-lg-right">
                             <h1>100% Digital</h1>
                             <h2>100% Pecuária</h2>
                             <h3>100% Com você</h3>
                         </div>
                         <div class="px-3 px-lg-0 ml-lg-4 text-digital text-center text-lg-left">
-                            <span>
+                            <span data-aos="fade-in">
                                 Aqui você compra sem pressa, com um atendimento que te<br>acompanha até o pós-venda. Aqui você vende com toda<br>segurança, menor custo promocional e muito mais alcance.<br>Aqui a gente respeita a sua jornada e a sua experiência<br>vale cada @.
                             </span>
                         </div>
@@ -159,13 +159,13 @@
             <div class="col-12">
                 <div class="w1200 mx-auto">
                     <div class="row">
-                        <div class="col-12 text-cta-comissao text-center py-4 py-lg-0" style="background: url({{asset('imagens/brush-laranja.png')}}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                        <div data-aos="fade-in" class="col-12 text-cta-comissao text-center py-4 py-lg-0" style="background: url({{asset('imagens/brush-laranja.png')}}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                             <h1>COMPRE SEM COMISSÃO</h1>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-12 text-cta-comissao text-center">
-                            <h2>Consulte condições</h2>
+                            <h2 data-aos="fade-in">Consulte condições</h2>
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,11 @@
 
 @section('scripts')
     <script>
+        
         $(document).ready(function(){
+            AOS.init({
+                duration: 1200,
+            });
             var direction = 1;
             function loop() {
                 $('#mouse').css("display", "block");

@@ -737,6 +737,11 @@ label {
     font-size: 0.9rem;
 }
 
+.slow {
+    -vendor-animation-duration: 3s;
+    -vendor-animation-delay: 1s;
+}
+
 .text-avaliacao-section2-fazenda>span {
     color: white !important;
     font-family: 'Titillium Web', sans-serif;
