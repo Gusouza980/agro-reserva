@@ -393,40 +393,17 @@
                         </div>
 
                     </div>
-                    <hr>
+
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+
+                    <hr class="my-3">
+
                     <div class="row mb-3">
 
                         <div class="col-12">
                             <button type="button" name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovoNumero">Nova Informação</button>
                         </div>
                         
-                        {{--  <div class="col-12 col-md-4">
-                            <div class="mb-3">
-                                <div class="form-group">
-                                    <label for="animais_conheca_lotes">Número de animais</label>
-                                    <input type="text" class="form-control" name="animais_conheca_lotes" value="{{$fazenda->animais_conheca_lotes}}">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-4">
-                            <div class="mb-3">
-                                <div class="form-group">
-                                    <label for="embrioes_conheca_lotes">Número de Embriões</label>
-                                    <input type="text" class="form-control" name="embrioes_conheca_lotes" value="{{$fazenda->embrioes_conheca_lotes}}">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-4">
-                            <div class="mb-3">
-                                <div class="form-group">
-                                    <label for="bezerros_conheca_lotes">Número de Bezerros</label>
-                                    <input type="text" class="form-control" name="bezerros_conheca_lotes" value="{{$fazenda->bezerros_conheca_lotes}}">
-                                </div>
-                            </div>
-                        </div>  --}}
-
                     </div>
 
                     <div class="row">
@@ -457,7 +434,6 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>
             <!-- end card body -->
@@ -535,9 +511,46 @@
                         </div>
 
                     </div>
-
                     
                     <button type="submit" class="btn btn-primary">Salvar</button>
+
+                    <hr class="my-3">
+
+                    <div class="row mb-3">
+
+                        <div class="col-12">
+                            <button type="button" name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovaAvaliacao">Nova Avaliação</button>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <table id="datatableAvaliacoes" class="table table-bordered dt-responsive  nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Imagem</th>
+                                        <th>Nome</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+            
+            
+                                <tbody>
+                                    @foreach($fazenda->avaliacoes as $avaliacao)
+                                        <tr>
+                                            <td><img src="{{asset($avaliacao->caminho)}}" style="width: 100px;" alt=""></td>
+                                            <td>{{$avaliacao->nome}}</td>
+                                            <td style="vertical-align: middle; text-align:center;">
+                                                <a name="" id="" class="btn btn-warning cpointer" data-bs-toggle="modal" data-bs-target="#modalEditaAvaliacoes{{$avaliacao->id}}" role="button">Editar</a>
+                                                <a name="" id="" class="btn btn-danger" href="{{route('painel.fazenda.editar.avaliacao.excluir', ['avaliacao' => $avaliacao])}}" role="button">Excluir</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </form>
             </div>
             <!-- end card body -->
@@ -930,6 +943,84 @@
                             </div>
                         </div>
 
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+
+<div class="modal fade" id="modalNovaAvaliacao" tabindex="-1" role="dialog" aria-labelledby="modalNovaAvaliacaoLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalNovaAvaliacaoLabel">Nova Informação</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('painel.fazenda.editar.avaliacao.novo', ['fazenda' => $fazenda])}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                  <label for="">Nome</label>
+                                  <input type="text"
+                                    class="form-control" name="nome" id="" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                  <label for="">Imagem</label>
+                                  <input type="file" class="form-control-file" name="caminho" id="" placeholder="" aria-describedby="fileHelpId" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@foreach($fazenda->avaliacoes as $avaliacao)
+<div class="modal fade" id="modalEditaAvaliacoes{{$avaliacao->id}}" tabindex="-1" role="dialog" aria-labelledby="modalEditaAvaliacoes{{$avaliacao->id}}Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEditaAvaliacoes{{$avaliacao->id}}Label">Editar Informação</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('painel.fazenda.editar.avaliacao.salvar', ['avaliacao' => $avaliacao])}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                  <label for="">Nome</label>
+                                  <input type="text"
+                                    class="form-control" name="nome" id="" value="{{$avaliacao->nome}}" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                  <label for="">Imagem</label>
+                                  <input type="file" class="form-control-file" name="caminho" id="" placeholder="" aria-describedby="fileHelpId">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>

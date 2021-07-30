@@ -13,6 +13,7 @@ use App\Models\Depoimento;
 use App\Models\Producao;
 use App\Models\Fazendeiro;
 use App\Models\LoteNumero;
+use App\Models\FazendaAvaliacao;
 
 class FazendaController extends Controller
 {
@@ -219,6 +220,41 @@ class FazendaController extends Controller
 
     public function excluir_numero(LoteNumero $numero){
         $numero->delete();
+        return redirect()->back();
+    }
+
+    public function nova_avaliacao(Request $request, Fazenda $fazenda){
+        $avaliacao = new FazendaAvaliacao;
+        $avaliacao->fazenda_id = $fazenda->id;
+        $avaliacao->nome = $request->nome;
+
+        if($request->file("caminho")){
+            $avaliacao->caminho = $request->file('caminho')->store(
+                'imagens/fazendas/' . Str::slug($fazenda->nome_fazenda) . "/conheca/avaliacoes/avaliacoes", 'local'
+            );
+        }
+
+        $avaliacao->save();
+        return redirect()->back();
+    }
+
+    public function salvar_avaliacao(Request $request, FazendaAvaliacao $avaliacao){
+        $avaliacao->nome = $request->nome;
+
+        if($request->file("caminho")){
+            Storage::delete($avaliacao->caminho);
+            $avaliacao->caminho = $request->file('caminho')->store(
+                'imagens/fazendas/' . Str::slug($avaliacao->fazenda->nome_fazenda) . "/conheca/avaliacoes/avaliacoes", 'local'
+            );
+        }
+
+        $avaliacao->save();
+        return redirect()->back();
+    }
+
+    public function excluir_avaliacao(FazendaAvaliacao $avaliacao){
+        Storage::delete($avaliacao->caminho);
+        $avaliacao->delete();
         return redirect()->back();
     }
 

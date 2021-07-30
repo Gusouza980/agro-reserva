@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class FazendaAvaliacao extends Model
 {
     use HasFactory;
+
+    public function fazenda(){
+        return $this->belongsTo(Fazenda::class);
+    }
 }
