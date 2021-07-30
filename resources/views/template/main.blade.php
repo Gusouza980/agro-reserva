@@ -20,6 +20,8 @@
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="300">
     <meta property="og:image:height" content="200">
+    <meta property="og:type" content="website" />
+    <meta property="og:updated_time" content="1440432930" />
     @yield("metas")
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
