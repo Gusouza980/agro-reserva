@@ -1177,9 +1177,9 @@ label {
 }
 
 #div-brush-amarelo{
-    height: 150px;
+    height: 50px;
     width: 100%;
-    background: url("/imagens/brush-amarelo.png");
+    background: url("/imagens/brush-laranja-topo.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
@@ -1189,7 +1189,7 @@ label {
 
 #div-viva{
     min-height: 500px;
-    background-color: #FEB000;
+    background-color: #FE5820;
     width: 100%;
     padding-bottom: 150px;
 }

@@ -16,7 +16,7 @@
                     @endphp
                     <div class="px-0 mt-4 mt-lg-0 mx-0 mx-lg-2">
                         <div style="background: url(/{{$first->fazenda->fundo_destaque}}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
-                            <div class="d-flex align-items-center" style="box-shadow: 0px 0px 4px white; padding: 10px 0px; background: linear-gradient(180deg, rgba(0,0,0,0.8757878151260504) 20%, rgba(0,4,1,0) 96%); height: 250px; border-radius: 15px;">
+                            <div class="d-flex align-items-center" style="box-shadow: 0px 0px 4px white; padding: 10px 0px; background: linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(0,4,1,0) 96%); height: 250px; border-radius: 15px;">
                                 <div class="container-fluid">
                                     <div class="row" style="">
                                         <div class="col-12 text-center">
