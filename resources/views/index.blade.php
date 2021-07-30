@@ -1,5 +1,14 @@
 @extends('template.main')
 
+@section("styles")
+
+<style>
+    body{
+        background-color: #F2EAD0;
+    }
+</style>
+
+@endsection
 
 @section('conteudo')
     <div class="container-fluid px-0">

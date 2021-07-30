@@ -15,8 +15,7 @@
 /* GLOBALS */
 
 body{
-    font-family: 'Titillium Web', sans-serif;
-    background-color: #F2EAD0;
+    font-family: 'Titillium Web', sans-serif;  
 }
 
 a,
@@ -1097,11 +1096,11 @@ label {
 }
 
 .sino-lote:hover{
-    color: var(--vermelho);
+    color: #E8521B;
 }
 
 .sino-lote.interessado{
-    color: var(--vermelho) !important;
+    color: #E8521B !important;
 }
 
 .icone-curtir.marcado{
@@ -1113,11 +1112,11 @@ label {
 }
 
 .icone-descurtir.marcado{
-    color: var(--vermelho);
+    color: red;
 }
 
 .icone-descurtir:hover{
-    color: var(--vermelho);
+    color: red;
 }
 
 .icone-compartilhamento,
@@ -1155,7 +1154,7 @@ label {
 .faixa-reservado{
     width:100%;
     /* transform: rotate(-45deg); */
-    background-color: var(--vermelho);
+    background-color: #E8521B;
     font-size: 1.2rem;
 }
 
