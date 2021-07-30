@@ -69,7 +69,7 @@
                     @endforeach
                     
                 </div>
-                <div id="mouse">
+                <div id="mouse" class="cpointer">
                     <div class="row">
                         <div class="col-12 text-center text-white">
                             <i class="fas fa-mouse fa-2x"></i>
@@ -196,10 +196,12 @@
                         loop();
                     });
                 }
-                
             }
-
             loop();
+
+            $("#mouse").click(function(){
+                $('html, body').animate({ scrollTop: $("#div-brush-amarelo").offset().top }, 1000);
+            })
         });
     </script>
 @endsection
