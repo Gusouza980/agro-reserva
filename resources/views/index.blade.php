@@ -69,16 +69,19 @@
                     @endforeach
                     
                 </div>
-                <div class="row">
-                    <div class="col-12 text-center text-white">
-                        <i class="fas fa-mouse fa-2x"></i>
+                <div id="mouse">
+                    <div class="row">
+                        <div class="col-12 text-center text-white">
+                            <i class="fas fa-mouse fa-2x"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center text-white">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 text-center text-white">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-                </div>
+                
                 <div class="row mt-2">
                     <div class="col-12 text-center text-white text-header-index">
                         <h4>Conheça a Agro Reserva</h4>
@@ -169,4 +172,34 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            var direction = 1;
+            function loop() {
+                $('#mouse').css("display", "block");
+                $('#mouse').css("position", "relative");
+                if(direction){
+                    $('#mouse').animate ({
+                        top: '+5',
+                    }, 300, 'linear', function() {
+                        direction = 0;
+                        loop();
+                    });
+                }else{
+                    $('#mouse').animate ({
+                        top: '-5',
+                    }, 300, 'linear', function() {
+                        direction = 1;
+                        loop();
+                    });
+                }
+                
+            }
+
+            loop();
+        });
+    </script>
 @endsection

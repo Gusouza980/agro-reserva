@@ -41,6 +41,11 @@ class CarrinhoController extends Controller
             session(["carrinho" => $carrinho->id]);
         }
 
+        if($carrinho->produtos->where("lote_id", $lote->id)->count() > 0){
+            session()->flash("erro", "O lote já está em seu carrinho");
+            return redirect()->route("carrinho");
+        }
+
         $produto = new CarrinhoProduto;
         $produto->carrinho_id = $carrinho->id;
         $produto->lote_id = $lote->id;

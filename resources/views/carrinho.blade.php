@@ -7,6 +7,15 @@
 @section('conteudo')
 
     <div class="container py-5" style="min-height: 40vh;">
+        @if(session()->get("erro"))
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-danger" role="alert">
+                        {{session()->get("erro")}}
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="row">
             <div class="col-12 text-center">
                 @if($carrinho->produtos->count() > 0)
@@ -53,47 +62,6 @@
             </div>
         </div>
         <hr>
-        <div class="row mt-4">
-            {{--  <div class="col-12 col-md-6">
-                <h4>Formas de Pagamento</h4>
-                <div class="row mt-4">
-                    <div class="col-12">
-                        <div class="text-nav-pagamento">
-                            <a id="link-boleto" class="cpointer"><i class="fas fa-barcode cpointer"></i> Boleto</a>
-                            <a id="link-whats" class="mx-3 cpointer" ><i class="fab fa-whatsapp-square cpointer"></i> Whatsapp</a>
-                        </div>
-                    </div>  
-                </div>
-                <hr>
-                <div class="row mt-4" id="div-boleto" style="display: none;">
-                    <div class="col-12">
-                        <h5>O prazo de validade é de 1 dia útil</h5>
-                        <a href="" class="btn btn-vermelho mt-3 px-3">Finalizar</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12" id="div-whats" style="display: none;">
-                        <h6>O pedido será finalizado pelo whatsapp em contato com um de nossos representantes.</h6>
-                        <a href="{{route('carrinho.concluir', ['tipo' => 1])}}" class="btn btn-vermelho mt-3 px-3">Finalizar</a>
-                    </div>
-                </div>
-            </div>  --}}
-            {{--  <div class="col-12 col-md-6 text-start">
-                <h4>Simular frete</h4>
-                <form id="form-cep" class="form-inline mt-4">
-                    <div class="form-group">
-                        <input style="color:black;" type="text" name="cep" id="" class="form-control" placeholder="CEP">
-                    </div>
-                    <div class="form-group ml-4">
-                        <button type="submit" class="btn btn-vermelho">Calcular</button>
-                    </div>
-                </form>
-                <div class="row mt-5" style="display: none;" id="card-frete">
-            
-                </div>
-            </div>  --}}
-        </div>
-        
     </div>
 @endsection
 
