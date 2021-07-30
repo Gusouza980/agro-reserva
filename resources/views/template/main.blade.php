@@ -178,45 +178,20 @@
     </div>
     <div class="container-fluid" id="container-footer">
         <div class="w1200 mx-auto">
-            <div class="row py-2 justify-content-center d-none d-lg-flex" style="border-bottom: 1px solid white;">
+            <div class="row py-0 justify-content-center">
                 <div class="text-center footer-links">
                     <a href="" class="px-4 footer-links-superior">Termos e condições de uso</a>
-                </div>
-                <div class="text-center footer-links">
-                    <a href="" class="px-4 footer-links-superior">Políticas de Privacidade</a>
-                </div>
-            </div>
-            <div class="row py-2 justify-content-center d-lg-none" style="border-bottom: 1px solid white;">
-                <div class="col-12 mt-3 text-center">
-                    <a href="" class="px-4 footer-links-superior">Termos e condições de uso</a>
-                </div>
-                <div class="col-12 mt-3 text-center">
+                    |
                     <a href="" class="px-4 footer-links-superior">Políticas de Privacidade</a>
                 </div>
             </div>
             <div class="row py-2 justify-content-center">
-                <div class="col-12 justify-content-center footer-links d-none d-lg-flex">
-                    <div class="footer-link-ultimo px-4">
-                        <b>Razão Social:</b><span> Agro Reserva Pecuaria Digital LTDA</span>
-                    </div>
-                    <div class="footer-link-ultimo px-4">
-                        <b>CNPJ:</b><span> 41.893.302/0001-13</span>
-                    </div>
+                <div class="text-center footer-links">
+                        <span class="px-4 footer-links-superior"><b>Razão Social:</b><span> Agro Reserva Pecuaria Digital LTDA</span></span>
+                    |
+                        <span class="px-4 footer-links-superior"><b>CNPJ:</b><span> 41.893.302/0001-13</span></span>
                 </div>
-                <div class="col-12 d-flex d-lg-none text-center footer-link-ultimo">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12 footer-link-ultimo">
-                                <b>Razão Social:</b>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 footer-link-ultimo mt-1">
-                                <span>Agro Reserva Pecuaria Digital LTDA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="col-12 mt-3 d-flex d-lg-none text-center footer-link-ultimo">
                     <div class="container-fluid">
                         <div class="row">
