@@ -15,7 +15,7 @@ class ContaController extends Controller
             $cliente = Cliente::find(session()->get("cliente")["id"]);
             return view("cliente.index", ["cliente" => $cliente]);
         }else{
-            return rout("index");
+            return redirect()->route("index");
         }
     }
     
