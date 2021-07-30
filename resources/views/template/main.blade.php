@@ -122,6 +122,11 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Clu</span>be de Benefícios</span> </a>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12 text-nav-footer text-center text-lg-left">
                                 <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</span> </a>
                             </div>
                         </div>
@@ -134,7 +139,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-lg-12">
-                        <div class="row mt-5">
+                        <div class="row">
                             <div class="col-12 mt-5 text-nav-footer text-center text-lg-left">
                                 <span>+55 34 9172-0996</span>
                             </div>
@@ -168,6 +173,78 @@
                     </div> --}}
                 </div>
                 
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" id="container-footer">
+        <div class="w1200 mx-auto">
+            <div class="row py-2 justify-content-center d-none d-lg-flex" style="border-bottom: 1px solid white;">
+                <div class="text-center footer-links">
+                    <a href="" class="px-4 footer-links-superior">Termos e condições de uso</a>
+                </div>
+                <div class="text-center footer-links">
+                    <a href="" class="px-4 footer-links-superior">Políticas de Privacidade</a>
+                </div>
+            </div>
+            <div class="row py-2 justify-content-center d-lg-none" style="border-bottom: 1px solid white;">
+                <div class="col-12 mt-3 text-center">
+                    <a href="" class="px-4 footer-links-superior">Termos e condições de uso</a>
+                </div>
+                <div class="col-12 mt-3 text-center">
+                    <a href="" class="px-4 footer-links-superior">Políticas de Privacidade</a>
+                </div>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <div class="col-12 justify-content-center footer-links d-none d-lg-flex">
+                    <div class="footer-link-ultimo px-4">
+                        <b>Razão Social:</b><span> Agro Reserva Pecuaria Digital LTDA</span>
+                    </div>
+                    <div class="footer-link-ultimo px-4">
+                        <b>CNPJ:</b><span> 41.893.302/0001-13</span>
+                    </div>
+                </div>
+                <div class="col-12 d-flex d-lg-none text-center footer-link-ultimo">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 footer-link-ultimo">
+                                <b>Razão Social:</b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 footer-link-ultimo mt-1">
+                                <span>Agro Reserva Pecuaria Digital LTDA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3 d-flex d-lg-none text-center footer-link-ultimo">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 footer-link-ultimo">
+                                <b>CNPJ</b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 footer-link-ultimo mt-1">
+                                <span>41.893.302/0001-13</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3 d-flex d-lg-none text-center footer-link-ultimo">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 footer-link-ultimo">
+                                <b>Endereço</b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 footer-link-ultimo mt-1">
+                                <span>Av. Getulio Vargas - Nº 1116 - Centro | CEP: 38400-435 | Uberlândia - Minas Gerais</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1347,8 +1347,8 @@ label {
 
 .text-cta-comissao > h2{
     font-family: Gobold Regular;
-    font-size: 37px;
-    line-height: 58px;
+    font-size: 15px;
+    line-height: 20px;
     color: #222222;
 }
 
@@ -1367,4 +1367,30 @@ label {
         color: white;
         text-transform: uppercase;
     }
+}
+
+.footer-links-superior{
+    color: white;
+    font-size: 18px;
+    font-weight: medium;
+}
+
+.footer-links-centro{
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+}
+
+.footer-link-ultimo{
+    font-size: 14px;
+    color: white;
+}
+
+#container-footer{
+    background-color: #000;
+}
+
+#container-footer > .row{
+    /* min-height: 340px; */
+    padding: 20px 0px;
 }
