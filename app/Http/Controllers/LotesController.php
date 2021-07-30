@@ -48,7 +48,7 @@ class LotesController extends Controller
 
         $lote->save();
         toastr()->success("Lote salvo com sucesso!");
-        return redirect()->route("painel.fazenda.lotes", ["fazenda" => $fazenda]);
+        return redirect()->route("painel.fazenda.reserva.lotes", ["reserva" => $reserva]);
     }
 
     public function editar(Lote $lote){
