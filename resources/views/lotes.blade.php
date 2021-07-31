@@ -47,24 +47,26 @@
         </div>
     </div>
 @else
-    <div class="pb-5" style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: bottom center;">
-        <div class="container-fluid py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-3">
-                        <img src="{{asset($fazenda->logo)}}" style="max-width: 100%;" alt="">
-                    </div>
-                    <div class="col-12 col-md-9 d-flex align-items-center text-white text-nav-fazenda">
-                        <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #F5B01F;">Con</span>heça a fazenda</span></a> 
-                        <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #F5B01F;">Lot</span>es a venda</span> </a>
+    <div class="" style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: bottom center;">
+        <div class="pb-5" style="background-color: rgba(0,0,0,0.5);">
+            <div class="container-fluid py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <img src="{{asset($fazenda->logo)}}" style="max-width: 100%;" alt="">
+                        </div>
+                        <div class="col-12 col-md-9 d-flex align-items-center text-white text-nav-fazenda">
+                            <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #F5B01F;">Con</span>heça a fazenda</span></a> 
+                            <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #F5B01F;">Lot</span>es a venda</span> </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid py-5">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-8 text-center text-cadastro-lotes">
-                    <h1>Conheça nossos lotes</h1>
+            <div class="container-fluid py-5">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-8 text-center text-cadastro-lotes">
+                        <h1>Conheça nossos lotes</h1>
+                    </div>
                 </div>
             </div>
         </div>

@@ -127,7 +127,7 @@
                 <div data-aos="fade-in" class="w1200 mx-auto">
                     <div class="row">
                         <div class="col-12 text-viva text-center pt-3 pb-lg-5 mb-lg-5">
-                            <span>Somos a Agro Reserva. A plataforma digital de comercialização de gado que conecta as grandes marcas produtoras de genética aos compradores do mundo inteiro, 365 dias por ano, 07 dias por semana, 24 horas por dia.</span>
+                            <span><b>Somos a Agro Reserva. A plataforma digital de comercialização de gado que conecta as grandes marcas produtoras de genética aos compradores do mundo inteiro, 365 dias por ano, 07 dias por semana, 24 horas por dia.</b></span>
                         </div>
                     </div>
                 </div>
