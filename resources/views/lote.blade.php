@@ -50,25 +50,25 @@
                     <div class="text-center video-lote px-3 px-lg-0" style="max-width: 100%;">
                         {!! $lote->video !!}
                     </div>
-                    <div class="ml-5 text-center text-lg-left">
+                    <div class="ml-0 ml-lg-5 mt-4 mt-lg-0 px-lg-0 px-4 text-center text-lg-left">
                         <div class="row">
                             <div class="col-12 text-white text-lote-info px-0">
                                 <h1>Lote {{str_pad($lote->numero, 3, "0", STR_PAD_LEFT)}}</h1>
                                 <h2>{{$lote->nome}}</h2>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="text-white text-lote-info">
+                        <div class="row justify-content-center justify-content-lg-start">
+                            <div class="text-white text-lote-info text-center text-lg-left">
                                 <span><b>RGD:</b> {{$lote->registro}}</span><br>
                                 <span><b>CCG:</b> {{$lote->ccg}}</span><br>
                                 <span><b>Raça:</b> {{$lote->raca->nome}}</span>
                             </div>
-                            <div class="ml-4 text-white text-lote-info">
+                            <div class="ml-4 text-white text-lote-info text-center text-lg-left">
                                 <span><b>Nascimento:</b> {{date("d/m/Y", strtotime($lote->nascimento))}}</span><br>
                                 <span><b>Último Parto:</b> {{date("d/m/Y", strtotime($lote->parto))}}</span>
                             </div>
                         </div>
-                        <div class="row mt-2">
+                        <div class="row justify-content-center justify-content-lg-start mt-2">
                             <div class="col-12 text-white text-lote-info px-0">
                                 <div class="text-lote-info" style="width: 100%; max-width: 540px;">
                                     <span><b>Observações:</b></span><br>
