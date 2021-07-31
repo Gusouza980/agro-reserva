@@ -54,7 +54,7 @@
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-3 mt-4">
                         <div class="card mx-auto" style="width: 100%; max-width: 18rem;">
                             <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}">
-                                <div class="d-flex align-items-center justify-content-center" style="object-fit: contain; height:180px; background: url({{asset($lote->preview)}}); background-position: center;">
+                                <div class="d-flex align-items-center justify-content-center" style="object-fit: contain; height:180px; background: url({{asset($lote->preview)}}); background-position: center; background-repeat: no-repeat;">
                                     {{--  <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}"><img class="card-img-top" src="{{asset($lote->preview)}}" alt="{{$lote->nome}}"></a>  --}}
                                     @if($lote->reservado)
                                         <div class="faixa-reservado text-center text-white py-2">
