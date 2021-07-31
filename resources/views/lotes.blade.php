@@ -52,6 +52,9 @@
                                     @endif
                                 </div>
                             </a>
+                            <div class="numero-lote">
+                                <h5 class="mb-2">{{$lote->numero}}</h5>
+                            </div>
                             <div class="card-body card-lote-body" style="position: relative;">
                                 {{--  <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fab fa-telegram-plane fa-lg  cpointer"></i></a>  --}}
                                 <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fas fa-info-circle"></i> Mais Informações</a>

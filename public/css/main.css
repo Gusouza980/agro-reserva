@@ -1436,3 +1436,21 @@ label {
 .text-lote-info > span{
     font-size: 19px;
 }
+
+.numero-lote{
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background-color: #E8521B;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.numero-lote > h5{
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
