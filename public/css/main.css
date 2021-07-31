@@ -1439,12 +1439,11 @@ label {
 
 .numero-lote{
     position: absolute;
-    top: -10px;
-    left: -10px;
+    top: 0px;
+    left: 0px;
     background-color: #E8521B;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    padding: 0px 5px; 
+    /* border-radius: 50%; */
     text-align: center;
 }
 

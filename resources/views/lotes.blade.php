@@ -9,9 +9,21 @@
                         <div class="col-12 col-md-3">
                             <img src="{{asset($fazenda->logo)}}" style="max-width: 100%;" alt="">
                         </div>
-                        <div class="col-12 col-md-9 d-flex align-items-center text-white text-nav-fazenda">
-                            <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #F5B01F;">Con</span>heça a fazenda</span></a> 
-                            <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #F5B01F;">Lot</span>es a venda</span> </a>
+                        <div class="col-12 col-md-9 d-none d-lg-flex align-items-center text-white text-nav-fazenda">
+                            <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #FEB000;">Con</span>heça a fazenda</span></a> 
+                            <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #FEB000;">Lot</span>es a venda</span> </a>
+                        </div>
+                        <div class="col-12 d-block d-lg-none">
+                            <div class="row">
+                                <div class="col-12 text-nav-fazenda text-center mt-4">
+                                    <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #FEB000;">Con</span>heça a fazenda</span></a> 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-nav-fazenda text-center mt-4">
+                                    <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #FEB000;">Lot</span>es a venda</span> </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -53,7 +65,7 @@
                                 </div>
                             </a>
                             <div class="numero-lote">
-                                <h5 class="mb-2">{{$lote->numero}}</h5>
+                                <h5 class="mb-2">Lote {{$lote->numero}}</h5>
                             </div>
                             <div class="card-body card-lote-body" style="position: relative;">
                                 {{--  <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fab fa-telegram-plane fa-lg  cpointer"></i></a>  --}}
