@@ -135,7 +135,7 @@
 
                                         <div class="row">
                                             <div class="col-12">
-                                                {!! $lote->observacoes !!}
+                                                {!! str_replace("\n", "<br>", $lote->observacoes) !!}
                                             </div>
                                         </div>
                                         {{--  <div class="row">
