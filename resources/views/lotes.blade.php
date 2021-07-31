@@ -98,24 +98,26 @@
                                     @endif
                                 </div>
                             </a>
-                            <div class="card-body" style="position: relative;">
-                                <i class="sino-lote fas fa-bell fa-lg @if($cliente->lotes_interessados->where('lote_id', $lote->id)->count() > 0) interessado @endif" lid="{{$lote->id}}" @if($cliente->lotes_interessados->where('lote_id', $lote->id)) title="Desativar notificações" @else title="Ativar notificações" @endif></i>
-                                <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}"><h5 class="card-title text-black"><b>{{$lote->nome}}</b></h5></a>
+                            <div class="card-body card-lote-body" style="position: relative;">
+                                {{--  <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fab fa-telegram-plane fa-lg  cpointer"></i></a>  --}}
+
+                                {{--  <i class="sino-lote fas fa-bell fa-lg @if($cliente->lotes_interessados->where('lote_id', $lote->id)->count() > 0) interessado @endif" lid="{{$lote->id}}" @if($cliente->lotes_interessados->where('lote_id', $lote->id)) title="Desativar notificações" @else title="Ativar notificações" @endif></i>  --}}
+                                <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}"><h5 class="card-title card-lote-nome text-black"><b>{{$lote->nome}}</b></h5></a>
                                 <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}">
                                     <p class="card-text text-black">
                                         {!! str_replace("\n", "<br>", $lote->observacoes) !!}
                                     </p>
                                 </a>
-                                <div class="row mt-3">
-                                    <div class="col-8 text-left">
+                                <div class="row justify-content-end mt-3">
+                                    {{--  <div class="col-8 text-left">
                                         <i class="cpointer fas fa-thumbs-up mr-2 icone-curtir @if($cliente->curtidas->where('lote_id', $lote->id)->where('curtiu', true)->count() > 0) marcado @endif" lid="{{$lote->id}}"></i>
                                         <span class="qtd-curtidas" lid="{{$lote->id}}">{{$lote->curtidas->where("curtiu", true)->count()}}</span>
                                         <i class="cpointer fas fa-thumbs-down ml-3 mr-2 icone-descurtir @if($cliente->curtidas->where('lote_id', $lote->id)->where('curtiu', false)->count() > 0) marcado @endif" lid="{{$lote->id}}"></i>
                                         <span class="qtd-descurtidas" lid="{{$lote->id}}">{{$lote->curtidas->where("curtiu", false)->count()}}</span>
-                                    </div>
-                                    <div class="col-4 text-right">
+                                    </div>  --}}
+                                    {{--  <div class="text-right px-3">
                                         <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fab fa-telegram-plane fa-lg  cpointer"></i></a>
-                                    </div>
+                                    </div>  --}}
                                 </div>
                             </div>
                         </div>

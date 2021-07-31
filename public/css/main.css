@@ -1134,6 +1134,14 @@ label {
     color: red;
 }
 
+.icone-compartilhamento{
+    position: absolute; 
+    bottom: 10px; 
+    right: 10px; 
+    /* z-index: 10; */
+    cursor: pointer;
+}
+
 .icone-compartilhamento,
 .icone-compartilhamento:focus,
 .icone-compartilhamento:active {
@@ -1409,4 +1417,12 @@ label {
 #container-footer > .row{
     /* min-height: 340px; */
     padding: 20px 0px;
+}
+
+.card-lote-nome{
+    font-size: 17px;
+}
+
+.card-lote-body{
+    min-height: 160px;
 }

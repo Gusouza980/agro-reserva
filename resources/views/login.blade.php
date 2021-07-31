@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body style="background: url(imagens/background.jpg); background-attachment: fixed; background-size: cover;">
+<body style="background: url(imagens/bg-home-min-2.jpg); background-attachment: fixed; background-size: cover;">
 
     <div class="container-fluid" style="">
         <div class="container py-5">
@@ -25,7 +25,7 @@
 
             <div class="row mt-4">
                 <div class="col-12 text-center">
-                    <img src="imagens/logo.png" style="" width="330" height="38" alt="Logo Agro Reserva">
+                    <img src="imagens/logo_agroreserva_leite.svg" style="" width="300" alt="Logo Agro Reserva">
                 </div>
             </div>
             <div class="row mt-5 justify-content-center">
@@ -61,9 +61,9 @@
                             Não tem uma conta ? <a href="{{route('cadastro')}}" style="color: #E65454 !important;"><u>Clique aqui</u></a>
                         </div>
                     </form>
-                    <div class="mt-3 w-100 text-center">
+                    {{--  <div class="mt-3 w-100 text-center">
                         <a href="{{route('facebook.autenticar')}}" style="color:red !important;"><img src="{{asset('imagens/icone-facebook.png')}}" width="30" alt="Login Facebook"></a>
-                    </div>
+                    </div>  --}}
                 </div>
             </div>
             <div class="row mt-3">
