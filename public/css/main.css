@@ -1423,6 +1423,8 @@ label {
 
 .card-lote-nome{
     font-size: 17px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .card-lote-body{
@@ -1441,15 +1443,59 @@ label {
     position: absolute;
     top: 0px;
     left: 0px;
-    background-color: #E8521B;
-    padding: 0px 5px; 
+    background-color: #F5B01F;
+    padding: 5px 10px; 
+    border-top-left-radius: 20px;
     /* border-radius: 50%; */
     text-align: center;
 }
 
+.numero-lote > h4{
+    color: black;
+    font-size: 9px;
+    /* font-weight: bold; */
+    /* margin-top: 10px; */
+    margin: 0 0 !important;
+}
+
 .numero-lote > h5{
-    color: white;
-    font-size: 16px;
+    color: black;
+    font-size: 12px;
     font-weight: bold;
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    margin: 0 0 !important;
+}
+
+.coluna-caixa-lote{
+    width: 100%;
+    max-width: 17rem;
+}
+
+.coluna-caixa-lote > .card{
+    width: 100%;
+}
+
+.card-caixa-lote{
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    border: 0px;
+}
+
+.card-lote-info-text{
+    color: #adadad;
+}
+
+.card-lote-parto > h3{
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.card-lote-botao > button{
+    background-color: #E8521B;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: uppercase;
+    border: 0px;
+    border-radius: 15px;
 }

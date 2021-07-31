@@ -1,5 +1,13 @@
 @extends('template.main')
 
+@section('styles')
+    <style>
+        body{
+            background-color: #F2F2F2;
+        }
+    </style>
+@endsection
+
 @section('conteudo')
     <div class="" style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: bottom center;">
         <div class="pb-5" style="background-color: rgba(0,0,0,0.5);">
@@ -37,7 +45,7 @@
             </div>
         </div>
     </div>
-    <div class="container py-5">
+    <div class="w1200 mx-auto py-5">
         <div class="row">
             <div class="col-12 col-lg-8 justify-content-center justify-content-lg-start text-center text-lg-left align-items-center text-lotes d-flex">
                 <h3>Reserva da {{$fazenda->nome_fazenda}}</h3>
@@ -48,19 +56,82 @@
                 <span class="ml-3">sêmen</span>  --}}
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-between mt-5">
             @foreach($fazenda->lotes->where("ativo", true) as $lote)
-                {{--  @for($i = 0; $i < 30; $i++)  --}}
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-3 mt-4">
+                <div class="coluna-caixa-lote">
+                    <div class="card card-caixa-lote mx-auto">
+                        <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}">
+                            <div class="d-flex align-items-center justify-content-center" style="border-top-left-radius: 20px; border-top-right-radius: 20px; object-fit: contain; height:180px; background: url({{asset($lote->preview)}}); background-position: center; background-repeat: no-repeat;">
+                                @if($lote->reservado)
+                                    <div class="faixa-reservado text-center text-white py-2">
+                                        RESERVADO
+                                    </div>
+                                @endif
+                            </div>
+                        </a>
+                        <div class="numero-lote">
+                            <h4>LOTE</h4>
+                            <h5 class="mb-2">{{str_pad($lote->numero, 3, "0", STR_PAD_LEFT)}}</h5>
+                        </div>
+                        <div class="card-body card-lote-body" style="position: relative;">
+                            {{--  <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fas fa-info-circle"></i> Mais Informações</a>  --}}
+                            <div class="text-center d-flex align-items-center justify-content-center" style="height: 50px;">
+                                <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}"><h5 class="card-title card-lote-nome text-black"><b>{{$lote->nome}}</b></h5></a>
+                            </div>
+                            <div class="container-fluid px-3">
+                                <div class="row pb-1" style="border-bottom: 1px solid black;">
+                                    <div style="width: 60px;">
+                                        <b class="mr-3">RGD.: </b>
+                                    </div>
+                                    <div>
+                                        <span class="card-lote-info-text">{{$lote->registro}}</span>
+                                    </div>
+                                </div>
+                                <div class="row py-1" style="border-bottom: 1px solid black;">
+                                    <div style="width: 60px;">
+                                        <b class="mr-3">CCG.: </b>
+                                    </div>
+                                    <div>
+                                        <span class="card-lote-info-text">{{$lote->ccg}}</span>
+                                    </div>
+                                </div>
+                                <div class="row py-1" style="border-bottom: 1px solid black;">
+                                    <div style="width: 60px;">
+                                        <b class="mr-3">GPTA.: </b>
+                                    </div>
+                                    <div>
+                                        <span class="card-lote-info-text">{{$lote->gpta}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="container-fluid mt-2">
+                                    <div class="row">
+                                        <div class="col-12 card-lote-parto text-center" style="height: 30px;">
+                                            @if($lote->parto)
+                                                <h3>ÚLTIMO PARTO EM <b>{{date('d/m/Y', strtotime($lote->parto))}}</b></h3>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="container-fluid mt-2">
+                                <div class="row">
+                                    <div class="col-12 card-lote-botao text-center">
+                                        <button class="px-3 py-1">VER MAIS</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                    {{--  <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-3 mt-4">
                         <div class="card mx-auto" style="width: 100%; max-width: 18rem;">
                             <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}">
                                 <div class="d-flex align-items-center justify-content-center" style="object-fit: contain; height:180px; background: url({{asset($lote->preview)}}); background-position: center; background-repeat: no-repeat;">
-                                    {{--  <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}"><img class="card-img-top" src="{{asset($lote->preview)}}" alt="{{$lote->nome}}"></a>  --}}
                                     @if($lote->reservado)
                                         <div class="faixa-reservado text-center text-white py-2">
                                             RESERVADO
                                         </div>
-                                        {{--  <img class="faixa-reservado" src="{{asset('imagens/reservado.png')}}" alt="Reservado">  --}}
                                     @endif
                                 </div>
                             </a>
@@ -68,26 +139,8 @@
                                 <h5 class="mb-2">Lote {{$lote->numero}}</h5>
                             </div>
                             <div class="card-body card-lote-body" style="position: relative;">
-                                {{--  <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fab fa-telegram-plane fa-lg  cpointer"></i></a>  --}}
                                 <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fas fa-info-circle"></i> Mais Informações</a>
-                                {{--  <i class="sino-lote fas fa-bell fa-lg @if($cliente->lotes_interessados->where('lote_id', $lote->id)->count() > 0) interessado @endif" lid="{{$lote->id}}" @if($cliente->lotes_interessados->where('lote_id', $lote->id)) title="Desativar notificações" @else title="Ativar notificações" @endif></i>  --}}
                                 <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}"><h5 class="card-title card-lote-nome text-black"><b>{{$lote->nome}}</b></h5></a>
-                                {{--  <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}">
-                                    <p class="card-text text-black">
-                                        {!! str_replace("\n", "<br>", $lote->observacoes) !!}
-                                    </p>
-                                </a>  --}}
-                                <div class="row justify-content-end mt-3">
-                                    {{--  <div class="col-8 text-left">
-                                        <i class="cpointer fas fa-thumbs-up mr-2 icone-curtir @if($cliente->curtidas->where('lote_id', $lote->id)->where('curtiu', true)->count() > 0) marcado @endif" lid="{{$lote->id}}"></i>
-                                        <span class="qtd-curtidas" lid="{{$lote->id}}">{{$lote->curtidas->where("curtiu", true)->count()}}</span>
-                                        <i class="cpointer fas fa-thumbs-down ml-3 mr-2 icone-descurtir @if($cliente->curtidas->where('lote_id', $lote->id)->where('curtiu', false)->count() > 0) marcado @endif" lid="{{$lote->id}}"></i>
-                                        <span class="qtd-descurtidas" lid="{{$lote->id}}">{{$lote->curtidas->where("curtiu", false)->count()}}</span>
-                                    </div>  --}}
-                                    {{--  <div class="text-right px-3">
-                                        <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fab fa-telegram-plane fa-lg  cpointer"></i></a>
-                                    </div>  --}}
-                                </div>
                             </div>
                         </div>
                         <div class="modal fade" id="modalCompartilhamentoLote{{$lote->id}}" tabindex="-1" aria-labelledby="modalCompartilhamentoLote{{$lote->id}}Label" aria-hidden="true">
@@ -107,37 +160,11 @@
                                                 {!! str_replace("\n", "<br>", $lote->observacoes) !!}
                                             </div>
                                         </div>
-                                        {{--  <div class="row">
-                                            <div class="col-12">
-                                                <hr>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-4">
-                                            <div class="col-12 text-black text-justify">
-                                                <a href="https://api.whatsapp.com/send?text={{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}" class="icone-compartilhamento"><i class="fab fa-whatsapp fa-lg mr-3"></i>Compartilhar no Whatsapp</a>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-4">
-                                            <div class="col-12 text-black text-justify">
-                                                <a href="http://www.facebook.com/sharer/sharer.php?u={{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}" class="icone-compartilhamento"><i class="fab fa-facebook fa-lg mr-3"></i>Compartilhar no Facebook</a>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-4">
-                                            <div class="col-12 text-black text-justify">
-                                                <a href="" class="icone-compartilhamento"><i class="fab fa-instagram fa-lg mr-3"></i>Compartilhar no Instagram</a>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-4">
-                                            <div class="col-12 text-black text-justify">
-                                                <a href="https://twitter.com/home?status={{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}" class="icone-compartilhamento"><i class="fab fa-twitter fa-lg mr-3"></i>Compartilhar no Twitter</a>
-                                            </div>
-                                        </div>  --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {{--  @endfor      --}}
+                    </div>  --}}
             @endforeach
         </div>
     </div>

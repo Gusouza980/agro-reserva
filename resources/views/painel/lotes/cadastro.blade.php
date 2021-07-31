@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label for="numero" class="form-label">Número</label>
+                                <label for="numero" class="form-label">Lote</label>
                                 <input type="number" class="form-control" name="numero" id="numero" min="1" step="1" value="1">
                             </div>
                         </div>
@@ -58,6 +58,26 @@
                             </div>
                         </div>
                         
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            <div class="mb-3">
+                                <label for="gpta" class="form-label">GPTA</label>
+                                <input type="text" class="form-control" name="gpta" id="gpta" maxlength="12">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="mb-3">
+                                <label for="ccg" class="form-label">CCG</label>
+                                <input type="text" class="form-control" name="ccg" id="ccg" maxlength="20">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="mb-3">
+                                <label for="parto" class="form-label">Último Parto</label>
+                                <input type="date" class="form-control" name="parto" id="parto">
+                            </div>                 
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
