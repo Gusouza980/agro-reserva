@@ -789,6 +789,12 @@ label {
     color: white;
 }
 
+@media(max-width:768px){
+    .text-cadastro-lotes>h1 {
+        font: normal normal bold 35px/45px 'Titillium Web', sans-serif;
+    }
+}
+
 .text-cadastro-lotes>span {
     text-align: center;
     font: normal normal normal 20px/39px 'Titillium Web', sans-serif;

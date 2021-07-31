@@ -63,7 +63,12 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-white text-lote-info">
-                                <span><b>Registro:</b> {{$lote->registro}}</span>
+                                <span><b>RGD:</b> {{$lote->registro}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-white text-lote-info">
+                                <span><b>CCG:</b> {{$lote->ccg}}</span>
                             </div>
                         </div>
                         <div class="row">
@@ -74,6 +79,16 @@
                         <div class="row">
                             <div class="col-12 text-white text-lote-info">
                                 <span><b>Nascimento:</b> {{date("d/m/Y", strtotime($lote->nascimento))}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-white text-lote-info">
+                                <span><b>Último Parto:</b> {{date("d/m/Y", strtotime($lote->parto))}}</span>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12 text-white text-lote-info">
+                                <span>{!! str_replace("\n", "<br>", $lote->observacoes) !!}</span>
                             </div>
                         </div>
                     </div>

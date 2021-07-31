@@ -224,10 +224,25 @@
                 </div>
             </div>
             <div class="row py-2 justify-content-center">
-                <div class="text-center footer-links">
+                <div class="text-center footer-links d-none d-lg-block">
                         <span class="px-4 footer-links-superior"><b>Razão Social:</b><span> Agro Reserva Pecuaria Digital LTDA</span></span>
                     |
                         <span class="px-4 footer-links-superior"><b>CNPJ:</b><span> 41.893.302/0001-13</span></span>
+                </div>
+
+                <div class="col-12 mt-3 d-flex d-lg-none text-center footer-link-ultimo">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 footer-link-ultimo">
+                                <b>Razão Social</b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 footer-link-ultimo mt-1">
+                                <span>Agro Reserva Pecuaria Digital LTDA</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="col-12 mt-3 d-flex d-lg-none text-center footer-link-ultimo">
@@ -240,20 +255,6 @@
                         <div class="row">
                             <div class="col-12 footer-link-ultimo mt-1">
                                 <span>41.893.302/0001-13</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 mt-3 d-flex d-lg-none text-center footer-link-ultimo">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12 footer-link-ultimo">
-                                <b>Endereço</b>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 footer-link-ultimo mt-1">
-                                <span>Av. Getulio Vargas - Nº 1116 - Centro | CEP: 38400-435 | Uberlândia - Minas Gerais</span>
                             </div>
                         </div>
                     </div>
