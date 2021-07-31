@@ -125,6 +125,8 @@ class SiteController extends Controller
         $lote->visitas += 1;
         $lote->save();
 
+        $lote->video = $this->convertYoutube($lote->video);
+
         $fazenda = Fazenda::where("slug", $slug)->first();
         return view("lote", ["lote" => $lote, "fazenda" => $fazenda]);
     }
@@ -160,5 +162,13 @@ class SiteController extends Controller
 
     public function contato(){
         return view("contato");
+    }
+
+    public function convertYoutube($string) {
+        return preg_replace(
+            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+            "<iframe width=\"350\" height=\"200\" src=\"//www.youtube.com/embed/$2\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+            $string
+        );
     }
 }
