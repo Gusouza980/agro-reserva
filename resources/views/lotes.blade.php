@@ -100,14 +100,14 @@
                             </a>
                             <div class="card-body card-lote-body" style="position: relative;">
                                 {{--  <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fab fa-telegram-plane fa-lg  cpointer"></i></a>  --}}
-
+                                <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fas fa-info-circle"></i> Mais Informações</a>
                                 {{--  <i class="sino-lote fas fa-bell fa-lg @if($cliente->lotes_interessados->where('lote_id', $lote->id)->count() > 0) interessado @endif" lid="{{$lote->id}}" @if($cliente->lotes_interessados->where('lote_id', $lote->id)) title="Desativar notificações" @else title="Ativar notificações" @endif></i>  --}}
                                 <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}"><h5 class="card-title card-lote-nome text-black"><b>{{$lote->nome}}</b></h5></a>
-                                <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}">
+                                {{--  <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}">
                                     <p class="card-text text-black">
                                         {!! str_replace("\n", "<br>", $lote->observacoes) !!}
                                     </p>
-                                </a>
+                                </a>  --}}
                                 <div class="row justify-content-end mt-3">
                                     {{--  <div class="col-8 text-left">
                                         <i class="cpointer fas fa-thumbs-up mr-2 icone-curtir @if($cliente->curtidas->where('lote_id', $lote->id)->where('curtiu', true)->count() > 0) marcado @endif" lid="{{$lote->id}}"></i>
@@ -125,13 +125,18 @@
                             <div class="modal-dialog modal-sm modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header pt-3">
-                                        <h5 class="modal-title" id="exampleModalLabel">Compartilhar em...</h5>
+                                        <h6 class="modal-title" id="exampleModalLabel">{{$lote->nome}}</h6>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body text-center pb-4">
+                                    <div class="modal-body text-left pb-4">
                                         <div class="row">
+                                            <div class="col-12">
+                                                {!! $lote->observacoes !!}
+                                            </div>
+                                        </div>
+                                        {{--  <div class="row">
                                             <div class="col-12">
                                                 <hr>
                                             </div>
@@ -146,16 +151,16 @@
                                                 <a href="http://www.facebook.com/sharer/sharer.php?u={{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}" class="icone-compartilhamento"><i class="fab fa-facebook fa-lg mr-3"></i>Compartilhar no Facebook</a>
                                             </div>
                                         </div>
-                                        {{--  <div class="row mt-4">
+                                        <div class="row mt-4">
                                             <div class="col-12 text-black text-justify">
                                                 <a href="" class="icone-compartilhamento"><i class="fab fa-instagram fa-lg mr-3"></i>Compartilhar no Instagram</a>
                                             </div>
-                                        </div>  --}}
+                                        </div>
                                         <div class="row mt-4">
                                             <div class="col-12 text-black text-justify">
                                                 <a href="https://twitter.com/home?status={{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}" class="icone-compartilhamento"><i class="fab fa-twitter fa-lg mr-3"></i>Compartilhar no Twitter</a>
                                             </div>
-                                        </div>
+                                        </div>  --}}
                                     </div>
                                 </div>
                             </div>

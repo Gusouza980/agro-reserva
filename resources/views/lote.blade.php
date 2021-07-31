@@ -15,9 +15,6 @@
                     <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
                         <img src="{{asset($fazenda->logo)}}" style="max-width: 100%;" alt="">
                     </div>
-                    {{--  <div class="col-12 col-lg-4 justify-content-center d-flex align-items-center text-white mt-4 mt-lg-0">
-                        <button name="" id="" class="btn btn-vermelho py-2 px-5 mx-auto" style="max-width:350px;">Dar lance</button>
-                    </div>  --}}
                     <div class="col-12 col-lg-7 text-white mt-4 mt-lg-0">
                         <div class="row">
                             <div class="col-12 text-center text-lg-right">
@@ -34,11 +31,6 @@
                                 <span>ou R${{number_format($lote->preco, 2, ",", ".")}} à vista</span>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12 text-center text-lg-right">
-                                {{--  <h4>15x R$12.000</h4>  --}}
-                            </div>
-                        </div>
                     </div>
                     <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
                         <div class="text-center text-white">
@@ -47,67 +39,47 @@
                             @else
                                 <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Reservado</button>
                             @endif
-                            {{--  <span>No boleto ou cartão de crédito</span>  --}}
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container-fluid py-5" style="">
-            <div class="row justify-content-center mt-5">
-                <div class="col-10 col-md-6 col-lg-4 text-center video-lote">
-                    {!! $lote->video !!}
-                    {{--  <iframe src="https://www.youtube.com/embed/klZNNUz4wPQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  --}}
-                    {{--  <img src="{{ urldecode($produto->produto[0]->tx_PathImagem) }}" style="border-radius: 15px;" alt="">  --}}
-                </div>
-            </div>
-            {{--  <div class="row justify-content-center mt-3">
-                <div class="col-10 col-md-6 col-lg-4 text-center">
-                    <img src="{{asset('imagens/lote.png')}}" style="width:100%; max-width: 70px; border: 1px solid rgba(255,255,255,0.1); border-radius: 5px;" alt="">
-                    <img src="{{asset('imagens/lote.png')}}" style="width:100%; max-width: 70px; border: 1px solid rgba(255,255,255,0.1); border-radius: 5px;" alt="">
-                    <img src="{{asset('imagens/lote.png')}}" style="width:100%; max-width: 70px; border: 1px solid rgba(255,255,255,0.1); border-radius: 5px;" alt="">
-                    <img src="{{asset('imagens/lote.png')}}" style="width:100%; max-width: 70px; border: 1px solid rgba(255,255,255,0.1); border-radius: 5px;" alt="">
-                </div>
-            </div>  --}}
-            <div class="row justify-content-center mt-3">
-                <div class="col-10 col-md-6 col-lg-4 text-center">
-                    <div class="row">
-                        <div class="col-12 text-white">
-                            <h2>{{$lote->nome}}</h2>
+        <div class="w1200 mx-auto py-5" style="">
+            <div class="container-fluid">
+                <div class="row justify-content-center mt-5">
+                    <div class="text-center video-lote px-3 px-lg-0" style="max-width: 100%;">
+                        {!! $lote->video !!}
+                    </div>
+                    <div class="ml-0 ml-lg-5 text-center text-lg-left">
+                        <div class="row">
+                            <div class="col-12 text-white text-lote-info">
+                                <h2>{{$lote->nome}}</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-white text-lote-info">
+                                <span><b>Registro:</b> {{$lote->registro}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-white text-lote-info">
+                                <span><b>Raça:</b> {{$lote->raca->nome}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-white text-lote-info">
+                                <span><b>Nascimento:</b> {{date("d/m/Y", strtotime($lote->nascimento))}}</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 text-white">
-                            <b>Registro:</b> {{$lote->registro}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 text-white">
-                            <b>Raça:</b> {{$lote->raca->nome}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 text-white">
-                            <b>Nascimento:</b> {{date("d/m/Y", strtotime($lote->nascimento))}}
-                        </div>
-                    </div>
-                    {{--  <div class="row">
-                        <div class="col-12 text-white">
-                            
-                        </div>
-                    </div>  --}}
-                    {{--  <div class="row mt-4">
-                        <div class="col-12 text-white">
-                            <i class="fas fa-chevron-down fa-lg"></i>
-                        </div>
-                    </div>  --}}
                 </div>
             </div>
         </div>
-        <div class="row pb-4">
-            <div class="col-12 text-center">
-                <a href="" class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
+        <div class="container-fluid">
+            <div class="row pb-4">
+                <div class="col-12 text-center">
+                    <a href="" class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
+                </div>
             </div>
         </div>
     </div>

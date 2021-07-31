@@ -1140,17 +1140,19 @@ label {
     right: 10px; 
     /* z-index: 10; */
     cursor: pointer;
+    font-size: 14px !important;
+    color: #E8521B;
 }
 
 .icone-compartilhamento,
 .icone-compartilhamento:focus,
 .icone-compartilhamento:active {
-    color: black !important;
+    color: #E8521B !important;
     text-decoration: none;
 }
 
 .icone-compartilhamento:hover{
-    color: black !important;
+    color: #E8521B !important;
 }
 
 .icone-compartilhamento:hover > .fa-whatsapp{
@@ -1424,5 +1426,13 @@ label {
 }
 
 .card-lote-body{
-    min-height: 160px;
+    min-height: 130px;
+}
+
+.text-lote-info > h2{
+    font-weight: bold;
+}
+
+.text-lote-info > span{
+    font-size: 19px;
 }
