@@ -116,7 +116,7 @@
                             <div class="container-fluid mt-2">
                                 <div class="row">
                                     <div class="col-12 card-lote-botao text-center">
-                                        <button class="px-3 py-1">VER MAIS</button>
+                                        <a class="card-lote-botao" href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}"><button class="px-3 py-1">VER MAIS</button></a>
                                     </div>
                                 </div>
                             </div>

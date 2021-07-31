@@ -1431,6 +1431,10 @@ label {
     min-height: 130px;
 }
 
+.text-lote-info > h1{
+    font-size: 13px;
+}
+
 .text-lote-info > h2{
     font-weight: bold;
 }

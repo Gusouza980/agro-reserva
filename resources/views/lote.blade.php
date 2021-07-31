@@ -53,6 +53,11 @@
                     <div class="ml-0 ml-lg-5 text-center text-lg-left">
                         <div class="row">
                             <div class="col-12 text-white text-lote-info">
+                                <h1>Lote {{str_pad($lote->numero, 3, "0", STR_PAD_LEFT)}}</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-white text-lote-info">
                                 <h2>{{$lote->nome}}</h2>
                             </div>
                         </div>
