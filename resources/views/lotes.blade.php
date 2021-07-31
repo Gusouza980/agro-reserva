@@ -47,7 +47,7 @@
         </div>
     </div>
 @else
-    <div class="pb-5" style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: middle;">
+    <div class="pb-5" style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: bottom center;">
         <div class="container-fluid py-5">
             <div class="container">
                 <div class="row">

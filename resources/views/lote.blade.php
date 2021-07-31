@@ -18,7 +18,7 @@
                     {{--  <div class="col-12 col-lg-4 justify-content-center d-flex align-items-center text-white mt-4 mt-lg-0">
                         <button name="" id="" class="btn btn-vermelho py-2 px-5 mx-auto" style="max-width:350px;">Dar lance</button>
                     </div>  --}}
-                    <div class="col-12 offset-lg-4 col-lg-3 text-white mt-4 mt-lg-0">
+                    <div class="col-12 col-lg-7 text-white mt-4 mt-lg-0">
                         <div class="row">
                             <div class="col-12 text-center text-lg-right">
                                 <h2>{{$lote->nome}}</h2>
@@ -26,12 +26,12 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-center text-lg-right">
-                                <h5>R${{number_format($lote->preco, 2, ",", ".")}}</h5>
+                                <h4><b>{{$lote->parcelas}}x</b> de <b>R${{number_format(round(($lote->preco / $lote->parcelas), 2), 2, ",", ".")}}</b></h4>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 text-center text-lg-right">
-                                <span>ou até <b>{{$lote->parcelas}}x</b> de <b>R${{number_format(round(($lote->preco / $lote->parcelas), 2), 2, ",", ".")}}</b></span>
+                                <span>ou R${{number_format($lote->preco, 2, ",", ".")}} à vista</span>
                             </div>
                         </div>
                         <div class="row">
