@@ -88,7 +88,9 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col-12 text-white text-lote-info">
-                                <span>{!! str_replace("\n", "<br>", $lote->observacoes) !!}</span>
+                                <div class="text-lote-info" style="width: 100%; max-width: 540px;">
+                                    <span>{!! str_replace("\n", "<br>", $lote->observacoes) !!}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
