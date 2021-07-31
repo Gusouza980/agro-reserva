@@ -80,7 +80,7 @@
                             </div>
                             <div class="container-fluid px-3">
                                 <div class="row pb-1" style="border-bottom: 1px solid black;">
-                                    <div style="width: 60px;">
+                                    <div style="width: 65px;">
                                         <b class="mr-3">RGD.: </b>
                                     </div>
                                     <div>
@@ -88,7 +88,7 @@
                                     </div>
                                 </div>
                                 <div class="row py-1" style="border-bottom: 1px solid black;">
-                                    <div style="width: 60px;">
+                                    <div style="width: 65px;">
                                         <b class="mr-3">CCG.: </b>
                                     </div>
                                     <div>
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                                 <div class="row py-1" style="border-bottom: 1px solid black;">
-                                    <div style="width: 60px;">
+                                    <div style="width: 65px;">
                                         <b class="mr-3">GPTA.: </b>
                                     </div>
                                     <div>
