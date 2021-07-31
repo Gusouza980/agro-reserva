@@ -14,11 +14,11 @@
                         </div>
                     </div>
                     <div class="row py-4">
-                        <div class="col-12 px-0 text-section2-fazenda text-center text-md-left">
+                        <div class="col-12 px-0 text-section2-fazenda text-justify">
                             <span>{{$fazenda->texto_conheca}}</span>
                         </div>
                     </div>
-                    <div class="row py-4">
+                    <div class="row mt-2 pb-4">
                         <div class="col-12 px-0 text-section2-fazenda text-center text-md-left">
                             <a name="" id="" class="btn btn-vermelho py-2 px-4 mt-3" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}" role="button">Ver animais a venda</a>
                             <br class="d-lg-none">

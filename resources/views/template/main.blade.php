@@ -144,78 +144,72 @@
     <div class="container-fluid" id="footer" style="background: url(/imagens/rodape.jpg); background-size: cover; background-position:center; background-repeat: no-repeat;">
         <div class="row align-items-center py-5">
             <div class="col-12 col-lg-4 text-center">
-                <img src="{{asset('imagens/logo-footer.png')}}" style="width:100%; max-width: 307px;" alt="">
+                <div class="w400 ml-auto">
+                    <div class="row">
+                        <div class="col-12 text-cenjter text-lg-left">
+                            <img src="{{asset('imagens/logo-footer.png')}}" style="width:100%; max-width: 307px;" alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mt-5 text-nav-footer text-center text-lg-left">
+                            <span>+55 14 9 8180-9051</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-nav-footer text-center text-lg-left">
+                            <span>contato@agroreserva.com.br</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-nav-footer text-center text-lg-left">
+                            <span>
+                                <i class="fab fa-instagram fa-lg"></i> 
+                                <i class="fab fa-facebook-square ml-4 fa-lg"></i>
+                                <i class="fab fa-youtube ml-4 fa-lg"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
             <div class="col-12 offset-lg-4 col-lg-4 mt-5 mt-lg-0">
                 <div class="row">
                     <div class="col-12">
-                        <div class="row">
-                            <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <a class="" href="{{route('index')}}"><span><span style="border-bottom: 2px solid #FEB000;">Blo</span>g</span> </a>
+                        <div class="w400 mx-auto">
+                            <div class="row">
+                                <div class="col-12 text-nav-footer text-center text-lg-left">
+                                    <a class="" href="{{route('index')}}"><span><span style="border-bottom: 2px solid #FEB000;">Blo</span>g</span> </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <a class="" href="{{route('cadastro.fazenda')}}"><span><span style="border-bottom: 2px solid #FEB000;">Que</span>m somos</span> </a>
+                            <div class="row mt-2">
+                                <div class="col-12 text-nav-footer text-center text-lg-left">
+                                    <a class="" href="{{route('cadastro.fazenda')}}"><span><span style="border-bottom: 2px solid #FEB000;">Que</span>m somos</span> </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Com</span>o Comprar</span> </a>
+                            <div class="row mt-2">
+                                <div class="col-12 text-nav-footer text-center text-lg-left">
+                                    <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Com</span>o Comprar</span> </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Clu</span>be de Benefícios</span> </a>
+                            <div class="row mt-2">
+                                <div class="col-12 text-nav-footer text-center text-lg-left">
+                                    <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Clu</span>be de Benefícios</span> </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</span> </a>
+                            <div class="row mt-2">
+                                <div class="col-12 text-nav-footer text-center text-lg-left">
+                                    <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</span> </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Ent</span>rar</span> </a>
+                            <div class="row mt-2">
+                                <div class="col-12 text-nav-footer text-center text-lg-left">
+                                    <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Ent</span>rar</span> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 col-lg-12">
-                        <div class="row">
-                            <div class="col-12 mt-5 text-nav-footer text-center text-lg-left">
-                                <span>+55 14 9 8180-9051</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <span>contato@agroreserva.com.br</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <span>
-                                    <i class="fab fa-instagram fa-lg"></i> 
-                                    <i class="fab fa-facebook-square ml-4 fa-lg"></i>
-                                    <i class="fab fa-youtube ml-4 fa-lg"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- <div class="col-12 col-lg-6">
-                        <div class="row mt-5">
-                            <div class="col-12 mt-5 text-nav-footer text-center text-lg-left">
-                                <span>AGRO RESERVA PECUARIA DIGITAL LTDA</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 text-nav-footer text-center text-lg-left">
-                                <span>41.893.302/0001-13</span>
-                            </div>
-                        </div>
-                    </div> --}}
-                </div>
+                
                 
             </div>
         </div>

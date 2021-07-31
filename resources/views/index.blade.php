@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 
-                <div class="row mt-2">
+                <div class="row mt-2 mb-5">
                     <div class="col-12 text-center text-white text-header-index">
                         <h4>Conheça a Agro Reserva</h4>
                     </div>

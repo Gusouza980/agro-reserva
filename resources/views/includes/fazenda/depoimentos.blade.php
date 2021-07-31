@@ -14,7 +14,7 @@
                                 </div>
                             </div>
                             <div class="row py-4">
-                                <div class="col-12 px-0 text-section2-fazenda">
+                                <div class="col-12 px-0 text-section2-fazenda text-justify">
                                     <span>{{$depoimento->texto}}</span>
                                 </div>
                             </div>
