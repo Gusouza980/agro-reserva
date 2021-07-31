@@ -1,52 +1,6 @@
 @extends('template.main')
 
 @section('conteudo')
-@if(!session()->get("cliente"))
-    <div style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: middle; min-height: 100vh;">
-        <div class="container-fluid py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-3 text-center text-lg-left">
-                        <img src="{{asset($fazenda->logo)}}" style="max-width: 100%;" alt="">
-                    </div>
-                    <div class="col-12 col-md-9 d-none d-lg-flex align-items-center text-white text-nav-fazenda">
-                        <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #F5B01F;">Con</span>heça a fazenda</span></a> 
-                        <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #F5B01F;">Lot</span>es a venda</span> </a>
-                    </div>
-                    <div class="col-12 d-block d-lg-none">
-                        <div class="row">
-                            <div class="col-12 text-nav-fazenda text-center mt-4">
-                                <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #F5B01F;">Con</span>heça a fazenda</span></a> 
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 text-nav-fazenda text-center mt-4">
-                                <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #F5B01F;">Lot</span>es a venda</span> </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid py-5 mt-5">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-8 text-center text-cadastro-lotes">
-                    <h1>Cadastre-se para ver os animais dessa fazenda</h1>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-12 text-center text-cadastro-lotes">
-                    <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('cadastro')}}" role="button">Cadastrar agora</a>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-12 text-center text-cadastro-lotes">
-                    <span>A maioria das pessoas concluem o cadastro em até 2 minutos</span>
-                </div>
-            </div>
-        </div>
-    </div>
-@else
     <div class="" style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: bottom center;">
         <div class="pb-5" style="background-color: rgba(0,0,0,0.5);">
             <div class="container-fluid py-5">
@@ -172,7 +126,7 @@
             @endforeach
         </div>
     </div>
-    <div class="modal fade" id="modalInteresse" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{--  <div class="modal fade" id="modalInteresse" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body modal-body-sucesso text-center py-4">
@@ -195,10 +149,7 @@
                 </div>
             </div>
         </div>
-    </div>
-@endif
-
-
+    </div>  --}}
 @endsection
 
 @section('scripts')
