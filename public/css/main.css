@@ -570,6 +570,10 @@ label {
     height: 400px;
 }
 
+.video-container-depoimento > iframe{
+    width: 100%;
+}
+
 @media (max-width: 768px){
     .video-container > iframe{
         height: 300px;
