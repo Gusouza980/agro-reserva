@@ -70,6 +70,11 @@ class SiteController extends Controller
 
     public function conheca($slug){
         $fazenda = Fazenda::where("slug", $slug)->first();
+        $fazenda->video_conheca = $this->convertYoutube($fazenda->video_conheca);
+        $fazenda->video_conheca = $this->convertYoutube($fazenda->video_conheca_lotes);
+        foreach($fazenda->depoimentos as $depoimento){
+            $depoimento->video = $this->convertYoutube($depoimento->video);
+        }
         return view("fazenda", ["fazenda" => $fazenda]);
     }
 
