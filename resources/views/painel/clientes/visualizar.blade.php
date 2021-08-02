@@ -74,11 +74,23 @@
                                     <label for="email">E-mail</label>
                                     <input type="email"
                                         class="form-control" name="email" id="email" aria-describedby="helpId" value="{{$cliente->email}}" required>
-                                    </div>
+                                </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-12 col-lg-6 form-conta">
-                                    <label for="documento">documento/CNPJ</label>
+                                    <label for="nascimento">Data de Nascimento</label>
+                                    <input type="date"
+                                    class="form-control" name="nascimento" id="nascimento" aria-describedby="helpId" value="{{$cliente->nascimento}}" required>
+                                </div>
+                                <div class="form-group col-12 col-lg-6 form-conta">
+                                    <label for="rg">RG</label>
+                                    <input type="text"
+                                        class="form-control" name="rg" id="rg" aria-describedby="helpId" value="{{$cliente->rg}}" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-group col-12 col-lg-6 form-conta">
+                                    <label for="documento">CPF/CNPJ</label>
                                     <input type="text"
                                     class="form-control" name="documento" id="documento" aria-describedby="helpId" value="{{$cliente->documento}}" required>
                                 </div>

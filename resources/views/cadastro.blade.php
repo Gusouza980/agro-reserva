@@ -254,7 +254,7 @@
                         </div>
                     </div>
     
-                    <div class="container-fluid mt-5" id="container-cadastro-completo" style="">
+                    <div class="container-fluid mt-5" id="container-cadastro-completo" style="display: none;">
                         <div class="row">
                             <div class="col-12 text-center" id="container-cadastro-completo-titulo">
                                 <h1>Preencha os campos a baixo para completar seu cadastro!</h1>
