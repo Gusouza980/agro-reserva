@@ -120,8 +120,7 @@
                     </div>
                     <div  class="row justify-content-center my-3 py-5">
                         <div class="col-12 d-flex justify-content-center text-section1-index video-container text-center">
-                            <iframe data-aos="fade-in" width="1280" height="720" src="https://www.youtube.com/embed/PFnjbweEEew" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
+                            <iframe width="1863" height="770" src="https://www.youtube.com/embed/JZaf0PGdYiI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        </div>
                     </div>
                 </div>
                 <div data-aos="fade-in" class="w1200 mx-auto">

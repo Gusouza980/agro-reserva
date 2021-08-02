@@ -150,6 +150,16 @@
                                     <li><a href="{{route('painel.fazendas')}}" key="t-saas">Consultar</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect">
+                                    <i class="far fa-sticky-note" aria-hidden="true"></i>
+                                    <span key="t-dashboards">Notícias</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{route('painel.noticias')}}" key="t-default">Cadastros</a></li>
+                                    <li><a href="{{route('painel.categorias')}}" key="t-default">Categorias</a></li>
+                                </ul>
+                            </li>
 
                             <li>
                                 <a href="javascript: void(0);" class="waves-effect">

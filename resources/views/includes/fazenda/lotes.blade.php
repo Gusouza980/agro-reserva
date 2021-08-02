@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-7 video-container">
+            <div class="col-12 col-lg-7 video-container video-container-depoimento">
                 {!! $fazenda->video_conheca_lotes !!}
             </div>
         </div>

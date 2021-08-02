@@ -1513,3 +1513,13 @@ label {
     border: 0px;
     border-radius: 15px;
 }
+
+#row-header-blog{
+    min-height: 350px;
+}
+
+.text-header-blog > h1{
+    color: white;
+    font-size: 64px;
+    font-family: Gobold Regular;
+}

@@ -126,8 +126,8 @@
                 </div>
             @endforeach
             @if($fazenda->catalogo)
-                <div class="col-12 text-center mt-4">
-                    <a name="" id="" href="{{asset($fazenda->catalogo)}}" class="card-lote-botao" href="#" role="button" download="catalogo-{{$fazenda->slug}}.pdf"><button class="px-4 py-1">Baixar Catálogo</button></a>
+                <div class="col-12 text-center mt-5">
+                    <a name="" id="" href="{{asset($fazenda->catalogo)}}" class="card-lote-botao" href="#" role="button" download="catalogo-{{$fazenda->slug}}.pdf"><button class="px-4 py-2">Baixar Catálogo</button></a>
                 </div>
             @endif
         </div>

@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-7 video-container">
+            <div class="col-12 col-lg-7 video-container video-container-depoimento">
                 {{--  <iframe src="{{$fazenda->video_conheca}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  --}}
                 {!! $fazenda->video_conheca !!}
             </div>
