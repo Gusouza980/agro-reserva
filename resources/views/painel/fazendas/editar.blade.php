@@ -100,7 +100,7 @@
     </div>
     <!-- end col -->
 </div>
-
+<hr>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -134,7 +134,42 @@
     </div>
     <!-- end col -->
 </div>
+<hr>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Catálogo</h4>
+
+                <form action="{{route('painel.fazenda.salvar.catalogo', ['fazenda' => $fazenda])}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="row">
+                        
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="">Arquivo de Catálogo</label>
+                                <input type="file" class="form-control-file" name="catalogo" id="" placeholder="" aria-describedby="fileHelpId" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            @if($fazenda->catalogo)
+                                <a name="" id="" href="{{asset($fazenda->catalogo)}}" class="btn btn-primary" href="#" role="button" download="catalogo_{{$fazenda->slug}}.pdf">Download</a>
+                            @endif
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
 <!-- end row -->
+<hr>
 @php
     $admin = $fazenda->usuarios->first();
 @endphp
@@ -193,7 +228,7 @@
     </div>
     <!-- end col -->
 </div>
-
+<hr>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -229,7 +264,7 @@
     <!-- end col -->
 </div>
 <!-- end row -->
-
+<hr>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -323,7 +358,7 @@
     <!-- end col -->
 </div>
 <!-- end row -->
-
+<hr>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -443,7 +478,7 @@
     <!-- end col -->
 </div>
 <!-- end row -->
-
+<hr>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -560,7 +595,7 @@
     <!-- end col -->
 </div>
 <!-- end row -->
-
+<hr>
 <div class="row mt-5 mb-3">
     <div class="col-12">
         <a name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovaProducao" role="button">Nova Produção</a>
@@ -602,7 +637,7 @@
     </div>
     <!-- end col -->
 </div>
-
+<hr>
 <div class="row mt-5 mb-3">
     <div class="col-12">
         <a name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovoDepoimento" role="button">Novo depoimento</a>

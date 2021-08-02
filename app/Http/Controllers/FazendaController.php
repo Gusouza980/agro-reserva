@@ -147,6 +147,19 @@ class FazendaController extends Controller
         return redirect()->back();
     }
 
+    public function salvar_catalogo(Request $request, Fazenda $fazenda){
+        if($request->file("catalogo")){
+            Storage::delete($fazenda->catalogo);
+            $fazenda->catalogo = $request->file('catalogo')->store(
+                'imagens/fazendas/' . Str::slug($fazenda->nome_fazenda) . "/catalogo", 'local'
+            );
+            $fazenda->save();
+            toastr()->success("Catálogo salvo com sucesso!");
+        }
+
+        return redirect()->back();
+    }
+
     public function salvar_conheca(Request $request, Fazenda $fazenda){
 
         if($request->file("fundo_conheca")){

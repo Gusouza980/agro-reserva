@@ -68,60 +68,60 @@
                                 <div class="form-group col-12 col-lg-6 form-conta">
                                     <label for="nome_dono">Nome</label>
                                     <input type="text"
-                                    class="form-control" name="nome_dono" id="nome_dono" aria-describedby="helpId" value="{{$cliente->nome_dono}}" required>
+                                    class="form-control" name="nome_dono" id="nome_dono" aria-describedby="helpId" value="{{$cliente->nome_dono}}" >
                                 </div>
                                 <div class="form-group col-12 col-lg-6 form-conta">
                                     <label for="email">E-mail</label>
                                     <input type="email"
-                                        class="form-control" name="email" id="email" aria-describedby="helpId" value="{{$cliente->email}}" required>
+                                        class="form-control" name="email" id="email" aria-describedby="helpId" value="{{$cliente->email}}" >
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-12 col-lg-6 form-conta">
                                     <label for="nascimento">Data de Nascimento</label>
                                     <input type="date"
-                                    class="form-control" name="nascimento" id="nascimento" aria-describedby="helpId" value="{{$cliente->nascimento}}" required>
+                                    class="form-control" name="nascimento" id="nascimento" aria-describedby="helpId" value="{{$cliente->nascimento}}" >
                                 </div>
                                 <div class="form-group col-12 col-lg-6 form-conta">
-                                    <label for="rg">RG</label>
-                                    <input type="text"
-                                        class="form-control" name="rg" id="rg" aria-describedby="helpId" value="{{$cliente->rg}}" required>
+                                    <label for="ultimo_acesso">Último Acesso</label>
+                                    <input type="date"
+                                        class="form-control" name="ultimo_acesso" id="ultimo_acesso" aria-describedby="helpId" value="{{$cliente->ultimo_acesso}}" readonly>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-12 col-lg-6 form-conta">
                                     <label for="documento">CPF/CNPJ</label>
                                     <input type="text"
-                                    class="form-control" name="documento" id="documento" aria-describedby="helpId" value="{{$cliente->documento}}" required>
+                                    class="form-control" name="documento" id="documento" aria-describedby="helpId" value="{{$cliente->documento}}" >
                                 </div>
                                 <div class="form-group col-12 col-lg-6 form-conta">
                                     <label for="rg">RG</label>
                                     <input type="text"
-                                        class="form-control" name="rg" id="rg" aria-describedby="helpId" value="{{$cliente->rg}}" required>
+                                        class="form-control" name="rg" id="rg" aria-describedby="helpId" value="{{$cliente->rg}}" >
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-12 col-lg-6 form-conta">
-                                    <label for="telefone">Telefone</label>
+                                    <label for="inscricao_produtor_rural">Inscrição de Produtor Rural</label>
                                     <input type="text"
-                                    class="form-control" name="telefone" id="telefone" aria-describedby="helpId" value="{{$cliente->telefone}}" required>
+                                    class="form-control" name="inscricao_produtor_rural" id="inscricao_produtor_rural" aria-describedby="helpId" value="{{$cliente->inscricao_produtor_rural}}">
                                 </div>
                                 <div class="form-group col-12 col-lg-6 form-conta">
                                     <label for="whatsapp">Whatsapp</label>
                                     <input type="text"
-                                        class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value="{{$cliente->whatsapp}}" required>
+                                        class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value="{{$cliente->whatsapp}}" >
                                     </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-12 col-lg-6 form-conta">
                                     <label for="interesse">Interesse</label>
                                     <input type="text"
-                                    class="form-control" name="interesse" id="interesse" aria-describedby="helpId" value="{{$cliente->interesses}}" required>
+                                    class="form-control" name="interesse" id="interesse" aria-describedby="helpId" value="{{$cliente->interesses}}" >
                                 </div>
                                 {{--  <div class="form-group col-12 col-lg-6 form-conta">
                                     <label for="whatsapp">Whatsapp</label>
                                     <input type="text"
-                                        class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value="{{$cliente->whatsapp}}" required>
+                                        class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value="{{$cliente->whatsapp}}" >
                                     </div>  --}}
                             </div>
                             <div class="row my-4">
@@ -133,30 +133,30 @@
                                 <div class="form-group col-12 col-lg-7 form-conta">
                                     <label for="rua">Rua</label>
                                     <input type="text"
-                                    class="form-control" name="rua" id="rua" aria-describedby="helpId" value="{{$cliente->rua}}" required>
+                                    class="form-control" name="rua" id="rua" aria-describedby="helpId" value="{{$cliente->rua}}" >
                                 </div>
                                 <div class="form-group col-5 col-lg-2 form-conta">
                                     <label for="numero">Número</label>
                                     <input type="text"
-                                        class="form-control" name="numero" id="numero" aria-describedby="helpId" value="{{$cliente->numero}}" required>
+                                        class="form-control" name="numero" id="numero" aria-describedby="helpId" value="{{$cliente->numero}}" >
                                 </div>
                                 <div class="form-group col-7 col-lg-3 form-conta">
                                     <label for="bairro">Bairro</label>
                                     <input type="text"
-                                        class="form-control" name="bairro" id="bairro" aria-describedby="helpId" value="{{$cliente->bairro}}" required>
+                                        class="form-control" name="bairro" id="bairro" aria-describedby="helpId" value="{{$cliente->bairro}}">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-12 form-conta">
                                     <label for="complemento">Complemento</label>
                                     <input type="text"
-                                        class="form-control" name="complemento" id="complemento" aria-describedby="helpId" value="{{$cliente->complemento}}" required>
+                                        class="form-control" name="complemento" id="complemento" aria-describedby="helpId" value="{{$cliente->complemento}}">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-12 col-lg-3 form-conta">
                                     <label for="estado">Estado</label>
-                                    <select class="form-control" name="estado" id="" required>
+                                    <select class="form-control" name="estado" id="" >
                                         @foreach(\App\Models\Estado::all() as $estado)
                                             <option value="{{$estado->id}}" @if($cliente->estado == $estado->id) selected @endif>{{$estado->nome}}</option>
                                         @endforeach
@@ -164,7 +164,7 @@
                                 </div>
                                 <div class="form-group col-12 col-lg-4 form-conta">
                                     <label for="cidade">Cidade</label>
-                                    <select class="form-control" name="cidade" required>
+                                    <select class="form-control" name="cidade" >
                                         @foreach(\App\Models\Cidade::where("id_estado", $cliente->estado)->get() as $cidade)
                                             <option value="{{$cidade->id}}" @if($cliente->cidade == $cidade->id) selected @endif>{{$cidade->nome}}</option>
                                         @endforeach
@@ -173,7 +173,100 @@
                                 <div class="form-group col-7 col-lg-3 form-conta">
                                     <label for="cep">CEP</label>
                                     <input type="text"
-                                        class="form-control" name="cep" id="cep" aria-describedby="helpId" value="{{$cliente->cep}}" required>
+                                        class="form-control" name="cep" id="cep" aria-describedby="helpId" value="{{$cliente->cep}}" >
+                                </div>
+                            </div>
+
+                            <div class="row my-4">
+                                <div class="col-12 text-left">
+                                    <h5>Referência Bancária</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-7 form-conta  mb-3">
+                                    <label for="referencia_bancaria_banco">Banco</label>
+                                    <input type="text"
+                                    class="form-control" name="referencia_bancaria_banco" id="referencia_bancaria_banco" aria-describedby="helpId" value="{{$cliente->referencia_bancaria_banco}}" >
+                                </div>
+                                <div class="form-group col-5 col-lg-2 form-conta  mb-3">
+                                    <label for="referencia_bancaria_gerente">Gerente</label>
+                                    <input type="text"
+                                        class="form-control" name="referencia_bancaria_gerente" id="referencia_bancaria_gerente" aria-describedby="helpId" value="{{$cliente->referencia_bancaria_gerente}}" >
+                                </div>
+                                <div class="form-group col-7 col-lg-3 form-conta  mb-3">
+                                    <label for="referencia_bancaria_tel">Telefone</label>
+                                    <input type="text"
+                                        class="form-control" name="referencia_bancaria_tel" id="referencia_bancaria_tel" aria-describedby="helpId" value="{{$cliente->referencia_bancaria_tel}}" >
+                                </div>
+                            </div>
+                            <div class="row my-4">
+                                <div class="col-12 text-left">
+                                    <h5>Referências Comerciais</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-8 form-conta mb-3">
+                                    <label for="referencia_comercial1">Referência</label>
+                                    <input type="text"
+                                    class="form-control" name="referencia_comercial1" id="referencia_comercial1" aria-describedby="helpId" value="{{$cliente->referencia_comercial1}}" >
+                                </div>
+                                <div class="form-group col-12 col-lg-4 form-conta mb-3">
+                                    <label for="referencia_comercial1_tel">Telefone</label>
+                                    <input type="text"
+                                        class="form-control" name="referencia_comercial1_tel" id="referencia_comercial1_tel" aria-describedby="helpId" value="{{$cliente->referencia_comercial1_tel}}" >
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-8 form-conta mb-3">
+                                    <label for="referencia_comercial2">Referência</label>
+                                    <input type="text"
+                                    class="form-control" name="referencia_comercial2" id="referencia_comercial2" aria-describedby="helpId" value="{{$cliente->referencia_comercial2}}" >
+                                </div>
+                                <div class="form-group col-12 col-lg-4 form-conta mb-3">
+                                    <label for="referencia_comercial2_tel">Telefone</label>
+                                    <input type="text"
+                                        class="form-control" name="referencia_comercial2_tel" id="referencia_comercial2_tel" aria-describedby="helpId" value="{{$cliente->referencia_comercial2_tel}}" >
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-8 form-conta mb-3">
+                                    <label for="referencia_comercial3">Referência</label>
+                                    <input type="text"
+                                    class="form-control" name="referencia_comercial3" id="referencia_comercial3" aria-describedby="helpId" value="{{$cliente->referencia_comercial3}}" >
+                                </div>
+                                <div class="form-group col-12 col-lg-4 form-conta mb-3">
+                                    <label for="referencia_comercial3_tel">Telefone</label>
+                                    <input type="text"
+                                        class="form-control" name="referencia_comercial3_tel" id="referencia_comercial3_tel" aria-describedby="helpId" value="{{$cliente->referencia_comercial3_tel}}" >
+                                </div>
+                            </div>
+                            <div class="row my-4">
+                                <div class="col-12 text-left">
+                                    <h5>Referências Coorporativas</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-8 form-conta mb-3">
+                                    <label for="referencia_coorporativa1">Referência</label>
+                                    <input type="text"
+                                    class="form-control" name="referencia_coorporativa1" id="referencia_coorporativa1" aria-describedby="helpId" value="{{$cliente->referencia_coorporativa1}}">
+                                </div>
+                                <div class="form-group col-12 col-lg-4 form-conta mb-3">
+                                    <label for="referencia_coorporativa1_tel">Telefone</label>
+                                    <input type="text"
+                                        class="form-control" name="referencia_coorporativa1_tel" id="referencia_coorporativa1_tel" aria-describedby="helpId" value="{{$cliente->referencia_coorporativa1_tel}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-8 form-conta mb-3">
+                                    <label for="referencia_coorporativa2">Referência</label>
+                                    <input type="text"
+                                    class="form-control" name="referencia_coorporativa2" id="referencia_coorporativa2" aria-describedby="helpId" value="{{$cliente->referencia_coorporativa2}}">
+                                </div>
+                                <div class="form-group col-12 col-lg-4 form-conta mb-3">
+                                    <label for="referencia_coorporativa2_tel">Telefone</label>
+                                    <input type="text"
+                                        class="form-control" name="referencia_coorporativa2_tel" id="referencia_coorporativa2_tel" aria-describedby="helpId" value="{{$cliente->referencia_coorporativa2_tel}}">
                                 </div>
                             </div>
                             <hr>
@@ -861,7 +954,7 @@
 @endsection
 
 @section('scripts')
-    <!-- Required datatable js -->
+    <!--  datatable js -->
     <script src="{{asset('admin/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script>

@@ -163,9 +163,9 @@
                     <div class="row">
                         <div class="col-12 text-nav-footer text-center text-lg-left">
                             <span>
-                                <i class="fab fa-instagram fa-lg"></i> 
-                                <i class="fab fa-facebook-square ml-4 fa-lg"></i>
-                                <i class="fab fa-youtube ml-4 fa-lg"></i>
+                                <a href="https://www.instagram.com/agro_reserva/"><i class="fab fa-instagram fa-lg"></i></a> 
+                                <a href="https://www.facebook.com/Agro-Reserva-109027191237838"><i class="fab fa-facebook-square ml-4 fa-lg"></i></a> 
+                                <a href="https://www.youtube.com/c/AgroReserva"><i class="fab fa-youtube ml-4 fa-lg"></i></a> 
                             </span>
                         </div>
                     </div>

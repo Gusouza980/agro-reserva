@@ -124,74 +124,14 @@
                     </div>
                     
                 </div>
-                    {{--  <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-3 mt-4">
-                        <div class="card mx-auto" style="width: 100%; max-width: 18rem;">
-                            <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}">
-                                <div class="d-flex align-items-center justify-content-center" style="object-fit: contain; height:180px; background: url({{asset($lote->preview)}}); background-position: center; background-repeat: no-repeat;">
-                                    @if($lote->reservado)
-                                        <div class="faixa-reservado text-center text-white py-2">
-                                            RESERVADO
-                                        </div>
-                                    @endif
-                                </div>
-                            </a>
-                            <div class="numero-lote">
-                                <h5 class="mb-2">Lote {{$lote->numero}}</h5>
-                            </div>
-                            <div class="card-body card-lote-body" style="position: relative;">
-                                <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fas fa-info-circle"></i> Mais Informações</a>
-                                <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}"><h5 class="card-title card-lote-nome text-black"><b>{{$lote->nome}}</b></h5></a>
-                            </div>
-                        </div>
-                        <div class="modal fade" id="modalCompartilhamentoLote{{$lote->id}}" tabindex="-1" aria-labelledby="modalCompartilhamentoLote{{$lote->id}}Label" aria-hidden="true">
-                            <div class="modal-dialog modal-sm modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header pt-3">
-                                        <h6 class="modal-title" id="exampleModalLabel"><b>{{$lote->nome}}</b></h6>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body text-left pb-4">
-                                        <hr>
-
-                                        <div class="row">
-                                            <div class="col-12">
-                                                {!! str_replace("\n", "<br>", $lote->observacoes) !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  --}}
             @endforeach
+            @if($fazenda->catalogo)
+                <div class="col-12 text-center mt-4">
+                    <a name="" id="" href="{{asset($fazenda->catalogo)}}" class="card-lote-botao" href="#" role="button" download="catalogo-{{$fazenda->slug}}.pdf"><button class="px-4 py-1">Baixar Catálogo</button></a>
+                </div>
+            @endif
         </div>
     </div>
-    {{--  <div class="modal fade" id="modalInteresse" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body modal-body-sucesso text-center py-4">
-                    <div class="row">
-                        <div class="col-12 conteudo-modal">
-                            <h3>Obrigado <span id="nome_modal">{{$cliente->nome_dono}}</span>.</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 conteudo-modal">
-                            <span class="mt-2">Ficamos felizes que esteja interessado neste lote. Te notificaremos sempre que houver novidades. Caso tenha alguma dúvida, fale com um de nossos consultores.</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 conteudo-modal">
-                            <button class="botao-confirma py-2 px-5 mt-4" onclick="fechaModal()">Continuar Navegando</button>
-                            <button class="botao-confirma py-2 px-5 mt-4" onclick="fechaModal()">Falar com um consultor</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>  --}}
 @endsection
 
 @section('scripts')
