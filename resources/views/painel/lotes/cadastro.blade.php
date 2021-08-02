@@ -125,6 +125,13 @@
                             <input type="file" name="genealogia" id="genealogia">
                         </div>
                     </div>
+                    <hr>
+                    <h4 class="card-title my-4">Catálogo</h4>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <input type="file" name="catalogo" id="catalogo">
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-12 text-end">
                             <button type="submit" class="btn btn-primary">Salvar</button>

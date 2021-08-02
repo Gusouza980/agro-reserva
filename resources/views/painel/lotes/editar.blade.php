@@ -139,6 +139,18 @@
 							@endif
                         </div>
                     </div>
+                    <hr>
+                    <h4 class="card-title my-4">Catálogo</h4>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <input type="file" name="catalogo" id="catalogo">
+                        </div>
+						<div class="col-6">
+							@if($lote->catalogo)
+                                <a name="" id="" href="{{asset($lote->catalogo)}}" class="btn btn-primary" href="#" role="button" download="{{$fazenda->slug}}-lote-{{$lote->numero}}.pdf">Download</a>
+							@endif
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-12 text-end">
                             <button type="submit" class="btn btn-primary">Salvar</button>

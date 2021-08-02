@@ -15,12 +15,19 @@
                         <h5>{{$cliente->nome_dono}}</h5>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12 card-conta-content">
+                        <div class="alert alert-warning" role="alert">
+                            <strong>Seu cadastro está em fase de análise.</strong>
+                        </div>
+                    </div>
+                </div>
                 <div class="row mt-3">
                     <div class="col-12 text-center text-md-left card-conta-content">
                         <span class="cpointer link-card-conta active" num="0"><span style="border-bottom: 2px solid #E8521B;">Rese</span>rvas</span>
                         <span class="ml-3 link-card-conta cpointer" num="1"><span style="border-bottom: 2px solid #E8521B;">Seus</span> Dados</span>
-                        <span class="ml-3 link-card-conta cpointer" num="2"><span style="border-bottom: 2px solid #E8521B;">Ende</span>reço de Correspondência</span>
-                        <span class="ml-3 link-card-conta cpointer" num="3"><span style="border-bottom: 2px solid #E8521B;">Pref</span>erências</span>
+                        {{--  <span class="ml-3 link-card-conta cpointer" num="2"><span style="border-bottom: 2px solid #E8521B;">Ende</span>reço de Correspondência</span>  --}}
+                        {{--  <span class="ml-3 link-card-conta cpointer" num="3"><span style="border-bottom: 2px solid #E8521B;">Pref</span>erências</span>  --}}
                     </div>
                 </div>
                 <hr class="mt-5 mb-4">
@@ -32,7 +39,7 @@
                     </div>
                     @if($cliente->compras->count() > 0)
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-12 d-none d-lg-block">
                                 @foreach($cliente->compras as $venda)
                                     <table class="table">
                                         <tbody>
@@ -94,6 +101,68 @@
                                                 </tbody>
                                             </table>
                                         @endif
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="col-12 d-lg-none">
+                                @foreach($cliente->compras as $venda)
+                                    <div class="card card-caixa-lote mx-auto">
+                                        <div class="d-flex align-items-center justify-content-center" style="border-top-left-radius: 20px; border-top-right-radius: 20px; object-fit: contain; height:180px; background: url({{asset($venda->lote->preview)}}); background-position: center; background-repeat: no-repeat;">
+
+                                        </div>
+                                        <div class="numero-lote">
+                                            <h4>LOTE</h4>
+                                            <h5 class="mb-2">{{str_pad($venda->lote->numero, 3, "0", STR_PAD_LEFT)}}</h5>
+                                        </div>
+                                        <div class="card-body card-lote-body" style="position: relative;">
+                                            {{--  <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$venda->lote->id}}"><i class="fas fa-info-circle"></i> Mais Informações</a>  --}}
+                                            <div class="text-center d-flex align-items-center justify-content-center" style="height: 50px;">
+                                                <a href="{{route('fazenda.lote', ['fazenda' => $venda->lote->fazenda->slug, 'lote' => $venda->lote])}}"><h5 class="card-title card-lote-nome text-black"><b>{{$venda->lote->nome}}</b></h5></a>
+                                            </div>
+                                            <div class="container-fluid px-3">
+                                                <div class="row pb-1" style="border-bottom: 1px solid black;">
+                                                    <div style="">
+                                                        <b class="mr-3">CÓDIGO: </b>
+                                                    </div>
+                                                    <div>
+                                                        <span class="card-lote-info-text">{{$venda->codigo}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row py-1" style="border-bottom: 1px solid black;">
+                                                    <div style="">
+                                                        <b class="mr-3">RESERVADO EM: </b>
+                                                    </div>
+                                                    <div>
+                                                        <span class="card-lote-info-text">{{date("d/m/Y", strtotime($venda->created_at))}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row py-1" style="border-bottom: 1px solid black;">
+                                                    <div style="">
+                                                        <b class="mr-3">STATUS: </b>
+                                                    </div>
+                                                    <div>
+                                                        <span class="card-lote-info-text">{{config("globals.situacoes")[$venda->situacao]}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row py-1" style="border-bottom: 1px solid black;">
+                                                    <div style="">
+                                                        <b class="mr-3">VALOR.: </b>
+                                                    </div>
+                                                    <div>
+                                                        <span class="card-lote-info-text">{{$venda->parcelas}}x de R${{number_format($venda->valor_parcela, 2, ",", ".")}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container-fluid mt-2">
+                                                <div class="row">
+                                                    <div class="col-12 card-lote-parto text-center" style="height: 30px;">
+                                                        @if($venda->lote->parto)
+                                                            <h3><b>TOTAL:</b> R${{number_format($venda->total, 2, ",", ".")}}</h3>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 @endforeach
                             </div>

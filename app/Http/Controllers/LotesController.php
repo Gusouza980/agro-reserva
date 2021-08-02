@@ -47,6 +47,12 @@ class LotesController extends Controller
             );
         }
 
+        if($request->file("catalogo")){
+            $lote->catalogo = $request->file('catalogo')->store(
+                'imagens/fazendas/' . Str::slug($lote->fazenda->nome_fazenda) . "/lotes", 'local'
+            );
+        }
+
         $lote->save();
         toastr()->success("Lote salvo com sucesso!");
         return redirect()->route("painel.fazenda.reserva.lotes", ["reserva" => $reserva]);
@@ -80,6 +86,13 @@ class LotesController extends Controller
         if($request->file("genealogia")){
             Storage::delete($lote->genealogia);
             $lote->genealogia = $request->file('genealogia')->store(
+                'imagens/fazendas/' . Str::slug($lote->fazenda->nome_fazenda) . "/lotes", 'local'
+            );
+        }
+
+        if($request->file("catalogo")){
+            Storage::delete($lote->catalogo);
+            $lote->catalogo = $request->file('catalogo')->store(
                 'imagens/fazendas/' . Str::slug($lote->fazenda->nome_fazenda) . "/lotes", 'local'
             );
         }
