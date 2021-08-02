@@ -16,15 +16,15 @@
         <div class="card">
             <div class="card-body">
 
-                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                <table id="datatable" data-order='[[ 1, "desc" ]]' class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
+                            <th>Data</th>
                             <th>Cliente</th>
                             <th>Fazenda</th>
                             <th>Lote</th>
                             <th>Cidade</th>
                             <th>Estado</th>
-                            <th>Data</th>
                         </tr>
                     </thead>
 
@@ -32,6 +32,7 @@
                     <tbody>
                         @foreach($visitas as $visita)
                             <tr>
+                                <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($visita->created_at))}}</td>
                                 <td style="vertical-align: middle; text-align:center;">
                                     @if($visita->logado)
                                         {{$visita->cliente->nome_dono}}
@@ -43,7 +44,6 @@
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->lote->nome}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->cidade}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->estado}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($visita->created_at))}}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -64,6 +64,8 @@
     <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script>
         $(document).ready(function() {
+            $.fn.dataTable.moment( 'DD/MM/YYYY HH:mm:ss' );    //Formatação com Hora
+            $.fn.dataTable.moment('DD/MM/YYYY');    //Formatação sem Hor
             $('#datatable').DataTable( {
                 language:{
                     "emptyTable": "Nenhum registro encontrado",
