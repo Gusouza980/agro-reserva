@@ -16,7 +16,7 @@
             <div class="container-fluid py-5" id="container-section1">
                 <div class="row" id="row-section1-text">
                     <div class="col-12 text-center text-header-index">
-                        <h3><span class="destaque">SOMOS</span> A PLATAFORMA<br>DE <span class="destaque">COMPRA E VENDA</span> DAS MARCAS QUE EVOLUEM <span class="destaque">A PECUÁRIA</span></h3>
+                        <h3>SEJA<span class="destaque"> BEM-VINDO</span> A PLATAFORMA<br>DE <span class="destaque">COMPRA E VENDA</span> DAS MARCAS QUE EVOLUEM <span class="destaque">A PECUÁRIA</span></h3>
                     </div>
                 </div>
                 <div class="row py-5 justify-content-center" id="row-section1-fazendas">

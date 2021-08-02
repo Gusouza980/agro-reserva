@@ -19,7 +19,7 @@ class AlterTableClientes4 extends Migration
             // 1 => Casado(a)
             // 2 => Víuvo(a)
             // 3 => União Estável
-            $table->tinyInteger("estado_civil")->default(0);
+            $table->string("estado_civil")->default(0);
             $table->tinyInteger("aprovado")->default(0);
             $table->string("rg", 12)->nullable();
             $table->string("inscricicao_produtor_rural", 20)->nullable();
@@ -31,7 +31,7 @@ class AlterTableClientes4 extends Migration
             $table->string("referencia_comercial3_tel", 20)->nullable();
             $table->string("referencia_bancaria_banco")->nullable();
             $table->string("referencia_bancaria_gerente")->nullable();
-            $table->string("referencia_bancaria_tel, 20")->nullable();
+            $table->string("referencia_bancaria_tel",20)->nullable();
             $table->string("referencia_coorporativa1")->nullable();
             $table->string("referencia_coorporativa1_tel", 20)->nullable();
             $table->string("referencia_coorporativa2")->nullable();

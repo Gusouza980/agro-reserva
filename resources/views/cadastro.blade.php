@@ -9,7 +9,7 @@
     <meta name="description" content="Reserva de gado da fazenda Santa Luzia pela Agro Reserva">
     <meta name="keywords" content="compra de gado, Gado leitero, Compra e venda de gado, Girolando, compra gado leitero, leilão de gado, venda de gado, agropecuária, pecuária">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
     <!-- Bootstrap CSS -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -589,7 +589,7 @@
                                     <div class="col-12 col-lg-6 pr-3 mt-4">
                                         <div class="form-group">
                                             <label for="">Data de Nascimento</label>
-                                            <input type="text" class="form-control" name="nascimento" id="" aria-describedby="helpId" placeholder="" maxlength="20">
+                                            <input type="date" class="form-control" name="nascimento" id="" aria-describedby="helpId" placeholder="" maxlength="20">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-6 pl-3 mt-4">
@@ -652,16 +652,25 @@
                                             <input type="text" class="form-control" name="complemento" id="" aria-describedby="helpId" placeholder="" maxlength="255">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-lg-6 pr-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Cidade</label>
-                                            <input type="text" class="form-control" name="cidade" id="" aria-describedby="helpId" placeholder="" maxlength="50">
-                                        </div>
-                                    </div>
                                     <div class="col-12 col-lg-6 pl-3 mt-4">
                                         <div class="form-group">
                                             <label for="">Estado</label>
-                                            <input type="text" class="form-control" name="estado" id="" aria-describedby="helpId" placeholder="" maxlength="50">
+                                            <select class="form-control" name="estado" id="estado_direto">
+                                                @foreach(\App\Models\Estado::all() as $estado)
+                                                    <option value="{{$estado->id}}">{{$estado->nome}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 pr-3 mt-4">
+                                        <div class="form-group">
+                                            <label for="">Cidade</label>
+                                            <select class="form-control" name="cidade" id="cidade_direto">
+                                                @foreach(\App\Models\Estado::first()->cidades as $cidade)
+                                                    <option value="{{$cidade->id}}">{{$cidade->nome}}</option>
+                                                @endforeach
+                                            </select>
+                                            {{-- <input type="text" class="form-control" name="cidade" id="" aria-describedby="helpId" placeholder="" maxlength="50"> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -934,7 +943,7 @@
                     'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
                 }
             });
-            
+
             $.ajax({
                 type: "POST",
                 url: "{!! route('cadastro.login') !!}",
@@ -1227,9 +1236,15 @@
                 referencia_coorporativa2_tel: referencia_coorporativa2_tel,
             }
 
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             $.ajax({
                 type: "POST",
-                url: '/cadastro.php',
+                url: "{!! route('cadastro.finalizar') !!}",
                 data: data,
                 beforeSend: function () {
                     $("#botoes-finalizar").hide();
@@ -1366,8 +1381,8 @@
             var endereco = $('#container-cadastro-completo-direto input[name=endereco]').val();
             var numero = $('#container-cadastro-completo-direto input[name=numero]').val();
             var complemento = $('#container-cadastro-completo-direto input[name=complemento]').val();
-            var cidade = $('#container-cadastro-completo-direto input[name=cidade]').val();
-            var estado = $('#container-cadastro-completo-direto input[name=estado]').val();
+            var cidade = $('#container-cadastro-completo-direto select[name=cidade]').val();
+            var estado = $('#container-cadastro-completo-direto select[name=estado]').val();
             var referencia_bancaria_banco = $('#container-cadastro-completo-direto input[name=referencia_bancaria_banco]').val();
             var referencia_bancaria_gerente = $('#container-cadastro-completo-direto input[name=referencia_bancaria_gerente]').val();
             var referencia_bancaria_tel = $('#container-cadastro-completo-direto input[name=referencia_bancaria_tel]').val();
@@ -1411,9 +1426,15 @@
                 referencia_coorporativa2_tel: referencia_coorporativa2_tel,
             }
 
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             $.ajax({
                 type: "POST",
-                url: '/cadastro.php',
+                url: "{!! route('cadastro.finalizar') !!}",
                 data: data,
                 beforeSend: function () {
                     $("#botoes-finalizar-direto").hide();
@@ -1436,6 +1457,8 @@
                 },
                 error: function (ret) {
                     console.log(ret);
+                    $("#gif-ajax-direto").hide();
+                    $("#botoes-finalizar-direto").show();
                 }
                 // dataType: dataType
             });
@@ -1509,7 +1532,34 @@
                         for(var cidade in cidades){
                             html += "<option value='"+cidades[cidade].id+"'>"+cidades[cidade].nome+"</option>"
                         }
-                        $("select[name='cidade']").html(html);
+                        $("select[name='cidade']").each(function(){
+                            $(this).html(html);
+                        })
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+
+            $("#estado_direto").change(function(){
+                var estado = $("#estado_direto").val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/getCidadesByUf/' + estado,
+                    dataType: 'json',
+                    success: function (data) {
+                        html = "";
+                        var cidades = JSON.parse(data);
+                        for(var cidade in cidades){
+                            html += "<option value='"+cidades[cidade].id+"'>"+cidades[cidade].nome+"</option>"
+                        }
+                        $("#cidade_direto").html(html);
                     },
                     error: function (data) {
                         console.log(data);

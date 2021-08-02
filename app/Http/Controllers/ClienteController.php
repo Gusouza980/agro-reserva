@@ -76,45 +76,38 @@ class ClienteController extends Controller
 
     public function cadastro_final(Request $request){
 
-        $request->validate([
-            'nome' => 'required|min:2|max:100',
-            'fazenda' => 'required|min:2|max:200',
-            'cpf' => 'required|min:11|max:14',
-            'cnpj' => 'required|min:14|max:18',
-            'cep' => 'required|min:8|max:9',
-            'cidade' => 'required|max:15',
-            'bairro' => 'required|min:3|max:60',
-            'numero' => 'required|min:1|max:10',
-            'complemento' => 'max:50',
-            'endereco' => 'required|min:3|max:100',
-            'whatsapp' => 'required|min:10|max:14',
-        ]);
+        $cliente = Cliente::where("email", $request->email)->first();
 
-        $cliente = Cliente::find(session()->get("cliente")["id"]);
-
-        $cliente->nome_dono = $request->nome;
-        $cliente->nome_fazenda = $request->fazenda;
-        $cliente->cnpj = $request->cnpj;
-        $cliente->cpf = $request->cpf;
+        $cliente->nome_dono = $request->nome_completo;
+        $cliente->rg = $request->rg;
+        $cliente->nascimento = $request->nascimento;
+        $cliente->documento = $request->documento;
+        $cliente->estado_civil = $request->estado_civil;
+        $cliente->inscricao_produtor_rural = $request->inscricao_produtor_rural;
         $cliente->cep = $request->cep;
-        $cliente->cidade = $request->cidade;
-        $cliente->interesses = $request->interesses;
-        $cliente->racas = $request->racas;
-        $cliente->estado = $request->estado;
-        $cliente->bairro = $request->bairro;
+        $cliente->rua = $request->endereco;
         $cliente->numero = $request->numero;
         $cliente->complemento = $request->complemento;
-        $cliente->rua = $request->endereco;
-        $cliente->whatsapp = $request->whatsapp;
+        $cliente->cidade = $request->cidade;
+        $cliente->estado = $request->estado;
+        $cliente->referencia_bancaria_banco = $request->referencia_bancaria_banco;
+        $cliente->referencia_bancaria_gerente = $request->referencia_bancaria_gerente;
+        $cliente->referencia_bancaria_tel = $request->referencia_bancaria_tel;
+        $cliente->referencia_comercial1 = $request->referencia_comercial1;
+        $cliente->referencia_comercial1_tel = $request->referencia_comercial1_tel;
+        $cliente->referencia_comercial2 = $request->referencia_comercial2;
+        $cliente->referencia_comercial2_tel = $request->referencia_comercial2_tel;
+        $cliente->referencia_comercial3 = $request->referencia_comercial3;
+        $cliente->referencia_comercial3_tel = $request->referencia_comercial3_tel;
+        $cliente->referencia_coorporativa1 = $request->referencia_coorporativa1;
+        $cliente->referencia_coorporativa1_tel = $request->referencia_coorporativa1_tel;
+        $cliente->referencia_coorporativa2 = $request->referencia_coorporativa2;
+        $cliente->referencia_coorporativa2_tel = $request->referencia_coorporativa2_tel;
         $cliente->finalizado = true;
         
         $cliente->save();
 
-        session()->forget("cliente");
-        session(["cliente" => $cliente->toArray()]);
-
-        toastr()->success("Cadastro efetuado com sucesso.");
-        return redirect()->route("index");
+        return response()->json("Sucesso");
 
     }
 

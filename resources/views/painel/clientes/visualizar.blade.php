@@ -78,15 +78,15 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-12 col-lg-6 form-conta">
-                                    <label for="cpf">CPF</label>
+                                    <label for="documento">documento/CNPJ</label>
                                     <input type="text"
-                                    class="form-control" name="cpf" id="cpf" aria-describedby="helpId" value="{{$cliente->cpf}}" required>
+                                    class="form-control" name="documento" id="documento" aria-describedby="helpId" value="{{$cliente->documento}}" required>
                                 </div>
                                 <div class="form-group col-12 col-lg-6 form-conta">
-                                    <label for="cnpj">CNPJ</label>
+                                    <label for="rg">RG</label>
                                     <input type="text"
-                                        class="form-control" name="cnpj" id="cnpj" aria-describedby="helpId" value="{{$cliente->cnpj}}" required>
-                                    </div>
+                                        class="form-control" name="rg" id="rg" aria-describedby="helpId" value="{{$cliente->rg}}" required>
+                                </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-12 col-lg-6 form-conta">
@@ -99,6 +99,18 @@
                                     <input type="text"
                                         class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value="{{$cliente->whatsapp}}" required>
                                     </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-group col-12 col-lg-6 form-conta">
+                                    <label for="interesse">Interesse</label>
+                                    <input type="text"
+                                    class="form-control" name="interesse" id="interesse" aria-describedby="helpId" value="{{$cliente->interesses}}" required>
+                                </div>
+                                {{--  <div class="form-group col-12 col-lg-6 form-conta">
+                                    <label for="whatsapp">Whatsapp</label>
+                                    <input type="text"
+                                        class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value="{{$cliente->whatsapp}}" required>
+                                    </div>  --}}
                             </div>
                             <div class="row my-4">
                                 <div class="col-12 text-left">
