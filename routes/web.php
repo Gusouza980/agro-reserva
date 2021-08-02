@@ -47,9 +47,11 @@ Route::get('/fazenda/{fazenda}/conheca/depoimentos', [\App\Http\Controllers\Site
 Route::get('/fazenda/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca.avaliacoes");
 Route::get('/fazenda/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes'])->name("fazenda.lotes");
 Route::get('/fazenda/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote'])->name("fazenda.lote");
+Route::get('/quem-somos', [\App\Http\Controllers\SiteController::class, 'sobre'])->name("sobre");
 
 //Blog
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
+Route::get('/noticia', [\App\Http\Controllers\BlogController::class, 'noticia'])->name("noticia");
 
 //Carrinho
 Route::get('/carrinho/adicionar/{lote}',  [\App\Http\Controllers\CarrinhoController::class, 'adicionar'])->name("carrinho.adicionar");

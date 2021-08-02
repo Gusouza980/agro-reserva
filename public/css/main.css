@@ -486,12 +486,21 @@ label {
     color: white;
 }
 
+.text-header-index > h5{
+    font-size: 25px;
+    color: #F5B01F;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+    text-shadow: 2px 2px rgba(0,0,0,0.3);
+}
+
 .text-header-index>h3 {
     font-size: 2.3rem;
     font-family: 'Titillium Web', sans-serif;
     font-weight: 400;
     color: white;
     font-weight: bold;
+    text-shadow: 2px 2px rgba(0,0,0,0.3);
 }
 
 .text-header-index > h3 > .destaque{
@@ -1522,4 +1531,152 @@ label {
     color: white;
     font-size: 64px;
     font-family: Gobold Regular;
+}
+
+.card-noticia{
+    width: 100%;
+    max-width: 360px;
+    border-radius: 20px;
+    overflow-x: hidden;
+    box-shadow: -3px 6px 15px #424FB224;
+}
+
+.card-noticia-imagem{
+    height: 230px;
+    width: 100%;
+}
+
+.card-noticia-data{
+    font-size: 13px;
+}
+
+.card-noticia-data > span{
+    color: #3B3B3B;
+    opacity: 0.57;
+}
+
+.card-noticia-text > h1{
+    color: #E9500E;
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.44px;
+}
+
+.card-noticia-text > h2{
+    color: #E9500E;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.44px;
+}
+
+.card-noticia-text > h3{
+    color: #8E8073;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.3px;
+}
+
+#row-header-sobre{
+    min-height: 300px;
+}
+
+#tarja-branca-sobre{
+    background: url("/imagens/brush-branco.png");
+    background-size: cover;
+    background-position: top;
+    min-height: 700px;
+    width: 100%;
+    z-index: 9;
+    margin-top: -80px;
+    position: relative;
+}
+
+.text-digital > h4{
+    font-size: 189px;
+    color: black;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.text-digital > h5{
+    font-size: 66px;
+    color: black;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@media(max-width: 768px){
+    .text-digital > h4{
+        font-size: 120px;
+        color: black;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    .text-digital > h5{
+        font-size: 40px;
+        color: black;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+    }
+}
+
+.text-sobre > h1{
+    color: #E9500E;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0px;
+}
+
+.text-sobre > h2{
+    color: #3C3C3C;
+    font-size: 25px;
+    font-weight: medium;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0px;
+}
+
+.text-sobre > p{
+    color: #8E8E8E;
+    font-size: 17px;
+    font-weight: medium;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0px;
+}
+
+.caixa-sobre{
+    background-color: white;
+    padding: 40px 40px;
+    border-radius: 30px;
+}
+
+.text-sobre-caixa > h1{
+    color: #000000;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0px;
+}
+
+.text-sobre-caixa > p{
+    color: #8E8E8E;
+    font-size: 17px;
+    font-weight: medium;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0px;
+}
+
+.btn-sobre{
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0px;
+    border-radius: 30px;
+    background-color: #E9500E; 
 }

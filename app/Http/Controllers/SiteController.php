@@ -175,6 +175,10 @@ class SiteController extends Controller
         return view("contato");
     }
 
+    public function sobre(){
+        return view("sobre");
+    }
+
     public function convertYoutube($string) {
         return preg_replace(
             "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
