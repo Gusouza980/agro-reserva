@@ -411,7 +411,7 @@
                                         <div class="col-12 col-lg-4 mt-4">
                                             <div class="form-group">
                                                 <label for="">Telefone</label>
-                                                <input type="text" class="form-control" name="referencia_bancaria_tel" id="" aria-describedby="helpId" placeholder="" maxlength="20">
+                                                <input type="text" class="form-control input-tel" name="referencia_bancaria_tel" id="" aria-describedby="helpId" placeholder="" maxlength="20">
                                             </div>
                                         </div>
                                     </div>
@@ -434,7 +434,7 @@
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">Telefone</label>
-                                                <input type="text" class="form-control" name="referencia_comercial1_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control input-tel" name="referencia_comercial1_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 mt-4">
@@ -446,7 +446,7 @@
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">Telefone</label>
-                                                <input type="text" class="form-control" name="referencia_comercial2_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control input-tel" name="referencia_comercial2_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 mt-4">
@@ -458,7 +458,7 @@
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">Telefone (Opcional)</label>
-                                                <input type="text" class="form-control" name="referencia_comercial3_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control input-tel" name="referencia_comercial3_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                     </div>
@@ -481,7 +481,7 @@
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">Telefone (Opcional)</label>
-                                                <input type="text" class="form-control" name="referencia_coorporativa1_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control input-tel" name="referencia_coorporativa1_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 mt-4">
@@ -493,7 +493,7 @@
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">Telefone (Opcional)</label>
-                                                <input type="text" class="form-control" name="referencia_coorporativa2_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control input-tel" name="referencia_coorporativa2_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                     </div>
@@ -929,16 +929,26 @@
                 senha: senha,
             }
 
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            
             $.ajax({
                 type: "POST",
-                url: '/login.php',
+                url: "{!! route('cadastro.login') !!}",
                 data: data,
                 beforeSend: function () {
                     $("#botoes-prosseguir").hide();
                     $("#gif-ajax-direto").show();
                 },
                 success: function (ret) {
-                    if(ret == "Erro"){
+                    if(ret == "001"){
+                        $("#botoes-prosseguir").show();
+                        $("#gif-ajax-direto").hide();
+                        console.log("Deu ruim");
+                    }else if(ret == "002"){
                         $("#botoes-prosseguir").show();
                         $("#gif-ajax-direto").hide();
                         console.log("Deu ruim");
@@ -953,29 +963,6 @@
                         $("#email_completo_direto").val(cliente.email);
                         $("#nome_completo_direto").val(cliente.nome_dono);
                     }
-                    // if (ret == "Sucesso") {
-                    //     console.log("sucesso")
-                    //     $("input").each(function () {
-                    //         $(this).removeClass("erro-validacao");
-                    //     });
-                    //     if ($("input[name='interesse']:checked").val() != "Vender") {
-                    //         $("#gif-ajax").hide();
-                    //         $("#botoes-cadastrar").hide();
-                    //         $("#modalPrecadastro").modal("show");
-                    //         $("#botoes-comprar").show();
-                    //         $("#botoes-vender").hide();
-                    //     } else {
-                    //         $("#gif-ajax").hide();
-                    //         $("#botoes-cadastrar").hide();
-                    //         $("#modalPrecadastro").modal("show");
-                    //         $("#botoes-vender").show();
-                    //         $("#botoes-comprar").hide();
-                    //     }
-                    // } else {
-                    //     console.log("Deu meio ruim");
-                        
-                    // }
-
                 },
                 error: function (ret) {
                     console.log("Deu muito ruim");
@@ -1459,6 +1446,7 @@
             
             $("input[name='cep']").mask("99999-999");
             $("input[name='whatsapp']").mask("+99 (99) 99999-9999");
+            $(".input-tel").mask("(99) 99999-9999");
             
             $("#botao-pular-pre-cadastro").click(function(){
                 $("#pre-cadastro").slideUp(400, function(){

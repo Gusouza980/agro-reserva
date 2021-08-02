@@ -38,6 +38,7 @@ Route::get('/sair', function () {
 
 Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("index");
 Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");
+Route::post('/cadastro/login', [\App\Http\Controllers\ClienteController::class, 'login_cadastro'])->name("cadastro.login");
 Route::get('/cadastro/fazenda', [\App\Http\Controllers\SiteController::class, 'cadastro_fazenda'])->name("cadastro.fazenda");
 Route::get('/cadastro/passos', [\App\Http\Controllers\SiteController::class, 'cadastro_passos'])->name("cadastro.passos");
 Route::get('/fazenda/{fazenda}/conheca', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca");

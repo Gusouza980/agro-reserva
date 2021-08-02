@@ -89,10 +89,15 @@
         </div>
     </div>
     <div class="container-fluid" style="background-color: white;">
+        <div class="row">
+            <div class="col-12 text-center text-lg-left">
+                <h5>Genealogia</h5>
+            </div>
+        </div>
         @if($lote->genealogia)
             <div class="row">
                 <div class="col-12 text-center py-5">
-                    <img src="{{asset($lote->genealogia)}}" style="max-width: 100%;" alt="Genealogia">  
+                    <img id="imagem-genealogia" src="{{asset($lote->genealogia)}}" style="max-width: 100%;" alt="Genealogia">  
                 </div>
             </div>
         @endif
@@ -313,4 +318,31 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalGenealogia" tabindex="-1" role="dialog" aria-labelledby="modalGenealogiaTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content" style="background-color: transparent !important; ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body px-0 py-0">
+                    <img id="imagem-modal" src="" alt="" style="transform: rotate(-90deg); max-width: 100vh;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            $("#imagem-genealogia").click(function(){
+                var imagem = $("#imagem-genealogia").attr("src");
+                $("#imagem-modal").attr("src", imagem);
+                $("#modalGenealogia").modal("show");
+            });
+        });
+    </script>
 @endsection

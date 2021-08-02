@@ -61,6 +61,19 @@ class ClienteController extends Controller
         return response()->json("200");
     }
 
+    public function login_cadastro(Request $request){
+        $cliente = Cliente::where("email", $request->email)->first();
+        if($cliente){
+            if(Hash::check($request->senha, $cliente->senha)){
+                return response()->json($cliente->toJson());
+            }else{
+                return response()->json("002");
+            }
+        }else{
+            return response()->json("001");
+        }
+    }
+
     public function cadastro_final(Request $request){
 
         $request->validate([
