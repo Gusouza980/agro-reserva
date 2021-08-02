@@ -7,6 +7,10 @@
 <meta property="og:image" content="{{asset($lote->preview)}}" />
 @endsection
 
+@section("styles")
+    <link rel="stylesheet" href="{{asset('css/magnific.popup.css')}}">
+@endsection
+
 @section('conteudo')
     <div style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: middle;">
         <div class="container-fluid bg-preto py-5 py-lg-2">
@@ -97,7 +101,9 @@
         @if($lote->genealogia)
             <div class="row">
                 <div class="col-12 text-center py-5">
-                    <img id="imagem-genealogia" src="{{asset($lote->genealogia)}}" style="max-width: 100%;" alt="Genealogia">  
+                    <a id="link-genealogia" href="{{asset($lote->genealogia)}}">
+                        <img id="imagem-genealogia" src="{{asset($lote->genealogia)}}" style="max-width: 100%;" alt="Genealogia">  
+                    </a>
                 </div>
             </div>
         @endif
@@ -336,13 +342,12 @@
 @endsection
 
 @section('scripts')
+    <script src="{{asset('js/magnific.popup.js')}}"></script>
     <script>
         $(document).ready(function(){
-            $("#imagem-genealogia").click(function(){
-                var imagem = $("#imagem-genealogia").attr("src");
-                $("#imagem-modal").attr("src", imagem);
-                $("#modalGenealogia").modal("show");
-            });
+            $(document).ready(function() {
+                $('#link-genealogia').magnificPopup({type:'image'});
+              });
         });
     </script>
 @endsection
