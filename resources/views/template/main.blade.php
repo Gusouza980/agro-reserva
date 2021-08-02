@@ -89,7 +89,7 @@
                                 <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
                             </li>
                             <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{route('login')}}">Cadastre-se</span></a>
+                                <a class="nav-link" href="{{route('cadastro')}}">Cadastre-se</span></a>
                             </li> 
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('login')}}">Entrar</span></a>
@@ -130,7 +130,7 @@
                                 <a class="ml-4" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
                             @endif
                         @else
-                            <a href="{{route('login')}}"><span style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</a>
+                            <a href="{{route('cadastro')}}"><span style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</a>
                             <a class="ml-4" href="{{route('login')}}"><span style="border-bottom: 2px solid #FEB000;">Ent</span>rar</a>
                         @endif
                     </span> 
@@ -203,7 +203,7 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col-12 text-nav-footer text-center text-lg-left">
-                                    <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Ent</span>rar</span> </a>
+                                    <a class="" href="{{route('login')}}"><span><span style="border-bottom: 2px solid #FEB000;">Ent</span>rar</span> </a>
                                 </div>
                             </div>
                         </div>

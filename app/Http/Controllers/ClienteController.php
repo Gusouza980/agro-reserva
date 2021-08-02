@@ -34,7 +34,7 @@ class ClienteController extends Controller
 
     public function cadastro(Request $request){
         $anterior = redirect()->back()->getTargetUrl();
-        return view('cadastro.index', ["anterior" => $anterior]);
+        return view('cadastro', ["anterior" => $anterior]);
     }
 
     public function cadastrar(Request $request){
@@ -46,36 +46,19 @@ class ClienteController extends Controller
         $cliente = Cliente::where("email", $request->email)->first();
 
         if($cliente){
-            toastr()->error("Já existe um cliente cadastrado com esse e-mail.");
-            return redirect()->back();
-        }
-
-        if($request->senha != $request->senha2){
-            toastr()->error("As senhas não coincidem.");
-            return redirect()->back();
+            return response()->json("001");
         }
 
         $cliente = new Cliente;
         $cliente->email = $request->email;
         $cliente->nome_dono = $request->nome;
-        $cliente->estado = $request->estado;
-        $cliente->cidade = $request->cidade;
+        $cliente->whatsapp = $request->whatsapp;
+        $cliente->interesses = $request->interesse;
         $cliente->senha = Hash::make($request->senha);
-        $cliente->telefone = $request->telefone;
+        $cliente->nome_fazenda = $request->fazenda;
+        $cliente->racas = implode(", ", $request->racas);
         $cliente->save();
-
-        foreach($request->racas as $raca){
-            $cliente_raca = new ClienteRaca;
-            $cliente_raca->cliente_id = $cliente->id;
-            $cliente_raca->raca_id = $raca;
-            $cliente_raca->save();
-        }
-
-        session()->put(["cliente" => $cliente->toArray()]);
-
-        session()->flash("cadastro_finalizado");
-        return redirect($request->anterior);
-    
+        return response()->json("200");
     }
 
     public function cadastro_final(Request $request){

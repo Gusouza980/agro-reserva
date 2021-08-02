@@ -49,7 +49,7 @@
                     <div class="row py-5 justify-content-sm-center justify-content-md-start">
                         <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda->miniatura_conheca}}); background-size: cover;">
                             <div class="container-fluid">
-                                <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" style="background-color: rgba(0,0,0,0.6); height: 190px;">
+                                <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" onclick="redirect('{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}')" style="background-color: rgba(0,0,0,0.6); height: 190px;">
                                     <div class="col-12 px-3 text-center text-white text-section1-fazenda">
                                         <a href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><h4 class="">Conheça a fazenda</h4></a>
                                     </div>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda->miniatura_conheca_lotes}}); background-size: cover;">
                             <div class="container-fluid">
-                                <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca.lotes', ['fazenda' => $fazenda->slug])) active @endif" style="background-color: rgba(0,0,0,0.6); height: 190px;">
+                                <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca.lotes', ['fazenda' => $fazenda->slug])) active @endif" onclick="redirect('{{route('fazenda.conheca.lotes', ['fazenda' => $fazenda->slug])}}')" style="background-color: rgba(0,0,0,0.6); height: 190px;">
                                     <div class="col-12 px-3 text-center text-white text-section1-fazenda">
                                         <a href="{{route('fazenda.conheca.lotes', ['fazenda' => $fazenda->slug])}}"><h4 class="">Nossos Lotes</h4></a>
                                     </div>
@@ -80,7 +80,7 @@
                         </div>
                         <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda->miniatura_conheca_depoimentos}}); background-size: cover;">
                             <div class="container-fluid">
-                                <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca.depoimentos', ['fazenda' => $fazenda->slug])) active @endif" style="background-color: rgba(0,0,0,0.6); height: 190px;">
+                                <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca.depoimentos', ['fazenda' => $fazenda->slug])) active @endif" onclick="redirect('{{route('fazenda.conheca.depoimentos', ['fazenda' => $fazenda->slug])}}')" style="background-color: rgba(0,0,0,0.6); height: 190px;">
                                     <div class="col-12 px-3 text-center text-white text-section1-fazenda">
                                         <a href="{{route('fazenda.conheca.depoimentos', ['fazenda' => $fazenda->slug])}}"><h4 class="">Depoimentos</h4></a>
                                     </div>
@@ -95,7 +95,7 @@
                         </div>
                         <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda->miniatura_conheca_avaliacao}}); background-size: cover;">
                             <div class="container-fluid">
-                                <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca.avaliacoes', ['fazenda' => $fazenda->slug])) active @endif" style="background-color: rgba(0,0,0,0.6); height: 190px;">
+                                <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca.avaliacoes', ['fazenda' => $fazenda->slug])) active @endif" onclick="redirect('{{route('fazenda.conheca.avaliacoes', ['fazenda' => $fazenda->slug])}}')" style="background-color: rgba(0,0,0,0.6); height: 190px;">
                                     <div class="col-12 px-3 text-center text-white text-section1-fazenda">
                                         <a href="{{route('fazenda.conheca.avaliacoes', ['fazenda' => $fazenda->slug])}}"><h4 class="">Avaliação Agro Reserva</h4></a>
                                     </div>
@@ -138,6 +138,11 @@
 
 <script>
     var section = 0;
+    function redirect(location){
+        window.location = location;
+        return;
+    }
+
     function troca_avaliacao(element, num){
         $(element).addClass("active");
         $(element).siblings().removeClass("active");

@@ -83,7 +83,7 @@
         <div class="container-fluid">
             <div class="row pb-4">
                 <div class="col-12 text-center">
-                    <a href="" class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
+                    <a href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank" class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
                 </div>
             </div>
         </div>

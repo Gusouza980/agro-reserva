@@ -1,4 +1,4 @@
-<div class="row py-4 justify-content-center justify-content-lg-start">
+<div class="row py-4 justify-content-center">
     @foreach($fazenda->producoes as $producao)
         <div class="px-2 text-section2-fazenda">
             <div class="text-center text-section2-fazenda text-center">

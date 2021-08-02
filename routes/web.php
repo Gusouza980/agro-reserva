@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/cadastro', function () {
-    return view('cadastro.index');
+    return view('cadastro');
 })->name("cadastro");
 
 Route::get('/cadastro/passos', function () {
