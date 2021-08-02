@@ -1513,8 +1513,3 @@ label {
     border: 0px;
     border-radius: 15px;
 }
-
-.mfp-content{
-    transform: rotate(-90deg) !important;
-    max-width: 100vh !important;
-}

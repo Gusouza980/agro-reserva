@@ -92,12 +92,16 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid" style="background-color: white;">
-        <div class="row">
-            <div class="col-12 text-center text-lg-left">
-                <h5>Genealogia</h5>
+    <div class="container-fluid mt-5" style="background-color: white;">
+        
+        <div class="w1200 mx-auto">
+            <div class="row">
+                <div class="col-12 text-center text-lg-left">
+                    <h4>Genealogia</h4>
+                </div>
             </div>
         </div>
+        
         @if($lote->genealogia)
             <div class="row">
                 <div class="col-12 text-center py-5">
