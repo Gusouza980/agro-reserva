@@ -326,7 +326,7 @@
                     <div class="row">
                         <div class="col-12 conteudo-modal">
                             <button class="botao-confirma py-2 px-5 mt-4" onclick="fechaModalVendaFinalizada()">Continuar no site</button>
-                            <button class="botao-confirma py-2 px-5 mt-4" onclick="fechaModalVendaFinalizada()">Falar com um consultor</button>
+                            <button class="botao-confirma py-2 px-5 mt-4" href="https://api.whatsapp.com/send?phone=5514981809051">Falar com um consultor</button>
                         </div>
                     </div>
                 </div>

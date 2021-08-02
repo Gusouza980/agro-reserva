@@ -151,18 +151,24 @@ class SiteController extends Controller
 
     public function logar(Request $request){
         $usuario = Cliente::where("email", $request->email)->first();
-        if(Hash::check($request->senha, $usuario->senha)){
-            $usuario->ultimo_acesso = date('Y-m-d');
-            $usuario->save();
-            session(["cliente" => $usuario->toArray()]);
-            $carrinho = Carrinho::where([["cliente_id", $usuario->id], ["aberto", true]])->first();
-            if($carrinho){
-                session(["carrinho" => $carrinho->id]);
-            }
-            return redirect()->route("index");
-        }
-        session()->flash("erro", "Usuário ou senha incorretos");
-        return redirect()->back();
+        if($usuario){
+            if(Hash::check($request->senha, $usuario->senha)){
+                $usuario->ultimo_acesso = date('Y-m-d');
+                $usuario->save();
+                session(["cliente" => $usuario->toArray()]);
+                $carrinho = Carrinho::where([["cliente_id", $usuario->id], ["aberto", true]])->first();
+                if($carrinho){
+                    session(["carrinho" => $carrinho->id]);
+                }
+                return redirect()->route("index");
+            }else{
+                session()->flash("erro", "Usuário ou senha incorretos");
+                return redirect()->back();
+            } 
+        }else{
+            session()->flash("erro", "Usuário ou senha incorretos");
+            return redirect()->back();
+        }      
     }
 
     public function contato(){
