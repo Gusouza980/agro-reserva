@@ -1500,7 +1500,7 @@ label {
 
 .card-caixa-lote{
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: -3px 6px 15px #424FB224;
     border: 0px;
 }
 
