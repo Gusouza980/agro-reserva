@@ -5,22 +5,22 @@
     <div class="w1200 mx-auto">
         <div class="row">
             <div class="col-lg-12">
-                <img src="{{asset('imagens/banner-noticia2.jpg')}}" style="max-width: 100%; border-radius: 20px;" alt="">
+                <img src="{{asset($noticia->banner)}}" style="max-width: 100%; border-radius: 20px;" alt="">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-lg-12 card-noticia-text">
-                <h1>CONHEÇA A AGRO RESERVA: UM NOVO MODELO DE NEGÓCIO PARA O AGRO</h1>
+                <h1>{{$noticia->titulo}}</h1>
             </div>
         </div>
         <div class="row mt-2">
             <div class="col-lg-12 card-noticia-text">
-                <h3>03/08/2021 | 10:30am</h3>
+                <h3>{{date("d/m/Y | H:i", strtotime($noticia->created_at))}}</h3>
             </div>
         </div>
         <div class="row mt-2">
             <div class="col-lg-12 card-noticia-text">
-                
+                {!! $noticia->conteudo !!}
             </div>
         </div>
     </div>
