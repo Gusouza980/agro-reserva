@@ -5,10 +5,10 @@
     <div class="w1200 mx-auto">
         <div class="row">
             <div class="col-12">
-                <span style="color: #E8521B; font-size: 14px;"><a href=""><i class="fas fa-arrow-left mr-3"></i> Voltar</a></span>
+                <span style="color: #E8521B; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><a href=""><i class="fas fa-arrow-left mr-2"></i> Voltar</a></span>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-lg-12">
                 <img src="{{asset($noticia->banner)}}" style="max-width: 100%; border-radius: 20px;" alt="">
             </div>
