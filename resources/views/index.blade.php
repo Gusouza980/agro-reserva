@@ -131,7 +131,7 @@
                 <div data-aos="fade-in" class="w1200 mx-auto">
                     <div class="row">
                         <div class="col-12 text-viva text-center pt-3 pb-lg-5 mb-lg-5">
-                            <span><b>Somos a Agro Reserva. A plataforma digital de comercialização de gado que conecta as grandes marcas produtoras de genética aos compradores do mundo inteiro, 365 dias por ano, 07 dias por semana, 24 horas por dia.</b></span>
+                            <span><b>Somos a Agro Reserva, a evolução do seu modelo de negócios dentro da pecuária. Modernidade sem perder a tradição, facilidade com todas as garantias, diferente de tudo que você já viu. Seja bem-vindo ao futuro do seu rebanho.</b></span>
                         </div>
                     </div>
                 </div>
@@ -150,7 +150,7 @@
                         </div>
                         <div class="px-3 px-lg-0 ml-lg-4 text-digital text-center text-lg-left">
                             <span data-aos="fade-in">
-                                Aqui você compra sem pressa, com um atendimento que te<br>acompanha até o pós-venda. Aqui você vende com toda<br>segurança, menor custo promocional e muito mais alcance.<br>Aqui a gente respeita a sua jornada e a sua experiência<br>vale cada @.
+                                <b>Estamos ao seu lado em cada etapa de compra e venda.<br>A agilidade da tecnologia digital amparada por um atendimento<br>próximo, humanizado e completo. Uma caminhada onde você nunca<br>estará sozinho, novos rumos, novas experiências,<br>novas conquistas compartilhadas. Vem com a gente!</b>
                             </span>
                         </div>
                     </div>

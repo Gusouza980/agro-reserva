@@ -902,6 +902,45 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="width: 100%; max-width: 500px;" role="document">
+            <div class="modal-content" style="padding: 0px 0 30px 0; border-radius: 20px;">
+
+                <div class="modal-body px-5 pt-0 pb-4">
+                    <button type="button" id="close-modal" class="close cpointer" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 10px; z-index: 9;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="container-fluid mt-5">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img src="{{asset('imagens/icone_erro.png')}}" style="width: 100px;" alt="Ícone de Cadastro">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center modal-erro-text">
+                                <h1>Ops !</h1>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12 text-center modal-precadastro-text">
+                                <h2 id="titulo-erro-modal">Seu cadastro foi realizado com sucesso!</h2>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12 text-center modal-precadastro-text">
+                                <h3 id="subtitulo-erro-modal">asdasdasdasd</h3>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 text-center modal-precadastro-text">
+                                <h4 id="texto-erro-modal">Caso tenha algum problema, entre em contato com um consultor.</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js">
@@ -954,10 +993,16 @@
                 },
                 success: function (ret) {
                     if(ret == "001"){
+                        $("#titulo-erro-modal").html("E-mail não cadastrado");
+                        $("#subtitulo-erro-modal").html("Realize seu pré-cadastro ou cadastro completo.");
+                        $("#modalErro").modal("show");
                         $("#botoes-prosseguir").show();
                         $("#gif-ajax-direto").hide();
                         console.log("Deu ruim");
                     }else if(ret == "002"){
+                        $("#titulo-erro-modal").html("E-mail ou senha incorretos");
+                        $("#subtitulo-erro-modal").html("Verifique as informações inseridas e tente novamente.");
+                        $("#modalErro").modal("show");
                         $("#botoes-prosseguir").show();
                         $("#gif-ajax-direto").hide();
                         console.log("Deu ruim");
@@ -1061,6 +1106,12 @@
                     $("#gif-ajax").show();
                 },
                 success: function (ret) {
+                    if(ret == "001"){
+                        $("#titulo-erro-modal").html("E-mail já cadastrado");
+                        $("#subtitulo-erro-modal").html("Se já tiver realizado o pré-cadastro utilze o link no início da página para continuar para o cadastro completo.");
+                        $("#modalErro").modal("show");
+                        return;
+                    }
                     if (ret == "200") {
                         console.log("sucesso")
                         $("input").each(function () {
@@ -1480,7 +1531,6 @@
 
 
         $(document).ready(function () {
-            
             $("input[name='cep']").mask("99999-999");
             $("input[name='whatsapp']").mask("+99 (99) 99999-9999");
             $(".input-tel").mask("(99) 99999-9999");

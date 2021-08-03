@@ -39,11 +39,6 @@ class ClienteController extends Controller
     }
 
     public function cadastrar(Request $request){
-        $request->validate([
-            'email' => 'required|min:3|max:100',
-            'senha' => 'required|min:5|max:15'
-        ]);
-
         $cliente = Cliente::where("email", $request->email)->first();
 
         if($cliente){
