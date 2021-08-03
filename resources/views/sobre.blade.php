@@ -13,12 +13,44 @@
             <div class="row text-sobre">
                 <h1 class="mb-3">Quem somos</h1>
                 <p>Somos a Agro Reserva. A plataforma digital de comercialização de gado que conecta as grandes marcas produtoras de genética aos compradores do mundo inteiro, 365 dias por ano, 07 dias por semana, 24 horas por dia. Aqui você compra sem pressa, com um atendimento que te acompanha até o pós-venda. Aqui você vende com toda segurança, menor custo promocional e muito mais alcance. Aqui a gente respeita a sua jornada e a sua experiência vale cada @.</p>
-                <h2 class="mt-3">Nossa missão:</h2>
-                <p>Valorizar o trabalho do produtor, ressignificando o formato da comercialização de animais no Brasil, de forma a torná-la mais fácil, justa, segura e rentável para quem compra e para quem vende.</p>
-                <h2 class="mt-3">Nossa visão:</h2>
+                
+                {{--  <h2 class="mt-3">Nossa visão:</h2>
                 <p>Valorizar o trabalho do produtor, ressignificando o formato da comercialização de animais no Brasil, de forma a torná-la mais fácil, justa, segura e rentável para quem compra e para quem vende.</p>
                 <h2 class="mt-3">Nossos valores:</h2>
-                <p>Valorizar o trabalho do produtor, ressignificando o formato da comercialização de animais no Brasil, de forma a torná-la mais fácil, justa, segura e rentável para quem compra e para quem vende.</p>
+                <p>Valorizar o trabalho do produtor, ressignificando o formato da comercialização de animais no Brasil, de forma a torná-la mais fácil, justa, segura e rentável para quem compra e para quem vende.</p>  --}}
+            </div>
+            <div class="row">
+                <div class="d-flex align-items-center text-sobre">
+                    <div class="px-2 py-2 bg-white" style="border-radius: 15px;">
+                        <img src="{{asset('imagens/icone_missao.png')}}" style="width: 80px;" alt="">
+                    </div>
+                </div>
+                <div class="text-sobre ml-4">
+                    <h2 class="mt-3">Nossa missão:</h2>
+                    <p>Valorizar o trabalho do produtor, ressignificando o formato da<br>comercialização de animais no Brasil, de forma a torná-la<br>mais fácil, justa, segura e rentável para quem compra e para quem vende.</p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="d-flex align-items-center text-sobre">
+                    <div class="px-2 py-2 bg-white" style="border-radius: 15px;">
+                        <img src="{{asset('imagens/icone_visao.png')}}" style="width: 80px;" alt="">
+                    </div>
+                </div>
+                <div class="text-sobre ml-4">
+                    <h2 class="mt-3">Nossa visão:</h2>
+                    <p>Evoluir sempre para nos consolidarmos como referências na<br>comercialização de animais no Brasil e no mundo. </p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="d-flex align-items-center text-sobre">
+                    <div class="px-2 py-2 bg-white" style="border-radius: 15px;">
+                        <img src="{{asset('imagens/icone_valores.png')}}" style="width: 80px;" alt="">
+                    </div>
+                </div>
+                <div class="text-sobre ml-4">
+                    <h2 class="mt-3">Nossos valores:</h2>
+                    <p>Transparência nas relações. Paixão pela pecuária. Precursores<br>da evolução.</p>
+                </div>
             </div>
         </div>
         <div class="container-fluid caixa-sobre mt-5">
