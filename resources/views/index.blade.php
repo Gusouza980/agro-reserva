@@ -170,7 +170,36 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-12 text-cta-comissao text-center">
-                            <h2 data-aos="fade-in">Consulte condições</h2>
+                            <h2 class="cpointer" data-aos="fade-in" data-toggle="modal" data-target="#modalComissao">Consulte condições</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalComissao" tabindex="-1" role="dialog" aria-labelledby="modalComissaoTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 text-center text-red">
+                            <h4><b>Como funciona?</b></h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-left">
+                            <p>A Agro Reserva traz benefícios para você, <b>comprador</b>, com <b>descontos progressivos</b> que podem chegar a <b>0% de comissão</b>. Confira! </p>
+                            <ul class="mt-3">
+                                <li>Pague em 05 parcelas ou mais e nós cobraremos apenas 4% de comissão.</li>
+                                <li>Pague em até 04 parcelas e concederemos 50% de desconto na sua comissão.</li>
+                                <li><b>Pague à vista e não pague nada de comissão!</b></li>
+                            </ul>
                         </div>
                     </div>
                 </div>

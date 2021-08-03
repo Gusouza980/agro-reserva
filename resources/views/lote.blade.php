@@ -82,9 +82,10 @@
                             <div class="text-white text-lote-info text-center text-lg-left">
                                 <span><b>RGD:</b> {{$lote->registro}}</span><br>
                                 <span><b>CCG:</b> {{$lote->ccg}}</span><br>
-                                <span><b>Raça:</b> {{$lote->raca->nome}}</span>
+                                <span><b>GPTA:</b> {{$lote->gpta}}</span><br>
                             </div>
                             <div class="ml-4 text-white text-lote-info text-center text-lg-left">
+                                <span><b>Raça:</b> {{$lote->raca->nome}}</span><br>
                                 <span><b>Nascimento:</b> {{date("d/m/Y", strtotime($lote->nascimento))}}</span><br>
                                 <span><b>Último Parto:</b> {{date("d/m/Y", strtotime($lote->parto))}}</span>
                             </div>
