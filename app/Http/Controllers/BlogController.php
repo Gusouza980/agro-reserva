@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Noticia;
 
 class BlogController extends Controller
 {
@@ -12,7 +13,8 @@ class BlogController extends Controller
         return view("blog");
     }
 
-    public function noticia(){
-        return view("noticia");
+    public function noticia($slug){
+        $noticia = Noticia::where("slug", $slug)->first();
+        return view("noticia", ["noticia" => $noticia]);
     }
 }

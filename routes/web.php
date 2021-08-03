@@ -56,7 +56,7 @@ Route::get('/pre_to_main', [\App\Http\Controllers\ClienteController::class, 'pre
 
 //Blog
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
-Route::get('/noticia', [\App\Http\Controllers\BlogController::class, 'noticia'])->name("noticia");
+Route::get('/noticia/{slug}', [\App\Http\Controllers\BlogController::class, 'noticia'])->name("noticia");
 
 //Carrinho
 Route::get('/carrinho/adicionar/{lote}',  [\App\Http\Controllers\CarrinhoController::class, 'adicionar'])->name("carrinho.adicionar");
