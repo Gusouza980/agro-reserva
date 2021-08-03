@@ -9,16 +9,20 @@
                     <img src="imagens/logo_agroreserva_leite.svg" style="" width="300" alt="Logo Agro Reserva">
                 </div>
             </div>
+            <div class="row mt-4">
+                
+            </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-7 col-lg-5 mt-5 py-5 px-5" style="background-color: white; border-radius: 10px;">
-                    <h3 class="">Entre</h3>
+                    <a href="{{route('index')}}"><span style="color: #E8521B !important; font-size: 12px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                    {{--  <h3 class="mt-3">Entre</h3>  --}}
                     @if(session()->get("erro"))
                         <div class="alert alert-danger" role="alert">
                             <strong>{{session()->get("erro")}}</strong>
                         </div>
                     @endif
                     
-                    <form id="form-cadastro" class="row" action="{{route('logar')}}" method="post">
+                    <form id="form-cadastro" class="row mt-4" action="{{route('logar')}}" method="post">
                         @csrf
                         <div class="form-group col-12 text-black mt-1">
                             <label for="email">E-mail</label>
