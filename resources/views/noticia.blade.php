@@ -5,7 +5,7 @@
     <div class="w1200 mx-auto">
         <div class="row">
             <div class="col-lg-12">
-                <img src="{{asset('imagens/banner-noticia.jpg')}}" style="max-width: 100%; border-radius: 20px;" alt="">
+                <img src="{{asset('imagens/banner-noticia2.jpg')}}" style="max-width: 100%; border-radius: 20px;" alt="">
             </div>
         </div>
         <div class="row mt-4">

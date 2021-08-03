@@ -14,78 +14,32 @@
             <div class="col-lg-12">
                 <div class="container-fluid my-4">
                     <div class="row justify-content-center">
-                        <div class="card-noticia mx-2 mt-3">
-                            <div class="container-fluid px-0">
-                                <div class="row px-0 mx-0">
-                                    <div class="col-12 card-noticia-imagem px-0" style="background: url({{asset('imagens/thumb-noticia.jpg')}}); background-size: cover; background-position: center;">
+                        @foreach(\App\Models\Noticia::where("publicada", true)->get() as $noticia)
+                            <div class="card-noticia mx-2 mt-3">
+                                <div class="container-fluid px-0">
+                                    <div class="row px-0 mx-0">
+                                        <div class="col-12 card-noticia-imagem px-0" style="background: url({{asset($noticia->preview)}}); background-size: cover; background-position: center;">
 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row px-0 mx-0 mt-3">
-                                    <div class="col-12 px-3 card-noticia-data">
-                                        <i class="fas fa-calendar-week mr-2"></i> <span>20 dias atrás</span>
+                                    <div class="row px-0 mx-0 mt-3">
+                                        <div class="col-12 px-3 card-noticia-data">
+                                            <i class="fas fa-calendar-week mr-2"></i> <span>{{$noticia->created_at->diffForHumans()}}</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row px-0 mx-0 mt-3">
-                                    <div class="col-12 px-3 card-noticia-text">
-                                        <h2>CONHEÇA A AGRO RESERVA: UM NOVO MODELO DE NEGÓCIO PARA O AGRO</h2>
+                                    <div class="row px-0 mx-0 mt-3">
+                                        <div class="col-12 px-3 card-noticia-text">
+                                            <h2>{{$noticia->titulo}}</h2>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row px-0 mx-0 mt-1 mb-3">
-                                    <div class="col-12 px-3 card-noticia-text">
-                                        <h3>A Agro Reserva é uma empresa nasce com a proposta de ser uma nova modalidade de…</h3>
+                                    <div class="row px-0 mx-0 mt-1 mb-3">
+                                        <div class="col-12 px-3 card-noticia-text">
+                                            <h3>{{$noticia->subtitulo}}</h3>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-noticia mx-2 mt-3">
-                            <div class="container-fluid px-0">
-                                <div class="row px-0 mx-0">
-                                    <div class="col-12 card-noticia-imagem px-0" style="background: url({{asset('imagens/thumb-noticia.jpg')}}); background-size: cover; background-position: center;">
-
-                                    </div>
-                                </div>
-                                <div class="row px-0 mx-0 mt-3">
-                                    <div class="col-12 px-3 card-noticia-data">
-                                        <i class="fas fa-calendar-week mr-2"></i> <span>20 dias atrás</span>
-                                    </div>
-                                </div>
-                                <div class="row px-0 mx-0 mt-3">
-                                    <div class="col-12 px-3 card-noticia-text">
-                                        <h2>CONHEÇA A AGRO RESERVA: UM NOVO MODELO DE NEGÓCIO PARA O AGRO</h2>
-                                    </div>
-                                </div>
-                                <div class="row px-0 mx-0 mt-1 mb-3">
-                                    <div class="col-12 px-3 card-noticia-text">
-                                        <h3>A Agro Reserva é uma empresa nasce com a proposta de ser uma nova modalidade de…</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-noticia mx-2 mt-3">
-                            <div class="container-fluid px-0">
-                                <div class="row px-0 mx-0">
-                                    <div class="col-12 card-noticia-imagem px-0" style="background: url({{asset('imagens/thumb-noticia.jpg')}}); background-size: cover; background-position: center;">
-
-                                    </div>
-                                </div>
-                                <div class="row px-0 mx-0 mt-3">
-                                    <div class="col-12 px-3 card-noticia-data">
-                                        <i class="fas fa-calendar-week mr-2"></i> <span>20 dias atrás</span>
-                                    </div>
-                                </div>
-                                <div class="row px-0 mx-0 mt-3">
-                                    <div class="col-12 px-3 card-noticia-text">
-                                        <h2>CONHEÇA A AGRO RESERVA: UM NOVO MODELO DE NEGÓCIO PARA O AGRO</h2>
-                                    </div>
-                                </div>
-                                <div class="row px-0 mx-0 mt-1 mb-3">
-                                    <div class="col-12 px-3 card-noticia-text">
-                                        <h3>A Agro Reserva é uma empresa nasce com a proposta de ser uma nova modalidade de…</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
