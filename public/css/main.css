@@ -1729,3 +1729,7 @@ label {
         font-weight: bold;
     }
 }
+
+.MsoNormal > span{
+    font-size: 1rem !important;
+}
