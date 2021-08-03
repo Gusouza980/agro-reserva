@@ -35,7 +35,7 @@
             </div>
             <div class="row mt-4">
                 <div class="col-12 text-center text-sobre-caixa">
-                    <a href="" class="btn btn-sobre px-5 py-2">Quero Comprar</a>
+                    <a href="{{route('cadastro')}}" class="btn btn-sobre px-5 py-2">Quero Comprar</a>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
             </div>
             <div class="row mt-4">
                 <div class="col-12 text-center text-sobre-caixa">
-                    <a href="" class="btn btn-sobre px-5 py-2">Quero Comprar</a>
+                    <a href="{{route('cadastro')}}" class="btn btn-sobre px-5 py-2">Quero Vender</a>
                 </div>
             </div>
         </div>

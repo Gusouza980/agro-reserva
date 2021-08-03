@@ -64,14 +64,14 @@
                     <ul class="navbar-nav px-5 text-center">
                         @if(session()->get("cliente"))
                             <li class="nav-item active mt-4">
-                                <a class="nav-link" href="{{route('conta.index')}}">Blog</span></a>
+                                <a class="nav-link" href="{{route('blog')}}">Blog</span></a>
                             </li> 
                             <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{route('conta.index')}}">Quem somos</span></a>
+                                <a class="nav-link" href="{{route('sobre')}}">Quem somos</span></a>
                             </li> 
-                            <li class="nav-item active mt-2">
+                            {{--  <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
-                            </li> 
+                            </li>   --}}
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('conta.index')}}">Minha Conta</span></a>
                             </li> 
@@ -80,14 +80,14 @@
                             </li> 
                         @else
                             <li class="nav-item active mt-4">
-                                <a class="nav-link" href="{{route('conta.index')}}">Blog</span></a>
+                                <a class="nav-link" href="{{route('blog')}}">Blog</span></a>
                             </li> 
                             <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{route('conta.index')}}">Quem somos</span></a>
+                                <a class="nav-link" href="{{route('sobre')}}">Quem somos</span></a>
                             </li> 
-                            <li class="nav-item active mt-2">
+                            {{--  <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
-                            </li>
+                            </li>  --}}
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('cadastro')}}">Cadastre-se</span></a>
                             </li> 
@@ -113,9 +113,9 @@
 				</div>  --}}
 				<div class="col-lg-4 d-flex text-white justify-content-start align-items-center">
 					{{--  <a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a>  --}}
-                    <span  class="text-nav-header"><a href="{{route('cadastro')}}">Blog</a></span> 
-                    <span  class="text-nav-header mx-4"><a href="{{route('cadastro')}}">Quem somos</a></span> 
-                    <span  class="text-nav-header"><a href="{{route('cadastro')}}">Como comprar</a></span> 
+                    <span  class="text-nav-header"><a href="{{route('blog')}}">Blog</a></span> 
+                    <span  class="text-nav-header mx-4"><a href="{{route('sobre')}}">Quem somos</a></span> 
+                    {{--  <span  class="text-nav-header"><a href="{{route('cadastro')}}">Como comprar</a></span>   --}}
                 </div>
 				<div class="col-lg-5 d-flex text-white justify-content-end align-items-center">
 					<span class="text-nav-header">

@@ -48,6 +48,7 @@ Route::get('/fazenda/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteC
 Route::get('/fazenda/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes'])->name("fazenda.lotes");
 Route::get('/fazenda/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote'])->name("fazenda.lote");
 Route::get('/quem-somos', [\App\Http\Controllers\SiteController::class, 'sobre'])->name("sobre");
+Route::get('/pre_to_main', [\App\Http\Controllers\ClienteController::class, 'pre_to_main']);
 
 //Blog
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");

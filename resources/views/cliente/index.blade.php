@@ -15,23 +15,17 @@
                         <h5>{{$cliente->nome_dono}}</h5>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 card-conta-content">
-                        <div class="alert alert-warning" role="alert">
-                            <strong>Seu cadastro está em fase de análise.</strong>
-                        </div>
-                    </div>
-                </div>
                 <div class="row mt-3">
                     <div class="col-12 text-center text-md-left card-conta-content">
-                        <span class="cpointer link-card-conta active" num="0"><span style="border-bottom: 2px solid #E8521B;">Rese</span>rvas</span>
-                        <span class="ml-3 link-card-conta cpointer" num="1"><span style="border-bottom: 2px solid #E8521B;">Seus</span> Dados</span>
+                        {{--  <span class="cpointer link-card-conta active" num="0"><span style="border-bottom: 2px solid #E8521B;">Rese</span>rvas</span>  --}}
+                        {{--  <span class="ml-3 link-card-conta cpointer" num="1"><span style="border-bottom: 2px solid #E8521B;">Seus</span> Dados</span>  --}}
                         {{--  <span class="ml-3 link-card-conta cpointer" num="2"><span style="border-bottom: 2px solid #E8521B;">Ende</span>reço de Correspondência</span>  --}}
                         {{--  <span class="ml-3 link-card-conta cpointer" num="3"><span style="border-bottom: 2px solid #E8521B;">Pref</span>erências</span>  --}}
+                        <span class="cpointer link-card-conta active" num="4"><span style="border-bottom: 2px solid #E8521B;">Infor</span>mações de conta</span>
                     </div>
                 </div>
                 <hr class="mt-5 mb-4">
-                <div class="container-fluid container-card-conta active" num="0">
+                <div class="container-fluid container-card-conta active" num="0" style="display: none;">
                     <div class="row">
                         <div class="col-12 card-conta-content">
                             <h5>Suas Reservas</h5>
@@ -370,6 +364,25 @@
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid container-card-conta" num="4">
+                    <div class="row">
+                        <div class="col-12">
+                            @if($cliente->aprovado == 0)
+                                <div class="alert alert-warning" role="alert">
+                                    <strong>Seu cadastro está em fase de análise.</strong>
+                                </div>
+                            @elseif($cliente->aprovado == -1)
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>Seu cadastro for reprovado. Entre em contato com um consultor para mais informações.</strong>
+                                </div>
+                            @else
+                            <div class="alert alert-success" role="alert">
+                                <strong>Parabéns. Seu cadastro foi aprovado !</strong>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
