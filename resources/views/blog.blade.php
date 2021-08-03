@@ -2,7 +2,7 @@
 
 @section('conteudo')
 <div class="container-fluid">
-    <div class="row align-items-center" id="row-header-blog" style="background: url({{asset('imagens/banner-blog.jpg')}}); background-size: cover; background-position: top;">
+    <div class="row align-items-center" id="row-header-blog" style="background: url({{asset('imagens/banner-blogg.jpg')}}); background-size: cover; background-position: top;">
         <div class="col-12 text-center text-header-blog">
             <h1>Fique por dentro das novidades</h1>
         </div>
