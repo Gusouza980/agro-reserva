@@ -64,6 +64,9 @@
                     <ul class="navbar-nav px-5 text-center">
                         @if(session()->get("cliente"))
                             <li class="nav-item active mt-4">
+                                <a class="nav-link" href="{{route('index')}}">Início</span></a>
+                            </li> 
+                            <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('blog')}}">Blog</span></a>
                             </li> 
                             <li class="nav-item active mt-2">
@@ -80,6 +83,9 @@
                             </li> 
                         @else
                             <li class="nav-item active mt-4">
+                                <a class="nav-link" href="{{route('blog')}}">Início</span></a>
+                            </li> 
+                            <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('blog')}}">Blog</span></a>
                             </li> 
                             <li class="nav-item active mt-2">
@@ -113,8 +119,9 @@
 				</div>  --}}
 				<div class="col-lg-4 d-flex text-white justify-content-start align-items-center">
 					{{--  <a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a>  --}}
-                    <span  class="text-nav-header"><a href="{{route('blog')}}">Blog</a></span> 
-                    <span  class="text-nav-header mx-4"><a href="{{route('sobre')}}">Quem somos</a></span> 
+                    <span  class="text-nav-header"><a href="{{route('index')}}">Início</a></span> 
+                    <span  class="text-nav-header ml-4"><a href="{{route('blog')}}">Blog</a></span> 
+                    <span  class="text-nav-header ml-4"><a href="{{route('sobre')}}">Quem somos</a></span> 
                     {{--  <span  class="text-nav-header"><a href="{{route('cadastro')}}">Como comprar</a></span>   --}}
                 </div>
 				<div class="col-lg-5 d-flex text-white justify-content-end align-items-center">
@@ -176,6 +183,11 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="w400 mx-auto">
+                            <div class="row">
+                                <div class="col-12 text-nav-footer text-center text-lg-left">
+                                    <a class="" href="{{route('index')}}"><span><span style="border-bottom: 2px solid #FEB000;">Iní</span>cio</span> </a>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-12 text-nav-footer text-center text-lg-left">
                                     <a class="" href="{{route('blog')}}"><span><span style="border-bottom: 2px solid #FEB000;">Blo</span>g</span> </a>
