@@ -310,8 +310,8 @@ class ClienteController extends Controller
                         $indice->desc_setor = $indi->desc_setor;
                         $indice->faixa = $indi->faixa;
                         $indice->relacionamento = $indi->relacionamento;
-                        $indice->relacionamento = $indi->relacionamento;
-                        $indice->relacionamento = $indi->relacionamento;
+                        $indice->tendencia = $indi->tendencia;
+                        $indice->mensagem = $indi->mensagem;
                         $indice->save();
                     }
                 }
