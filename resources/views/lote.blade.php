@@ -62,6 +62,11 @@
         </div>
         <div class="w1200 mx-auto pt-5 pb-5 pb-lg-0" style="">
             <div class="container-fluid">
+                <div class="row py-4 px-4">
+                    <div class="col-12">
+                        <a href="{{route('fazenda.lotes', ['fazenda' => $lote->fazenda->slug])}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                    </div>
+                </div>
                 <div class="row justify-content-center mt-5">
                     <div class="text-center video-lote px-3 px-lg-0" style="max-width: 100%;">
                         {!! $lote->video !!}

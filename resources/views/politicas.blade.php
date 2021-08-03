@@ -8,6 +8,11 @@
 @section('conteudo')
     <div class="w1200 mx-auto py-5">
         <div class="container-fluid">
+            <div class="row py-4">
+                <div class="col-12">
+                    <a href="{{route('index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12">
                     <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 150%">

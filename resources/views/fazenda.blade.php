@@ -46,6 +46,11 @@
                     </div>
                 </div>
                 <div class="container">
+                    <div class="row pt-5">
+                        <div class="col-12">
+                            <a href="{{route('index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                        </div>
+                    </div>
                     <div class="row py-5 justify-content-sm-center justify-content-md-start">
                         <div class="col-12 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda->miniatura_conheca}}); background-size: cover; background-position: center;">
                             <div class="container-fluid">

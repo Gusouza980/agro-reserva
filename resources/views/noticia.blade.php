@@ -5,7 +5,7 @@
     <div class="w1200 mx-auto">
         <div class="row">
             <div class="col-12">
-                <a href=""><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                <a href="{{route('blog')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
             </div>
         </div>
         <div class="row mt-4">
@@ -26,6 +26,11 @@
         <div class="row mt-5">
             <div class="col-lg-12">
                 {!! $noticia->conteudo !!}
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <a href="{{route('blog')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
             </div>
         </div>
     </div>

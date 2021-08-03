@@ -10,6 +10,11 @@
 <div class="container-fluid py-5" style="background-color: #F5F5F5;">
     <div class="w800 mx-auto">
         <div class="container-fluid">
+            <div class="row py-4">
+                <div class="col-12 px-0">
+                    <a href="{{route('index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                </div>
+            </div>
             <div class="row text-sobre">
                 <h1 class="mb-3">Quem somos</h1>
                 <p>Somos a Agro Reserva. A plataforma digital de comercialização de gado que conecta as grandes marcas produtoras de genética aos compradores do mundo inteiro, 365 dias por ano, 07 dias por semana, 24 horas por dia. Aqui você compra sem pressa, com um atendimento que te acompanha até o pós-venda. Aqui você vende com toda segurança, menor custo promocional e muito mais alcance. Aqui a gente respeita a sua jornada e a sua experiência vale cada @.</p>

@@ -50,10 +50,10 @@
             <div class="col-12 col-lg-8 justify-content-center justify-content-lg-start text-center text-lg-left align-items-center text-lotes d-flex">
                 <h3>Reserva da {{$fazenda->nome_fazenda}}</h3>
             </div>
-            <div class="col-12 col-lg-4 justify-content-center justify-content-lg-end align-items-center text-center text-lg-right text-lotes d-flex">
-                {{--  <span>fêmeas</span>
-                <span class="ml-3">embrião</span>
-                <span class="ml-3">sêmen</span>  --}}
+        </div>
+        <div class="row py-4">
+            <div class="col-12">
+                <a href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
             </div>
         </div>
         <div class="row justify-content-center justify-content-lg-between">
