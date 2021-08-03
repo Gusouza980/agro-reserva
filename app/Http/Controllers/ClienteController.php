@@ -193,19 +193,21 @@ class ClienteController extends Controller
             }
             $analise->save();
 
-            foreach($res->pendencias_financeiras->detalhes as $pend){
-                $pendencia = new PendenciaFinanceira;
-                $pendencia->credito_analise_id = $analise->id;
-                $pendencia->data_ocorrencia = $pend->dt_ocorrencia;
-                $pendencia->modalidade = $pend->modalidade;
-                $pendencia->avalista = $pend->avalista;
-                $pendencia->tipo_moeda = $pend->tipo_moeda;
-                $pendencia->valor_pendencia = $pend->vlr_pendencia;
-                $pendencia->contrato = $pend->contrato;
-                $pendencia->origem = $pend->origem;
-                $pendencia->praca_embratel = $pend->praca_embratel;
-                $pendencia->tipo_anotacao = $pend->tipo_anotacao;
-                $pendencia->save();
+            if(isset($res->pendencias_financeiras->detalhes)){
+                foreach($res->pendencias_financeiras->detalhes as $pend){
+                    $pendencia = new PendenciaFinanceira;
+                    $pendencia->credito_analise_id = $analise->id;
+                    $pendencia->data_ocorrencia = $pend->dt_ocorrencia;
+                    $pendencia->modalidade = $pend->modalidade;
+                    $pendencia->avalista = $pend->avalista;
+                    $pendencia->tipo_moeda = $pend->tipo_moeda;
+                    $pendencia->valor_pendencia = $pend->vlr_pendencia;
+                    $pendencia->contrato = $pend->contrato;
+                    $pendencia->origem = $pend->origem;
+                    $pendencia->praca_embratel = $pend->praca_embratel;
+                    $pendencia->tipo_anotacao = $pend->tipo_anotacao;
+                    $pendencia->save();
+                }
             }
 
             if(isset($res->protesto_estadual->detalhes)){
