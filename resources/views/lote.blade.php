@@ -105,19 +105,19 @@
                                 </div>
                                 <span>Frete</span>
                             </div>
-                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalSeguranca">
+                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalPagamento">
                                 <div class="mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_pagamento.png')}}" height="50" alt="">
                                 </div>
                                 <span>Pagamentos<br>e Condições</span>
                             </div>
-                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5">
+                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalSeguranca">
                                 <div class="mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_seguranca.png')}}" height="50" alt="">
                                 </div>
                                 <span>Segurança</span>
                             </div>
-                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5">
+                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
                                 <div class="mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_porcentagem.png')}}" height="50" alt="">
                                 </div>
@@ -125,25 +125,25 @@
                             </div>
                         </div>
                         <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
-                            <div class="icones-info text-center px-3 px-lg-5">
+                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalFrete">
                                 <div class="mx-auto mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_frete.png')}}" height="80" alt="">
                                 </div>
                                 <span>Frete</span>
                             </div>
-                            <div class="icones-info text-center px-3 px-lg-5">
+                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalPagamento">
                                 <div class="mx-auto mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_pagamento.png')}}" height="80" alt="">
                                 </div>
                                 <span>Pagamentos<br>e Condições</span>
                             </div>
-                            <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5">
+                            <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalSeguranca">
                                 <div class="mx-auto mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_seguranca.png')}}" height="80" alt="">
                                 </div>
                                 <span>Segurança</span>
                             </div>
-                            <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5">
+                            <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
                                 <div class="mx-auto mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_porcentagem.png')}}" height="80" alt="">
                                 </div>
@@ -227,26 +227,63 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body pb-4">
                     <div class="row">
                         <div class="col-12 text-center text-red">
-                            <h4>Frete e Pagamento</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <span>O frete pode ser consultado antes da finalização da compra.</span>
-                            <br><br>
-                            <span>O pagamento pode ser feito em até 10x</span>
-                            <br>
-                            <span>Para mais informações, entre em contato com o botão abaixo.</span>
+                            <h4>FRETE</h4>
                         </div>
                     </div>
                     <div class="row mt-3">
+                        <div class="col-12 text-left">
+                            Retire seus animais na fazenda Santa Luzia.<br>
+                            Inserir endereço exato do local de retirada dos animais.
+                            <br><br> 
+                            O frete é por conta do comprador.
+                        </div>
+                    </div>
+                    {{--  <div class="row mt-3">
                         <div class="col-12 text-center">
                             <a href="" class="btn btn-vermelho px-4">Contato</a>
                         </div>
+                    </div>  --}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalPagamento" tabindex="-1" role="dialog" aria-labelledby="modalPagamentoTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body pb-4">
+                    <div class="row">
+                        <div class="col-12 text-center text-red">
+                            <h4>PAGAMENTOS E CONDIÇÕES</h4>
+                        </div>
                     </div>
+                    <div class="row mt-3">
+                        <div class="col-12 text-left">
+                            Formas de pagamento: <br>
+                            <ul class="mt-3">
+                                <li>À vista ou em até 10x sem juros no boleto de titularidade da fazenda e do comprador.</li>
+                                <li>Pague À VISTA e ganhe 12% de desconto*.</li>
+                                <li class="ml-4 mt-2" style="list-style: none;">*8% de desconto pela fazenda e 4% de desconto da comissão Agro Reserva.</li>
+                                <li>Pague em ATÉ 4x e ganhe 8% de desconto*</li>
+                                <li class="ml-4 mt-2" style="list-style: none;">*6% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.</li>
+                            </ul>
+                            <p>Os valores referentes à forma de pagamento são calculados automaticamente no processo de finalização da compra.</p>
+                        </div>
+                    </div>
+                    {{--  <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <a href="" class="btn btn-vermelho px-4">Contato</a>
+                        </div>
+                    </div>  --}}
                 </div>
             </div>
         </div>
@@ -264,21 +301,13 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 text-center text-red">
-                            <h4>Segurança e Garantia</h4>
+                            <h4>SEGURANÇA</h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 text-left">
-                            <span>Toda operação realizada através da Agroreserva é extremamente segura. Prezamos por trabalhar com fornecedores reconhecidos e com excelente histórico no mercado.</span>
-                            <br><br>
-                            <span>Além disto, garantimos a veracidade das informações através do <b>registro dos animais</b></span>
-                            <br><br>
-                            <span>Para mais informações, entre em contato com o botão abaixo.</span>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-12 text-center">
-                            <a href="" class="btn btn-vermelho px-4">Contato</a>
+                            <p>A Agro Reserva toma todas as medidas cabíveis para garantir o cumprimento dos padrões de confidencialidade e segurança, firmando acordos ou contratos com o objetivo de proteger a privacidade dos dados pessoais de nossos usuários e cumprir a legislação aplicável.</p>
+                            <p>Para mais informações, fale com a gente nos canais de atendimento disponíveis no site.</p>
                         </div>
                     </div>
                 </div>
@@ -287,41 +316,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="modalAssessoria" tabindex="-1" role="dialog" aria-labelledby="modalAssessoriaTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-12 text-center text-red">
-                            <h4>Assessoria</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <span>A Agroreserva oferece um serviço de <b>assessoria gratuita</b>, prestada por uma equipe interna e qualificada de veterinários, zootecnistas e universitários com ampla experiência comercial e prática no campo.</span>
-                            <br><br>
-                            <span>Ao fazer o cadastro, um membro do nosso time entrará em contato e te auxiliará desde a escolha do melhor animal pra sua fazenda, até o momento da compra.</span>
-                            <br><br>
-                            <span>Para mais informações, entre em contato com o botão abaixo.</span>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-12 text-center">
-                            <a href="" class="btn btn-vermelho px-4">Contato</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modalFunciona" tabindex="-1" role="dialog" aria-labelledby="modalFuncionaTitle" aria-hidden="true">
+    <div class="modal fade" id="modalComissao" tabindex="-1" role="dialog" aria-labelledby="modalComissaoTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -337,24 +332,12 @@
                     </div>
                     <div class="row">
                         <div class="col-12 text-left">
-                            <span><b>1. Qualquer um pode comprar?</b></span>
-                            <br>
-                            <span>
-                                Sim! Qualquer pessoa física ou jurídica pode adquirir animais deste lote, desde que possua vínculo à uma propriedade rural.
-                            </span>
-                            <br><br>
-                            <span><b>2. Como faço para comprar?</b></span>
-                            <br>
-                            <span>
-                                O comprador que primeiro demonstrar interesse e confirmar a compra será o novo proprietário dos animais. Caso tenha interesse, basta adicioná-lo ao carrinho e finalizar sua compra. A mesma pode ser finalizada pelo whatsapp com atendimento humanizado para melhor guiá-lo, ou diretamente com a geração do boleto.
-                            </span>
-                            <br><br>
-                            <span>Para mais informações, entre em contato com o botão abaixo.</span>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-12 text-center">
-                            <a href="" class="btn btn-vermelho px-4">Contato</a>
+                            <p>A Agro Reserva traz benefícios para você, <b>comprador</b>, com <b>descontos progressivos</b> que podem chegar a <b>0% de comissão</b>. Confira! </p>
+                            <ul class="mt-3">
+                                <li>Pague em 05 parcelas ou mais e nós cobraremos apenas 4% de comissão.</li>
+                                <li>Pague em até 04 parcelas e concederemos 50% de desconto na sua comissão.</li>
+                                <li><b>Pague à vista e não pague nada de comissão!</b></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
