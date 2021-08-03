@@ -164,12 +164,6 @@ class NoticiasController extends Controller
         }
 
         $noticia->save();
-        
-        foreach($noticia->getChanges() as $campo => $valor){
-            if(!in_array($campo, ["updated_at", "slug"])){
-                Log::channel('atividade')->info('EDITANDO NOTÍCIA #' . $noticia->id . ': O usuario ' . session()->get("usuario")["usuario"] . ' alterou o valor do campo ' . $campo . ' para ' . $valor);
-            }
-        }
 
         $noticia->tags()->detach();
         foreach($request->tags as $tag){
