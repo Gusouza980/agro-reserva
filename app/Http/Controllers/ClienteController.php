@@ -83,7 +83,6 @@ class ClienteController extends Controller
         $cliente->rg = $request->rg;
         $cliente->nascimento = $request->nascimento;
         $cliente->documento = $request->documento;
-        $cliente->cpf = $request->cpf;
         $cliente->estado_civil = $request->estado_civil;
         $cliente->inscricao_produtor_rural = $request->inscricao_produtor_rural;
         $cliente->cep = $request->cep;
@@ -117,6 +116,7 @@ class ClienteController extends Controller
         $cliente->nome_dono = $request->nome_dono;
         $cliente->email = $request->email;
         $cliente->documento = $request->documento;
+        $cliente->cpf = $request->cpf;
         $cliente->nascimento = $request->nascimento;
         $cliente->rg = $request->rg;
         $cliente->whatsapp = $request->whatsapp;
