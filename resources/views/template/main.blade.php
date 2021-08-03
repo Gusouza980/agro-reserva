@@ -209,8 +209,6 @@
                         </div>
                     </div>
                 </div>
-                
-                
             </div>
         </div>
     </div>
@@ -297,7 +295,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-
+    <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js" ></script>
     @toastr_js
     @toastr_render
 	@yield("scripts")
