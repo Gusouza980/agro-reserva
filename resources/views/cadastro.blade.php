@@ -260,7 +260,7 @@
                                 <div class="form-check">
                                     <label class="form-check-label">
                                         <input type="checkbox" class="form-check-input" name="" id="termos" value="checkedValue">
-                                        Confirmo que li e estou ciente dos termos de uso e política de privacidade
+                                        Confirmo que li e estou ciente dos <a href="{{route('termos')}}" style="text-decoration: underline; color: #E8521B" target="_blank">termos de uso</a> e <a href="{{route('politicas')}}"  style="text-decoration: underline; color: #E8521B" target="_blank">política de privacidade</a>
                                     </label>
                                 </div>
                             </div>

@@ -842,15 +842,6 @@
                         Informações Pessoais por correio postal para Av. Getúlio Vargas,
                         1116, centro, CEP: 38400-434, Uberlândia Minas Gerais.   </FONT></FONT>
                         </P>
-                        <DIV TYPE=FOOTER>
-                            <P ALIGN=CENTER STYLE="margin-top: 0.68in; margin-bottom: 0in"><FONT FACE="Calibri, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><FONT COLOR="#467a79">Rua
-                            Araxá, nº 500, Casa 2</FONT></FONT></FONT></P>
-                            <P ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT FACE="Calibri, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><FONT COLOR="#467a79">Bairro
-                            Osvaldo Rezende | Uberlândia – MG | CEP: 38400-404</FONT></FONT></FONT></P>
-                            <P ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT FACE="Calibri, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><FONT COLOR="#467a79">Telefone:
-                            (34) 3254-5000</FONT></FONT></FONT></P>
-                            <P ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT FACE="Calibri, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><FONT COLOR="#467a79"><B>www.rochasantosportilho.com.br</B></FONT></FONT></FONT><SPAN CLASS="sd-abs-pos" STYLE="position: absolute; top: 4.08in; left: 1.35in; width: 364px"></SPAN></P>
-                        </DIV>
                 </div>
             </div>
         </div>

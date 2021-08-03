@@ -218,7 +218,7 @@
                 <div class="text-center footer-links">
                     <a href="{{route('termos')}}" class="px-4 footer-links-superior">Termos e condições de uso</a>
                     |
-                    <a href="" class="px-4 footer-links-superior">Políticas de Privacidade</a>
+                    <a href="{{route('politicas')}}" class="px-4 footer-links-superior">Políticas de Privacidade</a>
                 </div>
             </div>
             <div class="row py-2 justify-content-center">
