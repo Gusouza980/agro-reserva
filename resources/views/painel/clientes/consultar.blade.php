@@ -23,8 +23,6 @@
                             <th>Cnpj/Cpf</th>
                             <th>Aprovação</th>
                             <th>Cadastro</th>
-                            <th>Email</th>
-                            <th>Whatsapp</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -53,9 +51,6 @@
                                         Finalizado
                                     @endif
                                 </th>
-                                <td style="vertical-align: middle; text-align:center;">{{$cliente->email}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{$cliente->whatsapp}}</td>
-
                                 <td style="vertical-align: middle; text-align:center;">
                                     <a href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}" name="" id="" class="btn btn-warning cpointer" role="button">Visualizar</a>
                                 </td>

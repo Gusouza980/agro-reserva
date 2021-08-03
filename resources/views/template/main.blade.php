@@ -144,7 +144,7 @@
     <div class="container-fluid" id="footer" style="background: url(/imagens/rodape.jpg); background-size: cover; background-position:center; background-repeat: no-repeat;">
         <div class="row align-items-center py-5">
             <div class="col-12 col-lg-4 text-center">
-                <div class="w400 ml-auto">
+                <div class="w400 ml-auto mr-auto mr-lg-0">
                     <div class="row">
                         <div class="col-12 text-cenjter text-lg-left">
                             <img src="{{asset('imagens/logo-footer.png')}}" style="width:100%; max-width: 307px;" alt="">
