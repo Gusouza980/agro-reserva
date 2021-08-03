@@ -1404,6 +1404,10 @@ input::placeholder{
     color: white;
 }
 
+.modal-erro-text > h1{
+    color: #FF1C00;
+}
+
 .modal-precadastro-text > h1{
     font-size: 30px;
     font-weight: bold;
