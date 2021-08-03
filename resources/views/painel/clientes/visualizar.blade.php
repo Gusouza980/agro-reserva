@@ -342,56 +342,56 @@
                         <div class="col-12">
                             <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-bs-toggle="tab" href="#pessoais" role="tab">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#pessoais{{$analise->id}}" role="tab">
                                         <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
                                         <span class="d-none d-sm-block">Informações Pessoais</span> 
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#pendencias" role="tab">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#pendencias{{$analise->id}}" role="tab">
                                         <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                         <span class="d-none d-sm-block">Pendências</span> 
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#protestos" role="tab">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#protestos{{$analise->id}}" role="tab">
                                         <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                         <span class="d-none d-sm-block">Protestos Estaduais</span> 
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#cheques" role="tab">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#cheques{{$analise->id}}" role="tab">
                                         <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                         <span class="d-none d-sm-block">Cheques sem Fundo</span> 
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#consultas" role="tab">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#consultas{{$analise->id}}" role="tab">
                                         <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                         <span class="d-none d-sm-block">Consultas</span> 
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#roubados" role="tab">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#roubados{{$analise->id}}" role="tab">
                                         <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                         <span class="d-none d-sm-block">Documentos Roubados</span> 
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#relacionamento" role="tab">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#relacionamento{{$analise->id}}" role="tab">
                                         <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                         <span class="d-none d-sm-block">Índice de Relacionamento</span> 
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#societaria" role="tab">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#societaria{{$analise->id}}" role="tab">
                                         <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                         <span class="d-none d-sm-block">Participação Societária</span> 
                                     </a>
                                 </li>
                             </ul>
                             <div class="tab-content p-3 text-muted">
-                                <div class="tab-pane active" id="pessoais" role="tabpanel">
+                                <div class="tab-pane active" id="pessoais{{$analise->id}}" role="tabpanel">
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-12">
@@ -440,7 +440,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="pendencias" role="tabpanel">
+                                <div class="tab-pane" id="pendencias{{$analise->id}}" role="tabpanel">
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-12">
@@ -503,7 +503,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="protestos" role="tabpanel">
+                                <div class="tab-pane" id="protestos{{$analise->id}}" role="tabpanel">
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-12">
@@ -549,7 +549,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="cheques" role="tabpanel">
+                                <div class="tab-pane" id="cheques{{$analise->id}}" role="tabpanel">
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-12">
@@ -622,7 +622,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="consultas" role="tabpanel">
+                                <div class="tab-pane" id="consultas{{$analise->id}}" role="tabpanel">
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-12">
@@ -792,7 +792,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="roubados" role="tabpanel">
+                                <div class="tab-pane" id="roubados{{$analise->id}}" role="tabpanel">
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-12">
@@ -828,7 +828,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="relacionamento" role="tabpanel">
+                                <div class="tab-pane" id="relacionamento{{$analise->id}}" role="tabpanel">
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-12">
@@ -879,7 +879,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="societaria" role="tabpanel">
+                                <div class="tab-pane" id="societaria{{$analise->id}}" role="tabpanel">
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-12">
