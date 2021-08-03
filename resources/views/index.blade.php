@@ -125,7 +125,8 @@
                     </div>
                     <div  class="row justify-content-center my-3 py-5">
                         <div class="col-12 d-flex justify-content-center text-section1-index video-container text-center">
-                            <iframe width="1863" height="770" src="https://www.youtube.com/embed/JZaf0PGdYiI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        </div>
+                            <iframe width="1863" height="770" src="https://www.youtube.com/embed/JZaf0PGdYiI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        
+                        </div>
                     </div>
                 </div>
                 <div data-aos="fade-in" class="w1200 mx-auto">
@@ -150,7 +151,7 @@
                         </div>
                         <div class="px-3 px-lg-0 ml-lg-4 text-digital text-center text-lg-left">
                             <span data-aos="fade-in">
-                                <b>Estamos ao seu lado em cada etapa de compra e venda.<br>A agilidade da tecnologia digital amparada por um atendimento<br>próximo, humanizado e completo. Uma caminhada onde você nunca<br>estará sozinho, novos rumos, novas experiências,<br>novas conquistas compartilhadas. Vem com a gente!</b>
+                                Estamos ao seu lado em cada etapa de compra e venda.<br>A agilidade da tecnologia digital amparada por um atendimento<br>próximo, humanizado e completo. Uma caminhada onde você nunca<br>estará sozinho, novos rumos, novas experiências,<br>novas conquistas compartilhadas. Vem com a gente!
                             </span>
                         </div>
                     </div>
