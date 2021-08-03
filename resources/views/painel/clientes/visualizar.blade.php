@@ -90,7 +90,7 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-12 col-lg-6 form-conta">
-                                    <label for="documento">CPF/CNPJ</label>
+                                    <label for="documento">Documento Cadastrado</label>
                                     <input type="text"
                                     class="form-control" name="documento" id="documento" aria-describedby="helpId" value="{{$cliente->documento}}" >
                                 </div>
@@ -102,9 +102,9 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-12 col-lg-6 form-conta">
-                                    <label for="inscricao_produtor_rural">Inscrição de Produtor Rural</label>
+                                    <label for="cpf">CPF</label>
                                     <input type="text"
-                                    class="form-control" name="inscricao_produtor_rural" id="inscricao_produtor_rural" aria-describedby="helpId" value="{{$cliente->inscricao_produtor_rural}}">
+                                    class="form-control" name="cpf" id="cpf" aria-describedby="helpId" value="{{$cliente->cpf}}">
                                 </div>
                                 <div class="form-group col-12 col-lg-6 form-conta">
                                     <label for="whatsapp">Whatsapp</label>
@@ -118,11 +118,11 @@
                                     <input type="text"
                                     class="form-control" name="interesse" id="interesse" aria-describedby="helpId" value="{{$cliente->interesses}}" >
                                 </div>
-                                {{--  <div class="form-group col-12 col-lg-6 form-conta">
-                                    <label for="whatsapp">Whatsapp</label>
+                                <div class="form-group col-12 col-lg-6 form-conta">
+                                    <label for="inscricao_produtor_rural">Inscrição de Produtor Rural</label>
                                     <input type="text"
-                                        class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value="{{$cliente->whatsapp}}" >
-                                    </div>  --}}
+                                    class="form-control" name="inscricao_produtor_rural" id="inscricao_produtor_rural" aria-describedby="helpId" value="{{$cliente->inscricao_produtor_rural}}">
+                                </div>
                             </div>
                             <div class="row my-4">
                                 <div class="col-12 text-left">

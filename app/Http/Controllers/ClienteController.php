@@ -83,6 +83,7 @@ class ClienteController extends Controller
         $cliente->rg = $request->rg;
         $cliente->nascimento = $request->nascimento;
         $cliente->documento = $request->documento;
+        $cliente->cpf = $request->cpf;
         $cliente->estado_civil = $request->estado_civil;
         $cliente->inscricao_produtor_rural = $request->inscricao_produtor_rural;
         $cliente->cep = $request->cep;
@@ -168,7 +169,7 @@ class ClienteController extends Controller
         ])->post('https://api.scccheck.com.br/consultas/crednet', [
             "achei_recheque" => false,
             "tipo_pessoa" => "F",
-            "doc_consultado" => "111.021.656-46",
+            "doc_consultado" => $cliente-cpf,
             // "adicionais" => [6, 19]
         ]);
         
