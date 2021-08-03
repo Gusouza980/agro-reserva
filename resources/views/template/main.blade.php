@@ -186,7 +186,7 @@
                                     <a class="" href="{{route('cadastro.fazenda')}}"><span><span style="border-bottom: 2px solid #FEB000;">Que</span>m somos</span> </a>
                                 </div>
                             </div>
-                            <div class="row mt-2">
+                            {{--  <div class="row mt-2">
                                 <div class="col-12 text-nav-footer text-center text-lg-left">
                                     <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Com</span>o Comprar</span> </a>
                                 </div>
@@ -195,7 +195,7 @@
                                 <div class="col-12 text-nav-footer text-center text-lg-left">
                                     <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Clu</span>be de Benefícios</span> </a>
                                 </div>
-                            </div>
+                            </div>  --}}
                             <div class="row mt-2">
                                 <div class="col-12 text-nav-footer text-center text-lg-left">
                                     <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</span> </a>
