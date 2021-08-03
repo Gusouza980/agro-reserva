@@ -57,9 +57,10 @@
             <div class="row">
                 <div class="col-12 text-sobre-caixa">
                     <h1 class="mb-4">Por que comprar ?</h1>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">As reservas mais cobiçadas das marcas de melhor reputação do mercado estão aqui.<br class="d-none d-lg-block"></p>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Os animais valem quanto custam e nada a mais.<br class="d-none d-lg-block"></p>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Você pode chegar a pagar 0% de comissão.<br class="d-none d-lg-block"></p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Inovador, conectado, seguro.</p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">As reservas mais cobiçadas do mercado estão aqui.</p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Animais de alta qualidade e potencial genético.</p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Você tem a possibilidade de não pagar comissão.</p>
                     <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">A gente valoriza sua experiência e acompanha todo o processo de compra com você.</p>
                 </div>
             </div>
@@ -74,14 +75,28 @@
             <div class="row">
                 <div class="col-12 text-sobre-caixa">
                     <h1 class="mb-4">Por que vender ?</h1>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">É um ambiente seguro e transparente.<br class="d-none d-lg-block"></p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">É um ambiente seguro e transparente.</p>
                     <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">A gente produz todo o material promocional da sua reserva e da sua fazenda.</p>
                     <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Baixo risco. A gente configura a venda, aprova o crédito e vende pra você.</p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Ampliação da capacidade de venda.</p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Seus animais mais tempo em evidencia.</p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Inovador, disruptivo e justo.</p>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-12 text-center text-sobre-caixa">
                     <a href="{{route('cadastro')}}" class="btn btn-sobre px-5 py-2">Quero Vender</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="sobre-text-ganha">
+                        GANHA QUEM COMPRA<br>
+                        GANHA QUEM VENDE
+                    </h1>
                 </div>
             </div>
         </div>

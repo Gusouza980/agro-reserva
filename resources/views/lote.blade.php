@@ -230,15 +230,15 @@
                 <div class="modal-body pb-4">
                     <div class="row">
                         <div class="col-12 text-center text-red">
-                            <h4>FRETE</h4>
+                            <h4><b>FRETE</b></h4>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-12 text-left">
                             Retire seus animais na fazenda Santa Luzia.<br>
-                            Inserir endereço exato do local de retirada dos animais.
+                            MG 050 PASSOS/FURNAS KM 24 ,CEP 37904999, ZONA RURAL - PASSOS/MG
                             <br><br> 
-                            O frete é por conta do comprador.
+                            <b>O frete é por conta do comprador.</b>
                         </div>
                     </div>
                     {{--  <div class="row mt-3">
@@ -263,7 +263,7 @@
                 <div class="modal-body pb-4">
                     <div class="row">
                         <div class="col-12 text-center text-red">
-                            <h4>PAGAMENTOS E CONDIÇÕES</h4>
+                            <h4><b>PAGAMENTOS E CONDIÇÕES</b></h4>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -301,7 +301,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 text-center text-red">
-                            <h4>SEGURANÇA</h4>
+                            <h4><b>SEGURANÇA</b></h4>
                         </div>
                     </div>
                     <div class="row">
@@ -327,7 +327,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 text-center text-red">
-                            <h4>Como funciona?</h4>
+                            <h4><b>Como funciona?</b></h4>
                         </div>
                     </div>
                     <div class="row">

@@ -1715,3 +1715,17 @@ label {
     filter: blur(5px);
     -webkit-filter: blur(5px);
 }
+
+.sobre-text-ganha{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+@media(max-width: 768px){
+    .sobre-text-ganha{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+    }
+}
