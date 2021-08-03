@@ -17,11 +17,6 @@
 
     <div class="container-fluid" style="">
         <div class="container py-5">
-            <a class="btn-whats d-none d-sm-block" href="https://web.whatsapp.com/send?phone=5534991720996">
-                <!-- <div class=""> -->
-                <!-- <img src="imagens/whatsapp-button.png" alt=""> -->
-                <!-- </div> -->
-            </a>
 
             <div class="row mt-4">
                 <div class="col-12 text-center">

@@ -987,6 +987,11 @@
                 $('input[name=nome]').addClass("erro-validacao");
                 return false;
             }
+            if ($('input[name=senha]').val() == "") {
+                $('html, body').animate({ scrollTop: $("input[name=senha]").offset().top - 200 }, 1000);
+                $('input[name=senha]').addClass("erro-validacao");
+                return false;
+            }
             if ($('input[name=sobrenome]').val() == "") {
                 $('html, body').animate({ scrollTop: $("input[name=sobrenome]").offset().top - 200 }, 1000);
                 $('input[name=sobrenome]').addClass("erro-validacao");
@@ -1047,6 +1052,9 @@
                 url: "{!! route('cadastro.salvar') !!}",
                 data: data,
                 beforeSend: function () {
+                    $("input").each(function () {
+                        $(this).removeClass("erro-validacao");
+                    });
                     $("#botoes-cadastrar").hide();
                     $("#botoes-comprar").hide();
                     $("#botoes-vender").hide();
@@ -1249,6 +1257,9 @@
                 beforeSend: function () {
                     $("#botoes-finalizar").hide();
                     $("#gif-ajax").show();
+                    $("input").each(function () {
+                        $(this).removeClass("erro-validacao");
+                    });
                 },
                 success: function (ret) {
                     $("input").each(function () {
@@ -1439,6 +1450,9 @@
                 beforeSend: function () {
                     $("#botoes-finalizar-direto").hide();
                     $("#gif-ajax-direto").show();
+                    $("input").each(function () {
+                        $(this).removeClass("erro-validacao");
+                    });
                 },
                 success: function (ret) {
                     $("input").each(function () {

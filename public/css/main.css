@@ -1710,3 +1710,8 @@ label {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
 }
+
+.blur{
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}

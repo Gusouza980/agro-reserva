@@ -31,12 +31,12 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 text-center text-lg-right">
+                            <div class="col-12 text-center text-lg-right blur">
                                 <h4><b>{{$lote->parcelas}}x</b> de <b>R${{number_format(round(($lote->preco / $lote->parcelas), 2), 2, ",", ".")}}</b></h4>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 text-center text-lg-right">
+                            <div class="col-12 text-center text-lg-right blur">
                                 <span>ou R${{number_format($lote->preco, 2, ",", ".")}} à vista</span>
                             </div>
                         </div>
