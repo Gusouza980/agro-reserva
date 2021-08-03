@@ -4,7 +4,7 @@
     <div class="container-fluid" style="background: url({{asset('imagens/bg-home-min-2.jpg')}})">
         <div class="container py-5">
 
-            <div class="row">
+            <div class="row d-none d-lg-flex">
                 <div class="col-12 text-center">
                     <img src="imagens/logo_agroreserva_leite.svg" style="" width="300" alt="Logo Agro Reserva">
                 </div>
@@ -45,15 +45,6 @@
                     {{--  <div class="mt-3 w-100 text-center">
                         <a href="{{route('facebook.autenticar')}}" style="color:red !important;"><img src="{{asset('imagens/icone-facebook.png')}}" width="30" alt="Login Facebook"></a>
                     </div>  --}}
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class=" d-flex justify-content-center col-12 text-center d-block d-sm-none">
-                    <a href="https://web.whatsapp.com/send?phone=5534991720996">
-                        <div class="btn-whats-xs">
-
-                        </div>
-                    </a>
                 </div>
             </div>
         </div>
