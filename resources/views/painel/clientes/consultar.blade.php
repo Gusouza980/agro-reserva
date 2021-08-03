@@ -21,9 +21,10 @@
                         <tr>
                             <th>Nome</th>
                             <th>Cnpj/Cpf</th>
+                            <th>Aprovação</th>
+                            <th>Cadastro</th>
                             <th>Email</th>
                             <th>Whatsapp</th>
-
                             <th></th>
                         </tr>
                     </thead>
@@ -36,6 +37,22 @@
                                 <td style="vertical-align: middle; text-align:center;">
                                     {{$cliente->documento}}
                                 </td>
+                                <td style="vertical-align: middle; text-align:center;">
+                                    @if($cliente->aprovado == 0)
+                                        <span>Em Análise</span>
+                                    @elseif($cliente->aprovado == -1)
+                                        <span style="color: red;">Reprovado</span>
+                                    @else
+                                        <span style="color: green;">Aprovado</span>
+                                    @endif
+                                </td>
+                                <th style="vertical-align: middle; text-align:center;">
+                                    @if($cliente->finalizado == 0)
+                                        Pré
+                                    @else
+                                        Finalizado
+                                    @endif
+                                </th>
                                 <td style="vertical-align: middle; text-align:center;">{{$cliente->email}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$cliente->whatsapp}}</td>
 

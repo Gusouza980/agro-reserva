@@ -1681,8 +1681,15 @@ label {
     background-color: #E9500E; 
 }
 
+.icones-info{
+    font-size: 20px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
 .icones-info > img{
-    height: 70px;
+    height: 50px;
 }
 
 @media (max-width: 768px){
@@ -1695,13 +1702,6 @@ label {
     .icones-info > img{
         height: 40px;
     }
-}
-
-.icones-info > span{
-    font-size: 20px;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
 }
 
 .link-download-catalogo, .link-download-catalogo:hover, .link-download-catalogo:focus, .link-download-catalogo:active{

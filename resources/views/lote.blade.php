@@ -32,18 +32,21 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-center text-lg-right blur">
-                                <h4><b>{{$lote->parcelas}}x</b> de <b>R${{number_format(round(($lote->preco / $lote->parcelas), 2), 2, ",", ".")}}</b></h4>
+                                {{--  <h4><b>{{$lote->parcelas}}x</b> de <b>R${{number_format(round(($lote->preco / $lote->parcelas), 2), 2, ",", ".")}}</b></h4>  --}}
+                                <h4><b>0x</b> de <b>R$0000,00</b></h4>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 text-center text-lg-right blur">
-                                <span>ou R${{number_format($lote->preco, 2, ",", ".")}} à vista</span>
+                                {{--  <span>ou R${{number_format($lote->preco, 2, ",", ".")}} à vista</span>  --}}
+                                <span>R$00000,00</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
                         <div class="text-center text-white">
-                            @if(!$lote->reservado)
+                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível 06/08</button>
+                            {{--  @if(!$lote->reservado)
                                 @if(session()->get("cliente"))
                                     <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('carrinho.adicionar', ['lote' => $lote])}}" role="button">Comprar</a>
                                 @else
@@ -51,7 +54,7 @@
                                 @endif
                             @else
                                 <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Reservado</button>
-                            @endif
+                            @endif  --}}
                         </div>
                     </div>
                 </div>
@@ -190,11 +193,13 @@
 
     <hr>
     <div class="container-fluid">
-        <div class="row py-3">
-            <div class="col-12 text-center link-download-catalogo">
-                <a class="link-download-catalogo" href="{{asset($lote->catalogo)}}" download="{{$lote->numero . "-" . $lote->nome}}"><i class="fas fa-file-download mr-3"></i>Baixar PDF do Lote</a>
+        @if($lote->catalogo)
+            <div class="row py-3">
+                <div class="col-12 text-center link-download-catalogo">
+                    <a class="link-download-catalogo" href="{{asset($lote->catalogo)}}" download="{{$lote->numero . "-" . $lote->nome}}"><i class="fas fa-file-download mr-3"></i>Baixar PDF do Lote</a>
+                </div>
             </div>
-        </div>
+        @endif
         {{--  <div class="row mt-4 mb-lg-2">
             <div class="col-12 text-center">
                 <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalFrete">Frete e Pagamento</button>
