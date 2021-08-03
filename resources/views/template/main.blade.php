@@ -178,12 +178,12 @@
                         <div class="w400 mx-auto">
                             <div class="row">
                                 <div class="col-12 text-nav-footer text-center text-lg-left">
-                                    <a class="" href="{{route('index')}}"><span><span style="border-bottom: 2px solid #FEB000;">Blo</span>g</span> </a>
+                                    <a class="" href="{{route('blog')}}"><span><span style="border-bottom: 2px solid #FEB000;">Blo</span>g</span> </a>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col-12 text-nav-footer text-center text-lg-left">
-                                    <a class="" href="{{route('cadastro.fazenda')}}"><span><span style="border-bottom: 2px solid #FEB000;">Que</span>m somos</span> </a>
+                                    <a class="" href="{{route('sobre')}}"><span><span style="border-bottom: 2px solid #FEB000;">Que</span>m somos</span> </a>
                                 </div>
                             </div>
                             {{--  <div class="row mt-2">

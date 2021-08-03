@@ -56,13 +56,11 @@
         <div class="container-fluid caixa-sobre mt-5">
             <div class="row">
                 <div class="col-12 text-sobre-caixa">
-                    <h1>Por que comprar ?</h1>
-                    <p>
-                        As reservas mais cobiçadas das marcas de melhor reputação do mercado estão aqui.<br class="d-none d-lg-block">
-                        Os animais valem quanto custam e nada a mais.<br class="d-none d-lg-block">
-                        Você pode chegar a pagar 0% de comissão.<br class="d-none d-lg-block">
-                        A gente valoriza sua experiência e acompanha todo o processo de compra com você.
-                    </p>
+                    <h1 class="mb-4">Por que comprar ?</h1>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">As reservas mais cobiçadas das marcas de melhor reputação do mercado estão aqui.<br class="d-none d-lg-block"></p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Os animais valem quanto custam e nada a mais.<br class="d-none d-lg-block"></p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Você pode chegar a pagar 0% de comissão.<br class="d-none d-lg-block"></p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">A gente valoriza sua experiência e acompanha todo o processo de compra com você.</p>
                 </div>
             </div>
             <div class="row mt-4">
@@ -75,12 +73,10 @@
         <div class="container-fluid caixa-sobre mt-5">
             <div class="row">
                 <div class="col-12 text-sobre-caixa">
-                    <h1>Por que vender ?</h1>
-                    <p>
-                        É um ambiente seguro e transparente.<br class="d-none d-lg-block">
-                        A gente produz todo o material promocional da sua reserva e da sua fazenda.<br class="d-none d-lg-block">
-                        Baixo risco. A gente configura a venda, aprova o crédito e vende pra você.
-                    </p>
+                    <h1 class="mb-4">Por que vender ?</h1>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">É um ambiente seguro e transparente.<br class="d-none d-lg-block"></p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">A gente produz todo o material promocional da sua reserva e da sua fazenda.</p>
+                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Baixo risco. A gente configura a venda, aprova o crédito e vende pra você.</p>
                 </div>
             </div>
             <div class="row mt-4">
