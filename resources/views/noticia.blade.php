@@ -4,6 +4,11 @@
 <div class="container-fluid py-5" style="background-color: #f5f5f5;">
     <div class="w1200 mx-auto">
         <div class="row">
+            <div class="col-12">
+                <span style="color: #E8521B; font-size: 14px;"><a href=""><i class="fas fa-arrow-left mr-3"></i> Voltar</a></span>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <img src="{{asset($noticia->banner)}}" style="max-width: 100%; border-radius: 20px;" alt="">
             </div>
