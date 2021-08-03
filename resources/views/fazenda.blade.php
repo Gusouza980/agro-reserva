@@ -47,7 +47,7 @@
                 </div>
                 <div class="container">
                     <div class="row py-5 justify-content-sm-center justify-content-md-start">
-                        <div class="col-12 col-sm-8 col-md-6 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda->miniatura_conheca}}); background-size: cover;">
+                        <div class="col-12 col-lg-3 px-0 mt-4 mt-lg-0" style="background: url(/{{$fazenda->miniatura_conheca}}); background-size: cover;">
                             <div class="container-fluid">
                                 <div class="row align-items-center div-section1-fazenda @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" onclick="redirect('{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}')" style="background-color: rgba(0,0,0,0.6); height: 190px;">
                                     <div class="col-12 px-3 text-center text-white text-section1-fazenda">
