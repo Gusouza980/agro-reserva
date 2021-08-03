@@ -169,8 +169,8 @@ class ClienteController extends Controller
         ])->post('https://api.scccheck.com.br/consultas/crednet', [
             "achei_recheque" => false,
             "tipo_pessoa" => "F",
-            "doc_consultado" => $cliente-cpf,
-            // "adicionais" => [6, 19]
+            "doc_consultado" => $cliente->cpf,
+            "adicionais" => [6, 19]
         ]);
         
         if($response->status() == 200){
