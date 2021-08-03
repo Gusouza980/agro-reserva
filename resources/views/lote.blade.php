@@ -101,25 +101,25 @@
                         <div class="row justify-content-center py-4 py-lg-0 d-none d-lg-flex">
                             <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalFrete">
                                 <div class="mb-3 icones-info">
-                                    <img src="{{asset('imagens/icon_frete.png')}}" height="80" alt="">
+                                    <img src="{{asset('imagens/icon_frete.png')}}" height="50" alt="">
                                 </div>
                                 <span>Frete</span>
                             </div>
                             <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalSeguranca">
                                 <div class="mb-3 icones-info">
-                                    <img src="{{asset('imagens/icon_pagamento.png')}}" height="80" alt="">
+                                    <img src="{{asset('imagens/icon_pagamento.png')}}" height="50" alt="">
                                 </div>
                                 <span>Pagamentos<br>e Condições</span>
                             </div>
                             <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5">
                                 <div class="mb-3 icones-info">
-                                    <img src="{{asset('imagens/icon_seguranca.png')}}" height="80" alt="">
+                                    <img src="{{asset('imagens/icon_seguranca.png')}}" height="50" alt="">
                                 </div>
                                 <span>Segurança</span>
                             </div>
                             <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5">
                                 <div class="mb-3 icones-info">
-                                    <img src="{{asset('imagens/icon_porcentagem.png')}}" height="80" alt="">
+                                    <img src="{{asset('imagens/icon_porcentagem.png')}}" height="50" alt="">
                                 </div>
                                 <span>Comissão</span>
                             </div>
@@ -137,13 +137,13 @@
                                 </div>
                                 <span>Pagamentos<br>e Condições</span>
                             </div>
-                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5">
+                            <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5">
                                 <div class="mx-auto mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_seguranca.png')}}" height="80" alt="">
                                 </div>
                                 <span>Segurança</span>
                             </div>
-                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5">
+                            <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5">
                                 <div class="mx-auto mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_porcentagem.png')}}" height="80" alt="">
                                 </div>
