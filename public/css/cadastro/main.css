@@ -774,8 +774,7 @@ input::placeholder{
     color: #646776 !important;
 }
 
-.form-check-input{
-    /* Double-sized Checkboxes */
+/* .form-check-input{
     all: unset;
     width: 20px;
     height: 20px !important;
@@ -786,12 +785,12 @@ input::placeholder{
   
 .form-check-input:checked{
     background: url('../imagens/red_check.png');
-}
+} */
 
 .form-check-input-radio{
     /* Double-sized Checkboxes */
     all: unset;
-    width: 20px;
+    width: 20px !important;
     height: 20px !important;
     border-radius: 50% !important;
     background-color: white !important;

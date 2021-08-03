@@ -1,29 +1,15 @@
-<!doctype html>
-<html lang="pt-br">
+@extends('template.main')
 
-<head>
-    <title>Agro Reserva</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="Agro, Gado, Leilão, Genética, Reserva">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/main.css">
-</head>
-
-<body style="background: url(imagens/bg-home-min-2.jpg); background-attachment: fixed; background-size: cover;">
-
-    <div class="container-fluid" style="">
+@section('conteudo')
+    <div class="container-fluid" style="background: url({{asset('imagens/bg-home-min-2.jpg')}})">
         <div class="container py-5">
 
-            <div class="row mt-4">
+            <div class="row">
                 <div class="col-12 text-center">
                     <img src="imagens/logo_agroreserva_leite.svg" style="" width="300" alt="Logo Agro Reserva">
                 </div>
             </div>
-            <div class="row mt-5 justify-content-center">
+            <div class="row justify-content-center">
                 <div class="col-12 col-md-7 col-lg-5 mt-5 py-5 px-5" style="background-color: white; border-radius: 10px;">
                     <h3 class="">Entre</h3>
                     @if(session()->get("erro"))
@@ -45,7 +31,7 @@
                         </div>
                         
                         <div class="col-12 text-right">
-                            Esqueceu sua senha?
+                            {{--  Esqueceu sua senha?  --}}
                         </div>
 
                         <div class="form-group col-12 text-center mt-4">
@@ -72,13 +58,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-</body>
-
-</html>
+@endsection

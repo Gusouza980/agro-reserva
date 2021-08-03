@@ -26,9 +26,13 @@ Route::get('/login', function () {
     return view('login');
 })->name("login");
 
-Route::get('/termos', function () {
+Route::get('/termos-e-condicoes-de-uso', function () {
     return view('termos');
 })->name("termos");
+
+Route::get('/politicas-de-privacidade', function () {
+    return view('politicas');
+})->name("politicas");
 
 Route::get('/sair', function () {
     session()->forget("cliente");

@@ -253,6 +253,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="container-fluid mt-5">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="" id="termos" value="checkedValue">
+                                        Confirmo que li e estou ciente dos termos de uso e política de privacidade
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
     
                     <div class="container-fluid mt-5" id="container-cadastro-completo" style="display: none;">
                         <div class="row">
@@ -1027,6 +1040,13 @@
         }
 
         function precadastro() {
+            if(!$("#termos").is(":checked")){
+                $("#titulo-erro-modal").html("Falta pouco");
+                $("#subtitulo-erro-modal").html("Você precisa confirmar que está ciente dos termos de compromisso e política de privacidade para continuar.");
+                $("#modalErro").modal("show");
+                return false;
+            }
+
             if ($('input[name=nome]').val() == "") {
                 $('html, body').animate({ scrollTop: $("input[name=nome]").offset().top - 200 }, 1000);
                 $('input[name=nome]').addClass("erro-validacao");
@@ -1053,6 +1073,7 @@
                 return false;
             }
 
+            
             if ($('input[name=email]').val() != $('input[name=email2]').val()) {
                 alert("Os emails não coincidem");
                 return false;
