@@ -18,7 +18,7 @@
                 <h3>{{date("d/m/Y | H:i", strtotime($noticia->created_at))}}</h3>
             </div>
         </div>
-        <div class="row mt-2">
+        <div class="row mt-5">
             <div class="col-lg-12">
                 {!! $noticia->conteudo !!}
             </div>
