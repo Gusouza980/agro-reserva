@@ -96,13 +96,13 @@
                 <div class="row align-items-center justify-content-center" style="min-height: 300px;">
                     <div class="container-fluid">
                         <div class="row justify-content-center py-4 py-lg-0 d-none d-lg-flex">
-                            <div class="icones-info text-center px-3 px-lg-5">
+                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalFrete">
                                 <div class="mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_frete.png')}}" height="80" alt="">
                                 </div>
                                 <span>Frete</span>
                             </div>
-                            <div class="icones-info text-center px-3 px-lg-5">
+                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalSeguranca">
                                 <div class="mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_pagamento.png')}}" height="80" alt="">
                                 </div>
