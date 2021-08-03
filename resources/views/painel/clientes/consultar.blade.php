@@ -34,11 +34,7 @@
                             <tr>
                                 <td style="vertical-align: middle; text-align:center;">{{$cliente->nome_dono}}</td>
                                 <td style="vertical-align: middle; text-align:center;">
-                                    @if($cliente->cnpj)
-                                        {{$cliente->cnpj}}
-                                    @else
-                                        {{$cliente->cpf}}
-                                    @endif
+                                    {{$cliente->documento}}
                                 </td>
                                 <td style="vertical-align: middle; text-align:center;">{{$cliente->email}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$cliente->whatsapp}}</td>
