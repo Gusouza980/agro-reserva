@@ -9,6 +9,11 @@
 
 @section("styles")
     <link rel="stylesheet" href="{{asset('css/magnific.popup.css')}}">
+    <style>
+        body{
+            background-color: #FBFBFB;
+        }
+    </style>
 @endsection
 
 @section('conteudo')
@@ -52,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="w1200 mx-auto py-5" style="">
+        <div class="w1200 mx-auto pt-5 pb-5 pb-lg-0" style="">
             <div class="container-fluid">
                 <div class="row justify-content-center mt-5">
                     <div class="text-center video-lote px-3 px-lg-0" style="max-width: 100%;">
@@ -87,16 +92,75 @@
                     </div>
                 </div>
             </div>
+            <div class="container-fluid" style="">
+                <div class="row align-items-center justify-content-center" style="min-height: 300px;">
+                    <div class="container-fluid">
+                        <div class="row justify-content-center py-4 py-lg-0 d-none d-lg-flex">
+                            <div class="icones-info text-center px-3 px-lg-5">
+                                <div class="mb-3 icones-info">
+                                    <img src="{{asset('imagens/icon_frete.png')}}" height="80" alt="">
+                                </div>
+                                <span>Frete</span>
+                            </div>
+                            <div class="icones-info text-center px-3 px-lg-5">
+                                <div class="mb-3 icones-info">
+                                    <img src="{{asset('imagens/icon_pagamento.png')}}" height="80" alt="">
+                                </div>
+                                <span>Pagamentos<br>e Condições</span>
+                            </div>
+                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5">
+                                <div class="mb-3 icones-info">
+                                    <img src="{{asset('imagens/icon_seguranca.png')}}" height="80" alt="">
+                                </div>
+                                <span>Segurança</span>
+                            </div>
+                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5">
+                                <div class="mb-3 icones-info">
+                                    <img src="{{asset('imagens/icon_porcentagem.png')}}" height="80" alt="">
+                                </div>
+                                <span>Comissão</span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
+                            <div class="icones-info text-center px-3 px-lg-5">
+                                <div class="mx-auto mb-3 icones-info">
+                                    <img src="{{asset('imagens/icon_frete.png')}}" height="80" alt="">
+                                </div>
+                                <span>Frete</span>
+                            </div>
+                            <div class="icones-info text-center px-3 px-lg-5">
+                                <div class="mx-auto mb-3 icones-info">
+                                    <img src="{{asset('imagens/icon_pagamento.png')}}" height="80" alt="">
+                                </div>
+                                <span>Pagamentos<br>e Condições</span>
+                            </div>
+                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5">
+                                <div class="mx-auto mb-3 icones-info">
+                                    <img src="{{asset('imagens/icon_seguranca.png')}}" height="80" alt="">
+                                </div>
+                                <span>Segurança</span>
+                            </div>
+                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5">
+                                <div class="mx-auto mb-3 icones-info">
+                                    <img src="{{asset('imagens/icon_porcentagem.png')}}" height="80" alt="">
+                                </div>
+                                <span>Comissão</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="container-fluid">
+        {{--  <div class="container-fluid">
             <div class="row pb-4">
                 <div class="col-12 text-center">
                     <a href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank" class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
                 </div>
             </div>
-        </div>
+        </div>  --}}
     </div>
-    <div class="container-fluid mt-5" style="background-color: white;">
+    
+    <div class="container-fluid mt-5">
         
         <div class="w1200 mx-auto">
             <div class="row">
@@ -115,16 +179,23 @@
                 </div>
             </div>
         @endif
+        <div class="container-fluid">
+            <div class="row py-4">
+                <div class="col-12 text-center">
+                    <a href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank" class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <hr>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h4>Qual informação você precisa?</h4>
+        <div class="row py-3">
+            <div class="col-12 text-center link-download-catalogo">
+                <a class="link-download-catalogo" href="{{asset($lote->catalogo)}}" download="{{$lote->numero . "-" . $lote->nome}}"><i class="fas fa-file-download mr-3"></i>Baixar PDF do Lote</a>
             </div>
         </div>
-        <div class="row mt-4 mb-lg-2">
+        {{--  <div class="row mt-4 mb-lg-2">
             <div class="col-12 text-center">
                 <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalFrete">Frete e Pagamento</button>
                 <br class="d-lg-none">
@@ -139,7 +210,7 @@
                 <br class="d-lg-none">
                 <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalPapel">Papel da Agroreserva</button>
             </div>
-        </div>
+        </div>  --}}
     </div>
 
     <!-- Modal -->
