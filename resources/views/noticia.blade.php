@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="row mt-2">
-            <div class="col-lg-12 card-noticia-text">
+            <div class="col-lg-12">
                 {!! $noticia->conteudo !!}
             </div>
         </div>
