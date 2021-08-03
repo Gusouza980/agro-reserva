@@ -32,7 +32,7 @@
                 </div>
                 <div class="text-sobre ml-4 text-center text-lg-left">
                     <h2 class="mt-3 mb-3"><span style="border-bottom: 2px solid #E8521B;">Nos</span>sa missão</h2>
-                    <p>Valorizar o trabalho do produtor, ressignificando o formato da<br class="d-none d-lg-block">comercialização de animais no Brasil, de forma a torná-la<br class="d-none d-lg-block">mais fácil, justa, segura e rentável para quem compra e para quem vende.</p>
+                    <p>Valorizar o trabalho do produtor, ressignificando o formato da <br class="d-none d-lg-block">comercialização de animais no Brasil, de forma a torná-la <br class="d-none d-lg-block">mais fácil, justa, segura e rentável para quem compra e para quem vende.</p>
                 </div>
             </div>
             <div class="row mt-3">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="text-sobre ml-4 text-center text-lg-left">
                     <h2 class="mt-3 mb-3"><span style="border-bottom: 2px solid #E8521B;">Nos</span>sa visão</h2>
-                    <p>Evoluir sempre para nos consolidarmos como referências na<br class="d-none d-lg-block">comercialização de animais no Brasil e no mundo. </p>
+                    <p>Evoluir sempre para nos consolidarmos como referências na <br class="d-none d-lg-block">comercialização de animais no Brasil e no mundo. </p>
                 </div>
             </div>
             <div class="row mt-3">
@@ -54,7 +54,7 @@
                 </div>
                 <div class="text-sobre ml-4 text-center text-lg-left">
                     <h2 class="mt-3 mb-3"><span style="border-bottom: 2px solid #E8521B;">Nos</span>sos valores</h2>
-                    <p>Transparência nas relações. Paixão pela pecuária. Precursores<br class="d-none d-lg-block">da evolução.</p>
+                    <p>Transparência nas relações. Paixão pela pecuária. Precursores <br class="d-none d-lg-block">da evolução.</p>
                 </div>
             </div>
         </div>
