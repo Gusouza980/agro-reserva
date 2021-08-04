@@ -1,7 +1,7 @@
 @extends('template.main')
 
 @section('conteudo')
-    <div class="container-fluid" style="background: url({{asset('imagens/bg-home-min-2.jpg')}})">
+    <div class="container-fluid" style="background: url({{asset('imagens/bg-home-min-2.jpg')}}); background-size: cover; background-repeat: no-repeat;">
         <div class="container py-5">
 
             <div class="row d-none d-lg-flex">
