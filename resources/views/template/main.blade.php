@@ -23,7 +23,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:updated_time" content="1440432930" />
     @yield("metas")
-    <link rel="preload" as="style" href="{{asset('css/main.css')}}" />
+    <link rel="preload" as="style" href="{{asset('css/main.css')}}?v=1.0" />
     <link rel="preload" as="image" href="{{asset('imagens/bg-home-min-2.jpg')}}" />
     <link rel="preload" href="{{asset('fontes/gobold/Gobold Regular.otf')}}" as="font" type="font/otf" crossorigin/>
     <!-- Bootstrap CSS -->

@@ -54,6 +54,8 @@ class ClienteController extends Controller
         $cliente->nome_fazenda = $request->fazenda;
         $cliente->racas = implode(", ", $request->racas);
         $cliente->save();
+
+        session(["cliente" => $cliente->toArray()]);
         return response()->json("200");
     }
 

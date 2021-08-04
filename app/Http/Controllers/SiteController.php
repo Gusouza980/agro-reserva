@@ -80,16 +80,18 @@ class SiteController extends Controller
 
     public function lotes($slug){
         $fazenda = Fazenda::where("slug", $slug)->first();
-        // if(session()->get("cliente")){
-        //     $cliente = Cliente::find(session()->get("cliente")["id"]);
-        // }else{
-        //     $cliente = null;
-        // }
-        
+        if(!session()->get("cliente")){
+            session()->flash("erro", "Para acessar os lotes, faça seu login.");
+            return redirect()->route("login");
+        }
         return view("lotes", ["fazenda" => $fazenda]);
     }
 
     public function lote($slug, Lote $lote){
+        if(!session()->get("cliente")){
+            session()->flash("erro", "Para acessar os lotes, faça seu login.");
+            return redirect()->route("login");
+        }
         $visita = new Visita;
 
         if(session()->get("cliente")){
@@ -149,6 +151,11 @@ class SiteController extends Controller
         return view('cadastro.passos');
     }
 
+    public function login(){
+        $anterior = redirect()->back()->getTargetUrl();
+        return view('login', ["anterior" => $anterior]);
+    }
+
     public function logar(Request $request){
         $usuario = Cliente::where("email", $request->email)->first();
         if($usuario){
@@ -160,7 +167,11 @@ class SiteController extends Controller
                 if($carrinho){
                     session(["carrinho" => $carrinho->id]);
                 }
-                return redirect()->route("index");
+                if($request->anterior){
+                    return redirect($request->anterior);
+                }else{
+                    return redirect()->route("index");
+                }
             }else{
                 session()->flash("erro", "Usuário ou senha incorretos");
                 return redirect()->back();

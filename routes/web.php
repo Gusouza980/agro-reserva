@@ -22,9 +22,7 @@ Route::get('/cadastro/passos', function () {
     return view('cadastro.passos');
 })->name("cadastro.passos");
 
-Route::get('/login', function () {
-    return view('login');
-})->name("login");
+
 
 Route::get('/termos-e-condicoes-de-uso', function () {
     return view('termos');
@@ -41,6 +39,7 @@ Route::get('/sair', function () {
 })->name("sair");
 
 Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("index");
+Route::get('/login', [\App\Http\Controllers\SiteController::class, 'login'])->name("login");
 Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");
 Route::post('/cadastro/login', [\App\Http\Controllers\ClienteController::class, 'login_cadastro'])->name("cadastro.login");
 Route::get('/cadastro/fazenda', [\App\Http\Controllers\SiteController::class, 'cadastro_fazenda'])->name("cadastro.fazenda");

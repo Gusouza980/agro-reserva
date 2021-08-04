@@ -192,13 +192,13 @@
                             <h4><b>Como funciona?</b></h4>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row px-4">
                         <div class="col-12 text-left">
                             <p>A Agro Reserva traz benefícios para você, <b>comprador</b>, com <b>descontos progressivos</b> que podem chegar a <b>0% de comissão</b>. Confira! </p>
                             <ul class="mt-3">
-                                <li>Pague em 05 parcelas ou mais e nós cobraremos apenas 4% de comissão.</li>
-                                <li>Pague em até 04 parcelas e concederemos 50% de desconto na sua comissão.</li>
                                 <li><b>Pague à vista e não pague nada de comissão!</b></li>
+                                <li class="mt-2">Pague em até 04 parcelas e concederemos 50% de desconto na sua comissão.</li>
+                                <li class="mt-2">Pague em 05 parcelas ou mais e nós cobraremos apenas 4% de comissão.</li>
                             </ul>
                         </div>
                     </div>

@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="container-fluid my-4">
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center pb-4">
                         @foreach(\App\Models\Noticia::where("publicada", true)->get() as $noticia)
                             <a href="{{route('noticia', ['slug' => $noticia->slug])}}">
                                 <div class="card-noticia mx-2 mt-3 cpointer">
