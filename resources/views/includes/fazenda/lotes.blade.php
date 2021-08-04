@@ -13,9 +13,9 @@
                             <h2>{{$fazenda->titulo_conheca_lotes}}</h2>
                         </div>
                     </div>
-                    <div class="row py-4 justify-content-start text-center text-md-left">
+                    <div class="row py-4 justify-content-center justify-content-lg-start text-center text-md-left">
                         @foreach($fazenda->numeros as $numero)
-                            <div class="mr-4 text-center text-section2-fazenda text-center">
+                            <div class="mr-3 mr-lg-4 mt-3 mt-lg-0 text-center text-section2-fazenda text-center">
                                 <h1 class="mb-n1">{{$numero->valor}}</h1>
                                 <span>{{$numero->titulo}}</span>
                             </div>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-7 video-container video-container-depoimento">
+            <div class="col-12 col-lg-7 video-container video-container-depoimento mb-5 mb-lg-0 px-0">
                 {!! $fazenda->video_conheca_lotes !!}
             </div>
         </div>

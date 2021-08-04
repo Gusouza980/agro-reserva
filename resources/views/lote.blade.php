@@ -17,7 +17,7 @@
 @endsection
 
 @section('conteudo')
-    <div style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: middle;">
+    <div style="background-color: black; background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: center;">
         <div class="container-fluid bg-preto py-5 py-lg-2">
             <div class="container">
                 <div class="row align-items-center">
@@ -78,16 +78,22 @@
                                 <h2>{{$lote->nome}}</h2>
                             </div>
                         </div>
-                        <div class="row justify-content-center justify-content-lg-start">
+                        <div class="row justify-content-center justify-content-lg-start mt-4 mt-lg-0">
                             <div class="text-white text-lote-info text-center text-lg-left">
                                 <span><b>RGD:</b> {{$lote->registro}}</span><br>
+                                <hr class="d-md-none" style="border-top: 1px solid white;">
                                 <span><b>CCG:</b> {{$lote->ccg}}</span><br>
+                                <hr class="d-md-none" style="border-top: 1px solid white;">
                                 <span><b>GPTA:</b> {{$lote->gpta}}</span><br>
+                                <hr class="d-md-none" style="border-top: 1px solid white;">
                             </div>
                             <div class="ml-4 text-white text-lote-info text-center text-lg-left">
                                 <span><b>Raça:</b> {{$lote->raca->nome}}</span><br>
+                                <hr class="d-md-none" style="border-top: 1px solid white;">
                                 <span><b>Nascimento:</b> {{date("d/m/Y", strtotime($lote->nascimento))}}</span><br>
+                                <hr class="d-md-none" style="border-top: 1px solid white;">
                                 <span><b>Último Parto:</b> {{date("d/m/Y", strtotime($lote->parto))}}</span>
+                                <hr class="d-md-none" style="border-top: 1px solid white;">
                             </div>
                         </div>
                         <div class="row justify-content-center justify-content-lg-start mt-2">
