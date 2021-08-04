@@ -27,7 +27,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-7 video-container video-container-depoimento">
+                    <div class="col-12 col-lg-7 video-container video-container-depoimento mb-5 mb-lg-0">
                         {!! $depoimento->video !!}
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                 @endphp
             @else
                 <div class="row mt-5">      
-                    <div class="col-12 col-lg-7 video-container video-container-depoimento">
+                    <div class="col-12 col-lg-7 video-container video-container-depoimento mb-5 mb-lg-0">
                         {!! $depoimento->video !!}
                     </div>
                     <div class="col-12 col-lg-5 text-white pl-5 pr-0">

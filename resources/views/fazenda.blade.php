@@ -63,7 +63,7 @@
                             </div>
                             <div class="borda-triangular @if(url()->current() != route('fazenda.conheca', ['fazenda' => $fazenda->slug])) d-none @endif"></div>
                         </div>
-                        <div class="d-block d-lg-none w-100">
+                        <div class="d-block d-lg-none w-100" @if(url()->current() == route("fazenda.conheca", ['fazenda' => $fazenda->slug])) id="pagina-atual" @endif>
                             @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])))
                                 @include('includes.fazenda.conheca')
                             @endif
@@ -78,7 +78,7 @@
                             </div>
                             <div class="borda-triangular @if(url()->current() != route('fazenda.conheca.lotes', ['fazenda' => $fazenda->slug])) d-none @endif"></div>
                         </div>
-                        <div class="d-block d-lg-none w-100">
+                        <div class="d-block d-lg-none w-100" @if(url()->current() == route("fazenda.conheca.lotes", ['fazenda' => $fazenda->slug])) id="pagina-atual" @endif>
                             @if(url()->current() == route("fazenda.conheca.lotes", ['fazenda' => $fazenda->slug]))
                                 @include('includes.fazenda.lotes')
                             @endif
@@ -93,7 +93,7 @@
                             </div>
                             <div class="borda-triangular @if(url()->current() != route('fazenda.conheca.depoimentos', ['fazenda' => $fazenda->slug])) d-none @endif"></div>
                         </div>
-                        <div class="d-block d-lg-none w-100">
+                        <div class="d-block d-lg-none w-100" @if(url()->current() == route("fazenda.conheca.depoimentos", ['fazenda' => $fazenda->slug])) id="pagina-atual" @endif>
                             @if(url()->current() == route("fazenda.conheca.depoimentos", ['fazenda' => $fazenda->slug]))
                                 @include('includes.fazenda.depoimentos_mobile')
                             @endif
@@ -108,7 +108,7 @@
                             </div>
                             <div class="borda-triangular @if(url()->current() != route('fazenda.conheca.avaliacoes', ['fazenda' => $fazenda->slug])) d-none @endif"></div>
                         </div>
-                        <div class="d-block d-lg-none w-100">
+                        <div class="d-block d-lg-none w-100" @if(url()->current() == route("fazenda.conheca.avaliacoes", ['fazenda' => $fazenda->slug])) id="pagina-atual" @endif>
                             @if(url()->current() == route("fazenda.conheca.avaliacoes", ['fazenda' => $fazenda->slug]))
                                 @include('includes.fazenda.avaliacao')
                             @endif
@@ -165,6 +165,7 @@
     }
 
     $(document).ready(function(){
+        $('html, body').animate({scrollTop: $("#pagina-atual").offset().top}, 1500);
         $(".link-avaliacao-section2-fazenda").click(function(){
             $(this).siblings().removeClass("active");            
             $(this).addClass("active");

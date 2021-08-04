@@ -24,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-7 video-container video-container-depoimento">
+                <div class="col-12 col-lg-7 video-container video-container-depoimento mb-5 mb-lg-0">
                     {!! $depoimento->video !!}
                 </div>
             </div>
