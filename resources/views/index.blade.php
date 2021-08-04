@@ -125,7 +125,7 @@
                     </div>
                     <div  class="row justify-content-center my-3 py-5">
                         <div class="lazy col-12 d-flex justify-content-center text-section1-index video-container text-center">
-                            <iframe width="1863" height="770" src="https://www.youtube.com/embed/JZaf0PGdYiI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        
+                            <iframe loading="lazy" width="1863" height="770" src="https://www.youtube.com/embed/JZaf0PGdYiI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        
                         </div>
                     </div>
                 </div>
