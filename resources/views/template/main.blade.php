@@ -155,13 +155,13 @@
             <div class="col-12 col-lg-4 text-center">
                 <div class="w400 ml-auto mr-auto mr-lg-0">
                     <div class="row">
-                        <div class="col-12 text-cenjter text-lg-left">
-                            <img src="{{asset('imagens/logo-footer.png')}}" style="width:100%; max-width: 307px;" alt="">
+                        <div class="col-12 px-5 px-lg-0 text-center text-lg-left text-nav-footer">
+                            <img src="{{asset('imagens/logo-footer.png')}}" style="" alt="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 mt-5 text-nav-footer text-center text-lg-left">
-                            <span>+55 14 9 8180-9051</span>
+                            <span><a href="tel:+553433052102">+55 34 3305-2102</a></span>
                         </div>
                     </div>
                     <div class="row">

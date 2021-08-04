@@ -644,6 +644,11 @@ label {
     color: #FEB000 !important;
 }
 
+.text-nav-footer > img{
+    width:100%; 
+    max-width: 307px;
+}
+
 
 /* END INDEX */
 

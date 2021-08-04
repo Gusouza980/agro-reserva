@@ -132,7 +132,7 @@
                 <div data-aos="fade-in" class="w1200 mx-auto">
                     <div class="row">
                         <div class="col-12 text-viva text-center pt-3 pb-lg-5 mb-lg-5">
-                            <span><b>Somos a Agro Reserva, a evolução do seu modelo de negócios dentro da pecuária. Modernidade sem perder a tradição, facilidade com todas as garantias, diferente de tudo que você já viu. Seja bem-vindo ao futuro do seu rebanho.</b></span>
+                            <span><b>Somos a Agro Reserva, a evolução do seu modelo de negócios dentro da pecuária. Modernidade sem perder a tradição, facilidade com todas as garantias, diferente de tudo que você já viu.</b></span>
                         </div>
                     </div>
                 </div>
