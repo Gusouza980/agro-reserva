@@ -355,46 +355,49 @@ class ClienteController extends Controller
         $clientes_pre = DB::select('select * from clientes_pre');
         // dd($clientes_pre);
         foreach($clientes_pre as $cliente_pre){
-            $cliente = new Cliente;
-            $cliente->email = $cliente_pre->email;
-            $cliente->nome_dono = $cliente_pre->nome_dono;
-            $cliente->whatsapp = $cliente_pre->whatsapp;
-            $cliente->interesses = $cliente_pre->interesses;
-            $cliente->senha = Hash::make($cliente_pre->senha);
-            $cliente->nome_fazenda = $cliente_pre->nome_fazenda;
-            $cliente->racas = $cliente_pre->racas;
-            $cliente->save();
-            echo "<b>" . $cliente->nome . "</b>" . ": Pré cadastro realizado<br>";
-            if($cliente_pre->documento){
-                $cliente->rg = $cliente_pre->rg;
-                $data_nascimento = explode("/", $cliente_pre->nascimento);
-                $data_nascimento = $data_nascimento[2] . "-" . $data_nascimento[1] . "-" . $data_nascimento[0];
-                $cliente->nascimento = $data_nascimento;
-                $cliente->documento = $cliente_pre->documento;
-                $cliente->estado_civil = $cliente_pre->estado_civil;
-                $cliente->inscricao_produtor_rural = $cliente_pre->inscricicao_produtor_rural;
-                $cliente->cep = $cliente_pre->cep;
-                $cliente->rua = $cliente_pre->rua;
-                $cliente->numero = $cliente_pre->numero;
-                $cliente->complemento = $cliente_pre->complemento;
-                $cliente->cidade = $cliente_pre->cidade;
-                $cliente->estado = $cliente_pre->estado;
-                $cliente->referencia_bancaria_banco = $cliente_pre->referencia_bancaria_banco;
-                $cliente->referencia_bancaria_gerente = $cliente_pre->referencia_bancaria_gerente;
-                $cliente->referencia_bancaria_tel = $cliente_pre->referencia_bancaria_tel;
-                $cliente->referencia_comercial1 = $cliente_pre->referencia_comercial1;
-                $cliente->referencia_comercial1_tel = $cliente_pre->referencia_comercial1_tel;
-                $cliente->referencia_comercial2 = $cliente_pre->referencia_comercial2;
-                $cliente->referencia_comercial2_tel = $cliente_pre->referencia_comercial2_tel;
-                $cliente->referencia_comercial3 = $cliente_pre->referencia_comercial3;
-                $cliente->referencia_comercial3_tel = $cliente_pre->referencia_comercial3_tel;
-                $cliente->referencia_coorporativa1 = $cliente_pre->referencia_coorporativa1;
-                $cliente->referencia_coorporativa1_tel = $cliente_pre->referencia_coorporativa1_tel;
-                $cliente->referencia_coorporativa2 = $cliente_pre->referencia_coorporativa2;
-                $cliente->referencia_coorporativa2_tel = $cliente_pre->referencia_coorporativa2_tel;
-                $cliente->finalizado = true;
+            $cliente = Cliente::where("email", $cliente_pre->email)->first();
+            if(!$cliente){
+                $cliente = new Cliente;
+                $cliente->email = $cliente_pre->email;
+                $cliente->nome_dono = $cliente_pre->nome_dono;
+                $cliente->whatsapp = $cliente_pre->whatsapp;
+                $cliente->interesses = $cliente_pre->interesses;
+                $cliente->senha = Hash::make($cliente_pre->senha);
+                $cliente->nome_fazenda = $cliente_pre->nome_fazenda;
+                $cliente->racas = $cliente_pre->racas;
                 $cliente->save();
-                echo "<b>" . $cliente->nome . "</b>" . ": Cadastro finalizado<br>";
+                echo "<b>" . $cliente->nome . "</b>" . ": Pré cadastro realizado<br>";
+                if($cliente_pre->documento){
+                    $cliente->rg = $cliente_pre->rg;
+                    $data_nascimento = explode("/", $cliente_pre->nascimento);
+                    $data_nascimento = $data_nascimento[2] . "-" . $data_nascimento[1] . "-" . $data_nascimento[0];
+                    $cliente->nascimento = $data_nascimento;
+                    $cliente->documento = $cliente_pre->documento;
+                    $cliente->estado_civil = $cliente_pre->estado_civil;
+                    $cliente->inscricao_produtor_rural = $cliente_pre->inscricicao_produtor_rural;
+                    $cliente->cep = $cliente_pre->cep;
+                    $cliente->rua = $cliente_pre->rua;
+                    $cliente->numero = $cliente_pre->numero;
+                    $cliente->complemento = $cliente_pre->complemento;
+                    $cliente->cidade = $cliente_pre->cidade;
+                    $cliente->estado = $cliente_pre->estado;
+                    $cliente->referencia_bancaria_banco = $cliente_pre->referencia_bancaria_banco;
+                    $cliente->referencia_bancaria_gerente = $cliente_pre->referencia_bancaria_gerente;
+                    $cliente->referencia_bancaria_tel = $cliente_pre->referencia_bancaria_tel;
+                    $cliente->referencia_comercial1 = $cliente_pre->referencia_comercial1;
+                    $cliente->referencia_comercial1_tel = $cliente_pre->referencia_comercial1_tel;
+                    $cliente->referencia_comercial2 = $cliente_pre->referencia_comercial2;
+                    $cliente->referencia_comercial2_tel = $cliente_pre->referencia_comercial2_tel;
+                    $cliente->referencia_comercial3 = $cliente_pre->referencia_comercial3;
+                    $cliente->referencia_comercial3_tel = $cliente_pre->referencia_comercial3_tel;
+                    $cliente->referencia_coorporativa1 = $cliente_pre->referencia_coorporativa1;
+                    $cliente->referencia_coorporativa1_tel = $cliente_pre->referencia_coorporativa1_tel;
+                    $cliente->referencia_coorporativa2 = $cliente_pre->referencia_coorporativa2;
+                    $cliente->referencia_coorporativa2_tel = $cliente_pre->referencia_coorporativa2_tel;
+                    $cliente->finalizado = true;
+                    $cliente->save();
+                    echo "<b>" . $cliente->nome . "</b>" . ": Cadastro finalizado<br>";
+                }
             }
         }
     }
