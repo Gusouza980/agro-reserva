@@ -305,6 +305,7 @@
     <script src="{{asset('js/aos.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/jquery.lazy.min.js')}}"></script>
     <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js" ></script>
     @toastr_js
     @toastr_render
