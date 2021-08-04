@@ -23,6 +23,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:updated_time" content="1440432930" />
     @yield("metas")
+    <link rel="preload" as="style" href="{{asset('css/main.css')}}" />
+    <link rel="preload" as="image" href="{{asset('imagens/bg-home-min-2.jpg')}}" />
+    <link rel="preload" href="{{asset('fontes/gobold/Gobold Regular.otf')}}" as="font" type="font/otf"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
