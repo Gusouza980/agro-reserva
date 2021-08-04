@@ -172,9 +172,9 @@
                     <div class="row">
                         <div class="col-12 text-nav-footer text-center text-lg-left">
                             <span>
-                                <a href="https://www.instagram.com/agro_reserva/"><i class="fab fa-instagram fa-lg"></i></a> 
-                                <a href="https://www.facebook.com/Agro-Reserva-109027191237838"><i class="fab fa-facebook-square ml-4 fa-lg"></i></a> 
-                                <a href="https://www.youtube.com/c/AgroReserva"><i class="fab fa-youtube ml-4 fa-lg"></i></a> 
+                                <a href="https://www.instagram.com/agro_reserva/" target="_blank"><i class="fab fa-instagram fa-lg"></i></a> 
+                                <a href="https://www.facebook.com/Agro-Reserva-109027191237838" target="_blank"><i class="fab fa-facebook-square ml-4 fa-lg"></i></a> 
+                                <a href="https://www.youtube.com/c/AgroReserva" target="_blank"><i class="fab fa-youtube ml-4 fa-lg"></i></a> 
                             </span>
                         </div>
                     </div>
@@ -210,16 +210,24 @@
                                     <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Clu</span>be de Benefícios</span> </a>
                                 </div>
                             </div>  --}}
-                            <div class="row mt-2">
-                                <div class="col-12 text-nav-footer text-center text-lg-left">
-                                    <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</span> </a>
+                            @if(!session()->get("cliente"))
+                                <div class="row mt-2">
+                                    <div class="col-12 text-nav-footer text-center text-lg-left">
+                                        <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</span> </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row mt-2">
-                                <div class="col-12 text-nav-footer text-center text-lg-left">
-                                    <a class="" href="{{route('login')}}"><span><span style="border-bottom: 2px solid #FEB000;">Ent</span>rar</span> </a>
+                                <div class="row mt-2">
+                                    <div class="col-12 text-nav-footer text-center text-lg-left">
+                                        <a class="" href="{{route('login')}}"><span><span style="border-bottom: 2px solid #FEB000;">Ent</span>rar</span> </a>
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="row mt-2">
+                                    <div class="col-12 text-nav-footer text-center text-lg-left">
+                                        <a class="" href="{{route('conta.index')}}"><span><span style="border-bottom: 2px solid #FEB000;">Min</span>ha conta</span> </a>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
