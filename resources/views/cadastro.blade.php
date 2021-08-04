@@ -135,7 +135,7 @@
                         <div class="col-12 col-lg-6 pr-3 mt-4">
                             <div class="form-group">
                                 <label for="">Seu whatsapp</label>
-                                <input type="text" class="form-control" name="whatsapp" id="" aria-describedby="helpId" placeholder="">
+                                <input type="text" class="form-control" name="whatsapp" id="" aria-describedby="helpId" value="55" placeholder="">
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 pl-3 mt-4">
@@ -153,7 +153,7 @@
                         <div class="col-12 col-lg-6 pr-3 mt-4">
                             <div class="form-group">
                                 <label for="">Confirmar Email</label>
-                                <input type="email" class="form-control" name="email2" id="" aria-describedby="helpId" placeholder="">
+                                <input type="email" class="form-control" name="email2" id="confirm-email" aria-describedby="helpId" placeholder="">
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 pl-3 mt-4">
@@ -1555,6 +1555,9 @@
             $("input[name='cep']").mask("99999-999");
             $("input[name='whatsapp']").mask("+99 (99) 99999-9999");
             $(".input-tel").mask("(99) 99999-9999");
+
+            const myInput = document.getElementById("confirm-email");
+            myInput.onpaste = e => e.preventDefault();
             
             $("#botao-pular-pre-cadastro").click(function(){
                 $("#pre-cadastro").slideUp(400, function(){

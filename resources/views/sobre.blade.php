@@ -71,7 +71,11 @@
             </div>
             <div class="row mt-4">
                 <div class="col-12 text-center text-sobre-caixa">
-                    <a href="{{route('cadastro')}}" class="btn btn-sobre px-5 py-2">Quero Comprar</a>
+                    @if(session()->get("cliente"))
+                        <a href="{{route('index')}}" class="btn btn-sobre px-5 py-2">Quero Comprar</a>
+                    @else
+                        <a href="{{route('cadastro')}}" class="btn btn-sobre px-5 py-2">Quero Comprar</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -90,7 +94,11 @@
             </div>
             <div class="row mt-4">
                 <div class="col-12 text-center text-sobre-caixa">
-                    <a href="{{route('cadastro')}}" class="btn btn-sobre px-5 py-2">Quero Vender</a>
+                    @if(session()->get("cliente"))
+                        <a href="{{route('index')}}" class="btn btn-sobre px-5 py-2">Quero Vender</a>
+                    @else
+                        <a href="{{route('cadastro')}}" class="btn btn-sobre px-5 py-2">Quero Vender</a>
+                    @endif
                 </div>
             </div>
         </div>
