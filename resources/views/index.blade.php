@@ -215,9 +215,9 @@
 
             $(".video-container").Lazy();
 
-            AOS.init({
-                duration: 1200,
-            });
+            // AOS.init({
+            //     duration: 1200,
+            // });
             var direction = 1;
             function loop() {
                 $('#mouse').css("display", "block");
