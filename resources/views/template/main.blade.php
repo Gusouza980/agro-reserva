@@ -85,7 +85,7 @@
                             </li> 
                         @else
                             <li class="nav-item active mt-4">
-                                <a class="nav-link" href="{{route('blog')}}">Início</span></a>
+                                <a class="nav-link" href="{{route('index')}}">Início</span></a>
                             </li> 
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('blog')}}">Blog</span></a>

@@ -245,11 +245,12 @@
                             <h4><b>FRETE</b></h4>
                         </div>
                     </div>
-                    <div class="row mt-3">
+                    <div class="row mt-3 px-4">
                         <div class="col-12 text-left">
-                            Retire seus animais na fazenda Santa Luzia.<br>
-                            MG 050 PASSOS/FURNAS KM 24 ,CEP 37904999, ZONA RURAL - PASSOS/MG
-                            <br><br> 
+                            <p>Retire seus animais na fazenda Santa Luzia.</p>
+                            <br>
+                            <p><b>Endereço:</b> MG 050 PASSOS/FURNAS KM 24 ,CEP 37904999, ZONA RURAL - PASSOS/MG</p>
+                            <br>
                             <b>O frete é por conta do comprador.</b>
                         </div>
                     </div>
@@ -278,17 +279,27 @@
                             <h4><b>PAGAMENTOS E CONDIÇÕES</b></h4>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-12 text-left">
-                            Formas de pagamento: <br>
+                    <div class="row mt-3 px-4">
+                        <div class="col-12 text-justify">
+                            <p>
+                                Formas de pagamento:
+                            </p>
+                            <p>
+                                À vista ou em até 10x sem juros no boleto de titularidade da fazenda e do comprador.
+                            </p>
+                            <p>
+                                Pague <b>À VISTA</b> e ganhe <b>12% de desconto</b>*.
+                            </p>
                             <ul class="mt-3">
-                                <li>À vista ou em até 10x sem juros no boleto de titularidade da fazenda e do comprador.</li>
-                                <li>Pague À VISTA e ganhe 12% de desconto*.</li>
-                                <li class="ml-4 mt-2" style="list-style: none;">*8% de desconto pela fazenda e 4% de desconto da comissão Agro Reserva.</li>
-                                <li>Pague em ATÉ 4x e ganhe 8% de desconto*</li>
-                                <li class="ml-4 mt-2" style="list-style: none;">*6% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.</li>
+                                <li class="" style="list-style: none; font-size: 14px;">*8% de desconto pela fazenda e 4% de desconto da comissão Agro Reserva.</li>
                             </ul>
-                            <p>Os valores referentes à forma de pagamento são calculados automaticamente no processo de finalização da compra.</p>
+                            <p>
+                                Pague em <b>ATÉ 4x</b> e ganhe <b>8% de desconto</b>*
+                            </p>
+                            <ul class="mt-3">
+                                <li class="" style="list-style: none; font-size: 14px;">*6% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.</li>
+                            </ul>
+                            <p style="font-size: 12px;">Os valores referentes à forma de pagamento são calculados automaticamente no processo de finalização da compra.</p>
                         </div>
                     </div>
                     {{--  <div class="row mt-3">
@@ -316,8 +327,8 @@
                             <h4><b>SEGURANÇA</b></h4>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 text-left">
+                    <div class="row px-4">
+                        <div class="col-12 text-justify">
                             <p>A Agro Reserva toma todas as medidas cabíveis para garantir o cumprimento dos padrões de confidencialidade e segurança, firmando acordos ou contratos com o objetivo de proteger a privacidade dos dados pessoais de nossos usuários e cumprir a legislação aplicável.</p>
                             <p>Para mais informações, fale com a gente nos canais de atendimento disponíveis no site.</p>
                         </div>
@@ -342,13 +353,13 @@
                             <h4><b>Como funciona?</b></h4>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row px-4">
                         <div class="col-12 text-left">
                             <p>A Agro Reserva traz benefícios para você, <b>comprador</b>, com <b>descontos progressivos</b> que podem chegar a <b>0% de comissão</b>. Confira! </p>
                             <ul class="mt-3">
-                                <li>Pague em 05 parcelas ou mais e nós cobraremos apenas 4% de comissão.</li>
-                                <li>Pague em até 04 parcelas e concederemos 50% de desconto na sua comissão.</li>
                                 <li><b>Pague à vista e não pague nada de comissão!</b></li>
+                                <li class="mt-2">Pague em até 04 parcelas e concederemos 50% de desconto na sua comissão.</li>
+                                <li class="mt-2">Pague em 05 parcelas ou mais e nós cobraremos apenas 4% de comissão.</li>
                             </ul>
                         </div>
                     </div>

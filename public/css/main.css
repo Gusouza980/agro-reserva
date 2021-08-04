@@ -1550,6 +1550,11 @@ label {
     font-size: 13px;
 }
 
+.card-noticia-data > i{
+    color: #3B3B3B;
+    opacity: 0.57;
+}
+
 .card-noticia-data > span{
     color: #3B3B3B;
     opacity: 0.57;
