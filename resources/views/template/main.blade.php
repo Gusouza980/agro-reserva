@@ -22,6 +22,7 @@
     <meta property="og:image:height" content="200">
     <meta property="og:type" content="website" />
     <meta property="og:updated_time" content="1440432930" />
+    <meta name="facebook-domain-verification" content="abk9vvukcc2zjrkcwtq8qncjjfb68f" />
     @yield("metas")
     <link rel="preload" as="style" href="{{asset('css/main.css')}}?v=1.0" />
     <link rel="preload" as="image" href="{{asset('imagens/bg-home-min-2.jpg')}}" />
