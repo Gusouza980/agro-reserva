@@ -152,6 +152,9 @@ class SiteController extends Controller
     }
 
     public function login(){
+        if(session()->get("cliente")){
+            return redirect()->route("index");
+        }
         $anterior = redirect()->back()->getTargetUrl();
         return view('login', ["anterior" => $anterior]);
     }
@@ -167,7 +170,7 @@ class SiteController extends Controller
                 if($carrinho){
                     session(["carrinho" => $carrinho->id]);
                 }
-                if($request->anterior){
+                if($request->anterior && $request->anterior != route("login")){
                     return redirect($request->anterior);
                 }else{
                     return redirect()->route("index");
