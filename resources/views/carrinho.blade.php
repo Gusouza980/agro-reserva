@@ -24,7 +24,6 @@
                             <tr>
                                 <th class="text-center" scope="col">Produto</th>
                                 <th class="text-center" scope="col"></th>
-                                <th class="text-center" scope="col">Fazenda</th>
                                 <th class="text-center" scope="col">Valor</th>
                                 <th class="text-center" scope="col"></th>
                             </tr>
@@ -35,13 +34,10 @@
                                     <th class="px-0 py-0" scope="row" style="width: 20%;">
                                         <img src="{{asset($produto->lote->preview)}}" alt="" class="w-100">
                                     </th>
-                                    <td style="vertical-align: middle; width: 25%;">
-                                        <p><b>{{$produto->lote->nome}}</b></p>
+                                    <td style="vertical-align: middle; width: 50%;">
+                                        <p><b>LOTE {{$produto->lote->numero}}: {{$produto->lote->nome}}</b></p>
                                         <p class="mt-n3"><b>Registro:</b> {{$produto->lote->registro}}</p>
                                         <p class="mt-n3"><b>Raça:</b> {{$produto->lote->raca->nome}}</p>
-                                    </td>
-                                    <td class="text-center" style="vertical-align: middle; width: 20%;">
-                                        <img src="{{asset($produto->lote->fazenda->logo)}}" alt="" style="width: 130px; max-width: 100%;">
                                     </td>
                                     <td class="text-center" style="vertical-align: middle;">
                                         <b>${{number_format($produto->total, 2, ",", ".")}}</b>

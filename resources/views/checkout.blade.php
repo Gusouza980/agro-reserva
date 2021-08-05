@@ -17,16 +17,17 @@
                             <img src="{{asset($produto->lote->preview)}}" alt="" style="max-width: 350px;" class="w-100">
                         </div>
                         <div class="col-12 col-lg-8">
-                            <p><b>{{$produto->lote->nome}}</b></p>
-                            <p class="mt-n3"><b>Registro:</b> {{$produto->lote->registro}}</p>
-                            <p class="mt-n3"><b>Raça:</b> {{$produto->lote->raca->nome}}</p>
-                            <div class="form-group">
+                            <p><b>LOTE {{$produto->lote->numero}}: {{$produto->lote->nome}}</b></p>
+                            <p class="mt-n1"><b>Registro:</b> {{$produto->lote->registro}}</p>
+                            <p class="mt-n1"><b>Raça:</b> {{$produto->lote->raca->nome}}</p>
+                            <p class="mt-n1"><b>Valor:</b> R${{number_format($produto->lote->preco, 2, ",", ".")}}</p>
+                            {{--  <div class="form-group">
                               <select class="form-control" style="max-width: 200px;" name="parcelamento" lid="{{$produto->lote_id}}" id="">
                                 @for($i = 1; $i <= $produto->lote->parcelas; $i++)
                                     <option value="{{$i}}">{{$i}}x de {{number_format(round($produto->lote->preco / $i, 2), 2, ",", ".")}}</option>
                                 @endfor
                               </select>
-                            </div>
+                            </div>  --}}
                         </div>
                     </div>
                     <hr>
@@ -36,16 +37,79 @@
             <div class="col-12 col-lg-4 text-left py-3" style="border: 1px solid #F2f2f2;">
                 <h4>Resumo</h4>
                 <hr>
-                <div class="row">
-                    <div class="col-12">
-                        <b>Total:</b> R${{number_format($carrinho->total, 2, ",", ".")}}
+                <div class="container-fluid px-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <b>Total:</b> R${{number_format($carrinho->total, 2, ",", ".")}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <b>Frete:</b> Consultar com a transportadora
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <b>Frete:</b> Consultar com a transportadora
+                <div class="container-fluid px-0 mt-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <b>CONDIÇÕES:</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <b>À VISTA: 12% de desconto</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <b>ATÉ 4x: 8% de desconto</b>
+                        </div>
                     </div>
                 </div>
+                <div class="container-fluid px-0 mt-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                              <select class="form-control" name="parcelamento" id="parcelamento">
+                                    <option value="">Selecione as parcelas</option>
+                                    @for($i = 1; $i <= 10; $i++)
+                                        @if($i == 1)
+                                            <option value="{{$i}}">{{$i}}x de R${{number_format($carrinho->total - ($carrinho->total * 12 / 100), 2, ",", ".")}} (12% de desconto)</option>
+                                        @elseif($i < 5)
+                                            <option value="{{$i}}">{{$i}}x de R${{number_format(round(($carrinho->total - ($carrinho->total * 8 / 100)) / $i, 2),2 , ",", ".")}} (8% de desconto)</option>
+                                        @else
+                                            <option value="{{$i}}">{{$i}}x de R${{number_format(round(($carrinho->total / $i), 2), 2, ",", ".")}}</option>
+                                        @endif
+                                    @endfor
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid px-0 mt-4" id="resumo" style="display: none;">
+                    <div class="row">
+                        <div class="col-12">
+                            <b>VALOR DO PEDIDO:</b> R${{number_format($carrinho->total, 2, ",", ".")}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <b>DESCONTOS:</b> <span id="valor-desconto"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <b>COMISSÃO AGRO RESERVA:</b> <span id="valor-comissao"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <b>VALOR FINAL:</b> <span id="valor-final"></span>
+                        </div>
+                    </div>
+                </div>
+
+                
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group mt-3">
@@ -59,41 +123,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" id="row-avaliacao" style="display: none;">
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label for="" style="color: black;">Como você avalia o assessoramento ?</label>
-                            <select class="form-control" name="avaliacao" id="avaliacao-i">
-                                <option value="0">Péssimo</option>
-                                <option value="1">Ruim</option>
-                                <option value="2">Bom</option>
-                                <option value="3">Ótimo</option>
-                                <option value="4">Excelente</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" id="row-observacao" style="display: none;">
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label for="" style="color: black;">Caso deseje, conte como foi sua experiência</label>
-                            <textarea class="form-control" rows="3" id="observacao-i" name="observacao"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <small>Clicando em finalizar o lote será reservado e os detalhes do pagamento serão discutidos junto a um de nossos consultores</small>
-                    </div>
-                </div>
+                
                 <div class="row mt-3">
                     <div class="col-12 text-center">
                         <form id="form-checkout" action="{{route('carrinho.concluir')}}" method="post">
                             @csrf
                             <input type="hidden" name="parcelas" id="parcelas-h">
                             <input type="hidden" name="assessor" id="assessor-h">
-                            <input type="hidden" name="avaliacao" id="avaliacao-h">
-                            <input type="hidden" name="observacao" id="observacao-h">
                         </form>
                         <button class="btn btn-vermelho px-4" id="btn-finalizar">Finalizar com Consultor</button>
                     </div>
@@ -108,6 +144,40 @@
     <script>
         $(document).ready(function(){
 
+            $("select[name='parcelamento']").change(function(){
+                $("#resumo").slideUp(500, function(){
+                    if(parseInt($("select[name='parcelamento']").val()) == 1){
+                        var desconto = 12;
+                    }else if(parseInt($("select[name='parcelamento']").val()) < 5 ){
+                        var desconto = 8;
+                    }else{
+                        var desconto = 0;
+                    }
+
+                    var comissao = 4;
+                    var total_carrinho = parseFloat({!! $carrinho->total !!});
+                    var valor_desconto = total_carrinho * desconto / 100;
+                    var valor_comissao = total_carrinho * comissao / 100;
+    
+                    var total_compra = total_carrinho - valor_desconto + valor_comissao;
+                    $("#valor-desconto").html("R$" + parseFloat(valor_desconto.toFixed(2)).toLocaleString('pt-BR', {
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                      }));
+                    $("#valor-comissao").html("R$" + parseFloat(valor_comissao.toFixed(2)).toLocaleString('pt-BR', {
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                      }));
+                    $("#valor-final").html("R$" + parseFloat(total_compra.toFixed(2)).toLocaleString('pt-BR', {
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                      }));
+    
+                    $("#resumo").slideDown(500);
+                });
+                
+            });
+
             $("select[name='assessor']").change(function(){
                 if($(this).val() != "0"){
                     $("#row-avaliacao").slideDown(400);
@@ -121,25 +191,12 @@
 
             $("#btn-finalizar").click(function(){
                 //Pegando parcelas
-                var parcelas = "";
-                $("select[name='parcelamento']").each(function(){
-                    var lid = $(this).attr("lid");
-                    var parcela = $(this).val();
-                    parcelas += lid + ":" + parcela + ";";
-                })
+                var parcelas = $("select[name='parcelamento']").val();
                 $("#parcelas-h").val(parcelas);
 
                 //Pegando assessor
                 var assessor = $("#assessor-i").val();
                 $("#assessor-h").val(assessor);
-
-                //Pegando avaliacao
-                var avaliacao = $("#avaliacao-i").val();
-                $("#avaliacao-h").val(avaliacao);
-
-                //Pegando observacao
-                var observacao = $("#observacao-i").val();
-                $("#observacao-h").val(observacao);
 
                 $("#form-checkout").submit();
             })

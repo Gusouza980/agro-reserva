@@ -19,6 +19,8 @@ use App\Models\IndiceRelacionamentoSetor;
 use App\Models\ParticipacaoSocietaria;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
+use App\Exports\ClienteExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ClienteController extends Controller
 {
@@ -29,6 +31,10 @@ class ClienteController extends Controller
         return view("painel.clientes.consultar", ["clientes" => $clientes]);
     }
 
+    public function exportar(){
+        return Excel::download(new ClienteExport, 'clientes '. date("d-m-Y H.i") .'.xlsx');
+    }
+
     public function visualizar(Cliente $cliente){
         return view("painel.clientes.visualizar", ['cliente' => $cliente]);
     }
@@ -36,6 +42,12 @@ class ClienteController extends Controller
     public function cadastro(Request $request){
         $anterior = redirect()->back()->getTargetUrl();
         return view('cadastro', ["anterior" => $anterior]);
+    }
+
+    public function finalizar_cadastro(){
+        $anterior = redirect()->back()->getTargetUrl();
+        $finalizar = true;
+        return view('cadastro', ["anterior" => $anterior, "finalizar" => $finalizar]);
     }
 
     public function cadastrar(Request $request){
@@ -53,6 +65,7 @@ class ClienteController extends Controller
         $cliente->senha = Hash::make($request->senha);
         $cliente->nome_fazenda = $request->fazenda;
         $cliente->racas = implode(", ", $request->racas);
+        $cliente->finalizado = false;
         $cliente->save();
 
         session(["cliente" => $cliente->toArray()]);

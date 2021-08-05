@@ -54,7 +54,7 @@ a, a:hover, a:focus, a:active {
     right: 5%;
     bottom: 5%;
     z-index: 99999;
-    background: url('../imagens/whatsapp-button.png');
+    background: url('../../imagens/whatsapp-button.png');
     height: 50px;
     width: 50px;
     background-size: contain;
@@ -62,7 +62,7 @@ a, a:hover, a:focus, a:active {
 }
 
 .btn-whats:hover {
-    background: url('../imagens/whatsapp-button-hover.png');
+    background: url('../../imagens/whatsapp-button-hover.png');
     background-size: contain;
     cursor: pointer;
 }
@@ -800,7 +800,7 @@ input::placeholder{
   
 .form-check-input-radio:checked{
     border: 1px solid white !important;
-    background-color: #22D6AB !important;
+    background-color: #E8521B !important;
 }
 
 .input-w25{
@@ -1271,7 +1271,7 @@ input::placeholder{
 }
 
 #btn-cadastro{
-    background-color: #22D6AB;
+    background-color: #E8521B;
     border-radius: 42px;
     font-size: 18px;
     font-weight: medium;
@@ -1281,7 +1281,7 @@ input::placeholder{
 }
 
 #btn-finalizar-cadastro-agora{
-    background-color: #22D6AB;
+    background-color: #E8521B;
     border-radius: 42px;
     font-size: 18px;
     font-weight: medium;
@@ -1291,7 +1291,7 @@ input::placeholder{
 }
 
 #btn-aguardar-contato{
-    border: 1px solid #22D6AB !important;
+    border: 1px solid #E8521B !important;
     background-color: transparent;
     border-radius: 42px;
     font-size: 18px;
@@ -1301,9 +1301,20 @@ input::placeholder{
     color: #7E8298;
 }
 
+.btn-laranja{
+    border: 1px solid #E8521B !important;
+    background-color: #E8521B;
+    border-radius: 42px;
+    font-size: 18px;
+    font-weight: medium;
+    padding: 13px 48px;
+    border: 0px;
+    color: white;
+}
+
 @media(max-width: 768px){
     #btn-finalizar-cadastro-agora{
-        background-color: #22D6AB;
+        background-color: #E8521B;
         border-radius: 42px;
         font-size: 15px;
         font-weight: medium;
@@ -1313,7 +1324,7 @@ input::placeholder{
     }
     
     #btn-aguardar-contato{
-        border: 1px solid #22D6AB !important;
+        border: 1px solid #E8521B !important;
         background-color: transparent;
         border-radius: 42px;
         font-size: 15px;
@@ -1374,7 +1385,7 @@ input::placeholder{
 }
 
 #btn-finalizar{
-    background-color: #22D6AB;
+    background-color: #E8521B;
     border-radius: 42px;
     font-size: 18px;
     font-weight: medium;
@@ -1384,7 +1395,7 @@ input::placeholder{
 }
 
 #btn-finalizar-direto{
-    background-color: #22D6AB;
+    background-color: #E8521B;
     border-radius: 42px;
     font-size: 18px;
     font-weight: medium;
@@ -1394,7 +1405,7 @@ input::placeholder{
 }
 
 #btn-voltar{
-    background-color: #22D6AB;
+    background-color: #E8521B;
     border-radius: 42px;
     font-size: 18px;
     font-weight: medium;
@@ -1434,7 +1445,7 @@ input::placeholder{
 }
 
 #btn-prosseguir{
-    background-color: #22D6AB;
+    background-color: #E8521B;
     border-radius: 42px;
     font-size: 18px;
     font-weight: medium;

@@ -56,7 +56,7 @@
 
     <div class="container-fluid d-flex align-items-center justify-content-center" id="pagina-cadastro-corpo">
         <div class="w1200" id="caixa-cadastro">
-            <div id="pre-cadastro">
+            <div id="pre-cadastro" @if(isset($finalizar)) style="display: none;" @endif>
                 <div class="row">
                     <div class="col-12" id="caixa-cadastro-section1-text">
                         <h1>Você está no pré-cadastro Agro Reserva. Caso já tenha realizado o pré cadastro com <u>e-mail</u> e <u>senha</u>, <a class="text-primary cpointer" id="botao-pular-pre-cadastro">clique aqui</a> para prosseguir ao cadastro completo.</h1>
@@ -66,7 +66,7 @@
                         </p>
                         <p>
                             Para você seguir evoluindo seu rebanho, investindo ou vendendo na nossa plataforma, <b>preencha o formulário de cadastro completo com total segurança</b> e respeito pelas suas informações.<br>
-    Uma vez preenchidos, os dados serão revisados e validados pelo nosso departamento de cadastro. <b>Rápido, prático e seguro</b>.
+                            Uma vez preenchidos, os dados serão revisados e validados pelo nosso departamento de cadastro. <b>Rápido, prático e seguro</b>.
                         </p>
                         <p>
                             Para realizar o cadastro completo, você precisará dos seguintes documentos:
@@ -93,181 +93,214 @@
                         <a href="tel:+5514981809051" class="fa-2x" style="color: #7E8298;"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
-                <div class="row mt-5">
-                    <div class="col-12">
-                        <div class="w800 mx-auto" id="caixa-voce-quer">
-                            <div class="row">
-                                <div class="col-12 caixa-voce-quer-text">
-                                    <h1>Você quer:</h1>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-lg-4">
-                                    <div class="form-check form-check-inline mt-2">
-                                        <input class="form-check-input-radio" type="radio" name="interesse" value="Comprar">
-                                        <label class="form-check-label ml-2 label-branca">Comprar</label>
+                <form id="form-pre-cadastro" action="">
+                    <div class="container-fluid">
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <div class="w800 mx-auto" id="caixa-voce-quer">
+                                    <div class="row">
+                                        <div class="col-12 caixa-voce-quer-text">
+                                            <h1>Você quer:</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-4">
+                                            <div class="form-check form-check-inline mt-2">
+                                                <input class="form-check-input-radio" type="radio" name="interesse" value="Comprar">
+                                                <label class="form-check-label ml-2 label-branca">Comprar</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-4">
+                                            <div class="form-check form-check-inline mt-2">
+                                                <input class="form-check-input-radio" type="radio" name="interesse" value="Vender">
+                                                <label class="form-check-label ml-2 label-branca">Vender</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-4">
+                                            <div class="form-check form-check-inline mt-2">
+                                                <input class="form-check-input-radio" type="radio" name="interesse" value="Comprar e Vender">
+                                                <label class="form-check-label ml-2 label-branca">Comprar e Vender</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-lg-4">
-                                    <div class="form-check form-check-inline mt-2">
-                                        <input class="form-check-input-radio" type="radio" name="interesse" value="Vender">
-                                        <label class="form-check-label ml-2 label-branca">Vender</label>
+                            </div>
+                        </div>
+                        <div class="container-fluid" id="container-passo1" style="display: none;">
+                            <div class="row mt-5" id="caixa-dados">
+                                <div class="col-12 col-lg-6 pr-3 mt-4">
+                                    <div class="form-group">
+                                        <label for="">Nome Completo</label>
+                                        <input type="text" class="form-control" name="nome" id="nome" aria-describedby="helpId" placeholder="">
                                     </div>
                                 </div>
-                                <div class="col-12 col-lg-4">
-                                    <div class="form-check form-check-inline mt-2">
-                                        <input class="form-check-input-radio" type="radio" name="interesse" value="Comprar e Vender">
-                                        <label class="form-check-label ml-2 label-branca">Comprar e Vender</label>
+                                <div class="col-12 col-lg-6 pr-3 mt-4">
+                                    <div class="form-group">
+                                        <label for="">Seu whatsapp</label>
+                                        <input type="text" class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value="55" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 pl-3 mt-4">
+                                    <div class="form-group">
+                                        <label for="">Nome da Fazenda</label>
+                                        <input type="text" class="form-control" name="fazenda" id="fazenda" aria-describedby="helpId" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 pr-3 mt-4">
+                                    <div class="form-group">
+                                        <label for="">E-mail</label>
+                                        <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 pr-3 mt-4">
+                                    <div class="form-group">
+                                        <label for="">Confirmar Email</label>
+                                        <input type="email" class="form-control" name="email2" id="confirm-email" aria-describedby="helpId" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 pl-3 mt-4">
+                                    <div class="form-group">
+                                        <label for="">Senha</label>
+                                        <input type="password" class="form-control" name="senha" id="senha" aria-describedby="helpId" placeholder="">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-fluid" id="container-passo1" style="display: none;">
-                    <div class="row mt-5" id="caixa-dados">
-                        <div class="col-12 col-lg-6 pr-3 mt-4">
-                            <div class="form-group">
-                                <label for="">Nome Completo</label>
-                                <input type="text" class="form-control" name="nome" id="" aria-describedby="helpId" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 pr-3 mt-4">
-                            <div class="form-group">
-                                <label for="">Seu whatsapp</label>
-                                <input type="text" class="form-control" name="whatsapp" id="" aria-describedby="helpId" value="55" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 pl-3 mt-4">
-                            <div class="form-group">
-                                <label for="">Nome da Fazenda</label>
-                                <input type="text" class="form-control" name="fazenda" id="" aria-describedby="helpId" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 pr-3 mt-4">
-                            <div class="form-group">
-                                <label for="">E-mail</label>
-                                <input type="email" class="form-control" name="email" id="" aria-describedby="helpId" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 pr-3 mt-4">
-                            <div class="form-group">
-                                <label for="">Confirmar Email</label>
-                                <input type="email" class="form-control" name="email2" id="confirm-email" aria-describedby="helpId" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 pl-3 mt-4">
-                            <div class="form-group">
-                                <label for="">Senha</label>
-                                <input type="password" class="form-control" name="senha" id="" aria-describedby="helpId" placeholder="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-fluid mt-5">
-                        <div class="row">
-                            <div class="col-12" id="caixa-racas-titulo">
-                                <h1>Agora, <span class="destaque">indique as raças que mais te interessam.</span></h1>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="container-fluid mt-3" id="caixa-racas">
-                        <div class="row">
-                            <div class="col-12 col-lg-3">
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Ângus">
-                                    <label class="form-check-label ml-3 label-cinza">Ângus</label>
+                            <div class="container-fluid mt-5">
+                                <div class="row">
+                                    <div class="col-12" id="caixa-racas-titulo">
+                                        <h1>Agora, <span class="destaque">indique as raças que mais te interessam.</span></h1>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-3">
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Senepol">
-                                    <label class="form-check-label ml-3 label-cinza">Senepol</label>
+            
+                            <div class="container-fluid mt-3" id="caixa-racas">
+                                <div class="row">
+                                    <div class="col-12 col-lg-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Ângus">
+                                            <label class="form-check-label ml-3 label-cinza">Ângus</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Senepol">
+                                            <label class="form-check-label ml-3 label-cinza">Senepol</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Guzera">
+                                            <label class="form-check-label ml-3 label-cinza">Guzera</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Mangalarga">
+                                            <label class="form-check-label ml-3 label-cinza">Mangalarga</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-0 mt-lg-3">
+                                    <div class="col-12 col-lg-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Gir Leiteiro">
+                                            <label class="form-check-label ml-3 label-cinza">Gir Leiteiro</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Jersey">
+                                            <label class="form-check-label ml-3 label-cinza">Jersey</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Nelore">
+                                            <label class="form-check-label ml-3 label-cinza">Nelore</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-0 mt-lg-3">
+                                    <div class="col-12 col-lg-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Holandês">
+                                            <label class="form-check-label ml-3 label-cinza">Holandês</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Girolando">
+                                            <label class="form-check-label ml-3 label-cinza">Girolando</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Sindi">
+                                            <label class="form-check-label ml-3 label-cinza">Sindi</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-3">
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Guzera">
-                                    <label class="form-check-label ml-3 label-cinza">Guzera</label>
+                            <div class="container-fluid mt-5">
+                                <div class="row">
+                                    <div class="col-12" id="caixa-raca-extra">
+                                        <h1>Sentiu falta de alguma raça?<span class="destaque"> Qual?</span></h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-lg-8" id="input-raca-extra">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="raca_extra" id="raca_extra" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-3">
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Mangalarga">
-                                    <label class="form-check-label ml-3 label-cinza">Mangalarga</label>
+        
+                            <div class="container-fluid mt-5">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="" id="termos" value="checkedValue">
+                                                Confirmo que li e estou ciente dos <a href="{{route('termos')}}" style="text-decoration: underline; color: #E8521B" target="_blank">termos de uso</a> e <a href="{{route('politicas')}}"  style="text-decoration: underline; color: #E8521B" target="_blank">política de privacidade</a>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row mt-0 mt-lg-3">
-                            <div class="col-12 col-lg-3">
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Gir Leiteiro">
-                                    <label class="form-check-label ml-3 label-cinza">Gir Leiteiro</label>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-3">
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Jersey">
-                                    <label class="form-check-label ml-3 label-cinza">Jersey</label>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-3">
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Nelore">
-                                    <label class="form-check-label ml-3 label-cinza">Nelore</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-0 mt-lg-3">
-                            <div class="col-12 col-lg-3">
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Holandês">
-                                    <label class="form-check-label ml-3 label-cinza">Holandês</label>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-3">
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Girolando">
-                                    <label class="form-check-label ml-3 label-cinza">Girolando</label>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-3">
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Sindi">
-                                    <label class="form-check-label ml-3 label-cinza">Sindi</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-fluid mt-5">
-                        <div class="row">
-                            <div class="col-12" id="caixa-raca-extra">
-                                <h1>Sentiu falta de alguma raça?<span class="destaque"> Qual?</span></h1>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-lg-8" id="input-raca-extra">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="raca_extra" id="" aria-describedby="helpId" placeholder="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="container-fluid mt-5">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" name="" id="termos" value="checkedValue">
-                                        Confirmo que li e estou ciente dos <a href="{{route('termos')}}" style="text-decoration: underline; color: #E8521B" target="_blank">termos de uso</a> e <a href="{{route('politicas')}}"  style="text-decoration: underline; color: #E8521B" target="_blank">política de privacidade</a>
-                                    </label>
+                            <div class="container-fluid mt-4">
+                                <div class="row justify-content-center">
+                                    <div id="gif-ajax-pre" class="text-center" style="display: none;">
+                                        <img id="ajax-loading" src="{{asset('imagens/gif_relogio.gif')}}" style="width: 60px;" alt="">
+                                    </div>
+                                    <div id="botoes-cadastrar">
+                                        <button type="submit" id="btn-cadastro">Cadastrar</button>
+                                    </div>
+                                    <div id="botoes-comprar" style="display: none;">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-12 px-0 text-center">
+                                                    <a class="cpointer" id="btn-finalizar-cadastro-agora">Finalizar cadastro agora</a>
+                                                    <br class="d-lg-none">
+                                                    <a href="/" id="btn-aguardar-contato" class="cpointer ml-0 mt-4 mt-lg-0 ml-lg-5">Aguardar contato</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="botoes-vender" style="display: none;">
+                                        <a href="/" class="cpointer btn-laranja">Aguardar contato</a>
+                                    </div>
                                 </div>
-                            </div>
+                            </div>                                   
                         </div>
                     </div>
-    
-                    <div class="container-fluid mt-5" id="container-cadastro-completo" style="display: none;">
+                </form>           
+            </div>
+
+            <div id="cadastro-completo">
+                <form id="form-cadastro-completo" action="" style="display: none;">
+                    <div class="container-fluid mt-5" id="container-cadastro-completo" >
                         <div class="row">
                             <div class="col-12 text-center" id="container-cadastro-completo-titulo">
                                 <h1>Preencha os campos a baixo para completar seu cadastro!</h1>
@@ -287,37 +320,37 @@
                                         <div class="col-12 col-lg-6 pr-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">Nome Completo</label>
-                                                <input type="text" class="form-control" name="nome_completo" id="" aria-describedby="helpId" placeholder="">
+                                                <input type="text" class="form-control" name="nome_completo" id="nome_completo" aria-describedby="helpId" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pl-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">RG</label>
-                                                <input type="text" class="form-control" name="rg" id="" aria-describedby="helpId" placeholder="">
+                                                <input type="text" class="form-control" name="rg" id="rg" aria-describedby="helpId" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pr-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">Data de Nascimento</label>
-                                                <input type="date" class="form-control" name="nascimento" id="" aria-describedby="helpId" placeholder="" maxlength="20">
+                                                <input type="date" class="form-control" name="nascimento" id="nascimento" aria-describedby="helpId" placeholder="" maxlength="20">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pl-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">CPF/CNPJ</label>
-                                                <input type="text" class="form-control" name="documento" id="" aria-describedby="helpId" placeholder="" maxlength="20">
+                                                <input type="text" class="form-control" name="documento" id="documento" aria-describedby="helpId" placeholder="" maxlength="20">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pr-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">Estado Civil</label>
-                                                <input type="text" class="form-control" name="estado_civil" id="" aria-describedby="helpId" placeholder="" maxlength="20">
+                                                <input type="text" class="form-control" name="estado_civil" id="estado_civil" aria-describedby="helpId" placeholder="" maxlength="20">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pl-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">Inscrição de Produtor (Opcional)</label>
-                                                <input type="text" class="form-control" name="inscricao_produtor_rural" id="" aria-describedby="helpId" placeholder="" maxlength="20">
+                                                <input type="text" class="form-control" name="inscricao_produtor_rural" id="inscricao_produtor_rural" aria-describedby="helpId" placeholder="" maxlength="20">
                                             </div>
                                         </div>
                                     </div>
@@ -341,31 +374,31 @@
                                         <div class="col-12 col-lg-6 pr-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">CEP</label>
-                                                <input type="text" class="form-control" name="cep" id="" aria-describedby="helpId" placeholder="" maxlength="50">
+                                                <input type="text" class="form-control" name="cep" id="cep" aria-describedby="helpId" placeholder="" maxlength="50">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pl-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">Endereço</label>
-                                                <input type="text" class="form-control" name="endereco" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control" name="endereco" id="endereco" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pr-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">Número</label>
-                                                <input type="text" class="form-control" name="numero" id="" aria-describedby="helpId" placeholder="" maxlength="6">
+                                                <input type="text" class="form-control" name="numero" id="numero" aria-describedby="helpId" placeholder="" maxlength="6">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pl-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">Complemento (Opcional)</label>
-                                                <input type="text" class="form-control" name="complemento" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control" name="complemento" id="complemento" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pl-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">Estado</label>
-                                                <select class="form-control" name="estado" id="">
+                                                <select class="form-control" name="estado" id="estado">
                                                     @foreach(\App\Models\Estado::all() as $estado)
                                                         <option value="{{$estado->id}}">{{$estado->nome}}</option>
                                                     @endforeach
@@ -375,12 +408,11 @@
                                         <div class="col-12 col-lg-6 pr-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">Cidade</label>
-                                                <select class="form-control" name="cidade" id="">
+                                                <select class="form-control" name="cidade" id="cidade">
                                                     @foreach(\App\Models\Estado::first()->cidades as $cidade)
                                                         <option value="{{$cidade->id}}">{{$cidade->nome}}</option>
                                                     @endforeach
                                                 </select>
-                                                {{-- <input type="text" class="form-control" name="cidade" id="" aria-describedby="helpId" placeholder="" maxlength="50"> --}}
                                             </div>
                                         </div>
                                         
@@ -412,19 +444,19 @@
                                         <div class="col-12 col-lg-4 mt-4">
                                             <div class="form-group">
                                                 <label for="">Banco Principal</label>
-                                                <input type="text" class="form-control" name="referencia_bancaria_banco" id="" aria-describedby="helpId" placeholder="Banco, agência e conta" maxlength="255">
+                                                <input type="text" class="form-control" name="referencia_bancaria_banco" id="referencia_bancaria_banco" aria-describedby="helpId" placeholder="Banco, agência e conta" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-4 mt-4">
                                             <div class="form-group">
                                                 <label for="">Gerente</label>
-                                                <input type="text" class="form-control" name="referencia_bancaria_gerente" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control" name="referencia_bancaria_gerente" id="referencia_bancaria_gerente" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-4 mt-4">
                                             <div class="form-group">
                                                 <label for="">Telefone</label>
-                                                <input type="text" class="form-control input-tel" name="referencia_bancaria_tel" id="" aria-describedby="helpId" placeholder="" maxlength="20">
+                                                <input type="text" class="form-control input-tel" name="referencia_bancaria_tel" id="referencia_bancaria_tel" aria-describedby="helpId" placeholder="" maxlength="20">
                                             </div>
                                         </div>
                                     </div>
@@ -441,37 +473,37 @@
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">R1</label>
-                                                <input type="text" class="form-control" name="referencia_comercial1" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control" name="referencia_comercial1" id="referencia_comercial1" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">Telefone</label>
-                                                <input type="text" class="form-control input-tel" name="referencia_comercial1_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control input-tel" name="referencia_comercial1_tel" id="referencia_comercial1_tel" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">R2</label>
-                                                <input type="text" class="form-control" name="referencia_comercial2" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control" name="referencia_comercial2" id="referencia_comercial2" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">Telefone</label>
-                                                <input type="text" class="form-control input-tel" name="referencia_comercial2_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control input-tel" name="referencia_comercial2_tel" id="referencia_comercial2_tel" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">R3 (Opcional)</label>
-                                                <input type="text" class="form-control" name="referencia_comercial3" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control" name="referencia_comercial3" id="referencia_comercial3" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">Telefone (Opcional)</label>
-                                                <input type="text" class="form-control input-tel" name="referencia_comercial3_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control input-tel" name="referencia_comercial3_tel" id="referencia_comercial3_tel" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                     </div>
@@ -488,356 +520,85 @@
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">R1 (Opcional)</label>
-                                                <input type="text" class="form-control" name="referencia_coorporativa1" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control" name="referencia_coorporativa1" id="referencia_coorporativa1" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">Telefone (Opcional)</label>
-                                                <input type="text" class="form-control input-tel" name="referencia_coorporativa1_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control input-tel" name="referencia_coorporativa1_tel" id="referencia_coorporativa1_tel" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">R2 (Opcional)</label>
-                                                <input type="text" class="form-control" name="referencia_coorporativa2" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control" name="referencia_coorporativa2" id="referencia_coorporativa2" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 mt-4">
                                             <div class="form-group">
                                                 <label for="">Telefone (Opcional)</label>
-                                                <input type="text" class="form-control input-tel" name="referencia_coorporativa2_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
+                                                <input type="text" class="form-control input-tel" name="referencia_coorporativa2_tel" id="referencia_coorporativa2_tel" aria-describedby="helpId" placeholder="" maxlength="255">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="container-fluid mt-5">
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <div id="gif-ajax" class="text-center" style="display: none;">
+                                        <img id="ajax-loading" src="{{asset('imagens/gif_relogio.gif')}}" style="width: 60px;" alt="">
+                                    </div>
+                                    <div id="botoes-finalizar" style="display: none;">
+                                        <button type="submit" id="btn-finalizar">Finalizar cadastro</button>
+                                    </div>
+                                    <div id="botoes-voltar" style="display: none;">
+                                        <a href="/" id="btn-voltar" class="cpointer">Voltar ao site</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </form>
+                
+            </div>
+            
+            <div class="container-fluid" id="cadastro-completo-direto"  @if(!isset($finalizar)) style="display:none;" @endif>
+                <form id="form-login" action="">
+                    <div class="container-fluid mt-5" id="cadastro-completo-direto-email">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12 col-lg-6 pr-3 mt-4">
+                                <div class="form-group">
+                                    <label for="">E-mail</label>
+                                    <input type="text" class="form-control" name="email_direto" id="" aria-describedby="helpId" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12 col-lg-6 pr-3 mt-4">
+                                <div class="form-group">
+                                    <label for="">Senha</label>
+                                    <input type="password" class="form-control" name="senha_direto" id="" aria-describedby="helpId" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>      
     
                     <div class="container-fluid mt-5">
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center">
-                                <div id="botoes-cadastrar">
-                                    <button id="btn-cadastro">Cadastrar</button>
+                                <div id="botoes-prosseguir">
+                                    <button type="submit" id="btn-prosseguir">Prosseguir</button>
                                 </div>
-                                <div id="botoes-comprar" style="display: none;">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-12 px-0 text-center">
-                                                <button id="btn-finalizar-cadastro-agora">Finalizar cadastro agora</button>
-                                                <br class="d-lg-none">
-                                                <a href="/"><button id="btn-aguardar-contato" class="ml-0 mt-4 mt-lg-0 ml-lg-5">Aguardar contato</button></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="botoes-vender" style="display: none;">
-                                    <a href="/"><button id="btn-finalizar-cadastro-agora">Finalizar</button></a>
-                                </div>
-                                <div id="gif-ajax" class="text-center" style="display: none;">
+                                <div id="gif-ajax-direto" class="text-center" style="display: none;">
                                     <img id="ajax-loading" src="{{asset('imagens/gif_relogio.gif')}}" style="width: 60px;" alt="">
                                 </div>
-                                <div id="botoes-finalizar" style="display: none;">
-                                    <button id="btn-finalizar">Finalizar cadastro</button>
-                                </div>
-                                <div id="botoes-voltar" style="display: none;">
-                                    <a href="/"><button id="btn-voltar">Voltar ao site</button></a>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <div class="container-fluid" id="cadastro-completo-direto" style="display:none;">
-                <div class="container-fluid mt-5" id="cadastro-completo-direto-email">
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-12 col-lg-6 pr-3 mt-4">
-                            <div class="form-group">
-                                <label for="">E-mail</label>
-                                <input type="text" class="form-control" name="email_direto" id="" aria-describedby="helpId" placeholder="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-12 col-lg-6 pr-3 mt-4">
-                            <div class="form-group">
-                                <label for="">Senha</label>
-                                <input type="password" class="form-control" name="senha_direto" id="" aria-describedby="helpId" placeholder="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-fluid mt-5" id="container-cadastro-completo-direto" style="display:none;">
-                    <div class="row">
-                        <div class="col-12 text-center" id="container-cadastro-completo-titulo">
-                            <h1>Preencha os campos a baixo para completar seu cadastro!</h1>
-                        </div>
-                    </div>
-                    <div class="row mt-5">
-                        <div class="col-12 caixa-cadastro-completo">
-                            <div class="container-fluid px-0">
-                                <div class="row px-0">
-                                    <div class="col-12 caixa-cadastro-completo-conteudo">
-                                        <h1>Dados Pessoais</h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container-fluid px-0">
-                                <div class="row px-0">
-                                    <input type="hidden" name="email_completo_direto" id="email_completo_direto" val="">
-                                    <div class="col-12 col-lg-6 pr-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Nome Completo</label>
-                                            <input type="text" class="form-control" name="nome_completo" id="nome_completo_direto" aria-describedby="helpId" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 pl-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">RG</label>
-                                            <input type="text" class="form-control" name="rg" id="" aria-describedby="helpId" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 pr-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Data de Nascimento</label>
-                                            <input type="date" class="form-control" name="nascimento" id="" aria-describedby="helpId" placeholder="" maxlength="20">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 pl-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">CPF/CNPJ</label>
-                                            <input type="text" class="form-control" name="documento" id="" aria-describedby="helpId" placeholder="" maxlength="20">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 pr-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Estado Civil</label>
-                                            <input type="text" class="form-control" name="estado_civil" id="" aria-describedby="helpId" placeholder="" maxlength="20">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 pl-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Inscrição de Produtor (Opcional)</label>
-                                            <input type="text" class="form-control" name="inscricao_produtor_rural" id="" aria-describedby="helpId" placeholder="" maxlength="20">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                    <div class="row mt-5">
-                        <div class="col-12 caixa-cadastro-completo">
-                            <div class="container-fluid px-0">
-                                <div class="row px-0">
-                                    <div class="col-12 caixa-cadastro-completo-conteudo">
-                                        <h1>Dados de Correspondência</h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container-fluid px-0">
-                                <div class="row px-0">
-                                    <div class="col-12 col-lg-6 pr-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">CEP</label>
-                                            <input type="text" class="form-control" name="cep" id="" aria-describedby="helpId" placeholder="" maxlength="50">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 pl-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Endereço</label>
-                                            <input type="text" class="form-control" name="endereco" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 pr-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Número</label>
-                                            <input type="text" class="form-control" name="numero" id="" aria-describedby="helpId" placeholder="" maxlength="6">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 pl-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Complemento (Opcional)</label>
-                                            <input type="text" class="form-control" name="complemento" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 pl-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Estado</label>
-                                            <select class="form-control" name="estado" id="estado_direto">
-                                                @foreach(\App\Models\Estado::all() as $estado)
-                                                    <option value="{{$estado->id}}">{{$estado->nome}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 pr-3 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Cidade</label>
-                                            <select class="form-control" name="cidade" id="cidade_direto">
-                                                @foreach(\App\Models\Estado::first()->cidades as $cidade)
-                                                    <option value="{{$cidade->id}}">{{$cidade->nome}}</option>
-                                                @endforeach
-                                            </select>
-                                            {{-- <input type="text" class="form-control" name="cidade" id="" aria-describedby="helpId" placeholder="" maxlength="50"> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                    <div class="row mt-5">
-                        <div class="col-12 caixa-cadastro-completo">
-                            <div class="container-fluid px-0">
-                                <div class="row px-0">
-                                    <div class="col-12 caixa-cadastro-completo-conteudo">
-                                        <h1>Dados de Referência</h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container-fluid px-0 mt-5">
-                                <div class="row px-0">
-                                    <div class="col-12 caixa-cadastro-completo-conteudo">
-                                        <h2>Referência Bancária</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container-fluid px-0">
-                                <div class="row px-0">
-                                    <div class="col-12 col-lg-4 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Banco Principal</label>
-                                            <input type="text" class="form-control" name="referencia_bancaria_banco" id="" aria-describedby="helpId" placeholder="Banco, agência e conta" maxlength="255">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-4 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Gerente</label>
-                                            <input type="text" class="form-control" name="referencia_bancaria_gerente" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-4 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Telefone</label>
-                                            <input type="text" class="form-control" name="referencia_bancaria_tel" id="" aria-describedby="helpId" placeholder="" maxlength="20">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container-fluid px-0 mt-5">
-                                <div class="row px-0">
-                                    <div class="col-12 caixa-cadastro-completo-conteudo">
-                                        <h2>Referências Comerciais</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container-fluid px-0">
-                                <div class="row px-0">
-                                    <div class="col-12 col-lg-6 mt-4">
-                                        <div class="form-group">
-                                            <label for="">R1</label>
-                                            <input type="text" class="form-control" name="referencia_comercial1" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Telefone</label>
-                                            <input type="text" class="form-control" name="referencia_comercial1_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 mt-4">
-                                        <div class="form-group">
-                                            <label for="">R2</label>
-                                            <input type="text" class="form-control" name="referencia_comercial2" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Telefone</label>
-                                            <input type="text" class="form-control" name="referencia_comercial2_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 mt-4">
-                                        <div class="form-group">
-                                            <label for="">R3 (Opcional)</label>
-                                            <input type="text" class="form-control" name="referencia_comercial3" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Telefone (Opcional)</label>
-                                            <input type="text" class="form-control" name="referencia_comercial3_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container-fluid px-0 mt-5">
-                                <div class="row px-0">
-                                    <div class="col-12 caixa-cadastro-completo-conteudo">
-                                        <h2>Referências de Cooperativa</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container-fluid px-0">
-                                <div class="row px-0">
-                                    <div class="col-12 col-lg-6 mt-4">
-                                        <div class="form-group">
-                                            <label for="">R1 (Opcional)</label>
-                                            <input type="text" class="form-control" name="referencia_coorporativa1" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Telefone (Opcional)</label>
-                                            <input type="text" class="form-control" name="referencia_coorporativa1_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 mt-4">
-                                        <div class="form-group">
-                                            <label for="">R2 (Opcional)</label>
-                                            <input type="text" class="form-control" name="referencia_coorporativa2" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6 mt-4">
-                                        <div class="form-group">
-                                            <label for="">Telefone (Opcional)</label>
-                                            <input type="text" class="form-control" name="referencia_coorporativa2_tel" id="" aria-describedby="helpId" placeholder="" maxlength="255">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container-fluid mt-5">
-                    <div class="row">
-                        <div class="col-12 d-flex justify-content-center">
-                            <div id="botoes-prosseguir">
-                                <button id="btn-prosseguir">Prosseguir</button>
-                            </div>
-                            <div id="botoes-vender-direto" style="display: none;">
-                                <a href="/"><button id="btn-finalizar-cadastro-agora">Finalizar</button></a>
-                            </div>
-                            <div id="gif-ajax-direto" class="text-center" style="display: none;">
-                                <img id="ajax-loading" src="{{asset('imagens/gif_relogio.gif')}}" style="width: 60px;" alt="">
-                            </div>
-                            <div id="botoes-finalizar-direto" style="display: none;">
-                                <button id="btn-finalizar-direto">Finalizar cadastro</button>
-                            </div>
-                            <div id="botoes-voltar-direto" style="display: none;">
-                                <a href="/"><button id="btn-voltar">Voltar ao site</button></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -967,6 +728,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset('js/jquery.mask.js')}}"></script>
+    <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js" ></script>
     <script>
 
         function login() {
@@ -1011,24 +773,23 @@
                         $("#modalErro").modal("show");
                         $("#botoes-prosseguir").show();
                         $("#gif-ajax-direto").hide();
-                        console.log("Deu ruim");
                     }else if(ret == "002"){
                         $("#titulo-erro-modal").html("E-mail ou senha incorretos");
                         $("#subtitulo-erro-modal").html("Verifique as informações inseridas e tente novamente.");
                         $("#modalErro").modal("show");
                         $("#botoes-prosseguir").show();
                         $("#gif-ajax-direto").hide();
-                        console.log("Deu ruim");
                     }else{
                         var cliente = JSON.parse(ret);
                         $("#gif-ajax-direto").hide();
-                        $("#cadastro-completo-direto-email").slideUp(400, function(){
-                            $("#container-cadastro-completo-direto").slideDown(400, function(){
-                                $("#botoes-finalizar-direto").show();
+                        $("#form-login").slideUp("500", function(){
+                            $("#form-cadastro-completo").slideDown("500", function(){
+                                $('html, body').animate({ scrollTop: $("#form-cadastro-completo").offset().top - 100 }, 1000);
+                                $("#botoes-finalizar").show();
                             });
                         });
-                        $("#email_completo_direto").val(cliente.email);
-                        $("#nome_completo_direto").val(cliente.nome_dono);
+                        $("#email").val(cliente.email);
+                        $("#nome_completo").val(cliente.nome_dono);
                     }
                 },
                 error: function (ret) {
@@ -1124,34 +885,42 @@
                     $("#botoes-cadastrar").hide();
                     $("#botoes-comprar").hide();
                     $("#botoes-vender").hide();
-                    $("#gif-ajax").show();
+                    $("#gif-ajax-pre").show();
                 },
                 success: function (ret) {
                     if(ret == "001"){
+                        console.log(ret);
+                        console.log("entrou");
+                        $("#gif-ajax-pre").hide();
                         $("#titulo-erro-modal").html("E-mail já cadastrado");
                         $("#subtitulo-erro-modal").html("Se já tiver realizado o pré-cadastro utilze o link no início da página para continuar para o cadastro completo.");
                         $("#modalErro").modal("show");
+                        $("#botoes-cadastrar").show();
                         return;
-                    }
-                    if (ret == "200") {
-                        console.log("sucesso")
+                    }else if (ret == "200") {
+                        console.log(ret);
+                        console.log("entrou");
                         $("input").each(function () {
                             $(this).removeClass("erro-validacao");
                         });
                         if ($("input[name='interesse']:checked").val() != "Vender") {
-                            $("#gif-ajax").hide();
+                            $("#gif-ajax-pre").hide();
                             $("#botoes-cadastrar").hide();
                             $("#modalPrecadastro").modal("show");
                             $("#botoes-comprar").show();
                             $("#botoes-vender").hide();
+                            return;
                         } else {
-                            $("#gif-ajax").hide();
+                            $("#gif-ajax-pre").hide();
                             $("#botoes-cadastrar").hide();
                             $("#modalPrecadastro").modal("show");
                             $("#botoes-vender").show();
                             $("#botoes-comprar").hide();
+                            return;
                         }
                     } else {
+                        $("#gif-ajax-pre").hide();
+                        $("#botoes-cadastrar").show();
                         console.log(ret);
                     }
 
@@ -1565,7 +1334,8 @@
                 });
             });
 
-            $("#btn-prosseguir").click(function(){
+            $("#form-login").submit(function(e){
+                e.preventDefault();
                 login();
             });
 
@@ -1575,16 +1345,20 @@
 				});
             });
 
-            $("#btn-cadastro").click(function () {
+            $("#form-pre-cadastro").submit(function (e) {
+                e.preventDefault();
                 precadastro();
             });
 
             $("#btn-finalizar-cadastro-agora").click(function () {
                 $("#botoes-comprar").hide(function () {
                     $("#botoes-finalizar").show();
-                    $("#container-cadastro-completo").slideDown("500", function(){
-						$('html, body').animate({ scrollTop: $("#container-cadastro-completo").offset().top - 100 }, 1000);
-					});
+                    $("#form-pre-cadastro").slideUp("500", function(){
+                        $("#form-cadastro-completo").slideDown("500", function(){
+                            $('html, body').animate({ scrollTop: $("#form-cadastro-completo").offset().top - 100 }, 1000);
+                        });
+                    })
+                    
                     $('input[name=nome_completo]').val($('input[name=nome]').val());
                     $('input[name=email]').attr("readonly", "readonly");
                     $('input[name=nome]').attr("readonly", "readonly");
@@ -1595,12 +1369,9 @@
                 });
             });
 
-            $("#btn-finalizar").click(function () {
+            $("#form-cadastro-completo").submit(function (e) {
+                e.preventDefault();
                 cadastro();
-            });
-
-            $("#btn-finalizar-direto").click(function () {
-                cadastro_direto();
             });
 
             $("select[name='estado']").change(function(){
@@ -1630,30 +1401,6 @@
                 });
             });
 
-            $("#estado_direto").change(function(){
-                var estado = $("#estado_direto").val();
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: 'GET',
-                    url: '/api/getCidadesByUf/' + estado,
-                    dataType: 'json',
-                    success: function (data) {
-                        html = "";
-                        var cidades = JSON.parse(data);
-                        for(var cidade in cidades){
-                            html += "<option value='"+cidades[cidade].id+"'>"+cidades[cidade].nome+"</option>"
-                        }
-                        $("#cidade_direto").html(html);
-                    },
-                    error: function (data) {
-                        console.log(data);
-                    }
-                });
-            });
         });
     </script>
     <!-- Google Tag Manager (noscript) -->

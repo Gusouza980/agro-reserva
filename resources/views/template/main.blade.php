@@ -90,8 +90,13 @@
                                 <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
                             </li>   --}}
                             <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{route('conta.index')}}">Minha Conta</span></a>
-                            </li> 
+                                <a class="nav-link" href="{{route('cadastro.finalizar')}}">Finalizar Cadastro</span></a>
+                            </li>
+                            @if(!session()->get("cliente")["finalizado"])
+                                <li class="nav-item active mt-2">
+                                    <a class="nav-link" href="{{route('conta.index')}}">Minha Conta</span></a>
+                                </li> 
+                            @endif
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('sair')}}">Sair</span></a>
                             </li> 
@@ -143,6 +148,9 @@
                         {{--  @if($_SESSION["userid"])  --}}
                         @if(session()->get("cliente"))
                             Bem vindo @if(isset(session()->get("cliente")["nome_dono"])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif
+                            @if(!session()->get("cliente")["finalizado"])
+                            <span class="ml-3 text-nav-header"><a href="{{route('cadastro.finalizar')}}"><span style="border-bottom: 2px solid #FEB000;">Fin</span>alizar Cadastro</a></span> </span>
+                            @endif
                             <span class="ml-3 text-nav-header"><a href="{{route('conta.index')}}"><span style="border-bottom: 2px solid #FEB000;">Min</span>ha conta</a></span> </span>
                             @if(session()->get("cliente"))
                                 <span class="ml-3 text-nav-header"><a class="text-nav-header" href="{{route('sair')}}"><span style="border-bottom: 2px solid #FEB000;">Sai</span>r</a></span>
@@ -234,6 +242,13 @@
                                     </div>
                                 </div>
                             @else
+                                @if(!session()->get("cliente")["finalizado"])
+                                    <div class="row mt-2">
+                                        <div class="col-12 text-nav-footer text-center text-lg-left">
+                                            <a class="" href="{{route('cadastro.finalizar')}}"><span><span style="border-bottom: 2px solid #FEB000;">Fin</span>alizar Cadastro</span> </a>
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="row mt-2">
                                     <div class="col-12 text-nav-footer text-center text-lg-left">
                                         <a class="" href="{{route('conta.index')}}"><span><span style="border-bottom: 2px solid #FEB000;">Min</span>ha conta</span> </a>

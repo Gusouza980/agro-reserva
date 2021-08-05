@@ -16,6 +16,7 @@ class SiteController extends Controller
 {
 
     public function index(){
+        // dd($cliente->toArray());
         $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
         return view("index", ["reservas" => $reservas]);
         // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(

@@ -41,6 +41,7 @@ Route::get('/sair', function () {
 Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("index");
 Route::get('/login', [\App\Http\Controllers\SiteController::class, 'login'])->name("login");
 Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");
+Route::get('/cadastro/finalizar', [\App\Http\Controllers\ClienteController::class, 'finalizar_cadastro'])->name("cadastro.finalizar");
 Route::post('/cadastro/login', [\App\Http\Controllers\ClienteController::class, 'login_cadastro'])->name("cadastro.login");
 Route::get('/cadastro/fazenda', [\App\Http\Controllers\SiteController::class, 'cadastro_fazenda'])->name("cadastro.fazenda");
 Route::get('/cadastro/passos', [\App\Http\Controllers\SiteController::class, 'cadastro_passos'])->name("cadastro.passos");
@@ -169,6 +170,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/assessor/excluir/{assessor}', [\App\Http\Controllers\AssessoresController::class, 'excluir'])->name("painel.assessor.excluir");
 
     Route::get('/painel/clientes', [\App\Http\Controllers\ClienteController::class, 'index'])->name("painel.clientes");
+    Route::get('/painel/clientes/export', [\App\Http\Controllers\ClienteController::class, 'export'])->name("painel.clientes.export");
     Route::get('/painel/cliente/{cliente}', [\App\Http\Controllers\ClienteController::class, 'visualizar'])->name("painel.cliente.visualizar");
     Route::get('/painel/cliente/{cliente}/credito/analistar', [\App\Http\Controllers\ClienteController::class, 'analise_credito'])->name("painel.cliente.credito.analise");
     Route::post('/painel/cliente/{cliente}/dados/salvar', [\App\Http\Controllers\ClienteController::class, 'salvar_dados_gerais'])->name("painel.cliente.dados.salvar");
