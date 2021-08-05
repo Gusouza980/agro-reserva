@@ -25,7 +25,9 @@
                             <th>Cnpj/Cpf</th>
                             <th>Aprovação</th>
                             <th>Cadastro</th>
-                            <th></th>
+                            <th>Email</th>
+                            <th>Whatsapp</th>
+                            <th>Visualizar</th>
                         </tr>
                     </thead>
 
@@ -46,13 +48,15 @@
                                         <span style="color: green;">Aprovado</span>
                                     @endif
                                 </td>
-                                <th style="vertical-align: middle; text-align:center;">
+                                <td style="vertical-align: middle; text-align:center;">
                                     @if($cliente->finalizado == 0)
                                         Pré
                                     @else
                                         Finalizado
                                     @endif
-                                </th>
+                                </td>
+                                <td>{{$cliente->email}}</td>
+                                <td>{{$cliente->whatsapp}}</td>
                                 <td style="vertical-align: middle; text-align:center;">
                                     <a href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}" name="" id="" class="btn btn-warning cpointer" role="button">Visualizar</a>
                                 </td>
@@ -92,7 +96,21 @@
                 $("#datatable-buttons")
                     .DataTable({
                         lengthChange: !1,
-                        buttons: ["copy", "excel", "pdf", "colvis"],
+                        buttons: [
+                            {
+                                extend: "excel",
+                                exportOptions: {
+                                    columns: ":visible"
+                                }
+                            },
+                            {
+                                extend: "pdf",
+                                exportOptions: {
+                                    columns: ":visible"
+                                }
+                            },
+                            "colvis"
+                        ],
                         language:{
                             "emptyTable": "Nenhum registro encontrado",
                             "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -223,7 +241,16 @@
                             },
                             "searchPlaceholder": "Digite um termo para pesquisar",
                             "thousands": "."
-                        } 
+                        }, 
+                        pageLength: -1,
+                        lengthChange: true,
+                        lengthMenu: [[10,50,100,1000, -1], [10,50,100,1000, "Todos"]],
+                        columnDefs: [
+                            {
+                                visible: false,
+                                targets: [4, 5]
+                            }
+                        ]
                     })
                     .buttons()
                     .container()
