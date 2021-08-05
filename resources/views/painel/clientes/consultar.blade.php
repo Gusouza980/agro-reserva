@@ -21,6 +21,7 @@
                 <table id="datatable-buttons" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
+                            <th>Data de Cad.</th>
                             <th>Nome</th>
                             <th>Cnpj/Cpf</th>
                             <th>Aprovação</th>
@@ -35,6 +36,7 @@
                     <tbody>
                         @foreach($clientes as $cliente)
                             <tr>
+                                <td>{{date("d/m/Y H:i:s", strtotime($cliente->created_at))}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$cliente->nome_dono}}</td>
                                 <td style="vertical-align: middle; text-align:center;">
                                     {{$cliente->documento}}
@@ -76,6 +78,7 @@
 
 @section('scripts')
     <!-- Required datatable js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
     <script src="{{asset('admin/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <!-- Buttons examples -->
@@ -90,8 +93,11 @@
     <!-- Responsive examples -->
     <script src="{{asset('admin/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('admin/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.10/sorting/datetime-moment.js"></script>
     <script>
         $(document).ready(function () {
+            $.fn.dataTable.moment( 'DD/MM/YYYY HH:mm:ss' );    //Formatação com Hora
+            $.fn.dataTable.moment('DD/MM/YYYY');    //Formatação sem Hor
             $("#datatable").DataTable(),
                 $("#datatable-buttons")
                     .DataTable({
@@ -248,7 +254,7 @@
                         columnDefs: [
                             {
                                 visible: false,
-                                targets: [4, 5]
+                                targets: [0, 5, 6]
                             }
                         ]
                     })
