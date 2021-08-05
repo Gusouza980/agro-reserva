@@ -17,8 +17,13 @@
                     <a href="{{route('index')}}"><span style="color: #E8521B !important; font-size: 12px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
                     {{--  <h3 class="mt-3">Entre</h3>  --}}
                     @if(session()->get("erro"))
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger mt-3" role="alert">
                             <strong>{{session()->get("erro")}}</strong>
+                        </div>
+                    @endif
+                    @if(session()->get("sucesso"))
+                        <div class="alert alert-success mt-3" role="alert">
+                            <strong>{{session()->get("sucesso")}}</strong>
                         </div>
                     @endif
                     
@@ -35,8 +40,8 @@
                             <input type="password" class="form-control col-12" name="senha" id="senha" placeholder="" required>
                         </div>
                         
-                        <div class="col-12 text-right">
-                            {{--  Esqueceu sua senha?  --}}
+                        <div class="col-12 text-right my-3">
+                             <span class="text-nav-header cpointer"><a style="color: black !important;" data-toggle="modal" data-target="#modalSenha"><span style="border-bottom: 2px solid #FEB000;">Esqu</span>eceu sua senha?</a></span> 
                         </div>
 
                         <div class="form-group col-12 text-center mt-4">
@@ -50,6 +55,31 @@
                     {{--  <div class="mt-3 w-100 text-center">
                         <a href="{{route('facebook.autenticar')}}" style="color:red !important;"><img src="{{asset('imagens/icone-facebook.png')}}" width="30" alt="Login Facebook"></a>
                     </div>  --}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalSenha" tabindex="-1" role="dialog" aria-labelledby="modalSenhaTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="px-3 px-lg-4" action="{{route('conta.senha.recuperar')}}" method="post">
+                        @csrf
+                        <div class="form-group mb-4 text-black">
+                            <label class="label-cinza" for="">E-mail Cadastrado</label>
+                            <input type="email"
+                                class="form-control" name="email" id="" aria-describedby="helpSenhaAntiga" placeholder="">
+                            <small id="helpSenhaAntiga" class="form-text text-muted">Informe o e-mail cadastrado na sua conta para enviarmos uma senha temporária</small>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-amarelo px-5 py-2">Enviar Senha</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

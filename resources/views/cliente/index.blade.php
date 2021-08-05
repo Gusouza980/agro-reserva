@@ -7,12 +7,19 @@
 @section('conteudo')
 
     <div class="container py-5" style="min-height: 40vh;">
-        
+        <div class="row d-lg-none mb-3">
+            <div class="col-12 text-right">
+                <a class="btn btn-warning" data-toggle="modal" data-target="#modalSenha">Alterar Senha</a>
+            </div>
+        </div>
         <div class="card" id="card-conta">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-12 card-conta-content">
+                <div class="row justify-content-between px-3">
+                    <div class="card-conta-content">
                         <h5>{{$cliente->nome_dono}}</h5>
+                    </div>
+                    <div class="card-conta-content d-none d-lg-block">
+                        <a class="btn btn-warning" data-toggle="modal" data-target="#modalSenha">Alterar Senha</a>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -411,6 +418,37 @@
                             <button class="botao-confirma py-2 px-5 mt-4" href="https://api.whatsapp.com/send?phone=5514981809051">Falar com um consultor</button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalSenha" tabindex="-1" role="dialog" aria-labelledby="modalSenhaTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="px-3 px-lg-4" action="{{route('conta.senha.alterar')}}" method="post">
+                        @csrf
+                        <div class="form-group mb-4 text-black">
+                            <label class="label-cinza" for="">Senha Antiga</label>
+                            <input type="password"
+                                class="form-control" name="senha_antiga" id="" aria-describedby="helpSenhaAntiga" placeholder="">
+                            <small id="helpSenhaAntiga" class="form-text text-muted">Caso esteja recuperando a senha, informe a enviada por email</small>
+                        </div>
+                        <div class="form-group mb-4 text-black">
+                            <label for="" class="label-cinza">Nova Senha</label>
+                            <input type="password"
+                                class="form-control" name="senha_nova" id="" aria-describedby="helpSenhaNova" placeholder="">
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-vermelho px-5 py-2">Salvar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

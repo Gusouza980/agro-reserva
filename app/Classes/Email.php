@@ -15,21 +15,21 @@ class Email{
             // Mail server settings
             $mail->SMTPDebug = 0; // Enable verbose debug output
             $mail->isSMTP(); // Set mailer to use SMTP
-            $mail->Host = "smtp.zoho.com"; // Endereço do servidor SMTP
+            $mail->Host = "smtp.gmail.com"; // Endereço do servidor SMTP
             $mail->SMTPAuth = true; // Enable SMTP authentication
-            $mail->Username = 'noreply@evoxtech.com.br'; // SMTP username
-            $mail->Password = 'bk*yMe5Wd_ydN56_L6f$'; // SMTP password
+            $mail->Username = 'naoresponda.agroreserva@gmail.com'; // SMTP username
+            $mail->Password = 'AgroAdmin123@'; // SMTP password
             $mail->SMTPSecure = 'ssl'; // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 465;
 
-            $mail->setFrom('noreply@evoxtech.com.br', 'Contato - Minerembryo');
+            $mail->setFrom('naoresponsa.agroreserva@gmail.com', 'Contato - Agro Reserva');
             if($admin){
-                $mail->addAddress("gusouza980@gmail.com"); // Add a recipient, Name is optional
+                $mail->addAddress("contato@agroreserva.com.br"); // Add a recipient, Name is optional
                 // $mail->addAddress("gusouza980@gmail.com");
             }else{
                 $mail->addAddress($destinatario); // Add a recipient, Name is optional
             }
-            $mail->addReplyTo('gusouza980@gmail.com', 'Contato - Minerembryo');
+            $mail->addReplyTo('naoresponsa.agroreserva@gmail.com', 'Contato - Agro Reserva');
             // print_r($_FILES['file']); exit;
 
 

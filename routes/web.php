@@ -52,19 +52,27 @@ Route::get('/fazenda/{fazenda}/lotes', [\App\Http\Controllers\SiteController::cl
 Route::get('/fazenda/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote'])->name("fazenda.lote");
 Route::get('/quem-somos', [\App\Http\Controllers\SiteController::class, 'sobre'])->name("sobre");
 Route::get('/pre_to_main', [\App\Http\Controllers\ClienteController::class, 'pre_to_main']);
+Route::post('/senha/recuperar', [\App\Http\Controllers\ContaController::class, 'recuperar_senha'])->name("conta.senha.recuperar");
 
 //Blog
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
 Route::get('/noticia/{slug}', [\App\Http\Controllers\BlogController::class, 'noticia'])->name("noticia");
 
-//Carrinho
-Route::get('/carrinho/adicionar/{lote}',  [\App\Http\Controllers\CarrinhoController::class, 'adicionar'])->name("carrinho.adicionar");
-Route::get('/carrinho/deletar/{produto}',  [\App\Http\Controllers\CarrinhoController::class, 'deletar'])->name("carrinho.deletar");
-Route::get('/carrinho/limpa',  [\App\Http\Controllers\CarrinhoController::class, 'limpa'])->name("carrinho.limpa");
-Route::get('/carrinho',  [\App\Http\Controllers\CarrinhoController::class, 'carrinho'])->name("carrinho");
-Route::get('/carrinho/checkout',  [\App\Http\Controllers\CarrinhoController::class, 'checkout'])->name("carrinho.checkout");
-Route::post('/carrinho/concluir',  [\App\Http\Controllers\CarrinhoController::class, 'concluir'])->name("carrinho.concluir");
-Route::get('/carrinho/concluido',  [\App\Http\Controllers\CarrinhoController::class, 'concluido'])->name("carrinho.concluido");
+Route::middleware(['cliente_logado'])->group(function () {
+    Route::get('/carrinho/adicionar/{lote}',  [\App\Http\Controllers\CarrinhoController::class, 'adicionar'])->name("carrinho.adicionar");
+    Route::get('/carrinho/deletar/{produto}',  [\App\Http\Controllers\CarrinhoController::class, 'deletar'])->name("carrinho.deletar");
+    Route::get('/carrinho/limpa',  [\App\Http\Controllers\CarrinhoController::class, 'limpa'])->name("carrinho.limpa");
+    Route::get('/carrinho',  [\App\Http\Controllers\CarrinhoController::class, 'carrinho'])->name("carrinho");
+    Route::get('/carrinho/checkout',  [\App\Http\Controllers\CarrinhoController::class, 'checkout'])->name("carrinho.checkout");
+    Route::post('/carrinho/concluir',  [\App\Http\Controllers\CarrinhoController::class, 'concluir'])->name("carrinho.concluir");
+    Route::get('/carrinho/concluido',  [\App\Http\Controllers\CarrinhoController::class, 'concluido'])->name("carrinho.concluido");
+
+    Route::get('/conta', [\App\Http\Controllers\ContaController::class, 'index'])->name("conta.index");
+    Route::post('/conta/senha/alterar', [\App\Http\Controllers\ContaController::class, 'alterar_senha'])->name("conta.senha.alterar");
+    Route::get('/conta/boleto/download/{boleto}', [\App\Http\Controllers\ContaController::class, 'baixar_boleto'])->name("conta.boleto.download");
+
+});
+
 Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("contato");
 
 Route::get('/facebook/autenticar', [\App\Http\Controllers\FacebookController::class, 'autenticar'])->name("facebook.autenticar");
@@ -73,9 +81,6 @@ Route::get('/facebook/callback', [\App\Http\Controllers\FacebookController::clas
 Route::post('/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastrar'])->name("cadastro.salvar");
 Route::post('/cadastro/finalizar', [\App\Http\Controllers\ClienteController::class, 'cadastro_final'])->name("cadastro.finalizar");
 Route::post('/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
-
-Route::get('/conta', [\App\Http\Controllers\ContaController::class, 'index'])->name("conta.index");
-Route::get('/conta/boleto/download/{boleto}', [\App\Http\Controllers\ContaController::class, 'baixar_boleto'])->name("conta.boleto.download");
 
 Route::get('/painel/login', [\App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
 Route::post('/painel/logar', [\App\Http\Controllers\PainelController::class, 'logar'])->name("painel.logar");

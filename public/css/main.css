@@ -115,6 +115,13 @@ a:active {
     color: black !important;
 }
 
+.btn-amarelo {
+    background: #FEB000 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+    color: white;
+    border: 0px;
+}
+
 .btn-vermelho {
     background: #E8521B 0% 0% no-repeat padding-box;
     border-radius: 30px;
@@ -1742,4 +1749,8 @@ label {
 
 .MsoNormal > span{
     font-size: 1rem !important;
+}
+
+.label-cinza{
+    color: #8E8E8E !important;
 }

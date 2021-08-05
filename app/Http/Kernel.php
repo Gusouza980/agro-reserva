@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'cadastro_finalizado' => \App\Http\Middleware\CadastroFinalizado::class,
         'admin' => \App\Http\Middleware\PainelLogado::class,
         'fazendeiro' => \App\Http\Middleware\FazendeiroLogado::class,
+        'cliente_logado' => \App\Http\Middleware\ClienteLogado::class,
     ];
 }
