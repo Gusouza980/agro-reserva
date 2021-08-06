@@ -39,8 +39,8 @@
                         </div>
                     </div>
                     @if($cliente->compras->count() > 0)
-                        <div class="row">
-                            <div class="col-12">
+                        <div class="row mt-5">
+                            <div class="col-12 d-none d-lg-block">
                                 @foreach($cliente->compras as $venda)
                                     <table class="table">
                                         <tbody>
@@ -58,6 +58,37 @@
                                                 <td style="vertical-align: middle;">{{$venda->parcelas}}x de R${{number_format($venda->valor_parcela, 2, ",", ".")}}</td>
                                                 <td style="vertical-align: middle;"><b>Total:</b> R${{number_format($venda->total, 2, ",", ".")}}</td>
                                                 <td style="vertical-align: middle; text-align: right;"><a href="{{route('conta.reserva', ['venda' => $venda])}}"><i class="fa fa-plus ver_mais cpointer" style="color: #E65454" aria-hidden="true"></i></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                @endforeach
+                            </div>
+                            <div class="col-12 d-lg-none">
+                                @foreach($cliente->compras as $venda)
+                                    <table class="table" style="vertical-align: middle; padding: 0px; box-shadow: 2px 2px 5px rgba(0,0,0, 0.2);">
+                                        <thead class="text-center" style="background-color: #E8521B; border: 0px; color: white; font-size: 15px; line-height: 15px; height: 40px;">
+                                            <th><b>{{date("d/m/Y H:i:s", strtotime($venda->created_at))}}</b></th>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="text-center">
+                                                <td style="vertical-align: middle;">
+                                                    @if($venda->situacao == 0)
+                                                        <button class="btn btn-secondary" style="border-radius: 50px;"> Em negociação</button>
+                                                    @elseif($venda->situacao == 1)
+                                                        <button class="btn btn-primary"> Pagamento Confirmado</button>
+                                                    @else
+                                                        <button class="btn btn-danger"> Cancelada</button>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center">
+                                                <td style="vertical-align: middle;">{{$venda->parcelas}}x de R${{number_format($venda->valor_parcela, 2, ",", ".")}}</td>
+                                            </tr>
+                                            <tr class="text-center">
+                                                <td style="vertical-align: middle;"><b>Total:</b> R${{number_format($venda->total, 2, ",", ".")}}</td>
+                                            </tr>
+                                            <tr class="text-center">
+                                                <td style="vertical-align: middle;"><a href="{{route('conta.reserva', ['venda' => $venda])}}" style="color: #E8521B !important;">Ver mais</a></td>
                                             </tr>
                                         </tbody>
                                     </table>

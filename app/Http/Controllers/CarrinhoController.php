@@ -141,7 +141,9 @@ class CarrinhoController extends Controller
         $total_compra = $carrinho->total - $valor_desconto + $valor_comissao;
 
         $venda->total = $total_compra;
-        $venda->valor_parcela = $venda->total / $parcelas;
+        $venda->desconto = $valor_desconto;
+        $venda->comissao = $valor_comissao;
+        $venda->valor_parcela = ($carrinho->total - $valor_desconto) / $parcelas;
         $venda->tipo = 1;
         $venda->save();
 

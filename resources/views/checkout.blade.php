@@ -45,7 +45,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <b>Frete:</b> Consultar com a transportadora
+                            <b>Frete:</b> Retirada na Fazenda
                         </div>
                     </div>
                 </div>
@@ -55,18 +55,26 @@
                             <b>CONDIÇÕES:</b>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-4">
                         <div class="col-12">
-                            <b>À VISTA: 12% de desconto</b>
+                            <b>À VISTA: 12% de desconto</b><br>
+                            <small>*8% de desconto pela fazenda e 4% de desconto da comissão Agro Reserva.</small>
                         </div>
                     </div>
+                    <hr>
                     <div class="row">
                         <div class="col-12">
-                            <b>ATÉ 4x: 8% de desconto</b>
+                            <b>ATÉ 4x: 8% de desconto</b><br>
+                            *6% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.
                         </div>
                     </div>
                 </div>
                 <div class="container-fluid px-0 mt-4">
+                    <div class="row">
+                        <div class="col-12 mb-2">
+                            <small class="text-info">O pagamento da primeira parcela é sempre a vista.</small>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
@@ -92,21 +100,26 @@
                             <b>VALOR DO PEDIDO:</b> R${{number_format($carrinho->total, 2, ",", ".")}}
                         </div>
                     </div>
+                    <hr>
                     <div class="row">
                         <div class="col-12">
                             <b>DESCONTOS:</b> <span id="valor-desconto"></span>
                         </div>
                     </div>
+                    <hr>
                     <div class="row">
-                        <div class="col-12">
-                            <b>COMISSÃO AGRO RESERVA:</b> <span id="valor-comissao"></span>
+                        <div class="col-12" style="font-size: 14px;">
+                            <b>COMISSÃO AGRO RESERVA (À VISTA):</b> <span id="valor-comissao"></span>
                         </div>
                     </div>
+                    <hr>         
                     <div class="row">
                         <div class="col-12">
                             <b>VALOR FINAL:</b> <span id="valor-final"></span>
                         </div>
                     </div>
+                    
+                    <hr>
                 </div>
 
                 
@@ -131,7 +144,7 @@
                             <input type="hidden" name="parcelas" id="parcelas-h">
                             <input type="hidden" name="assessor" id="assessor-h">
                         </form>
-                        <button class="btn btn-vermelho px-4" id="btn-finalizar">Finalizar com Consultor</button>
+                        <button class="btn btn-vermelho px-4" id="btn-finalizar">Finalizar Reserva</button>
                     </div>
                 </div>
             </div>
@@ -157,24 +170,25 @@
                         var desconto = 0;
                     }
 
-                    
+                    var parcelas = parseInt($("select[name='parcelamento']").val());
                     var total_carrinho = parseFloat({!! $carrinho->total !!});
                     var valor_desconto = total_carrinho * desconto / 100;
                     var valor_comissao = total_carrinho * comissao / 100;
     
                     var total_compra = total_carrinho - valor_desconto + valor_comissao;
+
                     $("#valor-desconto").html("R$" + parseFloat(valor_desconto.toFixed(2)).toLocaleString('pt-BR', {
                         currency: 'BRL',
                         minimumFractionDigits: 2
-                      }));
+                    }));
                     $("#valor-comissao").html("R$" + parseFloat(valor_comissao.toFixed(2)).toLocaleString('pt-BR', {
                         currency: 'BRL',
                         minimumFractionDigits: 2
-                      }));
+                    }));
                     $("#valor-final").html("R$" + parseFloat(total_compra.toFixed(2)).toLocaleString('pt-BR', {
                         currency: 'BRL',
                         minimumFractionDigits: 2
-                      }));
+                    }));
     
                     $("#resumo").slideDown(500);
                 });

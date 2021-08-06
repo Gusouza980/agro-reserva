@@ -42,37 +42,43 @@
             <h4>Resumo</h4>
             <hr>
             <div class="container-fluid px-0">
-                <div class="row mb-3">
+                <div class="row">
                     <div class="col-12">
                         <b>Situação:</b> {{config("globals.situacoes")[$venda->situacao]}}
                     </div>
                 </div>
+                <hr>
                 <div class="row">
                     <div class="col-12">
                         <b>Total:</b> R${{number_format($venda->carrinho->total, 2, ",", ".")}}
                     </div>
                 </div>
+                <hr>
                 <div class="row">
                     <div class="col-12">
                         <b>Frete:</b> Retirada na fazenda
                     </div>
                 </div>
+                <hr>
                 <div class="row">
                     <div class="col-12">
                         <b>Parcelas:</b> {{$venda->parcelas}}x de {{number_format($venda->valor_parcela, 2, ",", ".")}}
                     </div>
                 </div>
+                <hr>
                 <div class="row">
                     <div class="col-12">
-                        <b>Descontos:</b> R${{number_format($venda->carrinho->total * $venda->desconto / 100, 2, ",", ".")}}
+                        <b>Descontos:</b> R${{number_format($venda->desconto, 2, ",", ".")}}
                     </div>
                 </div>
+                <hr>
                 <div class="row">
                     <div class="col-12">
-                        <b>Comissão:</b> R${{number_format($venda->carrinho->total * $venda->comissao / 100, 2, ",", ".")}}
+                        <b>Comissão (À vista):</b> R${{number_format($venda->comissao, 2, ",", ".")}}
                     </div>
                 </div>
-                <div class="row">
+                <hr>
+                <div class="row" style="backgorund-color: #F3F3F3">
                     <div class="col-12">
                         <b>Valor Final:</b> R${{number_format($venda->total, 2, ",", ".")}}
                     </div>
