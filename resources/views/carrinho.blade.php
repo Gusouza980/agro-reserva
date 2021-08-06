@@ -16,11 +16,11 @@
                 </div>
             </div>
         @endif
-        <div class="row">
+        <div class="row d-none d-lg-block">
             <div class="col-12 text-center">
                 @if($carrinho->produtos->count() > 0)
                     <table class="table" style="vertical-align: middle; padding: 0px; box-shadow: 2px 2px 5px rgba(0,0,0, 0.2);">
-                        <thead class="" style="background-color: #E65454; border: 0px; color: white; font-size: 15px; line-height: 15px; height: 40px;">
+                        <thead class="" style="background-color: #E8521B; border: 0px; color: white; font-size: 15px; line-height: 15px; height: 40px;">
                             <tr>
                                 <th class="text-center" scope="col">Produto</th>
                                 <th class="text-center" scope="col"></th>
@@ -52,9 +52,51 @@
                 @endif
             </div>
         </div>
+        <div class="row d-lg-none">
+            <div class="col-12">
+                @if($carrinho->produtos->count() > 0)
+                    @foreach($carrinho->produtos as $produto)
+                    <table class="table" style="vertical-align: middle; padding: 0px; box-shadow: 2px 2px 5px rgba(0,0,0, 0.2);">
+                        <thead class="" style="background-color: #E8521B; border: 0px; color: white; font-size: 15px; line-height: 15px; height: 40px;">
+                            <tr>
+                                <th class="text-center" scope="col">LOTE {{$produto->lote->numero}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr class="text-center">
+                                    <td>{{$produto->lote->nome}}</td>
+                                </tr>
+                                <tr class="text-center">
+                                    <th class="px-0 py-0" scope="row" style="width: 20%;">
+                                        <img src="{{asset($produto->lote->preview)}}" alt="" class="w-100">
+                                    </th>
+                                </tr>
+                                <tr class="text-center">
+                                    <td style="vertical-align: middle; width: 50%;">
+                                        <p><b>LOTE {{$produto->lote->numero}}: {{$produto->lote->nome}}</b></p>
+                                        <p class="mt-n3"><b>Registro:</b> {{$produto->lote->registro}}</p>
+                                        <p class="mt-n3"><b>Raça:</b> {{$produto->lote->raca->nome}}</p>
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td class="text-center" style="vertical-align: middle;">
+                                        <b>${{number_format($produto->total, 2, ",", ".")}}</b>
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td class="text-center" style="vertical-align: middle;"><a href="{{route('carrinho.deletar', ['produto' => $produto])}}" style="color: #E65454 !important;">Remover</a></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    @endforeach
+                @else
+                    <h4>Seu carrinho está vazio</h4>
+                @endif
+            </div>
+        </div>
         <div class="row">
             <div class="col-12 text-right">
-                <a href="{{route('carrinho.checkout')}}"><button class="btn btn-vermelho btn-hover-preto">Prosseguir ao Checkout</button></a>
+                <a href="{{route('carrinho.checkout')}}"><button class="btn btn-vermelho btn-hover-preto px-3">Continuar</button></a>
             </div>
         </div>
         <hr>

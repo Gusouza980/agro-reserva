@@ -59,13 +59,13 @@
             <div id="pre-cadastro" @if(isset($finalizar)) style="display: none;" @endif>
                 <div class="row">
                     <div class="col-12" id="caixa-cadastro-section1-text">
-                        <h1>Você está no pré-cadastro Agro Reserva. Caso já tenha realizado o pré cadastro com <u>e-mail</u> e <u>senha</u>, <a class="text-primary cpointer" id="botao-pular-pre-cadastro">clique aqui</a> para prosseguir ao cadastro completo.</h1>
+                        <h1>Você está no pré-cadastro Agro Reserva. Caso já tenha realizado o pré-cadastro com <u>e-mail</u> e <u>senha</u>, <a class="text-primary cpointer" id="botao-pular-pre-cadastro">clique aqui</a> para prosseguir ao cadastro completo.</h1>
                         <br>
                         <p>
                            É uma honra te receber aqui. Agora que você está dentro do novo movimento de compra e venda de animais de alto padrão, prossiga nessa jornada.
                         </p>
                         <p>
-                            Para você seguir evoluindo seu rebanho, investindo ou vendendo na nossa plataforma, <b>preencha o formulário de cadastro completo com total segurança</b> e respeito pelas suas informações.<br>
+                            <b>Preencha o formulário de cadastro completo com total segurança</b> e respeito pelas suas informações.<br>
                             Uma vez preenchidos, os dados serão revisados e validados pelo nosso departamento de cadastro. <b>Rápido, prático e seguro</b>.
                         </p>
                         <p>
@@ -80,9 +80,6 @@
                         <br>
                         <p>
                             <b>Email:</b> <a href="mailto:cadastro@agroreserva.com.br">cadastro@agroreserva.com.br</a>
-                        </p>
-                        <p>
-                            <b>End.:</b> Av. Getúlio Vargas, 1116, Centro, CEP 38400-435 – Uberlândia/MG
                         </p>
                     </div>
                 </div>
@@ -149,7 +146,7 @@
                                 <div class="col-12 col-lg-6 pr-3 mt-4">
                                     <div class="form-group">
                                         <label for="">E-mail</label>
-                                        <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="">
+                                        <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['email']}}"  @endif placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6 pr-3 mt-4">
@@ -178,7 +175,7 @@
                                     <div class="col-12 col-lg-3">
                                         <div class="form-check form-check-inline mt-2">
                                             <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Ângus">
-                                            <label class="form-check-label ml-3 label-cinza">Ângus</label>
+                                            <label class="form-check-label ml-3 label-cinza">Angus</label>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-3">
@@ -299,7 +296,7 @@
             </div>
 
             <div id="cadastro-completo">
-                <form id="form-cadastro-completo" action="" style="display: none;">
+                <form id="form-cadastro-completo" action="" @if(!session()->get("cliente")) style="display: none;" @endif>
                     <div class="container-fluid mt-5" id="container-cadastro-completo" >
                         <div class="row">
                             <div class="col-12 text-center" id="container-cadastro-completo-titulo">
@@ -320,7 +317,7 @@
                                         <div class="col-12 col-lg-6 pr-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">Nome Completo</label>
-                                                <input type="text" class="form-control" name="nome_completo" id="nome_completo" aria-describedby="helpId" placeholder="">
+                                                <input type="text" class="form-control" name="nome_completo" id="nome_completo" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['nome_dono']}}" @endif placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pl-3 mt-4">
@@ -551,7 +548,7 @@
                                     <div id="gif-ajax" class="text-center" style="display: none;">
                                         <img id="ajax-loading" src="{{asset('imagens/gif_relogio.gif')}}" style="width: 60px;" alt="">
                                     </div>
-                                    <div id="botoes-finalizar" style="display: none;">
+                                    <div id="botoes-finalizar" @if(!session()->get("cliente")) style="display: none;" @endif>
                                         <button type="submit" id="btn-finalizar">Finalizar cadastro</button>
                                     </div>
                                     <div id="botoes-voltar" style="display: none;">
@@ -565,7 +562,7 @@
                 
             </div>
             
-            <div class="container-fluid" id="cadastro-completo-direto"  @if(!isset($finalizar)) style="display:none;" @endif>
+            <div class="container-fluid" id="cadastro-completo-direto"  @if(!isset($finalizar) || session()->get("cliente")) style="display:none;" @endif>
                 <form id="form-login" action="">
                     <div class="container-fluid mt-5" id="cadastro-completo-direto-email">
                         <div class="row justify-content-center align-items-center">

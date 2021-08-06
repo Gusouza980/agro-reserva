@@ -127,10 +127,10 @@ class CarrinhoController extends Controller
 
         if($parcelas == 1){
             $comissao = 0;
-            $desconto = 12;
+            $desconto = 8;
         }else if($parcelas < 5){
             $comissao = 2;
-            $desconto = 8;
+            $desconto = 4;
         }else{
             $comissao = 4;
             $desconto = 0;
@@ -141,7 +141,9 @@ class CarrinhoController extends Controller
         $total_compra = $carrinho->total - $valor_desconto + $valor_comissao;
 
         $venda->total = $total_compra;
-        $venda->valor_parcela = $venda->total / $parcelas;
+        $venda->desconto = $valor_desconto;
+        $venda->comissao = $valor_comissao;
+        $venda->valor_parcela = ($carrinho->total - $valor_desconto) / $parcelas;
         $venda->tipo = 1;
         $venda->save();
 

@@ -18,8 +18,8 @@ class CreateVendasTable extends Migration
             $table->unsignedBigInteger("carrinho_id")->nullable();
             $table->unsignedBigInteger("cliente_id");
             $table->unsignedBigInteger("assessor_id")->nullable();
-            $table->unsignedBigInteger("lote_id");
-            $table->unsignedBigInteger("fazenda_id");
+            $table->unsignedBigInteger("lote_id")->nullable();
+            $table->unsignedBigInteger("fazenda_id")->nullable();
             $table->string("codigo", 11)->nullable();
 
             // 0 => Boleto
