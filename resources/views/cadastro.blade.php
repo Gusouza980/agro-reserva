@@ -175,7 +175,7 @@
                                     <div class="col-12 col-lg-3">
                                         <div class="form-check form-check-inline mt-2">
                                             <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Ângus">
-                                            <label class="form-check-label ml-3 label-cinza">Ângus</label>
+                                            <label class="form-check-label ml-3 label-cinza">Angus</label>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-3">
