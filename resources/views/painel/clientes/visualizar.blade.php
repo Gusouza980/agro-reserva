@@ -65,60 +65,57 @@
                         <form action="{{route('painel.cliente.dados.salvar', ['cliente' => $cliente])}}" method="POST">
                             @csrf
                             <div class="row mb-3">
-                                <div class="form-group col-12 col-lg-6 form-conta">
+                                <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                     <label for="nome_dono">Nome</label>
                                     <input type="text"
                                     class="form-control" name="nome_dono" id="nome_dono" aria-describedby="helpId" value="{{$cliente->nome_dono}}" >
                                 </div>
-                                <div class="form-group col-12 col-lg-6 form-conta">
+                                <div class="form-group col-12 col-lg-6 form-conta mb-3">
+                                    <label for="nome_fazenda">Fazenda</label>
+                                    <input type="text"
+                                    class="form-control" name="nome_fazenda" id="nome_fazenda" aria-describedby="helpId" value="{{$cliente->nome_fazenda}}" >
+                                </div>
+                                <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                     <label for="email">E-mail</label>
                                     <input type="email"
                                         class="form-control" name="email" id="email" aria-describedby="helpId" value="{{$cliente->email}}" >
                                 </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="form-group col-12 col-lg-6 form-conta">
+                                <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                     <label for="nascimento">Data de Nascimento</label>
                                     <input type="date"
                                     class="form-control" name="nascimento" id="nascimento" aria-describedby="helpId" value="{{$cliente->nascimento}}" >
                                 </div>
-                                <div class="form-group col-12 col-lg-6 form-conta">
+                                <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                     <label for="ultimo_acesso">Último Acesso</label>
                                     <input type="date"
                                         class="form-control" name="ultimo_acesso" id="ultimo_acesso" aria-describedby="helpId" value="{{$cliente->ultimo_acesso}}" readonly>
                                 </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="form-group col-12 col-lg-6 form-conta">
+                                <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                     <label for="documento">Documento Cadastrado</label>
                                     <input type="text"
                                     class="form-control" name="documento" id="documento" aria-describedby="helpId" value="{{$cliente->documento}}" >
                                 </div>
-                                <div class="form-group col-12 col-lg-6 form-conta">
+                                <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                     <label for="rg">RG</label>
                                     <input type="text"
                                         class="form-control" name="rg" id="rg" aria-describedby="helpId" value="{{$cliente->rg}}" >
                                 </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="form-group col-12 col-lg-6 form-conta">
+                                <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                     <label for="cpf">CPF</label>
                                     <input type="text"
                                     class="form-control" name="cpf" id="cpf" aria-describedby="helpId" value="{{$cliente->cpf}}">
                                 </div>
-                                <div class="form-group col-12 col-lg-6 form-conta">
+                                <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                     <label for="whatsapp">Whatsapp</label>
                                     <input type="text"
                                         class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value="{{$cliente->whatsapp}}" >
                                     </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="form-group col-12 col-lg-6 form-conta">
+                                <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                     <label for="interesse">Interesse</label>
                                     <input type="text"
                                     class="form-control" name="interesse" id="interesse" aria-describedby="helpId" value="{{$cliente->interesses}}" >
                                 </div>
-                                <div class="form-group col-12 col-lg-6 form-conta">
+                                <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                     <label for="inscricao_produtor_rural">Inscrição de Produtor Rural</label>
                                     <input type="text"
                                     class="form-control" name="inscricao_produtor_rural" id="inscricao_produtor_rural" aria-describedby="helpId" value="{{$cliente->inscricao_produtor_rural}}">
@@ -130,31 +127,31 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <div class="form-group col-12 col-lg-7 form-conta">
+                                <div class="form-group col-12 col-lg-7 form-conta mb-3">
                                     <label for="rua">Rua</label>
                                     <input type="text"
                                     class="form-control" name="rua" id="rua" aria-describedby="helpId" value="{{$cliente->rua}}" >
                                 </div>
-                                <div class="form-group col-5 col-lg-2 form-conta">
+                                <div class="form-group col-5 col-lg-2 form-conta mb-3">
                                     <label for="numero">Número</label>
                                     <input type="text"
                                         class="form-control" name="numero" id="numero" aria-describedby="helpId" value="{{$cliente->numero}}" >
                                 </div>
-                                <div class="form-group col-7 col-lg-3 form-conta">
+                                <div class="form-group col-7 col-lg-3 form-conta mb-3">
                                     <label for="bairro">Bairro</label>
                                     <input type="text"
                                         class="form-control" name="bairro" id="bairro" aria-describedby="helpId" value="{{$cliente->bairro}}">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <div class="form-group col-12 form-conta">
+                                <div class="form-group col-12 form-conta mb-3">
                                     <label for="complemento">Complemento</label>
                                     <input type="text"
                                         class="form-control" name="complemento" id="complemento" aria-describedby="helpId" value="{{$cliente->complemento}}">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <div class="form-group col-12 col-lg-3 form-conta">
+                                <div class="form-group col-12 col-lg-3 form-conta mb-3">
                                     <label for="estado">Estado</label>
                                     <select class="form-control" name="estado" id="" >
                                         @foreach(\App\Models\Estado::all() as $estado)
@@ -162,7 +159,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group col-12 col-lg-4 form-conta">
+                                <div class="form-group col-12 col-lg-4 form-conta mb-3">
                                     <label for="cidade">Cidade</label>
                                     <select class="form-control" name="cidade" >
                                         @foreach(\App\Models\Cidade::where("id_estado", $cliente->estado)->get() as $cidade)
@@ -170,7 +167,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group col-7 col-lg-3 form-conta">
+                                <div class="form-group col-7 col-lg-3 form-conta mb-3">
                                     <label for="cep">CEP</label>
                                     <input type="text"
                                         class="form-control" name="cep" id="cep" aria-describedby="helpId" value="{{$cliente->cep}}" >
