@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 
 class Email{
     
-    public static function enviar($file, $assunto, $destinatario, $admin = false){
+    public static function enviar($file, $assunto, $destinatario, $admin = false, $attach = null){
         $mail = new PHPMailer(true);
 
         try {
@@ -32,6 +32,9 @@ class Email{
             $mail->addReplyTo('naoresponsa.agroreserva@gmail.com', 'Contato - Agro Reserva');
             // print_r($_FILES['file']); exit;
 
+            if($attach){
+                $mail->AddAttachment($attach, "comprovante_de_compra.pdf");
+            }
 
             $mail->isHTML(true); // Set email format to HTML
 

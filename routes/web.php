@@ -38,6 +38,9 @@ Route::get('/sair', function () {
     return redirect()->route("index");
 })->name("sair");
 
+
+Route::get('/teste-email', [\App\Http\Controllers\ContaController::class, 'teste']);
+
 Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("index");
 Route::get('/login', [\App\Http\Controllers\SiteController::class, 'login'])->name("login");
 Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");
@@ -70,6 +73,7 @@ Route::middleware(['cliente_logado'])->group(function () {
 
     Route::get('/conta', [\App\Http\Controllers\ContaController::class, 'index'])->name("conta.index");
     Route::get('/conta/reserva/{venda}', [\App\Http\Controllers\ContaController::class, 'reserva'])->name("conta.reserva");
+    Route::get('/conta/reserva/comprovante/{venda}', [\App\Http\Controllers\ContaController::class, 'comprovante_reserva'])->name("conta.reserva.comprovante");
     Route::post('/conta/senha/alterar', [\App\Http\Controllers\ContaController::class, 'alterar_senha'])->name("conta.senha.alterar");
     Route::get('/conta/boleto/download/{boleto}', [\App\Http\Controllers\ContaController::class, 'baixar_boleto'])->name("conta.boleto.download");
 

@@ -288,16 +288,16 @@
                                 À vista ou em até 10x sem juros no boleto de titularidade da fazenda e do comprador.
                             </p>
                             <p>
-                                Pague <b>À VISTA</b> e ganhe <b>12% de desconto</b>*.
+                                Pague <b>À VISTA</b> e ganhe <b>10% de desconto</b>*.
                             </p>
                             <ul class="mt-3">
-                                <li class="" style="list-style: none; font-size: 14px;">*8% de desconto pela fazenda e 4% de desconto da comissão Agro Reserva.</li>
+                                <li class="" style="list-style: none; font-size: 14px;">*6% de desconto pela fazenda e 4% de desconto da comissão Agro Reserva.</li>
                             </ul>
                             <p>
-                                Pague em <b>ATÉ 4x</b> e ganhe <b>6% de desconto</b>*
+                                Pague em <b>ATÉ 4x</b> e ganhe <b>5% de desconto</b>*
                             </p>
                             <ul class="mt-3">
-                                <li class="" style="list-style: none; font-size: 14px;">*4% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.</li>
+                                <li class="" style="list-style: none; font-size: 14px;">*3% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.</li>
                             </ul>
                             <p style="font-size: 12px;">Os valores referentes à forma de pagamento são calculados automaticamente no processo de finalização da compra.</p>
                         </div>

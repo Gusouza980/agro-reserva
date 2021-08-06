@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use App\Classes\Email;
 use Illuminate\Support\Str;
+use PDF;
 
 class ContaController extends Controller
 {
@@ -21,6 +22,15 @@ class ContaController extends Controller
         }else{
             return redirect()->route("index");
         }
+    }
+
+    public function teste(){
+        $file = file_get_contents('templates/emails/confirmar-compra.html');
+        if(Email::enviar($file, "Confirmação de Compra", "gusouza980@gmail.com")){
+            echo "deu bom";
+        }else{
+            echo "deu ruim";
+        } 
     }
 
     public function alterar_senha(Request $request){
@@ -66,5 +76,11 @@ class ContaController extends Controller
 
     public function reserva(Venda $venda){
         return view("cliente.reserva", ["venda" => $venda]);
+    }
+
+    public function comprovante_reserva(Venda $venda){
+        $data = ["venda" => $venda];
+        $pdf = PDF::loadView('cliente.comprovante', $data);
+        return $pdf->stream();
     }
 }

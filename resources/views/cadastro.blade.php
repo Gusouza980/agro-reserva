@@ -975,15 +975,16 @@
                 return false;
             }
 
-            if ($('input[name=cidade]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=cidade]").offset().top - 200 }, 1000);
-                $('input[name=cidade]').addClass("erro-validacao");
+            if (!$('select[name=cidade] option:selected').val()) {
+                $('html, body').animate({ scrollTop: $("select[name=estado]").offset().top - 200 }, 1000);
+                $('select[name=estado]').addClass("erro-validacao");
                 return false;
             }
 
-            if ($('input[name=estado]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=estado]").offset().top - 200 }, 1000);
-                $('input[name=estado]').addClass("erro-validacao");
+            if ($('select[name=estado] option:selected').val() == "0") {
+                console.log("entrou");
+                $('html, body').animate({ scrollTop: $("select[name=estado] ").offset().top - 200 }, 1000);
+                $('select[name=estado]').addClass("erro-validacao");
                 return false;
             }
 

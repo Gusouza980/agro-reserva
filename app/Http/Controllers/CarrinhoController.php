@@ -7,6 +7,9 @@ use App\Models\Lote;
 use App\Models\Carrinho;
 use App\Models\CarrinhoProduto;
 use App\Models\Venda;
+use App\Classes\Email;
+use Illuminate\Support\Str;
+use PDF;
 
 class CarrinhoController extends Controller
 {
@@ -128,10 +131,10 @@ class CarrinhoController extends Controller
 
         if($parcelas == 1){
             $comissao = 0;
-            $desconto = 8;
+            $desconto = 6;
         }else if($parcelas < 5){
             $comissao = 2;
-            $desconto = 4;
+            $desconto = 3;
         }else{
             $comissao = 4;
             $desconto = 0;
@@ -186,6 +189,11 @@ class CarrinhoController extends Controller
         
         $carrinho->aberto = false;
         $carrinho->save();
+        $data = ["venda" => $venda];
+        $pdf = PDF::loadView('cliente.comprovante', $data);
+        $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
+        $file = file_get_contents('templates/emails/confirmar-compra.html');
+        Email::enviar($file, "Confirmação de Compra", session()->get("cliente")["email"], false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
         session()->forget("carrinho");
         session()->flash("reserva_finalizada");
         return redirect()->route('conta.index');

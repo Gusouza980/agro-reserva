@@ -7,9 +7,12 @@
             <a href="{{route('conta.index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 reserva-resumo-titulo">
+    <div class="row justify-content-between">
+        <div class="reserva-resumo-titulo">
             <h1>Resumo da reserva: #{{$venda->codigo}}</h1>
+        </div>
+        <div>
+            <a href="{{route('conta.reserva.comprovante', ['venda' => $venda])}}" target="_blank" class="link-download-catalogo"><i class="fas fa-file-download mr-3"></i>Baixar Comprovante</a>
         </div>
     </div>
     <div class="row mt-3">

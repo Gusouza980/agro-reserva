@@ -363,6 +363,12 @@
                             <p>Você também poderá acompanhar o status da sua compra através do <b>portal do cliente</b>, disponível na plataforma.</p>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <button class="btn btn-laranja px-4 py-2" onclick="fechaModalVendaFinalizada()">Continuar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
