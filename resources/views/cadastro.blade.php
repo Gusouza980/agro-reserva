@@ -149,7 +149,7 @@
                                 <div class="col-12 col-lg-6 pr-3 mt-4">
                                     <div class="form-group">
                                         <label for="">E-mail</label>
-                                        <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="">
+                                        <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['email']}}"  @endif placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6 pr-3 mt-4">
@@ -299,7 +299,7 @@
             </div>
 
             <div id="cadastro-completo">
-                <form id="form-cadastro-completo" action="" style="display: none;">
+                <form id="form-cadastro-completo" action="" @if(!session()->get("cliente")) style="display: none;" @endif>
                     <div class="container-fluid mt-5" id="container-cadastro-completo" >
                         <div class="row">
                             <div class="col-12 text-center" id="container-cadastro-completo-titulo">
@@ -320,7 +320,7 @@
                                         <div class="col-12 col-lg-6 pr-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">Nome Completo</label>
-                                                <input type="text" class="form-control" name="nome_completo" id="nome_completo" aria-describedby="helpId" placeholder="">
+                                                <input type="text" class="form-control" name="nome_completo" id="nome_completo" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['nome_dono']}}" @endif placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pl-3 mt-4">
@@ -551,7 +551,7 @@
                                     <div id="gif-ajax" class="text-center" style="display: none;">
                                         <img id="ajax-loading" src="{{asset('imagens/gif_relogio.gif')}}" style="width: 60px;" alt="">
                                     </div>
-                                    <div id="botoes-finalizar" style="display: none;">
+                                    <div id="botoes-finalizar" @if(!session()->get("cliente")) style="display: none;" @endif>
                                         <button type="submit" id="btn-finalizar">Finalizar cadastro</button>
                                     </div>
                                     <div id="botoes-voltar" style="display: none;">
@@ -565,7 +565,7 @@
                 
             </div>
             
-            <div class="container-fluid" id="cadastro-completo-direto"  @if(!isset($finalizar)) style="display:none;" @endif>
+            <div class="container-fluid" id="cadastro-completo-direto"  @if(!isset($finalizar) || session()->get("cliente")) style="display:none;" @endif>
                 <form id="form-login" action="">
                     <div class="container-fluid mt-5" id="cadastro-completo-direto-email">
                         <div class="row justify-content-center align-items-center">

@@ -115,6 +115,9 @@ class ClienteController extends Controller
         $cliente->referencia_coorporativa2 = $request->referencia_coorporativa2;
         $cliente->referencia_coorporativa2_tel = $request->referencia_coorporativa2_tel;
         $cliente->finalizado = true;
+
+        session()->forget("cliente");
+        session(["cliente" => $cliente->toArray()]);
         
         $cliente->save();
 

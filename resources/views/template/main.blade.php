@@ -147,7 +147,7 @@
 					<span class="text-nav-header">
                         {{--  @if($_SESSION["userid"])  --}}
                         @if(session()->get("cliente"))
-                            Bem vindo @if(isset(session()->get("cliente")["nome_dono"])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif
+                            {{--  Bem vindo @if(isset(session()->get("cliente")["nome_dono"])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif  --}}
                             @if(!session()->get("cliente")["finalizado"])
                             <span class="ml-3 text-nav-header"><a href="{{route('cadastro.finalizar')}}"><span style="border-bottom: 2px solid #FEB000;">Fin</span>alizar Cadastro</a></span> </span>
                             @endif
