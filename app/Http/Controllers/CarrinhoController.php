@@ -105,7 +105,7 @@ class CarrinhoController extends Controller
         foreach($carrinho->produtos as $produto){
             if($produto->lote->reservado){
                 $carrinho->total -= $produto->lote->preco;
-                $produto->delte();
+                $produto->delete();
                 $reservados = true;
             }
         }

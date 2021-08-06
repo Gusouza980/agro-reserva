@@ -326,23 +326,27 @@
     </div>
 
     <div class="modal fade" id="modalVendaFinalizada" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-body modal-body-sucesso text-center py-4">
+                <div class="modal-body py-4">
                     <div class="row">
-                        <div class="col-12 conteudo-modal">
-                            <h3>Parabéns <span id="nome_modal">{{$cliente->nome_dono}}</span>.</h3>
+                        <div class="col-12 text-center modal-venda-finalizada">
+                            <img src="{{asset('imagens/icone_cadastro.png')}}" style="width: 100px;" alt="Ícone de Cadastro">
+                        </div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col-12 text-center modal-venda-finalizada">
+                            <h1>Sua compra foi realizada com sucesso!</h1>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 conteudo-modal">
-                            <span class="mt-2">Os lotes estão reservados para você ! Um de nossos consultores entrará em contato para finalizar a venda ou, caso deseje, pode entrar em contato com um de nossos consultores pelo botão abaixo.</span>
+                        <div class="col-12 text-left modal-venda-finalizada">
+                            <p>Você receberá por <b>e-mail</b> e <b>whatsapp</b> o comprovante da sua compra.</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 conteudo-modal">
-                            <button class="botao-confirma py-2 px-5 mt-4" onclick="fechaModalVendaFinalizada()">Continuar no site</button>
-                            <button class="botao-confirma py-2 px-5 mt-4" href="https://api.whatsapp.com/send?phone=5514981809051">Falar com um consultor</button>
+                        <div class="col-12 text-left modal-venda-finalizada">
+                            <p>Nosso time entrará em contato com todas as informações complementares, tais como:
                         </div>
                     </div>
                 </div>
@@ -404,13 +408,15 @@
             $(this).hide();
             $(".ver_menos[vid='"+vid+"']").parent().show();
         });
-
+        
         $(".ver_menos").click(function(){
             vid = $(this).attr("vid");
             $(".tabela_produtos[vid='"+vid+"']").slideUp("slow");
             $(this).parent().hide();
             $(".ver_mais[vid='"+vid+"']").show();
         });  --}}
+
+        $("#modalVendaFinalizada").modal("show");
 
         $(".link-card-conta").click(function(){
             var num = $(this).attr("num");

@@ -1772,3 +1772,9 @@ label {
     border: 0px;
     color: white;
 }
+
+.modal-venda-finalizada > h1{
+    color: #E8521B;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
