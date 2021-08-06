@@ -69,6 +69,7 @@ Route::middleware(['cliente_logado'])->group(function () {
     Route::get('/carrinho/concluido',  [\App\Http\Controllers\CarrinhoController::class, 'concluido'])->name("carrinho.concluido");
 
     Route::get('/conta', [\App\Http\Controllers\ContaController::class, 'index'])->name("conta.index");
+    Route::get('/conta/reserva/{venda}', [\App\Http\Controllers\ContaController::class, 'reserva'])->name("conta.reserva");
     Route::post('/conta/senha/alterar', [\App\Http\Controllers\ContaController::class, 'alterar_senha'])->name("conta.senha.alterar");
     Route::get('/conta/boleto/download/{boleto}', [\App\Http\Controllers\ContaController::class, 'baixar_boleto'])->name("conta.boleto.download");
 

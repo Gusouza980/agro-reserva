@@ -1754,3 +1754,21 @@ label {
 .label-cinza{
     color: #8E8E8E !important;
 }
+
+.reserva-resumo-titulo > h1{
+    color: #E9500E;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0px;
+}
+
+.btn-laranja{
+    border: 1px solid #E8521B !important;
+    background-color: #E8521B;
+    border-radius: 42px;
+    font-size: 18px;
+    font-weight: medium;
+    padding: 13px 48px;
+    border: 0px;
+    color: white;
+}

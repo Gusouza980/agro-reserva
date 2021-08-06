@@ -9,6 +9,10 @@ class Venda extends Model
 {
     use HasFactory;
 
+    public function assessor(){
+        return $this->belongsTo(Assessor::class);
+    }
+
     public function carrinho(){
         return $this->belongsTo(Carrinho::class);
     }

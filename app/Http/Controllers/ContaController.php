@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Boleto;
+use App\Models\Venda;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use App\Classes\Email;
@@ -61,5 +62,9 @@ class ContaController extends Controller
     
     public function baixar_boleto(Boleto $boleto){
         return Storage::download($boleto->caminho, $boleto->descricao . " " . date("d-m-Y", strtotime($boleto->validade)) . ".pdf");
+    }
+
+    public function reserva(Venda $venda){
+        return view("cliente.reserva", ["venda" => $venda]);
     }
 }

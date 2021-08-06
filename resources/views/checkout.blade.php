@@ -147,14 +147,17 @@
             $("select[name='parcelamento']").change(function(){
                 $("#resumo").slideUp(500, function(){
                     if(parseInt($("select[name='parcelamento']").val()) == 1){
+                        var comissao = 0;
                         var desconto = 12;
                     }else if(parseInt($("select[name='parcelamento']").val()) < 5 ){
+                        var comissao = 2;
                         var desconto = 8;
                     }else{
+                        var comissao = 4;
                         var desconto = 0;
                     }
 
-                    var comissao = 4;
+                    
                     var total_carrinho = parseFloat({!! $carrinho->total !!});
                     var valor_desconto = total_carrinho * desconto / 100;
                     var valor_comissao = total_carrinho * comissao / 100;
