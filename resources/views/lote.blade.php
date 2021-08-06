@@ -1,3 +1,7 @@
+@php
+    $cliente = \App\Models\Cliente::find(session()->get("cliente")["id"]);
+@endphp
+
 @extends('template.main')
 
 @section('metas')
@@ -48,7 +52,11 @@
                             {{--  <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível 06/08</button>  --}}
                             @if(!$lote->reservado)
                                 @if(session()->get("cliente"))
-                                    <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('carrinho.adicionar', ['lote' => $lote])}}" role="button">Comprar</a>
+                                    @if($cliente->aprovado)
+                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('carrinho.adicionar', ['lote' => $lote])}}" role="button">Comprar</a>
+                                    @else
+                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer" data-toggle="modal" data-target="#modalBloqueio" style="max-width:350px;" role="button">Comprar</a>
+                                    @endif
                                 @else
                                     <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('login')}}" role="button">Entre para comprar</a>
                                 @endif
@@ -361,6 +369,37 @@
                                 <li class="mt-2">Pague em até 04 parcelas e concederemos 50% de desconto na sua comissão.</li>
                                 <li class="mt-2">Pague em 05 parcelas ou mais e nós cobraremos apenas 4% de comissão.</li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalBloqueio" tabindex="-1" role="dialog" aria-labelledby="modalBloqueioTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 text-center text-red">
+                            <h4><b>Desculpe</b></h4>
+                        </div>
+                    </div>
+                    <div class="row px-4">
+                        <div class="col-12 text-left">
+                            <p>O seu cadastro <b>não está apto</b> a realizar compras nessa reserva. O mesmo pode estar em análise ou ter sido reprovado.</p>
+                            <p>Você pode consultar sua situação no seu painel de cliente ou falando com nosso consultor</p>
+                            <div class="row my-3">
+                                <div class="col-12 text-center">
+                                    <a href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank" class="btn btn-laranja px-4 py-2">Falar com consultor</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -16,6 +16,10 @@ class CarrinhoController extends Controller
     //
 
     public function carrinho(){
+        $cliente = Cliente::find(session()->get("cliente")["id"]);
+        if(!$cliente->aprovado){
+            return redirect()->route("index");
+        }
         $carrinho = Carrinho::find(session()->get("carrinho"));
         if(!$carrinho){
             return redirect()->route("index");
@@ -34,6 +38,10 @@ class CarrinhoController extends Controller
     }
 
     public function adicionar(Lote $lote){
+        $cliente = Cliente::find(session()->get("cliente")["id"]);
+        if(!$cliente->aprovado){
+            return redirect()->route("index");
+        }
         if(session()->get("carrinho")){
             $carrinho = Carrinho::find(session()->get("carrinho"));
         }else{
@@ -92,6 +100,10 @@ class CarrinhoController extends Controller
     }
 
     public function checkout(){
+        $cliente = Cliente::find(session()->get("cliente")["id"]);
+        if(!$cliente->aprovado){
+            return redirect()->route("index");
+        }
         $carrinho = Carrinho::find(session()->get("carrinho"));
         if(!$carrinho){
             return redirect()->route("index");
@@ -102,7 +114,10 @@ class CarrinhoController extends Controller
     public function concluir(Request $request){
     
         // round($produto->lote->preco / $i, 2);
-
+        $cliente = Cliente::find(session()->get("cliente")["id"]);
+        if(!$cliente->aprovado){
+            return redirect()->route("index");
+        }
         $carrinho = Carrinho::find(session()->get("carrinho"));
         $reservados = false;
         foreach($carrinho->produtos as $produto){
