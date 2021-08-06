@@ -145,6 +145,11 @@
                             <input type="hidden" name="assessor" id="assessor-h">
                         </form>
                         <button class="btn btn-vermelho px-4" id="btn-finalizar">Finalizar Reserva</button>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img id="ajax-loading" src="{{asset('imagens/gif_relogio.gif')}}" style="width: 50px; display:none;" alt="">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -208,6 +213,8 @@
 
             $("#btn-finalizar").click(function(){
                 //Pegando parcelas
+                $("#btn-finalizar").hide();
+                $("#ajax-loading").show();
                 var parcelas = $("select[name='parcelamento']").val();
                 $("#parcelas-h").val(parcelas);
 
