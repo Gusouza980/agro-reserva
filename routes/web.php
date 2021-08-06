@@ -153,7 +153,8 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/fazenda/reserva/{reserva}/lote/cadastrar', [\App\Http\Controllers\LotesController::class, 'cadastrar'])->name("painel.fazenda.reserva.lote.cadastrar");        
     Route::get('/painel/fazenda/reserva/lote/editar/{lote}', [\App\Http\Controllers\LotesController::class, 'editar'])->name("painel.fazenda.reserva.lote.editar");        
     Route::post('/painel/fazenda/reserva/lote/salvar/{lote}', [\App\Http\Controllers\LotesController::class, 'salvar'])->name("painel.fazenda.reserva.lote.salvar");        
-
+    Route::get('/painel/fazenda/reserva/lote/reservar/{lote}', [\App\Http\Controllers\LotesController::class, 'reservar'])->name("painel.fazenda.reserva.lote.reservar");        
+    
     //ROTAS RELACIONADAS AS RESERVAS
     Route::get('/painel/fazenda/{fazenda}/reservas', [\App\Http\Controllers\ReservasController::class, 'index'])->name("painel.fazenda.reservas");        
     Route::post('/painel/fazenda/{fazenda}/reserva/cadastrar', [\App\Http\Controllers\ReservasController::class, 'cadastrar'])->name("painel.fazenda.reserva.cadastrar");        

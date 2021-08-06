@@ -28,6 +28,7 @@
                             <th>Registro</th>
                             <th>Preço</th>
                             <th>Visitas</th>
+                            <th>Situação</th>
                             <th>Ativo</th>
                             <th></th>
                         </tr>
@@ -44,6 +45,13 @@
                                 <td>R${{number_format($lote->preco, 2, ",", ".")}}</td>
                                 <td>{{$lote->visitas}}</td>
                                 <td>
+                                    @if($lote->reservado)
+                                        Reservado
+                                    @else
+                                        Livre
+                                    @endif
+                                </td>
+                                <td>
                                     @if($lote->ativo)
                                         <i class="fa fa-star" style="color: yellow;" aria-hidden="true"></i>
                                     @else
@@ -53,7 +61,7 @@
                                 <td>
                                     <a name="" id="" class="btn btn-warning" href="{{route('painel.fazenda.reserva.lote.editar', ['lote' => $lote])}}" role="button">Editar</a>
                                     @if(!$lote->reservado)
-                                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalReservar" lid="{{$lote->id}}">Reservar</a>
+                                        <a class="btn btn-primary" href="{{route('painel.fazenda.reserva.lote.reservar', ['lote' => $lote])}}">Reservar</a>
                                     @endif
                                 </td>
                             </tr>
@@ -244,7 +252,10 @@
                 },
                 "searchPlaceholder": "Digite um termo para pesquisar",
                 "thousands": "."
-            } 
+            },
+            pageLength: -1,
+            lengthChange: true,
+            lengthMenu: [[10,50,100,1000, -1], [10,50,100,1000, "Todos"]], 
         } );
     } );    
 </script> 

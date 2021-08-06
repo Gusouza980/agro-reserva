@@ -102,9 +102,12 @@ class LotesController extends Controller
         return redirect()->route("painel.fazenda.reserva.lotes", ["reserva" => $lote->reserva]);
     }
 
-    public function reservar(Request $request){
-        $lote = Lote::find($request->lote_id);
-        $venda = new Venda;
-
+    public function reservar(Lote $lote){
+        if($lote->reservado == false){
+            $lote->reservado = true;
+            $lote->save();
+            toastr()->success("Lote reservado");
+            return redirect()->back();
+        }
     }
 }
