@@ -120,7 +120,7 @@ class CarrinhoController extends Controller
         $venda = new Venda;
         $venda->carrinho_id = $carrinho->id;
         $venda->cliente_id = session()->get("cliente")["id"];
-        $venda->assessor_id = $request->assessor;
+        $venda->assessor_id = ($request->assessor != 0) ? $request->assessor : null ;
         $venda->parcelas = $request->parcelas;
         
         $parcelas = $request->parcelas;
