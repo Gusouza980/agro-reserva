@@ -59,13 +59,13 @@
             <div id="pre-cadastro" @if(isset($finalizar)) style="display: none;" @endif>
                 <div class="row">
                     <div class="col-12" id="caixa-cadastro-section1-text">
-                        <h1>Você está no pré-cadastro Agro Reserva. Caso já tenha realizado o pré cadastro com <u>e-mail</u> e <u>senha</u>, <a class="text-primary cpointer" id="botao-pular-pre-cadastro">clique aqui</a> para prosseguir ao cadastro completo.</h1>
+                        <h1>Você está no pré-cadastro Agro Reserva. Caso já tenha realizado o pré-cadastro com <u>e-mail</u> e <u>senha</u>, <a class="text-primary cpointer" id="botao-pular-pre-cadastro">clique aqui</a> para prosseguir ao cadastro completo.</h1>
                         <br>
                         <p>
                            É uma honra te receber aqui. Agora que você está dentro do novo movimento de compra e venda de animais de alto padrão, prossiga nessa jornada.
                         </p>
                         <p>
-                            Para você seguir evoluindo seu rebanho, investindo ou vendendo na nossa plataforma, <b>preencha o formulário de cadastro completo com total segurança</b> e respeito pelas suas informações.<br>
+                            <b>Preencha o formulário de cadastro completo com total segurança</b> e respeito pelas suas informações.<br>
                             Uma vez preenchidos, os dados serão revisados e validados pelo nosso departamento de cadastro. <b>Rápido, prático e seguro</b>.
                         </p>
                         <p>
@@ -80,9 +80,6 @@
                         <br>
                         <p>
                             <b>Email:</b> <a href="mailto:cadastro@agroreserva.com.br">cadastro@agroreserva.com.br</a>
-                        </p>
-                        <p>
-                            <b>End.:</b> Av. Getúlio Vargas, 1116, Centro, CEP 38400-435 – Uberlândia/MG
                         </p>
                     </div>
                 </div>
