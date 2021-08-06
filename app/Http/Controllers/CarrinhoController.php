@@ -205,12 +205,12 @@ class CarrinhoController extends Controller
         
         $carrinho->aberto = false;
         $carrinho->save();
+        session()->forget("carrinho");
         $data = ["venda" => $venda];
         $pdf = PDF::loadView('cliente.comprovante', $data);
         $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
         $file = file_get_contents('templates/emails/confirmar-compra.html');
         Email::enviar($file, "Confirmação de Compra", session()->get("cliente")["email"], false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
-        session()->forget("carrinho");
         session()->flash("reserva_finalizada");
         return redirect()->route('conta.index');
     }

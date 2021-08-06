@@ -25,6 +25,18 @@
             </div>
         </div>
     </div>
+@elseif($cliente->aprovado == -1)
+    <div class="row mb-3">
+        <div class="col-12">
+            <a name="" id="" class="btn btn-primary" href="{{route('painel.cliente.aprovacao', ['cliente' => $cliente, 'aprovacao' => 'aprovado'])}}" role="button">Aprovar</a>
+        </div>
+    </div>
+@else
+    <div class="row mb-3">
+        <div class="col-12">
+            <a name="" id="" class="btn btn-danger" href="{{route('painel.cliente.aprovacao', ['cliente' => $cliente, 'aprovacao' => 'reprovado'])}}" role="button">Reprovar</a>
+        </div>
+    </div>
 @endif
 @if($cliente->analises->count() == 0)
 <div class="row">
