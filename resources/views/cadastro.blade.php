@@ -396,6 +396,7 @@
                                             <div class="form-group">
                                                 <label for="">Estado</label>
                                                 <select class="form-control" name="estado" id="estado">
+                                                    <option value="0">Selecione o Estado</option>
                                                     @foreach(\App\Models\Estado::all() as $estado)
                                                         <option value="{{$estado->id}}">{{$estado->nome}}</option>
                                                     @endforeach
@@ -403,13 +404,15 @@
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pr-3 mt-4">
-                                            <div class="form-group">
+                                            <div class="form-group" id="group-cidade" style="display: none;">
                                                 <label for="">Cidade</label>
                                                 <select class="form-control" name="cidade" id="cidade">
-                                                    @foreach(\App\Models\Estado::first()->cidades as $cidade)
-                                                        <option value="{{$cidade->id}}">{{$cidade->nome}}</option>
-                                                    @endforeach
+                                                    
                                                 </select>
+                                                
+                                            </div>
+                                            <div class="text-center mt-4" id="ajax-cidade" style="display: none;">
+                                                <img class="mx-auto" src="{{asset('imagens/gif_relogio.gif')}}" style="width: 30px;" alt="">
                                             </div>
                                         </div>
                                         
@@ -1373,29 +1376,42 @@
 
             $("select[name='estado']").change(function(){
                 var estado = $("select[name='estado']").val();
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: 'GET',
-                    url: '/api/getCidadesByUf/' + estado,
-                    dataType: 'json',
-                    success: function (data) {
-                        html = "";
-                        var cidades = JSON.parse(data);
-                        for(var cidade in cidades){
-                            html += "<option value='"+cidades[cidade].id+"'>"+cidades[cidade].nome+"</option>"
+                if(estado != "0"){
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
                         }
-                        $("select[name='cidade']").each(function(){
-                            $(this).html(html);
-                        })
-                    },
-                    error: function (data) {
-                        console.log(data);
-                    }
-                });
+                    });
+                    $.ajax({
+                        type: 'GET',
+                        url: '/api/getCidadesByUf/' + estado,
+                        dataType: 'json',
+                        beforeSend: function(){
+                            $("#group-cidade").hide();
+                            $("#ajax-cidade").show();
+                        },
+                        success: function (data) {
+                            html = "";
+                            var cidades = JSON.parse(data);
+                            for(var cidade in cidades){
+                                html += "<option value='"+cidades[cidade].id+"'>"+cidades[cidade].nome+"</option>"
+                            }
+                            $("select[name='cidade']").each(function(){
+                                $(this).html(html);
+                                $("#ajax-cidade").hide();
+                                $("#group-cidade").show();
+                            })
+                        },
+                        error: function (data) {
+                            console.log(data);
+                        }
+                    });
+                }else{
+                    $("select[name='cidade']").html("");
+                    $("#group-cidade").hide();
+                    $("#ajax-cidade").hide();
+                }
+                
             });
 
         });

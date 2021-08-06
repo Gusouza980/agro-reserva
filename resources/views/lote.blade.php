@@ -45,8 +45,8 @@
                     </div>
                     <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
                         <div class="text-center text-white">
-                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível 06/08</button>
-                            {{--  @if(!$lote->reservado)
+                            {{--  <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível 06/08</button>  --}}
+                            @if(!$lote->reservado)
                                 @if(session()->get("cliente"))
                                     <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('carrinho.adicionar', ['lote' => $lote])}}" role="button">Comprar</a>
                                 @else
@@ -54,7 +54,7 @@
                                 @endif
                             @else
                                 <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Reservado</button>
-                            @endif  --}}
+                            @endif
                         </div>
                     </div>
                 </div>
