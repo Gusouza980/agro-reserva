@@ -328,7 +328,7 @@
     <div class="modal fade" id="modalVendaFinalizada" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-body py-4">
+                <div class="modal-body py-4 px-lg-4">
                     <div class="row">
                         <div class="col-12 text-center modal-venda-finalizada">
                             <img src="{{asset('imagens/icone_cadastro.png')}}" style="width: 100px;" alt="Ícone de Cadastro">
@@ -347,6 +347,20 @@
                     <div class="row">
                         <div class="col-12 text-left modal-venda-finalizada">
                             <p>Nosso time entrará em contato com todas as informações complementares, tais como:
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-left modal-venda-finalizada">
+                            <p>- Contratos</p>
+                            <p>- Boletos</p>
+                            <p>- Notas Fiscais</p>
+                            <p>- Guias de Transporte</p>
+                            <p>- Demais Documentos</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-left modal-venda-finalizada">
+                            <p>Você também poderá acompanhar o status da sua compra através do <b>portal do cliente</b>, disponível na plataforma.</p>
                         </div>
                     </div>
                 </div>
@@ -415,8 +429,6 @@
             $(this).parent().hide();
             $(".ver_mais[vid='"+vid+"']").show();
         });  --}}
-
-        $("#modalVendaFinalizada").modal("show");
 
         $(".link-card-conta").click(function(){
             var num = $(this).attr("num");
