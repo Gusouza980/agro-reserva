@@ -35,15 +35,15 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 text-center text-lg-right blur">
-                                {{--  <h4><b>{{$lote->parcelas}}x</b> de <b>R${{number_format(round(($lote->preco / $lote->parcelas), 2), 2, ",", ".")}}</b></h4>  --}}
-                                <h4><b>0x</b> de <b>R$0000,00</b></h4>
+                            <div class="col-12 text-center text-lg-right">
+                                <h4><b>{{$lote->parcelas}}x</b> de <b>R${{number_format($lote->preco / $lote->parcelas, 2, ",", ".")}}</b></h4>
+                                {{--  <h4><b>0x</b> de <b>R$0000,00</b></h4>  --}}
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 text-center text-lg-right blur">
-                                {{--  <span>ou R${{number_format($lote->preco, 2, ",", ".")}} à vista</span>  --}}
-                                <span>R$00000,00</span>
+                            <div class="col-12 text-center text-lg-right">
+                                <span>ou R${{number_format($lote->preco - ($lote->preco * 10 / 100), 2, ",", ".")}} à vista</span>
+                                {{--  <span>R$00000,00</span>  --}}
                             </div>
                         </div>
                     </div>
