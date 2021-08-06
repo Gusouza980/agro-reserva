@@ -130,7 +130,7 @@ class CarrinhoController extends Controller
             $desconto = 12;
         }else if($parcelas < 5){
             $comissao = 2;
-            $desconto = 8;
+            $desconto = 6;
         }else{
             $comissao = 4;
             $desconto = 0;
