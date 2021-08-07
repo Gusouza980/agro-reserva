@@ -26,8 +26,7 @@
                         <tr>
                             <th>Código</th>
                             <th>Cliente</th>
-                            <th>Fazenda</th>
-                            <th>Lote</th>
+                            <th>Total</th>
                             <th>Tipo</th>
                             <th>Status</th>
                             <th>Data</th>
@@ -41,8 +40,7 @@
                             <tr>
                                 <td style="vertical-align: middle; text-align:center;">{{$venda->codigo}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$venda->cliente->nome_dono}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{$venda->fazenda->nome_fazenda}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{$venda->lote->nome}}</td>
+                                <td style="vertical-align: middle; text-align:center;">{{number_format($venda->total, 2, ",", ".")}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{config("globals.tipos_pagamento")[$venda->tipo]}}</td>
                                 <td style="vertical-align: middle; text-align:center;">
                                     {{config("globals.situacoes")[$venda->situacao]}}
