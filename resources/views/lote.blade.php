@@ -42,15 +42,15 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-center text-lg-right">
-                                <span>ou R${{number_format($lote->preco - ($lote->preco * 10 / 100), 2, ",", ".")}} à vista</span>
+                                <span>ou R${{number_format($lote->preco - ($lote->preco * 6 / 100), 2, ",", ".")}} à vista</span>
                                 {{--  <span>R$00000,00</span>  --}}
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
                         <div class="text-center text-white">
-                            {{--  <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível 21:30</button>  --}}
-                            @if(!$lote->reservado)
+                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível 21:30</button>
+                            {{--  @if(!$lote->reservado)
                                 @if(session()->get("cliente"))
                                     @if($cliente->aprovado)
                                         <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('carrinho.adicionar', ['lote' => $lote])}}" role="button">Comprar</a>
@@ -62,7 +62,7 @@
                                 @endif
                             @else
                                 <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Reservado</button>
-                            @endif
+                            @endif  --}}
                         </div>
                     </div>
                 </div>
