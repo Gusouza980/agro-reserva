@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
                         <div class="text-center text-white">
-                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível 21:52</button>
+                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível 21:30</button>
                             {{--  @if(!$lote->reservado)
                                 @if(session()->get("cliente"))
                                     @if($cliente->aprovado)
