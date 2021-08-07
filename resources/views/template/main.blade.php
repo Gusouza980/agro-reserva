@@ -121,9 +121,9 @@
                             </li>                        
                         @endif
                         @if(session()->get("carrinho"))
-                            {{--  <li class="nav-item active mt-2">
+                            <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white"></i></span></a>
-                            </li>  --}}
+                            </li>
                         @endif
                     </ul>
                 </div>
@@ -156,7 +156,7 @@
                                 <span class="ml-3 text-nav-header"><a class="text-nav-header" href="{{route('sair')}}"><span style="border-bottom: 2px solid #FEB000;">Sai</span>r</a></span>
                             @endif
                             @if(session()->get("carrinho"))
-                                {{--  <a class="ml-4" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white cart-icone"></i></span></a>  --}}
+                                <a class="ml-4" href="{{route('carrinho')}}"><i class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
                             @endif
                         @else
                             <a href="{{route('cadastro')}}"><span style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</a>
