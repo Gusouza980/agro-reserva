@@ -131,7 +131,7 @@ class CarrinhoController extends Controller
         }
 
         if($reservados){
-            session()->flash("erro", "Um ou mais lotes que estavam no seu carrinho já foram reservados.");
+            session()->flash("erro", "Não foi possível finalizar sua compra porque um ou mais lotes que estavam no seu carrinho já foram reservados.");
             return redirect()->route("carrinho");
         }else{
             $carrinho->lotes()->update(['reservado' => true]);
