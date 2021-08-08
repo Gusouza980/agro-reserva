@@ -18,7 +18,7 @@
     </div>
 </div>
 <div class="row justify-content-start">
-    <div class="col-12 col-lg-6">
+    <div class="col-12">
         <div class="card">
             <div class="card-body">
 
@@ -28,6 +28,7 @@
                             <th>Cliente</th>
                             <th>Items</th>
                             <th>Tempo</th>
+                            <th>Lotes</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +37,11 @@
                                 <td style="vertical-align: middle; text-align:center;">{{$carrinho->cliente->nome_dono}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$carrinho->produtos->count()}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$carrinho->created_at->diffForHumans()}}</td>
+                                <td style="vertical-align: middle; text-align:center;">
+                                    @foreach($carrinho->lotes as $lote)
+                                        <span class="badge bg-dark px-1">{{$lote->numero}}</span> 
+                                    @endforeach
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
