@@ -49,7 +49,7 @@
     <div class="container-fluid px-0" id="topbar">
         <div class="row align-items-center justify-content-center" id="topbar-row">
             <div class="col-12 text-center">
-                <img id="logo-topbar" src="{{asset('imagens/logo_agroreserva_leite_escura.svg')}}" alt="Logo Agroreserva">
+                <a href="{{route('index')}}"><img id="logo-topbar" src="{{asset('imagens/logo_agroreserva_leite_escura.svg')}}" alt="Logo Agroreserva"></a>
             </div>
         </div>
     </div>
@@ -1041,8 +1041,8 @@
             var endereco = $('input[name=endereco]').val();
             var numero = $('input[name=numero]').val();
             var complemento = $('input[name=complemento]').val();
-            var cidade = $('input[name=cidade]').val();
-            var estado = $('input[name=estado]').val();
+            var cidade = $('select[name=cidade]').val();
+            var estado = $('select[name=estado]').val();
             var referencia_bancaria_banco = $('input[name=referencia_bancaria_banco]').val();
             var referencia_bancaria_gerente = $('input[name=referencia_bancaria_gerente]').val();
             var referencia_bancaria_tel = $('input[name=referencia_bancaria_tel]').val();
