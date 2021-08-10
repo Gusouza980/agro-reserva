@@ -367,6 +367,12 @@ class ClienteController extends Controller
         return redirect()->back();
     }
 
+    public function finalizar(Cliente $cliente){
+        $cliente->finalizado = true;
+        $cliente->save();
+        return redirect()->back();
+    }
+
     public function pre_to_main(){
         $clientes_pre = DB::select('select * from clientes_pre');
         // dd($clientes_pre);
