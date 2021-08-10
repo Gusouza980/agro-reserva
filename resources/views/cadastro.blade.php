@@ -335,7 +335,7 @@
                                         <div class="d-none col-12 col-lg-6 pr-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">E-mail</label>
-                                                <input type="email" class="form-control" name="email_hidden" id="email_hidden" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['email']}}" @endif placeholder="">
+                                                <input type="email" class="form-control" name="email" id="email_hidden" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['email']}}" @endif placeholder="">
                                             </div>
                                         </div>
                                         <!--  -->
