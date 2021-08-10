@@ -4,6 +4,7 @@
     <!-- DataTables -->
     <link href="{{asset('admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('admin/libs/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('titulo')
@@ -13,7 +14,7 @@
 @section('conteudo')
 <div class="row my-3">
     <div class="col-12">
-        {{--  <a name="" id="" class="btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalCadastraRaca" role="button">Nova Reserva</a>  --}}
+         <a name="" id="" class="btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalNovaVenda" role="button">Nova Venda</a> 
     </div>
 </div>
 <div class="row justify-content-center">
@@ -56,7 +57,37 @@
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
-
+<div class="modal fade" id="modalNovaVenda" tabindex="-1" role="dialog" aria-labelledby="modalNovaVendaLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalNovaVendaLabel">Venda manual</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row" action="{{route('painel.raca.cadastrar')}}" method="post">
+                    @csrf
+                    <div class="form-group col-12 mb-3">
+                        <label for="">Cliente</label><br>
+                        <select class="form-select w-100" style="width: 100%;" name="cliente">
+                            @foreach(\App\Models\Cliente::where("aprovado", 1)->get() as $cliente)
+                                <option value="{{$cliente->id}}">{{$cliente->nome_dono}}</option>
+                            @endforeach 
+                        </select>
+                    </div>
+                    {{-- <div class="form-group">
+                      <label for="nome">Nome</label>
+                      <input type="text"
+                        class="form-control" name="nome" placeholder="Digite o nome da raça" required>
+                    </div> --}}
+                    <div class="form-group text-end">
+                        <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @endsection
@@ -65,8 +96,10 @@
     <!-- Required datatable js -->
     <script src="{{asset('admin/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('admin/libs/select2/js/select2.min.js')}}"></script>
     <script>
         $(document).ready(function() {
+            $('select[name="cliente"]').select2();
             $('#datatable').DataTable( {
                 language:{
                     "emptyTable": "Nenhum registro encontrado",
