@@ -58,28 +58,77 @@
     </div> <!-- end col -->
 </div> <!-- end row -->
 <div class="modal fade" id="modalNovaVenda" tabindex="-1" role="dialog" aria-labelledby="modalNovaVendaLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalNovaVendaLabel">Venda manual</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row" action="{{route('painel.raca.cadastrar')}}" method="post">
+                <form class="row" action="{{route('painel.vendas.nova')}}" method="post">
                     @csrf
                     <div class="form-group col-12 mb-3">
                         <label for="">Cliente</label><br>
-                        <select class="form-select w-100" style="width: 100%;" name="cliente">
+                        <select class="form-select select2" style="width: 100%;" name="cliente" required>
                             @foreach(\App\Models\Cliente::where("aprovado", 1)->get() as $cliente)
                                 <option value="{{$cliente->id}}">{{$cliente->nome_dono}}</option>
                             @endforeach 
                         </select>
                     </div>
-                    {{-- <div class="form-group">
-                      <label for="nome">Nome</label>
-                      <input type="text"
-                        class="form-control" name="nome" placeholder="Digite o nome da raça" required>
-                    </div> --}}
+                    <div class="form-group col-12 mb-3">
+                        <label for="tags">Lotes</label>
+                        <br>
+                        <select class="js-example-basic-multiple js-states form-control" style="width: 100%;" multiple="multiple" name="lotes[]" id="select_lotes" multiple required>
+                            <option value="" label="default"></option>
+                            @foreach(\App\Models\Reserva::where("compra_disponivel", true)->get() as $reserva)
+                                @foreach($reserva->lotes as $lote)
+                                    <option value="{{$lote->id}}" data-preco="{{$lote->preco}}">{{$lote->fazenda->nome_fazenda}}: Lote {{$lote->numero}}</option>
+                                @endforeach
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="row">
+                                <div class="form-group mb-3 col-12">
+                                    <label for="">Número de Parcelas</label>
+                                    <input type="number"
+                                        class="form-control" name="parcelas" min="0" max="10" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 mb-3">
+                                    <div>
+                                        <label class="form-label">Assessor</label><br>
+                                        <select class="form-control select2" style="width: 100%;" name="assessor">
+                                            <option value="0">Nenhum</option>
+                                            @foreach(\App\Models\Assessor::all() as $assessor)
+                                                <option value="{{$assessor->id}}">{{$assessor->nome}}</option>
+                                            @endforeach 
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button type="button" id="btn-calcula" class="btn btn-primary">Calcular Valores</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 mt-3">
+                            <div class="row" id="caixa-valores" style="display:none;">
+                                <div class="col-12">
+                                    <p><b>Total:</b><span id="valor-total"></span></p>
+                                    <p><b>Desconto:</b><span id="valor-desconto"></span></p>
+                                    <p><b>Parcelas:</b><span id="valor-parcelas"></span></p>
+                                    <p><b>Comissão:</b><span id="valor-comissao"></span></p>
+                                    <p><b>Total Final:</b><span id="valor-total-final"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
                     <div class="form-group text-end">
                         <button type="submit" class="btn btn-primary mt-3">Salvar</button>
                     </div>
@@ -98,8 +147,84 @@
     <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('admin/libs/select2/js/select2.min.js')}}"></script>
     <script>
+
+        var lotes;
+
+        function atualizaValores(){
+            lotes = $('#select_lotes').select2('data');
+            var parcelas = $("input[name='parcelas']").val();
+
+            if(lotes.length == 0 || !parcelas || parcelas == 0){
+
+            }
+
+            var precos = new Array();
+            var total = 0;
+            for(var i = 0; i < lotes.length; i++){
+                precos.push(parseFloat(lotes[i].element.dataset.preco));
+                total += parseFloat(lotes[i].element.dataset.preco);
+            }
+
+            if(parcelas == 1){
+                var comissao = 0;
+                var desconto = 6;
+            }else if(parcelas < 5 ){
+                var comissao = 2;
+                var desconto = 3;
+            }else{
+                var comissao = 4;
+                var desconto = 0;
+            }
+
+            var valor_desconto = total * desconto / 100;
+            var total_desconto = total - valor_desconto;
+            var valor_comissao = total * comissao / 100;
+            var total_compra = total - valor_desconto + valor_comissao;
+
+            var valor_parcelas = total_desconto / parcelas;
+
+            $("#valor-total").html("R$" + parseFloat(total.toFixed(2)).toLocaleString('pt-BR', {
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            }));
+
+            $("#valor-desconto").html("R$" + parseFloat(valor_desconto.toFixed(2)).toLocaleString('pt-BR', {
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            }));
+
+            $("#valor-comissao").html("R$" + parseFloat(valor_comissao.toFixed(2)).toLocaleString('pt-BR', {
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            }));
+
+            $("#valor-parcelas").html(parcelas + "x de R$" + parseFloat(valor_parcelas.toFixed(2)).toLocaleString('pt-BR', {
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            }));
+
+            $("#valor-total-final").html("R$" + parseFloat(total_compra.toFixed(2)).toLocaleString('pt-BR', {
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            }));
+
+            $("#caixa-valores").slideDown();
+
+        }
+
         $(document).ready(function() {
-            $('select[name="cliente"]').select2();
+            $('select[name="cliente"]').select2({
+                dropdownParent: $('#modalNovaVenda'),
+            });
+            $('select[name="assessor"]').select2({
+                dropdownParent: $('#modalNovaVenda'),
+            });
+            $('#select_lotes').select2({
+                tags: true,
+            });
+            $("#btn-calcula").click(function(){
+                atualizaValores();
+            });
             $('#datatable').DataTable( {
                 language:{
                     "emptyTable": "Nenhum registro encontrado",

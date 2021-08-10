@@ -32,7 +32,7 @@
             <div class="container-fluid p-0">
                 <div class="row g-0">
                     
-                    <div class="col-xl-9 d-none d-lg-block" style="background: url(/imagens/background.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+                    <div class="col-xl-9 d-none d-lg-block" style="background: url(/imagens/bg-home-min-2.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
                         <div class="auth-full-bg pt-lg-5 p-4">
                             <div class="w-100">
                                 <div class="bg-overlay"></div>

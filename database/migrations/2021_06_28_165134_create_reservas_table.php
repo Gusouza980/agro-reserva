@@ -19,6 +19,9 @@ class CreateReservasTable extends Migration
             $table->datetime("inicio");
             $table->datetime("fim");
             $table->boolean("ativo");
+            $table->boolean("aberto");
+            $table->boolean("preco_disponivel");
+            $table->boolean("compra_disponivel");
             $table->timestamps();
         });
     }

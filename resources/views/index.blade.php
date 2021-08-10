@@ -39,8 +39,8 @@
                                     </div>
                                     <div class="row mt-3" style="">
                                         <div class="col-12 text-center">
-                                            <h1 class="text-abertura">Abertura</h1>
-                                            <h2 class="data-abertura mt-n2">{{date("d/m/Y", strtotime($first->inicio))}}</h2>
+                                            <h1 class="text-abertura">Aberta até</h1>
+                                            <h2 class="data-abertura mt-n2">{{date("d/m/Y", strtotime($first->fim))}}</h2>
                                         </div>
                                     </div>
                                     <div class="row mt-3" style="">
