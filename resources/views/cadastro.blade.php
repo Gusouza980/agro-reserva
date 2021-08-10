@@ -12,26 +12,36 @@
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
     <!-- Bootstrap CSS -->
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/cadastro/main.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-W84N3LS');</script>
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-W84N3LS');
+    </script>
     <!-- End Google Tag Manager -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WH89Z553QY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
 
         gtag('config', 'G-WH89Z553QY');
@@ -44,7 +54,7 @@
 </head>
 
 <body>
-	<a class="btn-whats d-sm-block" href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank">
+    <a class="btn-whats d-sm-block" href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank">
     </a>
     <div class="container-fluid px-0" id="topbar">
         <div class="row align-items-center justify-content-center" id="topbar-row">
@@ -62,7 +72,7 @@
                         <h1>Você está no pré-cadastro Agro Reserva. Caso já tenha realizado o pré-cadastro com <u>e-mail</u> e <u>senha</u>, <a class="text-primary cpointer" id="botao-pular-pre-cadastro">clique aqui</a> para prosseguir ao cadastro completo.</h1>
                         <br>
                         <p>
-                           É uma honra te receber aqui. Agora que você está dentro do novo movimento de compra e venda de animais de alto padrão, prossiga nessa jornada.
+                            É uma honra te receber aqui. Agora que você está dentro do novo movimento de compra e venda de animais de alto padrão, prossiga nessa jornada.
                         </p>
                         <p>
                             <b>Preencha o formulário de cadastro completo com total segurança</b> e respeito pelas suas informações.<br>
@@ -146,7 +156,7 @@
                                 <div class="col-12 col-lg-6 pr-3 mt-4">
                                     <div class="form-group">
                                         <label for="">E-mail</label>
-                                        <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['email']}}"  @endif placeholder="">
+                                        <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['email']}}" @endif placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6 pr-3 mt-4">
@@ -169,7 +179,7 @@
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="container-fluid mt-3" id="caixa-racas">
                                 <div class="row">
                                     <div class="col-12 col-lg-3">
@@ -252,14 +262,14 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="container-fluid mt-5">
                                 <div class="row">
                                     <div class="col-12 text-center">
                                         <div class="form-check">
                                             <label class="form-check-label">
                                                 <input type="checkbox" class="form-check-input" name="" id="termos" value="checkedValue">
-                                                Confirmo que li e estou ciente dos <a href="{{route('termos')}}" style="text-decoration: underline; color: #E8521B" target="_blank">termos de uso</a> e <a href="{{route('politicas')}}"  style="text-decoration: underline; color: #E8521B" target="_blank">política de privacidade</a>
+                                                Confirmo que li e estou ciente dos <a href="{{route('termos')}}" style="text-decoration: underline; color: #E8521B" target="_blank">termos de uso</a> e <a href="{{route('politicas')}}" style="text-decoration: underline; color: #E8521B" target="_blank">política de privacidade</a>
                                             </label>
                                         </div>
                                     </div>
@@ -289,15 +299,15 @@
                                         <a href="/" class="cpointer btn-laranja">Aguardar contato</a>
                                     </div>
                                 </div>
-                            </div>                                   
+                            </div>
                         </div>
                     </div>
-                </form>           
+                </form>
             </div>
 
             <div id="cadastro-completo">
                 <form id="form-cadastro-completo" action="" @if(!session()->get("cliente")) style="display: none;" @endif>
-                    <div class="container-fluid mt-5" id="container-cadastro-completo" >
+                    <div class="container-fluid mt-5" id="container-cadastro-completo">
                         <div class="row">
                             <div class="col-12 text-center" id="container-cadastro-completo-titulo">
                                 <h1>Preencha os campos a baixo para completar seu cadastro!</h1>
@@ -318,6 +328,12 @@
                                             <div class="form-group">
                                                 <label for="">Nome Completo</label>
                                                 <input type="text" class="form-control" name="nome_completo" id="nome_completo" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['nome_dono']}}" @endif placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="d-none col-12 col-lg-6 pr-3 mt-4">
+                                            <div class="form-group">
+                                                <label for="">E-mail</label>
+                                                <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['email']}}" @endif placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 pl-3 mt-4">
@@ -352,11 +368,11 @@
                                         </div>
                                     </div>
                                 </div>
-    
-    
+
+
                             </div>
                         </div>
-    
+
                         <div class="row mt-5">
                             <div class="col-12 caixa-cadastro-completo">
                                 <div class="container-fluid px-0">
@@ -398,7 +414,7 @@
                                                 <select class="form-control" name="estado" id="estado">
                                                     <option value="0">Selecione o Estado</option>
                                                     @foreach(\App\Models\Estado::all() as $estado)
-                                                        <option value="{{$estado->id}}">{{$estado->nome}}</option>
+                                                    <option value="{{$estado->id}}">{{$estado->nome}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -407,22 +423,22 @@
                                             <div class="form-group" id="group-cidade" style="display: none;">
                                                 <label for="">Cidade</label>
                                                 <select class="form-control" name="cidade" id="cidade">
-                                                    
+
                                                 </select>
-                                                
+
                                             </div>
                                             <div class="text-center mt-4" id="ajax-cidade" style="display: none;">
                                                 <img class="mx-auto" src="{{asset('imagens/gif_relogio.gif')}}" style="width: 30px;" alt="">
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
-    
-    
+
+
                             </div>
                         </div>
-    
+
                         <div class="row mt-5">
                             <div class="col-12 caixa-cadastro-completo">
                                 <div class="container-fluid px-0">
@@ -562,10 +578,10 @@
                         </div>
                     </div>
                 </form>
-                
+
             </div>
-            
-            <div class="container-fluid" id="cadastro-completo-direto"  @if(!isset($finalizar) || session()->get("cliente")) style="display:none;" @endif>
+
+            <div class="container-fluid" id="cadastro-completo-direto" @if(!isset($finalizar) || session()->get("cliente")) style="display:none;" @endif>
                 <form id="form-login" action="">
                     <div class="container-fluid mt-5" id="cadastro-completo-direto-email">
                         <div class="row justify-content-center align-items-center">
@@ -584,8 +600,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>      
-    
+                    </div>
+
                     <div class="container-fluid mt-5">
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center">
@@ -720,25 +736,26 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js">
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset('js/jquery.mask.js')}}"></script>
-    <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js" ></script>
+    <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js"></script>
     <script>
-
         function login() {
             if ($('input[name=email_direto]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=email_direto]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=email_direto]").offset().top - 200
+                }, 1000);
                 $('input[name=email_direto]').addClass("erro-validacao");
                 return false;
             }
             if ($('input[name=senha_direto]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=senha_direto]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=senha_direto]").offset().top - 200
+                }, 1000);
                 $('input[name=senha_direto]').addClass("erro-validacao");
                 return false;
             }
@@ -746,7 +763,7 @@
             var email = $('input[name=email_direto]').val();
             var senha = $('input[name=senha_direto]').val();
 
-        
+
             data = {
                 email: email,
                 senha: senha,
@@ -762,29 +779,31 @@
                 type: "POST",
                 url: "{!! route('cadastro.login') !!}",
                 data: data,
-                beforeSend: function () {
+                beforeSend: function() {
                     $("#botoes-prosseguir").hide();
                     $("#gif-ajax-direto").show();
                 },
-                success: function (ret) {
-                    if(ret == "001"){
+                success: function(ret) {
+                    if (ret == "001") {
                         $("#titulo-erro-modal").html("E-mail não cadastrado");
                         $("#subtitulo-erro-modal").html("Realize seu pré-cadastro ou cadastro completo.");
                         $("#modalErro").modal("show");
                         $("#botoes-prosseguir").show();
                         $("#gif-ajax-direto").hide();
-                    }else if(ret == "002"){
+                    } else if (ret == "002") {
                         $("#titulo-erro-modal").html("E-mail ou senha incorretos");
                         $("#subtitulo-erro-modal").html("Verifique as informações inseridas e tente novamente.");
                         $("#modalErro").modal("show");
                         $("#botoes-prosseguir").show();
                         $("#gif-ajax-direto").hide();
-                    }else{
+                    } else {
                         var cliente = JSON.parse(ret);
                         $("#gif-ajax-direto").hide();
-                        $("#form-login").slideUp("500", function(){
-                            $("#form-cadastro-completo").slideDown("500", function(){
-                                $('html, body').animate({ scrollTop: $("#form-cadastro-completo").offset().top - 100 }, 1000);
+                        $("#form-login").slideUp("500", function() {
+                            $("#form-cadastro-completo").slideDown("500", function() {
+                                $('html, body').animate({
+                                    scrollTop: $("#form-cadastro-completo").offset().top - 100
+                                }, 1000);
                                 $("#botoes-finalizar").show();
                             });
                         });
@@ -792,7 +811,7 @@
                         $("#nome_completo").val(cliente.nome_dono);
                     }
                 },
-                error: function (ret) {
+                error: function(ret) {
                     console.log("Deu muito ruim");
                     console.log(ret);
                 }
@@ -801,7 +820,7 @@
         }
 
         function precadastro() {
-            if(!$("#termos").is(":checked")){
+            if (!$("#termos").is(":checked")) {
                 $("#titulo-erro-modal").html("Falta pouco");
                 $("#subtitulo-erro-modal").html("Você precisa confirmar que está ciente dos termos de compromisso e política de privacidade para continuar.");
                 $("#modalErro").modal("show");
@@ -809,32 +828,42 @@
             }
 
             if ($('input[name=nome]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=nome]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=nome]").offset().top - 200
+                }, 1000);
                 $('input[name=nome]').addClass("erro-validacao");
                 return false;
             }
             if ($('input[name=senha]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=senha]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=senha]").offset().top - 200
+                }, 1000);
                 $('input[name=senha]').addClass("erro-validacao");
                 return false;
             }
             if ($('input[name=sobrenome]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=sobrenome]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=sobrenome]").offset().top - 200
+                }, 1000);
                 $('input[name=sobrenome]').addClass("erro-validacao");
                 return false;
             }
             if ($('input[name=email]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=email]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=email]").offset().top - 200
+                }, 1000);
                 $('input[name=email]').addClass("erro-validacao");
                 return false;
             }
             if ($('input[name=whatsapp]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=whatsapp]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=whatsapp]").offset().top - 200
+                }, 1000);
                 $('input[name=whatsapp]').addClass("erro-validacao");
                 return false;
             }
 
-            
+
             if ($('input[name=email]').val() != $('input[name=email2]').val()) {
                 alert("Os emails não coincidem");
                 return false;
@@ -848,8 +877,8 @@
             var senha = $('input[name=senha]').val();
 
             var racas = [];
-            
-            $('input[name=racas]:checked').each(function () {
+
+            $('input[name=racas]:checked').each(function() {
                 racas.push($(this).val());
             });
 
@@ -868,18 +897,18 @@
                 senha: senha,
                 racas: racas
             }
-            
+
             $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                    }
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
             });
             $.ajax({
                 type: "POST",
                 url: "{!! route('cadastro.salvar') !!}",
                 data: data,
-                beforeSend: function () {
-                    $("input").each(function () {
+                beforeSend: function() {
+                    $("input").each(function() {
                         $(this).removeClass("erro-validacao");
                     });
                     $("#botoes-cadastrar").hide();
@@ -887,8 +916,8 @@
                     $("#botoes-vender").hide();
                     $("#gif-ajax-pre").show();
                 },
-                success: function (ret) {
-                    if(ret == "001"){
+                success: function(ret) {
+                    if (ret == "001") {
                         console.log(ret);
                         console.log("entrou");
                         $("#gif-ajax-pre").hide();
@@ -897,10 +926,10 @@
                         $("#modalErro").modal("show");
                         $("#botoes-cadastrar").show();
                         return;
-                    }else if (ret == "200") {
+                    } else if (ret == "200") {
                         console.log(ret);
                         console.log("entrou");
-                        $("input").each(function () {
+                        $("input").each(function() {
                             $(this).removeClass("erro-validacao");
                         });
                         if ($("input[name='interesse']:checked").val() != "Vender") {
@@ -925,8 +954,7 @@
                     }
 
                 },
-                error: function (ret) {
-                }
+                error: function(ret) {}
                 // dataType: dataType
             });
         }
@@ -934,98 +962,130 @@
         function cadastro() {
 
             if ($('input[name=nome_completo]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=nome_completo]").offset().top - 200 - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=nome_completo]").offset().top - 200 - 200
+                }, 1000);
                 $('input[name=nome_completo]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('input[name=rg]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=rg]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=rg]").offset().top - 200
+                }, 1000);
                 $('input[name=rg]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('input[name=nascimento]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=nascimento]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=nascimento]").offset().top - 200
+                }, 1000);
                 $('input[name=nascimento]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('input[name=documento]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=documento]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=documento]").offset().top - 200
+                }, 1000);
                 $('input[name=documento]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('input[name=estado_civil]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=estado_civil]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=estado_civil]").offset().top - 200
+                }, 1000);
                 $('input[name=estado_civil]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('input[name=cep]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=cep]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=cep]").offset().top - 200
+                }, 1000);
                 $('input[name=cep]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('input[name=numero]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=numero]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=numero]").offset().top - 200
+                }, 1000);
                 $('input[name=numero]').addClass("erro-validacao");
                 return false;
             }
 
             if (!$('select[name=cidade] option:selected').val()) {
-                $('html, body').animate({ scrollTop: $("select[name=estado]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("select[name=estado]").offset().top - 200
+                }, 1000);
                 $('select[name=estado]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('select[name=estado] option:selected').val() == "0") {
                 console.log("entrou");
-                $('html, body').animate({ scrollTop: $("select[name=estado] ").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("select[name=estado] ").offset().top - 200
+                }, 1000);
                 $('select[name=estado]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('input[name=referencia_bancaria_banco]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=referencia_bancaria_banco]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=referencia_bancaria_banco]").offset().top - 200
+                }, 1000);
                 $('input[name=referencia_bancaria_banco]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('input[name=referencia_bancaria_gerente]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=referencia_bancaria_gerente]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=referencia_bancaria_gerente]").offset().top - 200
+                }, 1000);
                 $('input[name=referencia_bancaria_gerente]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('input[name=referencia_bancaria_tel]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=referencia_bancaria_tel]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=referencia_bancaria_tel]").offset().top - 200
+                }, 1000);
                 $('input[name=referencia_bancaria_tel]').addClass("erro-validacao");
                 return false;
             }
             //
             if ($('input[name=referencia_comercial1]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=referencia_comercial1]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=referencia_comercial1]").offset().top - 200
+                }, 1000);
                 $('input[name=referencia_comercial1]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('input[name=referencia_comercial1_tel]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=referencia_comercial1_tel]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=referencia_comercial1_tel]").offset().top - 200
+                }, 1000);
                 $('input[name=referencia_comercial1_tel]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('input[name=referencia_comercial2]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=referencia_comercial2]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=referencia_comercial2]").offset().top - 200
+                }, 1000);
                 $('input[name=referencia_comercial2]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('input[name=referencia_comercial2_tel]').val() == "") {
-                $('html, body').animate({ scrollTop: $("input[name=referencia_comercial2_tel]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("input[name=referencia_comercial2_tel]").offset().top - 200
+                }, 1000);
                 $('input[name=referencia_comercial2_tel]').addClass("erro-validacao");
                 return false;
             }
@@ -1096,15 +1156,15 @@
                 type: "POST",
                 url: "{!! route('cadastro.finalizar') !!}",
                 data: data,
-                beforeSend: function () {
+                beforeSend: function() {
                     $("#botoes-finalizar").hide();
                     $("#gif-ajax").show();
-                    $("input").each(function () {
+                    $("input").each(function() {
                         $(this).removeClass("erro-validacao");
                     });
                 },
-                success: function (ret) {
-                    $("input").each(function () {
+                success: function(ret) {
+                    $("input").each(function() {
                         $(this).removeClass("erro-validacao");
                     });
                     if (ret == "Sucesso") {
@@ -1118,7 +1178,7 @@
                         $("#botoes-finalizar").show();
                     }
                 },
-                error: function (ret) {
+                error: function(ret) {
                     console.log(ret);
                 }
                 // dataType: dataType
@@ -1128,97 +1188,129 @@
         function cadastro_direto() {
 
             if ($('#container-cadastro-completo-direto input[name=nome_completo]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=nome_completo]").offset().top - 200 - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=nome_completo]").offset().top - 200 - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=nome_completo]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=rg]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=rg]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=rg]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=rg]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=nascimento]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=nascimento]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=nascimento]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=nascimento]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=documento]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=documento]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=documento]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=documento]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=estado_civil]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=estado_civil]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=estado_civil]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=estado_civil]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=cep]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=cep]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=cep]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=cep]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=numero]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=numero]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=numero]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=numero]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=cidade]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=cidade]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=cidade]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=cidade]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=estado]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=estado]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=estado]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=estado]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=referencia_bancaria_banco]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=referencia_bancaria_banco]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=referencia_bancaria_banco]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=referencia_bancaria_banco]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=referencia_bancaria_gerente]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=referencia_bancaria_gerente]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=referencia_bancaria_gerente]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=referencia_bancaria_gerente]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=referencia_bancaria_tel]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=referencia_bancaria_tel]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=referencia_bancaria_tel]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=referencia_bancaria_tel]').addClass("erro-validacao");
                 return false;
             }
             //
             if ($('#container-cadastro-completo-direto input[name=referencia_comercial1]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=referencia_comercial1]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=referencia_comercial1]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=referencia_comercial1]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=referencia_comercial1_tel]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=referencia_comercial1_tel]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=referencia_comercial1_tel]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=referencia_comercial1_tel]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=referencia_comercial2]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=referencia_comercial2]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=referencia_comercial2]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=referencia_comercial2]').addClass("erro-validacao");
                 return false;
             }
 
             if ($('#container-cadastro-completo-direto input[name=referencia_comercial2_tel]').val() == "") {
-                $('html, body').animate({ scrollTop: $("#container-cadastro-completo-direto input[name=referencia_comercial2_tel]").offset().top - 200 }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#container-cadastro-completo-direto input[name=referencia_comercial2_tel]").offset().top - 200
+                }, 1000);
                 $('#container-cadastro-completo-direto input[name=referencia_comercial2_tel]').addClass("erro-validacao");
                 return false;
             }
@@ -1289,15 +1381,15 @@
                 type: "POST",
                 url: "{!! route('cadastro.finalizar') !!}",
                 data: data,
-                beforeSend: function () {
+                beforeSend: function() {
                     $("#botoes-finalizar-direto").hide();
                     $("#gif-ajax-direto").show();
-                    $("input").each(function () {
+                    $("input").each(function() {
                         $(this).removeClass("erro-validacao");
                     });
                 },
-                success: function (ret) {
-                    $("input").each(function () {
+                success: function(ret) {
+                    $("input").each(function() {
                         $(this).removeClass("erro-validacao");
                     });
                     if (ret == "Sucesso") {
@@ -1311,7 +1403,7 @@
                         $("#botoes-finalizar-direto").show();
                     }
                 },
-                error: function (ret) {
+                error: function(ret) {
                     console.log(ret);
                     $("#gif-ajax-direto").hide();
                     $("#botoes-finalizar-direto").show();
@@ -1321,45 +1413,49 @@
         }
 
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             $("input[name='cep']").mask("99999-999");
             $("input[name='whatsapp']").mask("+99 (99) 99999-9999");
             $(".input-tel").mask("(99) 99999-9999");
 
             const myInput = document.getElementById("confirm-email");
             myInput.onpaste = e => e.preventDefault();
-            
-            $("#botao-pular-pre-cadastro").click(function(){
-                $("#pre-cadastro").slideUp(400, function(){
+
+            $("#botao-pular-pre-cadastro").click(function() {
+                $("#pre-cadastro").slideUp(400, function() {
                     $("#cadastro-completo-direto").slideDown(800);
                 });
             });
 
-            $("#form-login").submit(function(e){
+            $("#form-login").submit(function(e) {
                 e.preventDefault();
                 login();
             });
 
-            $("input[name='interesse']").change(function () {
-                $("#container-passo1").slideDown(500, function(){
-					$('html, body').animate({ scrollTop: $("#container-passo1").offset().top - 100 }, 1000);
-				});
+            $("input[name='interesse']").change(function() {
+                $("#container-passo1").slideDown(500, function() {
+                    $('html, body').animate({
+                        scrollTop: $("#container-passo1").offset().top - 100
+                    }, 1000);
+                });
             });
 
-            $("#form-pre-cadastro").submit(function (e) {
+            $("#form-pre-cadastro").submit(function(e) {
                 e.preventDefault();
                 precadastro();
             });
 
-            $("#btn-finalizar-cadastro-agora").click(function () {
-                $("#botoes-comprar").hide(function () {
+            $("#btn-finalizar-cadastro-agora").click(function() {
+                $("#botoes-comprar").hide(function() {
                     $("#botoes-finalizar").show();
-                    $("#form-pre-cadastro").slideUp("500", function(){
-                        $("#form-cadastro-completo").slideDown("500", function(){
-                            $('html, body').animate({ scrollTop: $("#form-cadastro-completo").offset().top - 100 }, 1000);
+                    $("#form-pre-cadastro").slideUp("500", function() {
+                        $("#form-cadastro-completo").slideDown("500", function() {
+                            $('html, body').animate({
+                                scrollTop: $("#form-cadastro-completo").offset().top - 100
+                            }, 1000);
                         });
                     })
-                    
+
                     $('input[name=nome_completo]').val($('input[name=nome]').val());
                     $('input[name=email]').attr("readonly", "readonly");
                     $('input[name=nome]').attr("readonly", "readonly");
@@ -1370,14 +1466,14 @@
                 });
             });
 
-            $("#form-cadastro-completo").submit(function (e) {
+            $("#form-cadastro-completo").submit(function(e) {
                 e.preventDefault();
                 cadastro();
             });
 
-            $("select[name='estado']").change(function(){
+            $("select[name='estado']").change(function() {
                 var estado = $("select[name='estado']").val();
-                if(estado != "0"){
+                if (estado != "0") {
                     $.ajaxSetup({
                         headers: {
                             'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
@@ -1387,32 +1483,32 @@
                         type: 'GET',
                         url: '/api/getCidadesByUf/' + estado,
                         dataType: 'json',
-                        beforeSend: function(){
+                        beforeSend: function() {
                             $("#group-cidade").hide();
                             $("#ajax-cidade").show();
                         },
-                        success: function (data) {
+                        success: function(data) {
                             html = "";
                             var cidades = JSON.parse(data);
-                            for(var cidade in cidades){
-                                html += "<option value='"+cidades[cidade].id+"'>"+cidades[cidade].nome+"</option>"
+                            for (var cidade in cidades) {
+                                html += "<option value='" + cidades[cidade].id + "'>" + cidades[cidade].nome + "</option>"
                             }
-                            $("select[name='cidade']").each(function(){
+                            $("select[name='cidade']").each(function() {
                                 $(this).html(html);
                                 $("#ajax-cidade").hide();
                                 $("#group-cidade").show();
                             })
                         },
-                        error: function (data) {
+                        error: function(data) {
                             console.log(data);
                         }
                     });
-                }else{
+                } else {
                     $("select[name='cidade']").html("");
                     $("#group-cidade").hide();
                     $("#ajax-cidade").hide();
                 }
-                
+
             });
 
         });
