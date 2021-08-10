@@ -185,6 +185,7 @@ Route::middleware(['admin'])->group(function () {
     // ROTAS RELACIONADAS A VENDAS
     Route::get('/painel/visitas', [\App\Http\Controllers\PainelController::class, 'visitas'])->name("painel.visitas");
     Route::get('/painel/vendas', [\App\Http\Controllers\VendasController::class, 'index'])->name("painel.vendas");
+    Route::post('/painel/vendas/nova', [\App\Http\Controllers\VendasController::class, 'venda_manual'])->name("painel.vendas.nova");
     Route::get('/painel/venda/{venda}', [\App\Http\Controllers\VendasController::class, 'visualizar'])->name("painel.vendas.visualizar");
     Route::post('/painel/venda/boleto/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_boleto'])->name("painel.vendas.boleto.adicionar");
     Route::post('/painel/venda/nota/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_nota'])->name("painel.vendas.nota.adicionar");

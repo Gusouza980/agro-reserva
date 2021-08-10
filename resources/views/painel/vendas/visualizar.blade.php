@@ -41,7 +41,14 @@
                         @endif
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-3 d-flex align-items-center">
+                        <b>Desconto:</b> R${{number_format($venda->desconto, 2, ",", ".")}}
+                    </div>
+                    <div class="col-3 d-flex align-items-center">
+                        <b>Comissão:</b> R${{number_format($venda->comissao, 2, ",", ".")}}
+                    </div>
+                </div>
             </div>
         </div>
     </div> <!-- end col -->
@@ -64,13 +71,15 @@
 
 
                     <tbody>
+                        @foreach($venda->carrinho->lotes as $lote)
                             <tr>
-                                <td style="vertical-align: middle; text-align: center;"><img src="{{asset($venda->lote->fazenda->logo)}}" style="max-width: 100px;" alt=""></td>
-                                <td style="vertical-align: middle; text-align: center;"><b>{{$venda->lote->nome}}</b></td>
-                                <td style="vertical-align: middle; text-align: center;"><b>Raça:</b> {{$venda->lote->raca->nome}}</td>
-                                <td style="vertical-align: middle; text-align: center;"><b>Registro:</b> {{$venda->lote->registro}}</td>
-                                <td style="vertical-align: middle; text-align: center;"><b>Valor:</b> R${{number_format($venda->lote->preco, 2, ",", ".")}}</td>
+                                <td style="vertical-align: middle; text-align: center;"><img src="{{asset($lote->fazenda->logo)}}" style="max-width: 100px;" alt=""></td>
+                                <td style="vertical-align: middle; text-align: center;"><b>{{$lote->nome}}</b></td>
+                                <td style="vertical-align: middle; text-align: center;"><b>Raça:</b> {{$lote->raca->nome}}</td>
+                                <td style="vertical-align: middle; text-align: center;"><b>Registro:</b> {{$lote->registro}}</td>
+                                <td style="vertical-align: middle; text-align: center;"><b>Valor:</b> R${{number_format($lote->preco, 2, ",", ".")}}</td>
                             </tr>
+                        @endforeach
                     </tbody>
                 </table>
 
