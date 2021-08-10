@@ -330,12 +330,15 @@
                                                 <input type="text" class="form-control" name="nome_completo" id="nome_completo" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['nome_dono']}}" @endif placeholder="">
                                             </div>
                                         </div>
+
+                                        <!-- modificado Rodolfo -->
                                         <div class="d-none col-12 col-lg-6 pr-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">E-mail</label>
-                                                <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['email']}}" @endif placeholder="">
+                                                <input type="email" class="form-control" name="email_hidden" id="email_hidden" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['email']}}" @endif placeholder="">
                                             </div>
                                         </div>
+                                        <!--  -->
                                         <div class="col-12 col-lg-6 pl-3 mt-4">
                                             <div class="form-group">
                                                 <label for="">RG</label>
@@ -809,6 +812,9 @@
                         });
                         $("#email").val(cliente.email);
                         $("#nome_completo").val(cliente.nome_dono);
+
+                        // modificado - Rodolfo
+                        $("#email_hidden").val(cliente.email);
                     }
                 },
                 error: function(ret) {
