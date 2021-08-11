@@ -812,9 +812,6 @@
                         });
                         $("#email").val(cliente.email);
                         $("#nome_completo").val(cliente.nome_dono);
-
-                        // modificado - Rodolfo
-                        $("#email_hidden").val(cliente.email);
                     }
                 },
                 error: function(ret) {
@@ -935,6 +932,10 @@
                     } else if (ret == "200") {
                         console.log(ret);
                         console.log("entrou");
+
+                        // modificado - Rodolfo
+                        $("#email_hidden").val(email);
+
                         $("input").each(function() {
                             $(this).removeClass("erro-validacao");
                         });
