@@ -811,6 +811,7 @@
                             });
                         });
                         $("#email").val(cliente.email);
+                        $("#email_hidden").val(cliente.email);
                         $("#nome_completo").val(cliente.nome_dono);
                     }
                 },
