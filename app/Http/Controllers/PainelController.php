@@ -54,11 +54,11 @@ class PainelController extends Controller
 
     public function visitas(Request $request){
         if($request->isMethod('post')){
-            $inicio = $request->inicio;
-            $fim = $request->fim;
+            $inicio = $request->inicio . " 00:00:00";
+            $fim = $request->fim . " 23:59:59";
         }else{
-            $inicio = date('Y-m-d', strtotime('-14 days'));
-            $fim = date('Y-m-d');
+            $inicio = date('Y-m-d', strtotime('-14 days')) . " 00:00:00";
+            $fim = date('Y-m-d') . " 23:59:59";
         }
         $visitas = Visita::whereBetween("created_at", [$inicio, $fim])->orderBy("created_at", "ASC")->get();
         return view("painel.visitas.consultar", ["visitas" => $visitas, "inicio" => $inicio, "fim" => $fim]);
