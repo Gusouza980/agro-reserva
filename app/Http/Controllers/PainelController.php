@@ -60,7 +60,7 @@ class PainelController extends Controller
             $inicio = date('Y-m-d', strtotime('-14 days'));
             $fim = date('Y-m-d');
         }
-        $visitas = Visita::whereBetween("created_at", [$inicio, $fim])->orderBy("created_at", "ASC")->take(5)->get();
+        $visitas = Visita::whereBetween("created_at", [$inicio, $fim])->orderBy("created_at", "ASC")->get();
         return view("painel.visitas.consultar", ["visitas" => $visitas, "inicio" => $inicio, "fim" => $fim]);
     }
 
