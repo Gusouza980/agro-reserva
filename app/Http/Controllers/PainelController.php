@@ -52,9 +52,16 @@ class PainelController extends Controller
         return view("painel.index");
     }
 
-    public function visitas(){
-        $visitas = Visita::all();
-        return view("painel.visitas.consultar", ["visitas" => $visitas]);
+    public function visitas(Request $request){
+        if($request->isMethod('post')){
+            $inicio = $request->inicio;
+            $fim = $request->fim;
+        }else{
+            $inicio = date('Y-m-d', strtotime('-14 days'));
+            $fim = date('Y-m-d');
+        }
+        $visitas = Visita::whereBetween("created_at", [$inicio, $fim])->orderBy("created_at", "ASC")->take(5)->get();
+        return view("painel.visitas.consultar", ["visitas" => $visitas, "inicio" => $inicio, "fim" => $fim]);
     }
 
 }

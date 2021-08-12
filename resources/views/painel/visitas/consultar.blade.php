@@ -13,6 +13,20 @@
 @endsection
 
 @section('conteudo')
+<form action="" class="row row-cols-lg-auto g-3 align-items-center mb-3" method="POST">
+    @csrf
+    <div class="form-group">
+        <label for="">Início</label>
+        <input type="date" name="inicio" id="" class="form-control" placeholder="" value="{{$inicio}}">
+    </div>
+    <div class="form-group">
+        <label for="">Fim</label>
+        <input type="date" name="fim" id="" class="form-control" placeholder="" value="{{$fim}}">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary mt-4">Salvar</button>
+    </div>
+</form>
 <div class="row justify-content-center">
     <div class="col-12">
         <div class="card">
@@ -42,7 +56,7 @@
                                         {{$visita->ip}}
                                     @endif
                                 </td>
-                                <td style="vertical-align: middle; text-align:center;">{{$visita->lote->fazenda->nome_fazenda}}</td>
+                                <td style="vertical-align: middle; text-align:center;">LOTE {{$visita->lote->numero . ": " . $visita->lote->fazenda->nome_fazenda}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->lote->nome}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->cidade}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->estado}}</td>
