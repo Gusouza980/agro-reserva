@@ -315,6 +315,7 @@
                                                     <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y", strtotime($analise->data_situacao))}}</td>
                                                     <td style="vertical-align: middle; text-align:center;">
                                                         <a name="" id="" class="btn btn-warning cpointer" data-bs-toggle="modal" data-bs-target="#modalAnalise{{$analise->id}}" role="button">Visualizar</a>
+                                                        <a name="" id="" class="btn btn-primary cpointer ml-3" href="{{route('painel.cliente.credito.analise.exportar', ['analise' => $analise])}}" role="button">Exportar</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -591,7 +592,7 @@
                                                                 <div class="form-group col-12 col-lg-2 mb-3">
                                                                     <label for="">Número do Banco</label>
                                                                     <input type="text"
-                                                                        class="form-control" name="" id="" readonly value="R${{$cheque->numbero_banco}}">
+                                                                        class="form-control" name="" id="" readonly value="{{$cheque->numero_banco}}">
                                                                 </div>
                                                             </div>
                                                             <div class="row">

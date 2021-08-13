@@ -100,8 +100,10 @@
                                 <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
                                 <span><b>Nascimento:</b> {{date("d/m/Y", strtotime($lote->nascimento))}}</span><br>
                                 <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
-                                <span><b>Último Parto:</b> {{date("d/m/Y", strtotime($lote->parto))}}</span>
-                                <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
+                                @if($lote->parto)
+                                    <span><b>Último Parto:</b> {{date("d/m/Y", strtotime($lote->parto))}}</span>
+                                    <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
+                                @endif
                             </div>
                         </div>
                         <div class="row justify-content-center justify-content-lg-start mt-2">

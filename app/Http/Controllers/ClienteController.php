@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use App\Exports\ClienteExport;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class ClienteController extends Controller
 {
@@ -352,6 +353,13 @@ class ClienteController extends Controller
             toastr()->error($response->body(), "Erro");
             return redirect()->back();
         }
+    }
+
+    public function exportar_analise_credito(CreditoAnalise $analise){
+        $data = ["analise" => $analise];
+        $pdf = PDF::loadView('painel.clientes.relatorios.credito', $data);
+        return $pdf->stream();
+        // $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
     }
 
     public function aprovacao(Cliente $cliente, $aprovacao){

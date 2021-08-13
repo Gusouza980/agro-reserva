@@ -180,6 +180,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/cliente/{cliente}', [\App\Http\Controllers\ClienteController::class, 'visualizar'])->name("painel.cliente.visualizar");
     Route::get('/painel/cliente/{cliente}/finalizar', [\App\Http\Controllers\ClienteController::class, 'finalizar'])->name("painel.cliente.finalizar");
     Route::get('/painel/cliente/{cliente}/credito/analistar', [\App\Http\Controllers\ClienteController::class, 'analise_credito'])->name("painel.cliente.credito.analise");
+    Route::get('/painel/cliente/credito/exportar/{analise}', [\App\Http\Controllers\ClienteController::class, 'exportar_analise_credito'])->name("painel.cliente.credito.analise.exportar");
     Route::post('/painel/cliente/{cliente}/dados/salvar', [\App\Http\Controllers\ClienteController::class, 'salvar_dados_gerais'])->name("painel.cliente.dados.salvar");
     Route::get('/painel/cliente/{cliente}/aprovacao/{aprovacao}', [\App\Http\Controllers\ClienteController::class, 'aprovacao'])->name("painel.cliente.aprovacao");
 
