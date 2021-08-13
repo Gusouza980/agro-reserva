@@ -315,7 +315,7 @@
                                                     <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y", strtotime($analise->data_situacao))}}</td>
                                                     <td style="vertical-align: middle; text-align:center;">
                                                         <a name="" id="" class="btn btn-warning cpointer" data-bs-toggle="modal" data-bs-target="#modalAnalise{{$analise->id}}" role="button">Visualizar</a>
-                                                        <a name="" id="" class="btn btn-primary cpointer ml-3" href="{{route('painel.cliente.credito.analise.exportar', ['analise' => $analise])}}" role="button">Exportar</a>
+                                                        <a name="" id="" class="btn btn-primary cpointer ml-3" href="{{route('painel.cliente.credito.analise.exportar', ['analise' => $analise])}}" target="_blank" role="button">Exportar</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
