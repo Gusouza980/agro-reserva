@@ -417,7 +417,7 @@
                                                 <select class="form-control" name="estado" id="estado">
                                                     <option value="0">Selecione o Estado</option>
                                                     @foreach(\App\Models\Estado::all() as $estado)
-                                                    <option value="{{$estado->id}}">{{$estado->nome}}</option>
+                                                    <option value="{{$estado->nome}}" eid="{{$estado->id}}">{{$estado->nome}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -1109,8 +1109,8 @@
             var endereco = $('input[name=endereco]').val();
             var numero = $('input[name=numero]').val();
             var complemento = $('input[name=complemento]').val();
-            var cidade = $('select[name=cidade]').val();
-            var estado = $('select[name=estado]').val();
+            var cidade = $('select[name=cidade]').find(':selected').attr("cid");;
+            var estado = $('select[name=estado]').find(':selected').attr("eid");;
             var referencia_bancaria_banco = $('input[name=referencia_bancaria_banco]').val();
             var referencia_bancaria_gerente = $('input[name=referencia_bancaria_gerente]').val();
             var referencia_bancaria_tel = $('input[name=referencia_bancaria_tel]').val();
@@ -1334,8 +1334,8 @@
             var endereco = $('#container-cadastro-completo-direto input[name=endereco]').val();
             var numero = $('#container-cadastro-completo-direto input[name=numero]').val();
             var complemento = $('#container-cadastro-completo-direto input[name=complemento]').val();
-            var cidade = $('#container-cadastro-completo-direto select[name=cidade]').val();
-            var estado = $('#container-cadastro-completo-direto select[name=estado]').val();
+            var cidade = $('#container-cadastro-completo-direto select[name=cidade]').find(':selected').attr("cid");
+            var estado = $('#container-cadastro-completo-direto select[name=estado]').find(':selected').attr("eid");
             var referencia_bancaria_banco = $('#container-cadastro-completo-direto input[name=referencia_bancaria_banco]').val();
             var referencia_bancaria_gerente = $('#container-cadastro-completo-direto input[name=referencia_bancaria_gerente]').val();
             var referencia_bancaria_tel = $('#container-cadastro-completo-direto input[name=referencia_bancaria_tel]').val();
@@ -1480,7 +1480,8 @@
             });
 
             $("select[name='estado']").change(function() {
-                var estado = $("select[name='estado']").val();
+                var estado = $("select[name='estado']").find(':selected').attr("eid");
+                console.log(estado);
                 if (estado != "0") {
                     $.ajaxSetup({
                         headers: {
@@ -1499,7 +1500,7 @@
                             html = "";
                             var cidades = JSON.parse(data);
                             for (var cidade in cidades) {
-                                html += "<option value='" + cidades[cidade].id + "'>" + cidades[cidade].nome + "</option>"
+                                html += "<option cid='" + cidades[cidade].id + "' value='" + cidades[cidade].nome + "'>" + cidades[cidade].nome + "</option>"
                             }
                             $("select[name='cidade']").each(function() {
                                 $(this).html(html);
