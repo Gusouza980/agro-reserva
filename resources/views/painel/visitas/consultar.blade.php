@@ -41,6 +41,7 @@
                             <th>Lote</th>
                             <th>Cidade</th>
                             <th>Estado</th>
+                            <th>Whatsapp</th>
                         </tr>
                     </thead>
 
@@ -60,6 +61,12 @@
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->lote->nome}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->cidade}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->estado}}</td>
+                                @if($visita->logado)
+                                    <td style="vertical-align: middle; text-align:center;">{{$visita->cliente->whatsapp}}</td>
+                                @else
+                                    <td></td>
+                                @endif
+                                
                             </tr>
                         @endforeach
                     </tbody>
