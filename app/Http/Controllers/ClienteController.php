@@ -17,6 +17,7 @@ use App\Models\ConsultaSemCheque;
 use App\Models\DocumentoRoubado;
 use App\Models\IndiceRelacionamentoSetor;
 use App\Models\ParticipacaoSocietaria;
+use App\Models\SerasaScore;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use App\Exports\ClienteExport;
@@ -184,7 +185,7 @@ class ClienteController extends Controller
             "achei_recheque" => false,
             "tipo_pessoa" => "F",
             "doc_consultado" => $cliente->cpf,
-            "adicionais" => [6, 19]
+            "adicionais" => [19, 36]
         ]);
         
         if($response->status() == 200){
@@ -345,6 +346,15 @@ class ClienteController extends Controller
                     $participacao->situacao_empresa = $part->situacao_empresa;
                     $participacao->save();
                 }
+            }
+
+            if(isset($res->serasa_score_positivo) && isset($res->serasa_score_positivo->detalhe)){
+                $score = new SerasaScore;
+                $score->credito_analise_id = $analise->id;
+                $score->pontuacao = $res->serasa_score_positivo->detalhe->pontuacao;
+                $score->risco = $res->serasa_score_positivo->detalhe->risco;
+                $score->desc_risco = $res->serasa_score_positivo->detalhe->desc_risco;
+                $score->save();
             }
 
             toastr()->success("Análise feita com sucesso!", "Sucesso");

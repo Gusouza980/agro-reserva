@@ -442,6 +442,28 @@
                                                                 class="form-control" name="" id="" readonly value="@if($analise->capacidade_pagamento_com_positivo) R${{$analise->capacidade_pagamento_com_positivo}} @else Não Consultado @endif">
                                                         </div>
                                                     </div>
+                                                    @foreach($analise->scores as $score)
+                                                        <div class="row">
+                                                            <div class="col-12 mt-3">
+                                                                <h5>Serasa Score Positivo</h5>
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-2 mb-3">
+                                                                <label for="">Pontuação</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$score->pontuacao}}">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-2 mb-3">
+                                                                <label for="">Chance de Pagamento</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{100 - $score->risco}}%">
+                                                            </div>
+                                                            <div class="form-group col-12 col-lg-8 mb-3">
+                                                                <label for="">Descrição</label>
+                                                                <input type="text"
+                                                                    class="form-control" name="" id="" readonly value="{{$score->desc_risco}}">
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
                                                 </form>
                                             </div>
                                         </div>

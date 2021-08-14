@@ -48,4 +48,8 @@ class CreditoAnalise extends Model
     public function participacao_societaria(){
         return $this->hasMany(ParticipacaoSocietaria::class);
     }
+
+    public function scores(){
+        return $this->hasMany(SerasaScore::class);
+    }
 }

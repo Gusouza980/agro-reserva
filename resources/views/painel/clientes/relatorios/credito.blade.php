@@ -17,8 +17,15 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 text-center">
-                    <h2>Relatório de análise de crédito</h2>
+                <div class="col-12">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><img src="{{asset('imagens/logo_agroreserva_leite_escura.svg')}}" style="width: 100px;" alt=""></td>
+                                <td class="text-center" style="padding-left: 50px;"><h3>Relatório de análise de crédito</h3></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -521,6 +528,49 @@
                 </div>
             </div>
 
+            {{--  SERASA SCORE POSITIVO --}}
+
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered" style="margin-top: 30px;">
+                        <thead style="background-color: #f7f7f7">
+                            <tr>
+                                <th colspan="4" scope="col">Serasa Score Positivo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                                $cont = $analise->scores->count();
+                                $aux = 0;
+                            @endphp
+                            @if($cont > 0)
+                                @foreach($analise->scores as $score)
+                                    @php
+                                        $aux++;
+                                    @endphp
+                                    <tr>
+                                        <td><b>Pontuação</b></td>
+                                        <td>{{$score->pontuacao}}</td>
+                                        <td><b>Chance de Pagamento</b></td>
+                                        <td>{{100 - $score->risco}}%</td>
+                                    </tr>
+                                    @if($aux < $cont)
+                                        <tr style="background-color: #f7f7f7">
+                                            <td colspan="4"></td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="4" class="text-center">Este cliente não possui índices de relacionamento</td>
+                                </tr>
+                            @endif
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             {{--  PARTICIPAÇÃO SOCIETARIA  --}}
 
             <div class="row">
@@ -577,6 +627,20 @@
                                 </tr>
                             @endif
                             
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {{-- TARJA DE CONFIDENCIALDIADE --}}
+
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered" style="margin-top: 30px;">
+                        <tbody>
+                            <tr>
+                                <td class="text-center">Este relatório é estritamente confidencial e destinado a apoiar decisões de crédito e negócios.</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
