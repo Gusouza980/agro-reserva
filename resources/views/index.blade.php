@@ -30,7 +30,7 @@
                     @endphp
                     <div id="primeira-reserva" data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
                         <div style="background: url(/{{$first->fazenda->fundo_destaque}}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
-                            <div class="d-flex align-items-center" style="box-shadow: 0px 0px 4px white; padding: 10px 0px; background: linear-gradient(180deg, rgba(0,0,0,0.85) 20%, rgba(0,4,1,0) 96%); height: 250px; border-radius: 15px;">
+                            <div class="d-flex align-items-center" style="overflow-y: hidden; overflow-x: hidden; position: relative; box-shadow: 0px 0px 4px white; padding: 10px 0px; background: linear-gradient(180deg, rgba(0,0,0,0.85) 20%, rgba(0,4,1,0) 96%); height: 250px; border-radius: 15px;">
                                 <div class="container-fluid">
                                     <div class="row" style="">
                                         <div class="col-12 text-center">
@@ -48,6 +48,9 @@
                                             <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $first->fazenda->slug])}}" role="button">Mostrar a Reserva</a>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="tarja-diagonal text-center" style="background-color: #15bd3d; width: 100%; height: 50px; position: absolute; top: 0px; left: -110px; transform: rotate(-45deg);">
+                                    <h5 style="color: white; position: absolute; top: 20px; left: 28%; font-size: 12px; font-weight: bold; font-family: Gobold Regular; letter-spacing: 3px;">100% VENDIDO</h5>
                                 </div>
                             </div>
                         </div>

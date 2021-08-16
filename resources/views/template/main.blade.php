@@ -8,15 +8,15 @@
      
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="Site de venda de gado">
+    <meta name="description" content="Respeito pela sua jornada">
     <meta name="keywords" content="Gado, Agro, E-commerce, Lotes">
     <meta name="author" content="Luis Gustavo de Souza Carvalho">
     <meta property="og:locale" content="pt_BR">
-    <meta property="og:url" content="https://dev.agroreserva.com.br">
+    <meta property="og:url" content="https://agroreserva.com.br">
     <meta property="og:title" content="Agroreserva - Respeito pela sua jornada">
     <meta property="og:site_name" content="Agroreserva">
     <meta property="og:description" content="Somos a plataforma de compra e venda das marcas que evoluem a pecuária">
-    <meta property="og:image" itemprop="image" content="https://dev.agroreserva.com.br/imagens/logo_agroreserva_leite_min.jpg">
+    <meta property="og:image" itemprop="image" content="https://agroreserva.com.br/imagens/logo_agroreserva_leite_min.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="300">
     <meta property="og:image:height" content="200">
