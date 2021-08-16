@@ -80,7 +80,7 @@ class ContaController extends Controller
 
     public function comprovante_reserva(Venda $venda){
         $data = ["venda" => $venda];
-        $pdf = PDF::loadView('cliente.comprovante2', $data);
+        $pdf = PDF::loadView('cliente.comprovante', $data);
         return $pdf->stream();
     }
 }
