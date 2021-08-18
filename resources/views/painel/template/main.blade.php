@@ -18,7 +18,7 @@
         <link href="{{asset('admin/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         @yield("styles")
-        <link href="{{asset('admin/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="{{asset('admin/css/app.min.css')}}?v=1.2" id="app-style" rel="stylesheet" type="text/css" />
         @toastr_css
     </head>
 
