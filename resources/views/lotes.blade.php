@@ -61,7 +61,7 @@
                 <div class="coluna-caixa-lote mt-4">
                     <div class="card card-caixa-lote mx-auto">
                         <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}">
-                            <div class="d-flex align-items-center justify-content-center" style="border-top-left-radius: 20px; border-top-right-radius: 20px; object-fit: contain; height:180px; background: url({{asset($lote->preview)}}); background-position: center; background-repeat: no-repeat;">
+                            <div class="d-flex align-items-center justify-content-center" style="border-top-left-radius: 20px; border-top-right-radius: 20px; object-fit: contain; height:180px; background: url({{asset($lote->preview)}}); background-position: top; background-repeat: no-repeat;">
                                 @if($lote->reservado)
                                     <div class="faixa-reservado text-center text-white py-2">
                                         RESERVADO
