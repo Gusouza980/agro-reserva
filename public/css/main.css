@@ -1503,7 +1503,7 @@ label {
 
 .coluna-caixa-lote{
     width: 100%;
-    max-width: 17rem;
+    max-width: 17.5rem;
 }
 
 .coluna-caixa-lote > .card{
@@ -1798,4 +1798,10 @@ label {
     background-color: rgba(0,0,0,0.8); 
     height: 250px; 
     border-radius: 15px;
+}
+
+.selo-porcentagem{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
