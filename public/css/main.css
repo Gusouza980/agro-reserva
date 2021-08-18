@@ -1781,6 +1781,11 @@ label {
 
 .reserva-nao-encerrada{
     box-shadow: 0px 0px 4px white; 
+    background: linear-gradient(180deg, rgba(0,0,0,0.85) 20%, rgba(0,4,1,0) 96%); 
+}
+
+.reserva-encerrada{
+    background-color: rgba(0,0,0,0.8); 
 }
 
 .reserva-aberta{
@@ -1788,7 +1793,6 @@ label {
     overflow-x: hidden; 
     position: relative; 
     padding: 10px 0px; 
-    background: linear-gradient(180deg, rgba(0,0,0,0.85) 20%, rgba(0,4,1,0) 96%); 
     height: 250px; 
     border-radius: 15px;
 }
