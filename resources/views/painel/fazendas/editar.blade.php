@@ -856,7 +856,7 @@
                                 <div class="form-group">
                                   <label for="">Texto maior</label>
                                   <input type="text"
-                                    class="form-control" name="titulo" id="" aria-describedby="helpId" required>
+                                    class="form-control" name="titulo" id="" aria-describedby="helpId">
                                 </div>
                             </div>
                         </div>
@@ -870,7 +870,7 @@
                                 <div class="form-group">
                                   <label for="">Texto menor</label>
                                   <input type="text"
-                                    class="form-control" name="subtitulo" id="" aria-describedby="helpId" required>
+                                    class="form-control" name="subtitulo" id="" aria-describedby="helpId">
                                 </div>
                             </div>
                         </div>
@@ -965,7 +965,7 @@
                                 <div class="form-group">
                                   <label for="">Texto Maior</label>
                                   <input type="text"
-                                    class="form-control" name="titulo" id="" value="{{$producao->titulo}}" required>
+                                    class="form-control" name="titulo" id="" value="{{$producao->titulo}}">
                                 </div>
                             </div>
                         </div>
@@ -979,7 +979,7 @@
                                 <div class="form-group">
                                   <label for="">Texto Menor</label>
                                   <input type="text"
-                                    class="form-control" name="subtitulo" id="" value="{{$producao->subtitulo}}" required>
+                                    class="form-control" name="subtitulo" id="" value="{{$producao->subtitulo}}">
                                 </div>
                             </div>
                         </div>
