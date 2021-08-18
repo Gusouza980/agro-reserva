@@ -267,9 +267,9 @@
                     </div>
                     <div class="row mt-3 px-4">
                         <div class="col-12 text-left">
-                            <p>Retire seus animais na fazenda Santa Luzia.</p>
+                            <p>Frete por conta do comprador.</p>
                             <br>
-                            <p><b>Endereço:</b> MG 050 PASSOS/FURNAS KM 24 ,CEP 37904999, ZONA RURAL - PASSOS/MG</p>
+                            <p><b>Endereço da Fazenda:</b>{{$lote->fazenda->endereco}}</p>
                             <br>
                             <b>O frete é por conta do comprador.</b>
                         </div>
