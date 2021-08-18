@@ -267,10 +267,8 @@
                     </div>
                     <div class="row mt-3 px-4">
                         <div class="col-12 text-left">
-                            <p>Frete por conta do comprador.</p>
-                            <br>
+                            {{--  <p>Frete por conta do comprador.</p>  --}}
                             <p><b>Endereço da Fazenda:</b> {{$lote->fazenda->endereco}}</p>
-                            <br>
                             <b>O frete é por conta do comprador.</b>
                         </div>
                     </div>
