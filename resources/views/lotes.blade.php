@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="row justify-content-center justify-content-lg-between">
-            @foreach($fazenda->lotes->where("ativo", true) as $lote)
+            @foreach($fazenda->lotes->where("ativo", true)->sortBy("numero") as $lote)
                 <div class="coluna-caixa-lote mt-4">
                     <div class="card card-caixa-lote mx-auto">
                         <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}">
