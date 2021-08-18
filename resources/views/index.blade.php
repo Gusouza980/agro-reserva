@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="row pb-5 justify-content-center" >
-                    @php
+                    {{--  @php
                         $first = $reservas->first();
                     @endphp
                     <div id="primeira-reserva" data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
@@ -40,7 +40,7 @@
                                     <div class="row mt-3" style="">
                                         <div class="col-12 text-center">
                                             <h1 class="text-abertura">ENCERRADA</h1>
-                                            {{--  <h2 class="data-abertura mt-n2">{{date("d/m/Y", strtotime($first->fim))}}</h2>  --}}
+                                            <h2 class="data-abertura mt-n2">{{date("d/m/Y", strtotime($first->fim))}}</h2>
                                         </div>
                                     </div>
                                     <div class="row mt-3" style="">
@@ -54,22 +54,45 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    @foreach($reservas->skip(1) as $reserva)
+                    </div>  --}}
+                    @foreach($reservas as $reserva)
                         <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
                             <div style="background: url(/{{$reserva->fazenda->fundo_destaque}}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
-                                <div class="d-flex align-items-center" style="padding: 10px 0px; background-color: rgba(0,0,0,0.8); height: 250px; border-radius: 15px;">
+                                <div class="d-flex align-items-center @if($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif">
                                     <div class="container-fluid">
                                         <div class="row" style="">
                                             <div class="col-12 text-center">
                                                 <img src="{{asset($reserva->fazenda->logo)}}" style="max-width: 100%; height: 80px;" alt="{{$reserva->fazenda->nome}}">
                                             </div>
                                         </div>
-                                        <div class="row mt-3" style="">
-                                            <div class="col-12 text-center">
-                                                <h2 class="data-abertura-futura mt-n2">Inicia em {{date("d/m/Y", strtotime($reserva->inicio))}}</h2>
+                                        @if($reserva->aberto)
+                                            <div class="row mt-3" style="">
+                                                <div class="col-12 text-center">
+                                                    @if(!$reserva->encerrada)
+                                                        <h1 class="text-abertura">Inicio em</h1>
+                                                        <h2 class="data-abertura mt-n2">{{date("d/m/Y", strtotime($reserva->fim))}}</h2>
+                                                    @else
+                                                        <h1 class="text-abertura">ENCERRADA</h1>
+                                                    @endif
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="row mt-3" style="">
+                                                <div class="col-12 text-center">
+                                                    <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $reserva->fazenda->slug])}}" role="button">Mostrar a Reserva</a>
+                                                </div>
+                                            </div>
+                                            @if($reserva->lotes->where("reservado", false)->count() == 0)
+                                                <div class="tarja-diagonal text-center" style="background-color: #15bd3d; width: 100%; height: 50px; position: absolute; top: 0px; left: -110px; transform: rotate(-45deg);">
+                                                    <h5 style="color: white; position: absolute; top: 20px; left: 28%; font-size: 12px; font-weight: bold; font-family: Gobold Regular; letter-spacing: 3px;">100% VENDIDO</h5>
+                                                </div>
+                                            @endif
+                                        @else
+                                            <div class="row mt-3" style="">
+                                                <div class="col-12 text-center">
+                                                    <h2 class="data-abertura-futura mt-n2">Inicia em {{date("d/m/Y", strtotime($reserva->inicio))}}</h2>
+                                                </div>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
