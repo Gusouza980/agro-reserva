@@ -1,6 +1,6 @@
 <div class="row py-4 justify-content-center align-items-center">
     @foreach($fazenda->avaliacoes as $avaliacao)
-        <div class="mr-4">
+        <div class="mr-4 mt-lg-0 mt-3">
             <img src="{{asset($avaliacao->caminho)}}" style="width: 100px;" alt="{{$avaliacao->nome}}">
         </div>
     @endforeach
