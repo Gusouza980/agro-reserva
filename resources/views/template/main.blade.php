@@ -30,7 +30,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-	<link rel="stylesheet" href="{{asset('css/main.css')}}"/>
+	<link rel="stylesheet" href="{{asset('css/main.css')}}?v=1.2"/>
     <link rel="stylesheet" href="{{asset('css/animate.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('css/aos.css')}}"/>
     @toastr_css
