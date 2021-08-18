@@ -9,6 +9,7 @@
     <meta name="description" content="Respeito pela sua jornada">
     <meta name="keywords" content="Gado, Agro, E-commerce, Lotes">
     <meta name="author" content="Luis Gustavo de Souza Carvalho">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:url" content="https://agroreserva.com.br">
     <meta property="og:title" content="Agroreserva - Respeito pela sua jornada">
