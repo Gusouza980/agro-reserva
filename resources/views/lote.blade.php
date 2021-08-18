@@ -26,9 +26,9 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
-                        <img src="{{asset($fazenda->logo)}}" style="max-width: 100%;" alt="">
+                        <img src="{{asset($fazenda->logo)}}" style="width: 100%; max-width: 300px;" alt="">
                     </div>
-                    <div class="col-12 col-lg-7 text-white mt-4 mt-lg-0">
+                    <div class="col-12 col-lg-7 text-white mt-5 mt-lg-0">
                         <div class="row">
                             <div class="col-12 text-center text-lg-right">
                                 <h2>{{$lote->nome}}</h2>
