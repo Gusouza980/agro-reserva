@@ -107,7 +107,7 @@
                                             @if($lote->parto)
                                                 <h3>ÚLTIMO PARTO EM <b>{{date('d/m/Y', strtotime($lote->parto))}}</b></h3>
                                             @else
-                                                <h3>SEXO: {{strtoupper($lote->sexo)}}</h3>
+                                                <h3>SEXO: {{mb_strtoupper($lote->sexo)}}</h3>
                                             @endif
                                         </div>
                                     </div>
