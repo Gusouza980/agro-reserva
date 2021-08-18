@@ -79,17 +79,17 @@
                                 <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}"><h5 class="card-title card-lote-nome text-black"><b>{{$lote->nome}}</b></h5></a>
                             </div>
                             <div class="container-fluid px-3">
-                                <div class="row pb-1" style="border-bottom: 1px solid black;">
+                                <div class="row pb-1 justify-content-center" style="border-bottom: 1px solid black;">
+                                    <div>
+                                        <b>{{$lote->ccg}}</b>
+                                    </div>
+                                </div>
+                                <div class="row py-1" style="border-bottom: 1px solid black;">
                                     <div style="width: 65px;">
                                         <b class="mr-3">RGD.: </b>
                                     </div>
                                     <div>
                                         <span class="card-lote-info-text">{{$lote->registro}}</span>
-                                    </div>
-                                </div>
-                                <div class="row py-1 justify-content-start" style="border-bottom: 1px solid black;">
-                                    <div>
-                                        <b>{{$lote->ccg}}</b>
                                     </div>
                                 </div>
                                 <div class="row py-1" style="border-bottom: 1px solid black;">
