@@ -87,7 +87,7 @@
                                         <span class="card-lote-info-text">{{$lote->registro}}</span>
                                     </div>
                                 </div>
-                                <div class="row py-1 justify-content-center" style="border-bottom: 1px solid black;">
+                                <div class="row py-1 justify-content-start" style="border-bottom: 1px solid black;">
                                     <div>
                                         <b>{{$lote->ccg}}</b>
                                     </div>
