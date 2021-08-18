@@ -632,8 +632,7 @@
                         150%;font-family:&quot;Tahoma&quot;,sans-serif">21 - Endereço para envio de
                         correspondências<o:p></o:p></span></b></p><p class="MsoNormal" style="text-align:justify;line-height:150%"><span style="font-size:11.0pt;line-height:150%;font-family:&quot;Tahoma&quot;,sans-serif">Todas
                         as requisições, correspondências, notificações ou pedidos de informação deverão
-                        ser enviadas para o endereço: Rua Joaquim Saraiva, nº 40, Sala 2, Centro,
-                        Uberlândia/MG, CEP: 38.400-210.<o:p></o:p></span></p><p>
+                        ser enviadas para o endereço: Av. Getúlio Vargas, 1116, centro, CEP: 38400-434, Uberlândia Minas Gerais.<o:p></o:p></span></p><p>
                         
                         
                         

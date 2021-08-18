@@ -25,11 +25,14 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Início</th>
                             <th>Fim</th>
                             <th>Ativo</th>
+                            <th>Aberta</th>
+                            <th>Preço</th>
+                            <th>Compras</th>
                             <th>Lotes</th>
-                            <th></th>
                         </tr>
                     </thead>
 
@@ -37,6 +40,22 @@
                     <tbody>
                         @foreach($reservas as $reserva)
                             <tr>
+                                <td class="text-center">
+                                    <div class="dropdown mt-4 mt-sm-0">
+                                        <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-bars" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="dropdown-menu" style="margin: 0px;">
+                                            <a name="" id="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEditaReserva{{$reserva->id}}" role="button">Editar</a>
+                                            {{--  <a name="" id="" class="dropdown-item" href="{{route('painel.fazenda.reserva.excluir', ['reserva' => $reserva])}}" role="button">Excluir</a>  --}}
+                                            <a name="" id="" href="{{route('painel.fazenda.reservas.abertura', ['reserva' => $reserva])}}" class="dropdown-item" role="button">@if($reserva->aberto) Fechar @else Abrir @endif Reserva</a>
+                                            <a name="" id="" href="{{route('painel.fazenda.reservas.preco', ['reserva' => $reserva])}}" class="dropdown-item" role="button">@if($reserva->preco_disponivel) Esconder @else Liberar @endif Preços</a>
+                                            <a name="" id="" href="{{route('painel.fazenda.reservas.compras', ['reserva' => $reserva])}}" class="dropdown-item" role="button">@if($reserva->compra_disponivel) Bloquear @else Liberar @endif Compras</a>
+                                            <a name="" id="" href="{{route('painel.fazenda.reserva.lotes', ['reserva' => $reserva])}}" class="dropdown-item" role="button">Lotes</a>
+                                            <a name="" id="" href="{{route('painel.fazenda.reservas.relatorio', ['reserva' => $reserva])}}" class="dropdown-item" role="button">Relatório</a>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($reserva->inicio))}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($reserva->fim))}}</td>
                                 <td style="vertical-align: middle; text-align:center;">
@@ -46,13 +65,28 @@
                                         Não
                                     @endif
                                 </td>
-                                <td style="vertical-align: middle; text-align:center;">{{$reserva->lotes->count()}}</td>
                                 <td style="vertical-align: middle; text-align:center;">
-                                    <a name="" id="" class="btn btn-warning cpointer" data-bs-toggle="modal" data-bs-target="#modalEditaReserva{{$reserva->id}}" role="button">Editar</a>
-                                    <a name="" id="" class="btn btn-danger" href="{{route('painel.fazenda.reserva.excluir', ['reserva' => $reserva])}}" role="button">Excluir</a>
-                                    <a name="" id="" href="{{route('painel.fazenda.reserva.lotes', ['reserva' => $reserva])}}" class="btn btn-primary cpointer" role="button">Lotes</a>
-                                    <a name="" id="" href="{{route('painel.fazenda.reservas.relatorio', ['reserva' => $reserva])}}" class="btn btn-primary cpointer" role="button">Relatório</a>
+                                    @if($reserva->aberto)
+                                        Sim
+                                    @else
+                                        Não
+                                    @endif
                                 </td>
+                                <td style="vertical-align: middle; text-align:center;">
+                                    @if($reserva->preco_disponivel)
+                                        Liberado
+                                    @else
+                                        Oculto
+                                    @endif
+                                </td>
+                                <td style="vertical-align: middle; text-align:center;">
+                                    @if($reserva->compra_disponivel)
+                                        Liberadas
+                                    @else
+                                        Bloqueadas
+                                    @endif
+                                </td>
+                                <td style="vertical-align: middle; text-align:center;">{{$reserva->lotes->count()}}</td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -63,6 +63,7 @@ class FazendaController extends Controller
         $fazenda->slug = Str::slug($request->nome_fazenda);
         $fazenda->telefone = $request->telefone;
         $fazenda->cnpj = $request->cnpj;
+        $fazenda->endereco = $request->endereco;
         $fazenda->email = $request->email;
         $fazenda->whatsapp = $request->whatsapp;
         $fazenda->save();
@@ -103,6 +104,7 @@ class FazendaController extends Controller
         $fazenda->telefone = $request->telefone;
         $fazenda->cnpj = $request->cnpj;
         $fazenda->email = $request->email;
+        $fazenda->endereco = $request->endereco;
         $fazenda->whatsapp = $request->whatsapp;
         $fazenda->save();
         toastr()->success("Conteúdo salvo com sucesso!");

@@ -29,12 +29,27 @@
                 font-size: 15px;
                 font-family: 'Montserrat', sans-serif;
             }
+
+            .table-border, .th-border, .td-border {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+
+            .clearfix {
+                overflow: auto;
+            }
+
+            .clearfix::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
         </style>
     </head>
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
+                <div class="" style="width: 650px;margin: 0 auto;">
                     <table>
                         <tbody>
                             <tr>
@@ -45,6 +60,9 @@
                     </table>
                 </div>
             </div>
+            @php
+                $fazenda = $venda->carrinho->lotes->first()->fazenda;
+            @endphp
             <div class="row">
                 <div class="col-12">
                     <table class="table" style="border-spacing: 0; padding: 0px 0px; margin-top: 40px; margin-left: auto; margin-right: auto; border: 1px solid black;">
@@ -64,7 +82,7 @@
                                                     NOME:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 250px; font-size: 10px;">
-                                                    Mauricío Silveira Coielho e Outros
+                                                    {{$fazenda->nome_dono}}
                                                 </td>
                                                 <td style="width: 10px;"></td>
                                                 <td style="width: 10px;"></td>
@@ -72,7 +90,7 @@
                                                     TEL 01:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
-                                                    (35) 3115-0000
+                                                    {{$fazenda->telefone}}
                                                 </td>
                                                 <td style="width: 10px;"></td>
                                                 <td style="width: 10px;"></td>
@@ -80,7 +98,7 @@
                                                     TEL 02:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
-                                                    (35) 3115-0000
+                                                    {{$fazenda->whatsapp}}
                                                 </td>
                                             </tr>
 
@@ -97,7 +115,7 @@
                                                     ENDEREÇO:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 427px; font-size: 10px;">
-                                                    Rua três corações, nº 1009, Exposição - Passos - MG, CEP: 37902-377
+                                                    {{$fazenda->endereco}}
                                                 </td>
                                                 <td style="width: 10px;"></td>
                                                 <td style="width: 10px;"></td>
@@ -105,7 +123,7 @@
                                                     FAZENDA:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
-                                                    Santa Luzia
+                                                    {{$fazenda->nome_fazenda}}
                                                 </td>
                                             </tr>
 
@@ -115,33 +133,37 @@
                             </tr>
                             <tr class="">
                                 <td class="">
-                                    <table style="border-collapse: collapse;">
+                                    <table style="border-spacing: 0 1.5px;">
                                         <tbody>
                                             <tr class="border: 0px important;">
                                                 <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
-                                                    ENDEREÇO:
+                                                    CPF/CNPJ:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 250px; font-size: 10px;">
-                                                    403.752.776-68 
+                                                    {{$fazenda->cnpj}}
                                                 </td>
                                                 <td style="width: 10px;"></td>
                                                 <td style="width: 10px;"></td>
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 64px; text-align: center; font-size: 10px;">
+                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
                                                     EMAIL:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 276px; font-size: 10px;">
-                                                    mauricio@grupocaboverde.com.br
+                                                    <a href="mailto:{{$fazenda->email}}">{{$fazenda->email}}</a>
                                                 </td>
                                             </tr>
 
                                         </tbody>
                                     </table>
                                 </td>
-                            </tr>          
+                            </tr>         
                         </tbody>
                     </table>
                 </div>
             </div>
+
+            @php
+                $cliente = $venda->cliente;
+            @endphp
 
             <div class="row">
                 <div class="col-12">
@@ -162,7 +184,7 @@
                                                     NOME:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 250px; font-size: 10px;">
-                                                    Mauricío Silveira Coielho e Outros
+                                                    {{$cliente->nome_dono}}
                                                 </td>
                                                 <td style="width: 10px;"></td>
                                                 <td style="width: 10px;"></td>
@@ -170,7 +192,7 @@
                                                     TEL 01:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
-                                                    (35) 3115-0000
+                                                    {{$cliente->whatsapp}}
                                                 </td>
                                                 <td style="width: 10px;"></td>
                                                 <td style="width: 10px;"></td>
@@ -178,7 +200,7 @@
                                                     TEL 02:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
-                                                    (35) 3115-0000
+                                                    {{$cliente->telefone}}
                                                 </td>
                                             </tr>
 
@@ -195,7 +217,8 @@
                                                     ENDEREÇO:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 427px; font-size: 10px;">
-                                                    Rua três corações, nº 1009, Exposição - Passos - MG, CEP: 37902-377
+                                                    {{$cliente->rua . ", n° " . $cliente->numero . " " . $cliente->bairro . " - " . $cliente->Cidade->nome . " - " . $cliente->Estado->uf . ", CEP:" . $cliente->cep}}
+                                                    {{--  Rua três corações, nº 1009, Exposição - Passos - MG, CEP: 37902-377  --}}
                                                 </td>
                                                 <td style="width: 10px;"></td>
                                                 <td style="width: 10px;"></td>
@@ -203,7 +226,7 @@
                                                     FAZENDA:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
-                                                    Santa Luzia
+                                                    {{$cliente->nome_fazenda}}
                                                 </td>
                                             </tr>
 
@@ -217,18 +240,18 @@
                                         <tbody>
                                             <tr class="border: 0px important;">
                                                 <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
-                                                    ENDEREÇO:
+                                                    CPF/CNPJ:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 250px; font-size: 10px;">
-                                                    403.752.776-68 
+                                                    {{$cliente->documento}} 
                                                 </td>
                                                 <td style="width: 10px;"></td>
                                                 <td style="width: 10px;"></td>
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
-                                                    ENDEREÇO:
+                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
+                                                    EMAIL:
                                                 </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 266px; font-size: 10px;">
-                                                    mauricio@grupocaboverde.com.br
+                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 276px; font-size: 10px;">
+                                                    <a href="mailto:{{$cliente->email}}">{{$cliente->email}}</a>
                                                 </td>
                                             </tr>
 
@@ -240,8 +263,219 @@
                     </table>
                 </div>
             </div>
-            
+            @foreach($venda->carrinho->produtos as $produto)
+                <div class="row clearfix" style="margin-top: 30px;">
+                    <div style="width: 250px; padding: 10px 20px; float: left;">
+                        <img src="{{asset($produto->lote->preview)}}" style="width: 100%;" alt="">
+                    </div>
+                    <div style="width: 422px; height: 150px; padding: 10px 10px; border: 1px solid black; float: left;">
+                        <div style="margin-top: 5px; width: 55px; height: 60px; border: 1px solid black; float: left;">
+                            <div style="text-align: center; background: black; color: white; font-size: 10px; font-weight: bold; padding: 5px 0px;">
+                                LOTE
+                            </div>
+                            <div style="text-align: center; color: black; font-size: 12px; font-weight: bold;">
+                                <div style="margin-top: 11px;">
+                                    {{str_pad($produto->lote->numero, 3, "0", STR_PAD_LEFT)}}
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 5px; width: 355px; height: 60px; margin-left: 65px; border: 1px solid black; float:left;">
+                            <div style="text-align: center; color: black; font-size: 12px;">
+                                <div style="margin-top: 3px; font-size: 9px; font-weight: bold;">
+                                    {{$produto->lote->nome}}
+                                </div>
+                                <div style="margin-top: 5px; font-size: 8px;">
+                                    RGD: {{$produto->lote->registro}} - GPTA: {{$produto->lote->gpta}} - NASC.: @if($produto->lote->nascimento) {{date("d/m/Y", strtotime($produto->lote->nascimento))}} @endif - CCG: {{$produto->lote->ccg}} - FÊMEA
+                                </div>
+                                <div style="margin-top: 5px; font-size: 9px;">
+                                    @if($produto->lote->parto) Último parto em {{date("d/m/Y", strtotime($produto->lote->parto))}} @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="width: 420px; height: 60px; margin-top: 80px; border: 1px solid black;">
+                            <div style="text-align: center; color: black; font-size: 10px;">
+                                <table style="width: 100%; margin-top: 15px;">
+                                    <tbody>
+                                        <tr>
+                                            <td>Valor do animal:</td>
+                                            <td><b>R${{number_format($produto->lote->preco, 2, ",", ".")}}</td>
+                                            <td>% Venda:</td>
+                                            <td><b>{{$venda->porcentagem_venda}}%</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Desconto:</td>
+                                            <td><b>R${{number_format($venda->desconto / $venda->carrinho->produtos->count(), 2, ",", ".")}}</b></td>
+                                            <td>Forma de Pagamento:</td>
+                                            <td>
+                                                @if($venda->parcelas == 1)
+                                                    <b>1x</b>
+                                                @else
+                                                    <b>{{$venda->parcelas}}x (1+{{$venda->parcelas - 1}})</b>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            <div style="width: 100%; margin-top: 50px; text-align:center; font-weight:bold; font-size: 14px;">
+                RESUMO DA COMPRA
+            </div>
+            @foreach($venda->carrinho->produtos as $produto)
+                <div>
+                    <table class="" style="width: 700px; margin: 0 auto; margin-top: 30px; font-size: 9px; border-collapse: collapse;">
+                        <thead style="background-color: black; color: white; padding: 3px 0px;">
+                            <tr>
+                                <td class="td-border" style="width: 80px; text-align: center; font-weight: bold; padding: 3px 0px;">LOTE</td>
+                                <td class="td-border" colspan="3" style="text-align: center; font-weight: bold; padding: 3px 0px;">{{$produto->lote->nome}}</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="text-align:center;">
+                                <td class="td-border" style="padding: 4px 0px;">{{str_pad($produto->lote->numero, 3, "0", STR_PAD_LEFT)}}</td>
+                                <td class="td-border" style="padding: 4px 0px;" colspan="2">RGD: {{$produto->lote->registro}} - GPTA: {{$produto->lote->gpta}} - NASC.: @if($produto->lote->nascimento) {{date("d/m/Y", strtotime($produto->lote->nascimento))}} @endif - CCG: {{$produto->lote->ccg}} - FÊMEA</td>
+                                <td class="td-border" style="padding: 4px 0px; width: 170px;">@if($produto->lote->parto) Último parto em {{date("d/m/Y", strtotime($produto->lote->parto))}} @endif</td>
+                            </tr>
+                            <tr style="text-align:center;">
+                                <td style="padding: 4px 0px;"></td>
+                                <td class="td-border" style="padding: 4px 0px;">
+                                    <table style="width: 100%;">
+                                        <tbody style="text-align: center;">
+                                            <tr>
+                                                <td>Comissão:</td>
+                                                <td><b>R${{number_format($venda->comissao / $venda->carrinho->produtos->count(), 2, ",", ".")}}</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Desconto:</td>
+                                                <td><b>R${{number_format($venda->desconto / $venda->carrinho->produtos->count(), 2, ",", ".")}}</b></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td class="td-border" style="padding: 4px 0px;">
+                                    <table style="width: 100%;">
+                                        <tbody style="text-align: center;">
+                                            <tr>
+                                                <td>% Vendas:</td>
+                                                <td><b>{{$venda->porcentagem_venda}}%</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Forma de pagamento:</td>
+                                                <td>
+                                                    @if($venda->parcelas == 1)
+                                                        <b>1x</b>
+                                                    @else
+                                                        <b>{{$venda->parcelas}}x (1+{{$venda->parcelas - 1}})</b>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td class="td-border" style="padding: 4px 0px; width: 170px;">
+                                    <table style="width: 100%;">
+                                        <tbody style="text-align: center;">
+                                            <tr>
+                                                <td>Valor Total:</td>
+                                                <td><b>R${{number_format($produto->lote->preco + ($venda->comissao / $venda->carrinho->produtos->count()) - ($venda->desconto / $venda->carrinho->produtos->count()), 2, ",", ".")}}</b></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            @endforeach
+            <div>
+                <table class="" style="width: 700px; margin: 0 auto; margin-top: 30px; font-size: 9px; border-collapse: collapse;">
+                    <thead style="background-color: black; color: white; padding: 3px 0px;">
+                        <tr>
+                            <td class="td-border" colspan="2" style="text-align: center; font-weight: bold; padding: 3px 0px;">DETALHAMENTO DE PAGAMENTO</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="text-align:center;">
+                            <td @if($venda->parcelas < 5) colspan="2" @endif class="td-border" style="padding: 4px 0px;">
+                                <table style="width: 100%;">
+                                    <thead style="text-align: center;font-weight: bold;">
+                                        <tr>
+                                            <td>Qnt. Parcelas</td>
+                                            <td>Valor da Parcela</td>
+                                            <td>Vencimento</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="text-align: center;">
+                                        @for($i = 1; $i <= $venda->parcelas; $i++)
+                                            <tr>
+                                                <td>{{$i}}</td>
+                                                <td>R${{number_format($venda->valor_parcela, 2, ",", ".")}}</td>
+                                                <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * 30) . " days"))}}</td>
+                                            </tr>
+                                            @php
+                                                if($i == 5){
+                                                    break;
+                                                }
+                                            @endphp
+                                        @endfor
+                                    </tbody>
+                                </table>
+                            </td>
+                            @if($venda->parcelas > 5)
+                                <td class="td-border" style="padding: 4px 0px;">
+                                    <table style="width: 100%;">
+                                        <thead style="text-align: center;font-weight: bold;">
+                                            <tr>
+                                                <td>Qnt. Parcelas</td>
+                                                <td>Valor da Parcela</td>
+                                                <td>Vencimento</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="text-align: center;">
+                                            <tr>
+                                                <td>6</td>
+                                                <td>R$9.050,00</td>
+                                                <td>12/08/2021</td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td>R$9.050,00</td>
+                                                <td>12/08/2021</td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td>R$9.050,00</td>
+                                                <td>12/08/2021</td>
+                                            </tr>
+                                            <tr>
+                                                <td>9</td>
+                                                <td>R$9.050,00</td>
+                                                <td>12/08/2021</td>
+                                            </tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td>R$9.050,00</td>
+                                                <td>12/08/2021</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            @endif
+                        </tr>
+                        <tr style="background-color: black; color: white; padding: 4px 0px; text-align: center;">
+                            <td class="td-border" style="width: 50%;">VALOR TOTAL: <b>R$ {{number_format($venda->total, 2, ",", ".")}}</b></td>
+                            <td class="td-border" style="width: 50%;">% COMISSÃO: <b>{{$venda->porcentagem_comissao}}%</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+        <hr style="margin: 50px 0px; border-top: 1px dotted black; border-bottom: 0px;">
 
 {{--  @foreach($venda->carrinho->produtos as $produto)
         <tr>

@@ -36,15 +36,21 @@
 
                     <div class="row">
                         
-                        <div class="col-md-8">
+                        <div class="col-md-3">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email *</label>
                                 <input type="email" class="form-control" name="email" id="email" required>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="cnpj" class="form-label">CNPJ *</label>
+                                <label for="endereco" class="form-label">Endereço *</label>
+                                <input type="text" class="form-control" name="endereco" id="endereco" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="cnpj" class="form-label">CPF/CNPJ *</label>
                                 <input type="text" class="form-control" name="cnpj" id="cnpj" required>
                             </div>
                         </div>

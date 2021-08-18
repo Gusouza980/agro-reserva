@@ -59,4 +59,40 @@ class ReservasController extends Controller
             "descurtidas" => $descurtidas
         ]);
     }
+
+    public function abertura(Reserva $reserva){
+        if($reserva->aberto){
+            $reserva->aberto = false;
+            toastr()->success("Reserva aberta !");
+        }else{
+            $reserva->aberto = true;
+            toastr()->success("Reserva fechada !");
+        }
+        $reserva->save();
+        return redirect()->back();
+    }
+
+    public function preco(Reserva $reserva){
+        if($reserva->preco_disponivel){
+            $reserva->preco_disponivel = false;
+            toastr()->success("Preços liberados !");
+        }else{
+            $reserva->preco_disponivel = true;
+            toastr()->success("Preços ocultados !");
+        }
+        $reserva->save();
+        return redirect()->back();
+    }
+
+    public function compras(Reserva $reserva){
+        if($reserva->compra_disponivel){
+            $reserva->compra_disponivel = false;
+            toastr()->success("Compras liberadas !");
+        }else{
+            $reserva->compra_disponivel = true;
+            toastr()->success("Compras bloqueadas !");
+        }
+        $reserva->save();
+        return redirect()->back();
+    }
 }

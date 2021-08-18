@@ -12,6 +12,14 @@ class Cliente extends Model
     public function carrinhos(){
         return $this->hasMany(Carrinho::class);
     }
+    
+    public function Cidade(){
+        return $this->belongsTo(Cidade::class, "cidade", "id");
+    }
+
+    public function Estado(){
+        return $this->belongsTo(Estado::class, "estado", "id");
+    }
 
     public function racas(){
         return $this->belongsToMany(Raca::class, 'cliente_racas');
