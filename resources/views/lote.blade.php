@@ -35,33 +35,43 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 text-center text-lg-right">
-                                <h4><b>{{$lote->parcelas}}x</b> de <b>R${{number_format($lote->preco / $lote->parcelas, 2, ",", ".")}}</b></h4>
-                                {{--  <h4><b>0x</b> de <b>R$0000,00</b></h4>  --}}
+                            <div class="col-12 text-center text-lg-right @if(!$lote->reserva->preco_disponivel) blur @endif">
+                                @if($lote->reserva->preco_disponivel)
+                                    <h4><b>{{$lote->parcelas}}x</b> de <b>R${{number_format($lote->preco / $lote->parcelas, 2, ",", ".")}}</b></h4>
+                                @else
+                                    <h4><b>0x</b> de <b>R$0000,00</b></h4>
+                                @endif
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 text-center text-lg-right">
-                                <span>ou R${{number_format($lote->preco - ($lote->preco * 6 / 100), 2, ",", ".")}} à vista</span>
+                            <div class="col-12 text-center text-lg-right @if(!$lote->reserva->preco_disponivel) blur @endif">
+                                @if($lote->reserva->preco_disponivel)
+                                    <span>ou R${{number_format($lote->preco - ($lote->preco * 6 / 100), 2, ",", ".")}} à vista</span>
+                                @else
+                                    <span>R$00000,00</span>
+                                @endif
                                 {{--  <span>R$00000,00</span>  --}}
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
                         <div class="text-center text-white">
-                            {{--  <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível 21:30</button>  --}}
-                            @if(!$lote->reservado)
-                                @if(session()->get("cliente"))
-                                    @if($cliente->aprovado)
-                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('carrinho.adicionar', ['lote' => $lote])}}" role="button">Comprar</a>
+                            @if(!$lote->reserva->compra_disponivel)
+                                <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($lote->reserva->inicio))}}</button>
+                            @else
+                                @if(!$lote->reservado)
+                                    @if(session()->get("cliente"))
+                                        @if($cliente->aprovado)
+                                            <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('carrinho.adicionar', ['lote' => $lote])}}" role="button">Comprar</a>
+                                        @else
+                                            <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer" data-toggle="modal" data-target="#modalBloqueio" style="max-width:350px;" role="button">Comprar</a>
+                                        @endif
                                     @else
-                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer" data-toggle="modal" data-target="#modalBloqueio" style="max-width:350px;" role="button">Comprar</a>
+                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('login')}}" role="button">Entre para comprar</a>
                                     @endif
                                 @else
-                                    <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('login')}}" role="button">Entre para comprar</a>
+                                    <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Reservado</button>
                                 @endif
-                            @else
-                                <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Reservado</button>
                             @endif
                         </div>
                     </div>
