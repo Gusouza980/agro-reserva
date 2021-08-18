@@ -9,7 +9,7 @@
 @endsection
 
 @section('conteudo')
-    <div class="" style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: bottom center;">
+    <div class="" style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover; background-position: center;">
         <div class="pb-5" style="background-color: rgba(0,0,0,0.5);">
             <div class="container-fluid py-5">
                 <div class="container">
@@ -71,7 +71,7 @@
                         </a>
                         <div class="numero-lote">
                             <h4>LOTE</h4>
-                            <h5 class="mb-2">{{str_pad($lote->numero, 3, "0", STR_PAD_LEFT)}}</h5>
+                            <h5 class="mb-2">{{str_pad($lote->numero, 3, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</h5>
                         </div>
                         <div class="card-body card-lote-body" style="position: relative;">
                             {{--  <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fas fa-info-circle"></i> Mais Informações</a>  --}}
@@ -109,6 +109,8 @@
                                         <div class="col-12 card-lote-parto text-center" style="height: 30px;">
                                             @if($lote->parto)
                                                 <h3>ÚLTIMO PARTO EM <b>{{date('d/m/Y', strtotime($lote->parto))}}</b></h3>
+                                            @else
+                                                <h3>SEXO: {{strtoupper($lote->sexo)}}</h3>
                                             @endif
                                         </div>
                                     </div>

@@ -19,16 +19,31 @@
                 <form action="{{route('painel.fazenda.reserva.lote.salvar', ['lote' => $lote])}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <div class="mb-3">
                                 <label for="numero" class="form-label">Lote</label>
                                 <input type="number" class="form-control" name="numero" id="numero" min="1" step="1" value="{{$lote->numero}}">
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-2">
+                            <div class="mb-3">
+                                <label for="letra" class="form-label">Letra</label>
+                                <input type="text" class="form-control" name="letra" id="letra" value="{{$lote->letra}}" maxlength="2">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="nome" class="form-label">Nome do Lote *</label>
                                 <input type="text" class="form-control" name="nome" id="nome" maxlength="100" value="{{$lote->nome}}" required>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3">
+                                <label for="sexo" class="form-label">Sexo</label>
+                                <select class="form-control" name="sexo" id="">
+                                    <option value="Fêmea" @if($lote->sexo == "Fêmea") selected @endif>Fêmea</option>
+                                    <option value="Macho" @if($lote->sexo == "Macho") selected @endif>Macho</option>
+                                </select>
                             </div>
                         </div>
                     </div>
