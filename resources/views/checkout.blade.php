@@ -45,7 +45,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <b>Frete:</b> Retirada na Fazenda
+                            <b>Frete:</b> Por conta do comprador
                         </div>
                     </div>
                 </div>
@@ -57,15 +57,14 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <b>À VISTA: 10% de desconto</b><br>
-                            <small>*6% de desconto pela fazenda e 4% de desconto da comissão Agro Reserva.</small>
+                            <b>À VISTA: 8% de desconto</b><br>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-12">
-                            <b>ATÉ 4x: 5% de desconto</b><br>
-                            <small>*3% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.</small>
+                            <b>DEMAIS PARCELAS: Negociação durante a venda</b><br>
+                            {{--  <small>*3% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.</small>  --}}
                         </div>
                     </div>
                 </div>
@@ -82,9 +81,9 @@
                                     <option value="">Selecione as parcelas</option>
                                     @for($i = 1; $i <= 10; $i++)
                                         @if($i == 1)
-                                            <option value="{{$i}}">{{$i}}x de R${{number_format($carrinho->total - ($carrinho->total * 6 / 100), 2, ",", ".")}} (6% de desconto)</option>
+                                            <option value="{{$i}}">{{$i}}x de R${{number_format($carrinho->total - ($carrinho->total * 8 / 100), 2, ",", ".")}} (8% de desconto)</option>
                                         @elseif($i < 5)
-                                            <option value="{{$i}}">{{$i}}x de R${{number_format(round(($carrinho->total - ($carrinho->total * 3 / 100)) / $i, 2),2 , ",", ".")}} (3% de desconto)</option>
+                                            <option value="{{$i}}">{{$i}}x de R${{number_format(round(($carrinho->total - ($carrinho->total * 0 / 100)) / $i, 2),2 , ",", ".")}}</option>
                                         @else
                                             <option value="{{$i}}">{{$i}}x de R${{number_format(round(($carrinho->total / $i), 2), 2, ",", ".")}}</option>
                                         @endif
@@ -166,12 +165,12 @@
                 $("#resumo").slideUp(500, function(){
                     if(parseInt($("select[name='parcelamento']").val()) == 1){
                         var comissao = 0;
-                        var desconto = 6;
+                        var desconto = 8;
                     }else if(parseInt($("select[name='parcelamento']").val()) < 5 ){
-                        var comissao = 2;
-                        var desconto = 3;
+                        var comissao = 0;
+                        var desconto = 0;
                     }else{
-                        var comissao = 4;
+                        var comissao = 0;
                         var desconto = 0;
                     }
 

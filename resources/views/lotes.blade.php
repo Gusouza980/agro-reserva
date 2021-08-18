@@ -56,9 +56,9 @@
                 <a href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
             </div>
         </div>
-        <div class="row justify-content-center justify-content-lg-between">
+        <div class="row justify-content-center">
             @foreach($fazenda->lotes->where("ativo", true)->sortBy("numero") as $lote)
-                <div class="coluna-caixa-lote mt-4">
+                <div class="coluna-caixa-lote mt-4 px-3">
                     <div class="card card-caixa-lote mx-auto">
                         <a href="{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote])}}">
                             <div class="d-flex align-items-center justify-content-center" style="border-top-left-radius: 20px; border-top-right-radius: 20px; object-fit: contain; height:180px; background: url({{asset($lote->preview)}}); background-position: top; background-repeat: no-repeat;">

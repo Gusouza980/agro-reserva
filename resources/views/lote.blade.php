@@ -139,12 +139,12 @@
                                 </div>
                                 <span>Segurança</span>
                             </div>
-                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
+                            {{--  <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
                                 <div class="mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_porcentagem.png')}}" height="50" alt="">
                                 </div>
                                 <span>Comissão</span>
-                            </div>
+                            </div>  --}}
                         </div>
                         <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
                             <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalFrete">
@@ -165,12 +165,12 @@
                                 </div>
                                 <span>Segurança</span>
                             </div>
-                            <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
+                            {{--  <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
                                 <div class="mx-auto mb-3 icones-info">
                                     <img src="{{asset('imagens/icon_porcentagem.png')}}" height="80" alt="">
                                 </div>
                                 <span>Comissão</span>
-                            </div>
+                            </div>  --}}
                         </div>
                     </div>
                 </div>
@@ -295,20 +295,20 @@
                                 Formas de pagamento:
                             </p>
                             <p>
-                                À vista ou em até 10x sem juros no boleto de titularidade da fazenda e do comprador.
+                                À vista ou em até 15x sem juros no boleto de titularidade da fazenda e do comprador.
                             </p>
                             <p>
-                                Pague <b>À VISTA</b> e ganhe <b>10% de desconto</b>*.
+                                Pague <b>À VISTA</b> e ganhe <b>8% de desconto</b>*.
                             </p>
-                            <ul class="mt-3">
+                            {{--  <ul class="mt-3">
                                 <li class="" style="list-style: none; font-size: 14px;">*6% de desconto pela fazenda e 4% de desconto da comissão Agro Reserva.</li>
-                            </ul>
+                            </ul>  --}}
                             <p>
-                                Pague em <b>ATÉ 4x</b> e ganhe <b>5% de desconto</b>*
+                                Pagamentos em <b>parcelas reduzida</b> - negociação durante a venda.
                             </p>
-                            <ul class="mt-3">
+                            {{--  <ul class="mt-3">
                                 <li class="" style="list-style: none; font-size: 14px;">*3% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.</li>
-                            </ul>
+                            </ul>  --}}
                             <p style="font-size: 12px;">Os valores referentes à forma de pagamento são calculados automaticamente no processo de finalização da compra.</p>
                         </div>
                     </div>
@@ -365,12 +365,12 @@
                     </div>
                     <div class="row px-4">
                         <div class="col-12 text-left">
-                            <p>A Agro Reserva traz benefícios para você, <b>comprador</b>, com <b>descontos progressivos</b> que podem chegar a <b>0% de comissão</b>. Confira! </p>
-                            <ul class="mt-3">
+                            <p>A Agro Reserva traz benefícios para você, <b>comprador</b>, <b>ZERANDO</b> totalmente a comissão.</p>
+                            {{--  <ul class="mt-3">
                                 <li><b>Pague à vista e não pague nada de comissão!</b></li>
                                 <li class="mt-2">Pague em até 04 parcelas e concederemos 50% de desconto na sua comissão.</li>
                                 <li class="mt-2">Pague em 05 parcelas ou mais e nós cobraremos apenas 4% de comissão.</li>
-                            </ul>
+                            </ul>  --}}
                         </div>
                     </div>
                 </div>

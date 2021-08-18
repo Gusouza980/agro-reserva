@@ -147,12 +147,12 @@ class CarrinhoController extends Controller
 
         if($parcelas == 1){
             $comissao = 0;
-            $desconto = 6;
+            $desconto = 8;
         }else if($parcelas < 5){
-            $comissao = 2;
-            $desconto = 3;
+            $comissao = 0;
+            $desconto = 0;
         }else{
-            $comissao = 4;
+            $comissao = 0;
             $desconto = 0;
         }
 
@@ -163,6 +163,9 @@ class CarrinhoController extends Controller
         $venda->total = $total_compra;
         $venda->desconto = $valor_desconto;
         $venda->comissao = $valor_comissao;
+        $venda->porcentagem_comissao = $comissao;
+        $venda->porcentagem_desconto = $desconto;
+        $venda->porcentagem_venda = 100;
         $venda->valor_parcela = ($carrinho->total - $valor_desconto) / $parcelas;
         $venda->tipo = 1;
         $venda->save();
@@ -207,7 +210,7 @@ class CarrinhoController extends Controller
         $carrinho->save();
         session()->forget("carrinho");
         $data = ["venda" => $venda];
-        $pdf = PDF::loadView('cliente.comprovante', $data);
+        $pdf = PDF::loadView('cliente.comprovante2', $data);
         $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
         $file = file_get_contents('templates/emails/confirmar-compra.html');
         Email::enviar($file, "Confirmação de Compra", session()->get("cliente")["email"], false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
