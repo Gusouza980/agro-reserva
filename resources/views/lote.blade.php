@@ -88,9 +88,9 @@
                         </div>
                         <div class="row justify-content-center justify-content-lg-start mt-4 mt-lg-0">
                             <div class="px-4 px-lg-0 text-white flex-grow-1 text-lote-info text-center text-lg-left">
-                                <span><b>RGD:</b> {{$lote->registro}}</span><br>
+                                <span><b>{{$lote->ccg}}</b></span><br>
                                 <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
-                                <span><b>CCG:</b> {{$lote->ccg}}</span><br>
+                                <span><b>RGD:</b> {{$lote->registro}}</span><br>
                                 <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
                                 <span><b>GPTA:</b> {{$lote->gpta}}</span><br>
                                 <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
