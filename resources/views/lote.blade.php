@@ -268,6 +268,11 @@
                     <div class="row mt-3 px-4">
                         <div class="col-12 text-left">
                             {{--  <p>Frete por conta do comprador.</p>  --}}
+                            <p>
+                                <b>ESTA RESERVA OFERECE SEGURO DOS ANIMAIS</b>
+                                <br>
+                                <b>Seguradora:</b> Denner Seguro de Animais
+                            </p>
                             <p><b>Endereço da Fazenda:</b> {{$lote->fazenda->endereco}}</p>
                             <b>O frete é por conta do comprador.</b>
                         </div>
