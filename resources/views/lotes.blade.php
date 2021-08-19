@@ -43,6 +43,18 @@
                     </div>
                 </div>
             </div>
+            <div class="w1200 mx-auto">
+                <div class="row justify-content-center">
+                    <div class="text-cta-comissao-lotes text-center py-4 px-5 py-lg-0" style="background: url({{asset('imagens/brush-laranja.png')}}); background-position: center; background-size: contain; background-repeat: no-repeat;">
+                        <h1> 0% de comissão </h1>
+                    </div>
+                </div>
+                {{--  <div class="row mt-3">
+                    <div class="col-12 text-cta-comissao text-center">
+                        <h2 class="cpointer" data-aos="fade-in" data-toggle="modal" data-target="#modalComissao">Consulte condições</h2>
+                    </div>
+                </div>  --}}
+            </div>
         </div>
     </div>
     <div class="w1200 mx-auto py-5">

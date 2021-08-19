@@ -116,11 +116,14 @@
                     </div>
                 </div>
             </div>
-            {{--  <div class="row pb-4">
-                <div class="col-12 text-center">
-                    <a href="" class="btn btn-vermelho px-4 py-2">Falar com Consultor</a>
+            {{--  <div class="w800 mx-auto">
+                <div class="row">
+                    <div class="col-12 text-cta-comissao text-center py-4 py-lg-0" style="background: url({{asset('imagens/brush-laranja.png')}}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                        <h1>0% DE COMISSÃO</h1>
+                    </div>
                 </div>
             </div>  --}}
+            
             <div class="w-100 pt-4 pb-5 d-none d-lg-block">
                 @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug]))
                     @include('includes.fazenda.conheca')

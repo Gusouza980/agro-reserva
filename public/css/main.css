@@ -1402,6 +1402,13 @@ label {
     text-transform: uppercase;
 }
 
+.text-cta-comissao-lotes > h1{
+    font-family: Gobold Regular;
+    font-size: 50px;
+    color: #F2EAD0;
+    text-transform: uppercase;
+}
+
 .text-cta-comissao > h2{
     font-family: Gobold Regular;
     font-size: 15px;
@@ -1423,6 +1430,12 @@ label {
         font-size: 45px;
         color: white;
         text-transform: uppercase;
+    }
+
+    .text-cta-comissao-lotes > h1{
+        font-family: Gobold Regular;
+        font-size: 28px;
+        color: #F2EAD0;
     }
 }
 
