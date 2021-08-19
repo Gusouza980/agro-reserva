@@ -129,6 +129,17 @@ a:active {
     border: 0px;
 }
 
+.btn-vermelho-outline {
+    border: 1px solid #E8521B;
+    background: transparent;
+    border-radius: 30px;
+    color: white;
+}
+
+.btn-vermelho-outline:hover {
+    background: #E8521B;
+}
+
 .btn-hover-preto:hover{
     background-color: black;
     color: white;
@@ -1414,6 +1425,15 @@ label {
     font-size: 15px;
     line-height: 20px;
     color: #222222;
+}
+
+.text-cta-comissao-lotes > h2{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: #F2EAD0;
+    letter-spacing: 3px;
+    font-weight: medium;
+    text-transform: uppercase;
 }
 
 @media(max-width:768px){

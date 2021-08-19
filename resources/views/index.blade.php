@@ -78,12 +78,12 @@
                                             </div>
                                             <div class="row mt-3" style="">
                                                 <div class="col-12 text-center">
-                                                    <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $reserva->fazenda->slug])}}" role="button">Mostrar a Reserva</a>
+                                                    <a name="" id="" class="btn @if($reserva->encerrada) btn-vermelho-outline @else btn-vermelho @endif py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $reserva->fazenda->slug])}}" role="button">Mostrar a Reserva</a>
                                                 </div>
                                             </div>
                                             @if($reserva->lotes->where("reservado", false)->count() == 0)
                                                 <div class="tarja-diagonal text-center" style="background-color: #15bd3d; width: 100%; height: 50px; position: absolute; top: 0px; left: -110px; transform: rotate(-45deg);">
-                                                    <h5 style="color: white; position: absolute; top: 20px; left: 28%; font-size: 12px; font-weight: bold; font-family: Gobold Regular; letter-spacing: 3px;">100% VENDIDO</h5>
+                                                    <h5 style="color: white; position: absolute; top: 22px; left: 28.5%; font-size: 10px; font-weight: bold; font-family: Gobold Regular; letter-spacing: 3px;">100% VENDIDO</h5>
                                                 </div>
                                             @endif
                                         @else

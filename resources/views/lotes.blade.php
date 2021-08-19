@@ -44,9 +44,19 @@
                 </div>
             </div>
             <div class="w1200 mx-auto">
+                <div class="row">
+                    <div class="col-12 text-center text-cta-comissao-lotes">
+                        <h2>RESERVA</h2>
+                    </div>
+                </div>
                 <div class="row justify-content-center">
                     <div class="text-cta-comissao-lotes text-center py-4 px-5 py-lg-0" style="background: url({{asset('imagens/brush-laranja.png')}}); background-position: center; background-size: contain; background-repeat: no-repeat;">
                         <h1> 0% de comissão </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center text-cta-comissao-lotes">
+                        <h2>COMPRADOR</h2>
                     </div>
                 </div>
                 {{--  <div class="row mt-3">

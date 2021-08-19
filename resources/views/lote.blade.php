@@ -92,7 +92,7 @@
                     <div class="ml-0 ml-lg-5 mt-4 mt-lg-0 px-lg-0 px-4 text-center text-lg-left">
                         <div class="row">
                             <div class="col-12 text-white text-lote-info px-0">
-                                <h1>Lote {{str_pad($lote->numero, 3, "0", STR_PAD_LEFT)}}</h1>
+                                <h1>Lote {{str_pad($lote->numero, 3, "0", STR_PAD_LEFT)}}{{$lote->letra}}</h1>
                                 <h2>{{$lote->nome}}</h2>
                             </div>
                         </div>
