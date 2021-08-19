@@ -70,7 +70,7 @@
                                                 <div class="col-12 text-center">
                                                     @if(!$reserva->encerrada)
                                                         <h1 class="text-abertura">Inicio em</h1>
-                                                        <h2 class="data-abertura mt-n2">{{date("d/m/Y", strtotime($reserva->fim))}}</h2>
+                                                        <h2 class="data-abertura mt-n2">{{date("d/m/Y", strtotime($reserva->inicio))}}</h2>
                                                     @else
                                                         <h1 class="text-abertura">ENCERRADA</h1>
                                                     @endif
