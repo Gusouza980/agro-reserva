@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="col-12 text-center text-lg-right @if(!$lote->reserva->preco_disponivel) blur @endif">
                                 @if($lote->reserva->preco_disponivel)
-                                    <span>ou R${{number_format($lote->preco - ($lote->preco * 6 / 100), 2, ",", ".")}} à vista</span>
+                                    <span>ou R${{number_format($lote->preco - ($lote->preco * 8 / 100), 2, ",", ".")}} à vista</span>
                                 @else
                                     <span>R$00000,00</span>
                                 @endif

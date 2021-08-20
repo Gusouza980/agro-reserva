@@ -301,7 +301,7 @@
                                             <td>Valor do animal:</td>
                                             <td><b>R${{number_format($produto->lote->preco, 2, ",", ".")}}</td>
                                             <td>% Venda:</td>
-                                            <td><b>{{$venda->porcentagem_venda}}%</b></td>
+                                            <td><b>{{$produto->lote->porcentagem}}%</b></td>
                                         </tr>
                                         <tr>
                                             <td>Desconto:</td>
@@ -361,7 +361,7 @@
                                         <tbody style="text-align: center;">
                                             <tr>
                                                 <td>% Vendas:</td>
-                                                <td><b>{{$venda->porcentagem_venda}}%</b></td>
+                                                <td><b>{{$produto->lote->porcentagem}}%</b></td>
                                             </tr>
                                             <tr>
                                                 <td>Forma de pagamento:</td>
@@ -391,42 +391,17 @@
                     </table>
                 </div>
             @endforeach
-            <div>
-                <table class="" style="width: 700px; margin: 0 auto; margin-top: 30px; font-size: 9px; border-collapse: collapse;">
-                    <thead style="background-color: black; color: white; padding: 3px 0px;">
-                        <tr>
-                            <td class="td-border" colspan="2" style="text-align: center; font-weight: bold; padding: 3px 0px;">DETALHAMENTO DE PAGAMENTO</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="text-align:center;">
-                            <td @if($venda->parcelas < 5) colspan="2" @endif class="td-border" style="padding: 4px 0px;">
-                                <table style="width: 100%;">
-                                    <thead style="text-align: center;font-weight: bold;">
-                                        <tr>
-                                            <td>Qnt. Parcelas</td>
-                                            <td>Valor da Parcela</td>
-                                            <td>Vencimento</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody style="text-align: center;">
-                                        @for($i = 1; $i <= $venda->parcelas; $i++)
-                                            <tr>
-                                                <td>{{$i}}</td>
-                                                <td>R${{number_format($venda->valor_parcela, 2, ",", ".")}}</td>
-                                                <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * 30) . " days"))}}</td>
-                                            </tr>
-                                            @php
-                                                if($i == 5){
-                                                    break;
-                                                }
-                                            @endphp
-                                        @endfor
-                                    </tbody>
-                                </table>
-                            </td>
-                            @if($venda->parcelas > 5)
-                                <td class="td-border" style="padding: 4px 0px;">
+            @if($venda->primeira_parcela)
+                <div>
+                    <table class="" style="width: 700px; margin: 0 auto; margin-top: 30px; font-size: 9px; border-collapse: collapse;">
+                        <thead style="background-color: black; color: white; padding: 3px 0px;">
+                            <tr>
+                                <td class="td-border" colspan="2" style="text-align: center; font-weight: bold; padding: 3px 0px;">DETALHAMENTO DE PAGAMENTO</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="text-align:center;">
+                                <td @if($venda->parcelas < 5) colspan="2" @endif class="td-border" style="padding: 4px 0px;">
                                     <table style="width: 100%;">
                                         <thead style="text-align: center;font-weight: bold;">
                                             <tr>
@@ -436,43 +411,70 @@
                                             </tr>
                                         </thead>
                                         <tbody style="text-align: center;">
-                                            <tr>
-                                                <td>6</td>
-                                                <td>R$9.050,00</td>
-                                                <td>12/08/2021</td>
-                                            </tr>
-                                            <tr>
-                                                <td>7</td>
-                                                <td>R$9.050,00</td>
-                                                <td>12/08/2021</td>
-                                            </tr>
-                                            <tr>
-                                                <td>8</td>
-                                                <td>R$9.050,00</td>
-                                                <td>12/08/2021</td>
-                                            </tr>
-                                            <tr>
-                                                <td>9</td>
-                                                <td>R$9.050,00</td>
-                                                <td>12/08/2021</td>
-                                            </tr>
-                                            <tr>
-                                                <td>10</td>
-                                                <td>R$9.050,00</td>
-                                                <td>12/08/2021</td>
-                                            </tr>
+                                            @for($i = 1; $i <= $venda->parcelas; $i++)
+                                                <tr>
+                                                    <td>{{$i}}</td>
+                                                    <td>R${{number_format($venda->valor_parcela, 2, ",", ".")}}</td>
+                                                    <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * 30) . " days"))}}</td>
+                                                </tr>
+                                                @php
+                                                    if($i == 5){
+                                                        break;
+                                                    }
+                                                @endphp
+                                            @endfor
                                         </tbody>
                                     </table>
                                 </td>
-                            @endif
-                        </tr>
-                        <tr style="background-color: black; color: white; padding: 4px 0px; text-align: center;">
-                            <td class="td-border" style="width: 50%;">VALOR TOTAL: <b>R$ {{number_format($venda->total, 2, ",", ".")}}</b></td>
-                            <td class="td-border" style="width: 50%;">% COMISSÃO: <b>{{$venda->porcentagem_comissao}}%</b></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                                @if($venda->parcelas > 5)
+                                    <td class="td-border" style="padding: 4px 0px;">
+                                        <table style="width: 100%;">
+                                            <thead style="text-align: center;font-weight: bold;">
+                                                <tr>
+                                                    <td>Qnt. Parcelas</td>
+                                                    <td>Valor da Parcela</td>
+                                                    <td>Vencimento</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody style="text-align: center;">
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>R$9.050,00</td>
+                                                    <td>12/08/2021</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>R$9.050,00</td>
+                                                    <td>12/08/2021</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td>R$9.050,00</td>
+                                                    <td>12/08/2021</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td>R$9.050,00</td>
+                                                    <td>12/08/2021</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td>R$9.050,00</td>
+                                                    <td>12/08/2021</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                @endif
+                            </tr>
+                            <tr style="background-color: black; color: white; padding: 4px 0px; text-align: center;">
+                                <td class="td-border" style="width: 50%;">VALOR TOTAL: <b>R$ {{number_format($venda->total, 2, ",", ".")}}</b></td>
+                                <td class="td-border" style="width: 50%;">% COMISSÃO: <b>{{$venda->porcentagem_comissao}}%</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            @endif
         </div>
 
         <hr style="margin: 50px 0px; border-top: 1px dotted black; border-bottom: 0px;">
