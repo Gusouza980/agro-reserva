@@ -78,7 +78,7 @@
                 <a href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
             </div>
         </div>
-        <div class="row justify-content-between">
+        <div class="row justify-content-center justify-content-lg-between">
             @foreach($fazenda->lotes->where("ativo", true)->sortBy("numero") as $lote)
                 <div class="coluna-caixa-lote mt-4">
                     <div class="card card-caixa-lote mx-auto">
