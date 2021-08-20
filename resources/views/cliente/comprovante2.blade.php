@@ -308,10 +308,18 @@
                                             <td><b>R${{number_format($venda->desconto / $venda->carrinho->produtos->count(), 2, ",", ".")}}</b></td>
                                             <td>Forma de Pagamento:</td>
                                             <td>
-                                                @if($venda->parcelas == 1)
-                                                    <b>1x</b>
+                                                @if($venda->parcelas_mes == 1)
+                                                    @if($venda->parcelas == 1)
+                                                        <b>1x</b>
+                                                    @else
+                                                        <b>{{$venda->parcelas}}x (1+{{$venda->parcelas - 1}})</b>
+                                                    @endif
                                                 @else
-                                                    <b>{{$venda->parcelas}}x (1+{{$venda->parcelas - 1}})</b>
+                                                    @if($venda->parcelas == 1)
+                                                        <b>1x</b>
+                                                    @else
+                                                        <b>{{$venda->parcelas / 2}}x ({{($venda->parcelas / 2)}} x 2)</b>
+                                                    @endif
                                                 @endif
                                             </td>
                                         </tr>
@@ -366,10 +374,18 @@
                                             <tr>
                                                 <td>Forma de pagamento:</td>
                                                 <td>
-                                                    @if($venda->parcelas == 1)
-                                                        <b>1x</b>
+                                                    @if($venda->parcelas_mes == 1)
+                                                        @if($venda->parcelas == 1)
+                                                            <b>1x</b>
+                                                        @else
+                                                            <b>{{$venda->parcelas}}x (1+{{$venda->parcelas - 1}})</b>
+                                                        @endif
                                                     @else
-                                                        <b>{{$venda->parcelas}}x (1+{{$venda->parcelas - 1}})</b>
+                                                        @if($venda->parcelas == 1)
+                                                            <b>1x</b>
+                                                        @else
+                                                            <b>{{$venda->parcelas / 2}}x ({{($venda->parcelas / 2)}} x 2)</b>
+                                                        @endif
                                                     @endif
                                                 </td>
                                             </tr>

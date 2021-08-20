@@ -166,6 +166,8 @@ class CarrinhoController extends Controller
         $venda->porcentagem_comissao = $comissao;
         $venda->porcentagem_desconto = $desconto;
         $venda->porcentagem_venda = 100;
+        $venda->dias_entre_parcelas = 15;
+        $venda->parcelas_mes = 2;
         $venda->valor_parcela = ($carrinho->total - $valor_desconto) / $parcelas;
         $venda->tipo = 1;
         $venda->save();

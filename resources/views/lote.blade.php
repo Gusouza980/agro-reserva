@@ -37,7 +37,13 @@
                         <div class="row">
                             <div class="col-12 text-center text-lg-right @if(!$lote->reserva->preco_disponivel) blur @endif">
                                 @if($lote->reserva->preco_disponivel)
-                                    <h4><b>{{$lote->parcelas}}x</b> de <b>R${{number_format($lote->preco / $lote->parcelas, 2, ",", ".")}}</b></h4>
+                                    @if($lote->reserva->parcelas_mes == 1)
+                                        <h4><b>{{$lote->parcelas}}x</b> de <b>R${{number_format($lote->preco / $lote->parcelas, 2, ",", ".")}}</b></h4>
+                                    @else
+                                        <div>
+                                            <h4><b>{{$lote->reserva->max_parcelas * 2}}</b>x (15 duplas) de <b>R${{number_format($lote->preco / ($lote->parcelas * 2), 2, ",", ".")}}</b></h4>
+                                        </div>
+                                    @endif
                                 @else
                                     <h4><b>0x</b> de <b>R$0000,00</b></h4>
                                 @endif
@@ -317,7 +323,7 @@
                                 Formas de pagamento:
                             </p>
                             <p>
-                                À vista ou em até 15x sem juros no boleto de titularidade da fazenda e do comprador.
+                                À vista ou em até 15 duplas sem juros no boleto de titularidade da fazenda e do comprador.
                             </p>
                             <p>
                                 Pague <b>À VISTA</b> e ganhe <b>8% de desconto</b>*.
