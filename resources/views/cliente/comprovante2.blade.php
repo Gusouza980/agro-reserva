@@ -275,7 +275,7 @@
                             </div>
                             <div style="text-align: center; color: black; font-size: 12px; font-weight: bold;">
                                 <div style="margin-top: 11px;">
-                                    {{str_pad($produto->lote->numero, 3, "0", STR_PAD_LEFT)}}
+                                    {{str_pad($produto->lote->numero, 3, "0", STR_PAD_LEFT)}}{{$produto->lote->letra}}
                                 </div>
                             </div>
                         </div>
@@ -344,7 +344,7 @@
                         </thead>
                         <tbody>
                             <tr style="text-align:center;">
-                                <td class="td-border" style="padding: 4px 0px;">{{str_pad($produto->lote->numero, 3, "0", STR_PAD_LEFT)}}</td>
+                                <td class="td-border" style="padding: 4px 0px;">{{str_pad($produto->lote->numero, 3, "0", STR_PAD_LEFT)}}{{$produto->lote->letra}}</td>
                                 <td class="td-border" style="padding: 4px 0px;" colspan="2">RGD: {{$produto->lote->registro}} - GPTA: {{$produto->lote->gpta}} - NASC.: @if($produto->lote->nascimento) {{date("d/m/Y", strtotime($produto->lote->nascimento))}} @endif - CCG: {{$produto->lote->ccg}} - FÊMEA</td>
                                 <td class="td-border" style="padding: 4px 0px; width: 170px;">@if($produto->lote->parto) Último parto em {{date("d/m/Y", strtotime($produto->lote->parto))}} @endif</td>
                             </tr>
