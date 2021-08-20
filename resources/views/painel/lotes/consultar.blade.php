@@ -23,6 +23,7 @@
                     <thead class="text-center">
                         <tr>
                             <th></th>
+                            <th>N°</th>
                             <th>Nome</th>
                             <th>Raça</th>
                             <th>Registro</th>
@@ -30,7 +31,7 @@
                             <th>Visitas</th>
                             <th>Situação</th>
                             <th>Ativo</th>
-                            <th></th>
+                            {{--  <th></th>  --}}
                         </tr>
                     </thead>
 
@@ -38,6 +39,20 @@
                     <tbody class="text-center">
                         @foreach($reserva->lotes as $lote)
                             <tr>
+                                <td>
+                                    <div class="dropdown mt-4 mt-sm-0">
+                                        <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-bars" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="dropdown-menu" style="margin: 0px;">
+                                            <a name="" id="" class="dropdown-item" href="{{route('painel.fazenda.reserva.lote.editar', ['lote' => $lote])}}" role="button">Editar</a>
+                                            @if(!$lote->reservado)
+                                                <a class="dropdown-item" href="{{route('painel.fazenda.reserva.lote.reservar', ['lote' => $lote])}}">Reservar</a>
+                                            @endif
+                                            <a class="dropdown-item" href="{{route('painel.fazenda.reserva.lote.ativo', ['lote' => $lote])}}">@if($lote->ativo) Desativar @else Ativar @endif</a>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td class="text-center">{{$lote->numero}}</td>
                                 <td>{{$lote->nome}}</td>
                                 <td>{{$lote->raca->nome}}</td>
@@ -56,12 +71,6 @@
                                         <i class="fa fa-star" style="color: yellow;" aria-hidden="true"></i>
                                     @else
                                         <i class="fa fa-star" aria-hidden="true"></i>
-                                    @endif
-                                </td>
-                                <td>
-                                    <a name="" id="" class="btn btn-warning" href="{{route('painel.fazenda.reserva.lote.editar', ['lote' => $lote])}}" role="button">Editar</a>
-                                    @if(!$lote->reservado)
-                                        <a class="btn btn-primary" href="{{route('painel.fazenda.reserva.lote.reservar', ['lote' => $lote])}}">Reservar</a>
                                     @endif
                                 </td>
                             </tr>
@@ -256,6 +265,7 @@
             pageLength: -1,
             lengthChange: true,
             lengthMenu: [[10,50,100,1000, -1], [10,50,100,1000, "Todos"]], 
+            order: [[ 1, "asc" ]],
         } );
     } );    
 </script> 

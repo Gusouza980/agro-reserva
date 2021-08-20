@@ -36,6 +36,7 @@ class LotesController extends Controller
         $lote->fazenda_id = $reserva->fazenda_id;
         $lote->reserva_id = $reserva->id;
         $lote->video = $request->video;
+        $lote->ativo = $request->ativo;
 
         if($request->file("preview")){
             $lote->preview = $request->file('preview')->store(
@@ -79,6 +80,7 @@ class LotesController extends Controller
         $lote->preco = $request->preco;
         $lote->parcelas = $request->parcelas;
         $lote->video = $request->video;
+        $lote->ativo = $request->ativo;
 
         if($request->file("preview")){
             Storage::delete($lote->preview);
@@ -113,5 +115,17 @@ class LotesController extends Controller
             toastr()->success("Lote reservado");
             return redirect()->back();
         }
+    }
+
+    public function ativo(Lote $lote){
+        if($lote->ativo){
+            $lote->ativo = false;
+            toastr()->success("Lote desativado");
+        }else{
+            $lote->ativo = true;
+            toastr()->success("Lote ativado");
+        }
+        $lote->save();
+        return redirect()->back();
     }
 }

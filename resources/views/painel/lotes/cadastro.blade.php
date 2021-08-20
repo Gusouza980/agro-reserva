@@ -101,6 +101,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-4">
+                            <div class="mb-3">
+                                <label for="ativo" class="form-label">Iniciar como</label>
+                                <select name="ativo" id="ativo" class="form-select">
+                                    <option value="1">Ativo</option>
+                                    <option value="0">Inativo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <hr>
                     <h4 class="card-title my-4">Informações de Pagamento</h4>
                     <div class="row mb-3">
