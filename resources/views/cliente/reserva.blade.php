@@ -68,7 +68,7 @@
                         @if($venda->parcelas_mes == 1)
                             <b>Parcelas:</b> {{$venda->parcelas}}x de {{number_format($venda->valor_parcela, 2, ",", ".")}}
                         @else
-                            <b>Parcelas:</b> {{$venda->parcelas / 2}}x ({{$venda->parcelas / 2}} x 2) de {{number_format($venda->valor_parcela, 2, ",", ".")}}
+                            <b>Parcelas:</b> {{$venda->parcelas}}x ({{$venda->parcelas / 2}} duplas) de {{number_format($venda->valor_parcela, 2, ",", ".")}}
                         @endif
                     </div>
                 </div>
