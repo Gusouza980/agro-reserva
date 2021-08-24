@@ -174,8 +174,8 @@
                         <select class="js-example-basic-multiple js-states form-control" style="width: 100%;" multiple="multiple" name="lotes[]" id="select_lotes" multiple required>
                             <option value="" label="default"></option>
                             @foreach(\App\Models\Reserva::where([["compra_disponivel", true],["aberto", true], ["encerrada", false]])->get() as $reserva)
-                                @foreach($reserva->lotes->where("reservado", false)->sortBy("numero") as $lote)
-                                    <option value="{{$lote->id}}" data-preco="{{$lote->preco}}">{{$lote->fazenda->nome_fazenda}}: Lote {{$lote->numero}}{{$lote->letra}}</option>
+                                @foreach($reserva->lotes->sortBy("numero") as $lote)
+                                    <option value="{{$lote->id}}" data-preco="{{$lote->preco}}">{{$lote->fazenda->nome_fazenda}}: Lote {{$lote->numero}}{{$lote->letra}} @if($lote->reservado) (Reservado) @endif</option>
                                 @endforeach
                             @endforeach
                         </select>
