@@ -46,6 +46,27 @@ class ClienteController extends Controller
         return view('cadastro', ["anterior" => $anterior]);
     }
 
+    public function cadastro_painel(Request $request){
+        $cliente = Cliente::where("email", $request->email)->first();
+
+        if($cliente){
+            toastr()->error("E-mail já utilizado");
+            return redirect()->back();
+        }
+
+        $cliente = new Cliente;
+        $cliente->email = $request->email;
+        $cliente->nome_dono = $request->nome_dono;
+        $cliente->whatsapp = $request->whatsapp;
+        $cliente->telefone = $request->telefone;
+        $cliente->documento = $request->documento;
+        $cliente->finalizado = false;
+        $cliente->save();
+
+        toastr()->success("Cadastro realizado com sucesso!");
+        return redirect()->back();
+    }
+
     public function finalizar_cadastro(){
         $anterior = redirect()->back()->getTargetUrl();
         $finalizar = true;

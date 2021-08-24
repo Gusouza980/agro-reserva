@@ -15,6 +15,7 @@
 <div class="row my-3">
     <div class="col-12">
          <a name="" id="" class="btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalNovaVenda" role="button">Nova Venda</a> 
+         <a name="" id="" class="btn btn-primary cpointer ml-3" data-bs-toggle="modal" data-bs-target="#modalNovoCliente" role="button">Novo Cliente</a> 
     </div>
 </div>
 <div class="row justify-content-center">
@@ -57,6 +58,49 @@
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
+<div class="modal fade" id="modalNovoCliente" tabindex="-1" role="dialog" aria-labelledby="modalNovoClienteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalNovoClienteLabel">Cadastro de Cliente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row" action="{{route('painel.cliente.cadastrar')}}" method="post">
+                    @csrf
+                    <div class="form-group mb-3 col-6">
+                        <label for="">Nome *</label>
+                        <input type="text"
+                            class="form-control" name="nome_dono" maxlength="100" required>
+                    </div>
+                    <div class="form-group mb-3 col-6">
+                        <label for="">Email *</label>
+                        <input type="email"
+                            class="form-control" name="email" maxlength="100" required>
+                    </div>
+                    <div class="form-group mb-3 col-4">
+                        <label for="">Telefone *</label>
+                        <input type="text"
+                            class="form-control" name="telefone" maxlength="50" required>
+                    </div>
+                    <div class="form-group mb-3 col-4">
+                        <label for="">Whatsapp</label>
+                        <input type="text"
+                            class="form-control" name="whatsapp" maxlength="50">
+                    </div>
+                    <div class="form-group mb-3 col-4">
+                        <label for="">CPF/CNPJ *</label>
+                        <input type="text"
+                            class="form-control" name="documento" maxlength="50">
+                    </div>
+                    <div class="form-group text-end">
+                        <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="modalNovaVenda" tabindex="-1" role="dialog" aria-labelledby="modalNovaVendaLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -70,7 +114,7 @@
                     <div class="form-group col-12 mb-3">
                         <label for="">Cliente</label><br>
                         <select class="form-select select2" style="width: 100%;" name="cliente" required>
-                            @foreach(\App\Models\Cliente::where("aprovado", 1)->get() as $cliente)
+                            @foreach(\App\Models\Cliente::all() as $cliente)
                                 <option value="{{$cliente->id}}">{{$cliente->nome_dono}}</option>
                             @endforeach 
                         </select>
@@ -80,9 +124,9 @@
                         <br>
                         <select class="js-example-basic-multiple js-states form-control" style="width: 100%;" multiple="multiple" name="lotes[]" id="select_lotes" multiple required>
                             <option value="" label="default"></option>
-                            @foreach(\App\Models\Reserva::where("compra_disponivel", true)->get() as $reserva)
-                                @foreach($reserva->lotes as $lote)
-                                    <option value="{{$lote->id}}" data-preco="{{$lote->preco}}">{{$lote->fazenda->nome_fazenda}}: Lote {{$lote->numero}}</option>
+                            @foreach(\App\Models\Reserva::where([["compra_disponivel", true],["aberto", true], ["encerrada", false]])->get() as $reserva)
+                                @foreach($reserva->lotes->where("reservado", false)->sortBy("numero") as $lote)
+                                    <option value="{{$lote->id}}" data-preco="{{$lote->preco}}">{{$lote->fazenda->nome_fazenda}}: Lote {{$lote->numero}}{{$lote->letra}}</option>
                                 @endforeach
                             @endforeach
                         </select>
@@ -93,7 +137,28 @@
                                 <div class="form-group mb-3 col-12">
                                     <label for="">Número de Parcelas</label>
                                     <input type="number"
-                                        class="form-control" name="parcelas" min="0" max="10" required>
+                                        class="form-control" name="parcelas" min="1" value="1" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group mb-3 col-12">
+                                    <label for="">Parcelas por mês</label>
+                                    <input type="number"
+                                        class="form-control" name="parcelas_mes" min="1" value="1" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group mb-3 col-12">
+                                    <label for="">Desconto (%)</label>
+                                    <input type="number"
+                                        class="form-control" name="desconto" min="0" max="100" step="0.01" value="0" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group mb-3 col-12">
+                                    <label for="">Data da Primeira Parcela</label>
+                                    <input type="date"
+                                        class="form-control" name="primeira_parcela" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -153,7 +218,9 @@
         function atualizaValores(){
             lotes = $('#select_lotes').select2('data');
             var parcelas = $("input[name='parcelas']").val();
-
+            var parcelas_mes = $("input[name='parcelas_mes']").val();
+            var desconto = parseFloat($("input[name='desconto']").val());
+            var comissao = 0;
             if(lotes.length == 0 || !parcelas || parcelas == 0){
 
             }
@@ -165,16 +232,6 @@
                 total += parseFloat(lotes[i].element.dataset.preco);
             }
 
-            if(parcelas == 1){
-                var comissao = 0;
-                var desconto = 6;
-            }else if(parcelas < 5 ){
-                var comissao = 2;
-                var desconto = 3;
-            }else{
-                var comissao = 4;
-                var desconto = 0;
-            }
 
             var valor_desconto = total * desconto / 100;
             var total_desconto = total - valor_desconto;
@@ -198,10 +255,17 @@
                 minimumFractionDigits: 2
             }));
 
-            $("#valor-parcelas").html(parcelas + "x de R$" + parseFloat(valor_parcelas.toFixed(2)).toLocaleString('pt-BR', {
-                currency: 'BRL',
-                minimumFractionDigits: 2
-            }));
+            if(parcelas_mes > 1){
+                $("#valor-parcelas").html(parcelas + "x ("+(parcelas/parcelas_mes)+" x "+parcelas_mes+")de R$" + parseFloat(valor_parcelas.toFixed(2)).toLocaleString('pt-BR', {
+                    currency: 'BRL',
+                    minimumFractionDigits: 2
+                }));
+            }else{
+                $("#valor-parcelas").html(parcelas + "x de R$" + parseFloat(valor_parcelas.toFixed(2)).toLocaleString('pt-BR', {
+                    currency: 'BRL',
+                    minimumFractionDigits: 2
+                }));
+            }
 
             $("#valor-total-final").html("R$" + parseFloat(total_compra.toFixed(2)).toLocaleString('pt-BR', {
                 currency: 'BRL',

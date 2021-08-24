@@ -453,31 +453,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody style="text-align: center;">
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td>R$9.050,00</td>
-                                                    <td>12/08/2021</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>7</td>
-                                                    <td>R$9.050,00</td>
-                                                    <td>12/08/2021</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>8</td>
-                                                    <td>R$9.050,00</td>
-                                                    <td>12/08/2021</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>9</td>
-                                                    <td>R$9.050,00</td>
-                                                    <td>12/08/2021</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>10</td>
-                                                    <td>R$9.050,00</td>
-                                                    <td>12/08/2021</td>
-                                                </tr>
+                                                @for($i = 6; $i <= $venda->parcelas; $i++)
+                                                    <tr>
+                                                        <td>{{$i}}</td>
+                                                        <td>R${{number_format($venda->valor_parcela, 2, ",", ".")}}</td>
+                                                        <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * 30) . " days"))}}</td>
+                                                    </tr>
+                                                    @php
+                                                        if($i == 5){
+                                                            break;
+                                                        }
+                                                    @endphp
+                                                @endfor
                                             </tbody>
                                         </table>
                                     </td>

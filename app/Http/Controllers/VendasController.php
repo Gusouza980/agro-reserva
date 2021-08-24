@@ -9,6 +9,11 @@ use App\Models\Nota;
 use App\Models\Carrinho;
 use App\Models\Lote;
 use App\Models\CarrinhoProduto;
+use App\Models\Cliente;
+use App\Classes\Email;
+use Illuminate\Support\Str;
+use PDF;
+
 
 class VendasController extends Controller
 {
@@ -71,8 +76,10 @@ class VendasController extends Controller
         $venda = new Venda;
         $reservado = false;
 
+        $cliente = Cliente::find($request->cliente);
+
         $carrinho = new Carrinho;
-        $carrinho->cliente_id = $request->cliente;
+        $carrinho->cliente_id = $cliente->id;
         $carrinho->aberto = false;
         $carrinho->save();
 
@@ -89,21 +96,13 @@ class VendasController extends Controller
             $carrinho->save();
         }
 
-        $venda->cliente_id = $request->cliente;
+        $venda->cliente_id = $cliente->id;
         $venda->assessor_id = ($request->assessor != 0) ? $request->assessor : null ;
         $venda->parcelas = $request->parcelas;
+        
         $parcelas = $request->parcelas;
-
-        if($parcelas == 1){
-            $comissao = 0;
-            $desconto = 6;
-        }else if($parcelas < 5){
-            $comissao = 2;
-            $desconto = 3;
-        }else{
-            $comissao = 4;
-            $desconto = 0;
-        }
+        $desconto = $request->desconto;
+        $comissao = 0;
 
         $valor_desconto = $carrinho->total * $desconto / 100;
         $valor_comissao = $carrinho->total * $comissao / 100;
@@ -113,13 +112,31 @@ class VendasController extends Controller
         $venda->total = $total_compra;
         $venda->desconto = $valor_desconto;
         $venda->comissao = $valor_comissao;
+        $venda->porcentagem_comissao = $comissao;
+        $venda->porcentagem_desconto = $desconto;
+        $venda->porcentagem_venda = 100;
+
+        if($request->parcelas_mes > 1){
+            $venda->dias_entre_parcelas = 15;
+        }else{
+            $venda->dias_entre_parcelas = 30;
+        }
+        
+        $venda->parcelas_mes = $request->parcelas_mes;
         $venda->valor_parcela = ($carrinho->total - $valor_desconto) / $parcelas;
+        $venda->primeira_parcela = $request->primeira_parcela;
         $venda->tipo = 1;
         $venda->save();
 
         $venda->codigo = str_pad($venda->id, 11, "0", STR_PAD_LEFT);
 
         $venda->save();
+
+        $data = ["venda" => $venda];
+        $pdf = PDF::loadView('cliente.comprovante2', $data);
+        $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
+        $file = file_get_contents('templates/emails/confirmar-compra.html');
+        Email::enviar($file, "Confirmação de Compra", $cliente->email, false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
 
         toastr()->success("Venda concluida");
         return redirect()->back();
