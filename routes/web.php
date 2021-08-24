@@ -195,6 +195,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/venda/boleto/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_boleto'])->name("painel.vendas.boleto.adicionar");
     Route::post('/painel/venda/nota/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_nota'])->name("painel.vendas.nota.adicionar");
     Route::get('/painel/venda/comprovante/{venda}', [\App\Http\Controllers\ContaController::class, 'comprovante_reserva'])->name("painel.vendas.comprovante");
+    Route::get('/painel/venda/comprovante/{venda}/enviar', [\App\Http\Controllers\VendasController::class, 'envia_comprovante'])->name("painel.vendas.comprovante.enviar");
     Route::get('/api/trocaStatusVenda/{venda}/{status}', [\App\Http\Controllers\ApiController::class, 'trocaStatusVenda']);
 
     // ROTAS RELACIONADAS AOS CARRINHOS

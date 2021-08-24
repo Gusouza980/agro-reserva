@@ -138,13 +138,27 @@ class VendasController extends Controller
 
         $venda->save();
 
+        // $data = ["venda" => $venda];
+        // $pdf = PDF::loadView('cliente.comprovante2', $data);
+        // $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
+        // $file = file_get_contents('templates/emails/confirmar-compra.html');
+        // Email::enviar($file, "Confirmação de Compra", $cliente->email, false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
+
+        toastr()->success("Venda concluida");
+        return redirect()->back();
+    }
+
+    public function envia_comprovante(Venda $venda){
         $data = ["venda" => $venda];
         $pdf = PDF::loadView('cliente.comprovante2', $data);
         $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
         $file = file_get_contents('templates/emails/confirmar-compra.html');
-        Email::enviar($file, "Confirmação de Compra", $cliente->email, false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
-
-        toastr()->success("Venda concluida");
+        if(Email::enviar($file, "Confirmação de Compra", $venda->cliente->email, false, public_path() . "/comprovantes/" . $venda->id . ".pdf")){
+            toastr()->success("Email enviado com sucesso!");
+        }else{
+            toastr()->error("Erro ao enviar o email. Verifique o email cadastrado.");
+        }
+        
         return redirect()->back();
     }
 

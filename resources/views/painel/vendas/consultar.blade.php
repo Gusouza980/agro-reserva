@@ -26,13 +26,13 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Código</th>
                             <th>Cliente</th>
                             <th>Total</th>
                             <th>Tipo</th>
                             <th>Status</th>
                             <th>Data</th>
-                            <th></th>
                         </tr>
                     </thead>
 
@@ -40,6 +40,18 @@
                     <tbody>
                         @foreach($vendas as $venda)
                             <tr>
+                                <td class="text-center">
+                                    <div class="dropdown mt-4 mt-sm-0">
+                                        <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-bars" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="dropdown-menu" style="margin: 0px;">
+                                            <a href="{{route('painel.vendas.visualizar', ['venda' => $venda])}}" class="dropdown-item py-3">Detalhes</a>
+                                            <a href="{{route('painel.vendas.comprovante', ['venda' => $venda])}}" target="_blank" class="dropdown-item py-3" role="button">Visualizar Comprovante</a>
+                                            <a href="{{route('painel.vendas.comprovante.enviar', ['venda' => $venda])}}" class="dropdown-item py-3" role="button">Enviar Comprovante</a>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td style="vertical-align: middle; text-align:center;">{{$venda->codigo}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$venda->cliente->nome_dono}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{number_format($venda->total, 2, ",", ".")}}</td>
@@ -48,7 +60,7 @@
                                     {{config("globals.situacoes")[$venda->situacao]}}
                                 </td>
                                 <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($venda->created_at))}}</td>
-                                <td><a href="{{route('painel.vendas.visualizar', ['venda' => $venda])}}" class="btn btn-primary"><i class="fas fa-search"></i></a></td>
+                                <td></td>
                             </tr>
                         @endforeach
                     </tbody>
