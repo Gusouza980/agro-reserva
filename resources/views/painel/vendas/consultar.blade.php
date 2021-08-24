@@ -93,6 +93,43 @@
                         <input type="text"
                             class="form-control" name="documento" maxlength="50">
                     </div>
+                    <div class="form-group mb-3 col-6">
+                        <label for="">Rua</label>
+                        <input type="text"
+                            class="form-control" name="rua" maxlength="50">
+                    </div>
+                    <div class="form-group mb-3 col-2">
+                        <label for="">Número</label>
+                        <input type="text"
+                            class="form-control" name="numero" maxlength="6">
+                    </div>
+                    <div class="form-group mb-3 col-4">
+                        <label for="">Bairro</label>
+                        <input type="text"
+                            class="form-control" name="bairro" maxlength="50">
+                    </div>
+                    <div class="form-group col-12 col-lg-3 form-conta mb-3">
+                        <label for="estado">Estado</label>
+                        <select class="form-control" name="estado" id="" >
+                            @foreach(\App\Models\Estado::all() as $estado)
+                                <option value="{{$estado->id}}">{{$estado->nome}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-12 col-lg-4 form-conta mb-3">
+                        <label for="cidade">Cidade</label>
+                        <select class="form-control" name="cidade" >
+                            <option value="">SELECIONE UM ESTADO</option>
+                            {{--  @foreach(\App\Models\Cidade::where("id_estado", $cliente->estado)->get() as $cidade)
+                                <option value="{{$cidade->id}}" @if($cliente->cidade == $cidade->id) selected @endif>{{$cidade->nome}}</option>
+                            @endforeach  --}}
+                        </select>
+                    </div>
+                    <div class="form-group col-7 col-lg-3 form-conta mb-3">
+                        <label for="cep">CEP</label>
+                        <input type="text"
+                            class="form-control" name="cep" id="cep" aria-describedby="helpId" >
+                    </div>
                     <div class="form-group text-end">
                         <button type="submit" class="btn btn-primary mt-3">Salvar</button>
                     </div>
@@ -289,6 +326,32 @@
             $("#btn-calcula").click(function(){
                 atualizaValores();
             });
+
+            $("select[name='estado']").change(function(){
+                var estado = $("select[name='estado']").val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/getCidadesByUf/' + estado,
+                    dataType: 'json',
+                    success: function (data) {
+                        html = "";
+                        var cidades = JSON.parse(data);
+                        for(var cidade in cidades){
+                            html += "<option value='"+cidades[cidade].id+"'>"+cidades[cidade].nome+"</option>"
+                        }
+                        $("select[name='cidade']").html(html);
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+
             $('#datatable').DataTable( {
                 language:{
                     "emptyTable": "Nenhum registro encontrado",

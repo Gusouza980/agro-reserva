@@ -60,6 +60,12 @@ class ClienteController extends Controller
         $cliente->whatsapp = $request->whatsapp;
         $cliente->telefone = $request->telefone;
         $cliente->documento = $request->documento;
+        $cliente->rua = $request->rua;
+        $cliente->bairro = $request->bairro;
+        $cliente->numero = $request->numero;
+        $cliente->cep = $request->cep;
+        $cliente->cidade = $request->cidade;
+        $cliente->estado = $request->estado;
         $cliente->finalizado = false;
         $cliente->save();
 

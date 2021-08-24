@@ -417,7 +417,10 @@
                         </thead>
                         <tbody>
                             <tr style="text-align:center;">
-                                <td @if($venda->parcelas < 5) colspan="2" @endif class="td-border" style="padding: 4px 0px;">
+                                @php
+                                    $metade_parcelas = ceil($venda->parcelas / 2);
+                                @endphp
+                                <td @if($venda->parcelas == 1) colspan="2" @endif class="td-border" style="padding: 4px 0px;">
                                     <table style="width: 100%;">
                                         <thead style="text-align: center;font-weight: bold;">
                                             <tr>
@@ -427,22 +430,17 @@
                                             </tr>
                                         </thead>
                                         <tbody style="text-align: center;">
-                                            @for($i = 1; $i <= $venda->parcelas; $i++)
+                                            @for($i = 1; $i <= $metade_parcelas; $i++)
                                                 <tr>
                                                     <td>{{$i}}</td>
                                                     <td>R${{number_format($venda->valor_parcela, 2, ",", ".")}}</td>
                                                     <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * 30) . " days"))}}</td>
                                                 </tr>
-                                                @php
-                                                    if($i == 5){
-                                                        break;
-                                                    }
-                                                @endphp
                                             @endfor
                                         </tbody>
                                     </table>
                                 </td>
-                                @if($venda->parcelas > 5)
+                                @if($venda->parcelas > 1)
                                     <td class="td-border" style="padding: 4px 0px;">
                                         <table style="width: 100%;">
                                             <thead style="text-align: center;font-weight: bold;">
@@ -453,17 +451,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody style="text-align: center;">
-                                                @for($i = 6; $i <= $venda->parcelas; $i++)
+                                                @for($i = $metade_parcelas + 1; $i <= $venda->parcelas; $i++)
                                                     <tr>
                                                         <td>{{$i}}</td>
                                                         <td>R${{number_format($venda->valor_parcela, 2, ",", ".")}}</td>
                                                         <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * 30) . " days"))}}</td>
                                                     </tr>
-                                                    @php
-                                                        if($i == 5){
-                                                            break;
-                                                        }
-                                                    @endphp
                                                 @endfor
                                             </tbody>
                                         </table>

@@ -11,6 +11,11 @@
 @endsection
 
 @section('conteudo')
+<div class="row">
+    <div class="col-12 text-end mb-3">
+        <a name="" id="" class="btn btn-primary" href="{{route('painel.vendas.comprovante', ['venda' => $venda])}}" role="button">Comprovante</a>
+    </div>
+</div>
 <div class="row justify-content-center">
     <div class="col-12">
         <div class="card">

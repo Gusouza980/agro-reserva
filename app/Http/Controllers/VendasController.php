@@ -85,6 +85,12 @@ class VendasController extends Controller
 
         foreach($request->lotes as $lote_id){
             $lote = Lote::find($lote_id);
+            if($lote->reservado){
+                toastr()->error("Um ou mais lotes escolhidos já foram reservados.");
+                return redirect()->back();
+            }
+            $lote->reservado = true;
+            $lote->save();
             $produto = new CarrinhoProduto;
             $produto->carrinho_id = $carrinho->id;
             $produto->lote_id = $lote->id;
