@@ -94,7 +94,9 @@
                                         @else
                                             <div class="row mt-3" style="">
                                                 <div class="col-12 text-center">
-                                                    <h2 class="data-abertura-futura mt-n2">Inicia em {{date("d/m/Y", strtotime($reserva->inicio))}}</h2>
+                                                    @if($reserva->mostrar_datas)
+                                                        <h2 class="data-abertura-futura mt-n2">Inicia em {{date("d/m/Y", strtotime($reserva->inicio))}}</h2>
+                                                    @endif
                                                 </div>
                                             </div>
                                         @endif
