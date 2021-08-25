@@ -113,7 +113,8 @@
                         <a href="tel:+5514981809051" class="fa-2x" style="color: #7E8298;"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
-                <form id="form-pre-cadastro" action="">
+                <form id="form-pre-cadastro" action="{{route('cadastro.salvar')}}" method="POST">
+                    @csrf
                     <div class="container-fluid">
                         <div class="row mt-5">
                             <div class="col-12">
@@ -126,19 +127,19 @@
                                     <div class="row">
                                         <div class="col-12 col-lg-4">
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input-radio" type="radio" name="interesse" value="Comprar">
+                                                <input class="form-check-input-radio" type="radio" name="interesse" value="Comprar" @if(old("interesse") == "Comprar") checked @endif>
                                                 <label class="form-check-label ml-2 label-branca">Comprar</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-4">
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input-radio" type="radio" name="interesse" value="Vender">
+                                                <input class="form-check-input-radio" type="radio" name="interesse" value="Vender" @if(old("interesse") == "Vender") checked @endif>
                                                 <label class="form-check-label ml-2 label-branca">Vender</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-4">
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input-radio" type="radio" name="interesse" value="Comprar e Vender">
+                                                <input class="form-check-input-radio" type="radio" name="interesse" value="Comprar e Vender" @if(old("interesse") == "Comprar e Vender") checked @endif>
                                                 <label class="form-check-label ml-2 label-branca">Comprar e Vender</label>
                                             </div>
                                         </div>
@@ -146,42 +147,42 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="container-fluid" id="container-passo1" style="display: none;">
+                        <div class="container-fluid" id="container-passo1" @if(!old('nome')) style="display: none;" @endif>
                             <div class="row mt-5" id="caixa-dados">
                                 <div class="col-12 col-lg-6 pr-3 mt-4">
                                     <div class="form-group">
                                         <label for="">Nome Completo</label>
-                                        <input type="text" class="form-control" name="nome" id="nome" aria-describedby="helpId" placeholder="">
+                                        <input type="text" class="form-control" name="nome" id="nome" aria-describedby="helpId" value="{{old('nome', '')}}" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6 pr-3 mt-4">
                                     <div class="form-group">
                                         <label for="">Seu whatsapp</label>
-                                        <input type="text" class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value="55" placeholder="">
+                                        <input type="text" class="form-control" name="whatsapp" id="whatsapp" aria-describedby="helpId" value="{{old('whatsapp', '55')}}" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6 pl-3 mt-4">
                                     <div class="form-group">
                                         <label for="">Nome da Fazenda</label>
-                                        <input type="text" class="form-control" name="fazenda" id="fazenda" aria-describedby="helpId" placeholder="">
+                                        <input type="text" class="form-control" name="fazenda" id="fazenda" aria-describedby="helpId" value="{{old('fazenda', '')}}" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6 pr-3 mt-4">
                                     <div class="form-group">
                                         <label for="">E-mail</label>
-                                        <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['email']}}" @endif placeholder="">
+                                        <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" @if(session()->get("cliente")) value="{{session()->get('cliente')['email']}}" @else value="{{old('email', '')}}" @endif placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6 pr-3 mt-4">
                                     <div class="form-group">
                                         <label for="">Confirmar Email</label>
-                                        <input type="email" class="form-control" name="email2" id="confirm-email" aria-describedby="helpId" placeholder="">
+                                        <input type="email" class="form-control" name="email2" id="confirm-email" aria-describedby="helpId" value="{{old('email2', '')}}" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6 pl-3 mt-4">
                                     <div class="form-group">
                                         <label for="">Senha</label>
-                                        <input type="password" class="form-control" name="senha" id="senha" aria-describedby="helpId" placeholder="">
+                                        <input type="password" class="form-control" name="senha" id="senha" aria-describedby="helpId" value="{{old('senha', '')}}" placeholder="">
                                     </div>
                                 </div>
                             </div>
@@ -197,25 +198,25 @@
                                 <div class="row">
                                     <div class="col-12 col-lg-3">
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Ângus">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas[]" value="Angus" @if(old('racas') && in_array("Angus", old('racas'))) checked @endif>
                                             <label class="form-check-label ml-3 label-cinza">Angus</label>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-3">
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Senepol">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas[]" value="Senepol" @if(old('racas') && in_array("Senepol", old('racas'))) checked @endif>
                                             <label class="form-check-label ml-3 label-cinza">Senepol</label>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-3">
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Guzera">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas[]" value="Guzera" @if(old('racas') && in_array("Guzera", old('racas'))) checked @endif>
                                             <label class="form-check-label ml-3 label-cinza">Guzera</label>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-3">
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Mangalarga">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas[]" value="Mangalarga" @if(old('racas') && in_array("Mangalarga", old('racas'))) checked @endif>
                                             <label class="form-check-label ml-3 label-cinza">Mangalarga</label>
                                         </div>
                                     </div>
@@ -223,19 +224,19 @@
                                 <div class="row mt-0 mt-lg-3">
                                     <div class="col-12 col-lg-3">
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Gir Leiteiro">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas[]" value="Gir Leiteiro" @if(old('racas') && in_array("Gir Leiteiro", old('racas'))) checked @endif>
                                             <label class="form-check-label ml-3 label-cinza">Gir Leiteiro</label>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-3">
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Jersey">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas[]" value="Jersey" @if(old('racas') && in_array("Jersey", old('racas'))) checked @endif>
                                             <label class="form-check-label ml-3 label-cinza">Jersey</label>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-3">
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Nelore">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas[]" value="Nelore" @if(old('racas') && in_array("Nelore", old('racas'))) checked @endif>
                                             <label class="form-check-label ml-3 label-cinza">Nelore</label>
                                         </div>
                                     </div>
@@ -243,19 +244,19 @@
                                 <div class="row mt-0 mt-lg-3">
                                     <div class="col-12 col-lg-3">
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Holandês">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas[]" value="Holandês" @if(old('racas') && in_array("Holandês", old('racas'))) checked @endif>
                                             <label class="form-check-label ml-3 label-cinza">Holandês</label>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-3">
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Girolando">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas[]" value="Girolando" @if(old('racas') && in_array("Girolando", old('racas'))) checked @endif>
                                             <label class="form-check-label ml-3 label-cinza">Girolando</label>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-3">
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas" value="Sindi">
+                                            <input class="form-check-input-radio input-w25" type="checkbox" name="racas[]" value="Sindi" @if(old('racas') && in_array("Sindi", old('racas'))) checked @endif>
                                             <label class="form-check-label ml-3 label-cinza">Sindi</label>
                                         </div>
                                     </div>
@@ -270,7 +271,7 @@
                                 <div class="row">
                                     <div class="col-12 col-lg-8" id="input-raca-extra">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="raca_extra" id="raca_extra" aria-describedby="helpId" placeholder="">
+                                            <input type="text" class="form-control" name="raca_extra" id="raca_extra" value="{{old('raca_extra', '')}}" aria-describedby="helpId" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -281,7 +282,7 @@
                                     <div class="col-12 text-center">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input" name="" id="termos" value="checkedValue">
+                                                <input type="checkbox" class="form-check-input" name="termos" id="termos" value="checkedValue">
                                                 Confirmo que li e estou ciente dos <a href="{{route('termos')}}" style="text-decoration: underline; color: #E8521B" target="_blank">termos de uso</a> e <a href="{{route('politicas')}}" style="text-decoration: underline; color: #E8521B" target="_blank">política de privacidade</a>
                                             </label>
                                         </div>
@@ -759,6 +760,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset('js/jquery.mask.js')}}"></script>
     <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js"></script>
+    
+    @if(old('nome'))
+        <script>
+            $(document).ready(function(){
+                $('html, body').animate({
+                    scrollTop: $("#container-passo1").offset().top - 100
+                }, 1000);
+            })
+        </script>
+    @endif
+
+    @if(session()->get("erro_email"))
+        <script>
+            $(document).ready(function(){
+                $("#titulo-erro-modal").html("E-mail já utilizado.");
+                $("#subtitulo-erro-modal").html("Parece que o e-mail informado já está cadastrado no sistema. Caso já tenha criado uma conta, e não lembre a senha, você pode recuperá-la na página de login.");
+                $("#modalErro").modal("show");
+            })
+        </script>
+    @endif
+    
     <script>
         function login() {
             if ($('input[name=email_direto]').val() == "") {
@@ -844,47 +866,14 @@
                 return false;
             }
 
-            if ($('input[name=nome]').val() == "") {
-                $('html, body').animate({
-                    scrollTop: $("input[name=nome]").offset().top - 200
-                }, 1000);
-                $('input[name=nome]').addClass("erro-validacao");
-                return false;
-            }
-            if ($('input[name=senha]').val() == "") {
-                $('html, body').animate({
-                    scrollTop: $("input[name=senha]").offset().top - 200
-                }, 1000);
-                $('input[name=senha]').addClass("erro-validacao");
-                return false;
-            }
-            if ($('input[name=sobrenome]').val() == "") {
-                $('html, body').animate({
-                    scrollTop: $("input[name=sobrenome]").offset().top - 200
-                }, 1000);
-                $('input[name=sobrenome]').addClass("erro-validacao");
-                return false;
-            }
-            if ($('input[name=email]').val() == "") {
-                $('html, body').animate({
-                    scrollTop: $("input[name=email]").offset().top - 200
-                }, 1000);
-                $('input[name=email]').addClass("erro-validacao");
-                return false;
-            }
-            if ($('input[name=whatsapp]').val() == "") {
-                $('html, body').animate({
-                    scrollTop: $("input[name=whatsapp]").offset().top - 200
-                }, 1000);
-                $('input[name=whatsapp]').addClass("erro-validacao");
-                return false;
-            }
-
-
             if ($('input[name=email]').val() != $('input[name=email2]').val()) {
-                alert("Os emails não coincidem");
+                $("#titulo-erro-modal").html("Erro na confirmação de email!");
+                $("#subtitulo-erro-modal").html("Os emails informados não coincidem. Verifique se escreveu corretamente seu email nos dois campos.");
+                $("#modalErro").modal("show");
                 return false;
             }
+
+            return true;
 
             var nome = $('input[name=nome]').val();
             var email = $('input[name=email]').val();
@@ -944,9 +933,6 @@
                         $("#botoes-cadastrar").show();
                         return;
                     } else if (ret == "200") {
-                        console.log(ret);
-                        console.log("entrou");
-
                         // modificado - Rodolfo
                         $("#email_hidden").val(email);
 
@@ -1462,8 +1448,12 @@
             });
 
             $("#form-pre-cadastro").submit(function(e) {
-                e.preventDefault();
-                precadastro();
+                {{--  e.preventDefault();  --}}
+                if(precadastro()){
+                    return true;
+                }else{
+                    return false;
+                }
             });
 
             $("#btn-finalizar-cadastro-agora").click(function() {

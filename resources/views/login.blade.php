@@ -29,7 +29,6 @@
                     
                     <form id="form-cadastro" class="row mt-4" action="{{route('logar')}}" method="post">
                         @csrf
-                        <input type="hidden" name="anterior" value="{{$anterior}}">
                         <div class="form-group col-12 text-black mt-1">
                             <label for="email">E-mail</label>
                             <input type="text" class="form-control col-12" name="email" id="email" placeholder="Digite seu email" required>

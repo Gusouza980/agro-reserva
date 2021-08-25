@@ -95,6 +95,7 @@ class SiteController extends Controller
     public function lotes($slug){
         $fazenda = Fazenda::where("slug", $slug)->first();
         if(!session()->get("cliente")){
+            session()->put(["pagina_retorno" => url()->full()]);
             session()->flash("erro", "Para acessar os lotes, faça seu login.");
             return redirect()->route("login");
         }
@@ -104,6 +105,7 @@ class SiteController extends Controller
     public function lote($slug, Lote $lote){
         if(!session()->get("cliente")){
             session()->flash("erro", "Para acessar os lotes, faça seu login.");
+            session()->put(["pagina_retorno" => url()->full()]);
             return redirect()->route("login");
         }
         $visita = new Visita;
@@ -169,8 +171,7 @@ class SiteController extends Controller
         if(session()->get("cliente")){
             return redirect()->route("index");
         }
-        $anterior = redirect()->back()->getTargetUrl();
-        return view('login', ["anterior" => $anterior]);
+        return view('login');
     }
 
     public function logar(Request $request){
@@ -186,8 +187,10 @@ class SiteController extends Controller
                 if($carrinho){
                     session(["carrinho" => $carrinho->id]);
                 }
-                if($request->anterior && $request->anterior != route("login")){
-                    return redirect($request->anterior);
+                if(session()->get("pagina_retorno") && session()->get("pagina_retorno") != route("login")){
+                    $pagina = session()->get("pagina_retorno");
+                    session()->forget("pagina_retorno");
+                    return redirect($pagina);
                 }else{
                     return redirect()->route("index");
                 }

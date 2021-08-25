@@ -83,7 +83,8 @@ class ClienteController extends Controller
         $cliente = Cliente::where("email", $request->email)->first();
 
         if($cliente){
-            return response()->json("001");
+            session()->flash("erro_email", "O email informado já está sendo utilizado.");
+            return redirect()->back()->withInput();
         }
 
         $cliente = new Cliente;
@@ -98,7 +99,14 @@ class ClienteController extends Controller
         $cliente->save();
 
         session(["cliente" => $cliente->toArray()]);
-        return response()->json("200");
+
+        if(session()->get("pagina_retorno")){
+            $pagina = session()->get("pagina_retorno");
+            session()->forget("pagina_retorno");
+            return redirect($pagina);
+        }else{
+            return redirect()->route("index");
+        }
     }
 
     public function login_cadastro(Request $request){
