@@ -434,7 +434,7 @@
                                                 <tr>
                                                     <td>{{$i}}</td>
                                                     <td>R${{number_format($venda->valor_parcela, 2, ",", ".")}}</td>
-                                                    <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * 30) . " days"))}}</td>
+                                                    <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * $venda->dias_entre_parcelas) . " days"))}}</td>
                                                 </tr>
                                             @endfor
                                         </tbody>
@@ -455,7 +455,7 @@
                                                     <tr>
                                                         <td>{{$i}}</td>
                                                         <td>R${{number_format($venda->valor_parcela, 2, ",", ".")}}</td>
-                                                        <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * 30) . " days"))}}</td>
+                                                        <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * $venda->dias_entre_parcelas) . " days"))}}</td>
                                                     </tr>
                                                 @endfor
                                             </tbody>
