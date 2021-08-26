@@ -318,7 +318,7 @@
                                                     @if($venda->parcelas == 1)
                                                         <b>1x</b>
                                                     @else
-                                                        <b>{{$venda->parcelas}}x ({{($venda->parcelas / 2)}} duplas)</b>
+                                                        <b>1 + {{$venda->parcelas - 1}}x ({{($venda->parcelas / 2)}} duplas)</b>
                                                     @endif
                                                 @endif
                                             </td>
@@ -384,7 +384,7 @@
                                                         @if($venda->parcelas == 1)
                                                             <b>1x</b>
                                                         @else
-                                                            <b>{{$venda->parcelas}}x ({{($venda->parcelas / 2)}} duplas)</b>
+                                                            <b>1 + {{$venda->parcelas - 1}}x ({{($venda->parcelas / 2)}} duplas)</b>
                                                         @endif
                                                     @endif
                                                 </td>
