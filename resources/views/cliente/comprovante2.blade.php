@@ -434,7 +434,11 @@
                                                 <tr>
                                                     <td>{{$i}}</td>
                                                     <td>R${{number_format($venda->valor_parcela, 2, ",", ".")}}</td>
-                                                    <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * $venda->dias_entre_parcelas) . " days"))}}</td>
+                                                    @if($venda->dias_entre_parcelas == 30)
+                                                        <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) . " months"))}}</td>
+                                                    @else
+                                                        <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * $venda->dias_entre_parcelas) . " days"))}}</td>
+                                                    @endif
                                                 </tr>
                                             @endfor
                                         </tbody>
@@ -455,7 +459,11 @@
                                                     <tr>
                                                         <td>{{$i}}</td>
                                                         <td>R${{number_format($venda->valor_parcela, 2, ",", ".")}}</td>
-                                                        <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * $venda->dias_entre_parcelas) . " days"))}}</td>
+                                                        @if($venda->dias_entre_parcelas == 30)
+                                                        <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) . " months"))}}</td>
+                                                        @else
+                                                            <td>{{date("d/m/Y", strtotime($venda->primeira_parcela . " + " . (($i - 1) * $venda->dias_entre_parcelas) . " days"))}}</td>
+                                                        @endif
                                                     </tr>
                                                 @endfor
                                             </tbody>
