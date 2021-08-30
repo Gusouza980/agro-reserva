@@ -205,6 +205,13 @@
                             </div>
                             <div class="row">
                                 <div class="form-group mb-3 col-12">
+                                    <label for="">Desconto Extra(R$)</label>
+                                    <input type="number"
+                                        class="form-control" name="desconto_extra" min="0" step="0.01" value="0" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group mb-3 col-12">
                                     <label for="">Data da Primeira Parcela</label>
                                     <input type="date"
                                         class="form-control" name="primeira_parcela" required>
@@ -269,6 +276,7 @@
             var parcelas = $("input[name='parcelas']").val();
             var parcelas_mes = $("input[name='parcelas_mes']").val();
             var desconto = parseFloat($("input[name='desconto']").val());
+            var desconto_extra = parseFloat($("input[name='desconto_extra']").val());
             var comissao = 0;
             if(lotes.length == 0 || !parcelas || parcelas == 0){
 
@@ -283,9 +291,9 @@
 
 
             var valor_desconto = total * desconto / 100;
-            var total_desconto = total - valor_desconto;
+            var total_desconto = total - valor_desconto - desconto_extra;
             var valor_comissao = total * comissao / 100;
-            var total_compra = total - valor_desconto + valor_comissao;
+            var total_compra = total_desconto + valor_comissao;
 
             var valor_parcelas = total_desconto / parcelas;
 
@@ -294,7 +302,7 @@
                 minimumFractionDigits: 2
             }));
 
-            $("#valor-desconto").html("R$" + parseFloat(valor_desconto.toFixed(2)).toLocaleString('pt-BR', {
+            $("#valor-desconto").html("R$" + parseFloat((valor_desconto + desconto_extra).toFixed(2)).toLocaleString('pt-BR', {
                 currency: 'BRL',
                 minimumFractionDigits: 2
             }));

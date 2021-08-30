@@ -106,15 +106,17 @@ class VendasController extends Controller
         
         $parcelas = $request->parcelas;
         $desconto = $request->desconto;
+        $desconto_extra = $request->desconto_extra;
         $comissao = 0;
 
         $valor_desconto = $carrinho->total * $desconto / 100;
         $valor_comissao = $carrinho->total * $comissao / 100;
-        $total_compra = $carrinho->total - $valor_desconto + $valor_comissao;
+        $total_compra = $carrinho->total - $valor_desconto - $desconto_extra + $valor_comissao;
 
         $venda->carrinho_id = $carrinho->id;
         $venda->total = $total_compra;
         $venda->desconto = $valor_desconto;
+        $venda->desconto_extra = $desconto_extra;
         $venda->comissao = $valor_comissao;
         $venda->porcentagem_comissao = $comissao;
         $venda->porcentagem_desconto = $desconto;

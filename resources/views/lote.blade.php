@@ -62,23 +62,27 @@
                     </div>
                     <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
                         <div class="text-center text-white">
-                            @if(!$lote->reserva->compra_disponivel)
-                                {{--  <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($lote->reserva->inicio))}}</button>  --}}
-                                <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível 19:30</button>
-                            @else
-                                @if(!$lote->reservado)
-                                    @if(session()->get("cliente"))
-                                        @if($cliente->aprovado)
-                                            <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('carrinho.adicionar', ['lote' => $lote])}}" role="button">Comprar</a>
+                            @if(!$reserva->encerrada)
+                                @if(!$lote->reserva->compra_disponivel)
+                                    {{--  <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($lote->reserva->inicio))}}</button>  --}}
+                                    <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível 19:30</button>
+                                @else
+                                    @if(!$lote->reservado)
+                                        @if(session()->get("cliente"))
+                                            @if($cliente->aprovado)
+                                                <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('carrinho.adicionar', ['lote' => $lote])}}" role="button">Comprar</a>
+                                            @else
+                                                <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer" data-toggle="modal" data-target="#modalBloqueio" style="max-width:350px;" role="button">Comprar</a>
+                                            @endif
                                         @else
-                                            <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer" data-toggle="modal" data-target="#modalBloqueio" style="max-width:350px;" role="button">Comprar</a>
+                                            <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('login')}}" role="button">Entre para comprar</a>
                                         @endif
                                     @else
-                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;" href="{{route('login')}}" role="button">Entre para comprar</a>
+                                        <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Reservado</button>
                                     @endif
-                                @else
-                                    <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Reservado</button>
                                 @endif
+                            @else
+                                <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Encerrada</button>
                             @endif
                         </div>
                     </div>

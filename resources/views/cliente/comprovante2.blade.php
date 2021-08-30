@@ -407,6 +407,23 @@
                     </table>
                 </div>
             @endforeach
+            @if($venda->desconto_extra > 0)
+                <div>
+                    <table class="" style="width: 700px; margin: 0 auto; margin-top: 30px; font-size: 9px; border-collapse: collapse;">
+                        <thead style="background-color: black; color: white; padding: 3px 0px;">
+                            <tr>
+                                <td class="td-border" colspan="2" style="width: 80px; text-align: center; font-weight: bold; padding: 3px 0px;">DESCONTO EXTRA NA VENDA</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="text-align:center;">
+                                <td class="td-border" style="padding: 4px 0px;"><b>DESCONTO:</b> R${{number_format($venda->desconto_extra, 2, ",", ".")}}</td>
+                                <td class="td-border" style="padding: 4px 0px;"><b>TOTAL FINAL:</b> R${{number_format($venda->total, 2, ",", ".")}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            @endif
             @if($venda->primeira_parcela)
                 <div>
                     <table class="" style="width: 700px; margin: 0 auto; margin-top: 30px; font-size: 9px; border-collapse: collapse;">
