@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
                         <div class="text-center text-white">
-                            @if(!$reserva->encerrada)
+                            @if(!$lote->reserva->encerrada)
                                 @if(!$lote->reserva->compra_disponivel)
                                     {{--  <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($lote->reserva->inicio))}}</button>  --}}
                                     <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível 19:30</button>
