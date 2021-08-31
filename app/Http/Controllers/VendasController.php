@@ -129,7 +129,7 @@ class VendasController extends Controller
         }
         
         $venda->parcelas_mes = $request->parcelas_mes;
-        $venda->valor_parcela = ($carrinho->total - $valor_desconto) / $parcelas;
+        $venda->valor_parcela = ($carrinho->total - $valor_desconto - $desconto_extra) / $parcelas;
         $venda->primeira_parcela = $request->primeira_parcela;
         $venda->tipo = 1;
         $venda->save();

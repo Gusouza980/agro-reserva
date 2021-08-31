@@ -1,5 +1,9 @@
 @extends('painel.template.main')
 
+@section("styles")
+    <link href="{{asset('admin/libs/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('titulo')
     Editando Lote - {{$lote->nome}} - {{$lote->fazenda->nome_fazenda}}
 @endsection
@@ -100,6 +104,18 @@
                         </div>
                     </div>
                     <div class="row">
+                        @if($lote->reserva->multi_fazendas)
+                            <div class="col-12 col-lg-8 mb-3">
+                                <label for="tags">Fazenda</label>
+                                <br>
+                                <select class="form-control select2" style="width: 100%;" name="fazenda">
+                                    <option value="0">Nenhum</option>
+                                    @foreach(\App\Models\Fazenda::all() as $fazenda)
+                                        <option value="{{$fazenda->id}}" @if($lote->fazenda_id == $fazenda->id) selected @endif>{{$fazenda->nome_fazenda}}</option>
+                                    @endforeach 
+                                </select>
+                            </div>
+                        @endif
                         <div class="col-12 col-lg-4">
                             <div class="mb-3">
                                 <label for="ativo" class="form-label">Situação</label>
@@ -191,4 +207,14 @@
     <!-- end col -->
 </div>
 <!-- end row -->
+@endsection
+
+@section("scripts")
+<script src="{{asset('admin/libs/select2/js/select2.min.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        $('.select2').select2();
+    })
+</script>
+
 @endsection

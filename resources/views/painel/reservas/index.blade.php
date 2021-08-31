@@ -157,6 +157,13 @@
                             class="form-control" name="fim" required>
                     </div>
                     <div class="form-group mb-3">
+                        <label for="multi_fazendas">Reserva Multi Fazendas ?</label>
+                        <select class="form-control" name="multi_fazendas">
+                            <option value="0">Não</option>
+                            <option value="1">Sim</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
                         <label for="ativo">Ativo</label>
                         <select class="form-control" name="ativo">
                             <option value="0">Não</option>

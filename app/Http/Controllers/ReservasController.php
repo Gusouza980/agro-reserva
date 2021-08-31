@@ -22,6 +22,10 @@ class ReservasController extends Controller
         $reserva->inicio = $request->inicio;
         $reserva->fim = $request->fim;
         $reserva->ativo = $request->ativo;
+        $reserva->aberto = false;
+        $reserva->multi_fazendas = $request->multi_fazendas;
+        $reserva->preco_disponivel = false;
+        $reserva->compra_disponivel = false;
         $reserva->save();
         toastr()->success("Reserva cadastrada com sucesso!");
         return redirect()->back();
