@@ -62,7 +62,7 @@
                                     <div class="container-fluid">
                                         <div class="row" style="">
                                             <div class="col-12 text-center">
-                                                <img src="{{asset($reserva->fazenda->logo)}}" style="max-width: 100%; height: 80px;" alt="{{$reserva->fazenda->nome}}">
+                                                <img src="{{asset($reserva->fazenda->logo)}}" style="max-width: 100%; @if($reserva->aberto) height: 80px; @else height: 100%; max-height:120px; @endif" alt="{{$reserva->fazenda->nome}}">
                                             </div>
                                         </div>
                                         @if($reserva->aberto)
