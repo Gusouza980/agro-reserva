@@ -99,7 +99,8 @@ class SiteController extends Controller
             session()->flash("erro", "Para acessar os lotes, faça seu login.");
             return redirect()->route("login");
         }
-        return view("lotes", ["fazenda" => $fazenda]);
+        $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva]);
     }
 
     public function lote($slug, Lote $lote){
