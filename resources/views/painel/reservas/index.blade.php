@@ -122,8 +122,8 @@
                         <div class="form-group mb-3">
                             <label for="multi_fazendas">Reserva Multi Fazendas ?</label>
                             <select class="form-control" name="multi_fazendas">
-                                <option value="0" @if(!$reserva->multi_fazenda) selected @endif>Não</option>
-                                <option value="1" @if($reserva->multi_fazenda) selected @endif>Sim</option>
+                                <option value="0" @if(!$reserva->multi_fazendas) selected @endif>Não</option>
+                                <option value="1" @if($reserva->multi_fazendas) selected @endif>Sim</option>
                             </select>
                         </div>
                         <div class="form-group mb-3">
