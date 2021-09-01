@@ -35,6 +35,7 @@ class ReservasController extends Controller
         $reserva->inicio = $request->inicio;
         $reserva->fim = $request->fim;
         $reserva->ativo = $request->ativo;
+        $reserva->multi_fazendas = $request->multi_fazendas;
         $reserva->save();
         toastr()->success("Alterações salvas com sucesso!");
         return redirect()->back();
