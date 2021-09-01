@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\DB;
 use App\Exports\ClienteExport;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
+use App\Classes\Email;
 
 class ClienteController extends Controller
 {
@@ -99,6 +100,12 @@ class ClienteController extends Controller
         $cliente->save();
 
         session(["cliente" => $cliente->toArray()]);
+
+        $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
+        $file = str_replace("{{nome}}", $cliente->nome, $file);
+        $file = str_replace("{{usuario}}", $cliente->usuario, $file);
+        $file = str_replace("{{senha}}", $request->senha, $file);
+        Email::enviar($file, "Confirmação de Cadstro", session()->get("cliente")["email"], false);
 
         if(session()->get("pagina_retorno")){
             $pagina = session()->get("pagina_retorno");
