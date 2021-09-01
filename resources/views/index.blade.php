@@ -62,7 +62,7 @@
                                     <div class="container-fluid">
                                         <div class="row" style="">
                                             <div class="col-12 text-center">
-                                                <img src="{{asset($reserva->fazenda->logo)}}" style="max-width: 100%; @if($reserva->aberto) height: 80px; @else height: 100%; max-height:120px; @endif" alt="{{$reserva->fazenda->nome}}">
+                                                <img src="{{asset($reserva->fazenda->logo)}}" style="max-width: 100%; @if($reserva->aberto) height: 80px; @else height: 100%; max-height:110px; @endif" alt="{{$reserva->fazenda->nome}}">
                                             </div>
                                         </div>
                                         @if($reserva->aberto)
@@ -92,13 +92,15 @@
                                                 </div>
                                             @endif
                                         @else
-                                            <div class="row mt-3" style="">
-                                                <div class="col-12 text-center">
-                                                    @if($reserva->mostrar_datas)
-                                                        <h2 class="data-abertura-futura mt-n2">Inicia em {{date("d/m/Y", strtotime($reserva->inicio))}}</h2>
-                                                    @endif
+                                            @if($reserva->mostrar_datas)
+                                                <div class="row mt-4" style="">
+                                                    <div class="col-12 text-center">
+                                                        
+                                                            <h2 class="data-abertura-futura mt-n2">Inicia em {{date("d/m/Y", strtotime($reserva->inicio))}}</h2>
+                                                        
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                         @endif
                                     </div>
                                 </div>
