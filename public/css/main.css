@@ -1238,9 +1238,10 @@ label {
 }
 
 .data-abertura-futura{
-    font-size: 25px;
+    font-size: 23px;
     font-weight: bold;
     color: white;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #div-brush-amarelo{

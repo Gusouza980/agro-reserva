@@ -100,6 +100,14 @@
                                                         
                                                     </div>
                                                 </div>
+                                            @else
+                                                <div class="row mt-4" style="">
+                                                    <div class="col-12 text-center">
+                                                        
+                                                            <h2 class="data-abertura-futura mt-n2">Em breve</h2>
+                                                        
+                                                    </div>
+                                                </div>
                                             @endif
                                         @endif
                                     </div>
