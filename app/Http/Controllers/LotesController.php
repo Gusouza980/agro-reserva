@@ -86,7 +86,7 @@ class LotesController extends Controller
         $lote->video = $request->video;
         $lote->ativo = $request->ativo;
 
-        if($reserva->multi_fazendas){
+        if($lote->reserva->multi_fazendas){
             $lote->fazenda_id = $request->fazenda;
         }
 
