@@ -57,7 +57,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <b>À VISTA: 8% de desconto</b><br>
+                            <b>À VISTA: 6% de desconto</b><br>
                         </div>
                     </div>
                     <hr>
@@ -87,7 +87,7 @@
                                     <option value="">Selecione as parcelas</option>
                                     @for($i = 1; $i <= 15; $i++)
                                         @if($i == 1)
-                                            <option value="{{$i}}">{{$i}}x de R${{number_format(($carrinho->total - ($carrinho->total * 8 / 100)), 2, ",", ".")}} (8% de desconto)</option>
+                                            <option value="{{$i}}">{{$i}}x de R${{number_format(($carrinho->total - ($carrinho->total * 8 / 100)), 2, ",", ".")}} (6% de desconto)</option>
                                             {{--  <option value="{{$i * 2}}">{{$i}}x (1 dupla) de R${{number_format(($carrinho->total - ($carrinho->total * 8 / 100)) / 2, 2, ",", ".")}}</option>  --}}
                                         @elseif($i < 5)
                                             <option value="{{$i * 2}}">{{$i}}x ({{$i}} duplas) de R${{number_format(round(($carrinho->total - ($carrinho->total * 0 / 100)) / ($i * 2), 2),2 , ",", ".")}}</option>
@@ -172,7 +172,7 @@
                 $("#resumo").slideUp(500, function(){
                     if(parseInt($("select[name='parcelamento']").val()) == 1){
                         var comissao = 0;
-                        var desconto = 8;
+                        var desconto = 6;
                     }else if(parseInt($("select[name='parcelamento']").val()) < 5 ){
                         var comissao = 0;
                         var desconto = 0;

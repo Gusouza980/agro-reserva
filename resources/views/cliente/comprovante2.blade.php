@@ -500,17 +500,80 @@
 
         <hr style="margin: 50px 0px; border-top: 1px dotted black; border-bottom: 0px;">
 
-{{--  @foreach($venda->carrinho->produtos as $produto)
-        <tr>
-            <td><img src="{{asset($produto->lote->preview)}}" style="width: 250px;" alt=""></td>
-            <td>
-                <p><b>LOTE {{$produto->lote->numero}}: {{$produto->lote->nome}}</b></p>
-                <p class="mt-n1"><b>Registro:</b> {{$produto->lote->registro}}</p>
-                <p class="mt-n1"><b>Raça:</b> {{$produto->lote->raca->nome}}</p>
-                <p class="mt-n1"><b>Valor:</b> R${{number_format($produto->lote->preco, 2, ",", ".")}}</p>
-            </td>
-        </tr>
-    @endforeach  --}}
+        <div style="width: 100%; border: 1px solid black;">
+            <div style="width: 100%; text-align: left; font-weight: bold; padding: 0 15px; line-height: 23px;">
+                <h5>Eu ____________________________________ reconheço que realizei a compra conforme demonstrativo no dia _________________ na reserva Mães de Ouro.</h5>
+            </div>
+        </div>
+
+        {{--  <div style="width: 100%; border: 1px solid black;">
+            <div style="width: 100%; text-align: center; font-weight: bold;">
+                <h5>NOTA PROMISSÓRIA RURAL ÚNICA</h5>
+            </div>
+            <div style="width: 100%; font-size: 12px; padding: 0px 10px; line-height: 23px;">
+                <table style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <td style="width: 50%; text-align: center;">
+                                <b>Nota promissória rural única com vencimento em</b><br>
+                                <input type="text" style="width: 100%; height: 20px;">
+                            </td>
+                            <td style="text-align: center;">
+                                <b>Contrato n°</b><br>
+                                <input type="text" style="width: 100%; height: 20px;">
+                            </td>
+                            <td style="text-align: center;">
+                                <b>Valor Total</b><br>
+                                <input type="text" style="width: 100%; height: 20px;" value="R${{number_format($venda->total, 2, ',', '.')}}">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="width: 100%; font-size: 12px; padding: 0px 15px; line-height: 23px;">
+                <p style="line-height: 23px;">
+                    AO(S) ______________ DIA(S) DO MÊS DE ________________ DO ANO DE ________ PAGAREI(EMOS) POR ESTA ÚNICA VIA DE NOTA PROMISSÓRIA RURAL A <u><b>{{$fazenda->nome_dono}}</b></u>,  
+                    CPF/CNPJ <u><b>{{$fazenda->cnpj}}</b></u> OU A SUA ORDEM A QUANTIA DE <u><b>R${{number_format($venda->total, 2, ",", ".")}}</b></u>, 
+                    EM MOEDA CORRENTE DO PAÍS, PELA COMPRA QUE LHE FIZ NA FAZENDA <u><b>{{$fazenda->nome_fazenda}}</b></u>
+                </p>
+            </div>
+            <table style="font-size: 9px; padding: 0px 10px; width: 100%;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><b>NOME:</b></td>
+                                        <td>{{$cliente->nome_dono}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>CPF/CNPJ:</b></td>
+                                        <td>{{$cliente->documento}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>ENDEREÇO:</b></td>
+                                        <td>{{$cliente->rua . ", n° " . $cliente->numero . " " . $cliente->bairro . " - " . $cliente->Cidade->nome . " - " . $cliente->Estado->uf . ", CEP:" . $cliente->cep}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>TELEFONE:</b></td>
+                                        <td>{{$cliente->telefone}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td style="text-align: center;">
+                            <div style="text-align: center;">
+                                ______________________________________<br>
+                                {{$cliente->nome_dono}}<br>
+                                <b>COMPRADOR</b>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+           
+        </div>  --}}
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
