@@ -57,6 +57,7 @@ class ClienteController extends Controller
 
         $cliente = new Cliente;
         $cliente->email = $request->email;
+        $cliente->senha = Hash::make($request->senha);
         $cliente->nome_dono = $request->nome_dono;
         $cliente->whatsapp = $request->whatsapp;
         $cliente->telefone = $request->telefone;
@@ -69,6 +70,12 @@ class ClienteController extends Controller
         $cliente->estado = $request->estado;
         $cliente->finalizado = false;
         $cliente->save();
+
+        $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
+        $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
+        $file = str_replace("{{usuario}}", $cliente->email, $file);
+        $file = str_replace("{{senha}}", $request->senha, $file);
+        Email::enviar($file, "Confirmação de Cadastro", session()->get("cliente")["email"], false);
 
         toastr()->success("Cadastro realizado com sucesso!");
         return redirect()->back();
@@ -105,7 +112,7 @@ class ClienteController extends Controller
         $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
         $file = str_replace("{{usuario}}", $cliente->email, $file);
         $file = str_replace("{{senha}}", $request->senha, $file);
-        Email::enviar($file, "Confirmação de Cadstro", session()->get("cliente")["email"], false);
+        Email::enviar($file, "Confirmação de Cadastro", session()->get("cliente")["email"], false);
 
         if(session()->get("pagina_retorno")){
             $pagina = session()->get("pagina_retorno");

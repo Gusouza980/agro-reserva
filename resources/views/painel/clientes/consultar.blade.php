@@ -13,6 +13,11 @@
 @endsection
 
 @section('conteudo')
+<div class="row my-3">
+    <div class="col-12">
+         <a name="" id="" class="btn btn-primary cpointer ml-3" data-bs-toggle="modal" data-bs-target="#modalNovoCliente" role="button">Novo Cliente</a> 
+    </div>
+</div>
 <div class="row justify-content-center">
     <div class="col-12">
         <div class="card">
@@ -71,7 +76,7 @@
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
-
+@include('painel.includes.clientes.modal-cadastro')
 
 
 @endsection
@@ -98,6 +103,30 @@
         $(document).ready(function () {
             $.fn.dataTable.moment( 'DD/MM/YYYY HH:mm:ss' );    //Formatação com Hora
             $.fn.dataTable.moment('DD/MM/YYYY');    //Formatação sem Hor
+            $("select[name='estado']").change(function(){
+                var estado = $("select[name='estado']").val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/getCidadesByUf/' + estado,
+                    dataType: 'json',
+                    success: function (data) {
+                        html = "";
+                        var cidades = JSON.parse(data);
+                        for(var cidade in cidades){
+                            html += "<option value='"+cidades[cidade].id+"'>"+cidades[cidade].nome+"</option>"
+                        }
+                        $("select[name='cidade']").html(html);
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
             $("#datatable").DataTable(),
                 $("#datatable-buttons")
                     .DataTable({
@@ -262,6 +291,11 @@
                     .container()
                     .appendTo("#datatable-buttons_wrapper .col-md-6:eq(0)"),
                 $(".dataTables_length select").addClass("form-select form-select-sm");
-        });
+        
+        
+        
+        
+        
+            });
     </script> 
 @endsection
