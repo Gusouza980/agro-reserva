@@ -93,7 +93,7 @@
             <div class="container-fluid">
                 <div class="row py-4 px-4">
                     <div class="col-12">
-                        <a href="{{route('fazenda.lotes', ['fazenda' => $lote->fazenda->slug])}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                        <a href="{{route('fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug])}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
                     </div>
                 </div>
                 <div class="row justify-content-center mt-5" style="position: relative;">
