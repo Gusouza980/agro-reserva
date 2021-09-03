@@ -123,27 +123,28 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="slick">
-                            @foreach($logos as $logo)
-                                <div>
-                                    <a>
-                                        <div class="slide2-item-container">
-                                            <div class="slide2-item d-flex justify-items-center align-items-center" width="160" height="160">
-                                                <img src="{{asset($logo)}}" style="max-width: 100%; width: 130px;">
+            @if($reserva->multi_fazendas)
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="slick">
+                                @foreach($logos as $logo)
+                                    <div>
+                                        <a>
+                                            <div class="slide2-item-container">
+                                                <div class="slide2-item d-flex justify-items-center align-items-center" width="160" height="160">
+                                                    <img src="{{asset($logo)}}" style="max-width: 100%; width: 130px;">
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                
                         </div>
-            
                     </div>
                 </div>
-            </div>
-            
+            @endif
             
             <div class="w-100 pt-4 pb-5 d-none d-lg-block">
                 @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug]))

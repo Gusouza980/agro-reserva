@@ -98,7 +98,7 @@ class SiteController extends Controller
                 $logos[] = $lote->fazenda->logo;
             }
         }
-        return view("fazenda", ["fazenda" => $fazenda, "logos" => $logos]);
+        return view("fazenda", ["fazenda" => $fazenda, "logos" => $logos, "reserva" => $reserva]);
     }
 
     public function lotes($slug){

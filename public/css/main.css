@@ -1861,28 +1861,22 @@ label {
     color: var(--cinza1);
 }
 
-.slick{
-    backdrop-filter: blur(25px);
-    height: 160px;
-}
-
 .slide2-circle{
     color: var(--cinza4);
 }
 
 .slide2-item-container{
-    height: 160px;
+    height: 200px;
     text-align: center;
 }
 
 .slide2-item{
-    /* background-color: white; */
+    background-color: white;
     width: 160px;
     height: 160px;
     border-radius: 16px;
-    /* backdrop-filter: blur(25px); */
     margin: 0 auto;
-    /* box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04); */
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
 }
 
 .slide2-item > img{
