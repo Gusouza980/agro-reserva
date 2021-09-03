@@ -1863,6 +1863,7 @@ label {
 
 .slick{
     backdrop-filter: blur(25px);
+    height: 200px;
 }
 
 .slide2-circle{
