@@ -132,7 +132,7 @@
                                     <a>
                                         <div class="slide2-item-container">
                                             <div class="slide2-item d-flex justify-items-center align-items-center" width="160" height="160">
-                                                <img src="{{asset($logo)}}" style="max-width: 100%; width: 100px;">
+                                                <img src="{{asset($logo)}}" style="max-width: 100%; width: 130px;">
                                             </div>
                                         </div>
                                     </a>
