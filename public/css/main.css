@@ -1856,3 +1856,33 @@ label {
     bottom: 0px;
     right: 0px;
 }
+
+.slide2-circle.active{
+    color: var(--cinza1);
+}
+
+.slide2-circle{
+    color: var(--cinza4);
+}
+
+.slide2-item-container{
+    height: 200px;
+    text-align: center;
+}
+
+.slide2-item{
+    background-color: var(--branco1);
+    width: 160px;
+    height: 160px;
+    border-radius: 16px;
+    margin: 0 auto;
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+
+.slide2-item > img{
+    margin: auto auto;
+}
+
+.slick-slide{
+    text-align: center;
+}

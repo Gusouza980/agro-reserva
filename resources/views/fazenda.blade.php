@@ -1,5 +1,12 @@
 @extends('template.main')
 
+@section("styles")
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+@endsection
+
 @section('conteudo')
     @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug]))
         @php
@@ -116,13 +123,25 @@
                     </div>
                 </div>
             </div>
-            {{--  <div class="w800 mx-auto">
+            <div class="container">
                 <div class="row">
-                    <div class="col-12 text-cta-comissao text-center py-4 py-lg-0" style="background: url({{asset('imagens/brush-laranja.png')}}); background-position: center; background-size: cover; background-repeat: no-repeat;">
-                        <h1>0% DE COMISSÃO</h1>
+                    <div class="col-12">
+                        <div class="slick">
+                            @foreach($logos as $logo)
+                                <div>
+                                    <div class="slide2-item-container">
+                                        <div class="slide2-item d-flex justify-items-center align-items-center" width="160" height="160">
+                                            <img src="{{asset($logo)}}" style="max-width: 100%; width: 100px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+            
                     </div>
                 </div>
-            </div>  --}}
+            </div>
+            
             
             <div class="w-100 pt-4 pb-5 d-none d-lg-block">
                 @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug]))
@@ -143,7 +162,8 @@
 @endsection
 
 @section('scripts')
-
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src=" https://ajax.googleapis.com/ajax/libs/jqueryui/1.5.2/jquery-ui.min.js"></script>
 <script>
     var section = 0;
     function redirect(location){
@@ -178,6 +198,76 @@
             });
             section = novo;
         })
+
+        var slide1 = 1;
+
+            $(".slick").slick({
+
+                // normal options...
+                slidesToShow: 6,
+                infinite: true,
+                dots: true,
+                adaptiveHeight: true,
+                arrows: false,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                // the magic
+                responsive: [{
+              
+                    breakpoint: 1024,
+                    settings: {
+                      slidesToShow: 4,
+                      infinite: true,
+                      dots: true,
+                      adaptiveHeight: true,
+                      arrows: false,
+                    }
+              
+                  }, {
+              
+                    breakpoint: 650,
+                    settings: {
+                      slidesToShow: 3,
+                      infinite: true,
+                      dots: true,
+                      adaptiveHeight: true,
+                      arrows: false,
+                    }
+              
+                  }, {
+              
+                    breakpoint: 750,
+                    settings: {
+                      slidesToShow: 3,
+                      infinite: true,
+                      dots: true,
+                      adaptiveHeight: true,
+                      arrows: false,
+                    }
+              
+                  }, {
+              
+                    breakpoint: 550,
+                    settings: {
+                      slidesToShow: 2,
+                      infinite: true,
+                      dots: true,
+                      adaptiveHeight: true,
+                      arrows: false,
+                    }
+              
+                  },{
+              
+                    breakpoint: 360,
+                    settings: {
+                      slidesToShow: 1,
+                      infinite: true,
+                      adaptiveHeight: true,
+                      arrows: false,
+                    }
+              
+                  }]
+            });
     });
 </script>
     

@@ -89,7 +89,16 @@ class SiteController extends Controller
         foreach($fazenda->depoimentos as $depoimento){
             $depoimento->video = $this->convertYoutube($depoimento->video);
         }
-        return view("fazenda", ["fazenda" => $fazenda]);
+        $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        $fazendas = [];
+        $logos = [];
+        foreach($reserva->lotes as $lote){
+            if(!in_array($lote->fazenda_id, $fazendas)){
+                $fazendas[] = $lote->fazenda_id;
+                $logos[] = $lote->fazenda->logo;
+            }
+        }
+        return view("fazenda", ["fazenda" => $fazenda, "logos" => $logos]);
     }
 
     public function lotes($slug){
@@ -100,7 +109,7 @@ class SiteController extends Controller
             return redirect()->route("login");
         }
         $reserva = $fazenda->reservas->where("ativo", 1)->first();
-        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva]);
+        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "logos" => $logos]);
     }
 
     public function lote($slug, Lote $lote){
