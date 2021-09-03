@@ -75,7 +75,7 @@ class ClienteController extends Controller
         $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
         $file = str_replace("{{usuario}}", $cliente->email, $file);
         $file = str_replace("{{senha}}", $request->senha, $file);
-        Email::enviar($file, "Confirmação de Cadastro", session()->get("cliente")["email"], false);
+        Email::enviar($file, "Confirmação de Cadastro", $cliente->email, false);
 
         toastr()->success("Cadastro realizado com sucesso!");
         return redirect()->back();

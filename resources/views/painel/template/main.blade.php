@@ -129,7 +129,7 @@
                         <!-- Left Menu Start -->
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li class="menu-title" key="t-menu">Menu</li>
-                            @include('painel.includes.menus.acesso' . session()->get("admin")["acesso"]);
+                            @include('painel.includes.menus.acesso' . session()->get("admin")["acesso"])
                         </ul>
                     </div>
                     <!-- Sidebar -->

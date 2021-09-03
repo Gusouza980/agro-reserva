@@ -283,9 +283,10 @@
                         columnDefs: [
                             {
                                 visible: false,
-                                targets: [0, 5, 6]
+                                targets: [5, 6]
                             }
-                        ]
+                        ],
+                        order: [[0, "desc"]]
                     })
                     .buttons()
                     .container()

@@ -18,12 +18,12 @@ class AtendenteSeeder extends Seeder
     {
         //
         DB::table('usuarios')->insert([
-            'nome' => 'Admin',
-            'email' => 'admin@admin.com',
-            'senha' => Hash::make('12345'),
-            'usuario' => 'admin',
+            'nome' => 'Evento',
+            'email' => 'evento@agroreserva.com.br',
+            'senha' => Hash::make('Evento123@'),
+            'usuario' => 'evento',
             'admin' => true,
-            'acesso' => 0
+            'acesso' => 1
         ]);
     }
 }
