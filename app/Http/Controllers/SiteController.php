@@ -109,7 +109,7 @@ class SiteController extends Controller
             return redirect()->route("login");
         }
         $reserva = $fazenda->reservas->where("ativo", 1)->first();
-        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "logos" => $logos]);
+        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva]);
     }
 
     public function lote($slug, Lote $lote){
