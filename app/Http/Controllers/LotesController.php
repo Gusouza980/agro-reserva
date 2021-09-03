@@ -86,6 +86,10 @@ class LotesController extends Controller
         $lote->video = $request->video;
         $lote->ativo = $request->ativo;
 
+        if($reserva->multi_fazendas){
+            $lote->fazenda_id = $request->fazenda;
+        }
+
         if($request->file("preview")){
             Storage::delete($lote->preview);
             $lote->preview = $request->file('preview')->store(
