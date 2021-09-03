@@ -129,11 +129,13 @@
                         <div class="slick">
                             @foreach($logos as $logo)
                                 <div>
-                                    <div class="slide2-item-container">
-                                        <div class="slide2-item d-flex justify-items-center align-items-center" width="160" height="160">
-                                            <img src="{{asset($logo)}}" style="max-width: 100%; width: 100px;">
+                                    <a>
+                                        <div class="slide2-item-container">
+                                            <div class="slide2-item d-flex justify-items-center align-items-center" width="160" height="160">
+                                                <img src="{{asset($logo)}}" style="max-width: 100%; width: 100px;">
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             @endforeach
                         </div>
