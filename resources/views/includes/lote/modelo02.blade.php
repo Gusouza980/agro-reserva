@@ -7,10 +7,7 @@
     </div>
     <div class="px-4 px-lg-0 ml-lg-4 flex-grow-1 text-white text-lote-info text-center text-lg-left">
         @if($lote->nascimento)
-            @php
-                $data = \Carbon\Carbon::create(date("Y", strtotime($lote->nascimento)), date("m", strtotime($lote->nascimento)), date("d", strtotime($lote->nascimento)), 0);
-            @endphp
-            <span><b>Prev. Prenhez:</b> {{strtoupper($data->formatLocalized('%b/%Y'))}}</span><br>
+            <span><b>Prev. Prenhez:</b> {{date("m/Y", strtotime($lote->nascimento))}}</span><br>
         @else
             <span><b>Prev. Prenhez:</b> PRENHEZ A FAZER</span><br>
         @endif
