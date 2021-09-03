@@ -46,10 +46,7 @@
                             <b class="mr-3">PREV. PARTO.: </b>
                         </div>
                         <div>
-                            @php
-                                $data = \Carbon\Carbon::create(date("Y", strtotime($lote->nascimento)), date("m", strtotime($lote->nascimento)), date("d", strtotime($lote->nascimento)), 0);
-                            @endphp
-                            <span class="card-lote-info-text">{{strtoupper($data->formatLocalized('%b/%Y'))}}</span>
+                            <span class="card-lote-info-text">{{date("m/Y", strtotime($lote->nascimento))}}</span>
                         </div>
                     @else
                         <div class="text-center mx-auto">
