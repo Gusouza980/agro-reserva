@@ -16,6 +16,15 @@ use Cookie;
 class SiteController extends Controller
 {
 
+    public function testes(){
+        $rdStation = new \RDStation\RDStation('gusouza980@gmail.com');
+        $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+        $rdStation->setLeadData('identifier', 'interesse-lote');
+        $rdStation->setLeadData('lote', '20 - Mimosa');
+        $res = $rdStation->sendLead();
+        dd($res);
+    }
+
     public function index(){
         // dd($cliente->toArray());
         if(Cookie::get('cliente')){
@@ -157,6 +166,15 @@ class SiteController extends Controller
 
         $lote->visitas += 1;
         $lote->save();
+
+        $rdStation = new \RDStation\RDStation(session()->get("cliente")["email"]);
+        $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+        $rdStation->setLeadData('name', session()->get("cliente")["nome_dono"]);
+        $rdStation->setLeadData('identifier', 'interesse-lote');
+        $rdStation->setLeadData('numero-lote', "" . $lote->numero . $lote->letra);
+        $rdStation->setLeadData('nome-lote', $lote->nome);
+        $rdStation->setLeadData('fazenda-lote', $lote->fazenda->nome_fazenda);
+        $rdStation->sendLead();
 
         $lote->video = $this->convertYoutube($lote->video);
 

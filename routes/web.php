@@ -226,7 +226,7 @@ Route::middleware(['admin'])->group(function () {
 
 });
 
-Route::get('/teste', [\App\Http\Controllers\FazendaController::class, 'teste']);
+Route::get('/teste', [\App\Http\Controllers\SiteController::class, 'testes']);
 Route::get('/api/getCidadesByUf/{uf}', [\App\Http\Controllers\ApiController::class, 'getCidadesByUf']);
 Route::post('/api/calcDistanciaCep', [\App\Http\Controllers\ApiController::class, 'calcDistanciaCep']);
 Route::get('/api/declararInteresseLote/{lote}', [\App\Http\Controllers\ApiController::class, 'declararInteresseLote']);
