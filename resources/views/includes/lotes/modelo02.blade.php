@@ -4,7 +4,7 @@
             <div class="d-flex align-items-center justify-content-center" style="position: relative; border-top-left-radius: 20px; border-top-right-radius: 20px; object-fit: contain; height:200px; background: url({{asset($lote->preview)}}); background-size: cover; background-position: top; background-repeat: no-repeat;">
                 @if($lote->reservado)
                     <div class="faixa-reservado text-center text-white py-2">
-                        RESERVADO
+                        VENDIDO
                     </div>
                 @endif
                 @if($lote->porcentagem < 100)
