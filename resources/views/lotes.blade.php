@@ -75,7 +75,11 @@
         </div>
         <div class="row py-4">
             <div class="col-12">
-                <a href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                @if(!isset($finalizadas))
+                    <a href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                @else
+                    <a href="{{route('reservas.finalizadas.fazenda.conheca', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                @endif
             </div>
         </div>
         <div class="row justify-content-center justify-content-lg-between">

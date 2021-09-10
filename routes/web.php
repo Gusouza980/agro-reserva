@@ -58,6 +58,16 @@ Route::get('/quem-somos', [\App\Http\Controllers\SiteController::class, 'sobre']
 Route::get('/pre_to_main', [\App\Http\Controllers\ClienteController::class, 'pre_to_main']);
 Route::post('/senha/recuperar', [\App\Http\Controllers\ContaController::class, 'recuperar_senha'])->name("conta.senha.recuperar");
 
+//ROTAS DE RESERVAS ANTIGAS
+Route::get('/reservas/finalizadas', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
+// Route::get('/reservas/finalizadas/{reserva}/{fazenda}', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
+Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca");
+Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/lotes', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.lotes");
+Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/depoimentos', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.depoimentos");
+Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.avaliacoes");
+Route::get('/reservas/finalizadas/{reserva}/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes_finalizadas'])->name("reservas.finalizadas.fazenda.lotes");
+Route::get('/reservas/finalizadas/{reserva}/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote_finalizadas'])->name("reservas.finalizadas.fazenda.lote");
+
 //Blog
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
 Route::get('/noticia/{slug}', [\App\Http\Controllers\BlogController::class, 'noticia'])->name("noticia");

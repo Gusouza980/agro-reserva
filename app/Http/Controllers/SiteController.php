@@ -107,7 +107,8 @@ class SiteController extends Controller
                 $logos[] = $lote->fazenda->logo;
             }
         }
-        return view("fazenda", ["fazenda" => $fazenda, "logos" => $logos, "reserva" => $reserva]);
+        $finalizadas = "";
+        return view("fazenda", ["fazenda" => $fazenda, "logos" => $logos, "reserva" => $reserva, "finalizadas" => $finalizadas]);
     }
 
     public function lotes($slug){
@@ -238,6 +239,102 @@ class SiteController extends Controller
 
     public function sobre(){
         return view("sobre");
+    }
+
+    public function reservas_finalizadas(){
+        $reservas = Reserva::where("encerrada", true)->get();
+        return view("finalizadas.index", ["reservas" => $reservas]);
+    }
+
+    public function conheca_finalizadas(Reserva $reserva, $slug){
+        $fazenda = Fazenda::where("slug", $slug)->first();
+        $fazenda->video_conheca = $this->convertYoutube($fazenda->video_conheca);
+        $fazenda->video_conheca_lotes = $this->convertYoutube($fazenda->video_conheca_lotes);
+        foreach($fazenda->depoimentos as $depoimento){
+            $depoimento->video = $this->convertYoutube($depoimento->video);
+        }
+        $fazendas = [];
+        $logos = [];
+        if($reserva->multi_fazendas){
+            foreach($reserva->lotes as $lote){
+                if(!in_array($lote->fazenda_id, $fazendas)){
+                    $fazendas[] = $lote->fazenda_id;
+                    $logos[] = $lote->fazenda->logo;
+                }
+            }
+        }
+        return view("finalizadas.fazenda", ["fazenda" => $fazenda, "logos" => $logos, "reserva" => $reserva]);
+    }
+
+    public function lotes_finalizadas(Reserva $reserva, $slug){
+        $fazenda = $reserva->fazenda;
+        if(!session()->get("cliente")){
+            session()->put(["pagina_retorno" => url()->full()]);
+            session()->flash("erro", "Para acessar os lotes, faça seu login.");
+            return redirect()->route("login");
+        }
+        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "finalizadas" => true]);
+    }
+
+    public function lote_finalizadas(Reserva $reserva, $slug, Lote $lote){
+        if(!session()->get("cliente")){
+            session()->flash("erro", "Para acessar os lotes, faça seu login.");
+            session()->put(["pagina_retorno" => url()->full()]);
+            return redirect()->route("login");
+        }
+        $visita = new Visita;
+
+        if(session()->get("cliente")){
+            $visita->cliente_id = session()->get("cliente")["id"];
+            $visita->logado = true;
+        }
+
+        if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+            //ip from share internet
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+            //ip pass from proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }else{
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+    
+        $estado = null;
+        $cidade = null;
+        $cep = null;
+    
+        $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+    
+        if($query && $query["status"] == "success"){
+            $estado = $query["region"];
+            $cidade = $query["city"];
+            $cep = $query["zip"];
+        }
+
+        $visita->ip = $ip;
+        $visita->lote_id = $lote->id;
+        $visita->estado = $estado;
+        $visita->cidade = $cidade;
+        $visita->cep = $cep;
+
+        $visita->save();
+
+        $lote->visitas += 1;
+        $lote->save();
+
+        // $rdStation = new \RDStation\RDStation(session()->get("cliente")["email"]);
+        // $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+        // $rdStation->setLeadData('name', session()->get("cliente")["nome_dono"]);
+        // $rdStation->setLeadData('identifier', 'interesse-lote');
+        // $rdStation->setLeadData('numero-lote', "" . $lote->numero . $lote->letra);
+        // $rdStation->setLeadData('nome-lote', $lote->nome);
+        // $rdStation->setLeadData('fazenda-lote', $lote->fazenda->nome_fazenda);
+        // $rdStation->sendLead();
+
+        $lote->video = $this->convertYoutube($lote->video);
+
+        $fazenda = Fazenda::where("slug", $slug)->first();
+        return view("lote", ["lote" => $lote, "fazenda" => $fazenda, "finalizadas" => true, "reserva" => $reserva]);
     }
 
     public function convertYoutube($string) {

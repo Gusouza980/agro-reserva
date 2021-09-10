@@ -86,6 +86,9 @@
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('sobre')}}">Quem somos</span></a>
                             </li> 
+                            <li class="nav-item active mt-2">
+                                <a class="nav-link" href="{{route('reservas.finalizadas')}}">Reservas Finalizadas</span></a>
+                            </li> 
                             {{--  <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
                             </li>   --}}
@@ -109,6 +112,9 @@
                             </li> 
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('sobre')}}">Quem somos</span></a>
+                            </li> 
+                            <li class="nav-item active mt-2">
+                                <a class="nav-link" href="{{route('reservas.finalizadas')}}">Reservas Finalizadas</span></a>
                             </li> 
                             {{--  <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
@@ -136,14 +142,15 @@
 				{{--  <div class="col-lg-2 text-left d-flex text-white align-items-center">
 					<span class="text-nav-header"><a href="{{route('index')}}"><span style="border-bottom: 2px solid #E65454;">Ver</span> todas as reservas</a></span> 
 				</div>  --}}
-				<div class="col-lg-4 d-flex text-white justify-content-start align-items-center">
+				<div class="col-lg-5 d-flex text-white justify-content-start align-items-center">
 					{{--  <a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a>  --}}
                     <span  class="text-nav-header"><a href="{{route('index')}}">Início</a></span> 
                     <span  class="text-nav-header ml-4"><a href="{{route('blog')}}">Blog</a></span> 
                     <span  class="text-nav-header ml-4"><a href="{{route('sobre')}}">Quem somos</a></span> 
+                    <span  class="text-nav-header ml-4"><a href="{{route('reservas.finalizadas')}}">Reservas Finalizadas</a></span> 
                     {{--  <span  class="text-nav-header"><a href="{{route('cadastro')}}">Como comprar</a></span>   --}}
                 </div>
-				<div class="col-lg-5 d-flex text-white justify-content-end align-items-center">
+				<div class="col-lg-4 d-flex text-white justify-content-end align-items-center">
 					<span class="text-nav-header">
                         {{--  @if($_SESSION["userid"])  --}}
                         @if(session()->get("cliente"))
