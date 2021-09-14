@@ -21,7 +21,7 @@
                             <input type="text" class="form-control" name="documento" id="documento" aria-describedby="" maxlenght="50" required placeholder="Informe seu CPF ou CNPJ">
                         </div>
                         <div class="form-group col-12 input-cadastro">
-                            <label for="cep">CEP */label>
+                            <label for="cep">CEP *</label>
                             <input type="text" class="form-control" name="cep" id="cep" aria-describedby="" required placeholder="Informe seu cep">
                         </div>
                         <div class="container-fluid" id="endereco" style="display: none;">
