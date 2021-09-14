@@ -115,13 +115,14 @@ class ClienteController extends Controller
         $cliente->save();
 
         session(["cliente" => $cliente->toArray()]);
-        return redirect()->back();
-        // $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
-        // $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
-        // $file = str_replace("{{usuario}}", $cliente->email, $file);
-        // $file = str_replace("{{senha}}", $request->senha, $file);
-        // Email::enviar($file, "Confirmação de Cadastro", session()->get("cliente")["email"], false);
+        $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
+        $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
+        $file = str_replace("{{usuario}}", $cliente->email, $file);
+        $file = str_replace("{{senha}}", $request->senha, $file);
+        Email::enviar($file, "Confirmação de Cadastro", session()->get("cliente")["email"], false);
 
+        return redirect()->back();
+        
         // if(session()->get("pagina_retorno")){
         //     $pagina = session()->get("pagina_retorno");
         //     session()->forget("pagina_retorno");
@@ -181,13 +182,7 @@ class ClienteController extends Controller
         
         $cliente->save();
         
-        if(session()->get("pagina_retorno")){
-            $pagina = session()->get("pagina_retorno");
-            session()->forget("pagina_retorno");
-            return redirect($pagina);
-        }else{
-            return redirect()->route("index");
-        }
+        return redirect()->back();
 
     }
 
