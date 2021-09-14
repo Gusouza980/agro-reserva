@@ -45,7 +45,7 @@ class ClienteController extends Controller
     }
 
     public function cadastro(){
-        if(session()->get("cliente")["finalizado"]){
+        if(session()->get("cliente") && session()->get("cliente")["finalizado"]){
             return redirect()->route("index");
         }
         $anterior = redirect()->back()->getTargetUrl();
@@ -87,7 +87,7 @@ class ClienteController extends Controller
     }
 
     public function finalizar_cadastro(){
-        if(session()->get("cliente")["finalizado"]){
+        if(session()->get("cliente") && session()->get("cliente")["finalizado"]){
             return redirect()->route("index");
         }
         $anterior = redirect()->back()->getTargetUrl();
