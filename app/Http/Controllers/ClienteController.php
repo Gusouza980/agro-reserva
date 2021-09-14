@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\Cidade;
+use App\Models\Estado;
 use App\Models\ClienteRaca;
 use App\Models\CreditoAnalise;
 use App\Models\PendenciaFinanceira;
@@ -42,9 +44,12 @@ class ClienteController extends Controller
         return view("painel.clientes.visualizar", ['cliente' => $cliente]);
     }
 
-    public function cadastro(Request $request){
+    public function cadastro(){
+        if(session()->get("cliente")["finalizado"]){
+            return redirect()->route("index");
+        }
         $anterior = redirect()->back()->getTargetUrl();
-        return view('cadastro', ["anterior" => $anterior]);
+        return view('cadastro.index', ["anterior" => $anterior]);
     }
 
     public function cadastro_painel(Request $request){
@@ -82,9 +87,12 @@ class ClienteController extends Controller
     }
 
     public function finalizar_cadastro(){
+        if(session()->get("cliente")["finalizado"]){
+            return redirect()->route("index");
+        }
         $anterior = redirect()->back()->getTargetUrl();
         $finalizar = true;
-        return view('cadastro', ["anterior" => $anterior, "finalizar" => $finalizar]);
+        return view('cadastro.finalizar', ["anterior" => $anterior, "finalizar" => $finalizar]);
     }
 
     public function cadastrar(Request $request){
@@ -98,29 +106,29 @@ class ClienteController extends Controller
         $cliente = new Cliente;
         $cliente->email = $request->email;
         $cliente->nome_dono = $request->nome;
-        $cliente->whatsapp = $request->whatsapp;
-        $cliente->interesses = $request->interesse;
+        $cliente->telefone = $request->telefone;
+        // $cliente->interesses = $request->interesse;
         $cliente->senha = Hash::make($request->senha);
-        $cliente->nome_fazenda = $request->fazenda;
-        $cliente->racas = implode(", ", $request->racas);
+        // $cliente->nome_fazenda = $request->fazenda;
+        // $cliente->racas = implode(", ", $request->racas);
         $cliente->finalizado = false;
         $cliente->save();
 
         session(["cliente" => $cliente->toArray()]);
+        return redirect()->back();
+        // $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
+        // $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
+        // $file = str_replace("{{usuario}}", $cliente->email, $file);
+        // $file = str_replace("{{senha}}", $request->senha, $file);
+        // Email::enviar($file, "Confirmação de Cadastro", session()->get("cliente")["email"], false);
 
-        $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
-        $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
-        $file = str_replace("{{usuario}}", $cliente->email, $file);
-        $file = str_replace("{{senha}}", $request->senha, $file);
-        Email::enviar($file, "Confirmação de Cadastro", session()->get("cliente")["email"], false);
-
-        if(session()->get("pagina_retorno")){
-            $pagina = session()->get("pagina_retorno");
-            session()->forget("pagina_retorno");
-            return redirect($pagina);
-        }else{
-            return redirect()->route("index");
-        }
+        // if(session()->get("pagina_retorno")){
+        //     $pagina = session()->get("pagina_retorno");
+        //     session()->forget("pagina_retorno");
+        //     return redirect($pagina);
+        // }else{
+        //     return redirect()->route("index");
+        // }
     }
 
     public function login_cadastro(Request $request){
@@ -138,41 +146,48 @@ class ClienteController extends Controller
 
     public function cadastro_final(Request $request){
 
-        $cliente = Cliente::where("email", $request->email)->first();
+        $cliente = Cliente::find(session()->get("cliente")["id"]);
 
-        $cliente->nome_dono = $request->nome_completo;
-        $cliente->rg = $request->rg;
-        $cliente->nascimento = $request->nascimento;
+        // $cliente->nome_dono = $request->nome_completo;
+        // $cliente->rg = $request->rg;
+        // $cliente->nascimento = $request->nascimento;
         $cliente->documento = $request->documento;
         $cliente->estado_civil = $request->estado_civil;
-        $cliente->inscricao_produtor_rural = $request->inscricao_produtor_rural;
+        // $cliente->inscricao_produtor_rural = $request->inscricao_produtor_rural;
         $cliente->cep = $request->cep;
         $cliente->rua = $request->endereco;
         $cliente->numero = $request->numero;
         $cliente->complemento = $request->complemento;
         $cliente->cidade = $request->cidade;
         $cliente->estado = $request->estado;
-        $cliente->referencia_bancaria_banco = $request->referencia_bancaria_banco;
-        $cliente->referencia_bancaria_gerente = $request->referencia_bancaria_gerente;
-        $cliente->referencia_bancaria_tel = $request->referencia_bancaria_tel;
+        $cliente->pais = $request->pais;
+        // $cliente->referencia_bancaria_banco = $request->referencia_bancaria_banco;
+        // $cliente->referencia_bancaria_gerente = $request->referencia_bancaria_gerente;
+        // $cliente->referencia_bancaria_tel = $request->referencia_bancaria_tel;
         $cliente->referencia_comercial1 = $request->referencia_comercial1;
         $cliente->referencia_comercial1_tel = $request->referencia_comercial1_tel;
         $cliente->referencia_comercial2 = $request->referencia_comercial2;
         $cliente->referencia_comercial2_tel = $request->referencia_comercial2_tel;
-        $cliente->referencia_comercial3 = $request->referencia_comercial3;
-        $cliente->referencia_comercial3_tel = $request->referencia_comercial3_tel;
-        $cliente->referencia_coorporativa1 = $request->referencia_coorporativa1;
-        $cliente->referencia_coorporativa1_tel = $request->referencia_coorporativa1_tel;
-        $cliente->referencia_coorporativa2 = $request->referencia_coorporativa2;
-        $cliente->referencia_coorporativa2_tel = $request->referencia_coorporativa2_tel;
+        // $cliente->referencia_comercial3 = $request->referencia_comercial3;
+        // $cliente->referencia_comercial3_tel = $request->referencia_comercial3_tel;
+        // $cliente->referencia_coorporativa1 = $request->referencia_coorporativa1;
+        // $cliente->referencia_coorporativa1_tel = $request->referencia_coorporativa1_tel;
+        // $cliente->referencia_coorporativa2 = $request->referencia_coorporativa2;
+        // $cliente->referencia_coorporativa2_tel = $request->referencia_coorporativa2_tel;
         $cliente->finalizado = true;
 
         session()->forget("cliente");
         session(["cliente" => $cliente->toArray()]);
         
         $cliente->save();
-
-        return response()->json("Sucesso");
+        
+        if(session()->get("pagina_retorno")){
+            $pagina = session()->get("pagina_retorno");
+            session()->forget("pagina_retorno");
+            return redirect($pagina);
+        }else{
+            return redirect()->route("index");
+        }
 
     }
 
@@ -441,53 +456,17 @@ class ClienteController extends Controller
     }
 
     public function pre_to_main(){
-        $clientes_pre = DB::select('select * from clientes_pre');
-        // dd($clientes_pre);
-        foreach($clientes_pre as $cliente_pre){
-            $cliente = Cliente::where("email", $cliente_pre->email)->first();
-            if(!$cliente){
-                $cliente = new Cliente;
-                $cliente->email = $cliente_pre->email;
-                $cliente->nome_dono = $cliente_pre->nome_dono;
-                $cliente->whatsapp = $cliente_pre->whatsapp;
-                $cliente->interesses = $cliente_pre->interesses;
-                $cliente->senha = Hash::make($cliente_pre->senha);
-                $cliente->nome_fazenda = $cliente_pre->nome_fazenda;
-                $cliente->racas = $cliente_pre->racas;
-                $cliente->save();
-                echo "<b>" . $cliente->nome . "</b>" . ": Pré cadastro realizado<br>";
-                if($cliente_pre->documento){
-                    $cliente->rg = $cliente_pre->rg;
-                    $data_nascimento = explode("/", $cliente_pre->nascimento);
-                    $data_nascimento = $data_nascimento[2] . "-" . $data_nascimento[1] . "-" . $data_nascimento[0];
-                    $cliente->nascimento = $data_nascimento;
-                    $cliente->documento = $cliente_pre->documento;
-                    $cliente->estado_civil = $cliente_pre->estado_civil;
-                    $cliente->inscricao_produtor_rural = $cliente_pre->inscricicao_produtor_rural;
-                    $cliente->cep = $cliente_pre->cep;
-                    $cliente->rua = $cliente_pre->rua;
-                    $cliente->numero = $cliente_pre->numero;
-                    $cliente->complemento = $cliente_pre->complemento;
-                    $cliente->cidade = $cliente_pre->cidade;
-                    $cliente->estado = $cliente_pre->estado;
-                    $cliente->referencia_bancaria_banco = $cliente_pre->referencia_bancaria_banco;
-                    $cliente->referencia_bancaria_gerente = $cliente_pre->referencia_bancaria_gerente;
-                    $cliente->referencia_bancaria_tel = $cliente_pre->referencia_bancaria_tel;
-                    $cliente->referencia_comercial1 = $cliente_pre->referencia_comercial1;
-                    $cliente->referencia_comercial1_tel = $cliente_pre->referencia_comercial1_tel;
-                    $cliente->referencia_comercial2 = $cliente_pre->referencia_comercial2;
-                    $cliente->referencia_comercial2_tel = $cliente_pre->referencia_comercial2_tel;
-                    $cliente->referencia_comercial3 = $cliente_pre->referencia_comercial3;
-                    $cliente->referencia_comercial3_tel = $cliente_pre->referencia_comercial3_tel;
-                    $cliente->referencia_coorporativa1 = $cliente_pre->referencia_coorporativa1;
-                    $cliente->referencia_coorporativa1_tel = $cliente_pre->referencia_coorporativa1_tel;
-                    $cliente->referencia_coorporativa2 = $cliente_pre->referencia_coorporativa2;
-                    $cliente->referencia_coorporativa2_tel = $cliente_pre->referencia_coorporativa2_tel;
-                    $cliente->finalizado = true;
-                    $cliente->save();
-                    echo "<b>" . $cliente->nome . "</b>" . ": Cadastro finalizado<br>";
-                }
+        $clientes = Cliente::all();
+        foreach($clientes as $cliente){
+            $cidade = Cidade::find($cliente->cidade);
+            $estado = Estado::find($cliente->estado);
+            if($cidade){
+                $cliente->cidade = $cidade->nome;
             }
+            if($estado){
+                $cliente->estado = $estado->uf;
+            }
+            $cliente->save();
         }
     }
 }

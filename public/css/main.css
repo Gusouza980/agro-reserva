@@ -52,6 +52,10 @@ a:active {
     color: var(--vermelho) !important;
 }
 
+.text-laranja{
+    color: var(--laranja) !important;
+}
+
 
 /* END TEXTS */
 
@@ -139,6 +143,19 @@ a:active {
 .btn-vermelho-outline:hover {
     background: #E8521B;
 }
+
+.btn-vermelho-outline-2{
+    border: 1px solid #E8521B;
+    background: transparent;
+    border-radius: 30px;
+    color: #E8521B;
+}
+
+.btn-vermelho-outline-2:hover {
+    background: #E8521B;
+    color: white;
+}
+
 
 .btn-hover-preto:hover{
     background-color: black;
@@ -1885,4 +1902,9 @@ label {
 
 .slick-slide{
     text-align: center;
+}
+
+#caixa-sucesso-cadastro{
+    background-color: white;
+    border-radius: 15px;
 }
