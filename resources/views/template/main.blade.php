@@ -2,6 +2,24 @@
 <html lang="pt-br">
 
 <head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MRTWDJ5');
+    </script>
+    <!-- End Google Tag Manager -->
     <title>Agroreserva</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -27,7 +45,8 @@
     @yield("metas")
     <link rel="preload" as="style" href="{{ asset('css/main.css') }}?v=1.3.4" />
     <link rel="preload" as="image" href="{{ asset('imagens/bg-home-min-2.jpg') }}" />
-    <link rel="preload" href="{{ asset('fontes/gobold/Gobold Regular.otf') }}" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="{{ asset('fontes/gobold/Gobold Regular.otf') }}" as="font" type="font/otf"
+        crossorigin />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
@@ -54,30 +73,11 @@
             a.appendChild(r);
         })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>
-    <!-- Google Tag Manager -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-W84N3LS');
-    </script>
-    <!-- End Google Tag Manager -->
-
 </head>
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W84N3LS" height="0" width="0"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRTWDJ5" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <a class="btn-whats d-sm-block" href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank">
@@ -118,7 +118,8 @@
                             </li>
                             @if (!session()->get('cliente')['finalizado'])
                                 <li class="nav-item active mt-2">
-                                    <a class="nav-link" href="{{ route('conta.index') }}">Minha Conta</span></a>
+                                    <a class="nav-link" href="{{ route('conta.index') }}">Minha
+                                        Conta</span></a>
                                 </li>
                             @endif
                             <li class="nav-item active mt-2">
@@ -189,7 +190,8 @@
                     <span class="ml-3 text-nav-header"><a href="{{ route('conta.index') }}"><span
                                 style="border-bottom: 2px solid #FEB000;">Min</span>ha conta</a></span> </span>
                     @if (session()->get('cliente'))
-                        <span class="ml-3 text-nav-header"><a class="text-nav-header" href="{{ route('sair') }}"><span
+                        <span class="ml-3 text-nav-header"><a class="text-nav-header"
+                                href="{{ route('sair') }}"><span
                                     style="border-bottom: 2px solid #FEB000;">Sai</span>r</a></span>
                     @endif
                     @if (session()->get('carrinho'))
@@ -321,7 +323,8 @@
                 <div class="text-center footer-links">
                     <a href="{{ route('termos') }}" class="px-4 footer-links-superior">Termos e condições de uso</a>
                     |
-                    <a href="{{ route('politicas') }}" class="px-4 footer-links-superior">Políticas de Privacidade</a>
+                    <a href="{{ route('politicas') }}" class="px-4 footer-links-superior">Políticas de
+                        Privacidade</a>
                 </div>
             </div>
             <div class="row py-2 justify-content-center">
