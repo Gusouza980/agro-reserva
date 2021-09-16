@@ -85,9 +85,8 @@
     <div class="container-fluid bg-preto">
         <div class="container">
             <nav class="navbar d-block d-lg-none navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="{{ route('index') }}"><img
-                        src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Logo Agroreserva"></a>
-                <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarNav"
+                <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('imagens/logo_agroreserva_leite.svg')}}" alt="Agroreserva"></a>
+                <button class="navbar-toggler float-right"  type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon text-white"><i class="fas fa-bars"></i>
 
@@ -159,12 +158,20 @@
                 </div>
 
             </nav>
+<<<<<<< HEAD
+			<div class="row d-none d-lg-flex py-3">
+				<div class="col-lg-3">
+					<a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('imagens/logo_agroreserva_leite.svg')}}" alt="Agroreserva"></a>
+				</div>
+				{{--  <div class="col-lg-2 text-left d-flex text-white align-items-center">
+=======
             <div class="row d-none d-lg-flex py-3">
                 <div class="col-lg-3">
                     <a class="navbar-brand" href="{{ route('index') }}"><img
                             src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Logo Agroreserva"></a>
                 </div>
                 {{-- <div class="col-lg-2 text-left d-flex text-white align-items-center">
+>>>>>>> f8301a61d66e8b8934bf0dd43fdce91288866136
 					<span class="text-nav-header"><a href="{{route('index')}}"><span style="border-bottom: 2px solid #E65454;">Ver</span> todas as reservas</a></span> 
 				</div> --}}
                 <div class="col-lg-5 d-flex text-white justify-content-start align-items-center">
