@@ -73,6 +73,32 @@
             a.appendChild(r);
         })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '3943017899141032');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=3943017899141032&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
 </head>
 
 <body>
@@ -85,8 +111,9 @@
     <div class="container-fluid bg-preto">
         <div class="container">
             <nav class="navbar d-block d-lg-none navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('imagens/logo_agroreserva_leite.svg')}}" alt="Agroreserva"></a>
-                <button class="navbar-toggler float-right"  type="button" data-toggle="collapse" data-target="#navbarNav"
+                <a class="navbar-brand" href="{{ route('index') }}"><img
+                        src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Agroreserva"></a>
+                <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon text-white"><i class="fas fa-bars"></i>
 
@@ -158,12 +185,12 @@
                 </div>
 
             </nav>
-<<<<<<< HEAD
-			<div class="row d-none d-lg-flex py-3">
-				<div class="col-lg-3">
-					<a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('imagens/logo_agroreserva_leite.svg')}}" alt="Agroreserva"></a>
-				</div>
-				{{--  <div class="col-lg-2 text-left d-flex text-white align-items-center">
+            <<<<<<< HEAD <div class="row d-none d-lg-flex py-3">
+                <div class="col-lg-3">
+                    <a class="navbar-brand" href="{{ route('index') }}"><img
+                            src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Agroreserva"></a>
+                </div>
+                {{-- <div class="col-lg-2 text-left d-flex text-white align-items-center">
 =======
             <div class="row d-none d-lg-flex py-3">
                 <div class="col-lg-3">
@@ -213,8 +240,8 @@
                     @endif
                     </span>
                 </div>
-            </div>
         </div>
+    </div>
     </div>
 
     @yield('conteudo')
