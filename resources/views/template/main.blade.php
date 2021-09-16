@@ -185,7 +185,7 @@
                 </div>
 
             </nav>
-            <<<<<<< HEAD <div class="row d-none d-lg-flex py-3">
+            <div class="row d-none d-lg-flex py-3">
                 <div class="col-lg-3">
                     <a class="navbar-brand" href="{{ route('index') }}"><img
                             src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Agroreserva"></a>
@@ -240,8 +240,8 @@
                     @endif
                     </span>
                 </div>
+            </div>
         </div>
-    </div>
     </div>
 
     @yield('conteudo')
