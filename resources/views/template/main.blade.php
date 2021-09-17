@@ -138,16 +138,18 @@
                             {{-- <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
                             </li> --}}
-                            <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{ route('cadastro.finalizar') }}">Finalizar
-                                    Cadastro</span></a>
-                            </li>
                             @if (!session()->get('cliente')['finalizado'])
                                 <li class="nav-item active mt-2">
-                                    <a class="nav-link" href="{{ route('conta.index') }}">Minha
-                                        Conta</span></a>
+                                    <a class="nav-link" href="{{ route('cadastro.finalizar') }}">Finalizar
+                                        Cadastro</span></a>
                                 </li>
                             @endif
+
+                            <li class="nav-item active mt-2">
+                                <a class="nav-link" href="{{ route('conta.index') }}">Minha
+                                    Conta</span></a>
+                            </li>
+
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{ route('sair') }}">Sair</span></a>
                             </li>
@@ -211,32 +213,31 @@
                     {{-- <span  class="text-nav-header"><a href="{{route('cadastro')}}">Como comprar</a></span> --}}
                 </div>
                 <div class="col-lg-4 d-flex text-white justify-content-end align-items-center">
-                    <span class="text-nav-header">
-                        {{-- @if ($_SESSION['userid']) --}}
-                        @if (session()->get('cliente'))
-                            {{-- Bem vindo @if (isset(session()->get('cliente')['nome_dono'])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif --}}
-                            @if (!session()->get('cliente')['finalizado'])
-                                <span class="ml-3 text-nav-header"><a href="{{ route('cadastro.finalizar') }}"><span
-                                            style="border-bottom: 2px solid #FEB000;">Fin</span>alizar
-                                        Cadastro</a></span>
-                    </span>
-                    @endif
-                    <span class="ml-3 text-nav-header"><a href="{{ route('conta.index') }}"><span
-                                style="border-bottom: 2px solid #FEB000;">Min</span>ha conta</a></span> </span>
+
+                    {{-- @if ($_SESSION['userid']) --}}
                     @if (session()->get('cliente'))
-                        <span class="ml-3 text-nav-header"><a class="text-nav-header"
-                                href="{{ route('sair') }}"><span
-                                    style="border-bottom: 2px solid #FEB000;">Sai</span>r</a></span>
-                    @endif
-                    @if (session()->get('carrinho'))
-                        <a class="ml-4" href="{{ route('carrinho') }}"><i
-                                class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
-                    @endif
-                @else
-                    <a href="{{ route('cadastro') }}"><span
-                            style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</a>
-                    <a class="ml-4" href="{{ route('login') }}"><span
-                            style="border-bottom: 2px solid #FEB000;">Ent</span>rar</a>
+                        {{-- Bem vindo @if (isset(session()->get('cliente')['nome_dono'])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif --}}
+                        @if (!session()->get('cliente')['finalizado'])
+                            <span class="ml-3 text-nav-header"><a href="{{ route('cadastro.finalizar') }}"><span
+                                        style="border-bottom: 2px solid #FEB000;">Fin</span>alizar
+                                    Cadastro</a></span>
+                        @endif
+                        <span class="ml-3 text-nav-header"><a href="{{ route('conta.index') }}"><span
+                                    style="border-bottom: 2px solid #FEB000;">Min</span>ha conta</a></span> </span>
+                        @if (session()->get('cliente'))
+                            <span class="ml-3 text-nav-header"><a class="text-nav-header"
+                                    href="{{ route('sair') }}"><span
+                                        style="border-bottom: 2px solid #FEB000;">Sai</span>r</a></span>
+                        @endif
+                        @if (session()->get('carrinho'))
+                            <a class="ml-4" href="{{ route('carrinho') }}"><i
+                                    class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
+                        @endif
+                    @else
+                        <a href="{{ route('cadastro') }}"><span
+                                style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</a>
+                        <a class="ml-4" href="{{ route('login') }}"><span
+                                style="border-bottom: 2px solid #FEB000;">Ent</span>rar</a>
                     @endif
                     </span>
                 </div>
