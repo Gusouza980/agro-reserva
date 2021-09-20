@@ -430,6 +430,28 @@
             </div>
         </div>
     </div>
+
+    @if (session()->get('ver_popup'))
+        <div class="modal fade" id="modal_popup" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center px-3 pt-2 pb-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <img src="{{ asset(session()->get('ver_popup')) }}" style="max-width: 100%;" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ asset('js/jquery.js') }}">
@@ -453,6 +475,13 @@
 
             $(document).ready(function() {
                 $("#modalSucesso").modal();
+            });
+        </script>
+    @endif
+    @if (session()->get('ver_popup'))
+        <script>
+            $(document).ready(function() {
+                $("#modal_popup").modal("show");
             });
         </script>
     @endif

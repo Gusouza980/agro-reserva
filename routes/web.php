@@ -13,91 +13,93 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-Route::get('/cadastro', function () {
-    return view('cadastro.index');
-})->name("cadastro");
-
-Route::get('/cadastro/passos', function () {
-    return view('cadastro.passos');
-})->name("cadastro.passos");
-
-
-
-Route::get('/termos-e-condicoes-de-uso', function () {
-    return view('termos');
-})->name("termos");
-
-Route::get('/politicas-de-privacidade', function () {
-    return view('politicas');
-})->name("politicas");
-
-Route::get('/sair', function () {
-    session()->forget("cliente");
-    session()->forget("carrinho");
-    return redirect()->route("index");
-})->name("sair");
-
-
-Route::get('/teste-email', [\App\Http\Controllers\ContaController::class, 'teste']);
-
-Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("index");
-Route::get('/login', [\App\Http\Controllers\SiteController::class, 'login'])->name("login");
-Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");
-Route::post('/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastrar'])->name("cadastro.salvar");
-Route::get('/cadastro/finalizar', [\App\Http\Controllers\ClienteController::class, 'finalizar_cadastro'])->name("cadastro.finalizar");
-Route::post('/cadastro/finalizar/salvar', [\App\Http\Controllers\ClienteController::class, 'cadastro_final'])->name("cadastro.finalizar.salvar");
-Route::post('/cadastro/login', [\App\Http\Controllers\ClienteController::class, 'login_cadastro'])->name("cadastro.login");
-Route::get('/cadastro/fazenda', [\App\Http\Controllers\SiteController::class, 'cadastro_fazenda'])->name("cadastro.fazenda");
-Route::get('/cadastro/passos', [\App\Http\Controllers\SiteController::class, 'cadastro_passos'])->name("cadastro.passos");
-Route::get('/fazenda/{fazenda}/conheca', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca");
-Route::get('/fazenda/{fazenda}/conheca/lotes', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca.lotes");
-Route::get('/fazenda/{fazenda}/conheca/depoimentos', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca.depoimentos");
-Route::get('/fazenda/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca.avaliacoes");
-Route::get('/fazenda/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes'])->name("fazenda.lotes");
-Route::get('/fazenda/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote'])->name("fazenda.lote");
-Route::get('/quem-somos', [\App\Http\Controllers\SiteController::class, 'sobre'])->name("sobre");
-Route::get('/pre_to_main', [\App\Http\Controllers\ClienteController::class, 'pre_to_main']);
-Route::post('/senha/recuperar', [\App\Http\Controllers\ContaController::class, 'recuperar_senha'])->name("conta.senha.recuperar");
-
-//ROTAS DE RESERVAS ANTIGAS
-Route::get('/reservas/finalizadas', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
-// Route::get('/reservas/finalizadas/{reserva}/{fazenda}', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
-Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca");
-Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/lotes', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.lotes");
-Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/depoimentos', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.depoimentos");
-Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.avaliacoes");
-Route::get('/reservas/finalizadas/{reserva}/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes_finalizadas'])->name("reservas.finalizadas.fazenda.lotes");
-Route::get('/reservas/finalizadas/{reserva}/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote_finalizadas'])->name("reservas.finalizadas.fazenda.lote");
-
-//Blog
-Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
-Route::get('/noticia/{slug}', [\App\Http\Controllers\BlogController::class, 'noticia'])->name("noticia");
-
-Route::middleware(['cliente_logado'])->group(function () {
-    Route::get('/carrinho/adicionar/{lote}',  [\App\Http\Controllers\CarrinhoController::class, 'adicionar'])->name("carrinho.adicionar");
-    Route::get('/carrinho/deletar/{produto}',  [\App\Http\Controllers\CarrinhoController::class, 'deletar'])->name("carrinho.deletar");
-    Route::get('/carrinho/limpa',  [\App\Http\Controllers\CarrinhoController::class, 'limpa'])->name("carrinho.limpa");
-    Route::get('/carrinho',  [\App\Http\Controllers\CarrinhoController::class, 'carrinho'])->name("carrinho");
-    Route::get('/carrinho/checkout',  [\App\Http\Controllers\CarrinhoController::class, 'checkout'])->name("carrinho.checkout");
-    Route::post('/carrinho/concluir',  [\App\Http\Controllers\CarrinhoController::class, 'concluir'])->name("carrinho.concluir");
-    Route::get('/carrinho/concluido',  [\App\Http\Controllers\CarrinhoController::class, 'concluido'])->name("carrinho.concluido");
-
-    Route::get('/conta', [\App\Http\Controllers\ContaController::class, 'index'])->name("conta.index");
-    Route::get('/conta/reserva/{venda}', [\App\Http\Controllers\ContaController::class, 'reserva'])->name("conta.reserva");
-    Route::get('/conta/reserva/comprovante/{venda}', [\App\Http\Controllers\ContaController::class, 'comprovante_reserva'])->name("conta.reserva.comprovante");
-    Route::post('/conta/senha/alterar', [\App\Http\Controllers\ContaController::class, 'alterar_senha'])->name("conta.senha.alterar");
-    Route::get('/conta/boleto/download/{boleto}', [\App\Http\Controllers\ContaController::class, 'baixar_boleto'])->name("conta.boleto.download");
-
+Route::middleware(['popup'])->group(function () {
+    Route::get('/cadastro', function () {
+        return view('cadastro.index');
+    })->name("cadastro");
+    
+    Route::get('/cadastro/passos', function () {
+        return view('cadastro.passos');
+    })->name("cadastro.passos");
+    
+    
+    
+    Route::get('/termos-e-condicoes-de-uso', function () {
+        return view('termos');
+    })->name("termos");
+    
+    Route::get('/politicas-de-privacidade', function () {
+        return view('politicas');
+    })->name("politicas");
+    
+    Route::get('/sair', function () {
+        session()->forget("cliente");
+        session()->forget("carrinho");
+        return redirect()->route("index");
+    })->name("sair");
+    
+    
+    Route::get('/teste-email', [\App\Http\Controllers\ContaController::class, 'teste']);
+    
+    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("index");
+    Route::get('/login', [\App\Http\Controllers\SiteController::class, 'login'])->name("login");
+    Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");
+    Route::post('/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastrar'])->name("cadastro.salvar");
+    Route::get('/cadastro/finalizar', [\App\Http\Controllers\ClienteController::class, 'finalizar_cadastro'])->name("cadastro.finalizar");
+    Route::post('/cadastro/finalizar/salvar', [\App\Http\Controllers\ClienteController::class, 'cadastro_final'])->name("cadastro.finalizar.salvar");
+    Route::post('/cadastro/login', [\App\Http\Controllers\ClienteController::class, 'login_cadastro'])->name("cadastro.login");
+    Route::get('/cadastro/fazenda', [\App\Http\Controllers\SiteController::class, 'cadastro_fazenda'])->name("cadastro.fazenda");
+    Route::get('/cadastro/passos', [\App\Http\Controllers\SiteController::class, 'cadastro_passos'])->name("cadastro.passos");
+    Route::get('/fazenda/{fazenda}/conheca', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca");
+    Route::get('/fazenda/{fazenda}/conheca/lotes', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca.lotes");
+    Route::get('/fazenda/{fazenda}/conheca/depoimentos', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca.depoimentos");
+    Route::get('/fazenda/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca.avaliacoes");
+    Route::get('/fazenda/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes'])->name("fazenda.lotes");
+    Route::get('/fazenda/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote'])->name("fazenda.lote");
+    Route::get('/quem-somos', [\App\Http\Controllers\SiteController::class, 'sobre'])->name("sobre");
+    Route::get('/pre_to_main', [\App\Http\Controllers\ClienteController::class, 'pre_to_main']);
+    Route::post('/senha/recuperar', [\App\Http\Controllers\ContaController::class, 'recuperar_senha'])->name("conta.senha.recuperar");
+    
+    //ROTAS DE RESERVAS ANTIGAS
+    Route::get('/reservas/finalizadas', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
+    // Route::get('/reservas/finalizadas/{reserva}/{fazenda}', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
+    Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca");
+    Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/lotes', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.lotes");
+    Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/depoimentos', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.depoimentos");
+    Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.avaliacoes");
+    Route::get('/reservas/finalizadas/{reserva}/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes_finalizadas'])->name("reservas.finalizadas.fazenda.lotes");
+    Route::get('/reservas/finalizadas/{reserva}/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote_finalizadas'])->name("reservas.finalizadas.fazenda.lote");
+    
+    //Blog
+    Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
+    Route::get('/noticia/{slug}', [\App\Http\Controllers\BlogController::class, 'noticia'])->name("noticia");
+    
+    Route::middleware(['cliente_logado'])->group(function () {
+        Route::get('/carrinho/adicionar/{lote}',  [\App\Http\Controllers\CarrinhoController::class, 'adicionar'])->name("carrinho.adicionar");
+        Route::get('/carrinho/deletar/{produto}',  [\App\Http\Controllers\CarrinhoController::class, 'deletar'])->name("carrinho.deletar");
+        Route::get('/carrinho/limpa',  [\App\Http\Controllers\CarrinhoController::class, 'limpa'])->name("carrinho.limpa");
+        Route::get('/carrinho',  [\App\Http\Controllers\CarrinhoController::class, 'carrinho'])->name("carrinho");
+        Route::get('/carrinho/checkout',  [\App\Http\Controllers\CarrinhoController::class, 'checkout'])->name("carrinho.checkout");
+        Route::post('/carrinho/concluir',  [\App\Http\Controllers\CarrinhoController::class, 'concluir'])->name("carrinho.concluir");
+        Route::get('/carrinho/concluido',  [\App\Http\Controllers\CarrinhoController::class, 'concluido'])->name("carrinho.concluido");
+    
+        Route::get('/conta', [\App\Http\Controllers\ContaController::class, 'index'])->name("conta.index");
+        Route::get('/conta/reserva/{venda}', [\App\Http\Controllers\ContaController::class, 'reserva'])->name("conta.reserva");
+        Route::get('/conta/reserva/comprovante/{venda}', [\App\Http\Controllers\ContaController::class, 'comprovante_reserva'])->name("conta.reserva.comprovante");
+        Route::post('/conta/senha/alterar', [\App\Http\Controllers\ContaController::class, 'alterar_senha'])->name("conta.senha.alterar");
+        Route::get('/conta/boleto/download/{boleto}', [\App\Http\Controllers\ContaController::class, 'baixar_boleto'])->name("conta.boleto.download");
+    
+    });
+    
+    Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("contato");
+    
+    Route::get('/facebook/autenticar', [\App\Http\Controllers\FacebookController::class, 'autenticar'])->name("facebook.autenticar");
+    Route::get('/facebook/callback', [\App\Http\Controllers\FacebookController::class, 'callback'])->name("facebook.callback");
+    
+    
+    Route::post('/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
+    
 });
-
-Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("contato");
-
-Route::get('/facebook/autenticar', [\App\Http\Controllers\FacebookController::class, 'autenticar'])->name("facebook.autenticar");
-Route::get('/facebook/callback', [\App\Http\Controllers\FacebookController::class, 'callback'])->name("facebook.callback");
-
-
-Route::post('/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
 
 Route::get('/painel/login', [\App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
 Route::post('/painel/logar', [\App\Http\Controllers\PainelController::class, 'logar'])->name("painel.logar");
@@ -181,6 +183,12 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/raca/cadastrar', [\App\Http\Controllers\RacasController::class, 'cadastrar'])->name("painel.raca.cadastrar");
     Route::post('/painel/raca/editar/{raca}', [\App\Http\Controllers\RacasController::class, 'editar'])->name("painel.raca.editar");
     Route::get('/painel/raca/excluir/{raca}', [\App\Http\Controllers\RacasController::class, 'excluir'])->name("painel.raca.excluir");
+
+    //ROTAS RELACIONADAS A POPUPS
+    Route::get('/painel/popups', [\App\Http\Controllers\PopupController::class, 'index'])->name("painel.popups");
+    Route::post('/painel/popup/cadastrar', [\App\Http\Controllers\PopupController::class, 'cadastrar'])->name("painel.popup.cadastrar");
+    Route::post('/painel/popup/editar/{popup}', [\App\Http\Controllers\PopupController::class, 'editar'])->name("painel.popup.editar");
+    Route::get('/painel/popup/excluir/{popup}', [\App\Http\Controllers\PopupController::class, 'excluir'])->name("painel.popup.excluir");
 
     //ROTAS RELACIONADAS A ASSESSORES
     Route::get('/painel/assessores', [\App\Http\Controllers\AssessoresController::class, 'index'])->name("painel.assessores");

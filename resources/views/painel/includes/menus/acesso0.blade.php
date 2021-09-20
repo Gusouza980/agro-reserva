@@ -4,7 +4,7 @@
         <span key="t-dashboards">Clientes</span>
     </a>
     <ul class="sub-menu" aria-expanded="false">
-        <li><a href="{{route('painel.clientes')}}" key="t-saas">Consultar</a></li>
+        <li><a href="{{ route('painel.clientes') }}" key="t-saas">Consultar</a></li>
     </ul>
 </li>
 
@@ -14,8 +14,8 @@
         <span key="t-dashboards">Fazendas</span>
     </a>
     <ul class="sub-menu" aria-expanded="false">
-        {{--  <li><a href="{{route('painel.fazenda.cadastro')}}" key="t-saas">Cadastro</a></li>  --}}
-        <li><a href="{{route('painel.fazendas')}}" key="t-saas">Consultar</a></li>
+        {{-- <li><a href="{{route('painel.fazenda.cadastro')}}" key="t-saas">Cadastro</a></li> --}}
+        <li><a href="{{ route('painel.fazendas') }}" key="t-saas">Consultar</a></li>
     </ul>
 </li>
 <li>
@@ -24,8 +24,8 @@
         <span key="t-dashboards">Notícias</span>
     </a>
     <ul class="sub-menu" aria-expanded="false">
-        <li><a href="{{route('painel.noticias')}}" key="t-default">Cadastros</a></li>
-        <li><a href="{{route('painel.categorias')}}" key="t-default">Categorias</a></li>
+        <li><a href="{{ route('painel.noticias') }}" key="t-default">Cadastros</a></li>
+        <li><a href="{{ route('painel.categorias') }}" key="t-default">Categorias</a></li>
     </ul>
 </li>
 
@@ -35,7 +35,7 @@
         <span key="t-dashboards">Raças</span>
     </a>
     <ul class="sub-menu" aria-expanded="false">
-        <li><a href="{{route('painel.racas')}}" key="t-saas">Consultar</a></li>
+        <li><a href="{{ route('painel.racas') }}" key="t-saas">Consultar</a></li>
     </ul>
 </li>
 
@@ -45,7 +45,7 @@
         <span key="t-dashboards">Assessores</span>
     </a>
     <ul class="sub-menu" aria-expanded="false">
-        <li><a href="{{route('painel.assessores')}}" key="t-saas">Consultar</a></li>
+        <li><a href="{{ route('painel.assessores') }}" key="t-saas">Consultar</a></li>
     </ul>
 </li>
 
@@ -55,7 +55,7 @@
         <span key="t-dashboards">Visitas</span>
     </a>
     <ul class="sub-menu" aria-expanded="false">
-        <li><a href="{{route('painel.visitas')}}" key="t-saas">Consultar</a></li>
+        <li><a href="{{ route('painel.visitas') }}" key="t-saas">Consultar</a></li>
     </ul>
 </li>
 
@@ -65,7 +65,7 @@
         <span key="t-dashboards">Vendas</span>
     </a>
     <ul class="sub-menu" aria-expanded="false">
-        <li><a href="{{route('painel.vendas')}}" key="t-saas">Consultar</a></li>
+        <li><a href="{{ route('painel.vendas') }}" key="t-saas">Consultar</a></li>
     </ul>
 </li>
 <li>
@@ -74,6 +74,15 @@
         <span key="t-dashboards">Carrinhos</span>
     </a>
     <ul class="sub-menu" aria-expanded="false">
-        <li><a href="{{route('painel.carrinhos.abertos')}}" key="t-saas">Abertos</a></li>
+        <li><a href="{{ route('painel.carrinhos.abertos') }}" key="t-saas">Abertos</a></li>
+    </ul>
+</li>
+<li>
+    <a href="javascript: void(0);" class="waves-effect">
+        <i class="fas fa-shopping-cart"></i>
+        <span key="t-dashboards">Popups</span>
+    </a>
+    <ul class="sub-menu" aria-expanded="false">
+        <li><a href="{{ route('painel.popups') }}" key="t-saas">Consultar</a></li>
     </ul>
 </li>
