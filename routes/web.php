@@ -189,6 +189,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/popup/cadastrar', [\App\Http\Controllers\PopupController::class, 'cadastrar'])->name("painel.popup.cadastrar");
     Route::post('/painel/popup/editar/{popup}', [\App\Http\Controllers\PopupController::class, 'editar'])->name("painel.popup.editar");
     Route::get('/painel/popup/excluir/{popup}', [\App\Http\Controllers\PopupController::class, 'excluir'])->name("painel.popup.excluir");
+    Route::get('/painel/popup/ativo/{popup}', [\App\Http\Controllers\PopupController::class, 'ativo'])->name("painel.popup.ativo");
 
     //ROTAS RELACIONADAS A ASSESSORES
     Route::get('/painel/assessores', [\App\Http\Controllers\AssessoresController::class, 'index'])->name("painel.assessores");

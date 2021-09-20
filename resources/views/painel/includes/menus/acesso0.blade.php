@@ -79,7 +79,7 @@
 </li>
 <li>
     <a href="javascript: void(0);" class="waves-effect">
-        <i class="fas fa-shopping-cart"></i>
+        <i class="fas fa-bullhorn"></i>
         <span key="t-dashboards">Popups</span>
     </a>
     <ul class="sub-menu" aria-expanded="false">

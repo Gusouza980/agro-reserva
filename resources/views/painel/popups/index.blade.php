@@ -47,9 +47,15 @@
                                                 <i class="fas fa-bars" aria-hidden="true"></i>
                                             </a>
                                             <div class="dropdown-menu" style="margin: 0px;">
-                                                <a name="" id="" class="dropdown-item" data-bs-toggle="modal"
+                                                <a name="" id="" class="dropdown-item py-2" data-bs-toggle="modal"
                                                     data-bs-target="#modalEditaPopup{{ $popup->id }}"
                                                     role="button">Editar</a>
+                                                <a name="" id="" class="dropdown-item py-2"
+                                                    href="{{ route('painel.popup.excluir', ['popup' => $popup]) }}"
+                                                    role="button">Excluir</a>
+                                                <a name="" id="" class="dropdown-item py-2"
+                                                    href="{{ route('painel.popup.ativo', ['popup' => $popup]) }}"
+                                                    role="button">@if ($popup->ativo) Desativar @else Ativar @endif</a>
                                             </div>
                                         </div>
                                     </td>

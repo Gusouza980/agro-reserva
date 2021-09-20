@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Popup;
+use Illuminate\Support\Facades\Storage;
 
 class PopupController extends Controller
 {
@@ -93,6 +94,19 @@ class PopupController extends Controller
         $popup->save();
 
         toastr()->success("Popup salvo com sucesso!");
+        return redirect()->back();
+    }
+
+    public function excluir(Popup $popup){
+        Storage::delete($popup->imagem);
+        $popup->delete();
+        toastr()->success("Popup removida com sucesso!");
+        return redirect()->back();
+    }
+
+    public function ativo(Popup $popup){
+        $popup->ativo = !$popup->ativo;
+        $popup->save();
         return redirect()->back();
     }
 }
