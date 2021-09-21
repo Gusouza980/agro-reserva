@@ -11,6 +11,7 @@ use App\Models\Visita;
 use App\Models\Carrinho;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use App\Models\Configuracao;
 use Cookie;
 
 class SiteController extends Controller
@@ -39,8 +40,9 @@ class SiteController extends Controller
                 session(["carrinho" => $carrinho->id]);
             }
         }
+        $configuracao = Configuracao::first();
         $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
-        return view("index", ["reservas" => $reservas]);
+        return view("index", ["reservas" => $reservas, "configuracao" => $configuracao]);
         // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(
         //     [
         //         'nome'      => 'Agroreserva',

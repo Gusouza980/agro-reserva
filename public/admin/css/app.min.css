@@ -5051,3 +5051,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
 
 
 /*# sourceMappingURL=app.min.css.map */
+
+#live_painel > iframe{
+    max-width: 100% !important;
+}

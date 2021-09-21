@@ -86,3 +86,13 @@
         <li><a href="{{ route('painel.popups') }}" key="t-saas">Consultar</a></li>
     </ul>
 </li>
+
+<li>
+    <a href="javascript: void(0);" class="waves-effect">
+        <i class="fas fa-cog"></i>
+        <span key="t-dashboards">Configurações</span>
+    </a>
+    <ul class="sub-menu" aria-expanded="false">
+        <li><a href="{{ route('painel.configuracoes.live') }}" key="t-saas">Live</a></li>
+    </ul>
+</li>

@@ -222,27 +222,33 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/carrinhos/abertos', [\App\Http\Controllers\CarrinhoController::class, 'abertos'])->name("painel.carrinhos.abertos");
 
     // ROTAS DE TAGS
-    Route::get('/sistema/tags', [\App\Http\Controllers\TagsController::class, 'consultar'])->name("painel.tags");
-    Route::post('/sistema/tags/cadastrar', [\App\Http\Controllers\TagsController::class, 'cadastrar'])->name("painel.tag.cadastrar");
-    Route::post('/sistema/tags/salvar/{tag}', [\App\Http\Controllers\TagsController::class, 'salvar'])->name("painel.tag.salvar");
-    Route::get('/sistema/tags/deletar/{tag}', [\App\Http\Controllers\TagsController::class, 'deletar'])->name("painel.tag.deletar");
+    Route::get('/painel/tags', [\App\Http\Controllers\TagsController::class, 'consultar'])->name("painel.tags");
+    Route::post('/painel/tags/cadastrar', [\App\Http\Controllers\TagsController::class, 'cadastrar'])->name("painel.tag.cadastrar");
+    Route::post('/painel/tags/salvar/{tag}', [\App\Http\Controllers\TagsController::class, 'salvar'])->name("painel.tag.salvar");
+    Route::get('/painel/tags/deletar/{tag}', [\App\Http\Controllers\TagsController::class, 'deletar'])->name("painel.tag.deletar");
 
     // ROTAS DE CATEGORIAS
-    Route::get('/sistema/categorias', [\App\Http\Controllers\CategoriasController::class, 'consultar'])->name("painel.categorias");
-    Route::post('/sistema/categorias/cadastrar', [\App\Http\Controllers\CategoriasController::class, 'cadastrar'])->name("painel.categoria.cadastrar");
-    Route::post('/sistema/categorias/salvar/{categoria}', [\App\Http\Controllers\CategoriasController::class, 'salvar'])->name("painel.categoria.salvar");
-    Route::get('/sistema/categorias/deletar/{categoria}', [\App\Http\Controllers\CategoriasController::class, 'deletar'])->name("painel.categoria.deletar");
+    Route::get('/painel/categorias', [\App\Http\Controllers\CategoriasController::class, 'consultar'])->name("painel.categorias");
+    Route::post('/painel/categorias/cadastrar', [\App\Http\Controllers\CategoriasController::class, 'cadastrar'])->name("painel.categoria.cadastrar");
+    Route::post('/painel/categorias/salvar/{categoria}', [\App\Http\Controllers\CategoriasController::class, 'salvar'])->name("painel.categoria.salvar");
+    Route::get('/painel/categorias/deletar/{categoria}', [\App\Http\Controllers\CategoriasController::class, 'deletar'])->name("painel.categoria.deletar");
 
     // ROTAS DE NOTÍCIAS
-    Route::get('/sistema/noticias', [\App\Http\Controllers\NoticiasController::class, 'consultar'])->name("painel.noticias");
-    Route::get('/sistema/noticias/cadastro', [\App\Http\Controllers\NoticiasController::class, 'cadastro'])->name("painel.noticia.cadastro");
-    Route::get('/sistema/noticias/leads/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'visitas'])->name("painel.noticia.visitas");
-    Route::post('/sistema/noticias/cadastrar', [\App\Http\Controllers\NoticiasController::class, 'cadastrar'])->name("painel.noticia.cadastrar");
-    Route::get('/sistema/noticias/editar/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'editar'])->name("painel.noticia.editar");
-    Route::post('/sistema/noticias/salvar/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'salvar'])->name("painel.noticia.salvar");
-    Route::get('/sistema/noticias/deletar/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'deletar'])->name("painel.noticia.deletar");
-    Route::get('/sistema/noticias/publicar/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'publicar'])->name("painel.noticia.publicar");
-    Route::get('/sistema/noticias/destacar/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'destacar'])->name("painel.noticia.destacar");
+    Route::get('/painel/noticias', [\App\Http\Controllers\NoticiasController::class, 'consultar'])->name("painel.noticias");
+    Route::get('/painel/noticias/cadastro', [\App\Http\Controllers\NoticiasController::class, 'cadastro'])->name("painel.noticia.cadastro");
+    Route::get('/painel/noticias/leads/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'visitas'])->name("painel.noticia.visitas");
+    Route::post('/painel/noticias/cadastrar', [\App\Http\Controllers\NoticiasController::class, 'cadastrar'])->name("painel.noticia.cadastrar");
+    Route::get('/painel/noticias/editar/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'editar'])->name("painel.noticia.editar");
+    Route::post('/painel/noticias/salvar/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'salvar'])->name("painel.noticia.salvar");
+    Route::get('/painel/noticias/deletar/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'deletar'])->name("painel.noticia.deletar");
+    Route::get('/painel/noticias/publicar/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'publicar'])->name("painel.noticia.publicar");
+    Route::get('/painel/noticias/destacar/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'destacar'])->name("painel.noticia.destacar");
+
+    // ROTAS DE CONFIGURACOES
+
+    // LIVE
+    Route::get('/painel/configuracoes/live', [\App\Http\Controllers\LiveController::class, 'index'])->name("painel.configuracoes.live");
+    Route::post('/painel/configuracoes/live/salvar', [\App\Http\Controllers\LiveController::class, 'salvar'])->name("painel.configuracoes.live.salvar");
 
 });
 

@@ -1938,3 +1938,29 @@ label {
     background-color: white;
     border-radius: 15px;
 }
+
+#caixa-live{
+}
+
+#caixa-live > iframe{
+    width: 700px !important;
+    height: 350px !important;
+}
+
+@media(max-width:700px){
+    #caixa-live > iframe{
+        width: 400px !important;
+        height: 250px !important;
+    }
+}
+
+@media(max-width:400px){
+    #caixa-live > iframe{
+        width: 100% !important;
+        height: 250px !important;
+    }
+    #caixa-live{
+        width: 100%;
+    }
+    
+}
