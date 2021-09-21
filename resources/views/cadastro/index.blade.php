@@ -5,7 +5,7 @@
         style="background: url({{ asset('imagens/fundo-cadastro1.jpg') }}); background-position: bottom; background-size: cover;">
         @if (!session()->get('cliente'))
             <div class="row justify-content-center mt-5">
-                <div class="col-10 col-md-6 col-lg-4 text-left text-white">
+                <div class="col-10 col-md-6 col-lg-4 text-center text-white">
                     <h2>Vamos criar seu acesso</h2>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-12 text-center modal-precadastro-text">
-                                        <h4 style="line-height: 35px; letter-spacing: 1px;">"Simbora"! <b>Sua conta foi
+                                        <h4 style="line-height: 35px; letter-spacing: 1px;"><b>Sua conta foi
                                                 criada com sucesso</b>. Mas lembre-se: para finalizar a compra, seu cadastro
                                             <b>precisa estar completo e aprovado</b> pelo nosso time. Rápido, prático e
                                             seguro! "Bora" preencher agora?
@@ -92,10 +92,64 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="width: 100%; max-width: 500px;" role="document">
+            <div class="modal-content" style="padding: 0px 0 30px 0; border-radius: 20px;">
+
+                <div class="modal-body px-5 pt-0 pb-4">
+                    <button type="button" id="close-modal" class="close cpointer" data-dismiss="modal" aria-label="Close"
+                        style="position: absolute; top: 10px; right: 10px; z-index: 9;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="container-fluid mt-5">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img src="{{ asset('imagens/icone_erro.png') }}" style="width: 100px;"
+                                    alt="Ícone de Cadastro">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center modal-erro-text">
+                                <h1>Ops !</h1>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12 text-center modal-precadastro-text">
+                                <h2 id="titulo-erro-modal">Seu cadastro foi realizado com sucesso!</h2>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12 text-center modal-precadastro-text">
+                                <h3 id="subtitulo-erro-modal">asdasdasdasd</h3>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 text-center modal-precadastro-text">
+                                <h4 id="texto-erro-modal">Caso tenha algum problema, entre em contato com um consultor.</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
 
 @section('scripts')
+    @if (session()->get('erro_email'))
+        <script>
+            $(document).ready(function() {
+                $("#titulo-erro-modal").html("E-mail já utilizado.");
+                $("#subtitulo-erro-modal").html(
+                    "Parece que o e-mail informado já está cadastrado no sistema. Caso já tenha criado uma conta, e não lembre a senha, você pode recuperá-la na página de login."
+                );
+                $("#modalErro").modal("show");
+            })
+        </script>
+    @endif
+
     <script src="{{ asset('js/jquery.mask.js') }}"></script>
     <script>
         $(document).ready(function() {

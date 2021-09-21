@@ -113,11 +113,6 @@ class SiteController extends Controller
 
     public function lotes($slug){
         $fazenda = Fazenda::where("slug", $slug)->first();
-        if(!session()->get("cliente")){
-            session()->put(["pagina_retorno" => url()->full()]);
-            session()->flash("erro", "Para acessar os lotes, faça seu login.");
-            return redirect()->route("login");
-        }
         $reserva = $fazenda->reservas->where("ativo", 1)->first();
         return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva]);
     }
@@ -126,6 +121,7 @@ class SiteController extends Controller
         if(!session()->get("cliente")){
             session()->flash("erro", "Para acessar os lotes, faça seu login.");
             session()->put(["pagina_retorno" => url()->full()]);
+            session()->put(["lote_origem" => $lote->id]);
             return redirect()->route("login");
         }
         $visita = new Visita;

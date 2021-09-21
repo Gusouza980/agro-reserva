@@ -5,9 +5,19 @@
         style="background: url({{ asset('imagens/fundo-cadastro1.jpg') }}); background-position: bottom; background-size: cover;">
         @if (!session()->get('cliente')['finalizado'])
             <div class="row justify-content-center mt-5">
-                <div class="col-10 col-md-6 col-lg-4 text-left text-white">
+                <div class="col-10 col-md-6 col-lg-4 text-center text-white">
                     <h3>Se ao longo do cadastro surgir alguma dúvida, chama no brete! Sempre tem alguém de cá pronto para te
                         atender.</h3>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3">
+                <div class="col-10 col-md-6 col-lg-4 text-center text-white">
+                    <a href="https://api.whatsapp.com/send?phone=5514981809051" class="fa-2x"
+                        style="color: #7E8298;"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:contato@agroreserva.com.br" class="fa-2x mx-4" style="color: #7E8298;"><i
+                            class="far fa-envelope"></i></a>
+                    {{-- <a href="tel:+5514981809051" class="fa-2x" style="color: #7E8298;"><i
+                            class="fas fa-phone"></i></a> --}}
                 </div>
             </div>
         @endif
@@ -20,8 +30,8 @@
                             <input type="hidden" name="anterior" value="{{ $anterior }}">
                             <div class="form-group col-12 input-cadastro">
                                 <label for="documento">CPF/CNPJ *</label>
-                                <input type="text" class="form-control" name="documento" id="documento" aria-describedby=""
-                                    maxlenght="50" required placeholder="Informe seu CPF ou CNPJ">
+                                <input type="text" class="form-control" name="documento" id="documento"
+                                    aria-describedby="" maxlenght="50" required placeholder="Informe seu CPF ou CNPJ">
                             </div>
                             <div class="form-group col-12 input-cadastro">
                                 <label for="cep">CEP *</label>

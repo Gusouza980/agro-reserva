@@ -20,6 +20,7 @@ use App\Models\DocumentoRoubado;
 use App\Models\IndiceRelacionamentoSetor;
 use App\Models\ParticipacaoSocietaria;
 use App\Models\SerasaScore;
+use App\Models\Lote;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use App\Exports\ClienteExport;
@@ -77,9 +78,9 @@ class ClienteController extends Controller
         $cliente->save();
 
         $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
-        $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
-        $file = str_replace("{{usuario}}", $cliente->email, $file);
-        $file = str_replace("{{senha}}", $request->senha, $file);
+        $file = str_replace("{{ nome }}", $cliente->nome_dono, $file);
+        $file = str_replace("{{ usuario }}", $cliente->email, $file);
+        $file = str_replace("{{ senha }}", $request->senha, $file);
         Email::enviar($file, "Confirmação de Cadastro", $cliente->email, false);
 
         toastr()->success("Cadastro realizado com sucesso!");
@@ -114,11 +115,26 @@ class ClienteController extends Controller
         $cliente->finalizado = false;
         $cliente->save();
 
+        $rdStation = new \RDStation\RDStation($cliente->email);
+        $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+        $rdStation->setLeadData('name', $cliente->nome_dono);
+        $rdStation->setLeadData('identifier', 'precadastro');
+        $rdStation->setLeadData('telefone', $cliente->telefone);
+        $rdStation->setLeadData('cadastro-finalizado', "Não");
+        if(session()->get("lote_origem")){
+            $lote = Lote::find(session()->get("lote_origem"));
+            $rdStation->setLeadData('nome_lote_origem', $lote->nome);
+            $rdStation->setLeadData('numero_lote_origem', $lote->numero . $lote->letra);
+            $rdStation->setLeadData('raca_lote_origem', $lote->raca->nome);
+            $rdStation->setLeadData('fazenda_lote_origem', $lote->fazenda->nome_fazenda);
+        }
+        $rdStation->sendLead();
+
         session(["cliente" => $cliente->toArray()]);
         $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
-        $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
-        $file = str_replace("{{usuario}}", $cliente->email, $file);
-        $file = str_replace("{{senha}}", $request->senha, $file);
+        $file = str_replace("{{ nome }}", $cliente->nome_dono, $file);
+        $file = str_replace("{{ usuario }}", $cliente->email, $file);
+        $file = str_replace("{{ senha }}", $request->senha, $file);
         Email::enviar($file, "Confirmação de Cadastro", session()->get("cliente")["email"], false);
 
         return redirect()->back();
@@ -176,6 +192,32 @@ class ClienteController extends Controller
         // $cliente->referencia_coorporativa2 = $request->referencia_coorporativa2;
         // $cliente->referencia_coorporativa2_tel = $request->referencia_coorporativa2_tel;
         $cliente->finalizado = true;
+
+        $rdStation = new \RDStation\RDStation($cliente->email);
+        $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+        $rdStation->setLeadData('identifier', 'cadastro-completo');
+        $rdStation->setLeadData('documento', $cliente->documento);
+        $rdStation->setLeadData('cep', $cliente->cep);
+        $rdStation->setLeadData('rua', $cliente->rua);
+        $rdStation->setLeadData('numero', $cliente->numero);
+        $rdStation->setLeadData('complemento', $cliente->complemento);
+        $rdStation->setLeadData('cidade', $cliente->cidade);
+        $rdStation->setLeadData('estado', $cliente->estado);
+        $rdStation->setLeadData('pais', $cliente->pais);
+        $rdStation->setLeadData('referencia_comercial1', $cliente->referencia_comercial1);
+        $rdStation->setLeadData('referencia_comercial1_tel', $cliente->referencia_comercial1_tel);
+        $rdStation->setLeadData('referencia_comercial2', $cliente->referencia_comercial2);
+        $rdStation->setLeadData('referencia_comercial2_tel', $cliente->referencia_comercial2_tel);
+        $rdStation->setLeadData('cadastro-finalizado', "Sim");
+        if(session()->get("lote_origem")){
+            $lote = Lote::find(session()->get("lote_origem"));
+            $rdStation->setLeadData('nome_lote_origem', $lote->nome);
+            $rdStation->setLeadData('numero_lote_origem', $lote->numero . $lote->letra);
+            $rdStation->setLeadData('raca_lote_origem', $lote->raca->nome);
+            $rdStation->setLeadData('fazenda_lote_origem', $lote->fazenda->nome_fazenda);
+            session()->forget("lote_origem");
+        }
+        $rdStation->sendLead();
 
         session()->forget("cliente");
         session(["cliente" => $cliente->toArray()]);
