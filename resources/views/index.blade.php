@@ -15,14 +15,16 @@
     <div class="container-fluid px-0">
         <div class="d-flex" id="header-index">
             <div class="container-fluid py-5" id="container-section1">
-                <div class="row justify-content-center py-5 d-lg-none">
-                    <div id="caixa-live">
-                        <iframe width="1863" height="770" src="https://www.youtube.com/embed/JA5ziVbUnWc"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+                @if ($configuracao->live_ativo && $configuracao->live_link)
+                    <div class="row justify-content-center py-5 d-lg-none">
+                        <div id="caixa-live">
+                            <iframe width="1863" height="770" src="https://www.youtube.com/embed/JA5ziVbUnWc"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
                     </div>
-                </div>
+                @endif
                 <div class="row" id="row-section1-text">
                     <div class="col-12 text-center text-header-index">
                         <h3>SEJA<span class="destaque"> BEM-VINDO</span> À PLATAFORMA DE <span
@@ -119,7 +121,8 @@
                                                     style="background-color: #15bd3d; width: 100%; height: 50px; position: absolute; top: 0px; left: -110px; transform: rotate(-45deg);">
                                                     <h5
                                                         style="color: white; position: absolute; top: 22px; left: 28.5%; font-size: 10px; font-weight: bold; font-family: Gobold Regular; letter-spacing: 3px;">
-                                                        {{ number_format($reserva->tarja_vendas, 0, ',', '.') }}% VENDIDO
+                                                        {{ number_format($reserva->tarja_vendas, 0, ',', '.') }}%
+                                                        VENDIDO
                                                     </h5>
                                                 </div>
                                             @endif
