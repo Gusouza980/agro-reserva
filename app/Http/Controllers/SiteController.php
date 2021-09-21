@@ -266,11 +266,6 @@ class SiteController extends Controller
 
     public function lotes_finalizadas(Reserva $reserva, $slug){
         $fazenda = $reserva->fazenda;
-        if(!session()->get("cliente")){
-            session()->put(["pagina_retorno" => url()->full()]);
-            session()->flash("erro", "Para acessar os lotes, faça seu login.");
-            return redirect()->route("login");
-        }
         return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "finalizadas" => true]);
     }
 
