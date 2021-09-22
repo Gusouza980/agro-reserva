@@ -43,6 +43,7 @@ Route::middleware(['popup'])->group(function () {
     
     Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("index");
     Route::get('/login', [\App\Http\Controllers\SiteController::class, 'login'])->name("login");
+    Route::post('/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
     Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");
     Route::post('/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastrar'])->name("cadastro.salvar");
     Route::get('/cadastro/finalizar', [\App\Http\Controllers\ClienteController::class, 'finalizar_cadastro'])->name("cadastro.finalizar");
@@ -97,7 +98,7 @@ Route::middleware(['popup'])->group(function () {
     Route::get('/facebook/callback', [\App\Http\Controllers\FacebookController::class, 'callback'])->name("facebook.callback");
     
     
-    Route::post('/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
+    
     
 });
 
