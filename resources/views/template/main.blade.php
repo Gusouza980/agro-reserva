@@ -139,7 +139,7 @@
                                 <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
                             </li> --}}
                             @if (!session()->get('cliente')['finalizado'])
-                                <li class="nav-item active mt-2">
+                                <li class="nav-item active mt-2" id="finalizar-cadastro-mobile">
                                     <a class="nav-link" href="{{ route('cadastro.finalizar') }}">Finalizar
                                         Cadastro</span></a>
                                 </li>
@@ -171,7 +171,8 @@
                                 <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
                             </li> --}}
                             <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{ route('cadastro') }}">Cadastre-se</span></a>
+                                <a class="nav-link" href="{{ route('cadastro') }}"
+                                    id="cadastre-mobile">Cadastre-se</span></a>
                             </li>
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{ route('login') }}">Entrar</span></a>
@@ -218,7 +219,8 @@
                     @if (session()->get('cliente'))
                         {{-- Bem vindo @if (isset(session()->get('cliente')['nome_dono'])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif --}}
                         @if (!session()->get('cliente')['finalizado'])
-                            <span class="ml-3 text-nav-header"><a href="{{ route('cadastro.finalizar') }}"><span
+                            <span class="ml-3 text-nav-header"><a href="{{ route('cadastro.finalizar') }}"
+                                    id="finalizar-cadastro"><span
                                         style="border-bottom: 2px solid #FEB000;">Fin</span>alizar
                                     Cadastro</a></span>
                         @endif
@@ -234,8 +236,8 @@
                                     class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
                         @endif
                     @else
-                        <a href="{{ route('cadastro') }}"><span
-                                style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</a>
+                        <a href="{{ route('cadastro') }}"><span style="border-bottom: 2px solid #FEB000;"
+                                id="cadastre">Cad</span>astre-se</a>
                         <a class="ml-4" href="{{ route('login') }}"><span
                                 style="border-bottom: 2px solid #FEB000;">Ent</span>rar</a>
                     @endif
@@ -318,7 +320,8 @@
                                 <div class="row mt-2">
                                     <div class="col-12 text-nav-footer text-center text-lg-left">
                                         <a class="" href=" {{ route('cadastro') }}"><span><span
-                                                    style="border-bottom: 2px solid #FEB000;">Cad</span>astre-se</span>
+                                                    style="border-bottom: 2px solid #FEB000;"
+                                                    id="cadastre-rodape">Cad</span>astre-se</span>
                                         </a>
                                     </div>
                                 </div>
@@ -333,7 +336,8 @@
                                     <div class="row mt-2">
                                         <div class="col-12 text-nav-footer text-center text-lg-left">
                                             <a class="" href=" {{ route('cadastro.finalizar') }}"><span><span
-                                                        style="border-bottom: 2px solid #FEB000;">Fin</span>alizar
+                                                        style="border-bottom: 2px solid #FEB000;"
+                                                        id="finalizar-cadastro-rodape">Fin</span>alizar
                                                     Cadastro</span> </a>
                                         </div>
                                     </div>

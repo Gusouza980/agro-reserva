@@ -49,7 +49,8 @@
                             </div>
                         @endforeach --}}
                             <div class="form-group col-12 text-center text-lg-right">
-                                <button type="submit" class="btn btn-vermelho py-2" role="button">Cadastrar</button>
+                                <button type="submit" class="btn btn-vermelho py-2" role="button"
+                                    id="confirmar-precadastro">Cadastrar</button>
                             </div>
                             <div class="col-12 text-center text-lg-left text-white form-cadastro0">
                                 <span>Já tem uma conta? <a href="{{ route('login') }}"><u>Clique aqui</u></a></span>

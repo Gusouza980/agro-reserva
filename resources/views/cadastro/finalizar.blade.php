@@ -103,8 +103,8 @@
 
                                 <div class="row">
                                     <div class="form-group col-12 text-center text-lg-right">
-                                        <button type="submit" class="btn btn-vermelho py-2 px-5"
-                                            role="button">Finalizar</button>
+                                        <button type="submit" class="btn btn-vermelho py-2 px-5" role="button"
+                                            id="confirmar-cadastro-completo">Finalizar</button>
                                     </div>
                                 </div>
 
