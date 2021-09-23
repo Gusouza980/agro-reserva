@@ -350,20 +350,20 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                 <div class="col-12 col-lg-7 text-white mt-5 mt-lg-0">
                                     <div class="row">
                                         <div class="col-12 text-center text-lg-right">
-                                            <h2>{{ $membro->nome }}</h2>
+                                            <h2>{{ $lote->nome }}</h2>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-12 text-center text-lg-right @if (!$membro->reserva->preco_disponivel && !$membro->liberar_preco) blur @endif">
-                                            @if ($membro->reserva->preco_disponivel || $membro->liberar_preco)
-                                                @if ($membro->reserva->parcelas_mes == 1)
-                                                    <h4><b>{{ $membro->parcelas }}x</b> de
-                                                        <b>R${{ number_format($membro->preco / $membro->parcelas, 2, ',', '.') }}</b>
+                                        <div class="col-12 text-center text-lg-right @if (!$lote->reserva->preco_disponivel && !$lote->liberar_preco) blur @endif">
+                                            @if ($lote->reserva->preco_disponivel || $lote->liberar_preco)
+                                                @if ($lote->reserva->parcelas_mes == 1)
+                                                    <h4><b>{{ $lote->parcelas }}x</b> de
+                                                        <b>R${{ number_format($lote->preco / $lote->parcelas, 2, ',', '.') }}</b>
                                                     </h4>
                                                 @else
                                                     <div>
-                                                        <h4><b>{{ $membro->reserva->max_parcelas * 2 }}</b>x (15 duplas) de
-                                                            <b>R${{ number_format($membro->preco / ($membro->reserva->max_parcelas * 2), 2, ',', '.') }}</b>
+                                                        <h4><b>{{ $lote->reserva->max_parcelas * 2 }}</b>x (15 duplas) de
+                                                            <b>R${{ number_format($lote->preco / ($lote->reserva->max_parcelas * 2), 2, ',', '.') }}</b>
                                                         </h4>
                                                     </div>
                                                 @endif
@@ -373,9 +373,9 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-12 text-center text-lg-right @if (!$membro->reserva->preco_disponivel && !$membro->liberar_preco) blur @endif">
-                                            @if ($membro->reserva->preco_disponivel || $membro->liberar_preco)
-                                                <span>ou R${{ number_format($membro->preco - ($membro->preco * 6) / 100, 2, ',', '.') }}
+                                        <div class="col-12 text-center text-lg-right @if (!$lote->reserva->preco_disponivel && !$lote->liberar_preco) blur @endif">
+                                            @if ($lote->reserva->preco_disponivel || $lote->liberar_preco)
+                                                <span>ou R${{ number_format($lote->preco - ($lote->preco * 6) / 100, 2, ',', '.') }}
                                                     à
                                                     vista</span>
                                             @else
@@ -387,18 +387,18 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                 </div>
                                 <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
                                     <div class="text-center text-white">
-                                        @if (!$membro->reserva->encerrada)
-                                            @if (!$membro->reserva->compra_disponivel && !$membro->liberar_compra)
-                                                {{-- <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($membro->reserva->inicio))}}</button> --}}
+                                        @if (!$lote->reserva->encerrada)
+                                            @if (!$lote->reserva->compra_disponivel && !$lote->liberar_compra)
+                                                {{-- <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($lote->reserva->inicio))}}</button> --}}
                                                 <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
                                                     style="max-width:350px;">Disponível durante Live</button>
                                             @else
-                                                @if (!$membro->reservado)
+                                                @if (!$lote->reservado)
                                                     @if (session()->get('cliente'))
                                                         @if ($cliente->aprovado)
                                                             <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
                                                                 style="max-width:350px;"
-                                                                href="{{ route('carrinho.adicionar', ['lote' => $membro]) }}"
+                                                                href="{{ route('carrinho.adicionar', ['lote' => $lote]) }}"
                                                                 role="button">Comprar</a>
                                                         @else
                                                             <a name="" id=""
