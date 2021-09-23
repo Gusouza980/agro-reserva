@@ -338,7 +338,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
             $cont = 0;
         @endphp
         @foreach($lote->membros as $membro)
-            <div style="background-color: black; background-size: cover; background-position: center;">
+            <div @if($cont != 0) class="pb-5" @endif style="background-color: black; background-size: cover; background-position: center;">
                 @if($cont == 0)
                     {{--  FAIXA DE PREÇO  --}}
                     <div class="container-fluid bg-preto py-5 py-lg-2">
@@ -553,8 +553,6 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                     </div>
                                 </div>
                             @else
-                                <div class="my-4"></div>
-                            @endif
                         @endif
                     </div>
                     {{-- <div class="container-fluid">
