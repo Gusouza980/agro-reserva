@@ -75,7 +75,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                 @if (!$lote->reserva->compra_disponivel && !$lote->liberar_compra)
                                     {{-- <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($lote->reserva->inicio))}}</button> --}}
                                     <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                        style="max-width:350px;">Disponível 20:00</button>
+                                        style="max-width:350px;">Disponível durante a Live</button>
                                 @else
                                     @if (!$lote->reservado)
                                         @if (session()->get('cliente'))
