@@ -24,7 +24,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
 
 @section('conteudo')
     @if(!$lote->pacote)
-        <div style="background-color: black; @if (!$lote->pacote) background: url(/{{ $fazenda->fundo_conheca_lotes }}); @endif background-size: cover; background-position: center;">
+        <div style="background-color: black; background: url(/{{ $fazenda->fundo_conheca_lotes }}); background-size: cover; background-position: center;">
             <div class="container-fluid bg-preto py-5 py-lg-2">
                 <div class="container">
                     <div class="row align-items-center">
@@ -334,108 +334,117 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
             </div>
         </div>
     @else
+        @php
+            $cont = 0;
+        @endphp
         @foreach($lote->membros as $membro)
-            <div style="background-color: black; @if (!$membro->pacote) background: url(/{{ $fazenda->fundo_conheca_lotes }}); @endif background-size: cover; background-position: center;">
-                <div class="container-fluid bg-preto py-5 py-lg-2">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
-                                <img src="{{ asset($fazenda->logo) }}" style="width: 100%; max-width: 300px;" alt="">
-                            </div>
-                            <div class="col-12 col-lg-7 text-white mt-5 mt-lg-0">
-                                <div class="row">
-                                    <div class="col-12 text-center text-lg-right">
-                                        <h2>{{ $membro->nome }}</h2>
-                                    </div>
+            <div style="background-color: black; background-size: cover; background-position: center;">
+                @if($cont == 0)
+                    {{--  FAIXA DE PREÇO  --}}
+                    <div class="container-fluid bg-preto py-5 py-lg-2">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
+                                    <img src="{{ asset($fazenda->logo) }}" style="width: 100%; max-width: 300px;" alt="">
                                 </div>
-                                <div class="row">
-                                    <div class="col-12 text-center text-lg-right @if (!$membro->reserva->preco_disponivel && !$membro->liberar_preco) blur @endif">
-                                        @if ($membro->reserva->preco_disponivel || $membro->liberar_preco)
-                                            @if ($membro->reserva->parcelas_mes == 1)
-                                                <h4><b>{{ $membro->parcelas }}x</b> de
-                                                    <b>R${{ number_format($membro->preco / $membro->parcelas, 2, ',', '.') }}</b>
-                                                </h4>
-                                            @else
-                                                <div>
-                                                    <h4><b>{{ $membro->reserva->max_parcelas * 2 }}</b>x (15 duplas) de
-                                                        <b>R${{ number_format($membro->preco / ($membro->reserva->max_parcelas * 2), 2, ',', '.') }}</b>
+                                <div class="col-12 col-lg-7 text-white mt-5 mt-lg-0">
+                                    <div class="row">
+                                        <div class="col-12 text-center text-lg-right">
+                                            <h2>{{ $membro->nome }}</h2>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center text-lg-right @if (!$membro->reserva->preco_disponivel && !$membro->liberar_preco) blur @endif">
+                                            @if ($membro->reserva->preco_disponivel || $membro->liberar_preco)
+                                                @if ($membro->reserva->parcelas_mes == 1)
+                                                    <h4><b>{{ $membro->parcelas }}x</b> de
+                                                        <b>R${{ number_format($membro->preco / $membro->parcelas, 2, ',', '.') }}</b>
                                                     </h4>
-                                                </div>
-                                            @endif
-                                        @else
-                                            <h4><b>0x</b> de <b>R$0000,00</b></h4>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 text-center text-lg-right @if (!$membro->reserva->preco_disponivel && !$membro->liberar_preco) blur @endif">
-                                        @if ($membro->reserva->preco_disponivel || $membro->liberar_preco)
-                                            <span>ou R${{ number_format($membro->preco - ($membro->preco * 6) / 100, 2, ',', '.') }}
-                                                à
-                                                vista</span>
-                                        @else
-                                            <span>R$00000,00</span>
-                                        @endif
-                                        {{-- <span>R$00000,00</span> --}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
-                                <div class="text-center text-white">
-                                    @if (!$membro->reserva->encerrada)
-                                        @if (!$membro->reserva->compra_disponivel && !$membro->liberar_compra)
-                                            {{-- <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($membro->reserva->inicio))}}</button> --}}
-                                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                                style="max-width:350px;">Disponível durante Live</button>
-                                        @else
-                                            @if (!$membro->reservado)
-                                                @if (session()->get('cliente'))
-                                                    @if ($cliente->aprovado)
-                                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                                            style="max-width:350px;"
-                                                            href="{{ route('carrinho.adicionar', ['lote' => $membro]) }}"
-                                                            role="button">Comprar</a>
-                                                    @else
-                                                        <a name="" id=""
-                                                            class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
-                                                            data-toggle="modal" data-target="#modalBloqueio"
-                                                            style="max-width:350px;" role="button">Comprar</a>
-                                                    @endif
                                                 @else
-                                                    <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                                        style="max-width:350px;" href="{{ route('login') }}" role="button">Entre
-                                                        para comprar</a>
+                                                    <div>
+                                                        <h4><b>{{ $membro->reserva->max_parcelas * 2 }}</b>x (15 duplas) de
+                                                            <b>R${{ number_format($membro->preco / ($membro->reserva->max_parcelas * 2), 2, ',', '.') }}</b>
+                                                        </h4>
+                                                    </div>
                                                 @endif
                                             @else
-                                                <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                                    style="max-width:350px;">Reservado</button>
+                                                <h4><b>0x</b> de <b>R$0000,00</b></h4>
                                             @endif
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center text-lg-right @if (!$membro->reserva->preco_disponivel && !$membro->liberar_preco) blur @endif">
+                                            @if ($membro->reserva->preco_disponivel || $membro->liberar_preco)
+                                                <span>ou R${{ number_format($membro->preco - ($membro->preco * 6) / 100, 2, ',', '.') }}
+                                                    à
+                                                    vista</span>
+                                            @else
+                                                <span>R$00000,00</span>
+                                            @endif
+                                            {{-- <span>R$00000,00</span> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
+                                    <div class="text-center text-white">
+                                        @if (!$membro->reserva->encerrada)
+                                            @if (!$membro->reserva->compra_disponivel && !$membro->liberar_compra)
+                                                {{-- <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($membro->reserva->inicio))}}</button> --}}
+                                                <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                    style="max-width:350px;">Disponível durante Live</button>
+                                            @else
+                                                @if (!$membro->reservado)
+                                                    @if (session()->get('cliente'))
+                                                        @if ($cliente->aprovado)
+                                                            <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                                style="max-width:350px;"
+                                                                href="{{ route('carrinho.adicionar', ['lote' => $membro]) }}"
+                                                                role="button">Comprar</a>
+                                                        @else
+                                                            <a name="" id=""
+                                                                class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
+                                                                data-toggle="modal" data-target="#modalBloqueio"
+                                                                style="max-width:350px;" role="button">Comprar</a>
+                                                        @endif
+                                                    @else
+                                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                            style="max-width:350px;" href="{{ route('login') }}" role="button">Entre
+                                                            para comprar</a>
+                                                    @endif
+                                                @else
+                                                    <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                        style="max-width:350px;">Reservado</button>
+                                                @endif
+                                            @endif
+                                        @else
+                                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                style="max-width:350px;">Encerrada</button>
                                         @endif
-                                    @else
-                                        <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                            style="max-width:350px;">Encerrada</button>
-                                    @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
                 <div class="w1200 mx-auto pt-5 pb-5 pb-lg-0" style="">
                     <div class="container-fluid">
-                        <div class="row py-4 px-4">
-                            <div class="col-12">
-                                @if (!isset($finalizadas))
-                                    <a href="{{ route('fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug]) }}"><span
-                                            style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
-                                                class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
-                                @else
-                                    <a
-                                        href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
-                                            style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
-                                                class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
-                                @endif
+                        @if($cont == 0)
+                            {{--  BOTÃO DE VOLTAR  --}}
+                            <div class="row py-4 px-4">
+                                <div class="col-12">
+                                    @if (!isset($finalizadas))
+                                        <a href="{{ route('fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug]) }}"><span
+                                                style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
+                                                    class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                                    @else
+                                        <a
+                                            href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
+                                                style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
+                                                    class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         <div class="row justify-content-center mt-5" style="position: relative;">
                             {{-- <img class="d-none d-lg-block" src="{{asset('imagens/selo-50.png')}}" style="width: 50px; height: 50px; position: absolute; right:0px; top:0px;" alt=""> --}}
 
