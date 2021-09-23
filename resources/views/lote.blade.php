@@ -23,8 +23,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
 @endsection
 
 @section('conteudo')
-    <div
-        style="background-color: black; background: url(/{{ $fazenda->fundo_conheca_lotes }}); background-size: cover; background-position: center;">
+    <div style="background-color: black; @if (!$lote->pacote) background: url(/{{ $fazenda->fundo_conheca_lotes }}); @endif background-size: cover; background-position: center;">
         <div class="container-fluid bg-preto py-5 py-lg-2">
             <div class="container">
                 <div class="row align-items-center">
