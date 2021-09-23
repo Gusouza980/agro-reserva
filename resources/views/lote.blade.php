@@ -449,7 +449,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                             {{-- <img class="d-none d-lg-block" src="{{asset('imagens/selo-50.png')}}" style="width: 50px; height: 50px; position: absolute; right:0px; top:0px;" alt=""> --}}
 
                             <div class="text-center video-lote px-3 px-lg-0" style="max-width: 100%; position: relative;">
-                                {!! $membro->video !!}
+                                {!! Util::convertYoutube($membro->video) !!}
                                 @if ($membro->porcentagem < 100)
                                     <img class="" src=" {{ asset('imagens/selo-50.png') }}"
                                         style="width: 50px; height: 50px; position: absolute; right:0px; top:-10px;" alt="">
