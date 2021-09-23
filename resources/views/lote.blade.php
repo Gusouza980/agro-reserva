@@ -335,7 +335,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
         </div>
     @else
         @foreach($lote->membros as $membro)
-            <div style="background-color: black; @if (!$modelo->pacote) background: url(/{{ $fazenda->fundo_conheca_lotes }}); @endif background-size: cover; background-position: center;">
+            <div style="background-color: black; @if (!$membro->pacote) background: url(/{{ $fazenda->fundo_conheca_lotes }}); @endif background-size: cover; background-position: center;">
                 <div class="container-fluid bg-preto py-5 py-lg-2">
                     <div class="container">
                         <div class="row align-items-center">
@@ -345,20 +345,20 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                             <div class="col-12 col-lg-7 text-white mt-5 mt-lg-0">
                                 <div class="row">
                                     <div class="col-12 text-center text-lg-right">
-                                        <h2>{{ $modelo->nome }}</h2>
+                                        <h2>{{ $membro->nome }}</h2>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-12 text-center text-lg-right @if (!$modelo->reserva->preco_disponivel && !$modelo->liberar_preco) blur @endif">
-                                        @if ($modelo->reserva->preco_disponivel || $modelo->liberar_preco)
-                                            @if ($modelo->reserva->parcelas_mes == 1)
-                                                <h4><b>{{ $modelo->parcelas }}x</b> de
-                                                    <b>R${{ number_format($modelo->preco / $modelo->parcelas, 2, ',', '.') }}</b>
+                                    <div class="col-12 text-center text-lg-right @if (!$membro->reserva->preco_disponivel && !$membro->liberar_preco) blur @endif">
+                                        @if ($membro->reserva->preco_disponivel || $membro->liberar_preco)
+                                            @if ($membro->reserva->parcelas_mes == 1)
+                                                <h4><b>{{ $membro->parcelas }}x</b> de
+                                                    <b>R${{ number_format($membro->preco / $membro->parcelas, 2, ',', '.') }}</b>
                                                 </h4>
                                             @else
                                                 <div>
-                                                    <h4><b>{{ $modelo->reserva->max_parcelas * 2 }}</b>x (15 duplas) de
-                                                        <b>R${{ number_format($modelo->preco / ($modelo->reserva->max_parcelas * 2), 2, ',', '.') }}</b>
+                                                    <h4><b>{{ $membro->reserva->max_parcelas * 2 }}</b>x (15 duplas) de
+                                                        <b>R${{ number_format($membro->preco / ($membro->reserva->max_parcelas * 2), 2, ',', '.') }}</b>
                                                     </h4>
                                                 </div>
                                             @endif
@@ -368,9 +368,9 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-12 text-center text-lg-right @if (!$modelo->reserva->preco_disponivel && !$modelo->liberar_preco) blur @endif">
-                                        @if ($modelo->reserva->preco_disponivel || $modelo->liberar_preco)
-                                            <span>ou R${{ number_format($modelo->preco - ($modelo->preco * 6) / 100, 2, ',', '.') }}
+                                    <div class="col-12 text-center text-lg-right @if (!$membro->reserva->preco_disponivel && !$membro->liberar_preco) blur @endif">
+                                        @if ($membro->reserva->preco_disponivel || $membro->liberar_preco)
+                                            <span>ou R${{ number_format($membro->preco - ($membro->preco * 6) / 100, 2, ',', '.') }}
                                                 à
                                                 vista</span>
                                         @else
@@ -382,18 +382,18 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                             </div>
                             <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
                                 <div class="text-center text-white">
-                                    @if (!$modelo->reserva->encerrada)
-                                        @if (!$modelo->reserva->compra_disponivel && !$modelo->liberar_compra)
-                                            {{-- <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($modelo->reserva->inicio))}}</button> --}}
+                                    @if (!$membro->reserva->encerrada)
+                                        @if (!$membro->reserva->compra_disponivel && !$membro->liberar_compra)
+                                            {{-- <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($membro->reserva->inicio))}}</button> --}}
                                             <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
                                                 style="max-width:350px;">Disponível durante Live</button>
                                         @else
-                                            @if (!$modelo->reservado)
+                                            @if (!$membro->reservado)
                                                 @if (session()->get('cliente'))
                                                     @if ($cliente->aprovado)
                                                         <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
                                                             style="max-width:350px;"
-                                                            href="{{ route('carrinho.adicionar', ['lote' => $modelo]) }}"
+                                                            href="{{ route('carrinho.adicionar', ['lote' => $membro]) }}"
                                                             role="button">Comprar</a>
                                                     @else
                                                         <a name="" id=""
@@ -425,12 +425,12 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                         <div class="row py-4 px-4">
                             <div class="col-12">
                                 @if (!isset($finalizadas))
-                                    <a href="{{ route('fazenda.lotes', ['fazenda' => $modelo->reserva->fazenda->slug]) }}"><span
+                                    <a href="{{ route('fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug]) }}"><span
                                             style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
                                                 class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
                                 @else
                                     <a
-                                        href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $modelo->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
+                                        href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
                                             style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
                                                 class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
                                 @endif
@@ -440,8 +440,8 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                             {{-- <img class="d-none d-lg-block" src="{{asset('imagens/selo-50.png')}}" style="width: 50px; height: 50px; position: absolute; right:0px; top:0px;" alt=""> --}}
 
                             <div class="text-center video-lote px-3 px-lg-0" style="max-width: 100%; position: relative;">
-                                {!! $modelo->video !!}
-                                @if ($modelo->porcentagem < 100)
+                                {!! $membro->video !!}
+                                @if ($membro->porcentagem < 100)
                                     <img class="" src=" {{ asset('imagens/selo-50.png') }}"
                                         style="width: 50px; height: 50px; position: absolute; right:0px; top:-10px;" alt="">
                                 @endif
@@ -451,11 +451,11 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
 
                                 <div class="row">
                                     <div class="col-12 text-white text-lote-info px-0">
-                                        <h1>Lote {{ str_pad($modelo->numero, 3, '0', STR_PAD_LEFT) }}{{ $modelo->letra }}</h1>
-                                        <h2>{{ $modelo->nome }}</h2>
+                                        <h1>Lote {{ str_pad($membro->numero, 3, '0', STR_PAD_LEFT) }}{{ $membro->letra }}</h1>
+                                        <h2>{{ $membro->nome }}</h2>
                                     </div>
                                 </div>
-                                @switch($modelo->modelo_exibicao)
+                                @switch($membro->modelo_exibicao)
                                     @case(0)
                                         @include('includes.lote.modelo00')
                                     @break;
@@ -470,14 +470,14 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                         <div class="col-12 text-white text-lote-info px-0">
                                             <div class="text-lote-info" style="width: 100%; max-width: 540px;">
                                                 <span><b>Observações:</b></span><br>
-                                                <span>{!! str_replace("\n", '<br>', $modelo->observacoes) !!}</span>
+                                                <span>{!! str_replace("\n", '<br>', $membro->observacoes) !!}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @if (!$modelo->reserva->encerrada)
+                        @if (!$membro->reserva->encerrada)
                             <div class="container-fluid" style="">
                                 <div class="row align-items-center justify-content-center" style="min-height: 300px;">
                                     <div class="container-fluid">
@@ -563,11 +563,11 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                         </div>
                     </div>
 
-                    @if ($modelo->genealogia)
+                    @if ($membro->genealogia)
                         <div class="row">
                             <div class="col-12 text-center py-5">
-                                <a id="link-genealogia" href="{{ asset($modelo->genealogia) }}">
-                                    <img id="imagem-genealogia" src="{{ asset($modelo->genealogia) }}" style="max-width: 100%;"
+                                <a id="link-genealogia" href="{{ asset($membro->genealogia) }}">
+                                    <img id="imagem-genealogia" src="{{ asset($membro->genealogia) }}" style="max-width: 100%;"
                                         alt="Genealogia">
                                 </a>
                             </div>
@@ -585,11 +585,11 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
 
                 <hr>
                 <div class="container-fluid">
-                    @if ($modelo->catalogo)
+                    @if ($membro->catalogo)
                         <div class="row py-3">
                             <div class="col-12 text-center link-download-catalogo">
-                                <a class="link-download-catalogo" href="{{ asset($modelo->catalogo) }}"
-                                    download="{{ $modelo->numero . '-' . $modelo->nome }}"><i
+                                <a class="link-download-catalogo" href="{{ asset($membro->catalogo) }}"
+                                    download="{{ $membro->numero . '-' . $membro->nome }}"><i
                                         class="fas fa-file-download mr-3"></i>Baixar
                                     PDF do Lote</a>
                             </div>
