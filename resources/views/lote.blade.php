@@ -653,6 +653,9 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                     </div>
                 </div>
             </div>
+            @php
+                $cont++;
+            @endphp
         @endforeach
     @endif
 
