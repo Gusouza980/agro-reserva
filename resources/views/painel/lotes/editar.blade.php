@@ -192,9 +192,9 @@
                                 <div class="mb-3">
                                     <label for="lote_pacote" class="form-label">Pacote</label>
                                     <select class="form-control" name="lote_pacote" id="">
-                                        @foreach ($lote->reserva->lotes->where('pacote', true) as $lote)
-                                            <option value="{{ $lote->id }}" @if ($lote->pacote_id == $lote->id) selected @endif>
-                                                {{ $lote->numero . $lote->letra . ' ' . $lote->nome }}</option>
+                                        @foreach ($lote->reserva->lotes->where('pacote', true) as $pacote)
+                                            <option value="{{ $pacote->id }}" @if ($lote->pacote_id == $pacote->id) selected @endif>
+                                                {{ $pacote->numero . $pacote->letra . ' ' . $pacote->nome }}</option>
                                         @endforeach
                                     </select>
                                 </div>
