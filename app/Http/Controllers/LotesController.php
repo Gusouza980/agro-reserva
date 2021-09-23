@@ -33,6 +33,12 @@ class LotesController extends Controller
         $lote->raca_id = $request->raca;
         $lote->preco = $request->preco;
         $lote->parcelas = $request->parcelas;
+        if($request->pacote == 1){
+            $lote->pacote = true;
+        }elseif($request->pacote == 2){
+            $lote->membro_pacote = true;
+            $lote->pacote_id = $request->lote_pacote;
+        }
         if($reserva->multi_fazendas){
             $lote->fazenda_id = $request->fazenda;
         }else{
@@ -86,6 +92,20 @@ class LotesController extends Controller
         $lote->video = $request->video;
         $lote->ativo = $request->ativo;
 
+        if($request->pacote == 0){
+            $lote->pacote = false;
+            $lote->membro_pacote = false;
+            $lote->pacote_id = null;
+        }elseif($request->pacote == 1){
+            $lote->pacote = true;
+            $lote->membro_pacote = false;
+            $lote->pacote_id = null;
+        }else{
+            $lote->pacote = false;
+            $lote->membro_pacote = true;
+            $lote->pacote_id = $request->lote_pacote;
+        }
+
         if($lote->reserva->multi_fazendas){
             $lote->fazenda_id = $request->fazenda;
         }
@@ -132,6 +152,30 @@ class LotesController extends Controller
         }else{
             $lote->ativo = true;
             toastr()->success("Lote ativado");
+        }
+        $lote->save();
+        return redirect()->back();
+    }
+
+    public function preco(Lote $lote){
+        if($lote->liberar_preco){
+            $lote->liberar_preco = false;
+            toastr()->success("Usando padrão de preço");
+        }else{
+            $lote->liberar_preco = true;
+            toastr()->success("Preço liberado");
+        }
+        $lote->save();
+        return redirect()->back();
+    }
+
+    public function comprar(Lote $lote){
+        if($lote->liberar_compra){
+            $lote->liberar_compra = false;
+            toastr()->success("Usando padrão de compra");
+        }else{
+            $lote->liberar_compra = true;
+            toastr()->success("Compra liberada");
         }
         $lote->save();
         return redirect()->back();

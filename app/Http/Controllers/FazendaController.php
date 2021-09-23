@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Fazenda;
 use App\Models\FazendaRaca;
-use App\Apis\Api;
 use App\Models\Depoimento;
 use App\Models\Producao;
 use App\Models\Fazendeiro;
@@ -17,35 +16,6 @@ use App\Models\FazendaAvaliacao;
 
 class FazendaController extends Controller
 {
-
-    public function teste(){
-        include_once(app_path() . '/Apis/_functions.php');
-
-
-        $url = 'https://api.bscommerce.com.br/produto/';
-
-        /* array de dados */
-        $data =  array(
-            "token" => $tokenapi,
-            "ope"   => "getProduto",
-            "code"  => '1240'
-        );
-
-        /* envia dados e recebe retorno */
-        $retorno = callAPI($url, $data);
-
-        /* converte json em array (opcional) */
-        $dados = json_decode($retorno);
-        
-        dd($dados);
-        /*
-        $dados[0]->ID_Cliente
-            -1 	= E-mail não existe
-            0 	= Senha não confere
-            >0 	= Login OK, definir $_SESSION['userid'] 
-        */
-
-    }
 
     public function index(){
         $fazendas = Fazenda::all();

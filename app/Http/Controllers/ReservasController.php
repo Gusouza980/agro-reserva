@@ -22,6 +22,7 @@ class ReservasController extends Controller
         $reserva->inicio = $request->inicio;
         $reserva->fim = $request->fim;
         $reserva->ativo = $request->ativo;
+        $reserva->desconto_live_valor = $request->desconto_live_valor;
         $reserva->aberto = false;
         $reserva->multi_fazendas = $request->multi_fazendas;
         $reserva->preco_disponivel = false;
@@ -35,6 +36,7 @@ class ReservasController extends Controller
         $reserva->inicio = $request->inicio;
         $reserva->fim = $request->fim;
         $reserva->ativo = $request->ativo;
+        $reserva->desconto_live_valor = $request->desconto_live_valor;
         $reserva->multi_fazendas = $request->multi_fazendas;
         $reserva->save();
         toastr()->success("Alterações salvas com sucesso!");
