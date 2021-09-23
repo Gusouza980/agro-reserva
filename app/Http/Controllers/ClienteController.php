@@ -172,7 +172,7 @@ class ClienteController extends Controller
         $cliente->estado_civil = $request->estado_civil;
         // $cliente->inscricao_produtor_rural = $request->inscricao_produtor_rural;
         $cliente->cep = $request->cep;
-        $cliente->rua = $request->endereco;
+        $cliente->rua = $request->rua;
         $cliente->numero = $request->numero;
         $cliente->complemento = $request->complemento;
         $cliente->cidade = $request->cidade;
@@ -495,13 +495,17 @@ class ClienteController extends Controller
     public function pre_to_main(){
         $clientes = Cliente::all();
         foreach($clientes as $cliente){
-            $cidade = Cidade::find($cliente->cidade);
-            $estado = Estado::find($cliente->estado);
-            if($cidade){
-                $cliente->cidade = $cidade->nome;
+            if(is_numeric($cliente->cidade)){
+                $cidade = Cidade::find($cliente->cidade);
+                if($cidade){
+                    $cliente->cidade = $cidade->nome;
+                }
             }
-            if($estado){
-                $cliente->estado = $estado->uf;
+            if(is_numeric($cliente->estado)){
+                $estado = Estado::find($cliente->estado);
+                if($estado){
+                    $cliente->estado = $estado->uf;
+                }
             }
             $cliente->save();
         }

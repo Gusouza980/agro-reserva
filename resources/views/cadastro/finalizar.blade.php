@@ -31,7 +31,13 @@
                             <div class="form-group col-12 input-cadastro">
                                 <label for="documento">CPF/CNPJ *</label>
                                 <input type="text" class="form-control" name="documento" id="documento"
-                                    aria-describedby="" maxlenght="50" required placeholder="Informe seu CPF ou CNPJ">
+                                    aria-describedby="" maxlenght="50" required placeholder="Informe seu CPF ou CNPJ"
+                                    required>
+                            </div>
+                            <div class="form-group col-12 input-cadastro">
+                                <label for="rg">RG *</label>
+                                <input type="text" class="form-control" name="rg" id="rg" aria-describedby=""
+                                    maxlenght="50" required placeholder="Informe seu RG" required>
                             </div>
                             <div class="form-group col-12 input-cadastro">
                                 <label for="cep">CEP *</label>
