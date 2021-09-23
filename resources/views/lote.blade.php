@@ -109,129 +109,257 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
             </div>
         </div>
         <div class="w1200 mx-auto pt-5 pb-5 pb-lg-0" style="">
-            <div class="container-fluid">
-                <div class="row py-4 px-4">
-                    <div class="col-12">
-                        @if (!isset($finalizadas))
-                            <a href="{{ route('fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug]) }}"><span
-                                    style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
-                                        class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
-                        @else
-                            <a
-                                href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
-                                    style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
-                                        class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
-                        @endif
-                    </div>
-                </div>
-                <div class="row justify-content-center mt-5" style="position: relative;">
-                    {{-- <img class="d-none d-lg-block" src="{{asset('imagens/selo-50.png')}}" style="width: 50px; height: 50px; position: absolute; right:0px; top:0px;" alt=""> --}}
-
-                    <div class="text-center video-lote px-3 px-lg-0" style="max-width: 100%; position: relative;">
-                        {!! $lote->video !!}
-                        @if ($lote->porcentagem < 100)
-                            <img class="" src=" {{ asset('imagens/selo-50.png') }}"
-                                style="width: 50px; height: 50px; position: absolute; right:0px; top:-10px;" alt="">
-                        @endif
-                    </div>
-                    <div class="ml-0 ml-lg-5 mt-4 mt-lg-0 px-lg-0 px-4 text-center text-lg-left"
-                        style="position: relative;">
-
-                        <div class="row">
-                            <div class="col-12 text-white text-lote-info px-0">
-                                <h1>Lote {{ str_pad($lote->numero, 3, '0', STR_PAD_LEFT) }}{{ $lote->letra }}</h1>
-                                <h2>{{ $lote->nome }}</h2>
-                            </div>
+            @if(!$lote->pacote)
+                <div class="container-fluid">
+                    <div class="row py-4 px-4">
+                        <div class="col-12">
+                            @if (!isset($finalizadas))
+                                <a href="{{ route('fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug]) }}"><span
+                                        style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
+                                            class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                            @else
+                                <a
+                                    href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
+                                        style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
+                                            class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                            @endif
                         </div>
-                        @switch($lote->modelo_exibicao)
-                            @case(0)
-                                @include('includes.lote.modelo00')
-                            @break;
-                            @case(2)
-                                @include('includes.lote.modelo02')
-                            @break;
-                            @default
-                                @include('includes.lote.modelo02')
-                                @break;
-                            @endswitch
-                            <div class="row justify-content-center justify-content-lg-start mt-2">
+                    </div>
+                    <div class="row justify-content-center mt-5" style="position: relative;">
+                        {{-- <img class="d-none d-lg-block" src="{{asset('imagens/selo-50.png')}}" style="width: 50px; height: 50px; position: absolute; right:0px; top:0px;" alt=""> --}}
+
+                        <div class="text-center video-lote px-3 px-lg-0" style="max-width: 100%; position: relative;">
+                            {!! $lote->video !!}
+                            @if ($lote->porcentagem < 100)
+                                <img class="" src=" {{ asset('imagens/selo-50.png') }}"
+                                    style="width: 50px; height: 50px; position: absolute; right:0px; top:-10px;" alt="">
+                            @endif
+                        </div>
+                        <div class="ml-0 ml-lg-5 mt-4 mt-lg-0 px-lg-0 px-4 text-center text-lg-left"
+                            style="position: relative;">
+
+                            <div class="row">
                                 <div class="col-12 text-white text-lote-info px-0">
-                                    <div class="text-lote-info" style="width: 100%; max-width: 540px;">
-                                        <span><b>Observações:</b></span><br>
-                                        <span>{!! str_replace("\n", '<br>', $lote->observacoes) !!}</span>
+                                    <h1>Lote {{ str_pad($lote->numero, 3, '0', STR_PAD_LEFT) }}{{ $lote->letra }}</h1>
+                                    <h2>{{ $lote->nome }}</h2>
+                                </div>
+                            </div>
+                            @switch($lote->modelo_exibicao)
+                                @case(0)
+                                    @include('includes.lote.modelo00')
+                                @break;
+                                @case(2)
+                                    @include('includes.lote.modelo02')
+                                @break;
+                                @default
+                                    @include('includes.lote.modelo02')
+                                    @break;
+                                @endswitch
+                                <div class="row justify-content-center justify-content-lg-start mt-2">
+                                    <div class="col-12 text-white text-lote-info px-0">
+                                        <div class="text-lote-info" style="width: 100%; max-width: 540px;">
+                                            <span><b>Observações:</b></span><br>
+                                            <span>{!! str_replace("\n", '<br>', $lote->observacoes) !!}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @if (!$lote->reserva->encerrada)
+                        <div class="container-fluid" style="">
+                            <div class="row align-items-center justify-content-center" style="min-height: 300px;">
+                                <div class="container-fluid">
+                                    <div class="row justify-content-center py-4 py-lg-0 d-none d-lg-flex">
+                                        <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                            data-target="#modalFrete">
+                                            <div class="mb-3 icones-info">
+                                                <img src="{{ asset('imagens/icon_frete.png') }}" height="50" alt="">
+                                            </div>
+                                            <span>Frete</span>
+                                        </div>
+                                        <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                            data-target="#modalPagamento">
+                                            <div class="mb-3 icones-info">
+                                                <img src="{{ asset('imagens/icon_pagamento.png') }}" height="50" alt="">
+                                            </div>
+                                            <span>Pagamentos<br>e Condições</span>
+                                        </div>
+                                        <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal"
+                                            data-target="#modalSeguranca">
+                                            <div class="mb-3 icones-info">
+                                                <img src="{{ asset('imagens/icon_seguranca.png') }}" height="50" alt="">
+                                            </div>
+                                            <span>Segurança</span>
+                                        </div>
+                                        {{-- <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
+                                    <div class="mb-3 icones-info">
+                                        <img src="{{asset('imagens/icon_porcentagem.png')}}" height="50" alt="">
+                                    </div>
+                                    <span>Comissão</span>
+                                </div> --}}
+                                    </div>
+                                    <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
+                                        <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                            data-target="#modalFrete">
+                                            <div class="mx-auto mb-3 icones-info">
+                                                <img src="{{ asset('imagens/icon_frete.png') }}" height="80" alt="">
+                                            </div>
+                                            <span>Frete</span>
+                                        </div>
+                                        <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                            data-target="#modalPagamento">
+                                            <div class="mx-auto mb-3 icones-info">
+                                                <img src="{{ asset('imagens/icon_pagamento.png') }}" height="80" alt="">
+                                            </div>
+                                            <span>Pagamentos<br>e Condições</span>
+                                        </div>
+                                        <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal"
+                                            data-target="#modalSeguranca">
+                                            <div class="mx-auto mb-3 icones-info">
+                                                <img src="{{ asset('imagens/icon_seguranca.png') }}" height="80" alt="">
+                                            </div>
+                                            <span>Segurança</span>
+                                        </div>
+                                        {{-- <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
+                                    <div class="mx-auto mb-3 icones-info">
+                                        <img src="{{asset('imagens/icon_porcentagem.png')}}" height="80" alt="">
+                                    </div>
+                                    <span>Comissão</span>
+                                </div> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
-                @if (!$lote->reserva->encerrada)
-                    <div class="container-fluid" style="">
-                        <div class="row align-items-center justify-content-center" style="min-height: 300px;">
-                            <div class="container-fluid">
-                                <div class="row justify-content-center py-4 py-lg-0 d-none d-lg-flex">
-                                    <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                        data-target="#modalFrete">
-                                        <div class="mb-3 icones-info">
-                                            <img src="{{ asset('imagens/icon_frete.png') }}" height="50" alt="">
-                                        </div>
-                                        <span>Frete</span>
+            @else
+                @foreach($lote->membros as $membro)
+                    <div class="container-fluid">
+                        <div class="row py-4 px-4">
+                            <div class="col-12">
+                                @if (!isset($finalizadas))
+                                    <a href="{{ route('fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug]) }}"><span
+                                            style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
+                                                class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                                @else
+                                    <a
+                                        href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
+                                            style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
+                                                class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mt-5" style="position: relative;">
+                            {{-- <img class="d-none d-lg-block" src="{{asset('imagens/selo-50.png')}}" style="width: 50px; height: 50px; position: absolute; right:0px; top:0px;" alt=""> --}}
+
+                            <div class="text-center video-lote px-3 px-lg-0" style="max-width: 100%; position: relative;">
+                                {!! $membro->video !!}
+                                @if ($membro->porcentagem < 100)
+                                    <img class="" src=" {{ asset('imagens/selo-50.png') }}"
+                                        style="width: 50px; height: 50px; position: absolute; right:0px; top:-10px;" alt="">
+                                @endif
+                            </div>
+                            <div class="ml-0 ml-lg-5 mt-4 mt-lg-0 px-lg-0 px-4 text-center text-lg-left"
+                                style="position: relative;">
+
+                                <div class="row">
+                                    <div class="col-12 text-white text-lote-info px-0">
+                                        <h1>Lote {{ str_pad($membro->numero, 3, '0', STR_PAD_LEFT) }}{{ $membro->letra }}</h1>
+                                        <h2>{{ $membro->nome }}</h2>
                                     </div>
-                                    <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                        data-target="#modalPagamento">
-                                        <div class="mb-3 icones-info">
-                                            <img src="{{ asset('imagens/icon_pagamento.png') }}" height="50" alt="">
-                                        </div>
-                                        <span>Pagamentos<br>e Condições</span>
-                                    </div>
-                                    <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal"
-                                        data-target="#modalSeguranca">
-                                        <div class="mb-3 icones-info">
-                                            <img src="{{ asset('imagens/icon_seguranca.png') }}" height="50" alt="">
-                                        </div>
-                                        <span>Segurança</span>
-                                    </div>
-                                    {{-- <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
-                                <div class="mb-3 icones-info">
-                                    <img src="{{asset('imagens/icon_porcentagem.png')}}" height="50" alt="">
                                 </div>
-                                <span>Comissão</span>
-                            </div> --}}
-                                </div>
-                                <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
-                                    <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                        data-target="#modalFrete">
-                                        <div class="mx-auto mb-3 icones-info">
-                                            <img src="{{ asset('imagens/icon_frete.png') }}" height="80" alt="">
+                                @switch($membro->modelo_exibicao)
+                                    @case(0)
+                                        @include('includes.lote.modelo00')
+                                    @break;
+                                    @case(2)
+                                        @include('includes.lote.modelo02')
+                                    @break;
+                                    @default
+                                        @include('includes.lote.modelo02')
+                                        @break;
+                                    @endswitch
+                                    <div class="row justify-content-center justify-content-lg-start mt-2">
+                                        <div class="col-12 text-white text-lote-info px-0">
+                                            <div class="text-lote-info" style="width: 100%; max-width: 540px;">
+                                                <span><b>Observações:</b></span><br>
+                                                <span>{!! str_replace("\n", '<br>', $membro->observacoes) !!}</span>
+                                            </div>
                                         </div>
-                                        <span>Frete</span>
                                     </div>
-                                    <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                        data-target="#modalPagamento">
-                                        <div class="mx-auto mb-3 icones-info">
-                                            <img src="{{ asset('imagens/icon_pagamento.png') }}" height="80" alt="">
-                                        </div>
-                                        <span>Pagamentos<br>e Condições</span>
-                                    </div>
-                                    <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal"
-                                        data-target="#modalSeguranca">
-                                        <div class="mx-auto mb-3 icones-info">
-                                            <img src="{{ asset('imagens/icon_seguranca.png') }}" height="80" alt="">
-                                        </div>
-                                        <span>Segurança</span>
-                                    </div>
-                                    {{-- <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
-                                <div class="mx-auto mb-3 icones-info">
-                                    <img src="{{asset('imagens/icon_porcentagem.png')}}" height="80" alt="">
-                                </div>
-                                <span>Comissão</span>
-                            </div> --}}
                                 </div>
                             </div>
                         </div>
+                        @if (!$membro->reserva->encerrada)
+                            <div class="container-fluid" style="">
+                                <div class="row align-items-center justify-content-center" style="min-height: 300px;">
+                                    <div class="container-fluid">
+                                        <div class="row justify-content-center py-4 py-lg-0 d-none d-lg-flex">
+                                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                                data-target="#modalFrete">
+                                                <div class="mb-3 icones-info">
+                                                    <img src="{{ asset('imagens/icon_frete.png') }}" height="50" alt="">
+                                                </div>
+                                                <span>Frete</span>
+                                            </div>
+                                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                                data-target="#modalPagamento">
+                                                <div class="mb-3 icones-info">
+                                                    <img src="{{ asset('imagens/icon_pagamento.png') }}" height="50" alt="">
+                                                </div>
+                                                <span>Pagamentos<br>e Condições</span>
+                                            </div>
+                                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal"
+                                                data-target="#modalSeguranca">
+                                                <div class="mb-3 icones-info">
+                                                    <img src="{{ asset('imagens/icon_seguranca.png') }}" height="50" alt="">
+                                                </div>
+                                                <span>Segurança</span>
+                                            </div>
+                                            {{-- <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
+                                        <div class="mb-3 icones-info">
+                                            <img src="{{asset('imagens/icon_porcentagem.png')}}" height="50" alt="">
+                                        </div>
+                                        <span>Comissão</span>
+                                    </div> --}}
+                                        </div>
+                                        <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
+                                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                                data-target="#modalFrete">
+                                                <div class="mx-auto mb-3 icones-info">
+                                                    <img src="{{ asset('imagens/icon_frete.png') }}" height="80" alt="">
+                                                </div>
+                                                <span>Frete</span>
+                                            </div>
+                                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                                data-target="#modalPagamento">
+                                                <div class="mx-auto mb-3 icones-info">
+                                                    <img src="{{ asset('imagens/icon_pagamento.png') }}" height="80" alt="">
+                                                </div>
+                                                <span>Pagamentos<br>e Condições</span>
+                                            </div>
+                                            <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal"
+                                                data-target="#modalSeguranca">
+                                                <div class="mx-auto mb-3 icones-info">
+                                                    <img src="{{ asset('imagens/icon_seguranca.png') }}" height="80" alt="">
+                                                </div>
+                                                <span>Segurança</span>
+                                            </div>
+                                            {{-- <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
+                                        <div class="mx-auto mb-3 icones-info">
+                                            <img src="{{asset('imagens/icon_porcentagem.png')}}" height="80" alt="">
+                                        </div>
+                                        <span>Comissão</span>
+                                    </div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
-                @endif
-            </div>
+                @endforeach
+            @endif
             {{-- <div class="container-fluid">
             <div class="row pb-4">
                 <div class="col-12 text-center">

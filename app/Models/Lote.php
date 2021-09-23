@@ -13,6 +13,10 @@ class Lote extends Model
         return $this->belongsTo(Raca::class);
     }
 
+    public function membros(){
+        return $this->hasMany(Lote::class, "pacote_id", "id");
+    }
+
     public function fazenda(){
         return $this->belongsTo(Fazenda::class);
     }
