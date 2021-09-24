@@ -130,7 +130,7 @@
                                     <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                         <label for="whatsapp">Whatsapp</label>
                                         <input type="text" class="form-control" name="whatsapp" id="whatsapp"
-                                            aria-describedby="helpId" value="{{ $cliente->whatsapp }}">
+                                            aria-describedby="helpId" value="@if($cliente->telefone) {{ $cliente->telefone }} @else {{ $cliente->whataspp }} @endif">
                                     </div>
                                     <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                         <label for="interesse">Interesse</label>

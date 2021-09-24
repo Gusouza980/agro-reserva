@@ -236,6 +236,7 @@ class ClienteController extends Controller
         $cliente->nascimento = $request->nascimento;
         $cliente->rg = $request->rg;
         $cliente->whatsapp = $request->whatsapp;
+        $cliente->telefone = $request->whatsapp;
         $cliente->rua = $request->rua;
         $cliente->numero = $request->numero;
         $cliente->complemento = $request->complemento;
