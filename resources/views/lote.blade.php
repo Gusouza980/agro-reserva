@@ -75,7 +75,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                     @if (!$lote->reserva->compra_disponivel && !$lote->liberar_compra)
                                         {{-- <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($lote->reserva->inicio))}}</button> --}}
                                         <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                            style="max-width:350px;">Disponível durante Live</button>
+                                            style="max-width:350px;">Disponível na Live</button>
                                     @else
                                         @if (!$lote->reservado)
                                             @if (session()->get('cliente'))
@@ -642,7 +642,8 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                 </div>
                                 <div class="row mt-3 px-4">
                                     <div class="col-12 text-left">
-                                        <b>O FRETE SERÁ DEFINIDO DIRETAMENTE ENTRE COMPRADOR E VENDEDOR</b>
+                                        <b>Local da retirada</b>: Estância K<br>
+                                        ROD GO-020, km 19, Bela Vista de Goiás - GO, 75240-000
                                     </div>
                                 </div>
                                 {{-- <div class="row mt-3">
@@ -683,10 +684,10 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                 Formas de pagamento:
                             </p>
                             <p>
-                                À vista ou em até 15 duplas sem juros no boleto de titularidade da fazenda e do comprador.
+                                À vista ou em até 30 parcelas (6 Triplas e 6 Duplas) sem juros no boleto de titularidade da fazenda e do comprador.
                             </p>
                             <p>
-                                Pague <b>À VISTA</b> e ganhe <b>8% de desconto</b>*.
+                                Pague <b>À VISTA</b> e ganhe <b>6% de desconto</b>*.
                             </p>
                             {{-- <ul class="mt-3">
                             <li class="" style="list-style: none; font-size: 14px;">*6% de desconto pela fazenda e 4% de desconto da comissão Agro Reserva.</li>

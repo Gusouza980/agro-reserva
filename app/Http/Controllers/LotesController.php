@@ -25,6 +25,9 @@ class LotesController extends Controller
         $fazenda = $reserva->fazenda;
         $lote->nome = $request->nome;
         $lote->registro = $request->registro;
+        $lote->gpta = $request->gpta;
+        $lote->ccg = $request->ccg;
+        $lote->parto = $request->parto;
         $lote->numero = $request->numero;
         $lote->sexo = $request->sexo;
         $lote->letra = $request->letra;
