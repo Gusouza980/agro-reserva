@@ -299,7 +299,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                     <h4><b>FRETE</b></h4>
                                 </div>
                             </div>
-                            <<div class="row mt-3 px-4">
+                            <div class="row mt-3 px-4">
                                 <div class="col-12 text-left">
                                     <b>Frete por conta do Comprador</b>
                                 </div>
