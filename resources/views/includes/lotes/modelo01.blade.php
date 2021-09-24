@@ -47,9 +47,6 @@
                     <div>
                         <span class="card-lote-info-text">{{$lote->ccg}}</span>
                     </div>
-                    <div class="text-center mx-auto">
-                        <b>PRENHEZ A FAZER</b>
-                    </div>
                 </div>
             </div>
                 <div class="container-fluid mt-2">
