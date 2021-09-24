@@ -18,10 +18,7 @@
                 @if ($configuracao->live_ativo && $configuracao->live_link)
                     <div class="row justify-content-center py-5 d-lg-none">
                         <div id="caixa-live">
-                            <iframe width="1863" height="770" src="https://www.youtube.com/embed/JA5ziVbUnWc"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                            {!! $configuracao->live_link !!}
                         </div>
                     </div>
                 @endif
@@ -33,12 +30,14 @@
                     </div>
                 </div>
                 @if ($configuracao->live_ativo && $configuracao->live_link)
-                    <div class="row justify-content-center py-5 d-none d-lg-flex">
+                    <div class="row mt-5">
+                        <div class="col-12 text-center text-header-index">
+                            <h5>DE OLHO NA LIVE</h5>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb-5 d-none d-lg-flex">
                         <div id="caixa-live">
-                            <iframe width="1863" height="770" src="https://www.youtube.com/embed/JA5ziVbUnWc"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                            {!! $configuracao->live_link !!}
                         </div>
                     </div>
                 @endif
