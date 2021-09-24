@@ -69,7 +69,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <b style="color: red;">As parcelas serão pagas em duplas.</b><br>
+                            <b style="color: red;">As parcelas serão pagas em triplas e duplas.</b><br>
                             {{--  <small>*3% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.</small>  --}}
                         </div>
                     </div>
@@ -85,14 +85,14 @@
                             <div class="form-group">
                               <select class="form-control" name="parcelamento" id="parcelamento">
                                     <option value="">Selecione as parcelas</option>
-                                    @for($i = 1; $i <= 15; $i++)
+                                    @for($i = 1; $i <= 12; $i++)
                                         @if($i == 1)
                                             <option value="{{$i}}">{{$i}}x de R${{number_format(($carrinho->total - ($carrinho->total * 8 / 100)), 2, ",", ".")}} (6% de desconto)</option>
                                             {{--  <option value="{{$i * 2}}">{{$i}}x (1 dupla) de R${{number_format(($carrinho->total - ($carrinho->total * 8 / 100)) / 2, 2, ",", ".")}}</option>  --}}
-                                        @elseif($i < 5)
-                                            <option value="{{$i * 2}}">{{$i}}x ({{$i}} duplas) de R${{number_format(round(($carrinho->total - ($carrinho->total * 0 / 100)) / ($i * 2), 2),2 , ",", ".")}}</option>
+                                        {{--  @elseif($i < 5)  --}}
+                                            {{--  <option value="{{$i * 2}}">{{$i}}x ({{$i}} duplas) de R${{number_format(round(($carrinho->total - ($carrinho->total * 0 / 100)) / ($i * 2), 2),2 , ",", ".")}}</option>  --}}
                                         @else
-                                            <option value="{{$i * 2}}">{{$i}}x ({{$i}} duplas) de R${{number_format(round(($carrinho->total / ($i * 2)), 2), 2, ",", ".")}}</option>
+                                            <option value="{{$i}}">{{$i}}x de R${{number_format(round(($carrinho->total / ($i)), 2), 2, ",", ".")}}</option>
                                         @endif
                                     @endfor
                               </select>
