@@ -125,10 +125,13 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                             @switch($lote->modelo_exibicao)
                                 @case(0)
                                     @include('includes.lote.modelo00')
-                                @break;
+                                    @break;
+                                @case(1)
+                                    @include('includes.lote.modelo01')
+                                    @break;
                                 @case(2)
                                     @include('includes.lote.modelo02')
-                                @break;
+                                    @break;
                                 @default
                                     @include('includes.lote.modelo02')
                                     @break;
@@ -421,7 +424,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                         <h2>{{ $membro->nome }}</h2>
                                     </div>
                                 </div>
-                                @switch($membro->modelo_exibicao)
+                                @switch($lote->modelo_exibicao)
                                     @case(0)
                                         @include('includes.lote.pacotes.modelo00')
                                     @break;

@@ -52,7 +52,7 @@
                 <div class="container-fluid mt-2">
                     <div class="row">
                         <div class="col-12 card-lote-parto text-center" style="height: 30px;">
-                            <h3>SEXO DA PRENHEZ: {{mb_strtoupper($lote->sexo)}}</h3>
+                            <h3>SEXO: {{mb_strtoupper($lote->sexo)}}</h3>
                         </div>
                     </div>
                 </div>
