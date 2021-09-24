@@ -299,9 +299,15 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                     <h4><b>FRETE</b></h4>
                                 </div>
                             </div>
+                            <<div class="row mt-3 px-4">
+                                <div class="col-12 text-left">
+                                    <b>Frete por conta do Comprador</b>
+                                </div>
+                            </div>
                             <div class="row mt-3 px-4">
                                 <div class="col-12 text-left">
-                                    <b>O FRETE SERÁ DEFINIDO DIRETAMENTE ENTRE COMPRADOR E VENDEDOR</b>
+                                    <b>Local da retirada</b>: Estância K<br>
+                                    ROD GO-020, km 19, Bela Vista de Goiás - GO, 75240-000
                                 </div>
                             </div>
                             {{-- <div class="row mt-3">
@@ -598,6 +604,11 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                 <div class="row">
                                     <div class="col-12 text-center text-red">
                                         <h4><b>FRETE</b></h4>
+                                    </div>
+                                </div>
+                                <div class="row mt-3 px-4">
+                                    <div class="col-12 text-left">
+                                        <b>Frete por conta do Comprador</b>
                                     </div>
                                 </div>
                                 <div class="row mt-3 px-4">
