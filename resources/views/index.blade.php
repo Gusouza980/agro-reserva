@@ -16,7 +16,12 @@
         <div class="d-flex" id="header-index">
             <div class="container-fluid py-5" id="container-section1">
                 @if ($configuracao->live_ativo && $configuracao->live_link)
-                    <div class="row justify-content-center py-5 d-lg-none">
+                    <div class="row mt-5 d-lg-none">
+                        <div class="col-12 text-center text-header-index">
+                            <h5>DE OLHO NA LIVE</h5>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb-5 d-lg-none">
                         <div id="caixa-live">
                             {!! $configuracao->live_link !!}
                         </div>
@@ -30,7 +35,7 @@
                     </div>
                 </div>
                 @if ($configuracao->live_ativo && $configuracao->live_link)
-                    <div class="row mt-5">
+                    <div class="row mt-5 d-none d-lg-flex">
                         <div class="col-12 text-center text-header-index">
                             <h5>DE OLHO NA LIVE</h5>
                         </div>
