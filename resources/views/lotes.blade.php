@@ -104,17 +104,34 @@
             @foreach ($reserva->lotes->where('ativo', true)->where('membro_pacote', false)->sortBy('numero')
         as $lote)
 
-                @switch($lote->modelo_exibicao)
-                    @case(0)
-                        @include('includes.lotes.modelo00')
-                    @break;
-                    @case(2)
-                        @include('includes.lotes.modelo02')
-                    @break;
-                    @default
-                        @include('includes.lotes.modelo02')
-                    @break;
-                @endswitch
+                @if($lote->pacote)
+                    @switch($lote->modelo_exibicao)
+                        @case(0)
+                            @include('includes.lotes.pacotes.modelo00')
+                        @break;
+                        @case(2)
+                            @include('includes.lotes.pacotes.modelo00')
+                        @break;
+                        @default
+                            @include('includes.lotes.pacotes.modelo00')
+                        @break;
+                    @endswitch
+                @else
+                    @switch($lote->modelo_exibicao)
+                        @case(0)
+                            @include('includes.lotes.modelo00')
+                        @break;
+                        @case(1)
+                            @include('includes.lotes.modelo01')
+                        @break;
+                        @case(2)
+                            @include('includes.lotes.modelo02')
+                        @break;
+                        @default
+                            @include('includes.lotes.modelo02')
+                        @break;
+                    @endswitch
+                @endif
 
                 @endforeach
                 @if ($fazenda->catalogo)

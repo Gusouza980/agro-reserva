@@ -33,32 +33,11 @@
             </div>
             <div class="container-fluid px-3">
                 <div class="row py-1" style="border-bottom: 1px solid black;">
-                    <div style="width: 130px;">
-                        <b class="mr-3">RGD.: </b>
-                    </div>
-                    <div>
-                        <span class="card-lote-info-text">{{$lote->registro}}</span>
-                    </div>
-                </div>
-                <div class="row py-1" style="border-bottom: 1px solid black;">
-                    <div style="width: 130px;">
-                        <b class="mr-3">CCG.: </b>
-                    </div>
-                    <div>
-                        <span class="card-lote-info-text">{{$lote->ccg}}</span>
-                    </div>
                     <div class="text-center mx-auto">
-                        <b>PRENHEZ A FAZER</b>
+                        {!! $lote->observacoes !!}
                     </div>
                 </div>
             </div>
-                <div class="container-fluid mt-2">
-                    <div class="row">
-                        <div class="col-12 card-lote-parto text-center" style="height: 30px;">
-                            <h3>SEXO DA PRENHEZ: {{mb_strtoupper($lote->sexo)}}</h3>
-                        </div>
-                    </div>
-                </div>
             <div class="container-fluid mt-2">
                 <div class="row">
                     <div class="col-12 card-lote-botao text-center">
