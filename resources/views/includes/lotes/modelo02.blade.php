@@ -41,15 +41,18 @@
                     </div>
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
-                    <div style="width: 130px;">
-                        <b class="mr-3">CCG.: </b>
-                    </div>
-                    <div>
-                        <span class="card-lote-info-text">{{$lote->ccg}}</span>
-                    </div>
-                    <div class="text-center mx-auto">
-                        <b>PRENHEZ A FAZER</b>
-                    </div>
+                    @if($lote->nascimento)
+                        <div style="width: 130px;">
+                            <b class="mr-3">PREV. PARTO.: </b>
+                        </div>
+                        <div>
+                            <span class="card-lote-info-text">{{date("m/Y", strtotime($lote->nascimento))}}</span>
+                        </div>
+                    @else
+                        <div class="text-center mx-auto">
+                            <b>PRENHEZ A FAZER</b>
+                        </div>
+                    @endif
                 </div>
             </div>
                 <div class="container-fluid mt-2">
