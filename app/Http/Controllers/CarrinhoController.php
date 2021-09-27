@@ -66,6 +66,9 @@ class CarrinhoController extends Controller
         $produto->save();
 
         $carrinho->total += $produto->total;
+        if(!$carrinho->reserva_id){
+            $carrinho->reserva_id = $lote->reserva_id;
+        }
         $carrinho->save();
 
         toastr()->success("Produto adicionado ao carrinho !");
@@ -156,6 +159,10 @@ class CarrinhoController extends Controller
             $desconto = 0;
         }
 
+        if($carrinho->reserva->desconto_live_ativo && $carrinho->reserva->desconto_live_valor){
+            $desconto += $carrinho->reserva->desconto_live_valor;
+        }
+
         $valor_desconto = $carrinho->total * $desconto / 100;
         $valor_comissao = $carrinho->total * $comissao / 100;
         $total_compra = $carrinho->total - $valor_desconto + $valor_comissao;
@@ -211,11 +218,11 @@ class CarrinhoController extends Controller
         $carrinho->aberto = false;
         $carrinho->save();
         session()->forget("carrinho");
-        $data = ["venda" => $venda];
-        $pdf = PDF::loadView('cliente.comprovante2', $data);
-        $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
-        $file = file_get_contents('templates/emails/confirmar-compra.html');
-        Email::enviar($file, "Confirmação de Compra", session()->get("cliente")["email"], false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
+        // $data = ["venda" => $venda];
+        // $pdf = PDF::loadView('cliente.comprovante2', $data);
+        // $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
+        // $file = file_get_contents('templates/emails/confirmar-compra.html');
+        // Email::enviar($file, "Confirmação de Compra", session()->get("cliente")["email"], false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
         session()->flash("reserva_finalizada");
         return redirect()->route('conta.index');
     }

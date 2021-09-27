@@ -217,7 +217,7 @@
                                                     ENDEREÇO:
                                                 </td>
                                                 <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 427px; font-size: 10px;">
-                                                    {{$cliente->rua . ", n° " . $cliente->numero . " " . $cliente->bairro . " - " . $cliente->Cidade->nome . " - " . $cliente->Estado->uf . ", CEP:" . $cliente->cep}}
+                                                    {{$cliente->rua . ", n° " . $cliente->numero . " " . $cliente->bairro . " - " . $cliente->cidade . " - " . $cliente->estado . ", CEP:" . $cliente->cep}}
                                                     {{--  Rua três corações, nº 1009, Exposição - Passos - MG, CEP: 37902-377  --}}
                                                 </td>
                                                 <td style="width: 10px;"></td>

@@ -60,6 +60,14 @@
                             <b>À VISTA: 6% de desconto</b><br>
                         </div>
                     </div>
+                    @if($carrinho->reserva->desconto_live_ativo && $carrinho->reserva->desconto_live_valor)
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <b>DESCONTO DE LIVE: {{number_format($carrinho->reserva->desconto_live_valor, 0)}}%</b><br>
+                                <small>Aplicado caso a compra seja finalizada durante a live</small>
+                            </div>
+                        </div>
+                    @endif
                     <hr>
                     <div class="row">
                         <div class="col-12">

@@ -65,15 +65,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-12">
-                        @if($venda->parcelas_mes == 1)
-                            <b>Parcelas:</b> {{$venda->parcelas}}x de {{number_format($venda->valor_parcela, 2, ",", ".")}}
-                        @else
-                            @if($venda->parcelas == 1)
-                                <b>Parcelas:</b> {{$venda->parcelas}}x  de {{number_format($venda->valor_parcela, 2, ",", ".")}}
-                            @else
-                                <b>Parcelas:</b> {{$venda->parcelas}}x ({{$venda->parcelas / 2}} duplas) de {{number_format($venda->valor_parcela, 2, ",", ".")}}
-                            @endif
-                        @endif
+                        <b>Parcelas:</b> {{$venda->parcelas}}x de {{number_format($venda->valor_parcela, 2, ",", ".")}}
                     </div>
                 </div>
                 <hr>

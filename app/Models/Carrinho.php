@@ -24,4 +24,8 @@ class Carrinho extends Model
     public function lotes(){
         return $this->belongsToMany(Lote::class, 'carrinho_produtos');
     }
+
+    public function reserva(){
+        return $this->belongsTo(Reserva::class);
+    }
 }
