@@ -30,9 +30,9 @@
 <div class="row justify-content-center">
     <div class="col-12">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="overflow-x: scroll">
 
-                <table id="datatable-buttons" data-order='[[ 1, "DESC" ]]' class="table table-bordered dt-responsive  nowrap w-100">
+                <table id="datatable-buttons" data-order='[[ 1, "DESC" ]]' class="table table-bordered dt-responsive w-100">
                     <thead>
                         <tr>
                             <th>Data</th>
@@ -57,8 +57,8 @@
                                         {{$visita->ip}}
                                     @endif
                                 </td>
-                                <td style="vertical-align: middle; text-align:center;">LOTE {{$visita->lote->numero . ": " . $visita->lote->fazenda->nome_fazenda}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{$visita->lote->nome}}</td>
+                                <td style="vertical-align: middle; text-align:center;">{{$visita->lote->fazenda->nome_fazenda}}</td>
+                                <td style="vertical-align: middle; text-align:center;">LOTE {{$visita->lote->numero . ": " . $visita->lote->nome}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->cidade}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->estado}}</td>
                                 @if($visita->logado)
