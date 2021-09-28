@@ -155,25 +155,27 @@ class SiteController extends Controller
             $cep = $query["zip"];
         }
 
-        $visita->ip = $ip;
-        $visita->lote_id = $lote->id;
-        $visita->estado = $estado;
-        $visita->cidade = $cidade;
-        $visita->cep = $cep;
+        if(isset(session()->get("cliente")["admin"]) && session()->get("cliente")["admin"] != true){
+            $visita->ip = $ip;
+            $visita->lote_id = $lote->id;
+            $visita->estado = $estado;
+            $visita->cidade = $cidade;
+            $visita->cep = $cep;
 
-        $visita->save();
+            $visita->save();
 
-        $lote->visitas += 1;
-        $lote->save();
+            $lote->visitas += 1;
+            $lote->save();
 
-        $rdStation = new \RDStation\RDStation(session()->get("cliente")["email"]);
-        $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
-        $rdStation->setLeadData('name', session()->get("cliente")["nome_dono"]);
-        $rdStation->setLeadData('identifier', 'interesse-lote');
-        $rdStation->setLeadData('numero-lote', "" . $lote->numero . $lote->letra);
-        $rdStation->setLeadData('nome-lote', $lote->nome);
-        $rdStation->setLeadData('fazenda-lote', $lote->fazenda->nome_fazenda);
-        $rdStation->sendLead();
+            $rdStation = new \RDStation\RDStation(session()->get("cliente")["email"]);
+            $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+            $rdStation->setLeadData('name', session()->get("cliente")["nome_dono"]);
+            $rdStation->setLeadData('identifier', 'interesse-lote');
+            $rdStation->setLeadData('numero-lote', "" . $lote->numero . $lote->letra);
+            $rdStation->setLeadData('nome-lote', $lote->nome);
+            $rdStation->setLeadData('fazenda-lote', $lote->fazenda->nome_fazenda);
+            $rdStation->sendLead();
+        }
 
         $lote->video = $this->convertYoutube($lote->video);
 
