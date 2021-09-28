@@ -27,7 +27,7 @@
                     <tbody>
                         <tr style="font-size: 14px;">
                             <td style="width: 50%;">{{$total_visitas}} Visitas</td>
-                            <td style="width: 50%;">{{$reserva->lotes->where("reservado", true)->count()}} Vendas ({{number_format($reserva->lotes->where("reservado", true)->count() * 100 / $reserva->lotes->count(), 2, ",", ".")}}%)</td>
+                            <td style="width: 50%;">{{$reserva->lotes->where("reservado", true)->count()}} Vendas ({{number_format($reserva->lotes->where("reservado", true)->count() * 100 / $reserva->lotes->where("membro_pacote", false)->count(), 2, ",", ".")}}%)</td>
                         </tr>
                     </tbody>
                 </table>
