@@ -32,7 +32,7 @@
         <div class="card">
             <div class="card-body" style="overflow-x: scroll">
 
-                <table id="datatable-buttons" data-order='[[ 1, "DESC" ]]' class="table table-bordered dt-responsive w-100">
+                <table id="datatable-buttons" data-order='[[ 0, "DESC" ]]' class="table table-bordered dt-responsive w-100">
                     <thead>
                         <tr>
                             <th>Data</th>
@@ -256,7 +256,6 @@
                         pageLength: -1,
                         lengthChange: true,
                         lengthMenu: [[10,50,100,1000, -1], [10,50,100,1000, "Todos"]],
-                        order: [[0, "desc"]]
                     })
                     .buttons()
                     .container()
