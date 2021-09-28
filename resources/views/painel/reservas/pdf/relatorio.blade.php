@@ -57,25 +57,6 @@
                 <table class="table table-bordered" style="width: 100%; margin-top: 50px;">
                     <thead>
                         <tr style="font-size: 16px; font-weight: bold;">
-                            <td colspan="2">Visitas por dia</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($visitas_dia as $visitante)
-                            <tr style="font-size: 14px;">
-                                <td style="width: 50%;">{{$visitante->data}}</td>
-                                <td style="width: 50%;">{{$visitante->visitas}} Visitas</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12" style="text-align: center; color: black;">
-                <table class="table table-bordered" style="width: 100%; margin-top: 50px;">
-                    <thead>
-                        <tr style="font-size: 16px; font-weight: bold;">
                             <td colspan="2">Cinco maiores visitantes</td>
                         </tr>
                     </thead>
