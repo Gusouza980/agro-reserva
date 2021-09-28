@@ -256,6 +256,7 @@
                         pageLength: -1,
                         lengthChange: true,
                         lengthMenu: [[10,50,100,1000, -1], [10,50,100,1000, "Todos"]],
+                        order: [[0, "desc"]]
                     })
                     .buttons()
                     .container()
