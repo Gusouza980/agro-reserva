@@ -1,6 +1,11 @@
 @extends('painel.template.main')
 
 @section('conteudo')
+    <div class="row mb-3">
+        <div class="col-12">
+            <a name="" id="" class="btn btn-primary" href="{{route('painel.fazenda.reservas.relatorio.pdf', ['reserva' => $reserva])}}" role="button">Gerar PDF</a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-3">
             <div class="card mini-stats-wid">
