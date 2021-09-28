@@ -25,7 +25,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="font-size: 14px;">
+                        <tr style="font-size: 12px;">
                             <td style="width: 50%;">{{$total_visitas}} Visitas</td>
                             <td style="width: 50%;">{{$reserva->lotes->where("reservado", true)->count()}} Vendas ({{number_format($reserva->lotes->where("reservado", true)->count() * 100 / $reserva->lotes->where("membro_pacote", false)->count(), 2, ",", ".")}}%)</td>
                         </tr>
@@ -43,7 +43,7 @@
                     </thead>
                     <tbody>
                         @foreach($visitas_dia as $visitante)
-                            <tr style="font-size: 14px;">
+                            <tr style="font-size: 12px;">
                                 <td style="width: 50%;">{{$visitante->data}}</td>
                                 <td style="width: 50%;">{{$visitante->visitas}} Visitas</td>
                             </tr>
@@ -57,12 +57,12 @@
                 <table class="table table-bordered" style="width: 100%; margin-top: 50px;">
                     <thead>
                         <tr style="font-size: 16px; font-weight: bold;">
-                            <td colspan="2">Cinco maiores visitantes</td>
+                            <td colspan="4">Cinco maiores visitantes</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($cinco_clientes_mais_visitas as $visitante)
-                            <tr style="font-size: 14px;">
+                            <tr style="font-size: 12px;">
                                 <td style="">{{$visitante->cliente->nome_dono}}</td>
                                 <td style="">{{$visitante->cliente->email}}</td>
                                 <td style="">@if($visitante->cliente->telefone) {{$visitante->cliente->telefone}} @else {{$visitante->cliente->whatsapp}} @endif</td>
@@ -91,11 +91,11 @@
                                 @php
                                     $cliente = $visitante->cliente_id;
                                 @endphp
-                                <tr style="font-size: 14px;">
+                                <tr style="font-size: 12px;">
                                     <td colspan="2"><b>{{$visitante->cliente->nome_dono}}<b></td>
                                 </tr>
                             @endif
-                            <tr style="font-size: 14px;">
+                            <tr style="font-size: 12px;">
                                 <td style="width: 50%;">{{$visitante->lote->numero . $visitante->lote->letra . ": " . $visitante->lote->nome}}</td>
                                 <td style="width: 50%;">{{$visitante->visitas}} Visitas</td>
                             </tr>
@@ -115,7 +115,7 @@
                     </thead>
                     <tbody>
                         @foreach($visitas_lote as $visitas)
-                            <tr style="font-size: 14px;">
+                            <tr style="font-size: 12px;">
                                 <td style="width: 50%;">{{$visitas->lote->numero . $visitas->lote->letra . ": " . $visitas->lote->nome}}</td>
                                 <td style="width: 50%;">{{$visitas->visitas}} Visitas</td>
                             </tr>
