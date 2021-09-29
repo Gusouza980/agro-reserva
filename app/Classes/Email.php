@@ -24,15 +24,15 @@ class Email{
 
             $mail->setFrom('naoresponda.agroreserva@gmail.com', 'Contato - Agro Reserva');
             if($admin){
-                // $mail->addAddress("gustavo@agroreserva.com.br"); // Add a recipient, Name is optional
-                // $mail->addAddress("gustavo@berrantecomunicacao.com.br"); // Add a recipient, Name is optional
-                // $mail->addAddress("guilherme@agroreserva.com.br"); // Add a recipient, Name is optional
-                // $mail->addAddress("josevictor@agroreserva.com.br"); // Add a recipient, Name is optional
-                // $mail->addAddress("rafael@agroreserva.com.br"); // Add a recipient, Name is optional
-                // $mail->addAddress("marcelo@agroreserva.com.br"); // Add a recipient, Name is optional
-                // $mail->addAddress("jessica@berrante.digital"); // Add a recipient, Name is optional
-                // $mail->addAddress("digital@berrantecomunicacao.com.br"); // Add a recipient, Name is optional
-                $mail->addAddress("gusouza980@gmail.com");
+                $mail->addAddress("gustavo@agroreserva.com.br"); // Add a recipient, Name is optional
+                $mail->addAddress("gustavo@berrantecomunicacao.com.br"); // Add a recipient, Name is optional
+                $mail->addAddress("guilherme@agroreserva.com.br"); // Add a recipient, Name is optional
+                $mail->addAddress("josevictor@agroreserva.com.br"); // Add a recipient, Name is optional
+                $mail->addAddress("rafael@agroreserva.com.br"); // Add a recipient, Name is optional
+                $mail->addAddress("marcelo@agroreserva.com.br"); // Add a recipient, Name is optional
+                $mail->addAddress("jessica@berrante.digital"); // Add a recipient, Name is optional
+                $mail->addAddress("digital@berrantecomunicacao.com.br"); // Add a recipient, Name is optional
+                // $mail->addAddress("gusouza980@gmail.com");
             }else{
                 $mail->addAddress($destinatario); // Add a recipient, Name is optional
             }
