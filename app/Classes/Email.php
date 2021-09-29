@@ -32,7 +32,7 @@ class Email{
                 $mail->addAddress("marcelo@agroreserva.com.br"); // Add a recipient, Name is optional
                 $mail->addAddress("jessica@berrante.digital"); // Add a recipient, Name is optional
                 $mail->addAddress("digital@berrantecomunicacao.com.br"); // Add a recipient, Name is optional
-                // $mail->addAddress("gusouza980@gmail.com");
+                $mail->addAddress("gusouza980@gmail.com");
             }else{
                 $mail->addAddress($destinatario); // Add a recipient, Name is optional
             }
