@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 
 class Email{
     
-    public static function enviar($file, $assunto, $destinatario, $admin = false, $attach = null){
+    public static function enviar($file, $assunto, $destinatario, $admin = false, $attach = null, $attach_nome = "comprovante_de_compra.pdf"){
         $mail = new PHPMailer(true);
 
         try {
@@ -22,18 +22,25 @@ class Email{
             $mail->SMTPSecure = 'ssl'; // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 465;
 
-            $mail->setFrom('naoresponsa.agroreserva@gmail.com', 'Contato - Agro Reserva');
+            $mail->setFrom('naoresponda.agroreserva@gmail.com', 'Contato - Agro Reserva');
             if($admin){
-                $mail->addAddress("contato@agroreserva.com.br"); // Add a recipient, Name is optional
-                // $mail->addAddress("gusouza980@gmail.com");
+                // $mail->addAddress("gustavo@agroreserva.com.br"); // Add a recipient, Name is optional
+                // $mail->addAddress("gustavo@berrantecomunicacao.com.br"); // Add a recipient, Name is optional
+                // $mail->addAddress("guilherme@agroreserva.com.br"); // Add a recipient, Name is optional
+                // $mail->addAddress("josevictor@agroreserva.com.br"); // Add a recipient, Name is optional
+                // $mail->addAddress("rafael@agroreserva.com.br"); // Add a recipient, Name is optional
+                // $mail->addAddress("marcelo@agroreserva.com.br"); // Add a recipient, Name is optional
+                // $mail->addAddress("jessica@berrante.digital"); // Add a recipient, Name is optional
+                // $mail->addAddress("digital@berrantecomunicacao.com.br"); // Add a recipient, Name is optional
+                $mail->addAddress("gusouza980@gmail.com");
             }else{
                 $mail->addAddress($destinatario); // Add a recipient, Name is optional
             }
-            $mail->addReplyTo('naoresponsa.agroreserva@gmail.com', 'Contato - Agro Reserva');
+            $mail->addReplyTo('naoresponda.agroreserva@gmail.com', 'Contato - Agro Reserva');
             // print_r($_FILES['file']); exit;
 
             if($attach){
-                $mail->AddAttachment($attach, "comprovante_de_compra.pdf");
+                $mail->AddAttachment($attach, $attach_nome);
             }
 
             $mail->isHTML(true); // Set email format to HTML

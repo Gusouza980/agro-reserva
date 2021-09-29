@@ -24,6 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('reserva:relatorio')->everyMinute();; // email diários
         // $schedule->command('inspire')->hourly();
     }
 
