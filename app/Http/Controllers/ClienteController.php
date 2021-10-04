@@ -54,7 +54,7 @@ class ClienteController extends Controller
     }
 
     public function cadastro_painel(Request $request){
-        $cliente = Cliente::where("email", $request->email)->first();
+        $cliente = Cliente::where("email", $request->email)->orWhere("cpf", $request->documento)->orWhere("documento", $request->documento)->first();
 
         if($cliente){
             toastr()->error("E-mail já utilizado");
@@ -163,6 +163,8 @@ class ClienteController extends Controller
 
     public function cadastro_final(Request $request){
 
+        $cliente = Cliente::where("cpf", $request->documento)->orWhere("documento", $request->documento)->first();
+
         $cliente = Cliente::find(session()->get("cliente")["id"]);
 
         // $cliente->nome_dono = $request->nome_completo;
@@ -230,6 +232,7 @@ class ClienteController extends Controller
 
     public function salvar_dados_gerais(Request $request, Cliente $cliente){
         $cliente->nome_dono = $request->nome_dono;
+        $cliente->nome_fazenda = $request->nome_fazenda;
         $cliente->email = $request->email;
         $cliente->documento = $request->documento;
         $cliente->cpf = $request->cpf;
