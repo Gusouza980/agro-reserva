@@ -99,12 +99,12 @@ class ClienteController extends Controller
     }
 
     public function cadastrar(Request $request){
-        // $cliente = Cliente::where("email", $request->email)->first();
+        $cliente = Cliente::where("email", $request->email)->first();
 
-        // if($cliente){
-        //     session()->flash("erro_email", "O email informado já está sendo utilizado.");
-        //     return redirect()->back()->withInput();
-        // }
+        if($cliente){
+            session()->flash("erro_email", "O email informado já está sendo utilizado.");
+            return redirect()->back()->withInput();
+        }
 
         $cliente = new Cliente;
         $cliente->email = $request->email;
