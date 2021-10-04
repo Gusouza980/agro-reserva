@@ -50,6 +50,7 @@ class ClienteController extends Controller
             return redirect()->route("index");
         }
         $anterior = redirect()->back()->getTargetUrl();
+        session()->flash("nome_pagina", "Pré Cadastro");
         return view('cadastro.index', ["anterior" => $anterior]);
     }
 
@@ -93,16 +94,17 @@ class ClienteController extends Controller
         }
         $anterior = redirect()->back()->getTargetUrl();
         $finalizar = true;
+        session()->flash("nome_pagina", "Cadastro Final");
         return view('cadastro.finalizar', ["anterior" => $anterior, "finalizar" => $finalizar]);
     }
 
     public function cadastrar(Request $request){
-        $cliente = Cliente::where("email", $request->email)->first();
+        // $cliente = Cliente::where("email", $request->email)->first();
 
-        if($cliente){
-            session()->flash("erro_email", "O email informado já está sendo utilizado.");
-            return redirect()->back()->withInput();
-        }
+        // if($cliente){
+        //     session()->flash("erro_email", "O email informado já está sendo utilizado.");
+        //     return redirect()->back()->withInput();
+        // }
 
         $cliente = new Cliente;
         $cliente->email = $request->email;
@@ -132,9 +134,9 @@ class ClienteController extends Controller
 
         session(["cliente" => $cliente->toArray()]);
         $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
-        $file = str_replace("{{ nome }}", $cliente->nome_dono, $file);
-        $file = str_replace("{{ usuario }}", $cliente->email, $file);
-        $file = str_replace("{{ senha }}", $request->senha, $file);
+        $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
+        $file = str_replace("{{usuario}}", $cliente->email, $file);
+        $file = str_replace("{{senha}}", $request->senha, $file);
         Email::enviar($file, "Confirmação de Cadastro", session()->get("cliente")["email"], false);
 
         return redirect()->back();
@@ -168,7 +170,7 @@ class ClienteController extends Controller
         $cliente = Cliente::find(session()->get("cliente")["id"]);
 
         // $cliente->nome_dono = $request->nome_completo;
-        // $cliente->rg = $request->rg;
+        $cliente->rg = $request->rg;
         // $cliente->nascimento = $request->nascimento;
         $cliente->documento = $request->documento;
         $cliente->estado_civil = $request->estado_civil;
@@ -179,6 +181,7 @@ class ClienteController extends Controller
         $cliente->complemento = $request->complemento;
         $cliente->cidade = $request->cidade;
         $cliente->estado = $request->estado;
+        $cliente->bairro = $request->bairro;
         $cliente->pais = $request->pais;
         // $cliente->referencia_bancaria_banco = $request->referencia_bancaria_banco;
         // $cliente->referencia_bancaria_gerente = $request->referencia_bancaria_gerente;

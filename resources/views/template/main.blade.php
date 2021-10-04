@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
-
 <head>
-    <title>Agroreserva</title>
+    <title>Agroreserva @if(session()->get('nome_pagina')) - {{ session()->get('nome_pagina') }}  @endif</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
 
@@ -14,7 +13,7 @@
     <meta property="og:locale" content="pt_BR">
     <meta property="og:url" content="https://agroreserva.com.br">
     <meta property="og:title" content="Agroreserva - Respeito pela sua jornada">
-    <meta property="og:site_name" content="Agroreserva">
+    <meta property="og:site_name" content="Agroreserva @if(session()->get('nome_pagina')) - {{ session()->get('nome_pagina') }}  @endif" >
     <meta property="og:description" content="Somos a plataforma de compra e venda das marcas que evoluem a pecuária">
     <meta property="og:image" itemprop="image"
         content="https://agroreserva.com.br/imagens/logo_agroreserva_leite_min.jpg">

@@ -110,12 +110,14 @@ class SiteController extends Controller
             }
         }
         $finalizadas = "";
+        session()->flash("nome_pagina", "Conheça");
         return view("fazenda", ["fazenda" => $fazenda, "logos" => $logos, "reserva" => $reserva, "finalizadas" => $finalizadas]);
     }
 
     public function lotes($slug){
         $fazenda = Fazenda::where("slug", $slug)->first();
         $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        session()->flash("nome_pagina", "Lotes");
         return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva]);
     }
 
@@ -178,7 +180,7 @@ class SiteController extends Controller
         }
 
         $lote->video = $this->convertYoutube($lote->video);
-
+        session()->flash("nome_pagina", "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome);
         $fazenda = Fazenda::where("slug", $slug)->first();
         return view("lote", ["lote" => $lote, "fazenda" => $fazenda]);
     }
@@ -200,6 +202,7 @@ class SiteController extends Controller
         if(session()->get("cliente")){
             return redirect()->route("index");
         }
+        session()->flash("nome_pagina", "Login");
         return view('login');
     }
 
