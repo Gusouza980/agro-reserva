@@ -107,12 +107,19 @@
                                         <input type="date" class="form-control" name="nascimento" id="nascimento"
                                             aria-describedby="helpId" value="{{ $cliente->nascimento }}">
                                     </div>
-                                    <div class="form-group col-12 col-lg-6 form-conta mb-3">
+                                    <div class="form-group col-12 col-lg-4 form-conta mb-3">
                                         <label for="ultimo_acesso">Último Acesso</label>
                                         <input type="date" class="form-control" name="ultimo_acesso" id="ultimo_acesso"
                                             aria-describedby="helpId" value="{{ $cliente->ultimo_acesso }}" readonly>
                                     </div>
-                                    <div class="form-group col-12 col-lg-6 form-conta mb-3">
+                                    <div class="form-group col-12 col-lg-4 form-conta mb-3">
+                                        <label for="pessoa_fisica">Tipo de Pessoa</label>
+                                        <select class="form-control" name="pessoa_fisica" id="pessoa_fisica">
+                                            <option value="0" @if(!$cliente->pessoa_fisica) selected @endif>Jurídica</option>
+                                            <option value="1" @if($cliente->pessoa_fisica) selected @endif>Física</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-12 col-lg-4 form-conta mb-3">
                                         <label for="documento">Documento Cadastrado</label>
                                         <input type="text" class="form-control" name="documento" id="documento"
                                             aria-describedby="helpId" value="{{ $cliente->documento }}">
