@@ -262,6 +262,8 @@ class ClienteController extends Controller
         $cliente->email = $request->email;
         $cliente->documento = $request->documento;
         $cliente->cpf = $request->cpf;
+        $cliente->cnpj = $request->cnpj;
+        $cliente->pessoa_fisica = $request->pessoa_fisica;
         $cliente->nascimento = $request->nascimento;
         $cliente->rg = $request->rg;
         $cliente->whatsapp = $request->whatsapp;
