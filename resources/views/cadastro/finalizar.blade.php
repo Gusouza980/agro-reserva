@@ -28,21 +28,62 @@
                         <form action="{{ route('cadastro.finalizar.salvar') }}" class="row form-cadastro0" method="post">
                             @csrf
                             <input type="hidden" name="anterior" value="{{ $anterior }}">
-                            <div class="form-group col-12 input-cadastro">
-                                <label for="documento">CPF/CNPJ *</label>
-                                <input type="text" class="form-control" name="documento" id="documento"
-                                    aria-describedby="" maxlenght="50" required placeholder="Informe seu CPF ou CNPJ"
-                                    required>
+                            <div class="form-group col-12 input-cadastro d-flex justify-content-center">
+                                <div class="mx-3">
+                                    <div class="form-check form-check-inline mt-2">
+                                        <input class="form-check-input-radio" type="radio" name="pessoa_fisica" value="1">
+                                        <label class="form-check-label ml-2 label-branca">Pessoa Física</label>
+                                    </div>
+                                </div>
+                                <div class="mx-3">
+                                    <div class="form-check form-check-inline mt-2">
+                                        <input class="form-check-input-radio" type="radio" name="pessoa_fisica" value="0">
+                                        <label class="form-check-label ml-2 label-branca">Pessoa Jurídica</label>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group col-12 input-cadastro">
-                                <label for="rg">RG *</label>
-                                <input type="text" class="form-control" name="rg" id="rg" aria-describedby=""
-                                    maxlenght="50" required placeholder="Informe seu RG" required>
+                            <div class="container-fluid" id="campos_pessoa_fisica" style="display: none;">
+                                <div class="row">
+                                    <div class="form-group col-12 input-cadastro">
+                                        <label for="documento">CPF*</label>
+                                        <input type="text" class="form-control" name="cpf" id="cpf"
+                                            aria-describedby="" maxlenght="50" required placeholder="Informe seu CPF"
+                                            required>
+                                    </div>
+                                    <div class="form-group col-12 input-cadastro">
+                                        <label for="rg">RG *</label>
+                                        <input type="text" class="form-control" name="rg" id="rg" aria-describedby=""
+                                            maxlenght="50" required placeholder="Informe seu RG" required>
+                                    </div>
+                                    <div class="form-group col-12 input-cadastro">
+                                        <label for="nascimento">Data de Nascimento</label>
+                                        <input type="date" class="form-control" name="nascimento" id="nascimento">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group col-12 input-cadastro">
-                                <label for="cep">CEP *</label>
-                                <input type="text" class="form-control" name="cep" id="cep" aria-describedby="" required
-                                    placeholder="Informe seu cep">
+                            <div class="container-fluid" id="campos_pessoa_juridica" style="display: none;">
+                                <div class="row">
+                                    <div class="form-group col-12 input-cadastro">
+                                        <label for="cnpj">CNPJ*</label>
+                                        <input type="text" class="form-control" name="cnpj" id="cnpj"
+                                            aria-describedby="" maxlenght="50" required placeholder="Informe seu CNPJ"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid" id="campo_cep" style="display: none;">
+                                <div class="row">
+                                    <div class="form-group col-12 input-cadastro">
+                                        <label for="nome_fazenda">Nome da Fazenda</label>
+                                        <input type="text" class="form-control" name="nome_fazenda" id="nome_fazenda" aria-describedby=""
+                                            maxlenght="150" required placeholder="Informe o nome da sua fazenda" required>
+                                    </div>
+                                    <div class="form-group col-12 input-cadastro">
+                                        <label for="cep">CEP (De correspondência)*</label>
+                                        <input type="text" class="form-control" name="cep" id="cep" aria-describedby="" required
+                                            placeholder="Informe seu cep">
+                                    </div>
+                                </div>
                             </div>
                             <div class="container-fluid" id="endereco" style="display: none;">
                                 <div class="row">
@@ -86,14 +127,14 @@
 
                                 <div class="row mt-3">
                                     <div class="form-group col-12 col-md-6 input-cadastro">
-                                        <label for="referencia_comercial1">Referência Comercial 1</label>
+                                        <label for="referencia_comercial1">Referência Comercial 1 *</label>
                                         <input type="text" class="form-control" name="referencia_comercial1"
-                                            id="referencia_comercial1" aria-describedby="" placeholder="">
+                                            id="referencia_comercial1" aria-describedby="" placeholder="" required>
                                     </div>
                                     <div class="form-group col-12 col-md-6 input-cadastro">
-                                        <label for="referencia_comercial1_tel">Telefone</label>
-                                        <input type="text" class="form-control" name="referencia_comercial1_tel"
-                                            id="referencia_comercial1_tel" aria-describedby="" placeholder="">
+                                        <label for="referencia_comercial1_tel">Telefone *</label>
+                                        <input type="text" class="form-control telefone" name="referencia_comercial1_tel"
+                                            id="referencia_comercial1_tel" aria-describedby="" placeholder="Telefone da Referência Comercial 1" required>
                                     </div>
                                     <div class="form-group col-12 col-md-6 input-cadastro">
                                         <label for="referencia_comercial2">Referência Comercial 2</label>
@@ -102,8 +143,23 @@
                                     </div>
                                     <div class="form-group col-12 col-md-6 input-cadastro">
                                         <label for="referencia_comercial2_tel">Telefone</label>
-                                        <input type="text" class="form-control" name="referencia_comercial2_tel"
-                                            id="referencia_comercial2_tel" aria-describedby="" placeholder="">
+                                        <input type="text" class="form-control telefone" name="referencia_comercial2_tel"
+                                            id="referencia_comercial2_tel" aria-describedby="" placeholder="Telefone da Referência Comercial 2">
+                                    </div>
+                                    <div class="form-group col-12 col-md-4 input-cadastro">
+                                        <label for="referencia_bancaria_banco">Referência Bancária</label>
+                                        <input type="text" class="form-control" name="referencia_bancaria_banco"
+                                            id="referencia_bancaria_banco" aria-describedby="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-12 col-md-4 input-cadastro">
+                                        <label for="referencia_bancaria_gerente">Gerente</label>
+                                        <input type="text" class="form-control" name="referencia_bancaria_gerente"
+                                            id="referencia_bancaria_gerente" aria-describedby="" placeholder="">
+                                    </div>
+                                    <div class="form-group col-12 col-md-4 input-cadastro">
+                                        <label for="referencia_bancaria_tel">Telefone</label>
+                                        <input type="text" class="form-control telefone" name="referencia_bancaria_tel"
+                                            id="referencia_bancaria_tel" aria-describedby="" placeholder="Telefone do Gerente">
                                     </div>
                                 </div>
 
@@ -149,15 +205,70 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="width: 100%; max-width: 500px;" role="document">
+            <div class="modal-content" style="padding: 0px 0 30px 0; border-radius: 20px;">
+
+                <div class="modal-body px-5 pt-0 pb-4">
+                    <button type="button" id="close-modal" class="close cpointer" data-dismiss="modal" aria-label="Close"
+                        style="position: absolute; top: 10px; right: 10px; z-index: 9;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="container-fluid mt-5">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img src="{{ asset('imagens/icone_erro.png') }}" style="width: 100px;"
+                                    alt="Ícone de Cadastro">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center modal-erro-text">
+                                <h1>Ops !</h1>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12 text-center modal-precadastro-text">
+                                <h2 id="titulo-erro-modal">Seu cadastro foi realizado com sucesso!</h2>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12 text-center modal-precadastro-text">
+                                <h3 id="subtitulo-erro-modal">asdasdasdasd</h3>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 text-center modal-precadastro-text">
+                                <h4 id="texto-erro-modal">Caso tenha algum problema, entre em contato com um consultor.</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
 
 @section('scripts')
+    @if (session()->get('erro_email'))
+        <script>
+            $(document).ready(function() {
+                $("#titulo-erro-modal").html("Tivemos um problema.");
+                $("#subtitulo-erro-modal").html(
+                    "{!! session()->get('erro_email') !!} Caso já tenha criado uma conta, e não lembre a senha, você pode recuperá-la na página de login."
+                );
+                $("#modalErro").modal("show");
+            })
+        </script>
+    @endif
     <script src="{{ asset('js/jquery.mask.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('input[name="telefone"]').mask('(00) 00000-0000', );
+            $('.telefone').mask('(00) 00000-0000', );
             $("#cep").mask("00000-000")
+            $("#cnpj").mask("99.999.999/9999-99");
+            $("#cpf").mask("999.999.999-99");
 
             $("#cep").keyup(function() {
                 if ($("#cep").val().length < 9) {
@@ -215,6 +326,28 @@
                     $("#estado").val("");
                     $("#pais").val("");
                     $("#endereco").slideDown(200);
+                }
+            });
+
+            $("input[name='pessoa_fisica']").change(function(){
+                if($(this).val() == "1"){
+                    $("#cnpj").removeAttr("required");
+                    $("#cpf").attr("required", "true");
+                    $("#rg").attr("required", "true");
+                    $("#campos_pessoa_juridica").slideUp(300, function(){
+                        $("#campos_pessoa_fisica").slideDown(300, function(){
+                            $("#campo_cep").slideDown(300);
+                        });
+                    })
+                }else{
+                    $("#cpf").removeAttr("required");
+                    $("#rg").removeAttr("required");
+                    $("#cnpj").attr("required", "true");
+                    $("#campos_pessoa_fisica").slideUp(300, function(){
+                        $("#campos_pessoa_juridica").slideDown(300, function(){
+                            $("#campo_cep").slideDown(300);
+                        });
+                    })
                 }
             });
         })

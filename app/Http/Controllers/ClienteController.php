@@ -165,15 +165,38 @@ class ClienteController extends Controller
 
     public function cadastro_final(Request $request){
 
-        $cliente = Cliente::where("cpf", $request->documento)->orWhere("documento", $request->documento)->first();
+        // dd($request->all());
+
+        if($request->pessoa_fisica == "1"){
+            $cliente = Cliente::where("cpf", $request->cpf)->orWhere("documento", $request->cpf)->first();
+            if($cliente){
+                session()->flash("erro_email", "O cpf informado já está sendo utilizado.");
+                return redirect()->back()->withInput();
+            }
+        }else{
+            $cliente = Cliente::where("cnpj", $request->cnpj)->orWhere("documento", $request->cnpj)->first();
+            if($cliente){
+                session()->flash("erro_email", "O cnpj informado já está sendo utilizado.");
+                return redirect()->back()->withInput();
+            }
+        }
 
         $cliente = Cliente::find(session()->get("cliente")["id"]);
 
-        // $cliente->nome_dono = $request->nome_completo;
+        $cliente->nome_fazenda = $request->nome_fazenda;
         $cliente->rg = $request->rg;
-        // $cliente->nascimento = $request->nascimento;
-        $cliente->documento = $request->documento;
-        $cliente->estado_civil = $request->estado_civil;
+        $cliente->nascimento = $request->nascimento;
+        if($request->pessoa_fisica == "1"){
+            $cliente->pessoa_fisica = true;
+            $cliente->cpf = $request->cpf;
+            $cliente->documento = $request->cpf;
+        }else{
+            $cliente->pessoa_fisica = false;
+            $cliente->cnpj = $request->cnpj;
+            $cliente->documento = $request->cnpj;
+        }
+
+        // $cliente->estado_civil = $request->estado_civil;
         // $cliente->inscricao_produtor_rural = $request->inscricao_produtor_rural;
         $cliente->cep = $request->cep;
         $cliente->rua = $request->rua;
@@ -183,9 +206,9 @@ class ClienteController extends Controller
         $cliente->estado = $request->estado;
         $cliente->bairro = $request->bairro;
         $cliente->pais = $request->pais;
-        // $cliente->referencia_bancaria_banco = $request->referencia_bancaria_banco;
-        // $cliente->referencia_bancaria_gerente = $request->referencia_bancaria_gerente;
-        // $cliente->referencia_bancaria_tel = $request->referencia_bancaria_tel;
+        $cliente->referencia_bancaria_banco = $request->referencia_bancaria_banco;
+        $cliente->referencia_bancaria_gerente = $request->referencia_bancaria_gerente;
+        $cliente->referencia_bancaria_tel = $request->referencia_bancaria_tel;
         $cliente->referencia_comercial1 = $request->referencia_comercial1;
         $cliente->referencia_comercial1_tel = $request->referencia_comercial1_tel;
         $cliente->referencia_comercial2 = $request->referencia_comercial2;
@@ -198,31 +221,31 @@ class ClienteController extends Controller
         // $cliente->referencia_coorporativa2_tel = $request->referencia_coorporativa2_tel;
         $cliente->finalizado = true;
 
-        $rdStation = new \RDStation\RDStation($cliente->email);
-        $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
-        $rdStation->setLeadData('identifier', 'cadastro-completo');
-        $rdStation->setLeadData('documento', $cliente->documento);
-        $rdStation->setLeadData('cep', $cliente->cep);
-        $rdStation->setLeadData('rua', $cliente->rua);
-        $rdStation->setLeadData('numero', $cliente->numero);
-        $rdStation->setLeadData('complemento', $cliente->complemento);
-        $rdStation->setLeadData('cidade', $cliente->cidade);
-        $rdStation->setLeadData('estado', $cliente->estado);
-        $rdStation->setLeadData('pais', $cliente->pais);
-        $rdStation->setLeadData('referencia_comercial1', $cliente->referencia_comercial1);
-        $rdStation->setLeadData('referencia_comercial1_tel', $cliente->referencia_comercial1_tel);
-        $rdStation->setLeadData('referencia_comercial2', $cliente->referencia_comercial2);
-        $rdStation->setLeadData('referencia_comercial2_tel', $cliente->referencia_comercial2_tel);
-        $rdStation->setLeadData('cadastro-finalizado', "Sim");
-        if(session()->get("lote_origem")){
-            $lote = Lote::find(session()->get("lote_origem"));
-            $rdStation->setLeadData('nome_lote_origem', $lote->nome);
-            $rdStation->setLeadData('numero_lote_origem', $lote->numero . $lote->letra);
-            $rdStation->setLeadData('raca_lote_origem', $lote->raca->nome);
-            $rdStation->setLeadData('fazenda_lote_origem', $lote->fazenda->nome_fazenda);
-            session()->forget("lote_origem");
-        }
-        $rdStation->sendLead();
+        // $rdStation = new \RDStation\RDStation($cliente->email);
+        // $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+        // $rdStation->setLeadData('identifier', 'cadastro-completo');
+        // $rdStation->setLeadData('documento', $cliente->documento);
+        // $rdStation->setLeadData('cep', $cliente->cep);
+        // $rdStation->setLeadData('rua', $cliente->rua);
+        // $rdStation->setLeadData('numero', $cliente->numero);
+        // $rdStation->setLeadData('complemento', $cliente->complemento);
+        // $rdStation->setLeadData('cidade', $cliente->cidade);
+        // $rdStation->setLeadData('estado', $cliente->estado);
+        // $rdStation->setLeadData('pais', $cliente->pais);
+        // $rdStation->setLeadData('referencia_comercial1', $cliente->referencia_comercial1);
+        // $rdStation->setLeadData('referencia_comercial1_tel', $cliente->referencia_comercial1_tel);
+        // $rdStation->setLeadData('referencia_comercial2', $cliente->referencia_comercial2);
+        // $rdStation->setLeadData('referencia_comercial2_tel', $cliente->referencia_comercial2_tel);
+        // $rdStation->setLeadData('cadastro-finalizado', "Sim");
+        // if(session()->get("lote_origem")){
+        //     $lote = Lote::find(session()->get("lote_origem"));
+        //     $rdStation->setLeadData('nome_lote_origem', $lote->nome);
+        //     $rdStation->setLeadData('numero_lote_origem', $lote->numero . $lote->letra);
+        //     $rdStation->setLeadData('raca_lote_origem', $lote->raca->nome);
+        //     $rdStation->setLeadData('fazenda_lote_origem', $lote->fazenda->nome_fazenda);
+        //     session()->forget("lote_origem");
+        // }
+        // $rdStation->sendLead();
 
         session()->forget("cliente");
         session(["cliente" => $cliente->toArray()]);

@@ -951,7 +951,7 @@ label {
 }
 
 #container-form-cadastro{
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
@@ -970,6 +970,14 @@ label {
     opacity: 1; /* Firefox */
 }
 
+.input-cadastro > input{
+    background-color: transparent;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 0.3px solid #707070;
+    color: white;
+}
 
 .input-cadastro > select{
     background-color: transparent;
