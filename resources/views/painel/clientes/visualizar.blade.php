@@ -117,15 +117,20 @@
                                         <input type="text" class="form-control" name="documento" id="documento"
                                             aria-describedby="helpId" value="{{ $cliente->documento }}">
                                     </div>
-                                    <div class="form-group col-12 col-lg-6 form-conta mb-3">
+                                    <div class="form-group col-12 col-lg-4 form-conta mb-3">
                                         <label for="rg">RG</label>
                                         <input type="text" class="form-control" name="rg" id="rg"
                                             aria-describedby="helpId" value="{{ $cliente->rg }}">
                                     </div>
-                                    <div class="form-group col-12 col-lg-6 form-conta mb-3">
+                                    <div class="form-group col-12 col-lg-4 form-conta mb-3">
                                         <label for="cpf">CPF</label>
                                         <input type="text" class="form-control" name="cpf" id="cpf"
                                             aria-describedby="helpId" value="{{ $cliente->cpf }}">
+                                    </div>
+                                    <div class="form-group col-12 col-lg-4 form-conta mb-3">
+                                        <label for="cnpj">CNPJ</label>
+                                        <input type="text" class="form-control" name="cnpj" id="cnpj"
+                                            aria-describedby="helpId" value="{{ $cliente->cnpj }}">
                                     </div>
                                     <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                         <label for="whatsapp">Whatsapp</label>
