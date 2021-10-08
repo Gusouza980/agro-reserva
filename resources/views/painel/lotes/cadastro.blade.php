@@ -56,10 +56,16 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="mb-3">
                                     <label for="registro" class="form-label">Registro</label>
                                     <input type="text" class="form-control" name="registro" id="registro" maxlength="30">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label for="rgn" class="form-label">RGN</label>
+                                    <input type="text" class="form-control" name="rgn" id="rgn" maxlength="10">
                                 </div>
                             </div>
                             <div class="col-6 col-md-4">
@@ -97,6 +103,26 @@
                                 <div class="mb-3">
                                     <label for="parto" class="form-label">Último Parto</label>
                                     <input type="date" class="form-control" name="parto" id="parto">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-md-4">
+                                <div class="mb-3">
+                                    <label for="peso" class="form-label">Peso</label>
+                                    <input type="text" class="form-control" name="peso" id="peso" maxlength="10">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="mb-3">
+                                    <label for="iabczg" class="form-label">IABCZg</label>
+                                    <input type="text" class="form-control" name="iabczg" id="iabczg" maxlength="10">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="mb-3">
+                                    <label for="ce" class="form-label">C.E</label>
+                                    <input type="text" class="form-control" name="ce" id="ce" maxlength="10">
                                 </div>
                             </div>
                         </div>

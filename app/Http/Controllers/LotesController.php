@@ -25,6 +25,10 @@ class LotesController extends Controller
         $fazenda = $reserva->fazenda;
         $lote->nome = $request->nome;
         $lote->registro = $request->registro;
+        $lote->peso = $request->peso;
+        $lote->rgn = $request->rgn;
+        $lote->iabczg = $request->iabczg;
+        $lote->ce = $request->ce;
         $lote->gpta = $request->gpta;
         $lote->ccg = $request->ccg;
         $lote->parto = $request->parto;
@@ -81,6 +85,10 @@ class LotesController extends Controller
     public function salvar(Request $request, Lote $lote){
         $lote->nome = $request->nome;
         $lote->registro = $request->registro;
+        $lote->peso = $request->peso;
+        $lote->rgn = $request->rgn;
+        $lote->iabczg = $request->iabczg;
+        $lote->ce = $request->ce;
         $lote->gpta = $request->gpta;
         $lote->ccg = $request->ccg;
         $lote->parto = $request->parto;
