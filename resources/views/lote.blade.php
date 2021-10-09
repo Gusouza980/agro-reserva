@@ -132,6 +132,9 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                 @case(2)
                                     @include('includes.lote.modelo02')
                                     @break;
+                                @case(3)
+                                    @include('includes.lote.modelo03')
+                                    @break;
                                 @default
                                     @include('includes.lote.modelo02')
                                     @break;
