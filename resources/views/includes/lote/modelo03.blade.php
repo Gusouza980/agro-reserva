@@ -11,10 +11,14 @@
         @endif
         <span><b>Raça:</b> {{ $lote->raca->nome }}</span><br>
         <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
+        @if ($lote->deca)
+            <span><b>DECA:</b> {{ {{str_pad($lote->deca, 2, "0", STR_PAD_LEFT)}} }}</span><br>
+            <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
+        @endif
     </div>
     <div class="px-4 px-lg-0 ml-lg-4 flex-grow-1 text-white text-lote-info text-center text-lg-left">
         @if ($lote->iabczg)
-            <span><b>IABCZg:</b> {{ date('m/Y', strtotime($lote->iabczg)) }}</span><br>
+            <span><b>IABCZ:</b> {{ $lote->iabczg }}</span><br>
             <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
         @endif
         @if ($lote->ce)

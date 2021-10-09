@@ -89,21 +89,21 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6 col-md-4">
+                            <div class="col-6 col-md-3">
                                 <div class="mb-3">
                                     <label for="gpta" class="form-label">GPTA</label>
                                     <input type="text" class="form-control" name="gpta" id="gpta"
                                         value="{{ $lote->gpta }}" maxlength="12">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-4">
+                            <div class="col-6 col-md-3">
                                 <div class="mb-3">
                                     <label for="ccg" class="form-label">CCG</label>
                                     <input type="text" class="form-control" name="ccg" id="ccg"
                                         value="{{ $lote->ccg }}" maxlength="20">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-4">
+                            <div class="col-6 col-md-3">
                                 <div class="mb-3">
                                     <label for="parto" class="form-label">Último Parto</label>
                                     <input type="date" class="form-control" name="parto" value="{{ $lote->parto }}"
@@ -112,22 +112,28 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6 col-md-4">
+                            <div class="col-6 col-md-3">
                                 <div class="mb-3">
                                     <label for="peso" class="form-label">Peso</label>
                                     <input type="text" class="form-control" name="peso" id="peso" value="{{$lote->peso}}" maxlength="10">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-4">
+                            <div class="col-6 col-md-3">
                                 <div class="mb-3">
                                     <label for="iabczg" class="form-label">IABCZg</label>
                                     <input type="text" class="form-control" name="iabczg" id="iabczg" value="{{$lote->iabczg}}" maxlength="10">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-4">
+                            <div class="col-6 col-md-3">
                                 <div class="mb-3">
                                     <label for="ce" class="form-label">C.E</label>
                                     <input type="text" class="form-control" name="ce" id="ce" value="{{$lote->ce}}" maxlength="10">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="mb-3">
+                                    <label for="deca" class="form-label">Deca</label>
+                                    <input type="number" class="form-control" name="deca" id="deca" step="1" value="{{$lote->deca}}">
                                 </div>
                             </div>
                         </div>

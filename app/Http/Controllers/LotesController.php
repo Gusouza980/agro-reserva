@@ -29,6 +29,7 @@ class LotesController extends Controller
         $lote->rgn = $request->rgn;
         $lote->iabczg = $request->iabczg;
         $lote->ce = $request->ce;
+        $lote->deca = $request->deca;
         $lote->gpta = $request->gpta;
         $lote->ccg = $request->ccg;
         $lote->parto = $request->parto;
@@ -89,6 +90,7 @@ class LotesController extends Controller
         $lote->rgn = $request->rgn;
         $lote->iabczg = $request->iabczg;
         $lote->ce = $request->ce;
+        $lote->deca = $request->deca;
         $lote->gpta = $request->gpta;
         $lote->ccg = $request->ccg;
         $lote->parto = $request->parto;

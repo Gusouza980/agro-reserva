@@ -50,24 +50,30 @@
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
                     <div style="width: 31%;">
-                        <b class="mr-3">IABCZg.: </b>
+                        <b class="mr-3">IABCZ.: </b>
                     </div>
                     <div style="width: 20%;">
                         <span class="card-lote-info-text">{{$lote->iabczg}}</span>
                     </div>
-                    <div style="width: 25%;">
-                        <b class="mr-3">C.E.: </b>
+                    <div style="width: 28%;">
+                        <b class="mr-3">DECA.: </b>
                     </div>
-                    <div style="width: 20%">
-                        <span class="card-lote-info-text">{{$lote->ce}}</span>
+                    <div style="width: 17%">
+                        <span class="card-lote-info-text">{{str_pad($lote->deca, 2, "0", STR_PAD_LEFT)}}</span>
                     </div>
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
                     <div style="width: 31%;">
                         <b class="mr-3">PESO.: </b>
                     </div>
-                    <div>
+                    <div style="width: 20%;">
                         <span class="card-lote-info-text">{{$lote->peso}}</span>
+                    </div>
+                    <div style="width: 28%;">
+                        <b class="mr-3">C.E.: </b>
+                    </div>
+                    <div style="width: 17%">
+                        <span class="card-lote-info-text">{{$lote->ce}}</span>
                     </div>
                 </div>
             </div>
