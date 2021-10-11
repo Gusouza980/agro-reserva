@@ -303,7 +303,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                 </div>
                             </div>
                             <div class="row mt-3 px-4">
-                                {{$lote->reserva->texto_local_retirada}}
+                                {!! $lote->reserva->texto_local_retirada !!}
                             </div>
                             {{-- <div class="row mt-3">
                             <div class="col-12 text-center">
@@ -602,7 +602,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                     </div>
                                 </div>
                                 <div class="row mt-3 px-4">
-                                    {{$lote->reserva->texto_local_retirada}}
+                                    {!! $lote->reserva->texto_local_retirada !!}
                                 </div>
                                 {{-- <div class="row mt-3">
                                 <div class="col-12 text-center">
@@ -638,7 +638,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                     </div>
                     <div class="row mt-3 px-4">
                         <div class="col-12 text-justify">
-                            {{$lote->reserva->texto_forma_pagamento}}
+                            {!! $lote->reserva->texto_forma_pagamento !!}
                         </div>
                     </div>
                     {{-- <div class="row mt-3">
