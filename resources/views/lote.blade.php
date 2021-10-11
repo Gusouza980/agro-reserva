@@ -303,15 +303,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                 </div>
                             </div>
                             <div class="row mt-3 px-4">
-                                <div class="col-12 text-left">
-                                    <b>Frete por conta do Comprador</b>
-                                </div>
-                            </div>
-                            <div class="row mt-3 px-4">
-                                <div class="col-12 text-left">
-                                    <b>Local da retirada</b>: Estância K<br>
-                                    ROD GO-020, km 19, Bela Vista de Goiás - GO, 75240-000
-                                </div>
+                                {{$lote->reserva->texto_local_retirada}}
                             </div>
                             {{-- <div class="row mt-3">
                             <div class="col-12 text-center">
@@ -610,15 +602,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                     </div>
                                 </div>
                                 <div class="row mt-3 px-4">
-                                    <div class="col-12 text-left">
-                                        <b>Frete por conta do Comprador</b>
-                                    </div>
-                                </div>
-                                <div class="row mt-3 px-4">
-                                    <div class="col-12 text-left">
-                                        <b>Local da retirada</b>: Estância K<br>
-                                        ROD GO-020, km 19, Bela Vista de Goiás - GO, 75240-000
-                                    </div>
+                                    {{$lote->reserva->texto_local_retirada}}
                                 </div>
                                 {{-- <div class="row mt-3">
                                 <div class="col-12 text-center">
@@ -654,26 +638,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                     </div>
                     <div class="row mt-3 px-4">
                         <div class="col-12 text-justify">
-                            <p>
-                                Formas de pagamento:
-                            </p>
-                            <p>
-                                À vista ou em até 30 parcelas (6 Triplas e 6 Duplas) sem juros no boleto de titularidade da fazenda e do comprador.
-                            </p>
-                            <p>
-                                Pague <b>À VISTA</b> e ganhe <b>6% de desconto</b>*.
-                            </p>
-                            {{-- <ul class="mt-3">
-                            <li class="" style="list-style: none; font-size: 14px;">*6% de desconto pela fazenda e 4% de desconto da comissão Agro Reserva.</li>
-                        </ul> --}}
-                            <p>
-                                Pagamentos em <b>parcelas reduzida</b> - negociação durante a venda.
-                            </p>
-                            {{-- <ul class="mt-3">
-                            <li class="" style="list-style: none; font-size: 14px;">*3% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.</li>
-                        </ul> --}}
-                            <p style="font-size: 12px;">Os valores referentes à forma de pagamento são calculados
-                                automaticamente no processo de finalização da compra.</p>
+                            {{$lote->reserva->texto_forma_pagamento}}
                         </div>
                     </div>
                     {{-- <div class="row mt-3">
