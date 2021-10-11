@@ -36,16 +36,10 @@
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
                     <div style="width: 25%;">
-                        <b class="mr-3">RGD.: </b>
-                    </div>
-                    <div style="width: 25%;">
-                        <span class="card-lote-info-text">{{$lote->registro}}</span>
-                    </div>
-                    <div  style="width: 25%;">
                         <b class="mr-3">RGN.: </b>
                     </div>
-                    <div style="width: 25%;">
-                        <span class="card-lote-info-text">{{$lote->rgn}}</span>
+                    <div style="">
+                        <span class="card-lote-info-text">{{$lote->registro . " " . $lote->rgn}}</span>
                     </div>
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
