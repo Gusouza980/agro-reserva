@@ -303,7 +303,9 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                 </div>
                             </div>
                             <div class="row mt-3 px-4">
-                                {!! $lote->reserva->texto_local_retirada !!}
+                                <div class="col-12">
+                                    {!! $lote->reserva->texto_local_retirada !!}
+                                </div>
                             </div>
                             {{-- <div class="row mt-3">
                             <div class="col-12 text-center">
