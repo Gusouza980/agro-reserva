@@ -61,7 +61,7 @@
                         <b class="mr-3">PESO.: </b>
                     </div>
                     <div style="width: 20%;">
-                        <span class="card-lote-info-text">{{$lote->peso}}</span>
+                        <span class="card-lote-info-text">{{$lote->peso}}Kg</span>
                     </div>
                     <div style="width: 28%;">
                         <b class="mr-3">C.E.: </b>

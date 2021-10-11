@@ -10,7 +10,7 @@
             <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
         @endif
         @if ($lote->peso)
-            <span><b>PESO:</b> {{ $lote->peso }}</span><br>
+            <span><b>PESO:</b> {{ $lote->peso }}Kg</span><br>
             <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
         @endif
         
