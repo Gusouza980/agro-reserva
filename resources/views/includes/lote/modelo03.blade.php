@@ -12,7 +12,7 @@
         <span><b>Raça:</b> {{ $lote->raca->nome }}</span><br>
         <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
         @if ($lote->deca)
-            <span><b>DECA:</b> {{str_pad($lote->deca, 2, "0", STR_PAD_LEFT)}}</span><br>
+            <span><b>DECA:</b> {{$lote->deca}}</span><br>
             <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
         @endif
     </div>

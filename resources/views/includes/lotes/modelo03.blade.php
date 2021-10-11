@@ -59,7 +59,7 @@
                         <b class="mr-3">DECA.: </b>
                     </div>
                     <div style="width: 17%">
-                        <span class="card-lote-info-text">{{str_pad($lote->deca, 2, "0", STR_PAD_LEFT)}}</span>
+                        <span class="card-lote-info-text">{{$lote->deca}}</span>
                     </div>
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
