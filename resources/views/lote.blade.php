@@ -249,7 +249,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                 <div class="container-fluid">
                     <div class="row py-4">
                         <div class="col-12 text-center">
-                            <a href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank"
+                            <a href="https://api.whatsapp.com/send?phone={{$lote->reserva->telefone_consultor}}" target="_blank"
                                 class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
                         </div>
                     </div>
@@ -550,7 +550,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                     <div class="container-fluid">
                         <div class="row py-4">
                             <div class="col-12 text-center">
-                                <a href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank"
+                                <a href="https://api.whatsapp.com/send?phone={{$membro->reserva->telefone_consultor}}" target="_blank"
                                     class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
                             </div>
                         </div>
@@ -737,7 +737,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                             <p>Você pode consultar sua situação no seu painel de cliente ou falando com nosso consultor</p>
                             <div class="row my-3">
                                 <div class="col-12 text-center">
-                                    <a href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank"
+                                    <a href="https://api.whatsapp.com/send?phone={{$lote->reserva->telefone_consultor}}" target="_blank"
                                         class="btn btn-laranja px-4 py-2">Falar com consultor</a>
                                 </div>
                             </div>
