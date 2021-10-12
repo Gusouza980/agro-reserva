@@ -17,7 +17,7 @@
         {{-- <span><b>Raça:</b> {{ $lote->raca->nome }}</span><br>
         <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);"> --}}
     </div>
-    <div class="px-4 px-lg-0 ml-lg-4 flex-grow-1 text-white text-lote-info text-center text-lg-left" style="margin-top: 13px;">
+    <div class="px-4 px-lg-0 ml-lg-4 flex-grow-1 text-white text-lote-info text-center text-lg-left mt-2 mt-md-0">
         <br><br class="d-md-none">
         @if ($lote->deca)
             <span><b>DECA:</b> {{$lote->deca}}</span><br>
