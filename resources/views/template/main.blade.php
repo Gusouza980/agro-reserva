@@ -105,7 +105,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRTWDJ5" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <a class="btn-whats d-sm-block" href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank">
+    <a class="btn-whats d-sm-block" @if(isset($reserva)) href="https://api.whatsapp.com/send?phone={{$reserva->telefone_consultor}}" @else href="https://api.whatsapp.com/send?phone=5514981809051" @endif target="_blank">
     </a>
     <div class="container-fluid bg-preto">
         <div class="container">
