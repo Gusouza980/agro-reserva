@@ -182,7 +182,7 @@ class SiteController extends Controller
         $lote->video = $this->convertYoutube($lote->video);
         session()->flash("nome_pagina", "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome);
         $fazenda = Fazenda::where("slug", $slug)->first();
-        return view("lote", ["lote" => $lote, "fazenda" => $fazenda]);
+        return view("lote", ["lote" => $lote, "reserva" => $lote->reserva, "fazenda" => $fazenda]);
     }
 
     public function cadastro_fazenda(){
