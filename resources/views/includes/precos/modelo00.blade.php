@@ -8,8 +8,8 @@
                 </h4>
             @else
                 <div>
-                    <h4><b>{{ $lote->reserva->max_parcelas * 2 }}</b>x (15 duplas) de
-                        <b>R${{ number_format($lote->preco / ($lote->reserva->max_parcelas * 2), 2, ',', '.') }}</b>
+                    <h4><b>30</b>x (15 duplas) de
+                        <b>R${{ number_format($lote->preco / ($lote->parcelas), 2, ',', '.') }}</b>
                     </h4>
                 </div>
             @endif
