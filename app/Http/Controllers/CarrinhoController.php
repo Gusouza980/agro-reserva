@@ -21,21 +21,13 @@ class CarrinhoController extends Controller
         if(!$cliente->aprovado){
             return redirect()->route("index");
         }
-        $carrinho = Carrinho::find(session()->get("carrinho"));
-        if(!$carrinho){
-            return redirect()->route("index");
-        }
-        $ceps = array();
-        $fazendas = array();
 
-        foreach($carrinho->lotes as $lote){
-            // dd($lote->fazenda);
-            if(!in_array($lote->fazenda->nome_fazenda, $fazendas)){
-                array_push($fazendas, $lote->fazenda->nome_fazenda);
-                array_push($ceps, $lote->fazenda->cep);
-            }
+        $carrinhos = [];
+        foreach(session()->get("carrinho") as $car){
+            $carrinhos[] = $car["id"];    
         }
-        return view("carrinho", ["carrinho" => $carrinho, "ceps" => $ceps, "fazendas" => $fazendas]);
+
+        return view("carrinho", ["carrinhos" => $carrinhos]);
     }
 
     public function adicionar(Lote $lote){
@@ -43,14 +35,27 @@ class CarrinhoController extends Controller
         if(!$cliente->aprovado){
             return redirect()->route("index");
         }
+
+        $carrinho = null;
+
         if(session()->get("carrinho")){
-            $carrinho = Carrinho::find(session()->get("carrinho"));
-        }else{
+            foreach(session()->get("carrinho") as $car){
+                if($car["reserva"] == $lote->reserva_id){
+                    $carrinho = Carrinho::find($car["id"]);
+                }
+            }
+        }
+
+        if(!$carrinho){
             $carrinho = new Carrinho;
             $carrinho->cliente_id = session()->get("cliente")["id"];
             $carrinho->aberto = true;
+            $carrinho->reserva_id = $lote->reserva_id;
             $carrinho->save();
-            session(["carrinho" => $carrinho->id]);
+            if(!session()->get("carrinho")){
+                session()->put("carrinho", []);
+            }
+            session()->push("carrinho", ["id" => $carrinho->id, "reserva" => $carrinho->reserva_id]);
         }
 
         if($carrinho->produtos->where("lote_id", $lote->id)->count() > 0){
@@ -103,12 +108,11 @@ class CarrinhoController extends Controller
         return redirect()->back();
     }
 
-    public function checkout(){
+    public function checkout(Carrinho $carrinho){
         $cliente = Cliente::find(session()->get("cliente")["id"]);
         if(!$cliente->aprovado){
             return redirect()->route("index");
         }
-        $carrinho = Carrinho::find(session()->get("carrinho"));
         if(!$carrinho){
             return redirect()->route("index");
         }
@@ -116,13 +120,11 @@ class CarrinhoController extends Controller
     }
 
     public function concluir(Request $request){
-    
-        // round($produto->lote->preco / $i, 2);
         $cliente = Cliente::find(session()->get("cliente")["id"]);
         if(!$cliente->aprovado){
             return redirect()->route("index");
         }
-        $carrinho = Carrinho::find(session()->get("carrinho"));
+        $carrinho = Carrinho::find($request->carrinho_id);
         $reservados = false;
         foreach($carrinho->produtos as $produto){
             if($produto->lote->reservado){
@@ -150,7 +152,7 @@ class CarrinhoController extends Controller
 
         if($parcelas == 1){
             $comissao = 0;
-            $desconto = 6;
+            $desconto = $carrinho->reserva->desconto;
         }else if($parcelas < 5){
             $comissao = 0;
             $desconto = 0;
@@ -217,7 +219,17 @@ class CarrinhoController extends Controller
         
         $carrinho->aberto = false;
         $carrinho->save();
+
+        $carrinhos = session()->get("carrinho");
+        foreach($carrinhos as $key => $car){
+            if($car["id"] == $carrinho->id){
+                unset($carrinhos[$key]);
+            }
+        }
         session()->forget("carrinho");
+        if(count($carrinhos) > 0){
+            session()->put("carrinho", $carrinhos);
+        }
         // $data = ["venda" => $venda];
         // $pdf = PDF::loadView('cliente.comprovante2', $data);
         // $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");

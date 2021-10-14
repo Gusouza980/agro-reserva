@@ -57,7 +57,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <b>À VISTA: 6% de desconto</b><br>
+                            <b>À VISTA: {{$carrinho->reserva->desconto}}% de desconto</b><br>
                         </div>
                     </div>
                     @if($carrinho->reserva->desconto_live_ativo && $carrinho->reserva->desconto_live_valor)
@@ -95,7 +95,7 @@
                                     <option value="">Selecione as parcelas</option>
                                     @for($i = 1; $i <= 12; $i++)
                                         @if($i == 1)
-                                            <option value="{{$i}}">{{$i}}x de R${{number_format(($carrinho->total - ($carrinho->total * 8 / 100)), 2, ",", ".")}} (6% de desconto)</option>
+                                            <option value="{{$i}}">{{$i}}x de R${{number_format(($carrinho->total - ($carrinho->total * $carrinho->reserva->desconto / 100)), 2, ",", ".")}} ({{$carrinho->reserva->desconto}}% de desconto)</option>
                                             {{--  <option value="{{$i * 2}}">{{$i}}x (1 dupla) de R${{number_format(($carrinho->total - ($carrinho->total * 8 / 100)) / 2, 2, ",", ".")}}</option>  --}}
                                         {{--  @elseif($i < 5)  --}}
                                             {{--  <option value="{{$i * 2}}">{{$i}}x ({{$i}} duplas) de R${{number_format(round(($carrinho->total - ($carrinho->total * 0 / 100)) / ($i * 2), 2),2 , ",", ".")}}</option>  --}}
@@ -157,6 +157,7 @@
                             @csrf
                             <input type="hidden" name="parcelas" id="parcelas-h">
                             <input type="hidden" name="assessor" id="assessor-h">
+                            <input type="hidden" name="carrinho_id" value="{{$carrinho->id}}">
                         </form>
                         <button class="btn btn-vermelho px-4" id="btn-finalizar">Finalizar Reserva</button>
                         <div class="row">
@@ -180,7 +181,7 @@
                 $("#resumo").slideUp(500, function(){
                     if(parseInt($("select[name='parcelamento']").val()) == 1){
                         var comissao = 0;
-                        var desconto = 6;
+                        var desconto = {!! $carrinho->reserva->desconto !!};
                     }else if(parseInt($("select[name='parcelamento']").val()) < 5 ){
                         var comissao = 0;
                         var desconto = 0;

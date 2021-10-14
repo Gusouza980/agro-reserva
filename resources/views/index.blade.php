@@ -21,14 +21,14 @@
                     <li data-target="#carouselId" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <img src="{{asset('imagens/banner1.jpg')}}"  alt="First slide">
+                    <div class="carousel-item active text-center">
+                        <img src="{{asset('imagens/banner1.jpg')}}" class="mx-auto" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('imagens/banner2.jpg')}}"  alt="First slide">
+                        <img src="{{asset('imagens/banner1.jpg')}}" class="mx-auto" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('imagens/banner1.jpg')}}"  alt="First slide">
+                        <img src="{{asset('imagens/banner1.jpg')}}" class="mx-auto" alt="First slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">

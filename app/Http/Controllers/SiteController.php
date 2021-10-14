@@ -215,10 +215,21 @@ class SiteController extends Controller
                 $cookie = Cookie::forever('cliente', $usuario->id);
                 session(["cliente" => $usuario->toArray()]);
                 
-                $carrinho = Carrinho::where([["cliente_id", $usuario->id], ["aberto", true]])->first();
-                if($carrinho){
-                    session(["carrinho" => $carrinho->id]);
+                $carrinhos = Carrinho::where([["cliente_id", $usuario->id], ["aberto", true]])->get();
+                $carrinho_ids = [];
+                
+                foreach($carrinhos as $carrinho){
+                    if($carrinho->reserva_id == null){
+                        $carrinho->delete();
+                    }else{
+                        if(!session()->get("carrinho")){
+                            session()->put("carrinho", []);
+                        }
+                        
+                        session()->push("carrinho", ["id" => $carrinho->id, "reserva" => $carrinho->reserva_id]);
+                    }
                 }
+
                 if(session()->get("pagina_retorno") && session()->get("pagina_retorno") != route("login")){
                     $pagina = session()->get("pagina_retorno");
                     session()->forget("pagina_retorno");

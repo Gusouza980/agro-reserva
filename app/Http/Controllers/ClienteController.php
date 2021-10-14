@@ -112,6 +112,10 @@ class ClienteController extends Controller
         $cliente->telefone = $request->telefone;
         // $cliente->interesses = $request->interesse;
         $cliente->senha = Hash::make($request->senha);
+
+        if($request->segmento){
+            $cliente->segmentos = implode(",", $request->segmento);
+        }
         // $cliente->nome_fazenda = $request->fazenda;
         // $cliente->racas = implode(", ", $request->racas);
         $cliente->finalizado = false;
@@ -197,7 +201,7 @@ class ClienteController extends Controller
         }
 
         // $cliente->estado_civil = $request->estado_civil;
-        // $cliente->inscricao_produtor_rural = $request->inscricao_produtor_rural;
+        $cliente->inscricao_produtor_rural = $request->inscricao_produtor_rural;
         $cliente->cep = $request->cep;
         $cliente->rua = $request->rua;
         $cliente->numero = $request->numero;

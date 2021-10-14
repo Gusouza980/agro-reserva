@@ -79,6 +79,11 @@
                                             maxlenght="150" required placeholder="Informe o nome da sua fazenda" required>
                                     </div>
                                     <div class="form-group col-12 input-cadastro">
+                                        <label for="inscricao_produtor_rural">Inscrição de Produtor Rural</label>
+                                        <input type="text" class="form-control" name="inscricao_produtor_rural" id="inscricao_produtor_rural" aria-describedby=""
+                                            maxlenght="20" required placeholder="Informe sua inscrição de produtor rural" required>
+                                    </div>
+                                    <div class="form-group col-12 input-cadastro">
                                         <label for="cep">CEP (De correspondência)*</label>
                                         <input type="text" class="form-control" name="cep" id="cep" aria-describedby="" required
                                             placeholder="Informe seu cep">

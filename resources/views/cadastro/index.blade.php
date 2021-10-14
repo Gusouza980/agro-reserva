@@ -32,10 +32,29 @@
                                 <input type="text" class="form-control" name="telefone" id="telefone" aria-describedby=""
                                     required placeholder="(99) 99999-9999">
                             </div>
+                 
                             <div class="form-group col-12 input-cadastro">
                                 <label for="senha">Crie uma senha de acesso</label>
                                 <input type="password" class="form-control" name="senha" id="senha" aria-describedby=""
                                     required placeholder="******">
+                            </div>
+
+                            <div class="form-group col-12 input-cadastro">
+                                <label for="telefone">Segmento de Interesse</label>
+                                <div class="form-group input-cadastro d-flex justify-content-start">
+                                    <div class="mx-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio" type="checkbox" name="segmento[]" value="Leite">
+                                            <label class="form-check-label ml-2 label-branca">Leite</label>
+                                        </div>
+                                    </div>
+                                    <div class="mx-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio" type="checkbox" name="segmento[]" value="Corte">
+                                            <label class="form-check-label ml-2 label-branca">Corte</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             {{-- <div class="col-12 my-3">
                             <label for="senha">Quais raças te interessam hoje?</label>

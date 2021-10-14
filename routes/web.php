@@ -80,7 +80,7 @@ Route::middleware(['popup'])->group(function () {
         Route::get('/carrinho/deletar/{produto}',  [\App\Http\Controllers\CarrinhoController::class, 'deletar'])->name("carrinho.deletar");
         Route::get('/carrinho/limpa',  [\App\Http\Controllers\CarrinhoController::class, 'limpa'])->name("carrinho.limpa");
         Route::get('/carrinho',  [\App\Http\Controllers\CarrinhoController::class, 'carrinho'])->name("carrinho");
-        Route::get('/carrinho/checkout',  [\App\Http\Controllers\CarrinhoController::class, 'checkout'])->name("carrinho.checkout");
+        Route::get('/carrinho/checkout/{carrinho}',  [\App\Http\Controllers\CarrinhoController::class, 'checkout'])->name("carrinho.checkout");
         Route::post('/carrinho/concluir',  [\App\Http\Controllers\CarrinhoController::class, 'concluir'])->name("carrinho.concluir");
         Route::get('/carrinho/concluido',  [\App\Http\Controllers\CarrinhoController::class, 'concluido'])->name("carrinho.concluido");
     
