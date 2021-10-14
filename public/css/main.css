@@ -133,6 +133,13 @@ a:active {
     border: 0px;
 }
 
+.btn-verde {
+    background: #15bd3d 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+    color: white;
+    border: 0px;
+}
+
 .btn-vermelho-outline {
     border: 1px solid #E8521B;
     background: transparent;

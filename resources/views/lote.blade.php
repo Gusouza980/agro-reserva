@@ -74,8 +74,8 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                                     para comprar</a>
                                             @endif
                                         @else
-                                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                                style="max-width:350px;">Reservado</button>
+                                            <button name="" id="" class="btn btn-verde btn-block py-2 px-5 mx-auto"
+                                                style="max-width:350px;">Vendido</button>
                                         @endif
                                     @endif
                                 @else
