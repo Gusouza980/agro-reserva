@@ -96,6 +96,7 @@ class VendasController extends Controller
             $produto->total = $lote->preco * $produto->quantidade;
             $produto->save();
 
+            $carrinho->reserva_id = $lote->reserva_id;
             $carrinho->total += $produto->total;
             $carrinho->save();
         }
