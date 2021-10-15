@@ -81,7 +81,7 @@ class CarrinhoController extends Controller
     }
 
     public function deletar(CarrinhoProduto $produto){
-        $carrinho = Carrinho::find(session()->get("carrinho"));
+        $carrinho = Carrinho::find($produto->carrinho_id);
         $carrinho->total -= $produto->lote->preco;
         $carrinho->save();
         $produto->delete();
