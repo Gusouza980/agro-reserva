@@ -502,7 +502,7 @@
 
         <div style="width: 100%; border: 1px solid black;">
             <div style="width: 100%; text-align: left; font-weight: bold; padding: 0 15px; line-height: 23px;">
-                <h5>Eu ____________________________________ reconheço que realizei a compra conforme demonstrativo no dia _________________ na reserva Mães de Ouro.</h5>
+                <h5>Eu ____________________________________ reconheço que realizei a compra conforme demonstrativo no dia _________________ na reserva {{$venda->carrinho->reserva->fazenda->nome_fazenda}}.</h5>
             </div>
         </div>
 
