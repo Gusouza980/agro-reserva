@@ -13,17 +13,16 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use App\Models\Configuracao;
 use Cookie;
+use Spatie\PdfToText\Pdf;
 
 class SiteController extends Controller
 {
 
     public function testes(){
-        $rdStation = new \RDStation\RDStation('gusouza980@gmail.com');
-        $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
-        $rdStation->setLeadData('identifier', 'interesse-lote');
-        $rdStation->setLeadData('lote', '20 - Mimosa');
-        $res = $rdStation->sendLead();
-        dd($res);
+        $text = (new Pdf())
+                ->setPdf(asset('imagens/comprovante.pdf'))
+                ->text();
+        dd($text);
     }
 
     public function index(){

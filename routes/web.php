@@ -39,7 +39,7 @@ Route::middleware(['popup'])->group(function () {
     })->name("sair");
     
     
-    Route::get('/teste-email', [\App\Http\Controllers\ContaController::class, 'teste']);
+    // Route::get('/teste', [\App\Http\Controllers\ContaController::class, 'teste']);
     
     Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("index");
     Route::get('/login', [\App\Http\Controllers\SiteController::class, 'login'])->name("login");
