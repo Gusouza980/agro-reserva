@@ -20,7 +20,7 @@ class SiteController extends Controller
 
     public function testes(){
         $text = (new Pdf())
-                ->setPdf(asset('imagens/comprovante.pdf'))
+                ->setPdf('imagens/comprovante.pdf')
                 ->text();
         dd($text);
     }
