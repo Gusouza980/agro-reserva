@@ -22,7 +22,7 @@ class SiteController extends Controller
         // $text = (new Pdf())
         //         ->setPdf('imagens/comprovante.pdf')
         //         ->text();
-        $pdf = new Gufy\PdfToHtml\Pdf('imagens/comprovante.pdf');
+        $pdf = new \Gufy\PdfToHtml\Pdf('imagens/comprovante.pdf');
         // convert to html string
         $html = $pdf->html();
         dd($html);
