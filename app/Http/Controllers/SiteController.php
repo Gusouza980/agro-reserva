@@ -19,13 +19,13 @@ class SiteController extends Controller
 {
 
     public function testes(){
-        // $text = (new Pdf())
-        //         ->setPdf('imagens/comprovante.pdf')
-        //         ->text();
-        $pdf = new \Gufy\PdfToHtml\Pdf('imagens/comprovante.pdf');
+        $text = (new Pdf())
+                ->setPdf('imagens/comprovante.pdf')
+                ->text();
+        // $pdf = new \Gufy\PdfToHtml\Pdf('imagens/comprovante.pdf');
         // convert to html string
-        $html = $pdf->html();
-        dd($html);
+        // $html = $pdf->html();
+        dd($text);
     }
 
     public function index(){
