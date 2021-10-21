@@ -285,13 +285,13 @@
                                     {{$produto->lote->nome}}
                                 </div>
                                 <div style="margin-top: 5px; font-size: 8px;">
-                                    RGD: {{$produto->lote->registro}} @if($produto->lote->rgn) {{$produto->lote->rgn}} @endif 
-                                    @if($produto->lote->gpta) - GPTA: {{$produto->lote->gpta}} @endif 
-                                    @if($produto->lote->nascimento) - NASC.: {{date("d/m/Y", strtotime($produto->lote->nascimento))}} @endif 
-                                    @if($produto->lote->ccg) - CCG: {{$produto->lote->ccg}} @endif 
-                                    @if($produto->lote->iabcz) - IABCZ: {{$produto->lote->iabczg}} @endif 
-                                    @if($produto->lote->peso) - PESO: {{$produto->lote->peso}}Kg @endif
-                                    @if($produto->lote->ce) - C.E: {{$produto->lote->ce}} @endif
+                                    <b>RGD:</b> {{$produto->lote->registro}} @if($produto->lote->rgn) {{$produto->lote->rgn}} @endif 
+                                    @if($produto->lote->gpta) - <b>GPTA:</b> {{$produto->lote->gpta}} @endif 
+                                    @if($produto->lote->nascimento) - <b>NASC:</b> {{date("d/m/Y", strtotime($produto->lote->nascimento))}} @endif 
+                                    @if($produto->lote->ccg) - <b>CCG:</b> {{$produto->lote->ccg}} @endif 
+                                    @if($produto->lote->iabcz) - <b>IABCZ:</b> {{$produto->lote->iabczg}} @endif 
+                                    @if($produto->lote->peso) - <b>PESO:</b> {{$produto->lote->peso}}Kg @endif
+                                    @if($produto->lote->ce) - <b>C.E:</b> {{$produto->lote->ce}} @endif
                                     - {{$produto->lote->sexo}}
                                 </div>
                                 <div style="margin-top: 5px; font-size: 9px;">
