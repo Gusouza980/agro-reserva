@@ -292,7 +292,7 @@
                                     @if($produto->lote->iabcz) - <b>IABCZ:</b> {{$produto->lote->iabczg}} @endif 
                                     @if($produto->lote->peso) - <b>PESO:</b> {{$produto->lote->peso}}Kg @endif
                                     @if($produto->lote->ce) - <b>C.E:</b> {{$produto->lote->ce}} @endif
-                                    - {{$produto->lote->sexo}}
+                                    - {{strtoupper($produto->lote->sexo)}}
                                 </div>
                                 <div style="margin-top: 5px; font-size: 9px;">
                                     @if($produto->lote->parto) Último parto em {{date("d/m/Y", strtotime($produto->lote->parto))}} @endif
