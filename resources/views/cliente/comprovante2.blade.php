@@ -285,7 +285,14 @@
                                     {{$produto->lote->nome}}
                                 </div>
                                 <div style="margin-top: 5px; font-size: 8px;">
-                                    RGD: {{$produto->lote->registro}} - GPTA: {{$produto->lote->gpta}} - NASC.: @if($produto->lote->nascimento) {{date("d/m/Y", strtotime($produto->lote->nascimento))}} @endif - CCG: {{$produto->lote->ccg}} - FÊMEA
+                                    RGD: {{$produto->lote->registro}} @if($produto->lote->rgn) {{$produto->lote->rgn}} @endif 
+                                    @if($produto->lote->gpta) - GPTA: {{$produto->lote->gpta}} @endif 
+                                    @if($produto->lote->nascimento) - NASC.: {{date("d/m/Y", strtotime($produto->lote->nascimento))}} @endif 
+                                    @if($produto->lote->ccg) - CCG: {{$produto->lote->ccg}} @endif 
+                                    @if($produto->lote->iabcz) - IABCZ: {{$produto->lote->iabczg}} @endif 
+                                    @if($produto->lote->peso) - PESO: {{$produto->lote->peso}}Kg @endif
+                                    @if($produto->lote->ce) - C.E: {{$produto->lote->ce}} @endif
+                                    - {{$produto->lote->sexo}}
                                 </div>
                                 <div style="margin-top: 5px; font-size: 9px;">
                                     @if($produto->lote->parto) Último parto em {{date("d/m/Y", strtotime($produto->lote->parto))}} @endif
