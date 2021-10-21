@@ -4,13 +4,13 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
 
 @extends('template.main')
 
-@section('metas')
+{{-- @section('metas')
     <meta property="og:title" content="{{ $lote->nome }} - {{ $lote->fazenda->nome_fazenda }}" />
     <meta property="og:description"
         content="{{ $lote->nome }} da raça {{ $lote->raca->nome }} na reserva da fazenda {{ $lote->fazenda->nome_fazenda }}" />
-    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:url" content="{{ url()->full() }}" />
     <meta property="og:image" content="{{ asset($lote->preview) }}" />
-@endsection
+@endsection --}}
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/magnific.popup.css') }}">
