@@ -27,7 +27,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
         <div style="background-color: black; background: url(/{{ $fazenda->fundo_conheca_lotes }}); background-size: cover; background-position: center;">
             <div class="container-fluid bg-preto py-5 py-lg-2">
                 <div class="container">
-                    <div class="row align-items-center">
+                    <div class="row align-items-center pb-4">
                         <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
                             <img src="{{ asset($fazenda->logo) }}" style="width: 100%; max-width: 300px;" alt="">
                         </div>
@@ -85,12 +85,18 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                             </div>
                         </div>
                     </div>
+                    {{-- <div class="row justify-content-center mt-5 mt-lg-0">
+                        <div>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->full()}}" target="_blank"><i class="fab fa-facebook text-white fa-2x" aria-hidden="true"></i></a>
+                            <a href="https://api.whatsapp.com/send?text={{url()->full()}}" class="ml-3" target="_blank"><i class="fab fa-whatsapp text-white fa-2x"></i></a>
+                        </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="w1200 mx-auto pt-5 pb-5 pb-lg-0" style="">
                 <div class="container-fluid">
-                    <div class="row py-4 px-4">
-                        <div class="col-12">
+                    <div class="row py-4 px-5 justify-content-between">
+                        <div>
                             @if (!isset($finalizadas))
                                 <a href="{{ route('fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug]) }}"><span
                                         style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
@@ -101,6 +107,10 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                         style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
                                             class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
                             @endif
+                        </div>
+                        <div class="text-right">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->full()}}" target="_blank"><i class="fab fa-facebook text-white fa-2x" aria-hidden="true"></i></a>
+                            <a href="https://api.whatsapp.com/send?text={{url()->full()}}" class="ml-3" target="_blank"><i class="fab fa-whatsapp text-white fa-2x"></i></a>
                         </div>
                     </div>
                     <div class="row justify-content-center mt-5" style="position: relative;">
