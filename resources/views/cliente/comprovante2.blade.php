@@ -65,7 +65,7 @@
             @endphp
             <div class="row">
                 <div class="col-12">
-                    <table class="table" style="border-spacing: 0; padding: 0px 0px; margin-top: 40px; margin-left: auto; margin-right: auto; border: 1px solid black;">
+                    <table class="table" style="border-spacing: 0; padding: 0px 0px; margin-top: 40px; margin-left: auto; margin-right: auto; border: 1px solid black; width:100%;">
                         <thead style="background-color: black; color: white; padding: 0px 0px;">
                             <tr style="padding: 0px 0px;">
                                 <th class="text-center" style="font-size: 12px; font-weight: bold; padding: 3px 0px;">DADOS DO VENDEDOR</th>
@@ -75,7 +75,7 @@
                             
                             <tr class="">
                                 <td class="">
-                                    <table style="border-spacing: 0 1.5px;">
+                                    <table style="border-spacing: 0 1.5px; width: 100%;">
                                         <tbody>
                                             <tr class="border: 0px important;">
                                                 <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
@@ -108,7 +108,7 @@
                             </tr>
                             <tr class="">
                                 <td class="">
-                                    <table style="border-spacing: 0 1.5px;">
+                                    <table style="border-spacing: 0 1.5px; width: 100%;">
                                         <tbody>
                                             <tr class="border: 0px important;">
                                                 <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
@@ -133,7 +133,7 @@
                             </tr>
                             <tr class="">
                                 <td class="">
-                                    <table style="border-spacing: 0 1.5px;">
+                                    <table style="border-spacing: 0 1.5px; width: 100%;">
                                         <tbody>
                                             <tr class="border: 0px important;">
                                                 <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
@@ -167,7 +167,7 @@
 
             <div class="row">
                 <div class="col-12">
-                    <table class="table" style="border-spacing: 0; padding: 0px 0px; margin-top: 15px; margin-left: auto; margin-right: auto; border: 1px solid black;">
+                    <table class="table" style="border-spacing: 0; padding: 0px 0px; margin-top: 15px; margin-left: auto; margin-right: auto; border: 1px solid black; width: 100%;">
                         <thead style="background-color: black; color: white; padding: 0px 0px;">
                             <tr style="padding: 0px 0px;">
                                 <th class="text-center" style="font-size: 12px; font-weight: bold; padding: 3px 0px;">DADOS DO COMPRADOR</th>
@@ -177,7 +177,7 @@
                             
                             <tr class="">
                                 <td class="">
-                                    <table style="border-spacing: 0 1.5px;">
+                                    <table style="border-spacing: 0 1.5px; width: 100%;">
                                         <tbody>
                                             <tr class="border: 0px important;">
                                                 <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
@@ -210,7 +210,7 @@
                             </tr>
                             <tr class="">
                                 <td class="">
-                                    <table style="border-spacing: 0 1.5px;">
+                                    <table style="border-spacing: 0 1.5px; width: 100%;">
                                         <tbody>
                                             <tr class="border: 0px important;">
                                                 <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
@@ -236,7 +236,7 @@
                             </tr>
                             <tr class="">
                                 <td class="">
-                                    <table style="border-spacing: 0 1.5px;">
+                                    <table style="border-spacing: 0 1.5px; width: 100%;">
                                         <tbody>
                                             <tr class="border: 0px important;">
                                                 <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
