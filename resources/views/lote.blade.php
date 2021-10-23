@@ -55,7 +55,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                         <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
                                             style="max-width:350px;">Disponível na Live</button>
                                     @else
-                                        @if (!$lote->reservado)
+                                        @if (!$lote->reservado && !$lote->negociacao)
                                             @if (session()->get('cliente'))
                                                 @if ($cliente->aprovado)
                                                     <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
@@ -74,8 +74,13 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                                     para comprar</a>
                                             @endif
                                         @else
-                                            <button name="" id="" class="btn btn-verde btn-block py-2 px-5 mx-auto"
-                                                style="max-width:350px;">Vendido</button>
+                                            @if($lote->reservado)
+                                                <button name="" id="" class="btn btn-verde btn-block py-2 px-5 mx-auto"
+                                                    style="max-width:350px;">Vendido</button>
+                                            @else
+                                                <button name="" id="" class="btn-laranja btn-block py-2 px-5 mx-auto"
+                                                    style="max-width:350px;">Reservado</button>
+                                            @endif
                                         @endif
                                     @endif
                                 @else

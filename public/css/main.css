@@ -1280,6 +1280,13 @@ label {
     height: 100%;
 } */
 
+.faixa-negociacao{
+    width:100%;
+    /* transform: rotate(-45deg); */
+    background-color: #E8521B;
+    font-size: 1.2rem;
+}
+
 .faixa-reservado{
     width:100%;
     /* transform: rotate(-45deg); */

@@ -6,6 +6,10 @@
                     <div class="faixa-reservado text-center text-white py-2">
                         VENDIDO
                     </div>
+                @elseif($lote->negociacao)
+                    <div class="faixa-negociacao text-center text-white py-2">
+                        RESERVADO
+                    </div>
                 @endif
                 @if($lote->porcentagem < 100)
                     <div class="selo-porcentagem text-center text-white py-2">
