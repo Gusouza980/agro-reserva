@@ -101,8 +101,7 @@
             </div>
         </div>
         <div class="row justify-content-center justify-content-lg-between">
-            @foreach ($reserva->lotes->where('ativo', true)->where('membro_pacote', false)->sortBy('numero')
-        as $lote)
+            @foreach ($lotes as $lote)
 
                 @if($lote->pacote)
                     @switch($lote->modelo_exibicao)
@@ -136,144 +135,144 @@
                     @endswitch
                 @endif
 
-                @endforeach
-                @if ($fazenda->catalogo)
-                    <div class="col-12 text-center mt-5 link-download-catalogo">
-                        <a class="link-download-catalogo" href="{{ asset($fazenda->catalogo) }}" class="card-lote-botao"
-                            href="#" role="button" download="catalogo-{{ $fazenda->slug }}.pdf"><i
-                                class="fas fa-file-download mr-3"></i>Baixar PDF do Catálogo</a>
-                    </div>
-                    {{-- <div class="col-12 text-center mt-5">
-                    <a name="" id="" ><button class="px-4 py-2">Baixar Catálogo</button></a>
-                </div> --}}
-                @endif
-            </div>
+            @endforeach
+            @if ($fazenda->catalogo)
+                <div class="col-12 text-center mt-5 link-download-catalogo">
+                    <a class="link-download-catalogo" href="{{ asset($fazenda->catalogo) }}" class="card-lote-botao"
+                        href="#" role="button" download="catalogo-{{ $fazenda->slug }}.pdf"><i
+                            class="fas fa-file-download mr-3"></i>Baixar PDF do Catálogo</a>
+                </div>
+                {{-- <div class="col-12 text-center mt-5">
+                <a name="" id="" ><button class="px-4 py-2">Baixar Catálogo</button></a>
+            </div> --}}
+            @endif
         </div>
-    @endsection
+    </div>
+@endsection
 
-    @section('scripts')
-        <script>
-            $(document).ready(function() {
+@section('scripts')
+    <script>
+        $(document).ready(function() {
 
-                $(".sino-lote").click(function() {
-                    var lid = $(this).attr("lid");
-                    var icone = $(this);
-                    var _token = $('meta[name="csrf-token"]').attr('content');
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': _token
+            $(".sino-lote").click(function() {
+                var lid = $(this).attr("lid");
+                var icone = $(this);
+                var _token = $('meta[name="csrf-token"]').attr('content');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': _token
+                    }
+                });
+                $.ajax({
+                    url: '/api/declararInteresseLote/' + lid,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success: function(data) {
+                        if (data == "adicionado") {
+                            icone.addClass("interessado");
+                            icone.attr("title", "Desativar notificação")
+                            $("#modalInteresse").modal();
+                        } else {
+                            icone.removeClass("interessado");
+                            icone.attr("title", "Ativar notificação")
                         }
-                    });
-                    $.ajax({
-                        url: '/api/declararInteresseLote/' + lid,
-                        type: 'GET',
-                        dataType: 'JSON',
-                        success: function(data) {
-                            if (data == "adicionado") {
-                                icone.addClass("interessado");
-                                icone.attr("title", "Desativar notificação")
-                                $("#modalInteresse").modal();
-                            } else {
-                                icone.removeClass("interessado");
-                                icone.attr("title", "Ativar notificação")
-                            }
-                        },
-                        error: function() {
-                            console.log("deu ruim");
-                        }
-                    });
-
-
+                    },
+                    error: function() {
+                        console.log("deu ruim");
+                    }
                 });
 
-                $(".icone-curtir").click(function() {
-                    var lid = $(this).attr("lid");
-                    var icone = $(this);
-                    var _token = $('meta[name="csrf-token"]').attr('content');
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': _token
-                        }
-                    });
-                    $.ajax({
-                        url: '/api/curtirLote/' + lid,
-                        type: 'GET',
-                        dataType: 'JSON',
-                        success: function(data) {
-                            if (data == "marcado") {
-                                icone.addClass("marcado");
-                                var qtd = parseInt($(".qtd-curtidas[lid='" + lid + "']").html());
-                                qtd = qtd + 1;
-                                $(".qtd-curtidas[lid='" + lid + "']").html(qtd);
-                                $(".icone-descurtir[lid='" + lid + "']").removeClass("marcado");
-                            } else if (data == "trocado") {
-                                //Marca icone de curtir e aumenta sua quantidade
-                                icone.addClass("marcado");
-                                var qtd = parseInt($(".qtd-curtidas[lid='" + lid + "']").html());
-                                qtd = qtd + 1;
-                                $(".qtd-curtidas[lid='" + lid + "']").html(qtd);
 
-                                //Desmarca icone de descurtir e diminui sua quantidade
-                                $(".icone-descurtir[lid='" + lid + "']").removeClass("marcado");
-                                var qtd = parseInt($(".qtd-descurtidas[lid='" + lid + "']").html());
-                                qtd = qtd - 1;
-                                $(".qtd-descurtidas[lid='" + lid + "']").html(qtd);
-                            } else {
-                                icone.removeClass("marcado");
-                                var qtd = parseInt($(".qtd-curtidas[lid='" + lid + "']").html());
-                                qtd = qtd - 1;
-                                $(".qtd-curtidas[lid='" + lid + "']").html(qtd);
-                            }
-                        },
-                        error: function() {
-                            console.log("deu ruim");
-                        }
-                    });
+            });
+
+            $(".icone-curtir").click(function() {
+                var lid = $(this).attr("lid");
+                var icone = $(this);
+                var _token = $('meta[name="csrf-token"]').attr('content');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': _token
+                    }
                 });
+                $.ajax({
+                    url: '/api/curtirLote/' + lid,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success: function(data) {
+                        if (data == "marcado") {
+                            icone.addClass("marcado");
+                            var qtd = parseInt($(".qtd-curtidas[lid='" + lid + "']").html());
+                            qtd = qtd + 1;
+                            $(".qtd-curtidas[lid='" + lid + "']").html(qtd);
+                            $(".icone-descurtir[lid='" + lid + "']").removeClass("marcado");
+                        } else if (data == "trocado") {
+                            //Marca icone de curtir e aumenta sua quantidade
+                            icone.addClass("marcado");
+                            var qtd = parseInt($(".qtd-curtidas[lid='" + lid + "']").html());
+                            qtd = qtd + 1;
+                            $(".qtd-curtidas[lid='" + lid + "']").html(qtd);
 
-                $(".icone-descurtir").click(function() {
-                    var lid = $(this).attr("lid");
-                    var icone = $(this);
-                    var _token = $('meta[name="csrf-token"]').attr('content');
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': _token
+                            //Desmarca icone de descurtir e diminui sua quantidade
+                            $(".icone-descurtir[lid='" + lid + "']").removeClass("marcado");
+                            var qtd = parseInt($(".qtd-descurtidas[lid='" + lid + "']").html());
+                            qtd = qtd - 1;
+                            $(".qtd-descurtidas[lid='" + lid + "']").html(qtd);
+                        } else {
+                            icone.removeClass("marcado");
+                            var qtd = parseInt($(".qtd-curtidas[lid='" + lid + "']").html());
+                            qtd = qtd - 1;
+                            $(".qtd-curtidas[lid='" + lid + "']").html(qtd);
                         }
-                    });
-                    $.ajax({
-                        url: '/api/descurtirLote/' + lid,
-                        type: 'GET',
-                        dataType: 'JSON',
-                        success: function(data) {
-                            if (data == "marcado") {
-                                icone.addClass("marcado");
-                                var qtd = parseInt($(".qtd-descurtidas[lid='" + lid + "']").html());
-                                qtd = qtd + 1;
-                                $(".qtd-descurtidas[lid='" + lid + "']").html(qtd);
-                            } else if (data == "trocado") {
-                                //Marca icone de descurtir e aumenta sua quantidade
-                                icone.addClass("marcado");
-                                var qtd = parseInt($(".qtd-descurtidas[lid='" + lid + "']").html());
-                                qtd = qtd + 1;
-                                $(".qtd-descurtidas[lid='" + lid + "']").html(qtd);
-
-                                //Desmarca icone de curtir e diminui sua quantidade
-                                $(".icone-curtir[lid='" + lid + "']").removeClass("marcado");
-                                var qtd = parseInt($(".qtd-curtidas[lid='" + lid + "']").html());
-                                qtd = qtd - 1;
-                                $(".qtd-curtidas[lid='" + lid + "']").html(qtd);
-                            } else {
-                                icone.removeClass("marcado");
-                                var qtd = parseInt($(".qtd-descurtidas[lid='" + lid + "']").html());
-                                qtd = qtd - 1;
-                                $(".qtd-descurtidas[lid='" + lid + "']").html(qtd);
-                            }
-                        },
-                        error: function() {
-                            console.log("deu ruim");
-                        }
-                    });
+                    },
+                    error: function() {
+                        console.log("deu ruim");
+                    }
                 });
-            })
-        </script>
-    @endsection
+            });
+
+            $(".icone-descurtir").click(function() {
+                var lid = $(this).attr("lid");
+                var icone = $(this);
+                var _token = $('meta[name="csrf-token"]').attr('content');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': _token
+                    }
+                });
+                $.ajax({
+                    url: '/api/descurtirLote/' + lid,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success: function(data) {
+                        if (data == "marcado") {
+                            icone.addClass("marcado");
+                            var qtd = parseInt($(".qtd-descurtidas[lid='" + lid + "']").html());
+                            qtd = qtd + 1;
+                            $(".qtd-descurtidas[lid='" + lid + "']").html(qtd);
+                        } else if (data == "trocado") {
+                            //Marca icone de descurtir e aumenta sua quantidade
+                            icone.addClass("marcado");
+                            var qtd = parseInt($(".qtd-descurtidas[lid='" + lid + "']").html());
+                            qtd = qtd + 1;
+                            $(".qtd-descurtidas[lid='" + lid + "']").html(qtd);
+
+                            //Desmarca icone de curtir e diminui sua quantidade
+                            $(".icone-curtir[lid='" + lid + "']").removeClass("marcado");
+                            var qtd = parseInt($(".qtd-curtidas[lid='" + lid + "']").html());
+                            qtd = qtd - 1;
+                            $(".qtd-curtidas[lid='" + lid + "']").html(qtd);
+                        } else {
+                            icone.removeClass("marcado");
+                            var qtd = parseInt($(".qtd-descurtidas[lid='" + lid + "']").html());
+                            qtd = qtd - 1;
+                            $(".qtd-descurtidas[lid='" + lid + "']").html(qtd);
+                        }
+                    },
+                    error: function() {
+                        console.log("deu ruim");
+                    }
+                });
+            });
+        })
+    </script>
+@endsection

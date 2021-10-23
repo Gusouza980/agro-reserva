@@ -119,8 +119,12 @@ class SiteController extends Controller
     public function lotes($slug){
         $fazenda = Fazenda::where("slug", $slug)->first();
         $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        $lotes = $reserva->lotes->where('ativo', true)->where('membro_pacote', false);
+        $prioridades = $lotes->where("prioridade", true)->sortBy("numero");
+        $lotes = $lotes->where("prioridade", false)->sortBy("numero");
+        $lotes = $prioridades->merge($lotes);
         session()->flash("nome_pagina", "Lotes");
-        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva]);
+        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "prioridades" => $prioridades, "lotes" => $lotes]);
     }
 
     public function lote($slug, Lote $lote){
