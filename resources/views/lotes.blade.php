@@ -25,7 +25,7 @@
                                         style="border-bottom: 2px solid #FEB000;">Con</span>heça a fazenda</span></a>
                             <a class="mx-5 @if (url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif"
                                 href="{{ route('fazenda.lotes', ['fazenda' => $fazenda->slug]) }}"><span><span
-                                        style="border-bottom: 2px solid #FEB000;">Lot</span>es a venda</span> </a>
+                                        style="border-bottom: 2px solid #FEB000;">Lot</span>es à venda</span> </a>
                         </div>
                         <div class="col-12 d-block d-lg-none">
                             <div class="row">
@@ -88,16 +88,10 @@
         </div>
         <div class="row py-4">
             <div class="col-12">
-                @if (!isset($finalizadas))
-                    <a href="{{ route('fazenda.conheca', ['fazenda' => $fazenda->slug]) }}"><span
-                            style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
-                                class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
-                @else
-                    <a
-                        href="{{ route('reservas.finalizadas.fazenda.conheca', ['fazenda' => $fazenda->slug, 'reserva' => $reserva]) }}"><span
-                            style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
-                                class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
-                @endif
+                <a href="{{ route('index')}}"><span
+                        style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
+                            class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+
             </div>
         </div>
         <div class="row justify-content-center justify-content-lg-between">

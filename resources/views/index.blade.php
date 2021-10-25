@@ -146,7 +146,7 @@
                                             <div class="row mt-3" style="">
                                                 <div class="col-12 text-center">
                                                     <a name="" id="" class="btn @if ($reserva->encerrada) btn-vermelho-outline @else btn-vermelho @endif py-2 px-4"
-                                                        href="{{ route('fazenda.conheca', ['fazenda' => $reserva->fazenda->slug]) }}"
+                                                        href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug]) }}"
                                                         role="button">Mostrar a Reserva</a>
                                                 </div>
                                             </div>
