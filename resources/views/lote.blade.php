@@ -114,8 +114,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                             @endif
                         </div>
                         <div class="text-right">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->full()}}" target="_blank"><i class="fab fa-facebook text-white fa-2x" aria-hidden="true"></i></a>
-                            <a href="https://api.whatsapp.com/send?text={{url()->full()}}" class="ml-3" target="_blank"><i class="fab fa-whatsapp text-white fa-2x"></i></a>
+                            <i class="fas fa-paper-plane fa-lg text-white cpointer" data-toggle="modal" data-target="#modalCompartilhamento"></i>
                         </div>
                     </div>
                     <div class="row justify-content-center mt-5" style="position: relative;">
@@ -636,6 +635,44 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
             @endphp
         @endforeach
     @endif
+
+    <div class="modal fade" id="modalCompartilhamento" tabindex="-1" role="dialog" aria-labelledby="modalPagamentoTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body pb-4">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h5>Compartilhar em:</h5>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->full()}}" target="_blank"><i class="fab fa-facebook fa-2x" style="color: #3b5998;" aria-hidden="true"></i></a>
+                            <a href="https://api.whatsapp.com/send?text={{url()->full()}}" class="ml-3" target="_blank"><i class="fab fa-whatsapp-square fa-2x" style="color: #25D366;"></i></a>
+                            <a href="mailto:?subject=LOTE {{$lote->numero . ' - ' . $lote->nome}} - AGRORESERVA&amp;body=Venha ver o lote {{$lote->numero . ' - ' . $lote->nome}} na Agroreserva%0D%0A{{url()->full()}}." class="ml-3" target="_blank"><i class="fas fa-envelope fa-2x" style="color: #c71610;"></i></a> 
+                            <a href="https://telegram.me/share/url?url={{url()->full()}}&text=Venha conhecer o lote {{$lote->numero . ' - ' . $lote->nome}} na Agroreserva." class="ml-3" target="_blank"><i class="fab fa-telegram fa-2x" style="color: #0088CC;"></i></a>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Link</div>
+                                </div>
+                                <input type="text" class="form-control" value="{{url()->full()}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="modalPagamento" tabindex="-1" role="dialog" aria-labelledby="modalPagamentoTitle"
