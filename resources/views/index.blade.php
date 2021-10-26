@@ -121,7 +121,12 @@
                                         <div class="row" style="">
                                             <div class="col-12 text-center">
                                                 <img src="{{ asset($reserva->fazenda->logo) }}"
-                                                    style="max-width: 100%; @if ($reserva->aberto) height: 80px; @else height: 100%; max-height:110px; @endif"
+                                                    style="max-width: 100%; 
+                                                        @if (($reserva->aberto && !$reserva->encerrada && !$reserva->compra_disponivel) || ($reserva->aberto && !$reserva->encerrada && $reserva->compra_disponivel && $reserva->fim)) 
+                                                            height: 80px; 
+                                                        @else
+                                                            height: 100%; max-height:110px; 
+                                                        @endif"
                                                     alt="{{ $reserva->fazenda->nome }}">
                                             </div>
                                         </div>
