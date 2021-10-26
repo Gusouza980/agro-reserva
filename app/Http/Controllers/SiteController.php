@@ -291,7 +291,12 @@ class SiteController extends Controller
 
     public function lotes_finalizadas(Reserva $reserva, $slug){
         $fazenda = $reserva->fazenda;
-        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "finalizadas" => true]);
+        $lotes = $reserva->lotes->where('ativo', true)->where('membro_pacote', false);
+        $prioridades = $lotes->where("prioridade", true)->sortBy("numero");
+        $lotes = $lotes->where("prioridade", false)->sortBy("numero");
+        $lotes = $prioridades->merge($lotes);
+        session()->flash("nome_pagina", "Lotes");
+        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "finalizadas" => true, "prioridades" => $prioridades, "lotes" => $lotes]);
     }
 
     public function lote_finalizadas(Reserva $reserva, $slug, Lote $lote){
