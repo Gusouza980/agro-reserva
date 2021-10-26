@@ -128,12 +128,12 @@ class SiteController extends Controller
     }
 
     public function lote($slug, Lote $lote){
-        if(!session()->get("cliente")){
-            session()->flash("erro", "Para acessar os lotes, faça seu login.");
-            session()->put(["pagina_retorno" => url()->full()]);
-            session()->put(["lote_origem" => $lote->id]);
-            return redirect()->route("login");
-        }
+        // if(!session()->get("cliente")){
+        //     session()->flash("erro", "Para acessar os lotes, faça seu login.");
+        //     session()->put(["pagina_retorno" => url()->full()]);
+        //     session()->put(["lote_origem" => $lote->id]);
+        //     return redirect()->route("login");
+        // }
         $visita = new Visita;
 
         if(session()->get("cliente")){
@@ -163,7 +163,7 @@ class SiteController extends Controller
             $cep = $query["zip"];
         }
 
-        if(isset(session()->get("cliente")["admin"]) && session()->get("cliente")["admin"] != true){
+        if(!session()->get("cliente") || (isset(session()->get("cliente")["admin"]) && session()->get("cliente")["admin"] != true)){
             $visita->ip = $ip;
             $visita->lote_id = $lote->id;
             $visita->estado = $estado;
@@ -175,14 +175,17 @@ class SiteController extends Controller
             $lote->visitas += 1;
             $lote->save();
 
-            $rdStation = new \RDStation\RDStation(session()->get("cliente")["email"]);
-            $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
-            $rdStation->setLeadData('name', session()->get("cliente")["nome_dono"]);
-            $rdStation->setLeadData('identifier', 'interesse-lote');
-            $rdStation->setLeadData('numero-lote', "" . $lote->numero . $lote->letra);
-            $rdStation->setLeadData('nome-lote', $lote->nome);
-            $rdStation->setLeadData('fazenda-lote', $lote->fazenda->nome_fazenda);
-            $rdStation->sendLead();
+            if(session()->get("cliente")){
+                $rdStation = new \RDStation\RDStation(session()->get("cliente")["email"]);
+                $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+                $rdStation->setLeadData('name', session()->get("cliente")["nome_dono"]);
+                $rdStation->setLeadData('identifier', 'interesse-lote');
+                $rdStation->setLeadData('numero-lote', "" . $lote->numero . $lote->letra);
+                $rdStation->setLeadData('nome-lote', $lote->nome);
+                $rdStation->setLeadData('fazenda-lote', $lote->fazenda->nome_fazenda);
+                $rdStation->sendLead();
+            }
+            
         }
 
         $lote->video = $this->convertYoutube($lote->video);

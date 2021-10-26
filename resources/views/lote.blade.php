@@ -1,5 +1,9 @@
 @php
-$cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
+
+if(session()->get("cliente")){
+    $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
+}
+
 @endphp
 
 @extends('template.main')
@@ -37,15 +41,17 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                                     <h2>{{ $lote->nome }}</h2>
                                 </div>
                             </div>
-                            {{--  PRECO AQUI  --}}
-                            @switch($lote->modelo_preco)
-                                @case(0)
-                                    @include('includes.precos.modelo00')
-                                    @break
-                                @case(1)
-                                    @include('includes.precos.modelo01')
-                                    @break
-                            @endswitch
+                            @if(session()->get("cliente"))
+                                {{--  PRECO AQUI  --}}
+                                @switch($lote->modelo_preco)
+                                    @case(0)
+                                        @include('includes.precos.modelo00')
+                                        @break
+                                    @case(1)
+                                        @include('includes.precos.modelo01')
+                                        @break
+                                @endswitch
+                            @endif
                         </div>
                         <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
                             <div class="text-center text-white">
