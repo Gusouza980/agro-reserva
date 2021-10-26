@@ -134,9 +134,11 @@
                                                             <h2 class="data-abertura mt-n2">
                                                                 {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
                                                         @else
-                                                            <h1 class="text-abertura">Disponível até</h1>
-                                                            <h2 class="data-abertura mt-n2">
-                                                                {{ date('d/m/Y', strtotime($reserva->fim)) }}</h2>
+                                                            @if($reserva->fim)
+                                                                <h1 class="text-abertura">Disponível até</h1>
+                                                                <h2 class="data-abertura mt-n2">
+                                                                    {{ date('d/m/Y', strtotime($reserva->fim)) }}</h2>
+                                                            @endif
                                                         @endif
                                                     @else
                                                         <h1 class="text-abertura">ENCERRADA</h1>
