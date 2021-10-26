@@ -655,7 +655,7 @@ $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
                         <div class="col-12 text-center">
                             <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->full()}}" target="_blank"><i class="fab fa-facebook fa-2x" style="color: #3b5998;" aria-hidden="true"></i></a>
                             <a href="https://api.whatsapp.com/send?text={{url()->full()}}" class="ml-3" target="_blank"><i class="fab fa-whatsapp-square fa-2x" style="color: #25D366;"></i></a>
-                            <a href="mailto:?subject=LOTE {{$lote->numero . ' - ' . $lote->nome}} - AGRORESERVA&amp;body=Venha ver o lote {{$lote->numero . ' - ' . $lote->nome}} na Agroreserva%0D%0A{{url()->full()}}." class="ml-3" target="_blank"><i class="fas fa-envelope fa-2x" style="color: #c71610;"></i></a> 
+                            <a href="mailto:?subject=Lote {{$lote->numero . $lote->letra}} da {{$lote->fazenda->nome_fazenda}}. Genética superior à sua disposição. Vem ver.&amp;body=O {{$lote->nome}} está na vitrine da Agro Reserva. Animal selecionado a dedo pra elevar os índices do seu rebanho. Clique no link e confira a oferta:%0D%0A%0D%0A{{url()->full()}}" class="ml-3" target="_blank"><i class="fas fa-envelope fa-2x" style="color: #c71610;"></i></a> 
                             <a href="https://telegram.me/share/url?url={{url()->full()}}&text=Venha conhecer o lote {{$lote->numero . ' - ' . $lote->nome}} na Agroreserva." class="ml-3" target="_blank"><i class="fab fa-telegram fa-2x" style="color: #0088CC;"></i></a>
                         </div>
                     </div>
