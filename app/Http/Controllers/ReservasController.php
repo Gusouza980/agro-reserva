@@ -53,25 +53,22 @@ class ReservasController extends Controller
     }
 
     public function relatorio(Reserva $reserva){
-        $reservas = Reserva::where([["aberto", true], ["encerrada", false]])->get();
-        foreach($reservas as $reserva){
-            $total_visitas = Visita::where("logado", true)->whereIn("lote_id", $reserva->lotes->map->only(['id']))->count();
-            $cinco_clientes_mais_visitas = Visita::select("cliente_id", DB::raw("COUNT(*) as visitas"))->where("logado", true)->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy('cliente_id')->orderBy("visitas", "DESC")->limit(5)->get();
-            $cinco_clientes_mais_visitas_lotes = Visita::select("cliente_id", "lote_id", DB::raw("COUNT(*) as visitas"))->where("logado", true)->whereIn("lote_id", $reserva->lotes->map->only(['id']))->whereIn("cliente_id", $cinco_clientes_mais_visitas->map->only(['cliente_id']))->groupBy(['cliente_id', "lote_id"])->orderBy("cliente_id", "ASC")->orderBy("visitas", "DESC")->get();
-            $visitas_lote = Visita::select("lote_id", DB::raw("COUNT(*) as visitas"))->where("logado", true)->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy("lote_id")->orderBy("visitas", "DESC")->get();
-            $visitas_dia = Visita::select(DB::raw("DATE_FORMAT(created_at, '%d/%m/%Y') as data"), DB::raw("COUNT(*) as visitas"))->where("logado", true)->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy("data")->orderBy("data", "ASC")->get();
-            $data = [
-                "reserva" => $reserva,
-                "cinco_clientes_mais_visitas" => $cinco_clientes_mais_visitas,
-                "cinco_clientes_mais_visitas_lotes" => $cinco_clientes_mais_visitas_lotes,
-                "visitas_dia" => $visitas_dia,
-                "visitas_lote" => $visitas_lote,
-                "total_visitas" => $total_visitas,
-            ];
-            $file = "Relatório de visitas da reserva da fazenda " . $reserva->fazenda->nome_fazenda . " gerado no dia " . date("d/m/Y"). ".";
-            $pdf = PDF::loadView('painel.reservas.pdf.relatorio', $data);
-            return $pdf->stream();
-        }
+        $total_visitas = Visita::where("logado", true)->whereIn("lote_id", $reserva->lotes->map->only(['id']))->count();
+        $cinco_clientes_mais_visitas = Visita::select("cliente_id", DB::raw("COUNT(*) as visitas"))->where("logado", true)->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy('cliente_id')->orderBy("visitas", "DESC")->limit(5)->get();
+        $cinco_clientes_mais_visitas_lotes = Visita::select("cliente_id", "lote_id", DB::raw("COUNT(*) as visitas"))->where("logado", true)->whereIn("lote_id", $reserva->lotes->map->only(['id']))->whereIn("cliente_id", $cinco_clientes_mais_visitas->map->only(['cliente_id']))->groupBy(['cliente_id', "lote_id"])->orderBy("cliente_id", "ASC")->orderBy("visitas", "DESC")->get();
+        $visitas_lote = Visita::select("lote_id", DB::raw("COUNT(*) as visitas"))->where("logado", true)->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy("lote_id")->orderBy("visitas", "DESC")->get();
+        $visitas_dia = Visita::select(DB::raw("DATE_FORMAT(created_at, '%d/%m/%Y') as data"), DB::raw("COUNT(*) as visitas"))->where("logado", true)->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy("data")->orderBy("data", "ASC")->get();
+        $data = [
+            "reserva" => $reserva,
+            "cinco_clientes_mais_visitas" => $cinco_clientes_mais_visitas,
+            "cinco_clientes_mais_visitas_lotes" => $cinco_clientes_mais_visitas_lotes,
+            "visitas_dia" => $visitas_dia,
+            "visitas_lote" => $visitas_lote,
+            "total_visitas" => $total_visitas,
+        ];
+        $file = "Relatório de visitas da reserva da fazenda " . $reserva->fazenda->nome_fazenda . " gerado no dia " . date("d/m/Y"). ".";
+        $pdf = PDF::loadView('painel.reservas.pdf.relatorio', $data);
+        return $pdf->stream();
     }
 
     public function relatorio_pdf(Reserva $reserva){
