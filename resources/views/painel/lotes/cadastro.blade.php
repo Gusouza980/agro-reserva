@@ -131,6 +131,18 @@
                                     <input type="number" class="form-control" name="deca" id="deca" step="1">
                                 </div>
                             </div>
+                            <div class="col-6 col-md-3">
+                                <div class="mb-3">
+                                    <label for="botton" class="form-label">Botton</label>
+                                    <input type="text" class="form-control" name="botton" id="botton" maxlength="10">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="mb-3">
+                                    <label for="lact_atual" class="form-label">Lact. Atual</label>
+                                    <input type="number" class="form-control" name="lact_atual" id="lact_atual" step="0.01">
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
