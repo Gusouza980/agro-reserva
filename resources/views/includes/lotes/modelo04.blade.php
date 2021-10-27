@@ -40,7 +40,7 @@
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
                     <div style="width: 65px;">
-                        <b class="mr-3">RGD.: </b>
+                        <b class="">RGD.: </b>
                     </div>
                     <div>
                         <span class="card-lote-info-text">{{$lote->registro}}</span>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
                     <div>
-                        <b class="mr-3">LACT. ATUAL.: </b>
+                        <b class="">LACT. ATUAL.: </b>
                     </div>
                     <div class="pl-3">
                         <span class="card-lote-info-text">{{$lote->lact_atual}} KG/Dia</span>
