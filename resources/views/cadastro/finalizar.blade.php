@@ -25,7 +25,7 @@
             <div class="col-12 text-left">
                 <div id="container-form-cadastro">
                     @if (!session()->get('cliente')['finalizado'])
-                        <form action="{{ route('cadastro.finalizar.salvar') }}" class="row form-cadastro0" method="post">
+                        <form id="form-cadastro-completo" action="{{ route('cadastro.finalizar.salvar') }}" class="row form-cadastro0" method="post">
                             @csrf
                             <input type="hidden" name="anterior" value="{{ $anterior }}">
                             <div class="form-group col-12 input-cadastro d-flex justify-content-center">
