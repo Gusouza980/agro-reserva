@@ -555,7 +555,7 @@ label {
 }
 
 #row-section1-fazendas{
-    margin-top: 150px;
+    /* margin-top: 150px; */
 }
 
 @media(max-width:768px){
