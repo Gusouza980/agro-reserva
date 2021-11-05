@@ -526,7 +526,7 @@ label {
 }
 
 #container-navbar{
-    z-index: 9;
+    z-index: 99999;
     position: fixed;
     top:0;
     left:0;
@@ -534,8 +534,8 @@ label {
 
 #header-index {
     min-height: 110vh;
-    /* margin-top: 80px; */
-    /* background: url(../imagens/bg-home-min-2.jpg); */
+    margin-top: 80px;
+    background: url(../imagens/bg-home-min-2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

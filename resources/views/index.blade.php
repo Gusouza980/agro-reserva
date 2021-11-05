@@ -15,7 +15,7 @@
     <div class="container-fluid px-0">
         <div class="d-flex" id="header-index">
             <div class="container-fluid py-5 px-0" id="container-section1">
-                <div id="container-banner-desktop" class="d-none d-lg-block" style="">
+                {{-- <div id="container-banner-desktop" class="d-none d-lg-block" style="">
                     <img class="active" src="{{ asset('imagens/banner1.png') }}" num="1" style="width: 100%;" alt="">
                     <img class="" src="{{ asset('imagens/banner1.png') }}" num="2"
                         style="width: 100%; display: none;" alt="">
@@ -71,7 +71,7 @@
                             <i class="fas fa-arrow-down"></i>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 @if ($configuracao->live_ativo && $configuracao->live_link)
                     <div class="row mt-5 d-lg-none">
                         <div class="col-12 text-center text-header-index">
@@ -84,13 +84,13 @@
                         </div>
                     </div>
                 @endif
-                {{-- <div class="row" id="row-section1-text">
+                <div class="row" id="row-section1-text">
                     <div class="col-12 text-center text-header-index">
                         <h3>SEJA<span class="destaque"> BEM-VINDO</span> À PLATAFORMA DE <span
                                 class="destaque">COMPRA E <br class="d-none d-lg-block">VENDA</span> DAS MARCAS QUE
                             EVOLUEM <span class="destaque">A PECUÁRIA</span></h3>
                     </div>
-                </div> --}}
+                </div>
                 @if ($configuracao->live_ativo && $configuracao->live_link)
                     <div class="row mt-5 d-none d-lg-flex">
                         <div class="col-12 text-center text-header-index">
