@@ -525,16 +525,33 @@ label {
     color: #FEB000 !important;
 }
 
+#container-navbar{
+    z-index: 9;
+    position: fixed;
+    top:0;
+    left:0;
+}
+
 #header-index {
     min-height: 110vh;
-    background: url(../imagens/bg-home-min-2.jpg);
+    /* margin-top: 80px; */
+    /* background: url(../imagens/bg-home-min-2.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-color: black;
+}
+
+#container-banner-desktop{
+    position:absolute; 
+    top:0; 
+    left:0; 
+    width: 100%;
 }
 
 #container-section1{
-    margin-top: 150px;
+    margin-top: 50px;
+    position: relative;
 }
 
 #row-section1-fazendas{
@@ -549,6 +566,10 @@ label {
     #row-section1-fazendas{
         margin-top: 0px;
     }
+}
+
+#row-cards-fazendas{
+    margin-top: 250px;
 }
 
 .text-header-index>h4 {
@@ -599,6 +620,10 @@ label {
         font-family: 'Titillium Web', sans-serif;
         font-weight: 400;
         color: white;
+    }
+
+    #row-cards-fazendas{
+        margin-top: 20px;
     }
 }
 

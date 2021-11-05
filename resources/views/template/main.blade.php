@@ -113,7 +113,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <a class="btn-whats d-sm-block" @if(isset($reserva)) href="https://api.whatsapp.com/send?phone={{$reserva->telefone_consultor}}" @else href="https://api.whatsapp.com/send?phone=5514981809051" @endif target="_blank">
     </a>
-    <div class="container-fluid bg-preto">
+    <div class="container-fluid bg-preto" id="container-navbar">
         <div class="container">
             <nav class="navbar d-block d-lg-none navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="{{ route('index') }}"><img
@@ -198,17 +198,6 @@
                     <a class="navbar-brand" href="{{ route('index') }}"><img
                             src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Agroreserva"></a>
                 </div>
-                {{-- <div class="col-lg-2 text-left d-flex text-white align-items-center">
-=======
-            <div class="row d-none d-lg-flex py-3">
-                <div class="col-lg-3">
-                    <a class="navbar-brand" href="{{ route('index') }}"><img
-                            src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Logo Agroreserva"></a>
-                </div>
-                {{-- <div class="col-lg-2 text-left d-flex text-white align-items-center">
->>>>>>> f8301a61d66e8b8934bf0dd43fdce91288866136
-					<span class="text-nav-header"><a href="{{route('index')}}"><span style="border-bottom: 2px solid #E65454;">Ver</span> todas as reservas</a></span> 
-				</div> --}}
                 <div class="col-lg-5 d-flex text-white justify-content-start align-items-center">
                     {{-- <a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a> --}}
                     <span class="text-nav-header"><a href="{{ route('index') }}">Início</a></span>

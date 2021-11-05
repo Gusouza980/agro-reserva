@@ -12,39 +12,66 @@
 @endsection
 
 @section('conteudo')
-    @if(false)
-        <div class="container-fluid px-0">
-            <div id="carouselId" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselId" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselId" data-slide-to="1"></li>
-                    <li data-target="#carouselId" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active text-center">
-                        <img src="{{asset('imagens/banner1.jpg')}}" class="mx-auto" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{asset('imagens/banner1.jpg')}}" class="mx-auto" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{asset('imagens/banner1.jpg')}}" class="mx-auto" alt="First slide">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-    @endif
     <div class="container-fluid px-0">
         <div class="d-flex" id="header-index">
-            <div class="container-fluid py-5" id="container-section1">
+            <div class="container-fluid py-5 px-0" id="container-section1">
+                <div id="container-banner-desktop" class="d-none d-lg-block" style="">
+                    <img class="active" src="{{ asset('imagens/banner1.png') }}" num="1" style="width: 100%;" alt="">
+                    <img class="" src="{{ asset('imagens/banner1.png') }}" num="2"
+                        style="width: 100%; display: none;" alt="">
+                    <img class="" src="{{ asset('imagens/banner1.png') }}" num="3"
+                        style="width: 100%; display: none;" alt="">
+                    <div
+                        style="position: absolute; bottom:0; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 35%, rgba(0,212,255,0) 100%); height: 150px;">
+
+                    </div>
+
+                    <div id="banner-arrow-left"
+                        style="position: absolute; left: 30px; top: calc(50% - 20px); padding: 7px 10px 5px 10px; background-color: rgba(255,255,255, 0.2); border-radius: 5px; cursor: pointer;">
+                        <i class="fas fa-chevron-left text-white fa-lg"></i>
+                    </div>
+                    <div id="banner-arrow-right"
+                        style="position: absolute; right: 30px; top: calc(50% - 20px); padding: 7px 10px 5px 10px; background-color: rgba(255,255,255, 0.2); border-radius: 5px; cursor: pointer;">
+                        <i class="fas fa-chevron-right text-white fa-lg"></i>
+                    </div>
+                </div>
+                <div id="carouselExampleControls" class="carousel slide d-lg-none" data-ride="carousel">
+                    <div
+                        style="position: absolute; bottom:-10px; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 20%, rgba(0,212,255,0) 100%); height: 150px; z-index: 5;">
+
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div id="mouse-mobile" class="cpointer mt-3 d-lg-none">
+                    <div class="row">
+                        <div class="col-12 text-center text-white">
+                            <i class="fas fa-mouse fa-2x"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center text-white">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                    </div>
+                </div>
                 @if ($configuracao->live_ativo && $configuracao->live_link)
                     <div class="row mt-5 d-lg-none">
                         <div class="col-12 text-center text-header-index">
@@ -57,13 +84,13 @@
                         </div>
                     </div>
                 @endif
-                <div class="row" id="row-section1-text">
+                {{-- <div class="row" id="row-section1-text">
                     <div class="col-12 text-center text-header-index">
                         <h3>SEJA<span class="destaque"> BEM-VINDO</span> À PLATAFORMA DE <span
                                 class="destaque">COMPRA E <br class="d-none d-lg-block">VENDA</span> DAS MARCAS QUE
                             EVOLUEM <span class="destaque">A PECUÁRIA</span></h3>
                     </div>
-                </div>
+                </div> --}}
                 @if ($configuracao->live_ativo && $configuracao->live_link)
                     <div class="row mt-5 d-none d-lg-flex">
                         <div class="col-12 text-center text-header-index">
@@ -77,11 +104,9 @@
                     </div>
                 @endif
                 <div class="row pt-5" @if (!$configuracao->live_ativo) id="row-section1-fazendas" @endif>
-                    <div class="col-12 text-center text-header-index">
-                        <h5>Vitrine de reservas</h5>
-                    </div>
+
                 </div>
-                <div class="row pb-5 justify-content-center">
+                <div class="row pb-5 justify-content-center" id="row-cards-fazendas">
                     {{-- @php
                         $first = $reservas->first();
                     @endphp
@@ -112,6 +137,9 @@
                             </div>
                         </div>
                     </div> --}}
+                    <div class="col-12 text-center text-header-index">
+                        <h5>Vitrine de reservas</h5>
+                    </div>
                     @foreach ($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'asc']]) as $reserva)
                         <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
                             <div
@@ -120,14 +148,16 @@
                                     <div class="container-fluid">
                                         <div class="row" style="">
                                             <div class="col-12 text-center">
-                                                <img src="{{ asset($reserva->fazenda->logo) }}"
-                                                    style="max-width: 100%; 
-                                                        @if (($reserva->aberto && !$reserva->encerrada && !$reserva->compra_disponivel) || ($reserva->aberto && !$reserva->encerrada && $reserva->compra_disponivel && $reserva->fim)) 
-                                                            height: 80px; 
-                                                        @else
-                                                            height: 100%; max-height:110px; 
-                                                        @endif"
-                                                    alt="{{ $reserva->fazenda->nome }}">
+                                                <img src="{{ asset($reserva->fazenda->logo) }}" style="max-width: 100%; 
+                                                             @if (($reserva->aberto &&
+                                                !$reserva->encerrada && !$reserva->compra_disponivel) || ($reserva->aberto
+                                                && !$reserva->encerrada && $reserva->compra_disponivel &&
+                                                $reserva->fim))
+                                                height: 80px;
+                                            @else
+                                                height: 100%; max-height:110px;
+                                                @endif"
+                                                alt="{{ $reserva->fazenda->nome }}">
                                             </div>
                                         </div>
                                         @if ($reserva->aberto)
@@ -139,7 +169,7 @@
                                                             <h2 class="data-abertura mt-n2">
                                                                 {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
                                                         @else
-                                                            @if($reserva->fim)
+                                                            @if ($reserva->fim)
                                                                 <h1 class="text-abertura">Disponível até</h1>
                                                                 <h2 class="data-abertura mt-n2">
                                                                     {{ date('d/m/Y', strtotime($reserva->fim)) }}</h2>
@@ -344,7 +374,44 @@
 
 @section('scripts')
     <script>
+        var num_banners = 3;
+
+        function troca_banner(direcao) {
+            var atual = $("#container-banner-desktop > img.active");
+            var atual_num = atual.attr("num");
+
+            if (direcao == "proximo") {
+                if (atual_num == num_banners) {
+                    var prox_num = 1;
+                } else {
+                    var prox_num = parseInt(atual_num) + 1;
+                }
+            } else {
+                if (atual_num == 1) {
+                    var prox_num = num_banners;
+                } else {
+                    var prox_num = parseInt(atual_num) - 1;
+                }
+            }
+
+            var prox = $("#container-banner-desktop > img[num='" + prox_num + "']");
+
+            atual.removeClass("active");
+            prox.addClass("active");
+            atual.fadeOut(400, function() {
+                prox.fadeIn(400);
+            });
+        }
+
         $(document).ready(function() {
+
+            $("#banner-arrow-left").click(function() {
+                troca_banner("anterior");
+            });
+
+            $("#banner-arrow-right").click(function() {
+                troca_banner("proximo");
+            });
 
             $(".video-container").Lazy();
 
@@ -352,6 +419,7 @@
                 duration: 1200,
             });
             var direction = 1;
+            var direction_mobile = 1;
 
             function loop() {
                 $('#mouse').css("display", "block");
@@ -372,13 +440,41 @@
                     });
                 }
             }
+
+            function loop_mobile() {
+                $('#mouse-mobile').css("display", "block");
+                $('#mouse-mobile').css("position", "relative");
+                if (direction_mobile) {
+                    $('#mouse-mobile').animate({
+                        top: '+5',
+                    }, 300, 'linear', function() {
+                        direction_mobile = 0;
+                        loop_mobile();
+                    });
+                } else {
+                    $('#mouse-mobile').animate({
+                        top: '-5',
+                    }, 300, 'linear', function() {
+                        direction_mobile = 1;
+                        loop_mobile();
+                    });
+                }
+            }
+
             loop();
+            loop_mobile();
 
             $("#mouse").click(function() {
                 $('html, body').animate({
                     scrollTop: $("#div-brush-amarelo").offset().top
                 }, 1000);
-            })
+            });
+
+            $("#mouse-mobile").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#row-cards-fazendas").offset().top
+                }, 1000);
+            });
         });
     </script>
 @endsection
