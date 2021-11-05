@@ -13,7 +13,7 @@
 
 @section('conteudo')
     <div class="container-fluid px-0">
-        <div class="d-flex" id="header-index">
+        <div class="container-fluid d-flex" id="header-index">
             <div class="container-fluid py-5 px-0" id="container-section1">
                 {{-- <div id="container-banner-desktop" class="d-none d-lg-block" style="">
                     <img class="active" src="{{ asset('imagens/banner1.png') }}" num="1" style="width: 100%;" alt="">
@@ -103,9 +103,9 @@
                         </div>
                     </div>
                 @endif
-                <div class="row pt-5" @if (!$configuracao->live_ativo) id="row-section1-fazendas" @endif>
+                {{-- <div class="row pt-5" @if (!$configuracao->live_ativo) id="row-section1-fazendas" @endif>
 
-                </div>
+                </div> --}}
                 <div class="row pb-5 justify-content-center" id="row-cards-fazendas">
                     {{-- @php
                         $first = $reservas->first();
