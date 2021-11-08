@@ -7,7 +7,7 @@
 @endsection
 
 @section('titulo')
-    Venda: {{$venda->codigo}}
+    <a href="{{route('painel.index')}}">Inicio</a> / <a href="{{route('painel.vendas')}}">Vendas</a> / <a href="{{route('painel.vendas.visualizar', ['venda' => $venda])}}">#{{$venda->codigo}}</a>
 @endsection
 
 @section('conteudo')

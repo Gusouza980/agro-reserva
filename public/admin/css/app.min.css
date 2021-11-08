@@ -1,6 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap);
 :root {
     --vermelho: #E65454;
+    --laranja: #E8521B;
+    --amarelo: #FEB000;
+    --preto: black;
+    --branco: white;
 }
 
 
@@ -8,6 +12,10 @@
 
 .bg-preto {
     background-color: black;
+}
+
+.bg-laranja{
+    background-color: var(--laranja) !important;
 }
 
 
@@ -25,6 +33,27 @@
     background-color: var(--vermelho);
     color: white;
 }
+
+.btn-laranja {
+    background-color: var(--laranja);
+    color: white;
+}
+
+.btn-laranja:hover {
+    background-color: var(--laranja);
+    color: white;
+}
+
+.btn-amarelo {
+    background-color: var(--amarelo);
+    color: white;
+}
+
+.btn-amarelo:hover {
+    background-color: var(--amarelo);
+    color: white;
+}
+
 
 
 /* END BUTTONS */
@@ -197,7 +226,7 @@
 }
 
 body[data-topbar=dark] #page-topbar {
-    background-color: #2a3042
+    background-color: var(--preto)
 }
 
 body[data-topbar=dark] .navbar-header .dropdown .show.header-item {
@@ -243,7 +272,7 @@ body[data-topbar=dark] .app-search span {
 }
 
 body[data-sidebar=dark] .navbar-brand-box {
-    background: #2a3042
+    background: var(--preto)
 }
 
 body[data-sidebar=dark] .logo-dark {
@@ -297,7 +326,15 @@ body[data-layout=horizontal] .page-content {
 .page-title-box h4 {
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 16px!important
+    font-size: 16px!important;
+    color: var(--laranja);
+}
+
+.page-title-box a {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 16px!important;
+    color: var(--laranja);
 }
 
 .footer {
@@ -724,15 +761,15 @@ body[data-layout=horizontal] .footer {
 }
 
 body[data-sidebar=dark] .vertical-menu {
-    background: #2a3042
+    background: var(--preto)
 }
 
 body[data-sidebar=dark] #sidebar-menu ul li a {
-    color: #a6b0cf
+    color: var(--branco)
 }
 
 body[data-sidebar=dark] #sidebar-menu ul li a i {
-    color: #6a7187
+    color: var(--amarelo)
 }
 
 body[data-sidebar=dark] #sidebar-menu ul li a:hover {
@@ -744,7 +781,7 @@ body[data-sidebar=dark] #sidebar-menu ul li a:hover i {
 }
 
 body[data-sidebar=dark] #sidebar-menu ul li ul.sub-menu li a {
-    color: #79829c
+    color: var(--branco)
 }
 
 body[data-sidebar=dark] #sidebar-menu ul li ul.sub-menu li a:hover {
@@ -765,7 +802,7 @@ body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hov
 }
 
 body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>ul a {
-    color: #79829c
+    color: var(--branco)
 }
 
 body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>ul a:hover {
@@ -773,7 +810,7 @@ body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hov
 }
 
 body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu>ul ul {
-    background-color: #2a3042
+    background-color: var(--preto)
 }
 
 body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu ul li.mm-active .active {
@@ -789,19 +826,19 @@ body[data-sidebar=dark] .mm-active {
 }
 
 body[data-sidebar=dark] .mm-active>a {
-    color: #fff!important
+    color: var(--laranja)!important
 }
 
 body[data-sidebar=dark] .mm-active>a i {
-    color: #fff!important
+    color: var(--laranja)!important
 }
 
 body[data-sidebar=dark] .mm-active>i {
-    color: #fff!important
+    color: var(--laranja)!important
 }
 
 body[data-sidebar=dark] .mm-active .active {
-    color: #fff!important
+    color: var(--laranja) !important;
 }
 
 body[data-sidebar=dark] .mm-active .active i {
@@ -809,7 +846,7 @@ body[data-sidebar=dark] .mm-active .active i {
 }
 
 body[data-sidebar=dark] .menu-title {
-    color: #6a7187
+    color: var(--amarelo)
 }
 
 body[data-layout=horizontal] .main-content {
@@ -4882,7 +4919,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
 
 .landing-footer {
     padding: 80px 0 40px;
-    background-color: #2a3042;
+    background-color: var(--preto);
     color: rgba(255, 255, 255, .5)
 }
 
@@ -5054,4 +5091,20 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
 
 #live_painel > iframe{
     max-width: 100% !important;
+}
+
+.cpointer{
+    cursor: pointer;
+}
+
+.icone-reservado.ativo{
+    color: #0fff0f;
+}
+
+.icone-ativo.ativo{
+    color: orange;
+}
+
+.icone-prioridade.ativo{
+    color: #0fff0f;
 }

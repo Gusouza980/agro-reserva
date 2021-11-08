@@ -8,7 +8,7 @@
 @endsection
 
 @section('titulo')
-    Listagem de Vendas
+    <a href="{{route('painel.index')}}">Inicio</a> / <a href="{{route('painel.vendas')}}">Vendas</a>
 @endsection
 
 @section('conteudo')

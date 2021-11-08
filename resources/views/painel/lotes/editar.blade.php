@@ -5,7 +5,7 @@
 @endsection
 
 @section('titulo')
-    Editando Lote - {{ $lote->nome }} - {{ $lote->fazenda->nome_fazenda }}
+    <a href="{{route('painel.index')}}">Inicio</a> / <a href="{{route('painel.fazendas')}}">Fazendas</a> / <a href="{{route('painel.fazenda.editar', ['fazenda' => $lote->reserva->fazenda])}}">{{$lote->reserva->fazenda->nome_fazenda}}</a> / <a href="{{route('painel.fazenda.reservas', ['fazenda' => $lote->reserva->fazenda])}}">Reservas</a> / <a href="{{route('painel.fazenda.reserva.lotes', ['reserva' => $lote->reserva])}}">Lotes</a> / <a href="{{route('painel.fazenda.reserva.lote.editar', ['lote' => $lote])}}">Editar</a>
 @endsection
 
 @section('conteudo')

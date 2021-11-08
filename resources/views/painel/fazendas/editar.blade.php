@@ -7,7 +7,7 @@
 @endsection
 
 @section('titulo')
-    Editando a fazenda: {{$fazenda->nome_fazenda}}
+    <a href="{{route('painel.index')}}">Inicio</a> / <a href="{{route('painel.fazendas')}}">Fazendas</a> / <a href="{{route('painel.fazenda.editar', ['fazenda' => $fazenda])}}">{{$fazenda->nome_fazenda}}</a>
 @endsection
 
 @section('conteudo')

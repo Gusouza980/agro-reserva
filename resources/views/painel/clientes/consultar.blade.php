@@ -9,7 +9,7 @@
 @endsection
 
 @section('titulo')
-    Listagem de Clientes
+    <a href="{{route('painel.index')}}">Inicio</a> / <a href="{{route('painel.clientes')}}">Clientes</a>
 @endsection
 
 @section('conteudo')
@@ -21,11 +21,12 @@
 <div class="row justify-content-center">
     <div class="col-12">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="overflow-x: scroll;">
 
-                <table id="datatable-buttons" class="table table-bordered dt-responsive  nowrap w-100">
+                <table id="datatable-buttons" class="table table-bordered nowrap w-100">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Data de Cad.</th>
                             <th>Nome</th>
                             <th>Cnpj/Cpf</th>
@@ -33,7 +34,6 @@
                             <th>Cadastro</th>
                             <th>Email</th>
                             <th>Whatsapp</th>
-                            <th>Visualizar</th>
                         </tr>
                     </thead>
 
@@ -41,10 +41,31 @@
                     <tbody>
                         @foreach($clientes as $cliente)
                             <tr>
+                                <td>
+                                    <div class="dropdown mt-4 mt-sm-0">
+                                        <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <i class="fas fa-bars" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="dropdown-menu" style="margin: 0px;">
+                                            <a name="" id="" class="dropdown-item py-2"
+                                                href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}"
+                                                role="button">Visualizar</a>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>{{date("d/m/Y H:i:s", strtotime($cliente->created_at))}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{$cliente->nome_dono}}</td>
+                                <td style="vertical-align: middle; text-align:center;"><a href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}">{{$cliente->nome_dono}}</a></td>
                                 <td style="vertical-align: middle; text-align:center;">
-                                    {{$cliente->documento}}
+                                    @if($cliente->cpf && $cliente->cnpj)
+                                        <b>CPF:</b> {{$cliente->cpf}} / <b>CNPJ:</b> {{$cliente->cnpj}}
+                                    @elseif($cliente->cpf)
+                                        <b>CPF:</b> {{$cliente->cpf}}
+                                    @elseif($cliente->cnpj)
+                                        <b>CNPJ:</b> {{$cliente->cnpj}}
+                                    @else
+                                        {{$cliente->documento}}
+                                    @endif
                                 </td>
                                 <td style="vertical-align: middle; text-align:center;">
                                     @if($cliente->aprovado == 0)
@@ -62,10 +83,15 @@
                                         Finalizado
                                     @endif
                                 </td>
-                                <td>{{$cliente->email}}</td>
-                                <td>{{$cliente->whatsapp}}</td>
+                                <td style="vertical-align: middle; text-align:center;">{{$cliente->email}}</td>
                                 <td style="vertical-align: middle; text-align:center;">
-                                    <a href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}" name="" id="" class="btn btn-warning cpointer" role="button">Visualizar</a>
+                                    @if($cliente->whatsapp && $cliente->telefone)
+                                        {{$cliente->whatsapp}} / {{$cliente->telefone}}
+                                    @elseif($cliente->whatsapp)
+                                        {{$cliente->whatsapp}}
+                                    @else
+                                        {{$cliente->telefone}}
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -286,7 +312,7 @@
                                 targets: [5, 6]
                             }
                         ],
-                        order: [[0, "desc"]]
+                        order: [[1, "desc"]]
                     })
                     .buttons()
                     .container()

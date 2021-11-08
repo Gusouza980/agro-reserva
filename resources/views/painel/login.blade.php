@@ -89,7 +89,7 @@
                                 <div class="d-flex flex-column h-100">
                                     <div class="mb-4 mb-md-5">
                                         <a href="index.html" class="d-block auth-logo">
-                                            <img src="{{asset('imagens/logo.png')}}" alt="" class="auth-logo-dark w-100">
+                                            <img src="{{asset('imagens/logo_agroreserva_leite.png')}}" style="max-width: 200px; width: 100%;" alt="" class="auth-logo-dark w-100 mx-auto">
                                         </a>
                                     </div>
                                     <div class="my-auto">
@@ -116,7 +116,7 @@
                                                 </div>
                                                 
                                                 <div class="mt-3 d-grid">
-                                                    <button class="btn btn-vermelho waves-effect waves-light" type="submit">Entrar</button>
+                                                    <button class="btn btn-amarelo waves-effect waves-light" type="submit">Entrar</button>
                                                 </div>
                     
                                             </form>

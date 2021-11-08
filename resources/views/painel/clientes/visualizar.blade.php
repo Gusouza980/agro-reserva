@@ -9,7 +9,7 @@
 @endsection
 
 @section('titulo')
-    {{ $cliente->nome }}
+    <a href="{{route('painel.index')}}">Inicio</a> / <a href="{{route('painel.clientes')}}">Clientes</a> / <a href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}">{{$cliente->nome_dono}}</a>
 @endsection
 
 @section('conteudo')

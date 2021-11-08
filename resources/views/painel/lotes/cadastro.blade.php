@@ -5,8 +5,9 @@
 @endsection
 
 @section('titulo')
-    Cadastro de Lote - {{ $reserva->fazenda->nome_fazenda }}
+    <a href="{{route('painel.index')}}">Inicio</a> / <a href="{{route('painel.fazendas')}}">Fazendas</a> / <a href="{{route('painel.fazenda.editar', ['fazenda' => $reserva->fazenda])}}">{{$reserva->fazenda->nome_fazenda}}</a> / <a href="{{route('painel.fazenda.reservas', ['fazenda' => $reserva->fazenda])}}">Reservas</a> / <a href="{{route('painel.fazenda.reserva.lotes', ['reserva' => $reserva])}}">Lotes</a> / <a href="{{route('painel.fazenda.reserva.lote.cadastro', ['reserva' => $reserva])}}">Cadastro</a>
 @endsection
+
 
 @section('conteudo')
     <div class="row">

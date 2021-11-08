@@ -1,7 +1,7 @@
 @extends('painel.template.main')
 
 @section('titulo')
-    Cadastro de Fazenda
+    <a href="{{route('painel.index')}}">Inicio</a> / <a href="{{route('painel.fazendas')}}">Fazendas</a> / <a href="{{route('painel.fazenda.cadastro')}}">Cadastro</a>
 @endsection
 
 @section('conteudo')

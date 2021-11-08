@@ -39,6 +39,7 @@ class ReservasController extends Controller
         $reserva->inicio = $request->inicio;
         $reserva->fim = $request->fim;
         $reserva->ativo = $request->ativo;
+        $reserva->mostrar_datas = $request->mostrar_datas;
         $reserva->desconto_live_valor = $request->desconto_live_valor;
         $reserva->multi_fazendas = $request->multi_fazendas;
         $reserva->save();

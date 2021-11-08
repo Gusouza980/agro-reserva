@@ -9,7 +9,7 @@
 @endsection
 
 @section('titulo')
-    Listagem de Visitas
+    <a href="{{route('painel.index')}}">Inicio</a> / <a href="{{route('painel.visitas')}}">Visitas</a>
 @endsection
 
 @section('conteudo')
@@ -62,7 +62,7 @@
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->cidade}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->estado}}</td>
                                 @if($visita->logado)
-                                    <td style="vertical-align: middle; text-align:center;">{{$visita->cliente->whatsapp}}</td>
+                                    <td style="vertical-align: middle; text-align:center;">@if($visita->cliente->whatsapp) {{$visita->cliente->whatsapp}} @else {{$visita->cliente->telefone}} @endif</td>
                                 @else
                                     <td></td>
                                 @endif

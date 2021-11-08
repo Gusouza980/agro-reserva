@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Painel Administrativo da Agroreserva" name="description" />
         <meta content="Luis Gustavo de Souza Carvalho" name="author" />
+        <meta name="_token" content="{{ csrf_token() }}">
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{asset('admin/images/favicon.ico')}}">
 
@@ -40,7 +41,7 @@
                                     <i class="fas fa-clock fa-2x"></i>
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{asset('imagens/logo.png')}}" alt="" height="19">
+                                    <img src="{{asset('imagens/logo_agroreserva_leite.svg')}}" style="width: 100%; max-width: 100px;">
                                 </span>
                             </a>
                         </div>
@@ -165,11 +166,11 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
-                                <script>document.write(new Date().getFullYear())</script> © Skote.
+                                <script>document.write(new Date().getFullYear())</script> © Agroreserva.
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-sm-end d-none d-sm-block">
-                                    Design & Develop by Themesbrand
+                                    
                                 </div>
                             </div>
                         </div>
@@ -190,6 +191,7 @@
 
         <!-- App js -->
         <script src="{{asset('admin/js/app.js')}}"></script>
+        <script src="{{asset('admin/js/datatable-ptbr.js')}}"></script>
         @jquery
         @toastr_js
         @toastr_render

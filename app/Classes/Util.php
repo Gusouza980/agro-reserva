@@ -12,6 +12,14 @@ class Util{
         );
     }
 
+    public static function convertStringToDate($string){
+        $year = substr($string, 0, 4);
+        $month = substr($string, 4, 2);
+        $day = substr($string, 6, 2);
+
+        return $day . "/" . $month . "/" . $year;
+    }
+
 }
 
 ?>

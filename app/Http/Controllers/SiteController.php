@@ -12,20 +12,59 @@ use App\Models\Carrinho;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use App\Models\Configuracao;
+use \App\Classes\Util;
 use Cookie;
-use Spatie\PdfToText\Pdf;
+use Analytics;
+use Spatie\Analytics\Period;
 
 class SiteController extends Controller
 {
 
     public function testes(){
-        $text = (new Pdf())
-                ->setPdf('imagens/comprovante.pdf')
-                ->text();
-        // $pdf = new \Gufy\PdfToHtml\Pdf('imagens/comprovante.pdf');
-        // convert to html string
-        // $html = $pdf->html();
-        dd($text);
+        
+        // Usuários no site atualmente
+        
+        $analyticsData = Analytics::getAnalyticsService()->data_realtime->get('ga:' . env('ANALYTICS_VIEW_ID'), 'rt:activeVisitors')->totalsForAllResults['rt:activeVisitors'];
+        $numero_acessos_atuais = $analyticsData;
+
+        // ==============================================================================
+
+        // Número de acessos nos últimos 7 dias
+        
+        $analyticsData = $analyticsData = Analytics::performQuery(
+            Period::days(7),
+            'ga:sessions',
+            [
+                'metrics' => 'ga:users, ga:newUsers',
+                'dimensions' => 'ga:date'
+            ]
+        );
+
+        $numero_acessos = $analyticsData->rows;
+
+        // ===============================================================================
+
+        // Melhores origens de acessos ao site
+
+        $analyticsData = $analyticsData = Analytics::fetchTopReferrers(Period::days(7));
+        $top_referencias = $analyticsData;
+
+        // ================================================================================
+
+        // Tipos de usuários que acessaram
+
+        $analyticsData = $analyticsData = Analytics::fetchUserTypes(Period::days(7));
+        $tipos_usuarios = $analyticsData;
+
+        // =================================================================================
+
+        // Páginas mais visualizadas
+
+        $analyticsData = $analyticsData = Analytics::fetchMostVisitedPages(Period::days(7), 5);
+        $paginas_mais_visualizadas = $analyticsData;
+
+        // ==================================================================================
+
     }
 
     public function index(){

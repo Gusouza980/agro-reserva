@@ -154,24 +154,27 @@ class LotesController extends Controller
     }
 
     public function reservar(Lote $lote){
-        if($lote->reservado == false){
+        if($lote->reservado){
+            $lote->reservado = false;
+            $lote->save();
+            return response()->json(false);
+        }else{
             $lote->reservado = true;
             $lote->save();
-            toastr()->success("Lote reservado");
-            return redirect()->back();
+            return response()->json(true);
         }
     }
 
     public function ativo(Lote $lote){
         if($lote->ativo){
             $lote->ativo = false;
-            toastr()->success("Lote desativado");
+            $lote->save();
+            return response()->json(false);
         }else{
             $lote->ativo = true;
-            toastr()->success("Lote ativado");
+            $lote->save();
+            return response()->json(true);
         }
-        $lote->save();
-        return redirect()->back();
     }
 
     public function preco(Lote $lote){
@@ -196,5 +199,17 @@ class LotesController extends Controller
         }
         $lote->save();
         return redirect()->back();
+    }
+
+    public function prioridade(Lote $lote){
+        if($lote->prioridade){
+            $lote->prioridade = false;
+            $lote->save();
+            return response()->json(false);
+        }else{
+            $lote->prioridade = true;
+            $lote->save();
+            return response()->json(true);
+        }
     }
 }
