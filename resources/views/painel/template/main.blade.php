@@ -14,12 +14,12 @@
         <link rel="shortcut icon" href="{{asset('admin/images/favicon.ico')}}">
 
         <!-- Bootstrap Css -->
-        <link href="{{asset('admin/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="{{asset('admin/css/bootstrap.min.css')}}?v=1.1" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
         <link href="{{asset('admin/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         @yield("styles")
-        <link href="{{asset('admin/css/app.min.css')}}?v=1.2" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="{{asset('admin/css/app.min.css')}}?v=1.3" id="app-style" rel="stylesheet" type="text/css" />
         @toastr_css
     </head>
 
