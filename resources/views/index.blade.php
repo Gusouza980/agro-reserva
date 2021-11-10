@@ -86,7 +86,7 @@
                         </div>
                     </div>
                 @endif
-                <div class="row pb-5 justify-content-center" id="row-cards-fazendas">
+                <div class="row pb-5 justify-content-center" id="row-cards-fazendas" style="position: relative; z-index: 1;">
                     <div class="col-12 text-center text-header-index d-none d-lg-block">
                         <h5>Vitrine de reservas</h5>
                     </div>
