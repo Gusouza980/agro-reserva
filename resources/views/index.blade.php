@@ -21,7 +21,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{asset('imagens/banner1-mobile.png')}}" class="d-block w-100">
+                        <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
