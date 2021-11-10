@@ -12,6 +12,29 @@
 @endsection
 
 @section('conteudo')
+    <div class="container-fluid px-0 d-lg-none" style="background-color: black;">
+        <div class="row px-0">
+            <div id="container-banner-mobile" class="carousel slide d-lg-none" data-ride="carousel">
+                <div
+                    style="position: absolute; bottom:-10px; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 20%, rgba(0,212,255,0) 100%); height: 150px; z-index: 5;">
+
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid" style="background-color: black;">
         <div class="container-fluid" id="header-index">
             {{-- <div class="container-fluid py-5 px-0" id="container-section1"> --}}
@@ -31,29 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div id="carouselExampleControls" class="carousel slide d-lg-none" data-ride="carousel">
-                            <div
-                                style="position: absolute; bottom:-10px; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 20%, rgba(0,212,255,0) 100%); height: 150px; z-index: 5;">
-            
-                            </div>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                
                 
                 <div class="row">
                     <div class="col-12">
@@ -187,24 +188,13 @@
     
                 </div>
                 <div class="row justify-content-center mt-2 mb-5">
-                    <div class="col-12">
-                        <div id="mouse" class="cpointer">
-                            {{-- <div class="row">
-                                <div class="col-12 text-center text-white">
-                                    <i class="fas fa-mouse fa-lg"></i>
-                                </div>
-                            </div> --}}
-                            <div class="row">
-                                <div class="col-12 text-center text-white">
-                                    <i class="fas fa-angle-double-down fa-lg"></i>
-                                </div>
-                            </div>
+                        <div id="mouse" class="cpointer text-white">
+                            <i class="fas fa-angle-double-down fa-lg"></i>
                         </div>
                         <div class="text-center text-white text-header-index ml-4">
                             <h4>Conheça a Agro Reserva</h4>
                         </div>
                     </div>
-                    
                 </div>
             {{-- </div> --}}
         </div>
@@ -218,7 +208,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid px-0">
+    <div class="container-fluid">
         <div class="row px-0 mx-0 align-items-center" id="div-viva">
             <div class="col-12">
                 <div class="w800 mx-auto">
@@ -252,7 +242,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid px-0">
+    <div class="container-fluid">
         <div class="row align-items-center mx-0" id="tarja-branca">
             <div class="col-12">
                 <div class="w1200 mx-auto">

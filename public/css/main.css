@@ -552,6 +552,14 @@ label {
     margin-top: 100px;
 }
 
+#container-banner-mobile{
+    position:relative; 
+    top:0; 
+    left:0; 
+    width: 100%;
+    margin-top: 50px;
+}
+
 #container-section1{
     margin-top: 0px;
     position: relative;
@@ -571,12 +579,21 @@ label {
     }
 
     #header-index {
-        margin-top: 50px;
+        margin-top: 0px;
     }
 }
 
-#row-cards-fazendas{
-    margin-top: 600px;
+@media(max-width:2880px){
+    #row-cards-fazendas{
+        margin-top: 750px;
+    }
+}
+
+
+@media(max-width:1920px){
+    #row-cards-fazendas{
+        margin-top: 600px;
+    }
 }
 
 .text-header-index>h4 {
@@ -633,6 +650,7 @@ label {
         margin-top: 20px;
     }
 }
+
 
 @media (max-width: 1673px){
     .section1-terra{
