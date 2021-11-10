@@ -557,6 +557,7 @@ label {
     top:0; 
     left:0; 
     width: 100%;
+    z-index: 0;
     margin-top: 50px;
 }
 
@@ -597,7 +598,7 @@ label {
 }
 
 .text-header-index>h4 {
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     font-family: 'Titillium Web', sans-serif;
     font-weight: 400;
     color: white;
@@ -647,7 +648,7 @@ label {
     }
 
     #row-cards-fazendas{
-        margin-top: 20px;
+        margin-top: -70px;
     }
 }
 

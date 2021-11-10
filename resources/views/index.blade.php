@@ -21,7 +21,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
+                        <img src="{{asset('imagens/banner1-mobile.png')}}" class="d-block w-100">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -51,19 +51,6 @@
                         <div id="banner-arrow-right"
                             style="position: absolute; right: 30px; top: calc(50% - 20px); padding: 7px 10px 5px 10px; background-color: rgba(255,255,255, 0.2); border-radius: 5px; cursor: pointer;">
                             <i class="fas fa-chevron-right text-white fa-lg"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="row">
-                    <div class="col-12">
-                        <div id="mouse-mobile" class="cpointer mt-3 d-lg-none">
-                            <div class="row">
-                                <div class="col-12 text-center text-white">
-                                    <i class="fas fa-angle-double-down fa-lg"></i>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,11 +87,12 @@
                     </div>
                 @endif
                 <div class="row pb-5 justify-content-center" id="row-cards-fazendas">
-                    <div class="col-12 text-center text-header-index">
+                    <div class="col-12 text-center text-header-index d-none d-lg-block">
                         <h5>Vitrine de reservas</h5>
                     </div>
                     @foreach ($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'asc']]) as $reserva)
-                        <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
+                        <div class="px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
+                        {{-- <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
                             <div
                                 style="background: url(/{{ $reserva->fazenda->fundo_destaque }}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
                                 <div class="d-flex align-items-center @if ($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if ($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if ($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif">
@@ -187,9 +175,9 @@
                     @endforeach
     
                 </div>
-                <div class="row justify-content-center mt-2 mb-5">
+                <div class="row justify-content-center mt-2 mb-5 pb-5 pb-lg-0">
                         <div id="mouse" class="cpointer text-white">
-                            <i class="fas fa-angle-double-down fa-lg"></i>
+                            <i class="fas fa-angle-double-down fa-md"></i>
                         </div>
                         <div class="text-center text-white text-header-index ml-4">
                             <h4>Conheça a Agro Reserva</h4>
