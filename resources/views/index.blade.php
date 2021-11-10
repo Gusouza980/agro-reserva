@@ -12,7 +12,7 @@
 @endsection
 
 @section('conteudo')
-    <div class="container-fluid px-0 d-lg-none" style="background-color: black;">
+    <div class="container-fluid d-lg-none" style="background-color: black;">
         <div class="row px-0">
             <div id="container-banner-mobile" class="carousel slide d-lg-none" data-ride="carousel">
                 <div
