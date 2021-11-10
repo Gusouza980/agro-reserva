@@ -19,7 +19,7 @@
                     <div id="container-banner-desktop" class="d-none d-lg-block" style="">
                         <img class="active" src="{{ asset('imagens/banner1.jpg') }}" num="1" style="width: 100%;" alt="">
                         <div
-                            style="position: absolute; bottom:0; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 35%, rgba(0,212,255,0) 100%); height: 150px;">
+                            style="position: absolute; bottom:0; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 25%, rgba(0,212,255,0) 100%); height: 250px;">
                         </div>
                         <div id="banner-arrow-left"
                             style="position: absolute; left: 30px; top: calc(50% - 20px); padding: 7px 10px 5px 10px; background-color: rgba(255,255,255, 0.2); border-radius: 5px; cursor: pointer;">
