@@ -12,66 +12,61 @@
 @endsection
 
 @section('conteudo')
-    <div class="container-fluid px-0">
-        <div class="container-fluid d-flex" id="header-index">
-            <div class="container-fluid py-5 px-0" id="container-section1">
-                {{-- <div id="container-banner-desktop" class="d-none d-lg-block" style="">
-                    <img class="active" src="{{ asset('imagens/banner1.png') }}" num="1" style="width: 100%;" alt="">
-                    <img class="" src="{{ asset('imagens/banner1.png') }}" num="2"
-                        style="width: 100%; display: none;" alt="">
-                    <img class="" src="{{ asset('imagens/banner1.png') }}" num="3"
-                        style="width: 100%; display: none;" alt="">
-                    <div
-                        style="position: absolute; bottom:0; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 35%, rgba(0,212,255,0) 100%); height: 150px;">
-
-                    </div>
-
-                    <div id="banner-arrow-left"
-                        style="position: absolute; left: 30px; top: calc(50% - 20px); padding: 7px 10px 5px 10px; background-color: rgba(255,255,255, 0.2); border-radius: 5px; cursor: pointer;">
-                        <i class="fas fa-chevron-left text-white fa-lg"></i>
-                    </div>
-                    <div id="banner-arrow-right"
-                        style="position: absolute; right: 30px; top: calc(50% - 20px); padding: 7px 10px 5px 10px; background-color: rgba(255,255,255, 0.2); border-radius: 5px; cursor: pointer;">
-                        <i class="fas fa-chevron-right text-white fa-lg"></i>
+    <div class="container-fluid" style="background-color: black;">
+        <div class="container-fluid" id="header-index">
+            {{-- <div class="container-fluid py-5 px-0" id="container-section1"> --}}
+                <div class="row">
+                    <div id="container-banner-desktop" class="d-none d-lg-block" style="">
+                        <img class="active" src="{{ asset('imagens/banner1.jpg') }}" num="1" style="width: 100%;" alt="">
+                        <div
+                            style="position: absolute; bottom:0; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 35%, rgba(0,212,255,0) 100%); height: 150px;">
+                        </div>
+                        <div id="banner-arrow-left"
+                            style="position: absolute; left: 30px; top: calc(50% - 20px); padding: 7px 10px 5px 10px; background-color: rgba(255,255,255, 0.2); border-radius: 5px; cursor: pointer;">
+                            <i class="fas fa-chevron-left text-white fa-lg"></i>
+                        </div>
+                        <div id="banner-arrow-right"
+                            style="position: absolute; right: 30px; top: calc(50% - 20px); padding: 7px 10px 5px 10px; background-color: rgba(255,255,255, 0.2); border-radius: 5px; cursor: pointer;">
+                            <i class="fas fa-chevron-right text-white fa-lg"></i>
+                        </div>
                     </div>
                 </div>
-                <div id="carouselExampleControls" class="carousel slide d-lg-none" data-ride="carousel">
-                    <div
-                        style="position: absolute; bottom:-10px; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 20%, rgba(0,212,255,0) 100%); height: 150px; z-index: 5;">
-
+                <div class="row">
+                    <div class="col-12">
+                        <div id="carouselExampleControls" class="carousel slide d-lg-none" data-ride="carousel">
+                            <div
+                                style="position: absolute; bottom:-10px; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 20%, rgba(0,212,255,0) 100%); height: 150px; z-index: 5;">
+            
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
                     </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
-                <div id="mouse-mobile" class="cpointer mt-3 d-lg-none">
-                    <div class="row">
-                        <div class="col-12 text-center text-white">
-                            <i class="fas fa-mouse fa-2x"></i>
+                
+                <div class="row">
+                    <div class="col-12">
+                        <div id="mouse-mobile" class="cpointer mt-3 d-lg-none">
+                            <div class="row">
+                                <div class="col-12 text-center text-white">
+                                    <i class="fas fa-angle-double-down fa-lg"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 text-center text-white">
-                            <i class="fas fa-arrow-down"></i>
-                        </div>
-                    </div>
-                </div> --}}
+                </div>
+                
                 @if ($configuracao->live_ativo && $configuracao->live_link)
                     <div class="row mt-5 d-lg-none">
                         <div class="col-12 text-center text-header-index">
@@ -84,13 +79,13 @@
                         </div>
                     </div>
                 @endif
-                <div class="row" id="row-section1-text">
+                {{-- <div class="row" id="row-section1-text">
                     <div class="col-12 text-center text-header-index">
                         <h3>SEJA<span class="destaque"> BEM-VINDO</span> À PLATAFORMA DE <span
                                 class="destaque">COMPRA E <br class="d-none d-lg-block">VENDA</span> DAS MARCAS QUE
                             EVOLUEM <span class="destaque">A PECUÁRIA</span></h3>
                     </div>
-                </div>
+                </div> --}}
                 @if ($configuracao->live_ativo && $configuracao->live_link)
                     <div class="row mt-5 d-none d-lg-flex">
                         <div class="col-12 text-center text-header-index">
@@ -103,40 +98,7 @@
                         </div>
                     </div>
                 @endif
-                {{-- <div class="row pt-5" @if (!$configuracao->live_ativo) id="row-section1-fazendas" @endif>
-
-                </div> --}}
                 <div class="row pb-5 justify-content-center" id="row-cards-fazendas">
-                    {{-- @php
-                        $first = $reservas->first();
-                    @endphp
-                    <div id="primeira-reserva" data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
-                        <div style="background: url(/{{$first->fazenda->fundo_destaque}}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
-                            <div class="d-flex align-items-center" style="overflow-y: hidden; overflow-x: hidden; position: relative; box-shadow: 0px 0px 4px white; padding: 10px 0px; background: linear-gradient(180deg, rgba(0,0,0,0.85) 20%, rgba(0,4,1,0) 96%); height: 250px; border-radius: 15px;">
-                                <div class="container-fluid">
-                                    <div class="row" style="">
-                                        <div class="col-12 text-center">
-                                            <img src="{{asset($first->fazenda->logo)}}" style="max-width: 100%; height: 80px;" alt="{{$first->fazenda->nome}}">
-                                        </div>
-                                    </div>
-                                    <div class="row mt-3" style="">
-                                        <div class="col-12 text-center">
-                                            <h1 class="text-abertura">ENCERRADA</h1>
-                                            <h2 class="data-abertura mt-n2">{{date("d/m/Y", strtotime($first->fim))}}</h2>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-3" style="">
-                                        <div class="col-12 text-center">
-                                            <a name="" id="" class="btn btn-vermelho py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $first->fazenda->slug])}}" role="button">Mostrar a Reserva</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tarja-diagonal text-center" style="background-color: #15bd3d; width: 100%; height: 50px; position: absolute; top: 0px; left: -110px; transform: rotate(-45deg);">
-                                    <h5 style="color: white; position: absolute; top: 20px; left: 28%; font-size: 12px; font-weight: bold; font-family: Gobold Regular; letter-spacing: 3px;">100% VENDIDO</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="col-12 text-center text-header-index">
                         <h5>Vitrine de reservas</h5>
                     </div>
@@ -149,7 +111,7 @@
                                         <div class="row" style="">
                                             <div class="col-12 text-center">
                                                 <img src="{{ asset($reserva->fazenda->logo) }}" style="max-width: 100%; 
-                                                             @if (($reserva->aberto &&
+                                                                @if (($reserva->aberto &&
                                                 !$reserva->encerrada && !$reserva->compra_disponivel) || ($reserva->aberto
                                                 && !$reserva->encerrada && $reserva->compra_disponivel &&
                                                 $reserva->fim))
@@ -201,18 +163,18 @@
                                             @if ($reserva->mostrar_datas)
                                                 <div class="row mt-4" style="">
                                                     <div class="col-12 text-center">
-
+    
                                                         <h2 class="data-abertura-futura mt-n2">Inicia em
                                                             {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
-
+    
                                                     </div>
                                                 </div>
                                             @else
                                                 <div class="row mt-4" style="">
                                                     <div class="col-12 text-center">
-
+    
                                                         <h2 class="data-abertura-futura mt-n2">Aguarde</h2>
-
+    
                                                     </div>
                                                 </div>
                                             @endif
@@ -222,38 +184,33 @@
                             </div>
                         </div>
                     @endforeach
-
+    
                 </div>
-                <div id="mouse" class="cpointer">
-                    <div class="row">
-                        <div class="col-12 text-center text-white">
-                            <i class="fas fa-mouse fa-2x"></i>
+                <div class="row justify-content-center mt-2 mb-5">
+                    <div class="col-12">
+                        <div id="mouse" class="cpointer">
+                            {{-- <div class="row">
+                                <div class="col-12 text-center text-white">
+                                    <i class="fas fa-mouse fa-lg"></i>
+                                </div>
+                            </div> --}}
+                            <div class="row">
+                                <div class="col-12 text-center text-white">
+                                    <i class="fas fa-angle-double-down fa-lg"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center text-white text-header-index ml-4">
+                            <h4>Conheça a Agro Reserva</h4>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 text-center text-white">
-                            <i class="fas fa-arrow-down"></i>
-                        </div>
-                    </div>
+                    
                 </div>
-
-                <div class="row mt-2 mb-5">
-                    <div class="col-12 text-center text-white text-header-index">
-                        <h4>Conheça a Agro Reserva</h4>
-                    </div>
-                </div>
-            </div>
+            {{-- </div> --}}
         </div>
-
-
     </div>
-    {{-- <div class="container-fluid bg-preto">
-        <div class="row d-flex align-items-center" id="cta1-index">
-            <div class="col-12 text-center text-white">
-                <h2><a href="{{route('cadastro')}}"><span style="border-bottom: 2px solid #E65454;">Cadastre-se</span></a> para receber ofertas feitas para você.</h2>
-            </div>
-        </div>
-    </div> --}}
+    
+
     <div class="container-fluid" id="div-brush-amarelo">
         <div class="row">
             <div class="col-12">
@@ -374,7 +331,7 @@
 
 @section('scripts')
     <script>
-        var num_banners = 3;
+        var num_banners = 1;
 
         function troca_banner(direcao) {
             var atual = $("#container-banner-desktop > img.active");
