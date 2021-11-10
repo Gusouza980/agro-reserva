@@ -230,7 +230,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid px-0">
         <div class="row align-items-center mx-0" id="tarja-branca">
             <div class="col-12">
                 <div class="w1200 mx-auto">
