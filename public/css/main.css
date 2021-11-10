@@ -16,6 +16,8 @@
 
 body{
     font-family: 'Titillium Web', sans-serif;  
+    padding: 0;
+    margin: 0;
 }
 
 a,
@@ -547,6 +549,7 @@ label {
     top:0; 
     left:0; 
     width: 100%;
+    margin-top: 100px;
 }
 
 #container-section1{
@@ -573,7 +576,7 @@ label {
 }
 
 #row-cards-fazendas{
-    margin-top: 500px;
+    margin-top: 600px;
 }
 
 .text-header-index>h4 {
