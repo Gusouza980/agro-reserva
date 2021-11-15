@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Agroreserva @if(session()->get('nome_pagina')) - {{ session()->get('nome_pagina') }}  @endif</title>
+    <title>Agroreserva @if(isset($nome_pagina)) - {{ $nome_pagina }}  @endif</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
 

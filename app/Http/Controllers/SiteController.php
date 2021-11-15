@@ -151,8 +151,7 @@ class SiteController extends Controller
             }
         }
         $finalizadas = "";
-        session()->flash("nome_pagina", "Conheça");
-        return view("fazenda", ["fazenda" => $fazenda, "logos" => $logos, "reserva" => $reserva, "finalizadas" => $finalizadas]);
+        return view("fazenda", ["fazenda" => $fazenda, "logos" => $logos, "reserva" => $reserva, "finalizadas" => $finalizadas, "nome_pagina" => "Conheça"]);
     }
 
     public function lotes($slug){
@@ -162,8 +161,7 @@ class SiteController extends Controller
         $prioridades = $lotes->where("prioridade", true)->sortBy("numero");
         $lotes = $lotes->where("prioridade", false)->sortBy("numero");
         $lotes = $prioridades->merge($lotes);
-        session()->flash("nome_pagina", "Lotes");
-        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "prioridades" => $prioridades, "lotes" => $lotes]);
+        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "prioridades" => $prioridades, "lotes" => $lotes, "nome_pagina" => "Lotes"]);
     }
 
     public function lote($slug, Lote $lote){
@@ -228,9 +226,8 @@ class SiteController extends Controller
         }
 
         $lote->video = $this->convertYoutube($lote->video);
-        session()->flash("nome_pagina", "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome);
         $fazenda = Fazenda::where("slug", $slug)->first();
-        return view("lote", ["lote" => $lote, "reserva" => $lote->reserva, "fazenda" => $fazenda]);
+        return view("lote", ["lote" => $lote, "reserva" => $lote->reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome]);
     }
 
     public function cadastro_fazenda(){
@@ -251,7 +248,7 @@ class SiteController extends Controller
             return redirect()->route("index");
         }
         session()->flash("nome_pagina", "Login");
-        return view('login');
+        return view('login', ["nome_pagina" => "Login"]);
     }
 
     public function logar(Request $request){
