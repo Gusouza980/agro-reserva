@@ -158,6 +158,9 @@ if(session()->get("cliente")){
                                 @case(4)
                                     @include('includes.lote.modelo04')
                                     @break;
+                                @case(5)
+                                    @include('includes.lote.modelo05')
+                                    @break;
                                 @default
                                     @include('includes.lote.modelo02')
                                     @break;
