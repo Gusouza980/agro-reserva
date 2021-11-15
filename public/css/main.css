@@ -2038,3 +2038,14 @@ label {
     }
     
 }
+
+
+#espacamento-nav{
+    margin-top: 90px;
+}
+
+@media(max-width:768px){
+    #espacamento-nav{
+        margin-top: 70px;
+    }
+}

@@ -28,9 +28,9 @@ if(session()->get("cliente")){
 
 @section('conteudo')
     @if(!$lote->pacote)
-        <div style="background-color: black; background: url(/{{ $fazenda->fundo_conheca_lotes }}); background-size: cover; background-position: center;">
+        <div class="" style="background-color: black; background: url(/{{ $fazenda->fundo_conheca_lotes }}); background-size: cover; background-position: center;">
             <div class="container-fluid bg-preto py-5 py-lg-2">
-                <div class="container">
+                <div class="container pt-4">
                     <div class="row align-items-center pb-4">
                         <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
                             <img src="{{ asset($fazenda->logo) }}" style="width: 100%; max-width: 300px;" alt="">

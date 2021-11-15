@@ -83,7 +83,7 @@
         <div class="row">
             <div
                 class="col-12 col-lg-8 justify-content-center justify-content-lg-start text-center text-lg-left align-items-center text-lotes d-flex">
-                <h3>Reserva da {{ $fazenda->nome_fazenda }}</h3>
+                <h3>Reserva {{ $fazenda->nome_fazenda }}</h3>
             </div>
         </div>
         <div class="row py-4">

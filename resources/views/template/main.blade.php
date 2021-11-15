@@ -30,16 +30,17 @@
     <meta property="og:updated_time" content="1440432930" />
     <meta name="facebook-domain-verification" content="abk9vvukcc2zjrkcwtq8qncjjfb68f" />
     @yield("metas")
-    <link rel="preload" as="style" href="{{ asset('css/main.css') }}?v=1.3.9" />
+    <link rel="preload" as="style" href="{{ asset('css/main.css') }}?v=1.4.0" />
     <link rel="preload" as="image" href="{{ asset('imagens/bg-home-min-2.jpg') }}" />
     <link rel="preload" href="{{ asset('fontes/gobold/Gobold Regular.otf') }}" as="font" type="font/otf"
         crossorigin />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1.3.9" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1.4.0" />
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/floating-wpp.css') }}" />
     @toastr_css
     @yield("styles")
     <!-- Google Tag Manager -->
@@ -111,8 +112,8 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRTWDJ5" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <a class="btn-whats d-sm-block" @if(isset($reserva)) href="https://api.whatsapp.com/send?phone={{$reserva->telefone_consultor}}" @else href="https://api.whatsapp.com/send?phone=5514981809051" @endif target="_blank">
-    </a>
+    {{-- <a class="btn-whats d-sm-block" @if(isset($reserva)) href="https://api.whatsapp.com/send?phone={{$reserva->telefone_consultor}}" @else href="https://api.whatsapp.com/send?phone=5514981809051" @endif target="_blank">
+    </a> --}}
     <div class="container-fluid bg-preto" id="container-navbar">
         <div class="container">
             <nav class="navbar d-block d-lg-none navbar-expand-lg navbar-light">
@@ -239,6 +240,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="espacamento-nav">
+
     </div>
 
     @yield('conteudo')
@@ -450,11 +455,15 @@
             </div>
         </div>
     @endif
+    <div id="div-whatsapp" style="left: auto; right: 15px;">
+
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ asset('js/jquery.js') }}">
     </script>
     <script src="{{ asset('js/aos.js') }}"></script>
+    <script src="{{ asset('js/floating-wpp.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery.lazy.min.js') }}"></script>
@@ -483,8 +492,38 @@
             });
         </script>
     @endif
+    @if(isset($reserva))
+        <script>
+            var telefone = "{!! $reserva->telefone_consultor !!}";
+        </script>
+    @elseif(isset($lote))
+        <script>
+            var telefone = "{!! $lote->reserva->telefone_consultor !!}";
+        </script>
+    @else
+        <script>
+            var telefone = '5514981809051';
+        </script>
+    @endif
     <script type="text/javascript" async
         src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js">
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#div-whatsapp').floatingWhatsApp({
+                phone: telefone,
+                popupMessage: 'Olá! Como podemos ajudar?',
+                message: "",
+                showPopup: true,
+                showOnIE: false,
+                headerTitle: 'Seja Bem-Vindo!',
+                headerColor: '#00ba38',
+                backgroundColor: 'crimson',
+                buttonImage: '<img src="/imagens/whatsapp-button.png"/>',
+                size: "60px",
+                zIndex: 999999
+            });
+        });
     </script>
 </body>
 
