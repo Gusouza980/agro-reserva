@@ -1,7 +1,7 @@
 {{-- MODELO DE PRENHEZ --}}
 <div class="row justify-content-center justify-content-lg-start mt-4 mt-lg-0">
     <div class="px-4 px-lg-0 text-white flex-grow-1 text-lote-info text-center text-lg-left">
-        @if ($lote->rgd)
+        @if ($lote->rgd || $lote->rgn)
             <span><b>RGD:</b> {{ $lote->registro . " " . $lote->rgn }}</span><br>
             <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
         @endif
