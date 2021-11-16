@@ -29,6 +29,7 @@
                         <thead class="text-center">
                             <tr>
                                 <th></th>
+                                <th>Nº</th>
                                 <th>Nome</th>
                                 <th>Registro</th>
                                 <th>Preço</th>
@@ -69,7 +70,8 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td><b>LOTE {{ $lote->numero . $lote->letra }}</b> - {{ $lote->nome }}</td>
+                                    <td>{{ $lote->numero . $lote->letra }}</td>
+                                    <td>{{ $lote->nome }}</td>
                                     <td>{{ $lote->registro }}</td>
                                     <td>R${{ number_format($lote->preco, 2, ',', '.') }}</td>
                                     <td>{{ $lote->visitas }}</td>
