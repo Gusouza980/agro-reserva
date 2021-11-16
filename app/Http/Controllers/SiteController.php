@@ -252,7 +252,7 @@ class SiteController extends Controller
                 $carrinho_ids = [];
                 
                 foreach($carrinhos as $carrinho){
-                    if($carrinho->reserva_id == null){
+                    if($carrinho->reserva_id == null || $carrinho->reserva->encerrada){
                         $carrinho->delete();
                     }else{
                         if(!session()->get("carrinho")){
