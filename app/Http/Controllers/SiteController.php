@@ -69,18 +69,6 @@ class SiteController extends Controller
 
     public function index(){
         // dd($cliente->toArray());
-        if(Cookie::get('cliente')){
-            $usuario = Cliente::find(Cookie::get('cliente'));
-            $usuario->ultimo_acesso = date('Y-m-d');
-            $usuario->save();
-            // $cookie = Cookie::forever('cliente', $usuario->id);
-            session(["cliente" => $usuario->toArray()]);
-            
-            $carrinho = Carrinho::where([["cliente_id", $usuario->id], ["aberto", true]])->first();
-            if($carrinho){
-                session(["carrinho" => $carrinho->id]);
-            }
-        }
         $configuracao = Configuracao::first();
         $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
         return view("index", ["reservas" => $reservas, "configuracao" => $configuracao]);

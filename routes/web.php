@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware(['popup'])->group(function () {
+Route::middleware(['popup', 'cookie'])->group(function () {
     Route::get('/cadastro', function () {
         return view('cadastro.index');
     })->name("cadastro");

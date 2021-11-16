@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'fazendeiro' => \App\Http\Middleware\FazendeiroLogado::class,
         'cliente_logado' => \App\Http\Middleware\ClienteLogado::class,
         'popup' => \App\Http\Middleware\MostrarPopup::class,
+        'cookie' => \App\Http\Middleware\VerificaCookie::class,
     ];
 }
