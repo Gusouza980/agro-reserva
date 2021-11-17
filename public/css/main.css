@@ -559,7 +559,7 @@ label {
     left:0; 
     width: 100%;
     z-index: 0;
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 #container-section1{
@@ -594,7 +594,7 @@ label {
 
 @media(max-width:1920px){
     #row-cards-fazendas{
-        margin-top: 600px;
+        margin-top: 750px;
     }
 }
 

@@ -15,20 +15,23 @@
     <div class="container-fluid d-lg-none" style="background-color: black;">
         <div class="row px-0">
             <div id="container-banner-mobile" class="carousel slide d-lg-none" data-ride="carousel">
-                <div
-                    style="position: absolute; bottom:-10px; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 20%, rgba(0,212,255,0) 100%); height: 150px; z-index: 5;">
+                {{-- <div
+                    style="pointer-events: none; position: absolute; bottom:-10px; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 20%, rgba(0,212,255,0) 100%); height: 150px; z-index: 5;">
 
-                </div>
+                </div> --}}
                 <div class="carousel-inner">
                     <div class="carousel-item active" onclick="window.location.href= 'https://agroreserva.com.br/fazenda/rima-agropecuaria/lotes'">
                         <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
                     </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('imagens/banner2-mobile.jpg')}}" class="d-block w-100">
+                    </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#container-banner-mobile" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#container-banner-mobile" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
@@ -41,9 +44,10 @@
                 <div class="row">
                     <div id="container-banner-desktop" class="d-none d-lg-block" style="">
                         <img class="active cpointer" src="{{ asset('imagens/banner1.jpg') }}" num="1" style="width: 100%;" alt="" onclick="window.location.href= 'https://agroreserva.com.br/fazenda/rima-agropecuaria/lotes'">
-                        <div
+                        <img class="cpointer" src="{{ asset('imagens/banner2.jpg') }}" num="2" style="display:none; width: 100%;" alt="">
+                        {{-- <div
                             style="position: absolute; bottom:0; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 25%, rgba(0,212,255,0) 100%); height: 250px;">
-                        </div>
+                        </div> --}}
                         <div id="banner-arrow-left"
                             style="position: absolute; left: 30px; top: calc(50% - 20px); padding: 7px 10px 5px 10px; background-color: rgba(255,255,255, 0.2); border-radius: 5px; cursor: pointer;">
                             <i class="fas fa-chevron-left text-white fa-lg"></i>
@@ -309,7 +313,7 @@
 
 @section('scripts')
     <script>
-        var num_banners = 1;
+        var num_banners = 2;
 
         function troca_banner(direcao) {
             var atual = $("#container-banner-desktop > img.active");
