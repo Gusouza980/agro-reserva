@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="Respeito pela sua jornada">
+    <meta name="description" content="Acesse o site da Agro Reserva e leve os melhores animais, dos principais criatórios do Brasil para a sua fazenda. Experiência humanizada, 100% online e 0% de comissão.">
     <meta name="keywords" content="Gado, Agro, E-commerce, Lotes">
     <meta name="author" content="Luis Gustavo de Souza Carvalho">
     <meta property="og:locale" content="pt_BR">
