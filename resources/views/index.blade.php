@@ -43,7 +43,7 @@
             {{-- <div class="container-fluid py-5 px-0" id="container-section1"> --}}
                 <div class="row">
                     <div id="container-banner-desktop" class="d-none d-lg-block" style="">
-                        <img class="active cpointer" src="{{ asset('imagens/banner1.jpg') }}" num="1" style="width: 100%;" alt="" onclick="window.location.href= 'https://agroreserva.com.br/fazenda/rima-agropecuaria/lotes'">
+                        <img class="active cpointer" src="{{ asset('imagens/banner11.jpg') }}" num="1" style="width: 100%;" alt="" onclick="window.location.href= 'https://agroreserva.com.br/fazenda/rima-agropecuaria/lotes'">
                         <img class="cpointer" src="{{ asset('imagens/banner2.jpg') }}" num="2" style="display:none; width: 100%;" alt="">
                         {{-- <div
                             style="position: absolute; bottom:0; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 25%, rgba(0,212,255,0) 100%); height: 250px;">
@@ -315,7 +315,7 @@
 
 @section('scripts')
     <script>
-        var num_banners = 2;
+        var num_banners = 1;
 
         function troca_banner(direcao) {
             var atual = $("#container-banner-desktop > img.active");
