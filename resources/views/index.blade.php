@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="container-fluid" style="background-color: black;">
-        <div class="container-fluid" id="header-index">
+        <div class="container-fluid pb-5" id="header-index">
             {{-- <div class="container-fluid py-5 px-0" id="container-section1"> --}}
                 <div class="row">
                     <div id="container-banner-desktop" class="d-none d-lg-block" style="">
@@ -78,19 +78,21 @@
                             EVOLUEM <span class="destaque">A PECUÁRIA</span></h3>
                     </div>
                 </div> --}}
-                @if ($configuracao->live_ativo && $configuracao->live_link)
-                    <div class="row mt-5 d-none d-lg-flex">
-                        <div class="col-12 text-center text-header-index">
-                            <h5>DE OLHO NA LIVE</h5>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center mb-5 d-none d-lg-flex">
-                        <div id="caixa-live">
-                            {!! $configuracao->live_link !!}
-                        </div>
-                    </div>
-                @endif
                 <div class="row pb-5 justify-content-center" id="row-cards-fazendas" style="position: relative; z-index: 1;">
+                    @if ($configuracao->live_ativo && $configuracao->live_link)
+                        <div class="container-fluid">
+                            <div class="row mt-5 d-none d-lg-flex">
+                                <div class="col-12 text-center text-header-index">
+                                    <h5>DE OLHO NA LIVE</h5>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center mb-5 d-none d-lg-flex">
+                                <div id="caixa-live">
+                                    {!! $configuracao->live_link !!}
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     <div class="col-12 text-center text-header-index d-none d-lg-block">
                         <h5>Vitrine de reservas</h5>
                     </div>
