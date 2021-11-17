@@ -1948,7 +1948,7 @@ label {
 }
 
 .reserva-nao-encerrada{
-    box-shadow: 0px 0px 4px white; 
+    /* box-shadow: 0px 0px 4px white;  */
     background: linear-gradient(180deg, rgba(0,0,0,0.85) 20%, rgba(0,4,1,0) 96%); 
 }
 
