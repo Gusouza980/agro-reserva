@@ -316,6 +316,8 @@
     <script>
         var num_banners = 2;
 
+        rotacao_automatica_desktop();
+
         function troca_banner(direcao) {
             var atual = $("#container-banner-desktop > img.active");
             var atual_num = atual.attr("num");
@@ -341,6 +343,13 @@
             atual.fadeOut(400, function() {
                 prox.fadeIn(400);
             });
+        }
+
+        function rotacao_automatica_desktop(){
+            setTimeout(function(){
+                troca_banner("proximo");
+                rotacao_automatica_desktop();
+            }, 5000);
         }
 
         $(document).ready(function() {
