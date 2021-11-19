@@ -319,42 +319,48 @@
 @section('scripts')
     <script>
         var num_banners = 3;
+        var trava = false;
 
-        rotacao_automatica_desktop();
+        // rotacao_automatica_desktop();
 
         function troca_banner(direcao) {
             var atual = $("#container-banner-desktop > img.active");
-            var atual_num = atual.attr("num");
+            console.log(atual);
+            if(!trava) {
+                var atual_num = atual.attr("num");
+                if (direcao == "proximo") {
+                    if (atual_num == num_banners) {
+                        var prox_num = 1;
+                    } else {
+                        var prox_num = parseInt(atual_num) + 1;
+                    }
+                } else {
+                    if (atual_num == 1) {
+                        var prox_num = num_banners;
+                    } else {
+                        var prox_num = parseInt(atual_num) - 1;
+                    }
+                }
 
-            if (direcao == "proximo") {
-                if (atual_num == num_banners) {
-                    var prox_num = 1;
-                } else {
-                    var prox_num = parseInt(atual_num) + 1;
-                }
-            } else {
-                if (atual_num == 1) {
-                    var prox_num = num_banners;
-                } else {
-                    var prox_num = parseInt(atual_num) - 1;
-                }
+                var prox = $("#container-banner-desktop > img[num='" + prox_num + "']");
+
+                atual.removeClass("active");
+                prox.addClass("active");
+                trava = true;
+                atual.fadeOut(400, function() {
+                    prox.fadeIn(400, function(){
+                        trava = false;
+                    });
+                });
             }
-
-            var prox = $("#container-banner-desktop > img[num='" + prox_num + "']");
-
-            atual.removeClass("active");
-            prox.addClass("active");
-            atual.fadeOut(400, function() {
-                prox.fadeIn(400);
-            });
         }
 
-        function rotacao_automatica_desktop(){
-            setTimeout(function(){
-                troca_banner("proximo");
-                rotacao_automatica_desktop();
-            }, 5000);
-        }
+        // function rotacao_automatica_desktop(){
+        //     setTimeout(function(){
+        //         troca_banner("proximo");
+        //         rotacao_automatica_desktop();
+        //     }, 5000);
+        // }
 
         $(document).ready(function() {
 
