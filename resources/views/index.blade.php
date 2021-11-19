@@ -321,7 +321,7 @@
         var num_banners = 3;
         var trava = false;
 
-        // rotacao_automatica_desktop();
+        rotacao_automatica_desktop();
 
         function troca_banner(direcao) {
             var atual = $("#container-banner-desktop > img.active");
@@ -355,12 +355,12 @@
             }
         }
 
-        // function rotacao_automatica_desktop(){
-        //     setTimeout(function(){
-        //         troca_banner("proximo");
-        //         rotacao_automatica_desktop();
-        //     }, 5000);
-        // }
+        function rotacao_automatica_desktop(){
+            setTimeout(function(){
+                troca_banner("proximo");
+                rotacao_automatica_desktop();
+            }, 5000);
+        }
 
         $(document).ready(function() {
 
