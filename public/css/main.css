@@ -2049,3 +2049,7 @@ label {
         margin-top: 70px;
     }
 }
+
+#recomendacoes-lotes > .coluna-caixa-lote{
+    margin: 0 10px;
+}

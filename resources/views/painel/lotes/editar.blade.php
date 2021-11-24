@@ -159,6 +159,17 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="form-group col-12 mb-3">
+                                <label for="tags">Palavras Chaves</label>
+                                <select class="js-example-basic-multiple js-states form-control" multiple="multiple" name="chaves[]" id="select_tag" multiple required>
+                                    <option value="" label="default"></option>
+                                    @foreach (App\Models\Chave::all() as $chave)
+                                        <option value="{{$chave->id}}" @if($lote->chaves->contains($chave->id)) selected @endif>{{$chave->palavra}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
                             @if ($lote->reserva->multi_fazendas)
                                 <div class="col-12 col-lg-8 mb-3">
                                     <label for="tags">Fazenda</label>
@@ -319,7 +330,9 @@
     <script src="{{ asset('admin/libs/select2/js/select2.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('.select2').select2();
+            $('#select_tag').select2({
+                tags: true,
+            });
             $("input[name='pacote']").change(function() {
                 if ($("input[name='pacote']:checked").val() == 2) {
                     $("#row-seleciona-pacote").slideDown(300);

@@ -311,6 +311,61 @@ if(session()->get("cliente")){
                 </div>
             </div> --}}
             </div>
+            <hr>
+            @if($lote->recomendados->count() > 0)
+                <div class="container-fluid py-5">
+                    <div class="w1200 mx-auto">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h5>Você também pode gostar:</h5>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center justify-content-lg-center" id="recomendacoes-lotes">
+                            @foreach ($lote->recomendados as $lote)
+
+                                @if($lote->pacote)
+                                    @switch($lote->modelo_exibicao)
+                                        @case(0)
+                                            @include('includes.lotes.pacotes.modelo00')
+                                        @break;
+                                        @case(2)
+                                            @include('includes.lotes.pacotes.modelo00')
+                                        @break;
+                                        @default
+                                            @include('includes.lotes.pacotes.modelo00')
+                                        @break;
+                                    @endswitch
+                                @else
+                                    @switch($lote->modelo_exibicao)
+                                        @case(0)
+                                            @include('includes.lotes.modelo00')
+                                        @break;
+                                        @case(1)
+                                            @include('includes.lotes.modelo01')
+                                        @break;
+                                        @case(2)
+                                            @include('includes.lotes.modelo02')
+                                        @break;
+                                        @case(3)
+                                            @include('includes.lotes.modelo03')
+                                        @break;
+                                        @case(4)
+                                            @include('includes.lotes.modelo04')
+                                        @break;
+                                        @case(5)
+                                            @include('includes.lotes.modelo05')
+                                        @break;
+                                        @default
+                                            @include('includes.lotes.modelo02')
+                                        @break;
+                                    @endswitch
+                                @endif
+
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endif
 
             <!-- Modal -->
             <div class="modal fade" id="modalFrete" tabindex="-1" role="dialog" aria-labelledby="modalFreteTitle"

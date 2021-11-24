@@ -8,6 +8,7 @@ use App\Models\Lote;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Reserva;
+use App\Models\Chave;
 
 class LotesController extends Controller
 {
@@ -75,6 +76,17 @@ class LotesController extends Controller
                 'imagens/fazendas/' . Str::slug($lote->fazenda->nome_fazenda) . "/lotes", 'local'
             );
         }
+
+        foreach($request->chaves as $chave){
+            if(is_numeric($chave)){
+                $lote->chaves()->attach($chave);
+            }else{
+                $nova_chave = new Chave;
+                $nova_chave->palavra = $chave;
+                $nova_chave->save();
+                $lote->chaves()->attach($nova_chave);
+            }
+        }    
 
         $lote->save();
         toastr()->success("Lote salvo com sucesso!");
@@ -147,6 +159,19 @@ class LotesController extends Controller
                 'imagens/fazendas/' . Str::slug($lote->fazenda->nome_fazenda) . "/lotes", 'local'
             );
         }
+
+        $lote->chaves()->detach();
+
+        foreach($request->chaves as $chave){
+            if(is_numeric($chave)){
+                $lote->chaves()->attach($chave);
+            }else{
+                $nova_chave = new Chave;
+                $nova_chave->palavra = $chave;
+                $nova_chave->save();
+                $lote->chaves()->attach($nova_chave);
+            }
+        }   
 
         $lote->save();
 

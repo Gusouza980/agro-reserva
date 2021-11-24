@@ -36,4 +36,12 @@ class Lote extends Model
     public function reserva(){
         return $this->belongsTo(Reserva::class);
     }
+
+    public function chaves(){
+        return $this->belongsToMany(Chave::class, "lote_chaves", "lote_id", "chave_id");
+    }
+
+    public function recomendados(){
+        return $this->belongsToMany(Lote::class, "lote_recomendacaos", "lote_id", "lote_recomendado_id");
+    }
 }

@@ -20,10 +20,7 @@
 
                 </div> --}}
                 <div class="carousel-inner">
-                    <div class="carousel-item active" onclick="window.location.href= 'https://agroreserva.com.br/fazenda/rima-agropecuaria/lotes'">
-                        <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
-                    </div>
-                    <div class="carousel-item">
+                    <div class="carousel-item active">
                         <img src="{{asset('imagens/banner2-mobile.jpg')}}" class="d-block w-100">
                     </div>
                     <div class="carousel-item">
@@ -46,9 +43,8 @@
             {{-- <div class="container-fluid py-5 px-0" id="container-section1"> --}}
                 <div class="row">
                     <div id="container-banner-desktop" class="d-none d-lg-block" style="">
-                        <img class="active cpointer" src="{{ asset('imagens/banner1.jpg') }}" num="1" style="width: 100%;" alt="" onclick="window.location.href= 'https://agroreserva.com.br/fazenda/rima-agropecuaria/lotes'">
-                        <img class="cpointer" src="{{ asset('imagens/banner2.jpg') }}" num="2" style="display:none; width: 100%;" alt="">
-                        <img class="cpointer" src="{{ asset('imagens/banner3.jpg') }}" num="3" style="display:none; width: 100%;" alt="">
+                        <img class="active cpointer" src="{{ asset('imagens/banner2.jpg') }}" num="1" style="width: 100%;" alt="">
+                        <img class="cpointer" src="{{ asset('imagens/banner3.jpg') }}" num="2" style="display:none; width: 100%;" alt="">
                         {{-- <div
                             style="position: absolute; bottom:0; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 25%, rgba(0,212,255,0) 100%); height: 250px;">
                         </div> --}}
@@ -318,7 +314,7 @@
 
 @section('scripts')
     <script>
-        var num_banners = 3;
+        var num_banners = 2;
         var trava = false;
 
         rotacao_automatica_desktop();
