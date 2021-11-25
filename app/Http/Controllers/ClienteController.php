@@ -27,6 +27,7 @@ use App\Exports\ClienteExport;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use App\Classes\Email;
+use App\Classes\Util;
 
 class ClienteController extends Controller
 {
@@ -169,8 +170,6 @@ class ClienteController extends Controller
 
     public function cadastro_final(Request $request){
 
-        // dd($request->all());
-
         if($request->pessoa_fisica == "1"){
             $cliente = Cliente::where("cpf", $request->cpf)->orWhere("documento", $request->cpf)->first();
             if($cliente){
@@ -189,7 +188,7 @@ class ClienteController extends Controller
 
         $cliente->nome_fazenda = $request->nome_fazenda;
         $cliente->rg = $request->rg;
-        $cliente->nascimento = $request->nascimento;
+        $cliente->nascimento = Util::convertDateToString($request->nascimento);
         if($request->pessoa_fisica == "1"){
             $cliente->pessoa_fisica = true;
             $cliente->cpf = $request->cpf;

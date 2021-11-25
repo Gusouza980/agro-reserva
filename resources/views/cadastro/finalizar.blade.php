@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="form-group col-12 input-cadastro">
                                         <label for="nascimento">Data de Nascimento</label>
-                                        <input type="date" class="form-control" name="nascimento" id="nascimento">
+                                        <input type="text" class="form-control" pattern="\d{1,2}/\d{1,2}/\d{4}" placeholder="dd/mm/aaaa" name="nascimento" id="nascimento">
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                                     <div class="form-group col-12 col-md-6 input-cadastro">
                                         <label for="estado">Estado *</label>
                                         <input type="text" class="form-control" name="estado" id="estado" required
-                                            maxlenght="2" aria-describedby="" placeholder="">
+                                            maxlenght="2" pattern="[a-zA-Z]{2}" aria-describedby="" placeholder="">
                                     </div>
                                     <div class="form-group col-12 col-md-8 input-cadastro">
                                         <label for="rua">Rua</label>
@@ -274,6 +274,7 @@
             $("#cep").mask("00000-000")
             $("#cnpj").mask("99.999.999/9999-99");
             $("#cpf").mask("999.999.999-99");
+            $("#nascimento").mask("99/99/9999");
 
             $("#cep").keyup(function() {
                 if ($("#cep").val().length < 9) {

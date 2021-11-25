@@ -20,6 +20,14 @@ class Util{
         return $day . "/" . $month . "/" . $year;
     }
 
+    public static function convertDateToString($string){
+        $year = substr($string, 6, 4);
+        $month = substr($string, 3, 2);
+        $day = substr($string, 0, 2);
+
+        return $year . "-" . $month . "-" . $day;
+    }
+
 }
 
 ?>
