@@ -77,6 +77,8 @@ class LotesController extends Controller
             );
         }
 
+        $lote->save();
+
         foreach($request->chaves as $chave){
             if(is_numeric($chave)){
                 $lote->chaves()->attach($chave);
@@ -88,7 +90,6 @@ class LotesController extends Controller
             }
         }    
 
-        $lote->save();
         toastr()->success("Lote salvo com sucesso!");
         return redirect()->route("painel.fazenda.reserva.lotes", ["reserva" => $reserva]);
     }
