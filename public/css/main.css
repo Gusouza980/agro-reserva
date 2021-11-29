@@ -2053,3 +2053,7 @@ label {
 #recomendacoes-lotes > .coluna-caixa-lote{
     margin: 0 10px;
 }
+
+.slick-track > .coluna-caixa-lote{
+    margin: 0 10px;
+}

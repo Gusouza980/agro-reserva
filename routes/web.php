@@ -57,6 +57,8 @@ Route::middleware(['popup', 'cookie'])->group(function () {
     Route::get('/fazenda/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca.avaliacoes");
     Route::get('/fazenda/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes'])->name("fazenda.lotes");
     Route::get('/fazenda/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote'])->name("fazenda.lote");
+    Route::post('/fazenda/lote/{lote}/lance',  [\App\Http\Controllers\SiteController::class, 'lance'])->name("fazenda.lote.lance");
+    Route::get('/fazenda/lote/{lote}/lance/maior',  [\App\Http\Controllers\SiteController::class, 'maior_lance'])->name("fazenda.lote.lance.maior");
     Route::get('/quem-somos', [\App\Http\Controllers\SiteController::class, 'sobre'])->name("sobre");
     Route::get('/pre_to_main', [\App\Http\Controllers\ClienteController::class, 'pre_to_main']);
     Route::post('/senha/recuperar', [\App\Http\Controllers\ContaController::class, 'recuperar_senha'])->name("conta.senha.recuperar");

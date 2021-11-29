@@ -44,4 +44,8 @@ class Lote extends Model
     public function recomendados(){
         return $this->belongsToMany(Lote::class, "lote_recomendacaos", "lote_id", "lote_recomendado_id");
     }
+
+    public function lances(){
+        return $this->hasMany(Lance::class);
+    }
 }

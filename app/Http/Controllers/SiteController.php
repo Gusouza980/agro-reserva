@@ -9,6 +9,7 @@ use App\Models\Cliente;
 use App\Models\Lote;
 use App\Models\Visita;
 use App\Models\Carrinho;
+use App\Models\Lance;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use App\Models\Configuracao;
@@ -212,7 +213,41 @@ class SiteController extends Controller
 
         $lote->video = $this->convertYoutube($lote->video);
         $fazenda = Fazenda::where("slug", $slug)->first();
-        return view("lote", ["lote" => $lote, "reserva" => $lote->reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome]);
+        return view("lote", ["lote" => $lote, "lote_bkp" => $lote, "reserva" => $lote->reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome]);
+    }
+
+    public function lance(Request $request, Lote $lote){
+        
+        $lance = Lance::where([["lote_id", $lote->id], ["valor", ">", $request->valor]])->first();
+        if($lance){
+            return response()->json("erro");
+        }
+        $lance = new Lance;
+        $lance->cliente_id = session()->get("cliente")["id"];
+        $lance->lote_id = $lote->id;
+        $lance->reserva_id = $lote->reserva->id;
+        $lance->valor = $request->valor;
+        $lance->save();
+
+        $res = [];
+        $res["id"] = $lance->id;
+        $res["nome"] = session()->get("cliente")["nome_dono"];
+        $res["valor"] = $request->valor;
+
+        return response()->json($res);
+        
+    }
+
+    public function maior_lance(Lote $lote){
+        $lance = Lance::where("lote_id", $lote->id)->orderBy("valor", "DESC")->first();
+        if(!$lance){
+            return response()->json("erro");
+        }
+        $res = [];
+        $res["id"] = $lance->id;
+        $res["nome"] = $lance->cliente->nome_dono;
+        $res["valor"] = $lance->valor;
+        return response()->json($res);
     }
 
     public function cadastro_fazenda(){

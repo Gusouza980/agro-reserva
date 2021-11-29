@@ -18,6 +18,9 @@ if(session()->get("cliente")){
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/magnific.popup.css') }}">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <style>
         body {
             background-color: #FBFBFB;
@@ -42,15 +45,43 @@ if(session()->get("cliente")){
                                 </div>
                             </div>
                             @if(session()->get("cliente"))
-                                {{--  PRECO AQUI  --}}
-                                @switch($lote->modelo_preco)
-                                    @case(0)
-                                        @include('includes.precos.modelo00')
-                                        @break
-                                    @case(1)
-                                        @include('includes.precos.modelo01')
-                                        @break
-                                @endswitch
+                                @if($lote->modalidade == 0)
+                                    {{--  PRECO AQUI  --}}
+                                    @switch($lote->modelo_preco)
+                                        @case(0)
+                                            @include('includes.precos.modelo00')
+                                            @break
+                                        @case(1)
+                                            @include('includes.precos.modelo01')
+                                            @break
+                                    @endswitch
+                                @else
+                                    @if($lote->lances->count() == 0)
+                                        <div class="row">
+                                            <div class="col-12 text-center text-lg-right @if (!$lote->reserva->preco_disponivel && !$lote->liberar_preco) blur @endif">
+                                                @if ($lote->reserva->preco_disponivel || $lote->liberar_preco)
+                                                    <h5>
+                                                        <b>Lance mínimo:</b> R${{ number_format($lote->preco, 2, ',', '.') }}
+                                                    </h5>
+                                                @else
+                                                    <h4><b>0x</b> de <b>R$0000,00</b></h4>
+                                                @endif
+                                            </div>
+                                        </div>   
+                                    @else
+                                        <div class="row">
+                                            <div class="col-12 text-center text-lg-right">
+                                                <span><b>Maior lance:</b>
+                                                    @php
+                                                        $lance = $lote->lances->sortByDesc("created_at")->first();
+                                                    @endphp
+                                                    <span id="text_maior_lance" lid="{{$lance->id}}">{{$lance->cliente->nome_dono}} - 
+                                                    <b>R${{ number_format($lance->valor, 2, ',', '.') }}</b></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endif
                             @endif
                         </div>
                         <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
@@ -64,10 +95,17 @@ if(session()->get("cliente")){
                                         @if (!$lote->reservado && !$lote->negociacao)
                                             @if (session()->get('cliente'))
                                                 @if ($cliente->aprovado)
-                                                    <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                                        style="max-width:350px;"
-                                                        href="{{ route('carrinho.adicionar', ['lote' => $lote]) }}"
-                                                        role="button">Comprar</a>
+                                                    @if($lote->modalidade == 0)
+                                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                            style="max-width:350px;"
+                                                            href="{{ route('carrinho.adicionar', ['lote' => $lote]) }}"
+                                                            role="button">Comprar</a>
+                                                    @else
+                                                        <a name="" id=""
+                                                            class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
+                                                            data-toggle="modal" data-target="#modalLance"
+                                                            style="max-width:350px;" role="button">Dar Lance</a>
+                                                    @endif
                                                 @else
                                                     <a name="" id=""
                                                         class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
@@ -321,51 +359,61 @@ if(session()->get("cliente")){
                             </div>
                         </div>
                         <div class="row justify-content-center justify-content-lg-center" id="recomendacoes-lotes">
-                            @foreach ($lote->recomendados as $lote)
+                            <div class="col-12">
+                                <div class="slick">
+                                    @foreach ($lote->recomendados as $lote)
 
-                                @if($lote->pacote)
-                                    @switch($lote->modelo_exibicao)
-                                        @case(0)
-                                            @include('includes.lotes.pacotes.modelo00')
-                                        @break;
-                                        @case(2)
-                                            @include('includes.lotes.pacotes.modelo00')
-                                        @break;
-                                        @default
-                                            @include('includes.lotes.pacotes.modelo00')
-                                        @break;
-                                    @endswitch
-                                @else
-                                    @switch($lote->modelo_exibicao)
-                                        @case(0)
-                                            @include('includes.lotes.modelo00')
-                                        @break;
-                                        @case(1)
-                                            @include('includes.lotes.modelo01')
-                                        @break;
-                                        @case(2)
-                                            @include('includes.lotes.modelo02')
-                                        @break;
-                                        @case(3)
-                                            @include('includes.lotes.modelo03')
-                                        @break;
-                                        @case(4)
-                                            @include('includes.lotes.modelo04')
-                                        @break;
-                                        @case(5)
-                                            @include('includes.lotes.modelo05')
-                                        @break;
-                                        @default
-                                            @include('includes.lotes.modelo02')
-                                        @break;
-                                    @endswitch
-                                @endif
+                                        @if($lote->pacote)
+                                            @switch($lote->modelo_exibicao)
+                                                @case(0)
+                                                    @include('includes.lotes.pacotes.modelo00')
+                                                @break;
+                                                @case(2)
+                                                    @include('includes.lotes.pacotes.modelo00')
+                                                @break;
+                                                @default
+                                                    @include('includes.lotes.pacotes.modelo00')
+                                                @break;
+                                            @endswitch
+                                        @else
+                                            @switch($lote->modelo_exibicao)
+                                                @case(0)
+                                                    @include('includes.lotes.modelo00')
+                                                @break;
+                                                @case(1)
+                                                    @include('includes.lotes.modelo01')
+                                                @break;
+                                                @case(2)
+                                                    @include('includes.lotes.modelo02')
+                                                @break;
+                                                @case(3)
+                                                    @include('includes.lotes.modelo03')
+                                                @break;
+                                                @case(4)
+                                                    @include('includes.lotes.modelo04')
+                                                @break;
+                                                @case(5)
+                                                    @include('includes.lotes.modelo05')
+                                                @break;
+                                                @default
+                                                    @include('includes.lotes.modelo02')
+                                                @break;
+                                            @endswitch
+                                        @endif
 
-                            @endforeach
+                                    @endforeach
+                                </div>
+                    
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
             @endif
+
+            @php
+                $lote = $lote_bkp;
+            @endphp
 
             <!-- Modal -->
             <div class="modal fade" id="modalFrete" tabindex="-1" role="dialog" aria-labelledby="modalFreteTitle"
@@ -867,6 +915,35 @@ if(session()->get("cliente")){
         </div>
     </div>
 
+    <div class="modal fade" id="modalLance" tabindex="-1" role="dialog" aria-labelledby="modalLanceTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @php
+                        $lance = $lote->lances->sortByDesc("created_at")->first();
+                    @endphp
+                    <div class="row px-4">
+                        <div class="form-group col-12">
+                            <label for="" style="color: black;">Digite o valor do lance</label>
+                            <input type="number"
+                                class="form-control" name="valor" id="valor_lance" aria-describedby="helpId" style="width: 100%" placeholder="" @if($lote->lances->count() == 0) min="{{$lote->preco}}" @else min="{{$lance->valor + 1}}" step="0.01" @endif>
+                            <small id="helpId" class="form-text text-muted">O valor deve ser maior que o último lance ou que o valor mínimo caso ainda não haja lances</small>
+                        </div>
+                        <div class="form-group col-12 text-right">
+                            <button type="submit" id="enviar_lance" class="btn btn-laranja py-1">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal -->
     <div class="modal fade" id="modalPapel" tabindex="-1" role="dialog" aria-labelledby="modalPapelTitle"
         aria-hidden="true">
@@ -934,12 +1011,139 @@ if(session()->get("cliente")){
 
 @section('scripts')
     <script src="{{ asset('js/magnific.popup.js') }}"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src=" https://ajax.googleapis.com/ajax/libs/jqueryui/1.5.2/jquery-ui.min.js"></script>
     <script>
         $(document).ready(function() {
             $(document).ready(function() {
+
+                verifica_lance();
+
+                function verifica_lance(){
+                    setTimeout(function(){
+                        console.log("rodou");
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+
+                        $.ajax({
+                            type: "GET",
+                            url: "{!! route('fazenda.lote.lance.maior', ['lote' => $lote->id]) !!}",
+                            success: function(ret) {
+                                if(ret != "erro"){
+                                    if($("#text_maior_lance").attr("lid") != ret.id){
+                                        $("#text_maior_lance").attr("lid", ret.id);
+                                        var html = ret.nome;
+                                        html += " - <b> R$" + parseFloat(ret.valor).toFixed(2) + "</b>";
+                                        $("#text_maior_lance").html(html);
+                                        $("#modalLance").modal("hide");
+                                        var audio = new Audio('/audios/cash.mp3');
+                                        audio.play();
+                                    }
+                                }
+                                
+                            },
+                            error: function(ret) {
+                                console.log("Deu muito ruim");
+                                console.log(ret);
+                            }
+                        });
+
+                        verifica_lance();
+                    }, 5000);
+                }
+
+                $("#enviar_lance").click(function(){
+
+                    var valor = $("#valor_lance").val();
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{!! route('fazenda.lote.lance', ['lote' => $lote->id]) !!}",
+                        data: {
+                            valor: valor
+                        },
+                        // beforeSend: function() {
+                        //     $("#botoes-prosseguir").hide();
+                        //     $("#gif-ajax-direto").show();
+                        // },
+                        success: function(ret) {
+                            if(ret != "erro"){
+                                $("#text_maior_lance").attr("lid", ret.id);
+                                var html = ret.nome;
+                                html += " - <b> R$" + parseFloat(ret.valor).toFixed(2) + "</b>";
+                                $("#text_maior_lance").html(html);
+                                $("#modalLance").modal("hide");
+                                var audio = new Audio('/audios/cash.mp3');
+                                audio.play();
+                            }
+                            
+                        },
+                        error: function(ret) {
+                            console.log("Deu muito ruim");
+                            console.log(ret);
+                        }
+                    });
+                });
+
                 $('#link-genealogia').magnificPopup({
                     type: 'image'
                 });
+
+                $(".slick").slick({
+
+                    // normal options...
+                    slidesToShow: 4,
+                    infinite: false,
+                    dots: true,
+                    adaptiveHeight: true,
+                    arrows: false,
+                    autoplay: false,
+                    autoplaySpeed: 2000,
+                    // the magic
+                    responsive: [{
+
+                        breakpoint: 1180,
+                        settings: {
+                        slidesToShow: 3,
+                        infinite: false,
+                        dots: true,
+                        adaptiveHeight: true,
+                        arrows: false,
+                        }
+
+                    }, {
+
+                        breakpoint: 924,
+                        settings: {
+                        slidesToShow: 2,
+                        infinite: false,
+                        dots: true,
+                        adaptiveHeight: true,
+                        arrows: false,
+                        }
+
+                    }, {
+
+                        breakpoint: 630,
+                        settings: {
+                        slidesToShow: 1,
+                        infinite: false,
+                        dots: true,
+                        adaptiveHeight: true,
+                        arrows: false,
+                        }
+
+                    }]
+                    });
             });
         });
     </script>
