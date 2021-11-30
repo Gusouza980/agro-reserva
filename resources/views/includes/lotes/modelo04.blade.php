@@ -47,12 +47,18 @@
                     </div>
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
-                    <div>
-                        <b class="">LACT. ATUAL.: </b>
-                    </div>
-                    <div class="pl-2">
-                        <span class="card-lote-info-text">{{$lote->lact_atual}} KG/Dia</span>
-                    </div>
+                    @if($lote->lact_atual)
+                        <div>
+                            <b class="">LACT. ATUAL.: </b>
+                        </div>
+                        <div class="pl-2">
+                            <span class="card-lote-info-text">{{$lote->lact_atual}} KG/Dia</span>
+                        </div>
+                    @else
+                        <div class="col-12 text-center">
+                            <b>PRENHEZ A FAZER</b>
+                        </div>
+                    @endif
                 </div>
             </div>
                 <div class="container-fluid mt-2">
