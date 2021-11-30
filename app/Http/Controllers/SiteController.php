@@ -413,7 +413,7 @@ class SiteController extends Controller
         $lote->video = $this->convertYoutube($lote->video);
 
         $fazenda = Fazenda::where("slug", $slug)->first();
-        return view("lote", ["lote" => $lote, "fazenda" => $fazenda, "finalizadas" => true, "reserva" => $reserva]);
+        return view("lote", ["lote" => $lote, "lote_bpk" => $lote, "fazenda" => $fazenda, "finalizadas" => true, "reserva" => $reserva]);
     }
 
     public function convertYoutube($string) {
