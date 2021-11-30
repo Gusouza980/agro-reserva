@@ -352,7 +352,7 @@ class SiteController extends Controller
         $lotes = $lotes->where("prioridade", false)->sortBy("numero");
         $lotes = $prioridades->merge($lotes);
         session()->flash("nome_pagina", "Lotes");
-        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "finalizadas" => true, "prioridades" => $prioridades, "lotes" => $lotes, "lotes_bkp" => $lotes_bkp]);
+        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "finalizadas" => true, "prioridades" => $prioridades, "lotes" => $lotes, "lotes_bkp" => $lotes]);
     }
 
     public function lote_finalizadas(Reserva $reserva, $slug, Lote $lote){
