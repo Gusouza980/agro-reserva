@@ -11,7 +11,7 @@
                     <div class="row py-4">
                         <div class="col-12 px-0 text-avaliacao-section2-fazenda text-center text-md-left">
                             <span class="cpointer link-avaliacao-section2-fazenda active" num="0">Resumo</span>
-                            <span class="ml-3 link-avaliacao-section2-fazenda cpointer" num="1">Produção 20/21</span>
+                            <span class="ml-3 link-avaliacao-section2-fazenda cpointer" num="1">Produção</span>
                             <span class="ml-3 link-avaliacao-section2-fazenda cpointer" num="2">Provas e Avaliações</span>
                             <span class="ml-3 link-avaliacao-section2-fazenda cpointer" num="3">Diferencial</span>
                         </div>
