@@ -179,7 +179,9 @@
                             </div>
                         </div>
                     @endforeach
-    
+                    @php
+                        $reserva = null;
+                    @endphp
                 </div>
                 <div class="row justify-content-center pb-lg-0" style="position: relative; z-index: 1;">
                     <div id="mouse" class="cpointer text-white">
