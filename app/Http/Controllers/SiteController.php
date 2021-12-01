@@ -151,12 +151,12 @@ class SiteController extends Controller
     }
 
     public function lote($slug, Lote $lote){
-        // if(!session()->get("cliente")){
-        //     session()->flash("erro", "Para acessar os lotes, faça seu login.");
-        //     session()->put(["pagina_retorno" => url()->full()]);
-        //     session()->put(["lote_origem" => $lote->id]);
-        //     return redirect()->route("login");
-        // }
+        if(!session()->get("cliente")){
+            session()->flash("erro", "Para acessar os lotes, faça seu login.");
+            session()->put(["pagina_retorno" => url()->full()]);
+            session()->put(["lote_origem" => $lote->id]);
+            return redirect()->route("login");
+        }
         $visita = new Visita;
 
         if(session()->get("cliente")){
@@ -413,7 +413,7 @@ class SiteController extends Controller
         $lote->video = $this->convertYoutube($lote->video);
 
         $fazenda = Fazenda::where("slug", $slug)->first();
-        return view("lote", ["lote" => $lote, "lote_bpk" => $lote, "fazenda" => $fazenda, "finalizadas" => true, "reserva" => $reserva]);
+        return view("lote", ["lote" => $lote, "lote_bkp" => $lote, "fazenda" => $fazenda, "finalizadas" => true, "reserva" => $reserva]);
     }
 
     public function convertYoutube($string) {
