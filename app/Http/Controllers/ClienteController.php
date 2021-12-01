@@ -263,6 +263,7 @@ class ClienteController extends Controller
         $cliente->nome_dono = $request->nome_dono;
         $cliente->nome_fazenda = $request->nome_fazenda;
         $cliente->email = $request->email;
+        $cliente->inscricao_produtor_rural = $request->inscricao_produtor_rural;
         $cliente->documento = $request->documento;
         $cliente->cpf = $request->cpf;
         $cliente->cnpj = $request->cnpj;
