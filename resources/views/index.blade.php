@@ -512,7 +512,7 @@
                     dots: true,
                     adaptiveHeight: true,
                     arrows: false,
-                    centerMode: true,
+                    centerMode: false,
                     }
 
                 }, {
@@ -524,7 +524,7 @@
                     dots: true,
                     adaptiveHeight: true,
                     arrows: false,
-                    centerMode: true,
+                    centerMode: false,
                     }
 
                 }]
