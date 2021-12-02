@@ -1143,7 +1143,7 @@ if(session()->get("cliente")){
                         }
 
                     }]
-                    });
+                });
             });
         });
     </script>
