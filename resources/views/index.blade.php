@@ -487,8 +487,8 @@
                 dots: true,
                 adaptiveHeight: true,
                 arrows: true,
-                autoplay: false,
-                autoplaySpeed: 2000,
+                autoplay: true,
+                autoplaySpeed: 5000,
                 // centerMode: true,
                 // the magic
                 responsive: [{
@@ -496,35 +496,38 @@
                     breakpoint: 1400,
                     settings: {
                         slidesToShow: 3,
-                        infinite: false,
+                        infinite: true,
                         dots: true,
                         adaptiveHeight: true,
                         arrows: true,
-                        // centerMode: true,
+                        autoplay: true,
+                        autoplaySpeed: 5000,
                     }
 
                 }, {
 
                     breakpoint: 1030,
                     settings: {
-                    slidesToShow: 2,
-                    infinite: false,
-                    dots: true,
-                    adaptiveHeight: true,
-                    arrows: true,
-                    centerMode: false,
+                        slidesToShow: 2,
+                        infinite: true,
+                        dots: true,
+                        adaptiveHeight: true,
+                        arrows: true,
+                        autoplay: true,
+                        autoplaySpeed: 5000,
                     }
 
                 }, {
 
                     breakpoint: 760,
                     settings: {
-                    slidesToShow: 1,
-                    infinite: false,
-                    dots: true,
-                    adaptiveHeight: true,
-                    arrows: true,
-                    centerMode: false,
+                        slidesToShow: 1,
+                        infinite: true,
+                        dots: true,
+                        adaptiveHeight: true,
+                        arrows: true,
+                        autoplay: true,
+                        autoplaySpeed: 5000,
                     }
 
                 }]
