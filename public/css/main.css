@@ -2090,3 +2090,29 @@ label {
     font-weight: bold;
     color: white;
 }
+
+.vitrine-animais{
+    width: 100%;
+    max-width: 1400px;
+}
+
+@media (max-width: 1399px){
+    .vitrine-animais{
+        width: 100%;
+        max-width: 1100px;
+    }
+}
+
+@media (max-width: 1030px){
+    .vitrine-animais{
+        width: 100%;
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 760px){
+    .vitrine-animais{
+        width: 100%;
+        max-width: 350px;
+    }
+}

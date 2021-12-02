@@ -98,7 +98,7 @@
                     <div class="col-12 text-center text-header-index d-none d-lg-block">
                         <h5>Vitrine de animais</h5>
                     </div>
-                    <div class="w1400">
+                    <div class="vitrine-animais">
                         <div class="row">
                             <div class="col-12">
                                 <div class="slick">
@@ -499,31 +499,31 @@
                         infinite: false,
                         dots: true,
                         adaptiveHeight: true,
-                        arrows: false,
+                        arrows: true,
                         // centerMode: true,
                     }
 
                 }, {
 
-                    breakpoint: 924,
+                    breakpoint: 1030,
                     settings: {
                     slidesToShow: 2,
                     infinite: false,
                     dots: true,
                     adaptiveHeight: true,
-                    arrows: false,
+                    arrows: true,
                     centerMode: false,
                     }
 
                 }, {
 
-                    breakpoint: 630,
+                    breakpoint: 760,
                     settings: {
                     slidesToShow: 1,
                     infinite: false,
                     dots: true,
                     adaptiveHeight: true,
-                    arrows: false,
+                    arrows: true,
                     centerMode: false,
                     }
 
