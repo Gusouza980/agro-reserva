@@ -95,39 +95,40 @@
                             </div>
                         </div>
                     @endif
-                    <div class="col-12 text-center text-header-index d-none d-lg-block">
-                        <h5>Vitrine de animais</h5>
-                    </div>
-                    <div class="vitrine-animais">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="slick">
-                                    @foreach (\App\Models\Lote::take(8)->get() as $lote)
-                                        <div class="px-0 py-2 mt-4 caixa-lote-home cpointer">
-                                            {{-- <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
-                                            <div class=""
-                                                style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 330px; height: 250px; border-radius: 15px; position: relative; overflow: hidden;">
-                                                <div class="text-center justify-content-center align-items-center lote-home-hover" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 50px; background-color: rgba(255,0,0,0.7); display:none; ">
-                                                    <p style="margin-top: 12px;">Ver lote</p>
-                                                </div>
-                                            </div>
-                                            <div class="row px-3 mt-3 align-items-center">
-                                                <div>
-                                                    <button class="badge-lote-home">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
-                                                </div>
-                                                @if($lote->registro)
-                                                    <div class="ml-3 lote-home-rgd">
-                                                        RGD: {{$lote->registro}}
+                    @if(false)
+                        <div class="col-12 text-center text-header-index d-none d-lg-block">
+                            <h5>Vitrine de animais</h5>
+                        </div>
+                        <div class="vitrine-animais">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="slick">
+                                        @foreach (\App\Models\Lote::take(8)->get() as $lote)
+                                            <div class="px-0 py-2 mt-4 caixa-lote-home cpointer">
+                                                {{-- <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
+                                                <div class=""
+                                                    style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 330px; height: 250px; border-radius: 15px; position: relative; overflow: hidden;">
+                                                    <div class="text-center justify-content-center align-items-center lote-home-hover" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 50px; background-color: rgba(255,0,0,0.7); display:none; ">
+                                                        <p style="margin-top: 12px;">Ver lote</p>
                                                     </div>
-                                                @endif
+                                                </div>
+                                                <div class="row px-3 mt-3 align-items-center">
+                                                    <div>
+                                                        <button class="badge-lote-home">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
+                                                    </div>
+                                                    @if($lote->registro)
+                                                        <div class="ml-3 lote-home-rgd">
+                                                            RGD: {{$lote->registro}}
+                                                        </div>
+                                                    @endif
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    
+                        </div>  
+                    @endif
                     
                     <div class="col-12 text-center text-header-index d-none d-lg-block mt-5">
                         <h5>Vitrine de reservas</h5>

@@ -125,6 +125,9 @@ Route::middleware(['fazendeiro'])->group(function () {
 Route::middleware(['admin'])->group(function () {
     Route::get('/painel/sair', [\App\Http\Controllers\PainelController::class, 'sair'])->name("painel.sair");
     Route::get('/painel', [\App\Http\Controllers\PainelController::class, 'index'])->name("painel.index");
+
+    // ROTAS DE ROTINAS
+    Route::get('/painel/rotinas/recomendacoes/calcular', [\App\Http\Controllers\RotinasController::class, 'calcula_recomendacoes'])->name("painel.rotinas.recomendacoes.calcular");
     
     //ROTAS RELACIONADAS A FAZENDAS
     Route::get('/painel/fazendas', [\App\Http\Controllers\FazendaController::class, 'index'])->name("painel.fazendas");        

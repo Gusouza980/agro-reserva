@@ -11,6 +11,11 @@
 @section('conteudo')
 
 <div class="col-12">
+    <div class="row mb-3">
+        <div class="col-12">
+            <a href="{{route('painel.rotinas.recomendacoes.calcular')}}" class="btn btn-laranja">Caclular Recomendações</a>
+        </div>
+    </div>
     <div class="card">
         <div class="card-body">
             <!-- Nav tabs -->

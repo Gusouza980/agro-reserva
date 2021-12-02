@@ -44,7 +44,7 @@ class SiteController extends Controller
                         }
                     }
                     if($num_chaves > 0){
-                        if((($relevancias[$i][$j] * 100) / $num_chaves) >= 60){
+                        if((($relevancias[$i][$j] * 100) / $num_chaves) >= 100){
                             if($relevancias[$i][$j] < 2){
                                 dd(($relevancias[$i][$j] * 100) / $num_chaves);
                             }
