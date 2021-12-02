@@ -95,7 +95,7 @@
                             </div>
                         </div>
                     @endif
-                    @if(false)
+                    @if(true)
                         <div class="col-12 text-center text-header-index d-none d-lg-block">
                             <h5>Vitrine de animais</h5>
                         </div>
