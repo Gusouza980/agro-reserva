@@ -93,7 +93,7 @@
                             <div class="form-group">
                               <select class="form-control" name="parcelamento" id="parcelamento">
                                     <option value="">Selecione as parcelas</option>
-                                    @for($i = 1; $i <= 24; $i++)
+                                    @for($i = 1; $i <= 15; $i++)
                                         @if($i == 1)
                                             <option value="{{$i}}">{{$i}}x de R${{number_format(($carrinho->total - ($carrinho->total * $carrinho->reserva->desconto / 100)), 2, ",", ".")}} ({{$carrinho->reserva->desconto}}% de desconto)</option>
                                             {{--  <option value="{{$i * 2}}">{{$i}}x (1 dupla) de R${{number_format(($carrinho->total - ($carrinho->total * 8 / 100)) / 2, 2, ",", ".")}}</option>  --}}

@@ -21,7 +21,7 @@
 <div class="row">
     <div class="col-12 text-center text-lg-right @if (!$lote->reserva->preco_disponivel && !$lote->liberar_preco) blur @endif">
         @if ($lote->reserva->preco_disponivel || $lote->liberar_preco)
-            <span>ou R${{ number_format($lote->preco - ($lote->preco * 6) / 100, 2, ',', '.') }}
+            <span>ou R${{ number_format($lote->preco - ($lote->preco * $lote->reserva->desconto) / 100, 2, ',', '.') }}
                 à
                 vista</span>
         @else
