@@ -157,6 +157,13 @@
                                         maxlength="250">{!! $lote->observacoes !!}</textarea>
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="texto_destaque" class="form-label">Texto de Destaque</label>
+                                    <input type="text" class="form-control" name="texto_destaque" id="texto_destaque" value="{{$lote->texto_destaque}}">
+                                    <small>Será exibido caso o lote apareça nos destaques da home</small>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-12 mb-3">

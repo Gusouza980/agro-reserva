@@ -2091,6 +2091,13 @@ label {
     color: white;
 }
 
+.lote-home-texto-destaque > span{
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
 .vitrine-animais{
     width: 100%;
     max-width: 1400px;

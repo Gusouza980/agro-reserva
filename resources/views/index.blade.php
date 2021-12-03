@@ -95,7 +95,7 @@
                             </div>
                         </div>
                     @endif
-                    @if(true)
+                    @if($configuracao->mostrar_lotes_destaque)
                         <div class="col-12 text-center text-header-index d-none d-lg-block">
                             <h5>Vitrine de animais</h5>
                         </div>
@@ -103,7 +103,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="slick">
-                                        @foreach (\App\Models\Lote::take(8)->get() as $lote)
+                                        @foreach (\App\Models\Reserva::where([["aberto", true], ['encerrada', false]])->first()->lotes->sortByDesc("visualizacoes")->take(10) as $lote)
                                             <div class="px-0 py-2 mt-4 caixa-lote-home cpointer">
                                                 {{-- <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
                                                 <div class=""
@@ -112,7 +112,7 @@
                                                         <p style="margin-top: 12px;">Ver lote</p>
                                                     </div>
                                                 </div>
-                                                <div class="row px-3 mt-3 align-items-center">
+                                                <div class="row pl-5 mt-3 align-items-center">
                                                     <div>
                                                         <button class="badge-lote-home">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
                                                     </div>
@@ -122,6 +122,13 @@
                                                         </div>
                                                     @endif
                                                 </div>
+                                                @if($lote->texto_destaque)
+                                                    <div class="row pl-5 mt-3 align-items-center">
+                                                        <div class="lote-home-texto-destaque">
+                                                            <span>{{$lote->texto_destaque}}</span>
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             </div>
                                         @endforeach
                                     </div>
