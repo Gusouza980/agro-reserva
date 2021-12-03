@@ -104,11 +104,11 @@
                                 <div class="col-12">
                                     <div class="slick">
                                         @foreach (\App\Models\Reserva::where([["aberto", true], ['encerrada', false]])->first()->lotes->sortByDesc("visualizacoes")->take(10) as $lote)
-                                            <div class="px-0 py-2 mt-4 caixa-lote-home cpointer">
+                                            <div class="px-0 py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote])}}'">
                                                 {{-- <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
                                                 <div class=""
                                                     style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 330px; height: 250px; border-radius: 15px; position: relative; overflow: hidden;">
-                                                    <div class="text-center justify-content-center align-items-center lote-home-hover" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 50px; background-color: rgba(255,0,0,0.7); display:none; ">
+                                                    <div class="text-center justify-content-center align-items-center lote-home-hover" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 50px; background-color: rgba(232,82,29,0.85); display:none; ">
                                                         <p style="margin-top: 12px;">Ver lote</p>
                                                     </div>
                                                 </div>
