@@ -103,7 +103,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="slick">
-                                        @foreach (\App\Models\Reserva::where([["aberto", true], ['encerrada', false]])->first()->lotes->sortByDesc("visualizacoes")->take(10) as $lote)
+                                        @foreach (\App\Models\Reserva::where([["aberto", true], ['encerrada', false]])->first()->lotes->sortBy("reservado")->sortByDesc("visualizacoes")->take(10) as $lote)
                                             <div class="px-0 py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote])}}'">
                                                 {{-- <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
                                                 <div class=""
