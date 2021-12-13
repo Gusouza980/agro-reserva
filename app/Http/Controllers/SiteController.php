@@ -69,12 +69,18 @@ class SiteController extends Controller
         // dd($cliente->toArray());
         $configuracao = Configuracao::first();
         $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
-        $lotes = Reserva::where([["aberto", true], ['encerrada', false]])->first()->lotes;
-        $lotes_destaque = $lotes->where("reservado", false)->sortByDesc("visualizacoes");
-        if($lotes_destaque->count() < 10){
-            $count = 10 - $lotes_destaque->count();
-            $lotes_destaque = $lotes_destaque->merge($lotes->where("reservado", true)->sortByDesc("visualizacoes")->take($count));
+        $reserva_aberta = Reserva::where([["aberto", true], ['encerrada', false]])->first();
+        if($reserva_aberta){
+            $lotes = $reserva_aberta->lotes;
+            $lotes_destaque = $lotes->where("reservado", false)->sortByDesc("visualizacoes");
+            if($lotes_destaque->count() < 10){
+                $count = 10 - $lotes_destaque->count();
+                $lotes_destaque = $lotes_destaque->merge($lotes->where("reservado", true)->sortByDesc("visualizacoes")->take($count));
+            }
+        }else{
+            $lotes_destaque = null;
         }
+        
         return view("index", ["reservas" => $reservas, "configuracao" => $configuracao, "lotes_destaque" => $lotes_destaque]);
         // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(
         //     [
