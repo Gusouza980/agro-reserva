@@ -11,14 +11,8 @@
     <meta name="keywords" content="Gado, Agro, E-commerce, Lotes">
     <meta name="author" content="Luis Gustavo de Souza Carvalho">
     <meta property="og:locale" content="pt_BR">
-    @if(isset($lote))
-        <meta property="og:title" content="{{ $lote->nome }} - {{ $lote->fazenda->nome_fazenda }}" />
-        <meta property="og:description"
-            content="{{ $lote->nome }} da raça {{ $lote->raca->nome }} na reserva da fazenda {{ $lote->fazenda->nome_fazenda }}" />
-    @else
-        <meta property="og:title" content="Agroreserva - Respeito pela sua jornada" />
-        <meta property="og:description" content="Somos a plataforma de compra e venda das marcas que evoluem a pecuária">
-    @endif
+    <meta property="og:title" content="Agroreserva - Respeito pela sua jornada" />
+    <meta property="og:description" content="Somos a plataforma de compra e venda das marcas que evoluem a pecuária">
     <meta property="og:url" content="{{ url()->full() }}" />    
     <meta property="og:site_name" content="Agroreserva @if(session()->get('nome_pagina')) - {{ session()->get('nome_pagina') }}  @endif" >
     <meta property="og:image" itemprop="image"
