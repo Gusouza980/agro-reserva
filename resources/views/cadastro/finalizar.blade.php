@@ -76,7 +76,7 @@
                                     <div class="form-group col-12 input-cadastro">
                                         <label for="nome_fazenda">Nome da Fazenda</label>
                                         <input type="text" class="form-control" name="nome_fazenda" id="nome_fazenda" aria-describedby=""
-                                            maxlenght="150" required placeholder="Informe o nome da sua fazenda" required>
+                                            maxlenght="150" required placeholder="Informe o nome da sua fazenda" @if(session()->get("cliente")["nome_fazenda"]) value="{{session()->get("cliente")["nome_fazenda"]}}" @endif required>
                                     </div>
                                     <div class="form-group col-12 input-cadastro">
                                         <label for="inscricao_produtor_rural">Inscrição de Produtor Rural</label>

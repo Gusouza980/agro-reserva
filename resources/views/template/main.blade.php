@@ -131,6 +131,11 @@
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{ route('sobre') }}">Quem somos</span></a>
                             </li>
+                            @if(!isset(session()->get("cliente")["vendedor"]) || !session()->get("cliente")["vendedor"])
+                                <li class="nav-item active mt-2">
+                                    <a class="nav-link" href="{{ route('cadastro.vendedor') }}">Quero vender</span></a>
+                                </li>
+                            @endif
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{ route('reservas.finalizadas') }}">Reservas
                                     Finalizadas</span></a>
@@ -167,6 +172,12 @@
                                 <a class="nav-link" href="{{ route('reservas.finalizadas') }}">Reservas
                                     Finalizadas</span></a>
                             </li>
+
+                            @if(!isset(session()->get("cliente")["vendedor"]) || !session()->get("cliente")["vendedor"])
+                                <li class="nav-item active mt-2">
+                                    <a class="nav-link" href="{{ route('cadastro.vendedor') }}">Quero vender</span></a>
+                                </li>
+                            @endif
                             {{-- <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
                             </li> --}}
@@ -193,16 +204,19 @@
                     <a class="navbar-brand" href="{{ route('index') }}"><img
                             src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Agroreserva"></a>
                 </div>
-                <div class="col-lg-5 d-flex text-white justify-content-start align-items-center">
+                <div class="col-lg-6 d-flex text-white justify-content-start align-items-center">
                     {{-- <a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a> --}}
                     <span class="text-nav-header"><a href="{{ route('index') }}">Início</a></span>
                     <span class="text-nav-header ml-4"><a href="{{ route('blog') }}">Blog</a></span>
                     <span class="text-nav-header ml-4"><a href="{{ route('sobre') }}">Quem somos</a></span>
                     <span class="text-nav-header ml-4"><a href="{{ route('reservas.finalizadas') }}">Reservas
                             Finalizadas</a></span>
+                    @if(!session()->get('cliente') || (!isset(session()->get("cliente")["vendedor"]) || !session()->get("cliente")["vendedor"]))
+                        <span class="text-nav-header ml-4"><a href="{{ route('cadastro.vendedor') }}">Quero vender</span>
+                    @endif
                     {{-- <span  class="text-nav-header"><a href="{{route('cadastro')}}">Como comprar</a></span> --}}
                 </div>
-                <div class="col-lg-4 d-flex text-white justify-content-end align-items-center">
+                <div class="col-lg-3 d-flex text-white justify-content-end align-items-center">
 
                     {{-- @if ($_SESSION['userid']) --}}
                     @if (session()->get('cliente'))
@@ -213,12 +227,10 @@
                                         style="border-bottom: 2px solid #FEB000;">Fin</span>alizar
                                     Cadastro</a></span>
                         @endif
-                        <span class="ml-3 text-nav-header"><a href="{{ route('conta.index') }}"><span
-                                    style="border-bottom: 2px solid #FEB000;">Min</span>ha conta</a></span> </span>
+                        <span class="ml-3 text-nav-header"><a href="{{ route('conta.index') }}"><i class="fas fa-user"></i></a></span> </span>
                         @if (session()->get('cliente'))
                             <span class="ml-3 text-nav-header"><a class="text-nav-header"
-                                    href="{{ route('sair') }}"><span
-                                        style="border-bottom: 2px solid #FEB000;">Sai</span>r</a></span>
+                                    href="{{ route('sair') }}"><i class="fas fa-sign-out-alt"></i></a></span>
                         @endif
                         @if (session()->get('carrinho'))
                             <a class="ml-4" href="{{ route('carrinho') }}"><i

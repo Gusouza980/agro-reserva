@@ -55,6 +55,15 @@ class ClienteController extends Controller
         return view('cadastro.index', ["anterior" => $anterior]);
     }
 
+    public function cadastro_vendedor(){
+        if(session()->get("cliente") && isset(session()->get("cliente")["vendedor"]) && session()->get("cliente")["vendedor"] && session()->get("cliente")["finalizado"]){
+            return redirect()->route("index");
+        }
+        $anterior = redirect()->back()->getTargetUrl();
+        session()->flash("nome_pagina", "Quero Vender");
+        return view('cadastro.vendedor', ["anterior" => $anterior]);
+    }
+
     public function cadastro_painel(Request $request){
         $cliente = Cliente::where("email", $request->email)->orWhere("cpf", $request->documento)->orWhere("documento", $request->documento)->first();
 
@@ -97,6 +106,98 @@ class ClienteController extends Controller
         $finalizar = true;
         session()->flash("nome_pagina", "Cadastro Final");
         return view('cadastro.finalizar', ["anterior" => $anterior, "finalizar" => $finalizar]);
+    }
+
+    public function cadastrar_vendedor(Request $request){
+        
+        if($request->email){
+            $cliente = Cliente::where("email", $request->email)->first();
+            if($cliente){
+                session()->flash("erro_email", "O email informado já está sendo utilizado.");
+                return redirect()->back()->withInput();
+            }
+        }
+
+        if(session()->get("cliente")){
+            $cliente = Cliente::find(session()->get("cliente")["id"]);
+        }else{
+            $cliente = new Cliente;
+        }
+
+        if($request->email){
+            $cliente->email = $request->email;
+        }
+        
+        if($request->nome_dono){
+            $cliente->nome_dono = $request->nome_dono;
+        }
+
+        if($request->telefone){
+            $cliente->telefone = $request->telefone;
+        }
+
+        if($request->nome_fazenda){
+            $cliente->nome_fazenda = $request->nome_fazenda; 
+        }  
+
+        if($request->senha){
+            $cliente->senha = Hash::make($request->senha);
+        }
+
+        if($request->vender_registro){
+            $cliente->vender_registro = $request->vender_registro;
+        }
+
+        if($request->racas_vender){
+            $cliente->racas_vender = $request->racas_vender;
+        }
+
+        $cliente->vendedor = 1;
+
+        if(!$cliente->finalizado){
+            $cliente->finalizado = false;
+        }
+
+        $cliente->save();
+
+        $rdStation = new \RDStation\RDStation($cliente->email);
+        $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+        $rdStation->setLeadData('name', $cliente->nome_dono);
+        $rdStation->setLeadData('identifier', 'precadastro');
+        $rdStation->setLeadData('telefone', $cliente->telefone);
+        $rdStation->setLeadData('nome_fazenda', $cliente->nome_fazenda);
+        if($cliente->vender_registro){
+            $rdStation->setLeadData('registro', "Com Registro");
+        }else{
+            $rdStation->setLeadData('registro', "Sem Registro");
+        }
+        $rdStation->setLeadData('racas_vender', $cliente->racas_vender);
+        $rdStation->setLeadData('cadastro-finalizado', "Não");
+        if(session()->get("lote_origem")){
+            $lote = Lote::find(session()->get("lote_origem"));
+            $rdStation->setLeadData('nome_lote_origem', $lote->nome);
+            $rdStation->setLeadData('numero_lote_origem', $lote->numero . $lote->letra);
+            $rdStation->setLeadData('raca_lote_origem', $lote->raca->nome);
+            $rdStation->setLeadData('fazenda_lote_origem', $lote->fazenda->nome_fazenda);
+        }
+        $rdStation->sendLead();
+
+        session(["cliente" => $cliente->toArray()]);
+        $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
+        $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
+        $file = str_replace("{{usuario}}", $cliente->email, $file);
+        $file = str_replace("{{senha}}", $request->senha, $file);
+        Email::enviar($file, "Confirmação de Cadastro", session()->get("cliente")["email"], false);
+
+        return redirect()->back();
+        
+        // if(session()->get("pagina_retorno")){
+        //     $pagina = session()->get("pagina_retorno");
+        //     session()->forget("pagina_retorno");
+        //     return redirect($pagina);
+        // }else{
+        //     return redirect()->route("index");
+        // }
     }
 
     public function cadastrar(Request $request){

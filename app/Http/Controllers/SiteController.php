@@ -66,7 +66,6 @@ class SiteController extends Controller
     }
 
     public function index(){
-        // dd($cliente->toArray());
         $configuracao = Configuracao::first();
         $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
         $reserva_aberta = Reserva::where([["aberto", true], ['encerrada', false]])->first();
@@ -260,19 +259,6 @@ class SiteController extends Controller
         $res["nome"] = $lance->cliente->nome_dono;
         $res["valor"] = $lance->valor;
         return response()->json($res);
-    }
-
-    public function cadastro_fazenda(){
-        return view("cadastro.fazenda");
-    }
-
-    public function cadastro_passos(){
-
-        if(!session()->get("cliente")){
-            return redirect()->route("cadastro");
-        }
-
-        return view('cadastro.passos');
     }
 
     public function login(){
