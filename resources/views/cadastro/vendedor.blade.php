@@ -51,13 +51,6 @@
                                 <input type="text" class="form-control" name="raca_vender" id="racas_vender" aria-describedby=""
                                     maxlenght="150" required placeholder="Ex: Nelore" required>
                             </div>
-                            @if(!session()->get("cliente"))
-                                <div class="form-group col-12 input-cadastro">
-                                    <label for="senha">Crie uma senha de acesso</label>
-                                    <input type="password" class="form-control" name="senha" id="senha" aria-describedby=""
-                                        required placeholder="******">
-                                </div>
-                            @endif
                             <div class="form-group col-12 input-cadastro">
                                 <div class="form-group input-cadastro d-flex justify-content-start">
                                     <div class="mx-3">
@@ -73,6 +66,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if(!session()->get("cliente"))
+                                    <div class="form-group col-12 input-cadastro">
+                                        <label for="senha">Crie uma senha de acesso</label>
+                                        <input type="password" class="form-control" name="senha" id="senha" aria-describedby=""
+                                            required placeholder="******">
+                                    </div>
+                                @endif
                             </div>
                             {{-- <div class="col-12 my-3">
                             <label for="senha">Quais raças te interessam hoje?</label>
