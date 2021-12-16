@@ -66,14 +66,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if(!session()->get("cliente"))
-                                    <div class="form-group col-12 input-cadastro">
-                                        <label for="senha">Crie uma senha de acesso</label>
-                                        <input type="password" class="form-control" name="senha" id="senha" aria-describedby=""
-                                            required placeholder="******">
-                                    </div>
-                                @endif
                             </div>
+                            @if(!session()->get("cliente"))
+                                <div class="form-group col-12 input-cadastro">
+                                    <label for="senha">Crie uma senha de acesso</label>
+                                    <input type="password" class="form-control" name="senha" id="senha" aria-describedby=""
+                                        required placeholder="******">
+                                </div>
+                            @endif
                             {{-- <div class="col-12 my-3">
                             <label for="senha">Quais raças te interessam hoje?</label>
                         </div>
