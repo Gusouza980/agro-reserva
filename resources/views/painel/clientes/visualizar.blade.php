@@ -72,6 +72,14 @@
                                 <span class="d-none d-sm-block">Informações Pessoais</span>
                             </a>
                         </li>
+                        @if($cliente->vendedor)
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#vendedor" role="tab">
+                                    <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                    <span class="d-none d-sm-block">Informações de Vendedor</span>
+                                </a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#profile1" role="tab">
                                 <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
@@ -318,6 +326,39 @@
                                 </div>
                             </form>
                         </div>
+                        @if($cliente->vendedor)
+                            <div class="tab-pane" id="vendedor" role="tabpanel">
+                                <form action="{{ route('painel.cliente.dados.salvar', ['cliente' => $cliente]) }}"
+                                    method="POST">
+                                    @csrf
+                                    <div class="row mb-3">
+                                        <div class="form-group col-12 col-lg-6 form-conta mb-3">
+                                            <label for="nome_dono">Nome</label>
+                                            <input type="text" class="form-control" name="nome_dono" id="nome_dono"
+                                                aria-describedby="helpId" value="{{ $cliente->nome_dono }}">
+                                        </div>
+                                        <div class="form-group col-12 col-lg-6 form-conta mb-3">
+                                            <label for="nome_fazenda">Fazenda</label>
+                                            <input type="text" class="form-control" name="nome_fazenda" id="nome_fazenda"
+                                                aria-describedby="helpId" value="{{ $cliente->nome_fazenda }}">
+                                        </div>
+                                        <div class="form-group col-12 col-lg-6 form-conta mb-3">
+                                            <label for="email">E-mail</label>
+                                            <input type="email" class="form-control" name="email" id="email"
+                                                aria-describedby="helpId" value="{{ $cliente->email }}">
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row mb-3">
+                                        <div class="col-12 text-right">
+                                            <button class="btn btn-vermelho btn-hover-preto px-5">
+                                                Salvar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        @endif
                         <div class="tab-pane" id="profile1" role="tabpanel">
                             <div class="container-fluid">
                                 <div class="row">

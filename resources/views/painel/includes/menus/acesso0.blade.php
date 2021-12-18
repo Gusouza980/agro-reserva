@@ -5,6 +5,7 @@
     </a>
     <ul class="sub-menu" aria-expanded="false">
         <li><a href="{{ route('painel.clientes') }}" key="t-saas">Consultar</a></li>
+        <li><a href="{{ route('painel.vendedores') }}" key="t-saas">Vendedores</a></li>
     </ul>
 </li>
 

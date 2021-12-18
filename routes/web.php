@@ -217,6 +217,8 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/cliente/{cliente}/dados/salvar', [\App\Http\Controllers\ClienteController::class, 'salvar_dados_gerais'])->name("painel.cliente.dados.salvar");
     Route::get('/painel/cliente/{cliente}/aprovacao/{aprovacao}', [\App\Http\Controllers\ClienteController::class, 'aprovacao'])->name("painel.cliente.aprovacao");
 
+    Route::get('/painel/vendedores', [\App\Http\Controllers\VendedoresController::class, 'index'])->name("painel.vendedores");
+
     // ROTAS RELACIONADAS A VENDAS
     Route::match(['get', 'post'],'/painel/visitas', [\App\Http\Controllers\PainelController::class, 'visitas'])->name("painel.visitas");
     Route::get('/painel/vendas', [\App\Http\Controllers\VendasController::class, 'index'])->name("painel.vendas");
