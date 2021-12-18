@@ -45,7 +45,9 @@ Route::middleware(['popup', 'cookie'])->group(function () {
     Route::get('/login', [\App\Http\Controllers\SiteController::class, 'login'])->name("login");
     Route::post('/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
     Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");
+    Route::get('/cadastro/vendedor', [\App\Http\Controllers\ClienteController::class, 'cadastro_vendedor'])->name("cadastro.vendedor");
     Route::post('/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastrar'])->name("cadastro.salvar");
+    Route::post('/cadastrar/vendedor', [\App\Http\Controllers\ClienteController::class, 'cadastrar_vendedor'])->name("cadastro.vendedor.salvar");
     Route::get('/cadastro/finalizar', [\App\Http\Controllers\ClienteController::class, 'finalizar_cadastro'])->name("cadastro.finalizar");
     Route::post('/cadastro/finalizar/salvar', [\App\Http\Controllers\ClienteController::class, 'cadastro_final'])->name("cadastro.finalizar.salvar");
     Route::post('/cadastro/login', [\App\Http\Controllers\ClienteController::class, 'login_cadastro'])->name("cadastro.login");
