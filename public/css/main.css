@@ -1773,6 +1773,7 @@ label {
 .card-noticia-text > h5{
     color: #8E8073;
     font-size: 18px;
+    font-weight: bold;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.3px;
 }
