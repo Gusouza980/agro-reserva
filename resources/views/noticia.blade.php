@@ -16,6 +16,7 @@
         <div class="row mt-4">
             <div class="col-lg-12 card-noticia-text">
                 <h1>{{$noticia->titulo}}</h1>
+                <h5>{{$noticia->subtitulo}}</h5>
             </div>
         </div>
         <div class="row mt-2">
