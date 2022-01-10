@@ -328,24 +328,44 @@
                         </div>
                         @if($cliente->vendedor)
                             <div class="tab-pane" id="vendedor" role="tabpanel">
-                                <form action="{{ route('painel.cliente.dados.salvar', ['cliente' => $cliente]) }}"
+                                <form action="{{ route('painel.vendedor.informacoes.salvar', ['cliente' => $cliente]) }}"
                                     method="POST">
                                     @csrf
                                     <div class="row mb-3">
                                         <div class="form-group col-12 col-lg-6 form-conta mb-3">
-                                            <label for="nome_dono">Nome</label>
-                                            <input type="text" class="form-control" name="nome_dono" id="nome_dono"
-                                                aria-describedby="helpId" value="{{ $cliente->nome_dono }}">
+                                            <label for="racas_vender">Raça que deseja vender</label>
+                                            <input type="text" class="form-control" name="racas_vender" id="racas_vender"
+                                                aria-describedby="helpId" value="{{ $cliente->racas_vender }}">
                                         </div>
                                         <div class="form-group col-12 col-lg-6 form-conta mb-3">
-                                            <label for="nome_fazenda">Fazenda</label>
-                                            <input type="text" class="form-control" name="nome_fazenda" id="nome_fazenda"
-                                                aria-describedby="helpId" value="{{ $cliente->nome_fazenda }}">
+                                            <label for="telefone">Segmento de Interesse</label>
+                                            <div class="form-group form-conta d-flex justify-content-start mt-2">
+                                                <div class="mx-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="vender_registro" id="" value="1" @if($cliente->vender_registro) checked @endif>
+                                                        Com Registro
+                                                      </label>
+                                                    </div>
+                                                </div>
+                                                <div class="mx-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="vender_registro" id="" value="0" @if(!$cliente->vender_registro) checked @endif>
+                                                        Sem Registro
+                                                      </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group col-12 col-lg-6 form-conta mb-3">
-                                            <label for="email">E-mail</label>
-                                            <input type="email" class="form-control" name="email" id="email"
-                                                aria-describedby="helpId" value="{{ $cliente->email }}">
+                                            <label for="fazenda_id">Ligar vendedor a fazenda</label>
+                                            <select class="form-control" name="fazenda_id" id="fazenda_id" value="{{ $cliente->racas_vender }}">
+                                                <option value="-1" @if(!$cliente->fazenda) selected @endif>Nenhuma</option>
+                                                @foreach(\App\Models\Fazenda::all() as $fazenda)
+                                                    <option value="{{$fazenda->id}}" @if($cliente->fazenda && $cliente->fazenda->id == $fazenda->id) selected @endif>{{$fazenda->nome_fazenda}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <hr>

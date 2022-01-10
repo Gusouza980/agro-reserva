@@ -23,10 +23,10 @@
                 </div> --}}
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{asset('imagens/banner2-mobile.jpg')}}" class="d-block w-100">
+                        <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('imagens/banner3-mobile.jpg')}}" class="d-block w-100">
+                        <img src="{{asset('imagens/banner2-mobile.jpg')}}" class="d-block w-100">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#container-banner-mobile" role="button" data-slide="prev">
@@ -45,8 +45,8 @@
             {{-- <div class="container-fluid py-5 px-0" id="container-section1"> --}}
                 <div class="row">
                     <div id="container-banner-desktop" class="d-none d-lg-block" style="">
-                        <img class="active cpointer" src="{{ asset('imagens/banner2.jpg') }}" num="1" style="width: 100%;" alt="">
-                        <img class="cpointer" src="{{ asset('imagens/banner3.jpg') }}" num="2" style="display:none; width: 100%;" alt="">
+                        <img class="active cpointer" src="{{ asset('imagens/banner1.jpg') }}" num="1" style="width: 100%;" alt="">
+                        <img class="cpointer" src="{{ asset('imagens/banner2.jpg') }}" num="2" style="display:none; width: 100%;" alt="">
                         {{-- <div
                             style="position: absolute; bottom:0; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 25%, rgba(0,212,255,0) 100%); height: 250px;">
                         </div> --}}

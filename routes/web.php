@@ -220,6 +220,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/cliente/{cliente}/aprovacao/{aprovacao}', [\App\Http\Controllers\ClienteController::class, 'aprovacao'])->name("painel.cliente.aprovacao");
 
     Route::get('/painel/vendedores', [\App\Http\Controllers\VendedoresController::class, 'index'])->name("painel.vendedores");
+    Route::post('/painel/vendedor/{cliente}/informacoes/salvar', [\App\Http\Controllers\VendedoresController::class, 'salvar_informacoes'])->name("painel.vendedor.informacoes.salvar");
 
     // ROTAS RELACIONADAS A VENDAS
     Route::match(['get', 'post'],'/painel/visitas', [\App\Http\Controllers\PainelController::class, 'visitas'])->name("painel.visitas");

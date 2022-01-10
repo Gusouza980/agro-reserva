@@ -40,4 +40,8 @@ class Cliente extends Model
     public function analises(){
         return $this->hasMany(CreditoAnalise::class);
     }
+
+    public function fazenda(){
+        return $this->belongsTo(Fazenda::class);
+    }
 }
