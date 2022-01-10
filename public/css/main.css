@@ -1770,6 +1770,13 @@ label {
     letter-spacing: 0.3px;
 }
 
+.card-noticia-text > h5{
+    color: #8E8073;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.3px;
+}
+
 #row-header-sobre{
     min-height: 300px;
 }
