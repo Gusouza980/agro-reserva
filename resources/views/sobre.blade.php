@@ -103,11 +103,7 @@
             </div>
             <div class="row mt-4">
                 <div class="col-12 text-center text-sobre-caixa">
-                    @if(session()->get("cliente"))
-                        <a href="{{route('index')}}" class="btn btn-sobre px-5 py-2">Quero Vender</a>
-                    @else
-                        <a href="{{route('cadastro')}}" class="btn btn-sobre px-5 py-2">Quero Vender</a>
-                    @endif
+                    <a href="{{route('cadastro.vendedor')}}" class="btn btn-sobre px-5 py-2">Quero Vender</a>
                 </div>
             </div>
         </div>
