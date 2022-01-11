@@ -24,6 +24,15 @@
                 <h2 class="mt-3">Nossos valores:</h2>
                 <p>Valorizar o trabalho do produtor, ressignificando o formato da comercialização de animais no Brasil, de forma a torná-la mais fácil, justa, segura e rentável para quem compra e para quem vende.</p>  --}}
             </div>
+            <div class="row justify-content-center my-3 py-5">
+                <div
+                    class="lazy col-12 d-flex justify-content-center text-section1-index video-container text-center">
+                    <iframe loading="lazy" width="1863" height="770" src="https://www.youtube.com/embed/JZaf0PGdYiI"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
             <div class="row">
                 <div class="d-flex align-items-center mx-auto mx-lg-0 text-sobre">
                     <div class="px-2 py-2 bg-white" style="border-radius: 15px;">
