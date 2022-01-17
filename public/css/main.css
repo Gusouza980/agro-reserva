@@ -1720,14 +1720,14 @@ label {
 
 .card-noticia{
     width: 100%;
-    max-width: 360px;
+    max-width: 260px;
     border-radius: 20px;
     overflow-x: hidden;
-    box-shadow: -3px 6px 15px #424FB224;
+    /* box-shadow: -3px 6px 15px #424FB224; */
 }
 
 .card-noticia-imagem{
-    height: 230px;
+    height: 160px;
     width: 100%;
 }
 
@@ -1756,7 +1756,7 @@ label {
 
 .card-noticia-text > h2{
     color: #E9500E;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
@@ -1776,6 +1776,33 @@ label {
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.3px;
+}
+
+.nav-blog-lateral > h5{
+    color: #E9500E;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.44px;
+}
+
+.nav-blog-lateral > span{
+    color: #8E8073;
+    font-size: 13px;
+    font-weight: 400;
+    /* text-transform: uppercase; */
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.44px;
+}
+
+.nav-blog-lateral > a{
+    color: #8E8073 !important;
+    font-size: 13px;
+    font-weight: 400;
+    /* text-transform: uppercase; */
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.44px;
 }
 
 #row-header-sobre{
@@ -2130,4 +2157,24 @@ label {
         width: 100%;
         max-width: 350px;
     }
+}
+
+.page-link{
+    color: black !important;
+}
+
+.page-link:hover{
+    color: white !important;
+    background-color: var(--vermelho);
+}
+
+.page-item.active .page-link{
+    color: white !important;
+    background-color: var(--laranja);
+    border: 0px;
+}
+
+#blog-row-paginacao > nav{
+    display: flex;
+    justify-content: center;
 }

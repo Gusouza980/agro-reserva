@@ -76,7 +76,9 @@ Route::middleware(['popup', 'cookie'])->group(function () {
     Route::get('/reservas/finalizadas/{reserva}/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote_finalizadas'])->name("reservas.finalizadas.fazenda.lote");
     
     //Blog
-    Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
+    Route::match(['get','post'], '/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
+    Route::get('/blog2', [\App\Http\Controllers\BlogController::class, 'index2'])->name("blog2");
+    Route::get('/blog/{slug}', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog.categoria");
     Route::get('/noticia/{slug}', [\App\Http\Controllers\BlogController::class, 'noticia'])->name("noticia");
     
     Route::middleware(['cliente_logado'])->group(function () {
@@ -264,6 +266,11 @@ Route::middleware(['admin'])->group(function () {
     // LIVE
     Route::get('/painel/configuracoes/live', [\App\Http\Controllers\LiveController::class, 'index'])->name("painel.configuracoes.live");
     Route::post('/painel/configuracoes/live/salvar', [\App\Http\Controllers\LiveController::class, 'salvar'])->name("painel.configuracoes.live.salvar");
+
+    // BANNERS DA HOME
+    Route::get('/painel/configuracoes/home/banners', [\App\Http\Controllers\ConfiguracoesController::class, 'home_banners'])->name("painel.configuracoes.home.banners");
+    Route::post('/painel/configuracoes/home/banners/salvar', [\App\Http\Controllers\ConfiguracoesController::class, 'home_banners_salvar'])->name("painel.configuracoes.home.banners.salvar");
+    Route::get('/painel/configuracoes/home/banners/deletar/{banner}', [\App\Http\Controllers\ConfiguracoesController::class, 'home_banners_deletar'])->name("painel.configuracoes.home.banners.deletar");
 
 });
 

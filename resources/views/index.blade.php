@@ -22,12 +22,20 @@
 
                 </div> --}}
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="{{asset('imagens/banner1-mobile.jpg')}}" class="d-block w-100">
-                    </div>
-                    <div class="carousel-item">
+                    @php
+                        $first = true;
+                    @endphp
+                    @foreach($banners as $banner)
+                        <div class="carousel-item @if($first) active @endif">
+                            <img src="{{asset($banner->caminho_mobile)}}" class="d-block w-100">
+                        </div>
+                        @php
+                            $first = false;
+                        @endphp
+                    @endforeach
+                    {{-- <div class="carousel-item">
                         <img src="{{asset('imagens/banner2-mobile.jpg')}}" class="d-block w-100">
-                    </div>
+                    </div> --}}
                 </div>
                 <a class="carousel-control-prev" href="#container-banner-mobile" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -45,11 +53,15 @@
             {{-- <div class="container-fluid py-5 px-0" id="container-section1"> --}}
                 <div class="row">
                     <div id="container-banner-desktop" class="d-none d-lg-block" style="">
-                        <img class="active cpointer" src="{{ asset('imagens/banner1.jpg') }}" num="1" style="width: 100%;" alt="">
-                        <img class="cpointer" src="{{ asset('imagens/banner2.jpg') }}" num="2" style="display:none; width: 100%;" alt="">
-                        {{-- <div
-                            style="position: absolute; bottom:0; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 25%, rgba(0,212,255,0) 100%); height: 250px;">
-                        </div> --}}
+                        @php
+                            $cont = 0;
+                        @endphp
+                        @foreach($banners as $banner)
+                            @php
+                                $cont = $cont + 1;
+                            @endphp
+                            <img class="@if($cont == 1) active @endif cpointer" src="{{ asset($banner->caminho) }}" num="{{$cont}}" style="width: 100%; @if($cont != 1) display:none; @endif" alt="">
+                        @endforeach
                         <div id="banner-arrow-left"
                             style="position: absolute; left: 30px; top: calc(50% - 60px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
                             <i class="fas fa-chevron-left text-white fa-lg"></i>
@@ -361,7 +373,7 @@
 @section('scripts')
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
-        var num_banners = 2;
+        var num_banners = {!! $cont !!};
         var trava = false;
 
         rotacao_automatica_desktop();

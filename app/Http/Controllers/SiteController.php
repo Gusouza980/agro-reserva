@@ -10,6 +10,7 @@ use App\Models\Lote;
 use App\Models\Visita;
 use App\Models\Carrinho;
 use App\Models\Lance;
+use App\Models\HomeBanner;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use App\Models\Configuracao;
@@ -79,8 +80,10 @@ class SiteController extends Controller
         }else{
             $lotes_destaque = null;
         }
+
+        $banners = HomeBanner::orderBy("prioridade", "ASC")->get();
         
-        return view("index", ["reservas" => $reservas, "configuracao" => $configuracao, "lotes_destaque" => $lotes_destaque]);
+        return view("index", ["reservas" => $reservas, "configuracao" => $configuracao, "lotes_destaque" => $lotes_destaque, "banners" => $banners]);
         // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(
         //     [
         //         'nome'      => 'Agroreserva',

@@ -95,5 +95,6 @@
     </a>
     <ul class="sub-menu" aria-expanded="false">
         <li><a href="{{ route('painel.configuracoes.live') }}" key="t-saas">Live</a></li>
+        <li><a href="{{ route('painel.configuracoes.home.banners') }}" key="t-saas">Banners</a></li>
     </ul>
 </li>
