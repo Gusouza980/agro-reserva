@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center d-none d-lg-flex" id="nav-blog-lateral">
-                    <div class="col-10 bg-white nav-blog-lateral py-3 px-4">
+                    {{-- <div class="col-10 bg-white nav-blog-lateral py-3 px-4">
                         <h5>FIQUE POR DENTRO</h5>
                         <span>Assine nossa newsletter e receba tudo em primeira mão.</span>
                         <form action="" method="post" class="mt-2">
@@ -40,7 +40,7 @@
                                 class="form-control" name="" id="" aria-describedby="helpId" placeholder="Digite seu e-mail">
                             <button type="submit" class="btn btn-vermelho btn-block mt-3">Enviar</button>
                         </form>
-                    </div>
+                    </div> --}}
     
                     <div class="col-10 bg-white nav-blog-lateral mt-3 py-3 px-4">
                         <h5>POSTS RECENTES</h5>
