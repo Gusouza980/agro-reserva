@@ -150,8 +150,9 @@ class SiteController extends Controller
                 $logos[] = $lote->fazenda->logo;
             }
         }
+        $fazendas = Fazenda::whereIn("id", $fazendas)->get();
         $finalizadas = "";
-        return view("fazenda", ["fazenda" => $fazenda, "logos" => $logos, "reserva" => $reserva, "finalizadas" => $finalizadas, "nome_pagina" => "Conheça"]);
+        return view("fazenda", ["fazenda" => $fazenda, "fazendas" => $fazendas, "reserva" => $reserva, "finalizadas" => $finalizadas, "nome_pagina" => "Conheça"]);
     }
 
     public function lotes($slug){
@@ -343,7 +344,8 @@ class SiteController extends Controller
                 }
             }
         }
-        return view("finalizadas.fazenda", ["fazenda" => $fazenda, "logos" => $logos, "reserva" => $reserva]);
+        $fazendas = Fazenda::whereIn("id", $fazendas)->get();
+        return view("finalizadas.fazenda", ["fazenda" => $fazenda, "fazendas" => $fazendas, "reserva" => $reserva]);
     }
 
     public function lotes_finalizadas(Reserva $reserva, $slug){
