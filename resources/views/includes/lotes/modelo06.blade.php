@@ -59,7 +59,7 @@
                         <b class="mr-3">RAÇA.: </b>
                     </div>
                     <div>
-                        <span class="card-lote-info-text">{{mb_strtoupper($lote->raca->nome))}}</span>
+                        <span class="card-lote-info-text">{{mb_strtoupper($lote->raca->nome)}}</span>
                     </div>
                 </div>
             </div>
