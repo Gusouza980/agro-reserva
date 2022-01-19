@@ -133,7 +133,7 @@
                                         <a>
                                             <div class="slide2-item-container">
                                                 <div class="slide2-item d-flex justify-items-center align-items-center" width="160" height="160">
-                                                    <img src="{{asset($faz->logo)}}" style="max-width: 100%; width: 130px;">
+                                                    <img src="{{asset($faz->logo)}}" style="max-width: 100%; width: 130px; filter: contrast(0%);">
                                                 </div>
                                             </div>
                                         </a>
