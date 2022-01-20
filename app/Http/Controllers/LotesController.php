@@ -208,25 +208,29 @@ class LotesController extends Controller
     public function preco(Lote $lote){
         if($lote->liberar_preco){
             $lote->liberar_preco = false;
+            $lote->save();
             toastr()->success("Usando padrão de preço");
+            return response()->json(false);
         }else{
             $lote->liberar_preco = true;
+            $lote->save();
             toastr()->success("Preço liberado");
+            return response()->json(true);
         }
-        $lote->save();
-        return redirect()->back();
     }
 
     public function comprar(Lote $lote){
         if($lote->liberar_compra){
             $lote->liberar_compra = false;
-            toastr()->success("Usando padrão de compra");
+            $lote->save();
+            toastr()->success("Usando padrão de preço");
+            return response()->json(false);
         }else{
             $lote->liberar_compra = true;
-            toastr()->success("Compra liberada");
+            $lote->save();
+            toastr()->success("Preço liberado");
+            return response()->json(true);
         }
-        $lote->save();
-        return redirect()->back();
     }
 
     public function prioridade(Lote $lote){
