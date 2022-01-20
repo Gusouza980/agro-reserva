@@ -558,6 +558,23 @@ label {
     margin-top: 100px;
 }
 
+#container-banner-desktop > iframe{
+    position:absolute;
+    width: 600px;
+    height: 370px;
+    top: 16%;
+    left: calc(50% - 300px);
+}
+
+@media(max-width: 1138px){
+    #container-banner-desktop > iframe{
+        width: 500px;
+        height: 300px;
+        top: 17%;
+        left: calc(50% - 250px);
+    }
+}
+
 #container-banner-mobile{
     position:relative; 
     top:0; 
@@ -2181,4 +2198,17 @@ label {
 #blog-row-paginacao > nav{
     display: flex;
     justify-content: center;
+}
+
+.link-filtro-racas{
+    color: black !important;
+    font-weight: bold;
+}
+
+.link-filtro-racas:hover{
+    color:rgba(0, 0, 0, 0.7) !important;
+}
+
+.link-filtro-racas.ativo{
+    color: var(--laranja) !important;
 }

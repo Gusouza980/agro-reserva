@@ -85,6 +85,12 @@
                 class="col-12 col-lg-8 justify-content-center justify-content-lg-start text-center text-lg-left align-items-center text-lotes d-flex">
                 <h3>Reserva {{ $fazenda->nome_fazenda }}</h3>
             </div>
+            <div class="col-12 col-lg-4 text-center text-lg-right" id="filtro-racas">
+                <a class="link-filtro-racas cpointer ativo" raca="0">Todos</a>
+                @foreach($lotes->unique("raca_id") as $lote)
+                    <a class="link-filtro-racas ml-3 cpointer" raca="{{$lote->raca->id}}">{{$lote->raca->nome}}</a>
+                @endforeach
+            </div>
         </div>
         <div class="row py-4">
             <div class="col-12">
@@ -94,7 +100,7 @@
 
             </div>
         </div>
-        <div class="row justify-content-center justify-content-lg-between">
+        <div class="row justify-content-center justify-content-lg-between" id="container-lotes">
             @foreach ($lotes as $lote)
 
                 @if($lote->pacote)
@@ -156,6 +162,22 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
+
+            $(".link-filtro-racas").click(function(){
+                var raca = $(this).attr("raca");
+                $(".link-filtro-racas.ativo").removeClass("ativo");
+                $(this).addClass("ativo");
+                $("#container-lotes").slideUp(300,function(){
+                    if(raca != 0){
+                        $(".coluna-caixa-lote[raca!='"+raca+"']").hide();
+                        $(".coluna-caixa-lote[raca='"+raca+"']").show();
+                        $("#container-lotes").slideDown(300);
+                    }else{
+                        $(".coluna-caixa-lote").show();
+                        $("#container-lotes").slideDown(300);
+                    }
+                });
+            });
 
             $(".sino-lote").click(function() {
                 var lid = $(this).attr("lid");

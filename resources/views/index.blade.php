@@ -51,30 +51,39 @@
     <div class="container-fluid" style="background-color: black;">
         <div class="container-fluid pb-5" id="header-index">
             {{-- <div class="container-fluid py-5 px-0" id="container-section1"> --}}
-                <div class="row">
-                    <div id="container-banner-desktop" class="d-none d-lg-block" style="">
-                        @php
-                            $cont = 0;
-                        @endphp
-                        @foreach($banners as $banner)
-                            @php
-                                $cont = $cont + 1;
-                            @endphp
-                            <img class="@if($cont == 1) active @endif cpointer" src="{{ asset($banner->caminho) }}" num="{{$cont}}" style="width: 100%; @if($cont != 1) display:none; @endif" alt="">
-                        @endforeach
-                        <div id="banner-arrow-left"
-                            style="position: absolute; left: 30px; top: calc(50% - 60px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
-                            <i class="fas fa-chevron-left text-white fa-lg"></i>
-                        </div>
-                        <div id="banner-arrow-right"
-                            style="position: absolute; right: 30px; top: calc(50% - 60px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
-                            <i class="fas fa-chevron-right text-white fa-lg"></i>
+                @if ($configuracao->live_ativo && $configuracao->live_link)
+                    <div class="row d-none d-lg-flex">
+                        <div id="container-banner-desktop">
+                            <img src="{{asset('imagens/banner-live.jpg')}}" style="width: 100%;" alt="">
+                            {!! $configuracao->live_link !!}
                         </div>
                     </div>
-                </div>
+                @else
+                    <div class="row">
+                        <div id="container-banner-desktop" class="d-none d-lg-block" style="">
+                            @php
+                                $cont = 0;
+                            @endphp
+                            @foreach($banners as $banner)
+                                @php
+                                    $cont = $cont + 1;
+                                @endphp
+                                <img class="@if($cont == 1) active @endif cpointer" src="{{ asset($banner->caminho) }}" num="{{$cont}}" style="width: 100%; @if($cont != 1) display:none; @endif" alt="">
+                            @endforeach
+                            <div id="banner-arrow-left"
+                                style="position: absolute; left: 30px; top: calc(50% - 60px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
+                                <i class="fas fa-chevron-left text-white fa-lg"></i>
+                            </div>
+                            <div id="banner-arrow-right"
+                                style="position: absolute; right: 30px; top: calc(50% - 60px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
+                                <i class="fas fa-chevron-right text-white fa-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 
                 @if ($configuracao->live_ativo && $configuracao->live_link)
-                    <div class="row mt-5 d-lg-none">
+                    <div class="row d-lg-none">
                         <div class="col-12 text-center text-header-index">
                             <h5>DE OLHO NA LIVE</h5>
                         </div>
@@ -93,7 +102,7 @@
                     </div>
                 </div> --}}
                 <div class="row pb-5 justify-content-center" id="row-cards-fazendas" style="position: relative; z-index: 1;">
-                    @if ($configuracao->live_ativo && $configuracao->live_link)
+                    {{-- @if ($configuracao->live_ativo && $configuracao->live_link)
                         <div class="container-fluid">
                             <div class="row mt-5 d-none d-lg-flex">
                                 <div class="col-12 text-center text-header-index">
@@ -106,7 +115,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
                     @if($configuracao->mostrar_lotes_destaque)
                         <div class="col-12 text-center text-header-index d-none d-lg-block">
                             <h5>Vitrine de animais</h5>
@@ -373,7 +382,7 @@
 @section('scripts')
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
-        var num_banners = {!! $cont !!};
+        var num_banners = @if(isset($cont)) {!! $cont !!} @endif;
         var trava = false;
 
         rotacao_automatica_desktop();
