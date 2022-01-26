@@ -276,7 +276,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/configuracoes/home/banners', [\App\Http\Controllers\ConfiguracoesController::class, 'home_banners'])->name("painel.configuracoes.home.banners");
     Route::post('/painel/configuracoes/home/banners/salvar', [\App\Http\Controllers\ConfiguracoesController::class, 'home_banners_salvar'])->name("painel.configuracoes.home.banners.salvar");
     Route::get('/painel/configuracoes/home/banners/deletar/{banner}', [\App\Http\Controllers\ConfiguracoesController::class, 'home_banners_deletar'])->name("painel.configuracoes.home.banners.deletar");
-
+    
+    // ROTA DE LOG
+    Route::get('/painel/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });
 
 Route::get('/teste', [\App\Http\Controllers\SiteController::class, 'testes']);

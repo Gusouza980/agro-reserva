@@ -103,6 +103,13 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group mb-3">
+                            <label for="nome">Ativo</label>
+                            <select class="form-control" name="ativo" required>
+                                <option value="1" @if($usuario->ativo == 1) selected @endif>Sim</option>
+                                <option value="0" @if($usuario->ativo == 0) selected @endif>Não</option>
+                            </select>
+                        </div>
                         <div class="form-group text-end">
                             <button type="submit" class="btn btn-primary mt-3">Salvar</button>
                         </div>                    
@@ -149,6 +156,13 @@
                             @foreach(config("acessos.niveis") as $key => $acesso)
                                 <option value="{{$key}}">{{$acesso}}</option>
                             @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="nome">Ativo</label>
+                        <select class="form-control" name="ativo" required>
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
                         </select>
                     </div>
                     <div class="form-group text-end">

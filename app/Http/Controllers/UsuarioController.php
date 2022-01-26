@@ -25,8 +25,11 @@ class UsuarioController extends Controller
         $usuario->email = $request->email;
         $usuario->acesso = $request->acesso;
         $usuario->usuario = $request->usuario;
+        $usuario->ativo = $request->ativo;
         $usuario->foto = null;
-        $usuario->senha = Hash::make($request->senha);
+        if($request->senha){
+            $usuario->senha = Hash::make($request->senha);
+        }
         $usuario->save();
 
         toastr()->success("Usuário salvo com sucesso!");

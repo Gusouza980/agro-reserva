@@ -11,6 +11,7 @@ use App\Models\Visita;
 use App\Models\Venda;
 use Analytics;
 use Spatie\Analytics\Period;
+use Illuminate\Support\Facades\Log;
 
 class PainelController extends Controller
 {
@@ -30,6 +31,12 @@ class PainelController extends Controller
         $usuario = Usuario::where("usuario", $request->usuario)->first();
 
         if($usuario && Hash::check($request->senha, $usuario->senha)){
+            if(!$usuario->ativo){
+                Log::channel('acessos_painel')->warning('LOGIN: O usuário bloqueado <b>' . $usuario->nome . '</b> realizou uma tentativa de login no sistema.');
+                toastr()->error("Seu acesso está bloqueado. Contate um dos administradores do sistema");
+                return redirect()->back();
+            }
+            Log::channel('acessos_painel')->warning('LOGIN: O usuário <b>' . $usuario->nome . '</b> entrou no sistema.');
             session()->put(["admin" => $usuario->toArray()]);
             return redirect()->route("painel.index");
         }else{
