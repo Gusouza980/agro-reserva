@@ -9,15 +9,24 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Reserva;
 use App\Models\Chave;
+use App\Classes\Util;
 
 class LotesController extends Controller
 {
     //
     public function index(Reserva $reserva){
+        if(!Util::acesso("reservas", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.lotes.consultar", ["reserva" => $reserva]);
     }
 
     public function cadastro(Reserva $reserva){
+        if(!Util::acesso("fazendas", "cadastro")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.lotes.cadastro", ["reserva" => $reserva]);
     }
 
@@ -96,6 +105,10 @@ class LotesController extends Controller
     }
 
     public function editar(Lote $lote){
+        if(!Util::acesso("fazendas", "cadastro")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.lotes.editar", ["lote" => $lote]);
     }
 

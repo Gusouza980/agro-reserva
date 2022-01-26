@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Popup;
 use Illuminate\Support\Facades\Storage;
+use App\Classes\Util;
 
 class PopupController extends Controller
 {
     //
 
     public function index(){
+        if(!Util::acesso("popups", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         $popups = Popup::all();
         return view("painel.popups.index", ["popups" => $popups]);
     }

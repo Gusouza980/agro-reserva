@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\HomeBanner;
 use Illuminate\Support\Facades\Storage;
+use App\Classes\Util;
 
 class ConfiguracoesController extends Controller
 {
     //
     public function home_banners(){
+        if(!Util::acesso("banners", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         $banners = HomeBanner::all();
         return view("painel.configuracoes.banners", ["banners" => $banners]);
     }

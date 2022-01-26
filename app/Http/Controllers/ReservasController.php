@@ -10,11 +10,16 @@ use App\Models\Visita;
 use App\Models\CurtidaLote;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use App\Classes\Util;
 
 class ReservasController extends Controller
 {
 
     public function index(Fazenda $fazenda){
+        if(!Util::acesso("reservas", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         $reservas = $fazenda->reservas;
         return view("painel.reservas.index", ["reservas" => $reservas, "fazenda" => $fazenda]);
     }

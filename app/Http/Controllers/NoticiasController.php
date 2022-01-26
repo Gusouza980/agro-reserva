@@ -9,17 +9,26 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Image;
+use App\Classes\Util;
 
 class NoticiasController extends Controller
 {
     //
 
     public function consultar(){
+        if(!Util::acesso("noticias", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         $noticias = Noticia::all();
         return view("painel.noticias.consultar", ["noticias" => $noticias]);
     }
     
     public function cadastro(){
+        if(!Util::acesso("noticias", "cadastro")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.noticias.cadastro");
     }
 
@@ -102,6 +111,10 @@ class NoticiasController extends Controller
     }
 
     public function editar(Noticia $noticia){
+        if(!Util::acesso("noticias", "cadastro")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.noticias.editar", ["noticia" => $noticia]);
     }
 

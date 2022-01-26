@@ -13,17 +13,44 @@ use App\Models\Cliente;
 use App\Classes\Email;
 use Illuminate\Support\Str;
 use PDF;
-
+use App\Classes\Util;
 
 class VendasController extends Controller
 {
     //
-    public function index(){
-        $vendas = Venda::all();
-        return view("painel.vendas.consultar", ["vendas" => $vendas]);
+    public function index(Request $request){
+        if(!Util::acesso("vendas", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
+        if($request->isMethod('post')){
+            $inicio = $request->inicio;
+            $fim = $request->fim;
+            $inicio_time = $request->inicio . " 00:00:00";
+            $fim_time = $request->fim . " 23:59:59";
+            if($request->reserva != -1){
+                $vendas = Venda::whereBetween("created_at", [$inicio_time, $fim_time])->whereHas("carrinho", function($q) use ($request){
+                    $q->whereHas("lotes", function($w) use ($request){
+                        $w->where("reserva_id", $request->reserva);
+                    });
+                })->orderBy("created_at", "ASC")->get();
+                return view("painel.vendas.consultar", ["vendas" => $vendas, "inicio" => $inicio, "fim" => $fim, "filtro_reserva" => $request->reserva]);
+            }
+        }else{
+            $inicio = date('Y-m-d', strtotime('-14 days'));
+            $fim = date('Y-m-d');
+            $inicio_time = date('Y-m-d', strtotime('-14 days')) . " 00:00:00";
+            $fim_time = date('Y-m-d') . " 23:59:59";
+        }
+        $vendas = Venda::whereBetween("created_at", [$inicio_time, $fim_time])->orderBy("created_at", "ASC")->get();
+        return view("painel.vendas.consultar", ["vendas" => $vendas, "inicio" => $inicio, "fim" => $fim]);
     }
 
     public function visualizar(Venda $venda){
+        if(!Util::acesso("vendas", "visualizar")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.vendas.visualizar", ["venda" => $venda]);
     }
 

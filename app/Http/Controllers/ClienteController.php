@@ -34,6 +34,10 @@ class ClienteController extends Controller
     //
 
     public function index(){
+        if(!Util::acesso("clientes", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         $clientes = Cliente::all();
         return view("painel.clientes.consultar", ["clientes" => $clientes]);
     }
@@ -43,6 +47,10 @@ class ClienteController extends Controller
     }
 
     public function visualizar(Cliente $cliente){
+        if(!Util::acesso("clientes", "visualizar")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.clientes.visualizar", ['cliente' => $cliente]);
     }
 
@@ -629,22 +637,8 @@ class ClienteController extends Controller
         return redirect()->back();
     }
 
-    public function pre_to_main(){
-        $clientes = Cliente::all();
-        foreach($clientes as $cliente){
-            if(is_numeric($cliente->cidade)){
-                $cidade = Cidade::find($cliente->cidade);
-                if($cidade){
-                    $cliente->cidade = $cidade->nome;
-                }
-            }
-            if(is_numeric($cliente->estado)){
-                $estado = Estado::find($cliente->estado);
-                if($estado){
-                    $cliente->estado = $estado->uf;
-                }
-            }
-            $cliente->save();
-        }
+    public function pesquisar(Request $request){
+        $clientes = Cliente::where("nome_dono", "LIKE", "%" . $request->nome . "%")->get();
+        return response()->json($clientes);
     }
 }

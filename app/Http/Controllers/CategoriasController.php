@@ -10,6 +10,10 @@ class CategoriasController extends Controller
 {
     //
     public function consultar(){
+        if(!Util::acesso("noticias", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         $categorias = Categoria::all();
         return view("painel.categorias.consultar", ["categorias" => $categorias]);
     }

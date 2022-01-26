@@ -13,95 +13,147 @@
 @endsection
 
 @section('conteudo')
-<div class="row my-3">
-    <div class="col-12">
-         <a name="" id="" class="btn btn-primary cpointer ml-3" data-bs-toggle="modal" data-bs-target="#modalNovoCliente" role="button">Novo Cliente</a> 
-    </div>
-</div>
-<div class="row justify-content-center">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body" style="overflow-x: scroll;">
-
-                <table id="datatable-buttons" class="table table-bordered nowrap w-100">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Data de Cad.</th>
-                            <th>Nome</th>
-                            <th>Cnpj/Cpf</th>
-                            <th>Aprovação</th>
-                            <th>Cadastro</th>
-                            <th>Email</th>
-                            <th>Whatsapp</th>
-                        </tr>
-                    </thead>
-
-
-                    <tbody>
-                        @foreach($clientes as $cliente)
-                            <tr>
-                                <td>
-                                    <div class="dropdown mt-4 mt-sm-0">
-                                        <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
-                                            aria-expanded="false">
-                                            <i class="fas fa-bars" aria-hidden="true"></i>
-                                        </a>
-                                        <div class="dropdown-menu" style="margin: 0px;">
-                                            <a name="" id="" class="dropdown-item py-2"
-                                                href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}"
-                                                role="button">Visualizar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>{{date("d/m/Y H:i:s", strtotime($cliente->created_at))}}</td>
-                                <td style="vertical-align: middle; text-align:center;"><a href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}">{{$cliente->nome_dono}}</a></td>
-                                <td style="vertical-align: middle; text-align:center;">
-                                    @if($cliente->cpf && $cliente->cnpj)
-                                        <b>CPF:</b> {{$cliente->cpf}} / <b>CNPJ:</b> {{$cliente->cnpj}}
-                                    @elseif($cliente->cpf)
-                                        <b>CPF:</b> {{$cliente->cpf}}
-                                    @elseif($cliente->cnpj)
-                                        <b>CNPJ:</b> {{$cliente->cnpj}}
-                                    @else
-                                        {{$cliente->documento}}
-                                    @endif
-                                </td>
-                                <td style="vertical-align: middle; text-align:center;">
-                                    @if($cliente->aprovado == 0)
-                                        <span>Em Análise</span>
-                                    @elseif($cliente->aprovado == -1)
-                                        <span style="color: red;">Reprovado</span>
-                                    @else
-                                        <span style="color: green;">Aprovado</span>
-                                    @endif
-                                </td>
-                                <td style="vertical-align: middle; text-align:center;">
-                                    @if($cliente->finalizado == 0)
-                                        Pré
-                                    @else
-                                        Finalizado
-                                    @endif
-                                </td>
-                                <td style="vertical-align: middle; text-align:center;">{{$cliente->email}}</td>
-                                <td style="vertical-align: middle; text-align:center;">
-                                    @if($cliente->whatsapp && $cliente->telefone)
-                                        {{$cliente->whatsapp}} / {{$cliente->telefone}}
-                                    @elseif($cliente->whatsapp)
-                                        {{$cliente->whatsapp}}
-                                    @else
-                                        {{$cliente->telefone}}
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-
-            </div>
+@if(Util::acesso("clientes", "cadastro"))
+    <div class="row my-3">
+        <div class="col-12">
+            <a name="" id="" class="btn btn-primary cpointer ml-3" data-bs-toggle="modal" data-bs-target="#modalNovoCliente" role="button">Novo Cliente</a> 
         </div>
-    </div> <!-- end col -->
-</div> <!-- end row -->
+    </div>
+@endif
+
+@if(Util::acesso("clientes", "consulta_completa"))
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body" style="overflow-x: scroll;">
+
+                    <table id="datatable-buttons" class="table table-bordered nowrap w-100">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Data de Cad.</th>
+                                <th>Nome</th>
+                                <th>Cnpj/Cpf</th>
+                                <th>Aprovação</th>
+                                <th>Cadastro</th>
+                                <th>Email</th>
+                                <th>Whatsapp</th>
+                            </tr>
+                        </thead>
+
+
+                        <tbody>
+                            @foreach($clientes as $cliente)
+                                <tr>
+                                    <td>
+                                        <div class="dropdown mt-4 mt-sm-0">
+                                            <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                <i class="fas fa-bars" aria-hidden="true"></i>
+                                            </a>
+                                            <div class="dropdown-menu" style="margin: 0px;">
+                                                <a name="" id="" class="dropdown-item py-2"
+                                                    href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}"
+                                                    role="button">Visualizar</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{{date("d/m/Y H:i:s", strtotime($cliente->created_at))}}</td>
+                                    <td style="vertical-align: middle; text-align:center;"><a href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}">{{$cliente->nome_dono}}</a></td>
+                                    <td style="vertical-align: middle; text-align:center;">
+                                        @if($cliente->cpf && $cliente->cnpj)
+                                            <b>CPF:</b> {{$cliente->cpf}} / <b>CNPJ:</b> {{$cliente->cnpj}}
+                                        @elseif($cliente->cpf)
+                                            <b>CPF:</b> {{$cliente->cpf}}
+                                        @elseif($cliente->cnpj)
+                                            <b>CNPJ:</b> {{$cliente->cnpj}}
+                                        @else
+                                            {{$cliente->documento}}
+                                        @endif
+                                    </td>
+                                    <td style="vertical-align: middle; text-align:center;">
+                                        @if($cliente->aprovado == 0)
+                                            <span>Em Análise</span>
+                                        @elseif($cliente->aprovado == -1)
+                                            <span style="color: red;">Reprovado</span>
+                                        @else
+                                            <span style="color: green;">Aprovado</span>
+                                        @endif
+                                    </td>
+                                    <td style="vertical-align: middle; text-align:center;">
+                                        @if($cliente->finalizado == 0)
+                                            Pré
+                                        @else
+                                            Finalizado
+                                        @endif
+                                    </td>
+                                    <td style="vertical-align: middle; text-align:center;">{{$cliente->email}}</td>
+                                    <td style="vertical-align: middle; text-align:center;">
+                                        @if($cliente->whatsapp && $cliente->telefone)
+                                            {{$cliente->whatsapp}} / {{$cliente->telefone}}
+                                        @elseif($cliente->whatsapp)
+                                            {{$cliente->whatsapp}}
+                                        @else
+                                            {{$cliente->telefone}}
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+
+@else
+
+    <div class="row">
+        <div class="col-12">
+            <form action="" id="form-pesquisa" class="row">
+                <div class="form-group col-11">
+                    <label for=""></label>
+                    <input type="text"
+                        class="form-control" name="nome_cliente" id="" aria-describedby="helpId" placeholder="">
+                    <small id="helpId" class="form-text text-muted">Digite o nome do cliente</small>
+                </div>
+                <div class="form-group col-1 d-flex align-items-center">
+                    <button type="submit" class="btn btn-block btn-laranja"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body" style="overflow-x: scroll;">
+
+                    <table id="datatable" class="table table-bordered nowrap w-100">
+                        <thead>
+                            <tr>
+                                <th>Data de Cad.</th>
+                                <th>Nome</th>
+                                <th>Cnpj/Cpf</th>
+                                <th>Aprovação</th>
+                                <th>Cadastro</th>
+                                <th>Email</th>
+                                <th>Whatsapp</th>
+                            </tr>
+                        </thead>
+                        <tbody id="body-pesquisa">
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+
+@endif
+
 @include('painel.includes.clientes.modal-cadastro')
 
 
@@ -324,5 +376,76 @@
         
         
             });
+            $("#form-pesquisa").submit(function(e){
+                e.preventDefault();
+                var nome = $("input[name='nome_cliente']").val();
+                if(nome.length < 6){
+                    alert("Informe pelo menos 6 caracteres");
+                    return;
+                }
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: "{!! route('painel.cliente.pesquisar') !!}",
+                    dataType: 'json',
+                    data: {
+                        nome: nome
+                    },
+                    success: function (clientes) {
+                        html = "";
+                        for(var k in clientes){
+                            var data = new Date(clientes[k].created_at);
+                            var dataFormatada = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'});
+                            html += "<tr>";
+                            html += "<td>" + dataFormatada + "</td>";
+                            html += "<td>" + clientes[k].nome_dono + "</td>";
+                            html += "<td>";
+                            if(clientes[k].cpf){
+                                html += "<b>CPF</b>: " + clientes[k].cpf;
+                                if(clientes[k].cnpj){
+                                    html += " / ";
+                                }
+                            }
+                            if(clientes[k].cnpj){
+                                html += "<b>CNPJ</b>: " + clientes[k].cnpj;
+                            }
+                            html += "</td>";
+                            if(clientes[k].aprovado == 0){
+                                html += "<td> Em análise </td>";
+                            }else if(clientes[k].aprovado == -1){
+                                html += "<td> Reprovado </td>";
+                            }else{
+                                html += "<td> Aprovado </td>";
+                            }
+                            if(clientes[k].finalizado == 0){
+                                html += "<td> Pré </td>";
+                            }else{
+                                html += "<td> Completo </td>";
+                            }
+                            html += "<td>" + clientes[k].email + "</td>";
+                            html += "<td>";
+                            if(clientes[k].telefone){
+                                html += clientes[k].telefone;
+                                if(clientes[k].whatsapp){
+                                    html += " / ";
+                                }
+                            }
+                            if(clientes[k].whatsapp){
+                                html += clientes[k].whatsapp;
+                            }
+                            html += "</td>";
+                        }
+                        $("#body-pesquisa").html(html);
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            })
+
     </script> 
 @endsection

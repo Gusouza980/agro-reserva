@@ -133,6 +133,10 @@ Route::middleware(['admin'])->group(function () {
     // ROTAS DE ROTINAS
     Route::get('/painel/rotinas/recomendacoes/calcular', [\App\Http\Controllers\RotinasController::class, 'calcula_recomendacoes'])->name("painel.rotinas.recomendacoes.calcular");
     
+    // ROTAS RELACIOANDAS A USUÁRIOS
+    Route::get('/painel/usuarios', [\App\Http\Controllers\UsuarioController::class, 'index'])->name("painel.usuarios");        
+    Route::post('/painel/usuarios/salvar', [\App\Http\Controllers\UsuarioController::class, 'salvar'])->name("painel.usuarios.salvar");        
+
     //ROTAS RELACIONADAS A FAZENDAS
     Route::get('/painel/fazendas', [\App\Http\Controllers\FazendaController::class, 'index'])->name("painel.fazendas");        
     Route::get('/painel/fazenda/cadastro', [\App\Http\Controllers\FazendaController::class, 'cadastro'])->name("painel.fazenda.cadastro");        
@@ -212,6 +216,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/assessor/excluir/{assessor}', [\App\Http\Controllers\AssessoresController::class, 'excluir'])->name("painel.assessor.excluir");
 
     Route::get('/painel/clientes', [\App\Http\Controllers\ClienteController::class, 'index'])->name("painel.clientes");
+    Route::post('/painel/clientes/pesquisar', [\App\Http\Controllers\ClienteController::class, 'pesquisar'])->name("painel.cliente.pesquisar");
     Route::get('/painel/clientes/export', [\App\Http\Controllers\ClienteController::class, 'export'])->name("painel.clientes.export");
     Route::post('/painel/cliente/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastro_painel'])->name("painel.cliente.cadastrar");
     Route::get('/painel/cliente/{cliente}', [\App\Http\Controllers\ClienteController::class, 'visualizar'])->name("painel.cliente.visualizar");
@@ -226,7 +231,7 @@ Route::middleware(['admin'])->group(function () {
 
     // ROTAS RELACIONADAS A VENDAS
     Route::match(['get', 'post'],'/painel/visitas', [\App\Http\Controllers\PainelController::class, 'visitas'])->name("painel.visitas");
-    Route::get('/painel/vendas', [\App\Http\Controllers\VendasController::class, 'index'])->name("painel.vendas");
+    Route::match(['get', 'post'],'/painel/vendas', [\App\Http\Controllers\VendasController::class, 'index'])->name("painel.vendas");
     Route::post('/painel/vendas/nova', [\App\Http\Controllers\VendasController::class, 'venda_manual'])->name("painel.vendas.nova");
     Route::get('/painel/venda/{venda}', [\App\Http\Controllers\VendasController::class, 'visualizar'])->name("painel.vendas.visualizar");
     Route::post('/painel/venda/boleto/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_boleto'])->name("painel.vendas.boleto.adicionar");

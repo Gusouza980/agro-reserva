@@ -97,6 +97,12 @@ class PainelController extends Controller
             $fim = $request->fim;
             $inicio_time = $request->inicio . " 00:00:00";
             $fim_time = $request->fim . " 23:59:59";
+            if($request->reserva != -1){
+                $visitas = Visita::whereBetween("created_at", [$inicio_time, $fim_time])->whereHas("lote", function($q) use ($request){
+                    $q->where("reserva_id", $request->reserva);
+                })->orderBy("created_at", "ASC")->get();
+                return view("painel.visitas.consultar", ["visitas" => $visitas, "inicio" => $inicio, "fim" => $fim, "filtro_reserva" => $request->reserva]);
+            }
         }else{
             $inicio = date('Y-m-d', strtotime('-14 days'));
             $fim = date('Y-m-d');
