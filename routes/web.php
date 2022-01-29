@@ -35,7 +35,8 @@ Route::middleware(['popup', 'cookie'])->group(function () {
     Route::get('/sair', function () {
         session()->forget("cliente");
         session()->forget("carrinho");
-        return redirect()->route("index");
+        $cookie = \Cookie::forget("cliente");
+        return redirect()->route("index")->withCookie($cookie);
     })->name("sair");
     
     

@@ -279,7 +279,13 @@ class SiteController extends Controller
             if(Hash::check($request->senha, $usuario->senha)){
                 $usuario->ultimo_acesso = date('Y-m-d');
                 $usuario->save();
-                $cookie = Cookie::forever('cliente', $usuario->id);
+                // dd($usuario);
+                // $cookie = cookie()->forever('cliente', $usuario->id);
+                // $cookie = Cookie::forget('cliente');
+                Cookie::queue('cliente', $usuario->id, 518400);
+                // $response->withCookie(cookie()->forever($usuario->id));
+                // return response("view")->withCookie($cookie);
+                // dd(cookie("cliente"));
                 session(["cliente" => $usuario->toArray()]);
                 
                 $carrinhos = Carrinho::where([["cliente_id", $usuario->id], ["aberto", true]])->get();
