@@ -170,7 +170,7 @@
                                     <div class="container-fluid">
                                         <div class="row" style="">
                                             <div class="col-12 text-center">
-                                                <img src="{{ asset($reserva->fazenda->logo) }}" style="max-width: 100%; 
+                                                <img src="{{ asset($reserva->fazenda->logo) }}" style="max-width: 200px; 
                                                                 @if (($reserva->aberto &&
                                                 !$reserva->encerrada && !$reserva->compra_disponivel) || ($reserva->aberto
                                                 && !$reserva->encerrada && $reserva->compra_disponivel &&
