@@ -312,11 +312,11 @@ class SiteController extends Controller
                 }
             }else{
                 session()->flash("erro", "Usuário ou senha incorretos");
-                return redirect()->back();
+                return redirect()->back()->withInput($request->except('senha'));
             } 
         }else{
             session()->flash("erro", "Usuário ou senha incorretos");
-            return redirect()->back();
+            return redirect()->back()->withInput($request->except('senha'));
         }      
     }
 
