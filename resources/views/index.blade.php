@@ -186,15 +186,17 @@
                                             <div class="row mt-3" style="">
                                                 <div class="col-12 text-center">
                                                     @if (!$reserva->encerrada)
-                                                        @if (!$reserva->compra_disponivel)
-                                                            <h1 class="text-abertura">Inicio em</h1>
-                                                            <h2 class="data-abertura mt-n2">
-                                                                {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
-                                                        @else
-                                                            @if ($reserva->fim)
-                                                                <h1 class="text-abertura">Disponível até</h1>
+                                                        @if ($reserva->mostrar_datas)
+                                                            @if (!$reserva->compra_disponivel)
+                                                                <h1 class="text-abertura">Inicio em</h1>
                                                                 <h2 class="data-abertura mt-n2">
-                                                                    {{ date('d/m/Y', strtotime($reserva->fim)) }}</h2>
+                                                                    {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
+                                                            @else
+                                                                @if ($reserva->fim)
+                                                                    <h1 class="text-abertura">Disponível até</h1>
+                                                                    <h2 class="data-abertura mt-n2">
+                                                                        {{ date('d/m/Y', strtotime($reserva->fim)) }}</h2>
+                                                                @endif
                                                             @endif
                                                         @endif
                                                     @else
