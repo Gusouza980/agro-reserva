@@ -36,6 +36,7 @@ class ReservasController extends Controller
         $reserva->preco_disponivel = false;
         $reserva->compra_disponivel = false;
         $reserva->save();
+        Log::channel('reservas')->warning('O usuário <b>' . session()->get("admin")["nome"] . '</b> cadastrou uma reserva pra fazenda ' . $reserva->fazenda->nome_fazenda . '.');
         toastr()->success("Reserva cadastrada com sucesso!");
         return redirect()->back();
     }   
@@ -48,6 +49,7 @@ class ReservasController extends Controller
         $reserva->desconto_live_valor = $request->desconto_live_valor;
         $reserva->multi_fazendas = $request->multi_fazendas;
         $reserva->save();
+        Log::channel('reservas')->warning('O usuário <b>' . session()->get("admin")["nome"] . '</b> editou a reserva ' . $reserva->id . ' da fazenda ' . $reserva->fazenda->nome_fazenda . '.');
         toastr()->success("Alterações salvas com sucesso!");
         return redirect()->back();
     }   

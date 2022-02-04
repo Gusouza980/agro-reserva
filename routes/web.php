@@ -137,6 +137,7 @@ Route::middleware(['admin'])->group(function () {
     // ROTAS RELACIOANDAS A USUÁRIOS
     Route::get('/painel/usuarios', [\App\Http\Controllers\UsuarioController::class, 'index'])->name("painel.usuarios");        
     Route::post('/painel/usuarios/salvar', [\App\Http\Controllers\UsuarioController::class, 'salvar'])->name("painel.usuarios.salvar");        
+    Route::post('/painel/usuarios/senha/alterar', [\App\Http\Controllers\UsuarioController::class, 'alterar_senha'])->name("painel.usuarios.senha.alterar");        
 
     //ROTAS RELACIONADAS A FAZENDAS
     Route::get('/painel/fazendas', [\App\Http\Controllers\FazendaController::class, 'index'])->name("painel.fazendas");        

@@ -35,4 +35,16 @@ class UsuarioController extends Controller
         toastr()->success("Usuário salvo com sucesso!");
         return redirect()->back();
     }
+
+    public function alterar_senha(Request $request){
+        $usuario = Usuario::find(session()->get("admin")["id"]);
+        if(!Hash::check($request->senha_antiga, $usuario->senha)){
+            toastr()->error("A senha antiga informada não esta correta.");
+            return redirect()->back();
+        }
+        $usuario->senha = Hash::make($request->senha_nova);
+        $usuario->save();
+        toastr()->success("Senha alterada com sucesso!");
+        return redirect()->back();
+    }
 }

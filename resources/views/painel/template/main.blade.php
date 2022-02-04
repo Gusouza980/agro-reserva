@@ -107,11 +107,8 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                {{--  <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
-                                <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">My Wallet</span></a>
-                                <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
-                                <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a>
-                                <div class="dropdown-divider"></div>  --}}
+                                <a class="dropdown-item cpointer" data-bs-toggle="modal" data-bs-target="#modalAlteraSenha"><i class="bx bx-key font-size-16 align-middle me-1"></i> <span key="t-profile">Alterar Senha</span></a>
+                                <div class="dropdown-divider"></div> 
                                 <a class="dropdown-item text-danger" href="{{route('painel.sair')}}"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Sair</span></a>
                             </div>
                         </div>
@@ -333,6 +330,37 @@
 
         </div>
         <!-- END layout-wrapper -->
+
+        <div class="modal fade" id="modalAlteraSenha" tabindex="-1" role="dialog"
+            aria-labelledby="modalAlteraSenhaLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAlteraSenhaLabel">Alteração de Senha</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('painel.usuarios.senha.alterar') }}"
+                            method="post">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <label for="senha_antiga">Senha Antiga</label>
+                                <input type="password" class="form-control" name="senha_antiga"
+                                    value="" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="senha_nova">Senha Nova</label>
+                                <input type="password" class="form-control" name="senha_nova"
+                                    value="" required>
+                            </div>
+                            <div class="form-group text-end">
+                                <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- JAVASCRIPT -->
         <script src="{{asset('admin/libs/jquery/jquery.min.js')}}"></script>
