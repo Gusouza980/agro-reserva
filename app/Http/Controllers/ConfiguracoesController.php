@@ -22,6 +22,7 @@ class ConfiguracoesController extends Controller
     public function home_banners_salvar(Request $request){
         $banner = new HomeBanner;
         $banner->descricao = $request->descricao;
+        $banner->link = $request->link;
         $banner->prioridade = $request->prioridade;
         if($request->file("caminho")){
             Storage::delete($banner->caminho);

@@ -33,6 +33,12 @@
                         </div>
                         <div class="row mt-3">
                             <div class="form-group">
+                                <label for="">Link</label>
+                                <input type="text" class="form-control" name="link" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="form-group">
                                 <label for="">Prioridade</label>
                                 <input type="number" class="form-control" name="prioridade" step="1" min="0" placeholder="">
                             </div>
