@@ -297,11 +297,11 @@ class ClienteController extends Controller
 
         $cliente->nome_fazenda = $request->nome_fazenda;
         $cliente->rg = $request->rg;
-        $cliente->nascimento = Util::convertDateToString($request->nascimento);
         if($request->pessoa_fisica == "1"){
             $cliente->pessoa_fisica = true;
             $cliente->cpf = $request->cpf;
             $cliente->documento = $request->cpf;
+            $cliente->nascimento = Util::convertDateToString($request->nascimento);
         }else{
             $cliente->pessoa_fisica = false;
             $cliente->cnpj = $request->cnpj;
