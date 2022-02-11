@@ -217,7 +217,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/assessor/editar/{assessor}', [\App\Http\Controllers\AssessoresController::class, 'editar'])->name("painel.assessor.editar");
     Route::get('/painel/assessor/excluir/{assessor}', [\App\Http\Controllers\AssessoresController::class, 'excluir'])->name("painel.assessor.excluir");
 
-    Route::get('/painel/clientes', [\App\Http\Controllers\ClienteController::class, 'index'])->name("painel.clientes");
+    Route::match(['get','post'], '/painel/clientes', [\App\Http\Controllers\ClienteController::class, 'index'])->name("painel.clientes");
     Route::post('/painel/clientes/pesquisar', [\App\Http\Controllers\ClienteController::class, 'pesquisar'])->name("painel.cliente.pesquisar");
     Route::get('/painel/clientes/export', [\App\Http\Controllers\ClienteController::class, 'export'])->name("painel.clientes.export");
     Route::post('/painel/cliente/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastro_painel'])->name("painel.cliente.cadastrar");
@@ -225,6 +225,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/cliente/{cliente}/finalizar', [\App\Http\Controllers\ClienteController::class, 'finalizar'])->name("painel.cliente.finalizar");
     Route::get('/painel/cliente/{cliente}/credito/analistar', [\App\Http\Controllers\ClienteController::class, 'analise_credito'])->name("painel.cliente.credito.analise");
     Route::get('/painel/cliente/credito/exportar/{analise}', [\App\Http\Controllers\ClienteController::class, 'exportar_analise_credito'])->name("painel.cliente.credito.analise.exportar");
+    Route::post('/painel/cliente/credito/{analise}/observacoes/salvar', [\App\Http\Controllers\ClienteController::class, 'salvar_observacoes_analise'])->name("painel.cliente.credito.analise.observacoes.salvar");
     Route::post('/painel/cliente/{cliente}/dados/salvar', [\App\Http\Controllers\ClienteController::class, 'salvar_dados_gerais'])->name("painel.cliente.dados.salvar");
     Route::get('/painel/cliente/{cliente}/aprovacao/{aprovacao}', [\App\Http\Controllers\ClienteController::class, 'aprovacao'])->name("painel.cliente.aprovacao");
 

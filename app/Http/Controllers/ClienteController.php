@@ -33,13 +33,29 @@ class ClienteController extends Controller
 {
     //
 
-    public function index(){
+    public function index(Request $request){
         if(!Util::acesso("clientes", "consulta")){
             toastr()->error("Você não tem permissão para acessar essa página");
             return redirect()->back();
         }
-        $clientes = Cliente::all();
-        return view("painel.clientes.consultar", ["clientes" => $clientes]);
+
+        if ($request->isMethod('get')) {
+            $clientes = Cliente::all();
+            return view("painel.clientes.consultar", ["clientes" => $clientes]);
+        } else {
+            $filtros = [];
+            if ($request->inicio_cadastro != null) {
+                $filtros[] = ["created_at", ">=", $request->inicio_cadastro];
+            }
+            if ($request->fim_cadastro != null) {
+                $filtros[] = ["created_at", "<=", $request->fim_cadastro];
+            }
+            if ($request->situacao != null) {
+                $filtros[] = ["aprovado", "=", $request->situacao];
+            }
+            $clientes = Cliente::where($filtros)->get();
+            return view("painel.clientes.consultar", ['clientes' => $clientes, "filtros" => $request->all()]);
+        }
     }
 
     public function exportar(){
@@ -618,13 +634,22 @@ class ClienteController extends Controller
         // $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
     }
 
+    public function salvar_observacoes_analise(Request $request, CreditoAnalise $analise){
+        $analise->observacoes = $request->observacoes;
+        $analise->save();
+        toastr()->success("Observação salva com sucesso!");
+        return redirect()->back();
+    }
+
     public function aprovacao(Cliente $cliente, $aprovacao){
         if($aprovacao == "reprovado"){
             $cliente->aprovado = -1;
             toastr()->success("Cliente reprovado!");
+            $cliente->data_reprovacao = date("Y-m-d");
         }else{
             $cliente->aprovado = 1;
             toastr()->success("Cliente aprovado!");
+            $cliente->data_reprovacao = null;
         }
         $cliente->save();
         

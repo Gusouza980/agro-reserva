@@ -54,8 +54,7 @@ class PainelController extends Controller
 
     public function index(){
         // Usuários no site atualmente
-        
-        $analyticsData = Analytics::getAnalyticsService()->data_realtime->get('ga:' . env('ANALYTICS_VIEW_ID'), 'rt:activeVisitors')->totalsForAllResults['rt:activeVisitors'];
+        $analyticsData = Analytics::getAnalyticsService()->data_realtime->get('ga:' . '238141456', 'rt:activeVisitors')->totalsForAllResults['rt:activeVisitors'];
         $analytics["numero_acessos_atuais"] = $analyticsData;
 
         // ==============================================================================

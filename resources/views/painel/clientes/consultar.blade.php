@@ -23,6 +23,31 @@
 
 @if(Util::acesso("clientes", "consulta_completa"))
 
+    <form action="" class="row mb-4" method="POST">
+        @csrf
+        <div class="form-group col-3">
+            <label for="">Data de Cadastro - Início</label>
+            <input type="date"
+                class="form-control" name="inicio_cadastro" @if(isset($filtros) && $filtros['inicio_cadastro']) value="{{$filtros['inicio_cadastro']}}" @endif id="" aria-describedby="helpId">
+        </div>
+        <div class="form-group col-3">
+            <label for="">Data de Cadastro - Fim</label>
+            <input type="date"
+                class="form-control" name="fim_cadastro" @if(isset($filtros) && $filtros['fim_cadastro']) value="{{$filtros['fim_cadastro']}}" @endif id="" aria-describedby="helpId">
+        </div>
+        <div class="form-group col-3">
+            <label for="">Situação</label>
+            <select class="form-control" name="situacao" id="" aria-describedby="helpId">
+                <option value="0" @if(isset($filtros) && $filtros['situacao'] && $filtros['situacao'] == 0) selected @endif>Em Análise</option>
+                <option value="1" @if(isset($filtros) && $filtros['situacao'] && $filtros['situacao'] == 1) selected @endif>Aprovado</option>
+                <option value="-1" @if(isset($filtros) && $filtros['situacao'] && $filtros['situacao'] == -1) selected @endif>Reprovado</option>
+            </select>
+        </div>
+        <div class="form-group col-1 d-flex align-items-end">
+            <button type="submit" class="btn btn-block btn-laranja"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card">
