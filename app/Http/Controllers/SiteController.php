@@ -136,6 +136,10 @@ class SiteController extends Controller
 
     public function conheca($slug){
         $fazenda = Fazenda::where("slug", $slug)->first();
+        $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        if(!$reserva->institucional){
+            return redirect()->route("fazenda.lotes", ["fazenda" => $fazenda]);
+        }
         if($fazenda->video_conheca){
             $fazenda->video_conheca = $this->convertYoutube($fazenda->video_conheca);
         }
@@ -145,7 +149,6 @@ class SiteController extends Controller
         foreach($fazenda->depoimentos as $depoimento){
             $depoimento->video = $this->convertYoutube($depoimento->video);
         }
-        $reserva = $fazenda->reservas->where("ativo", 1)->first();
         $fazendas = [];
         $logos = [];
         foreach($reserva->lotes as $lote){
@@ -338,6 +341,9 @@ class SiteController extends Controller
     }
 
     public function conheca_finalizadas(Reserva $reserva, $slug){
+        if(!$reserva->institucional){
+            return redirect()->route("fazenda.lotes", ["fazenda" => $fazenda]);
+        }
         $fazenda = Fazenda::where("slug", $slug)->first();
         $fazenda->video_conheca = $this->convertYoutube($fazenda->video_conheca);
         $fazenda->video_conheca_lotes = $this->convertYoutube($fazenda->video_conheca_lotes);
