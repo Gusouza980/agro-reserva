@@ -182,7 +182,7 @@
                             </div>
                         </div>
                         <div class="row mt-4">
-                            <div class="col-12 text-left" style="font-size: 14px;">
+                            <div class="col-12 text-left" style="font-size: 18px;">
                                 São 50 novilhas à venda. Todas elas levam no ventre produtos Girolando Meio Sangue e Gir Leiteiro PO. Um pacote tecnológico. 
                                 <br>
                                 Compre uma novilha e no máximo em 90 dias você terá uma bezerra especial nascendo na sua casa.
