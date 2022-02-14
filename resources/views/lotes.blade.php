@@ -178,11 +178,11 @@
                     <div class="modal-body text-center px-3 pt-2 pb-4">
                         <div class="row">
                             <div class="col-12">
-                                <iframe style="width: 100%" height="546" src="https://www.youtube.com/embed/VY7WM1yxqB4?list=PLv1B2F3kxoML6VbVGVeCnhAFwediRXTt4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe style="width: 100%" height="450" src="https://www.youtube.com/embed/VY7WM1yxqB4?list=PLv1B2F3kxoML6VbVGVeCnhAFwediRXTt4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                         </div>
                         <div class="row mt-4">
-                            <div class="col-12">
+                            <div class="col-12 text-left" style="font-size: 14px;">
                                 São 50 novilhas à venda. Todas elas levam no ventre produtos Girolando Meio Sangue e Gir Leiteiro PO. Um pacote tecnológico. 
                                 <br>
                                 Compre uma novilha e no máximo em 90 dias você terá uma bezerra especial nascendo na sua casa.
