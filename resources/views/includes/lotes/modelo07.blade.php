@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
-                    <div style="width: 100px;">
+                    <div style="width: 110px;">
                         <b class="mr-3">RGD.: </b>
                     </div>
                     <div>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
-                    <div style="width: 100px;">
+                    <div style="width: 110px;">
                         <b class="mr-3">NASCIMENTO.: </b>
                     </div>
                     <div>
