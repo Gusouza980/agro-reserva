@@ -178,7 +178,7 @@
                     <div class="modal-body text-center px-3 pt-2 pb-4">
                         <div class="row">
                             <div class="col-12">
-                                <iframe style="width: 100%" height="450" src="https://www.youtube.com/embed/VY7WM1yxqB4?list=PLv1B2F3kxoML6VbVGVeCnhAFwediRXTt4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe id="iframe-video" style="width: 100%" height="450" src="https://www.youtube.com/embed/VY7WM1yxqB4?list=PLv1B2F3kxoML6VbVGVeCnhAFwediRXTt4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                         </div>
                         <div class="row mt-4">
@@ -203,6 +203,9 @@
         <script>
             $(document).ready(function(){
                 $("#modalInstitucional").modal("show");
+                $('#modalInstitucional').on('hidden.bs.modal', function () {
+                    $("#iframe-video").remove();
+                });
             })
         </script>
     @endif
