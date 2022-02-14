@@ -149,7 +149,7 @@
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="observacoes" class="form-label">Observações</label>
-                                    <textarea class="form-control" name-"observacoes" maxlength="250"></textarea>
+                                    <textarea class="form-control" name="observacoes" maxlength="250"></textarea>
                                 </div>
                             </div>
                             <div class="col-12">
