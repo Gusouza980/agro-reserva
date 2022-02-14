@@ -77,6 +77,12 @@
                             </div>
                             <div class="col-6 col-md-4">
                                 <div class="mb-3">
+                                    <label for="previsao_parto" class="form-label">Previsão de Parto</label>
+                                    <input type="date" class="form-control" name="previsao_parto" id="previsao_parto">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="mb-3">
                                     <label for="raca" class="form-label">Raça *</label>
                                     <select name="raca" id="raca" class="form-select">
                                         @foreach (App\Models\Raca::all() as $raca)

@@ -50,6 +50,7 @@ class LotesController extends Controller
         $lote->sexo = $request->sexo;
         $lote->letra = $request->letra;
         $lote->nascimento = $request->nascimento;
+        $lote->previsao_parto = $request->previsao_parto;
         $lote->observacoes = $request->observacoes;
         $lote->raca_id = $request->raca;
         $lote->preco = $request->preco;
@@ -130,6 +131,7 @@ class LotesController extends Controller
         $lote->sexo = $request->sexo;
         $lote->letra = $request->letra;
         $lote->nascimento = $request->nascimento;
+        $lote->previsao_parto = $request->previsao_parto;
         $lote->observacoes = $request->observacoes;
         $lote->raca_id = $request->raca;
         $lote->preco = $request->preco;
