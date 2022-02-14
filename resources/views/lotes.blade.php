@@ -16,8 +16,8 @@
             <div class="container-fluid py-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 col-md-3">
-                            <img src="{{ asset($fazenda->logo) }}" style="max-width: 100%;" alt="">
+                        <div class="col-12 col-md-3 text-center">
+                            <img src="{{ asset($fazenda->logo) }}" style="width: 100%; max-width: 300px;" alt="">
                         </div>
                         <div class="col-12 col-md-9 d-none d-lg-flex align-items-center text-white text-nav-fazenda">
                             @if($reserva->institucional)
