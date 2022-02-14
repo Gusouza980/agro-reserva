@@ -164,6 +164,7 @@ class SiteController extends Controller
 
     public function lotes($slug){
         $fazenda = Fazenda::where("slug", $slug)->first();
+        $reserva = $fazenda->reservas->where("ativo", 1)->first();
         if(!$reserva->institucional){
             if(!session()->get("popup_institucional")){
                 $popup_institucional = true;
@@ -174,7 +175,6 @@ class SiteController extends Controller
         }else{
             $popup_institucional = false;
         }
-        $reserva = $fazenda->reservas->where("ativo", 1)->first();
         $lotes = $reserva->lotes->where('ativo', true)->where('membro_pacote', false);
         $prioridades = $lotes->where("prioridade", true)->sortBy("numero");
         $lotes = $lotes->where("prioridade", false)->sortBy("numero");
