@@ -199,7 +199,7 @@
 @endsection
 
 @section('scripts')
-    @if(!$reserva->institucional)
+    @if(!$reserva->institucional && $popup_institucional)
         <script>
             $(document).ready(function(){
                 $("#modalInstitucional").modal("show");
