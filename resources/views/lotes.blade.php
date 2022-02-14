@@ -142,6 +142,9 @@
                         @case(6)
                             @include('includes.lotes.modelo06')
                         @break;
+                        @case(7)
+                            @include('includes.lotes.modelo07')
+                        @break;
                         @default
                             @include('includes.lotes.modelo02')
                         @break;
