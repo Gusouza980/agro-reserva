@@ -100,7 +100,7 @@ class ReservasController extends Controller
 
     public function relatorio_pdf(Reserva $reserva){
         $total_visitas = Visita::whereIn("lote_id", $reserva->lotes->map->only(['id']))->count();
-        $cinco_clientes_mais_visitas = Visita::select("cliente_id", DB::raw("COUNT(*) as visitas"))->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy('cliente_id')->orderBy("visitas", "DESC")->limit(5)->get();
+        $cinco_clientes_mais_visitas = Visita::select("cliente_id", "cidade", "estado", DB::raw("COUNT(*) as visitas"))->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy('cliente_id')->orderBy("visitas", "DESC")->limit(5)->get();
         $cinco_clientes_mais_visitas_lotes = Visita::select("cliente_id", "lote_id", DB::raw("COUNT(*) as visitas"))->whereIn("lote_id", $reserva->lotes->map->only(['id']))->whereIn("cliente_id", $cinco_clientes_mais_visitas->map->only(['cliente_id']))->groupBy(['cliente_id', "lote_id"])->orderBy("cliente_id", "ASC")->orderBy("visitas", "DESC")->get();
         $visitas_lote = Visita::select("lote_id", DB::raw("COUNT(*) as visitas"))->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy("lote_id")->orderBy("visitas", "DESC")->get();
         $visitas_dia = Visita::select(DB::raw("DATE_FORMAT(created_at, '%d/%m/%Y') as data"), DB::raw("COUNT(*) as visitas"))->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy("data")->orderBy("data", "ASC")->get();

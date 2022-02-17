@@ -66,8 +66,8 @@
                                 <td style="">{{$visitante->cliente->nome_dono}}</td>
                                 <td style="">{{$visitante->cliente->email}}</td>
                                 <td style="">@if($visitante->cliente->telefone) {{$visitante->cliente->telefone}} @else {{$visitante->cliente->whatsapp}} @endif</td>
-                                <td>{{$visitante->cliente->cidade}}</td>
-                                <td>{{$visitante->cliente->estado}}</td>
+                                <td>{{$visitante->cidade}}</td>
+                                <td>{{$visitante->estado}}</td>
                                 <td style="">{{$visitante->visitas}} Visitas</td>
                             </tr>
                         @endforeach
