@@ -193,7 +193,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/fazenda/reserva/editar/{reserva}', [\App\Http\Controllers\ReservasController::class, 'editar'])->name("painel.fazenda.reserva.editar");        
     Route::post('/painel/fazenda/reserva/excluir/{reserva}', [\App\Http\Controllers\ReservasController::class, 'excluir'])->name("painel.fazenda.reserva.excluir");        
     Route::get('/painel/fazenda/reserva/{reserva}/relatorio', [\App\Http\Controllers\ReservasController::class, 'relatorio'])->name("painel.fazenda.reservas.relatorio");        
-    Route::get('/painel/fazenda/reserva/{reserva}/relatorio/inicio/{inicio}', [\App\Http\Controllers\ReservasController::class, 'relatorio'])->name("painel.fazenda.reservas.relatorio");        
+    Route::get('/painel/fazenda/reserva/{reserva}/relatorio/inicio/{inicio}', [\App\Http\Controllers\ReservasController::class, 'relatorio'])->name("painel.fazenda.reservas.relatorio.inicio");        
     Route::get('/painel/fazenda/reserva/{reserva}/relatorio/pdf', [\App\Http\Controllers\ReservasController::class, 'relatorio_pdf'])->name("painel.fazenda.reservas.relatorio.pdf");        
     Route::get('/painel/fazenda/reserva/{reserva}/abertura', [\App\Http\Controllers\ReservasController::class, 'abertura'])->name("painel.fazenda.reservas.abertura");
     Route::get('/painel/fazenda/reserva/{reserva}/preco', [\App\Http\Controllers\ReservasController::class, 'preco'])->name("painel.fazenda.reservas.preco");
