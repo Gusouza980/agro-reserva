@@ -94,7 +94,7 @@ class ReservasController extends Controller
             "total_visitas" => $total_visitas,
         ];
         $file = "Relatório de visitas da reserva da fazenda " . $reserva->fazenda->nome_fazenda . " gerado no dia " . date("d/m/Y"). ".";
-        $pdf = PDF::loadView('painel.reservas.pdf.relatorio', $data);
+        $pdf = PDF::loadView('painel.reservas.pdf.relatorio2', $data);
         return $pdf->stream();
     }
 
