@@ -54,7 +54,7 @@
                 @if ($configuracao->live_ativo && $configuracao->live_link)
                     <div class="row d-none d-lg-flex">
                         <div id="container-banner-desktop">
-                            <img src="{{asset('imagens/banner-live.jpg')}}" style="width: 100%;" alt="">
+                            <img src="{{asset('imagens/banner-live.png')}}" style="width: 100%;" alt="">
                             {!! $configuracao->live_link !!}
                         </div>
                     </div>
