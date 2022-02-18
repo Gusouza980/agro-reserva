@@ -264,74 +264,76 @@
                 </div>
             </div>
             @foreach($venda->carrinho->produtos as $produto)
-                <div class="row clearfix" style="margin-top: 30px;">
-                    <div style="width: 250px; padding: 10px 20px; float: left;">
-                        <img src="{{asset($produto->lote->preview)}}" style="width: 100%;" alt="">
-                    </div>
-                    <div style="width: 422px; height: 150px; padding: 10px 10px; border: 1px solid black; float: left;">
-                        <div style="margin-top: 5px; width: 55px; height: 60px; border: 1px solid black; float: left;">
-                            <div style="text-align: center; background: black; color: white; font-size: 10px; font-weight: bold; padding: 5px 0px;">
-                                LOTE
-                            </div>
-                            <div style="text-align: center; color: black; font-size: 12px; font-weight: bold;">
-                                <div style="margin-top: 11px;">
-                                    {{str_pad($produto->lote->numero, 3, "0", STR_PAD_LEFT)}}{{$produto->lote->letra}}
-                                </div>
-                            </div>
+                <div class="container">
+                    <div class="row clearfix" style="margin-top: 30px;">
+                        <div style="width: 250px; padding: 10px 20px; float: left;">
+                            <img src="{{asset($produto->lote->preview)}}" style="width: 100%;" alt="">
                         </div>
-                        <div style="margin-top: 5px; width: 355px; height: 60px; margin-left: 65px; border: 1px solid black; float:left;">
-                            <div style="text-align: center; color: black; font-size: 12px;">
-                                <div style="margin-top: 3px; font-size: 9px; font-weight: bold;">
-                                    {{$produto->lote->nome}}
+                        <div style="width: 422px; height: 150px; padding: 10px 10px; border: 1px solid black; float: left;">
+                            <div style="margin-top: 5px; width: 55px; height: 60px; border: 1px solid black; float: left;">
+                                <div style="text-align: center; background: black; color: white; font-size: 10px; font-weight: bold; padding: 5px 0px;">
+                                    LOTE
                                 </div>
-                                <div style="margin-top: 5px; font-size: 8px;">
-                                    <b>RGD:</b> {{$produto->lote->registro}} @if($produto->lote->rgn) {{$produto->lote->rgn}} @endif 
-                                    @if($produto->lote->gpta) - <b>GPTA:</b> {{$produto->lote->gpta}} @endif 
-                                    @if($produto->lote->nascimento) - <b>NASC:</b> {{date("d/m/Y", strtotime($produto->lote->nascimento))}} @endif 
-                                    @if($produto->lote->ccg) - <b>CCG:</b> {{$produto->lote->ccg}} @endif 
-                                    @if($produto->lote->iabcz) - <b>IABCZ:</b> {{$produto->lote->iabczg}} @endif 
-                                    @if($produto->lote->peso) - <b>PESO:</b> {{$produto->lote->peso}}Kg @endif
-                                    @if($produto->lote->ce) - <b>C.E:</b> {{$produto->lote->ce}} @endif
-                                    - {{mb_strtoupper($produto->lote->sexo)}}
-                                </div>
-                                <div style="margin-top: 5px; font-size: 9px;">
-                                    @if($produto->lote->parto) Último parto em {{date("d/m/Y", strtotime($produto->lote->parto))}} @endif
+                                <div style="text-align: center; color: black; font-size: 12px; font-weight: bold;">
+                                    <div style="margin-top: 11px;">
+                                        {{str_pad($produto->lote->numero, 3, "0", STR_PAD_LEFT)}}{{$produto->lote->letra}}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div style="margin-top: 5px; width: 355px; height: 60px; margin-left: 65px; border: 1px solid black; float:left;">
+                                <div style="text-align: center; color: black; font-size: 12px;">
+                                    <div style="margin-top: 3px; font-size: 9px; font-weight: bold;">
+                                        {{$produto->lote->nome}}
+                                    </div>
+                                    <div style="margin-top: 5px; font-size: 8px;">
+                                        <b>RGD:</b> {{$produto->lote->registro}} @if($produto->lote->rgn) {{$produto->lote->rgn}} @endif 
+                                        @if($produto->lote->gpta) - <b>GPTA:</b> {{$produto->lote->gpta}} @endif 
+                                        @if($produto->lote->nascimento) - <b>NASC:</b> {{date("d/m/Y", strtotime($produto->lote->nascimento))}} @endif 
+                                        @if($produto->lote->ccg) - <b>CCG:</b> {{$produto->lote->ccg}} @endif 
+                                        @if($produto->lote->iabcz) - <b>IABCZ:</b> {{$produto->lote->iabczg}} @endif 
+                                        @if($produto->lote->peso) - <b>PESO:</b> {{$produto->lote->peso}}Kg @endif
+                                        @if($produto->lote->ce) - <b>C.E:</b> {{$produto->lote->ce}} @endif
+                                        - {{mb_strtoupper($produto->lote->sexo)}}
+                                    </div>
+                                    <div style="margin-top: 5px; font-size: 9px;">
+                                        @if($produto->lote->parto) Último parto em {{date("d/m/Y", strtotime($produto->lote->parto))}} @endif
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div style="width: 420px; height: 60px; margin-top: 80px; border: 1px solid black;">
-                            <div style="text-align: center; color: black; font-size: 10px;">
-                                <table style="width: 100%; margin-top: 15px;">
-                                    <tbody>
-                                        <tr>
-                                            <td>Valor do animal:</td>
-                                            <td><b>R${{number_format($produto->lote->preco, 2, ",", ".")}}</td>
-                                            <td>% Venda:</td>
-                                            <td><b>{{$produto->lote->porcentagem}}%</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Desconto:</td>
-                                            <td><b>R${{number_format($venda->desconto / $venda->carrinho->produtos->count(), 2, ",", ".")}}</b></td>
-                                            <td>Forma de Pagamento:</td>
-                                            <td>
-                                                @if($venda->parcelas_mes == 1)
-                                                    @if($venda->parcelas == 1)
-                                                        <b>1x</b>
+                            <div style="width: 420px; height: 60px; margin-top: 80px; border: 1px solid black;">
+                                <div style="text-align: center; color: black; font-size: 10px;">
+                                    <table style="width: 100%; margin-top: 15px;">
+                                        <tbody>
+                                            <tr>
+                                                <td>Valor do animal:</td>
+                                                <td><b>R${{number_format($produto->lote->preco, 2, ",", ".")}}</td>
+                                                <td>% Venda:</td>
+                                                <td><b>{{$produto->lote->porcentagem}}%</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Desconto:</td>
+                                                <td><b>R${{number_format($venda->desconto / $venda->carrinho->produtos->count(), 2, ",", ".")}}</b></td>
+                                                <td>Forma de Pagamento:</td>
+                                                <td>
+                                                    @if($venda->parcelas_mes == 1)
+                                                        @if($venda->parcelas == 1)
+                                                            <b>1x</b>
+                                                        @else
+                                                            <b>{{$venda->parcelas}}x (1+{{$venda->parcelas - 1}})</b>
+                                                        @endif
                                                     @else
-                                                        <b>{{$venda->parcelas}}x (1+{{$venda->parcelas - 1}})</b>
+                                                        @if($venda->parcelas == 1)
+                                                            <b>1x</b>
+                                                        @else
+                                                            <b>1 + {{$venda->parcelas - 1}}x ({{($venda->parcelas / 2)}} duplas)</b>
+                                                        @endif
                                                     @endif
-                                                @else
-                                                    @if($venda->parcelas == 1)
-                                                        <b>1x</b>
-                                                    @else
-                                                        <b>1 + {{$venda->parcelas - 1}}x ({{($venda->parcelas / 2)}} duplas)</b>
-                                                    @endif
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
