@@ -313,7 +313,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Desconto:</td>
-                                                <td><b>R${{number_format($venda->desconto / $venda->carrinho->produtos->count(), 2, ",", ".")}}</b></td>
+                                                <td><b>R${{number_format($produto->lote->preco * $venda->porcentagem_desconto / 100, 2, ",", ".")}}</b></td>
                                                 <td>Forma de Pagamento:</td>
                                                 <td>
                                                     @if($venda->parcelas_mes == 1)
