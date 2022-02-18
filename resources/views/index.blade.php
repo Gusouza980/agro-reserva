@@ -126,7 +126,7 @@
                                     <div class="slick">
                                         @foreach ($lotes_destaque as $lote)
                                             <div class="px-0 py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote])}}'">
-                                                {{-- <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
+                                                {{-- <div data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
                                                 <div class=""
                                                     style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 330px; height: 250px; border-radius: 15px; position: relative; overflow: hidden;">
                                                     <div class="text-center justify-content-center align-items-center lote-home-hover" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 50px; background-color: rgba(232,82,29,0.85); display:none; ">
@@ -163,7 +163,7 @@
                     </div>
                     @foreach ($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'asc']]) as $reserva)
                         <div class="px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
-                        {{-- <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
+                        {{-- <div data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
                             <div
                                 style="background: url(/{{ $reserva->fazenda->fundo_destaque }}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
                                 <div class="d-flex align-items-center @if ($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if ($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if ($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif" style="box-shadow: 0px 0px 4px white;">
@@ -275,10 +275,10 @@
             <div class="col-12">
                 <div class="w800 mx-auto">
                     <div class="row justify-content-center align-items-center py-5 mt-5 mt-lg-0 mx-0 px-0">
-                        <div data-aos="fade-in" class="text-viva">
+                        <div class="text-viva">
                             <h1>VIVA</h1>
                         </div>
-                        <div data-aos="fade-in" class="ml-3 text-viva text-center text-lg-left">
+                        <div class="ml-3 text-viva text-center text-lg-left">
                             <h2>a nova era da<br>comercialização<br>de gado.</h2>
                         </div>
                     </div>
@@ -292,7 +292,7 @@
                         </div>
                     </div>
                 </div>
-                <div data-aos="fade-in" class="w1200 mx-auto">
+                <div class="w1200 mx-auto">
                     <div class="row">
                         <div class="col-12 text-viva text-center pt-3 pb-lg-5 mb-lg-5">
                             <span><b>Somos a Agro Reserva, a evolução do seu modelo de negócios dentro da pecuária.
@@ -309,13 +309,13 @@
             <div class="col-12">
                 <div class="w1200 mx-auto">
                     <div class="row align-items-center justify-content-center">
-                        <div data-aos="fade-in" class="text-digital text-left text-lg-right">
+                        <div class="text-digital text-left text-lg-right">
                             <h1>100% Digital</h1>
                             <h2>100% Pecuária</h2>
                             <h3>100% Com você</h3>
                         </div>
                         <div class="px-3 px-lg-0 ml-lg-4 text-digital text-center text-lg-left">
-                            <span data-aos="fade-in">
+                            <span>
                                 Estamos ao seu lado em cada etapa de compra e venda.<br>A agilidade da tecnologia digital
                                 amparada por um atendimento<br>próximo, humanizado e completo. Uma caminhada onde você
                                 nunca<br>estará sozinho, novos rumos, novas experiências,<br>novas conquistas
@@ -332,14 +332,14 @@
             <div class="col-12">
                 <div class="w1200 mx-auto">
                     <div class="row">
-                        <div data-aos="fade-in" class="col-12 text-cta-comissao text-center py-4 py-lg-0"
+                        <div class="col-12 text-cta-comissao text-center py-4 py-lg-0"
                             style="background: url({{ asset('imagens/brush-laranja.png') }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                             <h1>COMPRE SEM COMISSÃO</h1>
                         </div>
                     </div>
                     {{-- <div class="row mt-3">
                         <div class="col-12 text-cta-comissao text-center">
-                            <h2 class="cpointer" data-aos="fade-in" data-toggle="modal" data-target="#modalComissao">Consulte condições</h2>
+                            <h2 class="cpointer" data-toggle="modal" data-target="#modalComissao">Consulte condições</h2>
                         </div>
                     </div> --}}
                 </div>
