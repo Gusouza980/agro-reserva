@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Noticia;
 use App\Models\Categoria;
+use Illuminate\Support\Facades\Log;
 
 class BlogController extends Controller
 {

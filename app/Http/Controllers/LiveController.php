@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Configuracao;
 use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class LiveController extends Controller
 {

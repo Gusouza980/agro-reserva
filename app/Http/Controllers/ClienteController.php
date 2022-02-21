@@ -28,6 +28,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use App\Classes\Email;
 use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class ClienteController extends Controller
 {

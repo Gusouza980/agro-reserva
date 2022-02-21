@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use Illuminate\Support\Facades\Log;
 
 class VendedoresController extends Controller
 {

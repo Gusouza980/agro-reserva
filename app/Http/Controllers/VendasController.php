@@ -14,6 +14,7 @@ use App\Classes\Email;
 use Illuminate\Support\Str;
 use PDF;
 use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class VendasController extends Controller
 {

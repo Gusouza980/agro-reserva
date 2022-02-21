@@ -19,6 +19,7 @@ use Cookie;
 use Analytics;
 use Spatie\Analytics\Period;
 use Jenssegers\Agent\Agent;
+use Illuminate\Support\Facades\Log;
 
 class SiteController extends Controller
 {

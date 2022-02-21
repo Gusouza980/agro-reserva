@@ -11,6 +11,7 @@ use App\Models\CurtidaLote;
 use Illuminate\Support\Facades\DB;
 use PDF;
 use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class ReservasController extends Controller
 {

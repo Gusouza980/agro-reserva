@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lote;
 use App\Models\Reserva;
+use Illuminate\Support\Facades\Log;
 
 class RotinasController extends Controller
 {

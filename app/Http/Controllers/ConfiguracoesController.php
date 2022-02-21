@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\HomeBanner;
 use Illuminate\Support\Facades\Storage;
 use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class ConfiguracoesController extends Controller
 {

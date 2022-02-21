@@ -14,6 +14,7 @@ use App\Models\Fazendeiro;
 use App\Models\LoteNumero;
 use App\Models\FazendaAvaliacao;
 use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class FazendaController extends Controller
 {

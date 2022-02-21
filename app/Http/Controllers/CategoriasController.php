@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 class CategoriasController extends Controller
 {

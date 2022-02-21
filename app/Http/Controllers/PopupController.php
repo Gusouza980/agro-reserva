@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Popup;
 use Illuminate\Support\Facades\Storage;
 use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class PopupController extends Controller
 {

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Classes\Email;
 use Illuminate\Support\Str;
 use PDF;
+use Illuminate\Support\Facades\Log;
 
 class ContaController extends Controller
 {

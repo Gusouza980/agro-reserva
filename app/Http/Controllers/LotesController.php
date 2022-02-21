@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Reserva;
 use App\Models\Chave;
 use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class LotesController extends Controller
 {
