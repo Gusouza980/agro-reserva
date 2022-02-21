@@ -2120,13 +2120,13 @@ label {
 }
 
 .slick-track > .caixa-lote-home, .slick-track > .caixa-reserva-home{
-    margin: 0 10px !important;
-    width: 350px;
+    margin: 0 5px !important;
+    width: 280px;
 }
 
 .caixa-lote-home-logo{
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     background-color: #32343E;
     padding: 10px;
     border-radius: 3px;
