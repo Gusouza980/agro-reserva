@@ -169,6 +169,8 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
@@ -232,6 +234,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         "Util" => App\Classes\Util::class,
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
     ],
 
 ];

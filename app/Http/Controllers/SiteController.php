@@ -18,6 +18,7 @@ use \App\Classes\Util;
 use Cookie;
 use Analytics;
 use Spatie\Analytics\Period;
+use Jenssegers\Agent\Agent;
 
 class SiteController extends Controller
 {
@@ -83,7 +84,14 @@ class SiteController extends Controller
 
         $banners = HomeBanner::orderBy("prioridade", "ASC")->get();
         
-        return view("index", ["reservas" => $reservas, "configuracao" => $configuracao, "lotes_destaque" => $lotes_destaque, "banners" => $banners]);
+        $agent = new Agent();
+        if($agent->isMobile()){
+            // $view = "mobile.index";
+            $view = "index";
+        }else{
+            $view = "index";
+        }
+        return view($view, ["reservas" => $reservas, "configuracao" => $configuracao, "lotes_destaque" => $lotes_destaque, "banners" => $banners]);
         // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(
         //     [
         //         'nome'      => 'Agroreserva',
