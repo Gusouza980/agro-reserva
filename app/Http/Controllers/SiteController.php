@@ -87,8 +87,8 @@ class SiteController extends Controller
         
         $agent = new Agent();
         if($agent->isMobile()){
-            // $view = "mobile.index";
-            $view = "index";
+            $view = "mobile.index";
+            // $view = "index";
         }else{
             $view = "index";
         }
