@@ -103,6 +103,8 @@
                         </div>
                     </div>  
                 @endif
+
+                <div class="borda-cinza-vitrines mt-5"></div>
                 
                 <div class="col-12 text-center text-header-index mt-5">
                     <h5>Vitrine de reservas</h5>

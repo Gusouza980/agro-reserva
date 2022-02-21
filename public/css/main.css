@@ -2115,6 +2115,12 @@ label {
     margin: 0 10px;
 }
 
+.borda-cinza-vitrines{
+    width: 80%;
+    border: 1px solid #4A5860;
+    margin: auto;
+}
+
 .slick-track > .coluna-caixa-lote{
     margin: 0 10px;
 }
