@@ -53,7 +53,7 @@
             <div class="row pb-5 justify-content-center" id="row-cards-fazendas" style="position: relative; z-index: 1;">
                 @if($configuracao->mostrar_lotes_destaque)
                     <div class="col-12 text-center text-header-index d-lg-block mt-5 mt-lg-0">
-                        <h5>Vitrine de animais</h5>
+                        <h5>Animais em Destaque</h5>
                     </div>
                     <div class="vitrine-animais mt-4">
                         <div class="row">
@@ -65,7 +65,7 @@
                                             <div class=""
                                                 style="background: url({{ asset($lote->preview) }}); background-size: cover; background-position: center; width: 280px; height: 250px; border-radius: 15px; position: relative; overflow: hidden;">
                                                 <div class="text-center justify-content-center align-items-center lote-home-hover" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 50px; background-color: rgba(232,82,29,0.85); display:none; ">
-                                                    <p style="margin-top: 12px;">Ver lote</p>
+                                                    <p style="margin-top: 12px;">Compre Agora</p>
                                                 </div>
                                             </div>
                                             <div class="row px-4 mt-3 align-items-center justify-content-start">
