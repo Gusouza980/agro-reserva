@@ -26,7 +26,7 @@
                     </div>
                 @else
                     <div class="row px-0">
-                        <div id="container-banner-desktop" class="d-none d-lg-block px-0" style="">
+                        <div id="container-banner-desktop" class="d-none d-lg-block px-0" style="position: relative; width: 100%;">
                             @php
                                 $cont = 0;
                             @endphp
@@ -37,11 +37,11 @@
                                 <img class="@if($cont == 1) active @endif cpointer" src="{{ asset($banner->caminho) }}" num="{{$cont}}" @if($banner->link) onclick="window.location.href='{{ $banner->link }}'" @endif style="width: 100%; @if($cont != 1) display:none; @endif" alt="">
                             @endforeach
                             <div id="banner-arrow-left"
-                                style="position: absolute; left: 30px; top: calc(50% - 80px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
+                                style="position: absolute; left: 30px; top: calc(50%); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
                                 <i class="fas fa-chevron-left text-white fa-lg"></i>
                             </div>
                             <div id="banner-arrow-right"
-                                style="position: absolute; right: 30px; top: calc(50% - 80px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
+                                style="position: absolute; right: 30px; top: calc(50%); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
                                 <i class="fas fa-chevron-right text-white fa-lg"></i>
                             </div>
                         </div>
