@@ -50,8 +50,8 @@
                 
                 <div class="row pb-5 justify-content-center" id="row-cards-fazendas" style="position: relative; z-index: 1;">
                     @if($configuracao->mostrar_lotes_destaque)
-                        <div class="col-12 text-center text-header-index d-none d-lg-block">
-                            <h5>Vitrine de animais</h5>
+                        <div class="col-12 mt-5 text-center text-header-index d-none d-lg-block">
+                            <h5>Animais em Destaque</h5>
                         </div>
                         <div class="vitrine-animais">
                             <div class="row">
