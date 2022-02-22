@@ -23,7 +23,7 @@
                     @foreach($reservas->sortBy([['fim', 'desc']]) as $reserva)
                         <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
                             <div style="background: url(/{{$reserva->fazenda->fundo_destaque}}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
-                                <div class="d-flex align-items-center @if($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif">
+                                <div class="d-flex align-items-center card-reserva @if($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif">
                                     <div class="container-fluid">
                                         <div class="row" style="">
                                             <div class="col-12 text-center">
