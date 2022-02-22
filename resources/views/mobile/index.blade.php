@@ -112,7 +112,7 @@
                     <h5>Vitrine de reservas</h5>
                 </div>
                 <div class="col-12 mt-4">
-                    <div class="slick">
+                    <div class="slick py-3">
                         @foreach ($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'asc']]) as $reserva)
                             <div class="px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2 caixa-reserva-home">
                             {{-- <div data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}

@@ -2135,6 +2135,9 @@ label {
     width: 280px;
 }
 
+.slick-list{
+    min-height: 300px!important;
+}
 
 .caixa-lote-home-logo{
     width: 50px;
