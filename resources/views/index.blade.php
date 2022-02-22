@@ -60,8 +60,8 @@
                                         @foreach ($lotes_destaque as $lote)
                                             <div class="px-0 py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote])}}'">
                                                 {{-- <div data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
-                                                <div class=""
-                                                    style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 330px; height: 250px; border-radius: 15px; position: relative; overflow: hidden;">
+                                                <div class="caixa-lote-home-imagem"
+                                                    style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 330px; height: 250px; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464; box-shadow: 0px 15px 22px rgba(0,0,0,0.6);">
                                                     <div class="text-center justify-content-center align-items-center lote-home-hover" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 50px; background-color: rgba(232,82,29,0.85); display:none; ">
                                                         <p style="margin-top: 12px;">Compre Agora</p>
                                                     </div>
@@ -112,7 +112,7 @@
                         <div class="px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
                             <div
                                 style="background: url(/{{ $reserva->fazenda->fundo_destaque }}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
-                                <div class="d-flex align-items-center @if ($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if ($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if ($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif" style="box-shadow: 0px 0px 4px white;">
+                                <div class="d-flex align-items-center card-reserva @if ($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if ($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if ($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif" style="">
                                     <div class="container-fluid">
                                         <div class="row" style="">
                                             <div class="col-12 text-center">

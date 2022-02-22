@@ -24,14 +24,14 @@
     <meta property="og:updated_time" content="1440432930" />
     <meta name="facebook-domain-verification" content="abk9vvukcc2zjrkcwtq8qncjjfb68f" />
     @yield("metas")
-    <link rel="preload" as="style" href="{{ asset('css/main.css') }}?v=1.4.9" />
+    <link rel="preload" as="style" href="{{ asset('css/main.css') }}?v=1.5.0" />
     <link rel="preload" as="image" href="{{ asset('imagens/bg-home-min-2.jpg') }}" />
     <link rel="preload" href="{{ asset('fontes/gobold/Gobold Regular.otf') }}" as="font" type="font/otf"
         crossorigin />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1.4.9" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1.5.0" />
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/floating-wpp.css') }}" />

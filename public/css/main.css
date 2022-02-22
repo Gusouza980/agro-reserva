@@ -2026,6 +2026,11 @@ label {
     border-radius: 15px;
 }
 
+.card-reserva{
+    border: 1px solid #676464;
+    box-shadow: 0px 15px 22px rgba(0,0,0,0.6);
+}
+
 .reserva-fechada{
     padding: 10px 0px; 
     background-color: rgba(0,0,0,0.8); 
@@ -2129,6 +2134,7 @@ label {
     margin: 0 5px !important;
     width: 280px;
 }
+
 
 .caixa-lote-home-logo{
     width: 50px;
