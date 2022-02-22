@@ -2117,7 +2117,7 @@ label {
 
 .borda-cinza-vitrines{
     width: 80%;
-    border: 1px solid #4A5860;
+    border-bottom: 1px solid #4A5860;
     margin: auto;
 }
 

@@ -100,7 +100,10 @@
                                 </div>
                             </div>
                         </div>  
+
+                        <div class="borda-cinza-vitrines mt-5"></div>
                     @endif
+                    
                     
                     <div class="col-12 text-center text-header-index d-none d-lg-block mt-5">
                         <h5>Vitrine de reservas</h5>
