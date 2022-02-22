@@ -74,7 +74,7 @@ a:active {
 /* BACKGROUNDS */
 
 .bg-preto {
-    background-color: black;
+    background-color: #15171e;
 }
 
 .bg-white {
@@ -546,16 +546,16 @@ label {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-color: black;
+    background-color: #15171e;
 }
 
 #container-banner-desktop{
-    position:absolute; 
+    /* position:absolute; 
     top:0; 
     left:0; 
     width: 100%;
-    z-index: 0;
-    margin-top: 100px;
+    z-index: 0; */
+    /* margin-top: 100px; */
 }
 
 #container-banner-desktop > iframe{
@@ -609,14 +609,14 @@ label {
 
 @media(max-width:2880px){
     #row-cards-fazendas{
-        margin-top: 750px;
+        /* margin-top: 750px; */
     }
 }
 
 
 @media(max-width:1920px){
     #row-cards-fazendas{
-        margin-top: 680px;
+        /* margin-top: 680px; */
     }
 }
 

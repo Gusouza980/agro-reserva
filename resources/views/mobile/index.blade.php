@@ -14,7 +14,7 @@
 @endsection
 
 @section('conteudo')
-    <div class="container-fluid d-lg-none" style="background-color: black;">
+    <div class="container-fluid d-lg-none" style="background-color: #15171e;">
         <div class="row px-0">
             <div id="container-banner-mobile" class="carousel slide d-lg-none" data-ride="carousel">
                 {{-- <div

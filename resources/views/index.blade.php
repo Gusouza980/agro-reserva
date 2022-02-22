@@ -14,42 +14,8 @@
 @endsection
 
 @section('conteudo')
-    <div class="container-fluid d-lg-none" style="background-color: black;">
-        <div class="row px-0">
-            <div id="container-banner-mobile" class="carousel slide d-lg-none" data-ride="carousel">
-                {{-- <div
-                    style="pointer-events: none; position: absolute; bottom:-10px; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 20%, rgba(0,212,255,0) 100%); height: 150px; z-index: 5;">
-
-                </div> --}}
-                <div class="carousel-inner">
-                    @php
-                        $first = true;
-                    @endphp
-                    @foreach($banners as $banner)
-                        <div class="carousel-item @if($first) active @endif">
-                            <img src="{{asset($banner->caminho_mobile)}}" class="d-block w-100">
-                        </div>
-                        @php
-                            $first = false;
-                        @endphp
-                    @endforeach
-                    {{-- <div class="carousel-item">
-                        <img src="{{asset('imagens/banner2-mobile.jpg')}}" class="d-block w-100">
-                    </div> --}}
-                </div>
-                <a class="carousel-control-prev" href="#container-banner-mobile" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#container-banner-mobile" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid" style="background-color: black;">
-        <div class="container-fluid pb-5" id="header-index">
+    <div class="container-fluid" style="background-color: #15171e;">
+        <div class="container-fluid pb-5 px-0" id="header-index">
             {{-- <div class="container-fluid py-5 px-0" id="container-section1"> --}}
                 @if ($configuracao->live_ativo && $configuracao->live_link)
                     <div class="row d-none d-lg-flex">
@@ -59,8 +25,8 @@
                         </div>
                     </div>
                 @else
-                    <div class="row">
-                        <div id="container-banner-desktop" class="d-none d-lg-block" style="">
+                    <div class="row px-0">
+                        <div id="container-banner-desktop" class="d-none d-lg-block px-0" style="">
                             @php
                                 $cont = 0;
                             @endphp
@@ -71,51 +37,18 @@
                                 <img class="@if($cont == 1) active @endif cpointer" src="{{ asset($banner->caminho) }}" num="{{$cont}}" @if($banner->link) onclick="window.location.href='{{ $banner->link }}'" @endif style="width: 100%; @if($cont != 1) display:none; @endif" alt="">
                             @endforeach
                             <div id="banner-arrow-left"
-                                style="position: absolute; left: 30px; top: calc(50% - 60px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
+                                style="position: absolute; left: 30px; top: calc(50% - 80px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
                                 <i class="fas fa-chevron-left text-white fa-lg"></i>
                             </div>
                             <div id="banner-arrow-right"
-                                style="position: absolute; right: 30px; top: calc(50% - 60px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
+                                style="position: absolute; right: 30px; top: calc(50% - 80px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
                                 <i class="fas fa-chevron-right text-white fa-lg"></i>
                             </div>
                         </div>
                     </div>
                 @endif
                 
-                @if ($configuracao->live_ativo && $configuracao->live_link)
-                    <div class="row d-lg-none">
-                        <div class="col-12 text-center text-header-index">
-                            <h5>DE OLHO NA LIVE</h5>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center mb-5 d-lg-none">
-                        <div id="caixa-live">
-                            {!! $configuracao->live_link !!}
-                        </div>
-                    </div>
-                @endif
-                {{-- <div class="row" id="row-section1-text">
-                    <div class="col-12 text-center text-header-index">
-                        <h3>SEJA<span class="destaque"> BEM-VINDO</span> À PLATAFORMA DE <span
-                                class="destaque">COMPRA E <br class="d-none d-lg-block">VENDA</span> DAS MARCAS QUE
-                            EVOLUEM <span class="destaque">A PECUÁRIA</span></h3>
-                    </div>
-                </div> --}}
                 <div class="row pb-5 justify-content-center" id="row-cards-fazendas" style="position: relative; z-index: 1;">
-                    {{-- @if ($configuracao->live_ativo && $configuracao->live_link)
-                        <div class="container-fluid">
-                            <div class="row mt-5 d-none d-lg-flex">
-                                <div class="col-12 text-center text-header-index">
-                                    <h5>DE OLHO NA LIVE</h5>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center mb-5 d-none d-lg-flex">
-                                <div id="caixa-live">
-                                    {!! $configuracao->live_link !!}
-                                </div>
-                            </div>
-                        </div>
-                    @endif --}}
                     @if($configuracao->mostrar_lotes_destaque)
                         <div class="col-12 text-center text-header-index d-none d-lg-block">
                             <h5>Vitrine de animais</h5>
@@ -130,18 +63,29 @@
                                                 <div class=""
                                                     style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 330px; height: 250px; border-radius: 15px; position: relative; overflow: hidden;">
                                                     <div class="text-center justify-content-center align-items-center lote-home-hover" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 50px; background-color: rgba(232,82,29,0.85); display:none; ">
-                                                        <p style="margin-top: 12px;">Ver lote</p>
+                                                        <p style="margin-top: 12px;">Compre Agora</p>
                                                     </div>
                                                 </div>
-                                                <div class="row pl-5 mt-3 align-items-center">
-                                                    <div>
-                                                        <button class="badge-lote-home">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
+                                                <div class="row px-4 mt-3 align-items-center justify-content-start">
+                                                    <div class="caixa-lote-home-logo">
+                                                        <img src="{{ asset($lote->fazenda->logo) }}" alt="">
                                                     </div>
-                                                    @if($lote->registro)
-                                                        <div class="ml-3 lote-home-rgd">
-                                                            RGD: {{$lote->registro}}
+                                                    <div class="ml-4">
+                                                        <div class="d-flex justify-content-start align-items-center">
+                                                            <div>
+                                                                <button class="badge-lote-home">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
+                                                            </div>
+                                                            @if($lote->registro)
+                                                                <div class="ml-3 lote-home-rgd">
+                                                                    RGD: {{$lote->registro}}
+                                                                </div>
+                                                            @endif
                                                         </div>
-                                                    @endif
+                                                        <div class="caixa-lote-home-text text-left">
+                                                            <span>{{ $lote->reserva->desconto }}% de desconto no<br>pagamento à vista</span>
+                                                        </div>
+                                                    </div>
+                                                    
                                                 </div>
                                                 @if($lote->texto_destaque)
                                                     <div class="row pl-5 mt-3 align-items-center">
@@ -163,7 +107,6 @@
                     </div>
                     @foreach ($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'asc']]) as $reserva)
                         <div class="px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
-                        {{-- <div data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
                             <div
                                 style="background: url(/{{ $reserva->fazenda->fundo_destaque }}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
                                 <div class="d-flex align-items-center @if ($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if ($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if ($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif" style="box-shadow: 0px 0px 4px white;">
