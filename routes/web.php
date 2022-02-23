@@ -285,6 +285,10 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });
 
+// ROTAS DO MARKETPLACE
+Route::get('/loja', [\App\Http\Controllers\MarketplaceController::class, 'index'])->name("marketplace.index");
+Route::get('/loja/produtos', [\App\Http\Controllers\MarketplaceController::class, 'produtos'])->name("marketplace.produtos");
+
 Route::get('/teste', [\App\Http\Controllers\SiteController::class, 'testes']);
 Route::get('/api/getCidadesByUf/{uf}', [\App\Http\Controllers\ApiController::class, 'getCidadesByUf']);
 Route::post('/api/calcDistanciaCep', [\App\Http\Controllers\ApiController::class, 'calcDistanciaCep']);
