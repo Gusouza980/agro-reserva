@@ -78,7 +78,7 @@ class SiteController extends Controller
                 $lotes_destaque = $lotes->where("reservado", false)->where('pre_reserva', false)->sortByDesc("visitas");
             }else{
                 $lotes_destaque = Lote::whereHas("reserva", function($q){
-                    $q->where("compra_disponivel", true)->orWhere([["aberto", true], ["encerrado", false]]);
+                    $q->where("compra_disponivel", true)->orWhere([["aberto", true], ["encerrada", false]]);
                 })->where([["reservado", false], ['pre_reserva', false]])->orderBy("visitas", "DESC")->take(15)->get();
                 // dd($lotes_destaque);
             }
