@@ -285,7 +285,12 @@ if(session()->get("cliente")){
                                 </div>
                             </div>
                         </div>
+                    @else
+                        <div class="row py-4">
+
+                        </div>
                     @endif
+                    
                 </div>
                 {{-- <div class="container-fluid">
                 <div class="row pb-4">
