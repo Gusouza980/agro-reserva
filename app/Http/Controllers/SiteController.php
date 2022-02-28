@@ -82,6 +82,7 @@ class SiteController extends Controller
                 })->where([["reservado", false], ['pre_reserva', false]])->orderBy("visitas", "DESC")->take(15)->get();
                 // dd($lotes_destaque);
             }
+            $lotes_destaque = $lotes_destaque->shuffle();
             // $lotes = $reserva_aberta->lotes;
             // $lotes_destaque = $lotes->where("reservado", false)->sortByDesc("visualizacoes");
             // if($lotes_destaque->count() < 10){
