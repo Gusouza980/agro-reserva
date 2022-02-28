@@ -51,7 +51,7 @@
     <div class="container-fluid" style="background-color: black;">
         <div class="container-fluid pb-5" id="header-index">
             <div class="row pb-5 justify-content-center" id="row-cards-fazendas" style="position: relative; z-index: 1;">
-                @if($configuracao->mostrar_lotes_destaque)
+                @if($configuracao->mostrar_lotes_destaque && $lotes_destaque)
                     <div class="col-12 text-center text-header-index d-lg-block mt-5 mt-lg-0">
                         <h5>Animais em Destaque</h5>
                     </div>
@@ -69,7 +69,7 @@
                                                 </div>
                                             </div>
                                             <div class="row px-4 mt-3 align-items-center justify-content-start">
-                                                <div class="caixa-lote-home-logo">
+                                                <div class="caixa-lote-home-logo d-flex align-items-center justify-content-center">
                                                     <img src="{{ asset($lote->fazenda->logo) }}" alt="">
                                                 </div>
                                                 <div class="ml-4">
@@ -84,18 +84,18 @@
                                                         @endif
                                                     </div>
                                                     <div class="caixa-lote-home-text text-left">
-                                                        <span>{{ $lote->reserva->desconto }}% de desconto no<br>pagamento à vista</span>
+                                                        <span>@if($lote->preco > 0) {{ $lote->parcelas . "x de R$" . number_format($lote->preco / $lote->parcelas, 2, ",", ".")  }}  @else {{ $lote->reserva->desconto }}% de desconto no<br>pagamento à vista @endif</span>
                                                     </div>
                                                 </div>
                                                 
                                             </div>
-                                            @if($lote->texto_destaque)
+                                            {{-- @if($lote->texto_destaque)
                                                 <div class="row pl-5 mt-3 align-items-center">
                                                     <div class="lote-home-texto-destaque">
                                                         <span>{{$lote->texto_destaque}}</span>
                                                     </div>
                                                 </div>
-                                            @endif
+                                            @endif --}}
                                         </div>
                                     @endforeach
                                 </div>

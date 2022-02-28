@@ -72,13 +72,22 @@ class SiteController extends Controller
         $configuracao = Configuracao::first();
         $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
         $reserva_aberta = Reserva::where([["aberto", true], ['encerrada', false]])->first();
-        if($reserva_aberta){
-            $lotes = $reserva_aberta->lotes;
-            $lotes_destaque = $lotes->where("reservado", false)->sortByDesc("visualizacoes");
-            if($lotes_destaque->count() < 10){
-                $count = 10 - $lotes_destaque->count();
-                $lotes_destaque = $lotes_destaque->merge($lotes->where("reservado", true)->sortByDesc("visualizacoes")->take($count));
+        if($configuracao->mostrar_lotes_destaque){
+            if($configuracao->opcao_destaque == 0){
+                $lotes = $reserva_aberta->lotes;
+                $lotes_destaque = $lotes->where("reservado", false)->where('pre_reserva', false)->sortByDesc("visitas");
+            }else{
+                $lotes_destaque = Lote::whereHas("reserva", function($q){
+                    $q->where("compra_disponivel", true)->orWhere("aberto", true);
+                })->where([["reservado", false], ['pre_reserva', false]])->orderBy("visitas", "DESC")->take(15)->get();
+                // dd($lotes_destaque);
             }
+            // $lotes = $reserva_aberta->lotes;
+            // $lotes_destaque = $lotes->where("reservado", false)->sortByDesc("visualizacoes");
+            // if($lotes_destaque->count() < 10){
+            //     $count = 10 - $lotes_destaque->count();
+            //     $lotes_destaque = $lotes_destaque->merge($lotes->where("reservado", true)->sortByDesc("visualizacoes")->take($count));
+            // }
         }else{
             $lotes_destaque = null;
         }
