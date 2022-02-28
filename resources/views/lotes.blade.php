@@ -200,14 +200,14 @@
 
 @section('scripts')
     @if(!$reserva->institucional && $popup_institucional)
-        {{-- <script>
+        <script>
             $(document).ready(function(){
                 $("#modalInstitucional").modal("show");
                 $('#modalInstitucional').on('hidden.bs.modal', function () {
                     $("#iframe-video").remove();
                 });
             })
-        </script> --}}
+        </script>
     @endif
     <script>
         $(document).ready(function() {
