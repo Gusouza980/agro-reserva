@@ -1,3 +1,6 @@
+@php
+    use Intervention\Image\ImageManagerStatic as Image;
+@endphp
 <!doctype html>
 <html lang="pt-BR">
     <head>
@@ -267,7 +270,10 @@
                 <div class="container">
                     <div class="row clearfix" style="margin-top: 30px;">
                         <div style="width: 250px; padding: 10px 20px; float: left;">
-                            <img src="{{asset($produto->lote->preview)}}" style="width: 100%;" alt="">
+                            @php
+                                $jpg = Image::make(asset($produto->lote->preview))->encode("jpg")->save('imagens/temp/' . $produto->lote->id . 'jpg');
+                            @endphp
+                            <img src="{{asset($jpg->dirname . "/" . $jpg->filename)}}" style="width: 100%;" alt="">
                         </div>
                         <div style="width: 422px; height: 150px; padding: 10px 10px; border: 1px solid black; float: left;">
                             <div style="margin-top: 5px; width: 55px; height: 60px; border: 1px solid black; float: left;">

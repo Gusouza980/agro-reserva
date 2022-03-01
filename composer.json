@@ -16,7 +16,7 @@
         "gufy/pdftohtml-php": "~2",
         "guzzlehttp/guzzle": "^7.3",
         "inicial/rdstation-php": "^1.2",
-        "intervention/image": "^2.6",
+        "intervention/image": "^2.7",
         "jenssegers/agent": "^2.6",
         "laravel/framework": "^8.12",
         "laravel/socialite": "^5.2",
