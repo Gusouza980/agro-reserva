@@ -113,7 +113,7 @@ class VendasController extends Controller
 
         foreach($request->lotes as $lote_id){
             $lote = Lote::find($lote_id);
-            if(!$lote->reservado){
+            if($request->tarjar && !$lote->reservado){
                 $lote->reservado = true;
                 $lote->save();
             }
