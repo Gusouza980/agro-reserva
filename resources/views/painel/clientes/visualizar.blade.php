@@ -1200,8 +1200,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="">Observações</label>
-                                <textarea class="form-control" name="observacoes" id=""
-                                    maxlength="255">{!! $analise->observacoes !!}</textarea>
+                                <textarea class="form-control" name="observacoes" id="">{!! $analise->observacoes !!}</textarea>
                             </div>
                             <div class="text-end mt-3">
                                 <button type="submit" class="btn btn-primary">Salvar</button>
