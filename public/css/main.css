@@ -2273,3 +2273,14 @@ label {
         z-index: 10;
     }
 }
+
+.tr-pesquisa > td{
+    font-size: 13px;
+}
+
+@media(max-width:400px){
+    
+    .tr-pesquisa > td{
+        font-size: 11px;
+    }
+}

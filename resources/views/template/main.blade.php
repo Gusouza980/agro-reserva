@@ -228,6 +228,7 @@
                                         style="border-bottom: 2px solid #FEB000;">Fin</span>alizar
                                     Cadastro</a></span>
                         @endif
+                        <span class="cpointer" data-toggle="modal" data-target="#modalPesquisa"><i class="fas fa-search"></i></span>
                         <span class="ml-3 text-nav-header"><a href="{{ route('conta.index') }}"><i class="fas fa-user"></i></a></span> </span>
                         @if (session()->get('cliente'))
                             <span class="ml-3 text-nav-header"><a class="text-nav-header"
@@ -441,6 +442,24 @@
         </div>
     </div>
 
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modalPesquisa" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @livewire('site.pesquisa-lotes')
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     @if (session()->get('ver_popup'))
         <div class="modal fade" id="modal_popup" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -465,6 +484,7 @@
     <div id="div-whatsapp" style="left: auto; right: 15px;">
 
     </div>
+    {{-- @livewire("site.pesquisa-lotes") --}}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ asset('js/jquery.js') }}">

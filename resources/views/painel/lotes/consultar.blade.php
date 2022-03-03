@@ -34,6 +34,7 @@
                                 <th>Registro</th>
                                 <th>Preço</th>
                                 <th>Visitas</th>
+                                <th>Pré R.</th>
                                 <th>Reservado</th>
                                 <th><i class="fas fa-money-bill-wave"></i></th>
                                 <th><i class="fas fa-cash-register"></i></th>
@@ -76,6 +77,13 @@
                                     <td>{{ $lote->registro }}</td>
                                     <td>R${{ number_format($lote->preco, 2, ',', '.') }}</td>
                                     <td>{{ $lote->visitas }}</td>
+                                    <td>
+                                        @if ($lote->pre_reserva)
+                                            <i class="fas fa-handshake cpointer" style="color: orangered;"  lid="{{$lote->id}}"></i>
+                                        @else
+                                            <i class="fas fa-handshake cpointer"  lid="{{$lote->id}}"></i>
+                                        @endif
+                                    </td>
                                     <td>
                                         @if ($lote->reservado)
                                             <i class="fas fa-handshake cpointer icone-reservado ativo"  lid="{{$lote->id}}"></i>

@@ -486,7 +486,7 @@ if (session()->get('cliente')) {
         <div class="container-fluid py-5" style="background-color: black;">
             <div class="row justify-content-center">
                 @if ($configuracao->mostrar_lotes_destaque)
-                    <div class="col-12 mt-5 text-center text-header-index d-none d-lg-block">
+                    <div class="col-12 mt-5 text-center text-header-index">
                         <h5>Animais em Destaque</h5>
                     </div>
                     @livewire("slide-lotes-destaque")
