@@ -1251,7 +1251,9 @@ if (session()->get('cliente')) {
                 }
 
                 $(window).scroll(function(){
-                    if($(this).scrollTop() > $("#row-preco-compra").height() + "80"){
+                    // console.log("Scroll top:" + $(this).scrollTop());
+                    // console.log("Scroll top:" + ($("#row-preco-compra").height() + "80"));
+                    if($(this).scrollTop() > $("#row-preco-compra").height() + 80){
                         console.log("entrou scroll 1");
                         $(".barra-lote-fixa").slideDown(300);
                     }else{
