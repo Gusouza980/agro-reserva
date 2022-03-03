@@ -1,6 +1,6 @@
 @php
 
-if(session()->get("cliente")){
+if (session()->get('cliente')) {
     $cliente = \App\Models\Cliente::find(session()->get('cliente')['id']);
 }
 
@@ -18,9 +18,9 @@ if(session()->get("cliente")){
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/magnific.popup.css') }}">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <!-- Add the slick-theme.css if you want default styling -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <style>
         body {
             background-color: #FBFBFB;
@@ -30,9 +30,105 @@ if(session()->get("cliente")){
 @endsection
 
 @section('conteudo')
-    @if(!$lote->pacote)
-        <div class="" style="background-color: black; background-blend-mode: darken; background: rgba(0, 0, 0, .65) url(/{{ $reserva->fazenda->fundo_conheca_lotes }}); background-size: cover; background-position: center;">
-            <div class="container-fluid bg-preto py-5 py-lg-2">
+    <div class="container-fluid barra-lote-fixa" style="display: none;">
+        <div class="w1200 mx-auto">
+            <div class="row align-items-center py-3">
+                {{-- <div class="col-4 text-center text-white text-lg-left">
+                    <h2>{{ $lote->nome }}</h2>
+                </div> --}}
+                <div class="col-12 col-sm-6 text-white">
+                    @if(session()->get("cliente"))
+                        <div class="row">
+                            <div class="col-12 text-center text-sm-left @if (!$lote->reserva->preco_disponivel && !$lote->liberar_preco) blur @endif">
+                                @if ($lote->reserva->preco_disponivel || $lote->liberar_preco)
+                                    @if ($lote->reserva->parcelas_mes == 1)
+                                        <h4><b>{{ $lote->parcelas }}x</b> de
+                                            <b>R${{ number_format($lote->preco / $lote->parcelas, 2, ',', '.') }}</b>
+                                        </h4>
+                                    @else
+                                        <div>
+                                            <h4><b>30</b>x (15 duplas) de
+                                                <b>R${{ number_format($lote->preco / ($lote->parcelas), 2, ',', '.') }}</b>
+                                            </h4>
+                                        </div>
+                                    @endif
+                                @else
+                                    <h4><b>0x</b> de <b>R$0000,00</b></h4>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center text-lg-left @if (!$lote->reserva->preco_disponivel && !$lote->liberar_preco) blur @endif">
+                                @if ($lote->reserva->preco_disponivel || $lote->liberar_preco)
+                                    <span>ou R${{ number_format($lote->preco - ($lote->preco * $lote->reserva->desconto) / 100, 2, ',', '.') }}
+                                        à
+                                        vista</span>
+                                @else
+                                    <span>R$00000,00</span>
+                                @endif
+                                {{-- <span>R$00000,00</span> --}}
+                            </div>
+                        </div>
+                    @endif
+                </div>
+                <div class="col-12 col-sm-6 d-flex align-items-center justify-content-center justify-content-sm-end mt-3 mt-lg-0">
+                    <div class="text-center text-white">
+                        @if (!$lote->reserva->encerrada)
+                            @if (!$lote->reserva->compra_disponivel && !$lote->liberar_compra)
+                                {{-- <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($lote->reserva->inicio))}}</button> --}}
+                                <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                    style="max-width:350px;">Disponível na Live</button>
+                            @else
+                                @if (!$lote->reservado && !$lote->negociacao)
+                                    @if (session()->get('cliente'))
+                                        @if ($cliente->aprovado)
+                                            @if ($lote->modalidade == 0)
+                                                <a name="" id=""
+                                                    class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                    style="max-width:350px;"
+                                                    href="{{ route('carrinho.adicionar', ['lote' => $lote]) }}"
+                                                    role="button">Comprar</a>
+                                            @else
+                                                <a name="" id=""
+                                                    class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
+                                                    data-toggle="modal" data-target="#modalLance"
+                                                    style="max-width:350px;" role="button">Dar Lance</a>
+                                            @endif
+                                        @else
+                                            <a name="" id=""
+                                                class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
+                                                data-toggle="modal" data-target="#modalBloqueio"
+                                                style="max-width:350px;" role="button">Comprar</a>
+                                        @endif
+                                    @else
+                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                            style="max-width:350px;" href="{{ route('login') }}"
+                                            role="button">Entre
+                                            para comprar</a>
+                                    @endif
+                                @else
+                                    @if ($lote->reservado)
+                                        <button name="" id="" class="btn btn-verde btn-block py-2 px-5 mx-auto"
+                                            style="max-width:350px;">Vendido</button>
+                                    @else
+                                        <button name="" id="" class="btn-laranja btn-block py-2 px-5 mx-auto"
+                                            style="max-width:350px;">Reservado</button>
+                                    @endif
+                                @endif
+                            @endif
+                        @else
+                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                style="max-width:350px;">Encerrada</button>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (!$lote->pacote)
+        <div class=""
+            style="background-color: black; background-blend-mode: darken; background: rgba(0, 0, 0, .65) url(/{{ $reserva->fazenda->fundo_conheca_lotes }}); background-size: cover; background-position: center;">
+            <div class="container-fluid bg-preto py-5 py-lg-2" id="row-preco-compra">
                 <div class="container pt-4">
                     <div class="row align-items-center pb-4">
                         <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
@@ -44,39 +140,43 @@ if(session()->get("cliente")){
                                     <h2>{{ $lote->nome }}</h2>
                                 </div>
                             </div>
-                            @if(session()->get("cliente"))
-                                @if($lote->modalidade == 0)
-                                    {{--  PRECO AQUI  --}}
+                            @if (session()->get('cliente'))
+                                @if ($lote->modalidade == 0)
+                                    {{-- PRECO AQUI --}}
                                     @switch($lote->modelo_preco)
                                         @case(0)
                                             @include('includes.precos.modelo00')
-                                            @break
+                                        @break
+
                                         @case(1)
                                             @include('includes.precos.modelo01')
-                                            @break
+                                        @break
                                     @endswitch
                                 @else
-                                    @if($lote->lances->count() == 0)
+                                    @if ($lote->lances->count() == 0)
                                         <div class="row">
-                                            <div class="col-12 text-center text-lg-right @if (!$lote->reserva->preco_disponivel && !$lote->liberar_preco) blur @endif">
+                                            <div
+                                                class="col-12 text-center text-lg-right @if (!$lote->reserva->preco_disponivel && !$lote->liberar_preco) blur @endif">
                                                 @if ($lote->reserva->preco_disponivel || $lote->liberar_preco)
                                                     <h5>
-                                                        <b>Lance mínimo:</b> R${{ number_format($lote->preco, 2, ',', '.') }}
+                                                        <b>Lance mínimo:</b>
+                                                        R${{ number_format($lote->preco, 2, ',', '.') }}
                                                     </h5>
                                                 @else
                                                     <h4><b>0x</b> de <b>R$0000,00</b></h4>
                                                 @endif
                                             </div>
-                                        </div>   
+                                        </div>
                                     @else
                                         <div class="row">
                                             <div class="col-12 text-center text-lg-right">
                                                 <span><b>Maior lance:</b>
                                                     @php
-                                                        $lance = $lote->lances->sortByDesc("created_at")->first();
+                                                        $lance = $lote->lances->sortByDesc('created_at')->first();
                                                     @endphp
-                                                    <span id="text_maior_lance" lid="{{$lance->id}}">{{$lance->cliente->nome_dono}} - 
-                                                    <b>R${{ number_format($lance->valor, 2, ',', '.') }}</b></span>
+                                                    <span id="text_maior_lance"
+                                                        lid="{{ $lance->id }}">{{ $lance->cliente->nome_dono }} -
+                                                        <b>R${{ number_format($lance->valor, 2, ',', '.') }}</b></span>
                                                 </span>
                                             </div>
                                         </div>
@@ -95,8 +195,9 @@ if(session()->get("cliente")){
                                         @if (!$lote->reservado && !$lote->negociacao)
                                             @if (session()->get('cliente'))
                                                 @if ($cliente->aprovado)
-                                                    @if($lote->modalidade == 0)
-                                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                    @if ($lote->modalidade == 0)
+                                                        <a name="" id=""
+                                                            class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
                                                             style="max-width:350px;"
                                                             href="{{ route('carrinho.adicionar', ['lote' => $lote]) }}"
                                                             role="button">Comprar</a>
@@ -114,11 +215,12 @@ if(session()->get("cliente")){
                                                 @endif
                                             @else
                                                 <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                                    style="max-width:350px;" href="{{ route('login') }}" role="button">Entre
+                                                    style="max-width:350px;" href="{{ route('login') }}"
+                                                    role="button">Entre
                                                     para comprar</a>
                                             @endif
                                         @else
-                                            @if($lote->reservado)
+                                            @if ($lote->reservado)
                                                 <button name="" id="" class="btn btn-verde btn-block py-2 px-5 mx-auto"
                                                     style="max-width:350px;">Vendido</button>
                                             @else
@@ -152,13 +254,14 @@ if(session()->get("cliente")){
                                             class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
                             @else
                                 <a
-                                    href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
+                                    href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug,'reserva' => $reserva]) }}"><span
                                         style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
                                             class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
                             @endif
                         </div>
                         <div class="text-right">
-                            <i class="fas fa-paper-plane fa-lg text-white cpointer" data-toggle="modal" data-target="#modalCompartilhamento"></i>
+                            <i class="fas fa-paper-plane fa-lg text-white cpointer" data-toggle="modal"
+                                data-target="#modalCompartilhamento"></i>
                         </div>
                     </div>
                     <div class="row justify-content-center mt-5" style="position: relative;">
@@ -183,167 +286,186 @@ if(session()->get("cliente")){
                             @switch($lote->modelo_exibicao)
                                 @case(0)
                                     @include('includes.lote.modelo00')
-                                    @break;
+                                @break
+
+                                ;
                                 @case(1)
                                     @include('includes.lote.modelo01')
-                                    @break;
+                                @break
+
+                                ;
                                 @case(2)
                                     @include('includes.lote.modelo02')
-                                    @break;
+                                @break
+
+                                ;
                                 @case(3)
                                     @include('includes.lote.modelo03')
-                                    @break;
+                                @break
+
+                                ;
                                 @case(4)
                                     @include('includes.lote.modelo04')
-                                    @break;
+                                @break
+
+                                ;
                                 @case(5)
                                     @include('includes.lote.modelo05')
-                                    @break;
+                                @break
+
+                                ;
                                 @case(6)
                                     @include('includes.lote.modelo06')
-                                    @break;
+                                @break
+
+                                ;
                                 @case(7)
                                     @include('includes.lote.modelo07')
-                                    @break;
+                                @break
+
+                                ;
+
                                 @default
                                     @include('includes.lote.modelo02')
-                                    @break;
-                                @endswitch
-                                <div class="row justify-content-center justify-content-lg-start mt-2">
-                                    <div class="col-12 text-white text-lote-info px-0">
-                                        <div class="text-lote-info" style="width: 100%; max-width: 540px;">
-                                            <span><b>Observações:</b></span><br>
-                                            <span>{!! str_replace("\n", '<br>', $lote->observacoes) !!}</span>
-                                        </div>
+                                @break
+
+                                ;
+                            @endswitch
+                            <div class="row justify-content-center justify-content-lg-start mt-2">
+                                <div class="col-12 text-white text-lote-info px-0">
+                                    <div class="text-lote-info" style="width: 100%; max-width: 540px;">
+                                        <span><b>Observações:</b></span><br>
+                                        <span>{!! str_replace("\n", '<br>', $lote->observacoes) !!}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @if (!$lote->reserva->encerrada)
-                        <div class="container-fluid" style="">
-                            <div class="row align-items-center justify-content-center" style="min-height: 300px;">
-                                <div class="container-fluid">
-                                    <div class="row justify-content-center py-4 py-lg-0 d-none d-lg-flex">
-                                        <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                            data-target="#modalFrete">
-                                            <div class="mb-3 icones-info">
-                                                <img src="{{ asset('imagens/icon_frete.png') }}" height="50" alt="">
-                                            </div>
-                                            <span>Frete</span>
+                </div>
+                @if (!$lote->reserva->encerrada)
+                    <div class="container-fluid" style="">
+                        <div class="row align-items-center justify-content-center" style="min-height: 300px;">
+                            <div class="container-fluid">
+                                <div class="row justify-content-center py-4 py-lg-0 d-none d-lg-flex">
+                                    <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                        data-target="#modalFrete">
+                                        <div class="mb-3 icones-info">
+                                            <img src="{{ asset('imagens/icon_frete.png') }}" height="50" alt="">
                                         </div>
-                                        <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                            data-target="#modalPagamento">
-                                            <div class="mb-3 icones-info">
-                                                <img src="{{ asset('imagens/icon_pagamento.png') }}" height="50" alt="">
-                                            </div>
-                                            <span>Pagamentos<br>e Condições</span>
+                                        <span>Frete</span>
+                                    </div>
+                                    <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                        data-target="#modalPagamento">
+                                        <div class="mb-3 icones-info">
+                                            <img src="{{ asset('imagens/icon_pagamento.png') }}" height="50" alt="">
                                         </div>
-                                        <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal"
-                                            data-target="#modalSeguranca">
-                                            <div class="mb-3 icones-info">
-                                                <img src="{{ asset('imagens/icon_seguranca.png') }}" height="50" alt="">
-                                            </div>
-                                            <span>Segurança</span>
+                                        <span>Pagamentos<br>e Condições</span>
+                                    </div>
+                                    <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer"
+                                        data-toggle="modal" data-target="#modalSeguranca">
+                                        <div class="mb-3 icones-info">
+                                            <img src="{{ asset('imagens/icon_seguranca.png') }}" height="50" alt="">
                                         </div>
-                                        {{-- <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
+                                        <span>Segurança</span>
+                                    </div>
+                                    {{-- <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
                                     <div class="mb-3 icones-info">
                                         <img src="{{asset('imagens/icon_porcentagem.png')}}" height="50" alt="">
                                     </div>
                                     <span>Comissão</span>
                                 </div> --}}
+                                </div>
+                                <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
+                                    <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                        data-target="#modalFrete">
+                                        <div class="mx-auto mb-3 icones-info">
+                                            <img src="{{ asset('imagens/icon_frete.png') }}" height="80" alt="">
+                                        </div>
+                                        <span>Frete</span>
                                     </div>
-                                    <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
-                                        <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                            data-target="#modalFrete">
-                                            <div class="mx-auto mb-3 icones-info">
-                                                <img src="{{ asset('imagens/icon_frete.png') }}" height="80" alt="">
-                                            </div>
-                                            <span>Frete</span>
+                                    <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                        data-target="#modalPagamento">
+                                        <div class="mx-auto mb-3 icones-info">
+                                            <img src="{{ asset('imagens/icon_pagamento.png') }}" height="80" alt="">
                                         </div>
-                                        <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                            data-target="#modalPagamento">
-                                            <div class="mx-auto mb-3 icones-info">
-                                                <img src="{{ asset('imagens/icon_pagamento.png') }}" height="80" alt="">
-                                            </div>
-                                            <span>Pagamentos<br>e Condições</span>
+                                        <span>Pagamentos<br>e Condições</span>
+                                    </div>
+                                    <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer"
+                                        data-toggle="modal" data-target="#modalSeguranca">
+                                        <div class="mx-auto mb-3 icones-info">
+                                            <img src="{{ asset('imagens/icon_seguranca.png') }}" height="80" alt="">
                                         </div>
-                                        <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal"
-                                            data-target="#modalSeguranca">
-                                            <div class="mx-auto mb-3 icones-info">
-                                                <img src="{{ asset('imagens/icon_seguranca.png') }}" height="80" alt="">
-                                            </div>
-                                            <span>Segurança</span>
-                                        </div>
-                                        {{-- <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
+                                        <span>Segurança</span>
+                                    </div>
+                                    {{-- <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
                                     <div class="mx-auto mb-3 icones-info">
                                         <img src="{{asset('imagens/icon_porcentagem.png')}}" height="80" alt="">
                                     </div>
                                     <span>Comissão</span>
                                 </div> --}}
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                    @else
-                        <div class="row py-4">
+                    </div>
+                @else
+                    <div class="row py-4">
 
-                        </div>
-                    @endif
-                    
-                </div>
-                {{-- <div class="container-fluid">
+                    </div>
+                @endif
+
+            </div>
+            {{-- <div class="container-fluid">
                 <div class="row pb-4">
                     <div class="col-12 text-center">
                         <a href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank" class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
                     </div>
                 </div>
             </div> --}}
-            </div>
+        </div>
 
-            <div class="container-fluid mt-5">
+        <div class="container-fluid mt-5">
 
-                <div class="w1200 mx-auto">
-                    <div class="row">
-                        <div class="col-12 text-center text-lg-left">
-                            <h4>Genealogia</h4>
-                        </div>
-                    </div>
-                </div>
-
-                @if ($lote->genealogia)
-                    <div class="row">
-                        <div class="col-12 text-center py-5">
-                            <a id="link-genealogia" href="{{ asset($lote->genealogia) }}">
-                                <img id="imagem-genealogia" src="{{ asset($lote->genealogia) }}" style="max-width: 100%;"
-                                    alt="Genealogia">
-                            </a>
-                        </div>
-                    </div>
-                @endif
-                <div class="container-fluid">
-                    <div class="row py-4">
-                        <div class="col-12 text-center">
-                            <a href="https://api.whatsapp.com/send?phone={{$lote->reserva->telefone_consultor}}" target="_blank"
-                                class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
-                        </div>
+            <div class="w1200 mx-auto">
+                <div class="row">
+                    <div class="col-12 text-center text-lg-left">
+                        <h4>Genealogia</h4>
                     </div>
                 </div>
             </div>
 
-            <hr>
+            @if ($lote->genealogia)
+                <div class="row">
+                    <div class="col-12 text-center py-5">
+                        <a id="link-genealogia" href="{{ asset($lote->genealogia) }}">
+                            <img id="imagem-genealogia" src="{{ asset($lote->genealogia) }}" style="max-width: 100%;"
+                                alt="Genealogia">
+                        </a>
+                    </div>
+                </div>
+            @endif
             <div class="container-fluid">
-                @if ($lote->catalogo)
-                    <div class="row py-3">
-                        <div class="col-12 text-center link-download-catalogo">
-                            <a class="link-download-catalogo" href="{{ asset($lote->catalogo) }}"
-                                download="{{ $lote->numero . '-' . $lote->nome }}"><i
-                                    class="fas fa-file-download mr-3"></i>Baixar
-                                PDF do Lote</a>
-                        </div>
+                <div class="row py-4">
+                    <div class="col-12 text-center">
+                        <a href="https://api.whatsapp.com/send?phone={{ $lote->reserva->telefone_consultor }}"
+                            target="_blank" class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
                     </div>
-                @endif
-                {{-- <div class="row mt-4 mb-lg-2">
+                </div>
+            </div>
+        </div>
+
+        {{-- <hr> --}}
+        <div class="container-fluid">
+            @if ($lote->catalogo)
+                <div class="row py-3">
+                    <div class="col-12 text-center link-download-catalogo">
+                        <a class="link-download-catalogo" href="{{ asset($lote->catalogo) }}"
+                            download="{{ $lote->numero . '-' . $lote->nome }}"><i
+                                class="fas fa-file-download mr-3"></i>Baixar
+                            PDF do Lote</a>
+                    </div>
+                </div>
+            @endif
+            {{-- <div class="row mt-4 mb-lg-2">
                 <div class="col-12 text-center">
                     <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalFrete">Frete e Pagamento</button>
                     <br class="d-lg-none">
@@ -359,112 +481,145 @@ if(session()->get("cliente")){
                     <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalPapel">Papel da Agroreserva</button>
                 </div>
             </div> --}}
+        </div>
+        {{-- <hr> --}}
+        <div class="container-fluid py-5" style="background-color: black;">
+            <div class="row justify-content-center">
+                @if ($configuracao->mostrar_lotes_destaque)
+                    <div class="col-12 mt-5 text-center text-header-index d-none d-lg-block">
+                        <h5>Animais em Destaque</h5>
+                    </div>
+                    @livewire("slide-lotes-destaque")
+
+                    <div class="borda-cinza-vitrines mt-5"></div>
+                @endif
             </div>
-            <hr>
-            @if($lote->recomendados->count() > 0)
-                <div class="container-fluid py-5">
-                    <div class="w1200 mx-auto">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <h5>Você também pode gostar:</h5>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center justify-content-lg-center" id="recomendacoes-lotes">
-                            <div class="col-12">
-                                <div class="slick">
-                                    @foreach ($lote->recomendados as $lote)
-
-                                        @if($lote->pacote)
-                                            @switch($lote->modelo_exibicao)
-                                                @case(0)
-                                                    @include('includes.lotes.pacotes.modelo00')
-                                                @break;
-                                                @case(2)
-                                                    @include('includes.lotes.pacotes.modelo00')
-                                                @break;
-                                                @default
-                                                    @include('includes.lotes.pacotes.modelo00')
-                                                @break;
-                                            @endswitch
-                                        @else
-                                            @switch($lote->modelo_exibicao)
-                                                @case(0)
-                                                    @include('includes.lotes.modelo00')
-                                                @break;
-                                                @case(1)
-                                                    @include('includes.lotes.modelo01')
-                                                @break;
-                                                @case(2)
-                                                    @include('includes.lotes.modelo02')
-                                                @break;
-                                                @case(3)
-                                                    @include('includes.lotes.modelo03')
-                                                @break;
-                                                @case(4)
-                                                    @include('includes.lotes.modelo04')
-                                                @break;
-                                                @case(5)
-                                                    @include('includes.lotes.modelo05')
-                                                @break;
-                                                @default
-                                                    @include('includes.lotes.modelo02')
-                                                @break;
-                                            @endswitch
-                                        @endif
-
-                                    @endforeach
-                                </div>
-                    
-                            </div>
-                            
+        </div>
+        @if ($lote->recomendados->count() > 0)
+            <div class="container-fluid py-5">
+                <div class="w1200 mx-auto">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h5>Você também pode gostar:</h5>
                         </div>
                     </div>
-                </div>
-            @endif
+                    <div class="row justify-content-center justify-content-lg-center" id="recomendacoes-lotes">
+                        <div class="col-12">
+                            <div class="slick">
+                                @foreach ($lote->recomendados as $lote)
+                                    @if ($lote->pacote)
+                                        @switch($lote->modelo_exibicao)
+                                            @case(0)
+                                                @include('includes.lotes.pacotes.modelo00')
+                                            @break
 
-            @php
-                $lote = $lote_bkp;
-            @endphp
+                                            ;
+                                            @case(2)
+                                                @include('includes.lotes.pacotes.modelo00')
+                                            @break
 
-            <!-- Modal -->
-            <div class="modal fade" id="modalFrete" tabindex="-1" role="dialog" aria-labelledby="modalFreteTitle"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                                            ;
+
+                                            @default
+                                                @include('includes.lotes.pacotes.modelo00')
+                                            @break
+
+                                            ;
+                                        @endswitch
+                                    @else
+                                        @switch($lote->modelo_exibicao)
+                                            @case(0)
+                                                @include('includes.lotes.modelo00')
+                                            @break
+
+                                            ;
+                                            @case(1)
+                                                @include('includes.lotes.modelo01')
+                                            @break
+
+                                            ;
+                                            @case(2)
+                                                @include('includes.lotes.modelo02')
+                                            @break
+
+                                            ;
+                                            @case(3)
+                                                @include('includes.lotes.modelo03')
+                                            @break
+
+                                            ;
+                                            @case(4)
+                                                @include('includes.lotes.modelo04')
+                                            @break
+
+                                            ;
+                                            @case(5)
+                                                @include('includes.lotes.modelo05')
+                                            @break
+
+                                            ;
+
+                                            @default
+                                                @include('includes.lotes.modelo02')
+                                            @break
+
+                                            ;
+                                        @endswitch
+                                    @endif
+                                @endforeach
+                            </div>
+
                         </div>
-                        <div class="modal-body pb-4">
-                            <div class="row">
-                                <div class="col-12 text-center text-red">
-                                    <h4><b>FRETE</b></h4>
-                                </div>
+
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        @php
+            $lote = $lote_bkp;
+        @endphp
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalFrete" tabindex="-1" role="dialog" aria-labelledby="modalFreteTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body pb-4">
+                        <div class="row">
+                            <div class="col-12 text-center text-red">
+                                <h4><b>FRETE</b></h4>
                             </div>
-                            <div class="row mt-3 px-4">
-                                <div class="col-12">
-                                    {!! $lote->reserva->texto_local_retirada !!}
-                                </div>
+                        </div>
+                        <div class="row mt-3 px-4">
+                            <div class="col-12">
+                                {!! $lote->reserva->texto_local_retirada !!}
                             </div>
-                            {{-- <div class="row mt-3">
+                        </div>
+                        {{-- <div class="row mt-3">
                             <div class="col-12 text-center">
                                 <a href="" class="btn btn-vermelho px-4">Contato</a>
                             </div>
                         </div> --}}
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     @else
         @php
             $cont = 0;
         @endphp
-        @foreach($lote->membros as $membro)
-            <div @if($cont != 0) class="pb-5" @endif style="background-color: black; background-size: cover; background-position: center;">
-                @if($cont == 0)
-                    {{--  FAIXA DE PREÇO  --}}
+        @foreach ($lote->membros as $membro)
+            <div @if ($cont != 0) class="pb-5" @endif
+                style="background-color: black; background-size: cover; background-position: center;">
+                @if ($cont == 0)
+                    {{-- FAIXA DE PREÇO --}}
                     <div class="container-fluid bg-preto py-5 py-lg-2">
                         <div class="container">
                             <div class="row align-items-center">
@@ -477,14 +632,15 @@ if(session()->get("cliente")){
                                             <h2>{{ $lote->nome }}</h2>
                                         </div>
                                     </div>
-                                    {{--  PRECO AQUI  --}}
+                                    {{-- PRECO AQUI --}}
                                     @switch($lote->modelo_preco)
                                         @case(0)
                                             @include('includes.precos.modelo00')
-                                            @break
+                                        @break
+
                                         @case(1)
                                             @include('includes.precos.modelo01')
-                                            @break
+                                        @break
                                     @endswitch
 
                                 </div>
@@ -499,7 +655,8 @@ if(session()->get("cliente")){
                                                 @if (!$lote->reservado)
                                                     @if (session()->get('cliente'))
                                                         @if ($cliente->aprovado)
-                                                            <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                            <a name="" id=""
+                                                                class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
                                                                 style="max-width:350px;"
                                                                 href="{{ route('carrinho.adicionar', ['lote' => $lote]) }}"
                                                                 role="button">Comprar</a>
@@ -510,12 +667,15 @@ if(session()->get("cliente")){
                                                                 style="max-width:350px;" role="button">Comprar</a>
                                                         @endif
                                                     @else
-                                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                                            style="max-width:350px;" href="{{ route('login') }}" role="button">Entre
+                                                        <a name="" id=""
+                                                            class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                            style="max-width:350px;" href="{{ route('login') }}"
+                                                            role="button">Entre
                                                             para comprar</a>
                                                     @endif
                                                 @else
-                                                    <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                    <button name="" id=""
+                                                        class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
                                                         style="max-width:350px;">Reservado</button>
                                                 @endif
                                             @endif
@@ -531,17 +691,18 @@ if(session()->get("cliente")){
                 @endif
                 <div class="w1200 mx-auto pt-5 pb-5 pb-lg-0" style="">
                     <div class="container-fluid">
-                        @if($cont == 0)
-                            {{--  BOTÃO DE VOLTAR  --}}
+                        @if ($cont == 0)
+                            {{-- BOTÃO DE VOLTAR --}}
                             <div class="row py-4 px-4">
                                 <div class="col-12">
                                     @if (!isset($finalizadas))
-                                        <a href="{{ route('fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug]) }}"><span
+                                        <a
+                                            href="{{ route('fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug]) }}"><span
                                                 style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
                                                     class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
                                     @else
                                         <a
-                                            href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
+                                            href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug,'reserva' => $reserva]) }}"><span
                                                 style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
                                                     class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
                                     @endif
@@ -563,153 +724,166 @@ if(session()->get("cliente")){
 
                                 <div class="row">
                                     <div class="col-12 text-white text-lote-info px-0">
-                                        <h1>Lote {{ str_pad($membro->numero, 3, '0', STR_PAD_LEFT) }}{{ $membro->letra }}</h1>
+                                        <h1>Lote
+                                            {{ str_pad($membro->numero, 3, '0', STR_PAD_LEFT) }}{{ $membro->letra }}
+                                        </h1>
                                         <h2>{{ $membro->nome }}</h2>
                                     </div>
                                 </div>
                                 @switch($lote->modelo_exibicao)
                                     @case(0)
                                         @include('includes.lote.pacotes.modelo00')
-                                    @break;
+                                    @break
+
+                                    ;
                                     @case(2)
                                         @include('includes.lote.pacotes.modelo02')
-                                    @break;
+                                    @break
+
+                                    ;
+
                                     @default
                                         @include('includes.lote.pacotes.modelo02')
-                                        @break;
-                                    @endswitch
-                                    <div class="row justify-content-center justify-content-lg-start mt-2">
-                                        <div class="col-12 text-white text-lote-info px-0">
-                                            <div class="text-lote-info" style="width: 100%; max-width: 540px;">
-                                                <span><b>Observações:</b></span><br>
-                                                <span>{!! str_replace("\n", '<br>', $membro->observacoes) !!}</span>
-                                            </div>
+                                    @break
+
+                                    ;
+                                @endswitch
+                                <div class="row justify-content-center justify-content-lg-start mt-2">
+                                    <div class="col-12 text-white text-lote-info px-0">
+                                        <div class="text-lote-info" style="width: 100%; max-width: 540px;">
+                                            <span><b>Observações:</b></span><br>
+                                            <span>{!! str_replace("\n", '<br>', $membro->observacoes) !!}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @if (!$membro->reserva->encerrada)
-                            @if($cont == 0)
-                                <div class="container-fluid" style="">
-                                    <div class="row align-items-center justify-content-center" style="min-height: 300px;">
-                                        <div class="container-fluid">
-                                            <div class="row justify-content-center py-4 py-lg-0 d-none d-lg-flex">
-                                                <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                                    data-target="#modalFrete">
-                                                    <div class="mb-3 icones-info">
-                                                        <img src="{{ asset('imagens/icon_frete.png') }}" height="50" alt="">
-                                                    </div>
-                                                    <span>Frete</span>
+                    </div>
+                    @if (!$membro->reserva->encerrada)
+                        @if ($cont == 0)
+                            <div class="container-fluid" style="">
+                                <div class="row align-items-center justify-content-center" style="min-height: 300px;">
+                                    <div class="container-fluid">
+                                        <div class="row justify-content-center py-4 py-lg-0 d-none d-lg-flex">
+                                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                                data-target="#modalFrete">
+                                                <div class="mb-3 icones-info">
+                                                    <img src="{{ asset('imagens/icon_frete.png') }}" height="50" alt="">
                                                 </div>
-                                                <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                                    data-target="#modalPagamento">
-                                                    <div class="mb-3 icones-info">
-                                                        <img src="{{ asset('imagens/icon_pagamento.png') }}" height="50" alt="">
-                                                    </div>
-                                                    <span>Pagamentos<br>e Condições</span>
+                                                <span>Frete</span>
+                                            </div>
+                                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                                data-target="#modalPagamento">
+                                                <div class="mb-3 icones-info">
+                                                    <img src="{{ asset('imagens/icon_pagamento.png') }}" height="50"
+                                                        alt="">
                                                 </div>
-                                                <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal"
-                                                    data-target="#modalSeguranca">
-                                                    <div class="mb-3 icones-info">
-                                                        <img src="{{ asset('imagens/icon_seguranca.png') }}" height="50" alt="">
-                                                    </div>
-                                                    <span>Segurança</span>
+                                                <span>Pagamentos<br>e Condições</span>
+                                            </div>
+                                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer"
+                                                data-toggle="modal" data-target="#modalSeguranca">
+                                                <div class="mb-3 icones-info">
+                                                    <img src="{{ asset('imagens/icon_seguranca.png') }}" height="50"
+                                                        alt="">
                                                 </div>
-                                                {{-- <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
+                                                <span>Segurança</span>
+                                            </div>
+                                            {{-- <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
                                             <div class="mb-3 icones-info">
                                                 <img src="{{asset('imagens/icon_porcentagem.png')}}" height="50" alt="">
                                             </div>
                                             <span>Comissão</span>
                                         </div> --}}
+                                        </div>
+                                        <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
+                                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                                data-target="#modalFrete">
+                                                <div class="mx-auto mb-3 icones-info">
+                                                    <img src="{{ asset('imagens/icon_frete.png') }}" height="80" alt="">
+                                                </div>
+                                                <span>Frete</span>
                                             </div>
-                                            <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
-                                                <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                                    data-target="#modalFrete">
-                                                    <div class="mx-auto mb-3 icones-info">
-                                                        <img src="{{ asset('imagens/icon_frete.png') }}" height="80" alt="">
-                                                    </div>
-                                                    <span>Frete</span>
+                                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                                data-target="#modalPagamento">
+                                                <div class="mx-auto mb-3 icones-info">
+                                                    <img src="{{ asset('imagens/icon_pagamento.png') }}" height="80"
+                                                        alt="">
                                                 </div>
-                                                <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                                    data-target="#modalPagamento">
-                                                    <div class="mx-auto mb-3 icones-info">
-                                                        <img src="{{ asset('imagens/icon_pagamento.png') }}" height="80" alt="">
-                                                    </div>
-                                                    <span>Pagamentos<br>e Condições</span>
+                                                <span>Pagamentos<br>e Condições</span>
+                                            </div>
+                                            <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer"
+                                                data-toggle="modal" data-target="#modalSeguranca">
+                                                <div class="mx-auto mb-3 icones-info">
+                                                    <img src="{{ asset('imagens/icon_seguranca.png') }}" height="80"
+                                                        alt="">
                                                 </div>
-                                                <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal"
-                                                    data-target="#modalSeguranca">
-                                                    <div class="mx-auto mb-3 icones-info">
-                                                        <img src="{{ asset('imagens/icon_seguranca.png') }}" height="80" alt="">
-                                                    </div>
-                                                    <span>Segurança</span>
-                                                </div>
-                                                {{-- <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
+                                                <span>Segurança</span>
+                                            </div>
+                                            {{-- <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
                                             <div class="mx-auto mb-3 icones-info">
                                                 <img src="{{asset('imagens/icon_porcentagem.png')}}" height="80" alt="">
                                             </div>
                                             <span>Comissão</span>
                                         </div> --}}
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endif
+                            </div>
                         @endif
-                    </div>
-                    {{-- <div class="container-fluid">
+                    @endif
+                </div>
+                {{-- <div class="container-fluid">
                     <div class="row pb-4">
                         <div class="col-12 text-center">
                             <a href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank" class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
                         </div>
                     </div>
                 </div> --}}
-                </div>
+            </div>
 
-                <div class="container-fluid mt-5">
+            <div class="container-fluid mt-5">
 
-                    <div class="w1200 mx-auto">
-                        <div class="row">
-                            <div class="col-12 text-center text-lg-left">
-                                <h4>Genealogia</h4>
-                            </div>
-                        </div>
-                    </div>
-
-                    @if ($membro->genealogia)
-                        <div class="row">
-                            <div class="col-12 text-center py-5">
-                                <a id="link-genealogia" href="{{ asset($membro->genealogia) }}">
-                                    <img id="imagem-genealogia" src="{{ asset($membro->genealogia) }}" style="max-width: 100%;"
-                                        alt="Genealogia">
-                                </a>
-                            </div>
-                        </div>
-                    @endif
-                    <div class="container-fluid">
-                        <div class="row py-4">
-                            <div class="col-12 text-center">
-                                <a href="https://api.whatsapp.com/send?phone={{$membro->reserva->telefone_consultor}}" target="_blank"
-                                    class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
-                            </div>
+                <div class="w1200 mx-auto">
+                    <div class="row">
+                        <div class="col-12 text-center text-lg-left">
+                            <h4>Genealogia</h4>
                         </div>
                     </div>
                 </div>
 
-                <hr>
+                @if ($membro->genealogia)
+                    <div class="row">
+                        <div class="col-12 text-center py-5">
+                            <a id="link-genealogia" href="{{ asset($membro->genealogia) }}">
+                                <img id="imagem-genealogia" src="{{ asset($membro->genealogia) }}"
+                                    style="max-width: 100%;" alt="Genealogia">
+                            </a>
+                        </div>
+                    </div>
+                @endif
                 <div class="container-fluid">
-                    @if ($membro->catalogo)
-                        <div class="row py-3">
-                            <div class="col-12 text-center link-download-catalogo">
-                                <a class="link-download-catalogo" href="{{ asset($membro->catalogo) }}"
-                                    download="{{ $membro->numero . '-' . $membro->nome }}"><i
-                                        class="fas fa-file-download mr-3"></i>Baixar
-                                    PDF do Lote</a>
-                            </div>
+                    <div class="row py-4">
+                        <div class="col-12 text-center">
+                            <a href="https://api.whatsapp.com/send?phone={{ $membro->reserva->telefone_consultor }}"
+                                target="_blank" class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
                         </div>
-                    @endif
-                    {{-- <div class="row mt-4 mb-lg-2">
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <div class="container-fluid">
+                @if ($membro->catalogo)
+                    <div class="row py-3">
+                        <div class="col-12 text-center link-download-catalogo">
+                            <a class="link-download-catalogo" href="{{ asset($membro->catalogo) }}"
+                                download="{{ $membro->numero . '-' . $membro->nome }}"><i
+                                    class="fas fa-file-download mr-3"></i>Baixar
+                                PDF do Lote</a>
+                        </div>
+                    </div>
+                @endif
+                {{-- <div class="row mt-4 mb-lg-2">
                     <div class="col-12 text-center">
                         <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalFrete">Frete e Pagamento</button>
                         <br class="d-lg-none">
@@ -725,36 +899,36 @@ if(session()->get("cliente")){
                         <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalPapel">Papel da Agroreserva</button>
                     </div>
                 </div> --}}
-                </div>
+            </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="modalFrete" tabindex="-1" role="dialog" aria-labelledby="modalFreteTitle"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+            <!-- Modal -->
+            <div class="modal fade" id="modalFrete" tabindex="-1" role="dialog" aria-labelledby="modalFreteTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pb-4">
+                            <div class="row">
+                                <div class="col-12 text-center text-red">
+                                    <h4><b>FRETE</b></h4>
+                                </div>
                             </div>
-                            <div class="modal-body pb-4">
-                                <div class="row">
-                                    <div class="col-12 text-center text-red">
-                                        <h4><b>FRETE</b></h4>
-                                    </div>
-                                </div>
-                                <div class="row mt-3 px-4">
-                                    {!! $lote->reserva->texto_local_retirada !!}
-                                </div>
-                                {{-- <div class="row mt-3">
+                            <div class="row mt-3 px-4">
+                                {!! $lote->reserva->texto_local_retirada !!}
+                            </div>
+                            {{-- <div class="row mt-3">
                                 <div class="col-12 text-center">
                                     <a href="" class="btn btn-vermelho px-4">Contato</a>
                                 </div>
                             </div> --}}
-                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
             @php
                 $cont++;
@@ -762,8 +936,8 @@ if(session()->get("cliente")){
         @endforeach
     @endif
 
-    <div class="modal fade" id="modalCompartilhamento" tabindex="-1" role="dialog" aria-labelledby="modalPagamentoTitle"
-        aria-hidden="true">
+    <div class="modal fade" id="modalCompartilhamento" tabindex="-1" role="dialog"
+        aria-labelledby="modalPagamentoTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -779,10 +953,16 @@ if(session()->get("cliente")){
                     </div>
                     <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->full()}}" target="_blank"><i class="fab fa-facebook fa-2x" style="color: #3b5998;" aria-hidden="true"></i></a>
-                            <a href="https://api.whatsapp.com/send?text={{url()->full()}}" class="ml-3" target="_blank"><i class="fab fa-whatsapp-square fa-2x" style="color: #25D366;"></i></a>
-                            <a href="mailto:?subject=Lote {{$lote->numero . $lote->letra}} da {{$lote->fazenda->nome_fazenda}}. Genética superior à sua disposição. Vem ver.&amp;body=O {{$lote->nome}} está na vitrine da Agro Reserva. Animal selecionado a dedo pra elevar os índices do seu rebanho. Clique no link e confira a oferta:%0D%0A%0D%0A{{url()->full()}}" class="ml-3" target="_blank"><i class="fas fa-envelope fa-2x" style="color: #c71610;"></i></a> 
-                            <a href="https://telegram.me/share/url?url={{url()->full()}}&text=Venha conhecer o lote {{$lote->numero . ' - ' . $lote->nome}} na Agroreserva." class="ml-3" target="_blank"><i class="fab fa-telegram fa-2x" style="color: #0088CC;"></i></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->full() }}" target="_blank"><i
+                                    class="fab fa-facebook fa-2x" style="color: #3b5998;" aria-hidden="true"></i></a>
+                            <a href="https://api.whatsapp.com/send?text={{ url()->full() }}" class="ml-3"
+                                target="_blank"><i class="fab fa-whatsapp-square fa-2x" style="color: #25D366;"></i></a>
+                            <a href="mailto:?subject=Lote {{ $lote->numero . $lote->letra }} da {{ $lote->fazenda->nome_fazenda }}. Genética superior à sua disposição. Vem ver.&amp;body=O {{ $lote->nome }} está na vitrine da Agro Reserva. Animal selecionado a dedo pra elevar os índices do seu rebanho. Clique no link e confira a oferta:%0D%0A%0D%0A{{ url()->full() }}"
+                                class="ml-3" target="_blank"><i class="fas fa-envelope fa-2x"
+                                    style="color: #c71610;"></i></a>
+                            <a href="https://telegram.me/share/url?url={{ url()->full() }}&text=Venha conhecer o lote {{ $lote->numero . ' - ' . $lote->nome }} na Agroreserva."
+                                class="ml-3" target="_blank"><i class="fab fa-telegram fa-2x"
+                                    style="color: #0088CC;"></i></a>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -791,7 +971,7 @@ if(session()->get("cliente")){
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Link</div>
                                 </div>
-                                <input type="text" class="form-control" value="{{url()->full()}}" readonly>
+                                <input type="text" class="form-control" value="{{ url()->full() }}" readonly>
                             </div>
                         </div>
                     </div>
@@ -915,8 +1095,8 @@ if(session()->get("cliente")){
                             <p>Você pode consultar sua situação no seu painel de cliente ou falando com nosso consultor</p>
                             <div class="row my-3">
                                 <div class="col-12 text-center">
-                                    <a href="https://api.whatsapp.com/send?phone={{$lote->reserva->telefone_consultor}}" target="_blank"
-                                        class="btn btn-laranja px-4 py-2">Falar com consultor</a>
+                                    <a href="https://api.whatsapp.com/send?phone={{ $lote->reserva->telefone_consultor }}"
+                                        target="_blank" class="btn btn-laranja px-4 py-2">Falar com consultor</a>
                                 </div>
                             </div>
                         </div>
@@ -937,14 +1117,16 @@ if(session()->get("cliente")){
                 </div>
                 <div class="modal-body">
                     @php
-                        $lance = $lote->lances->sortByDesc("created_at")->first();
+                        $lance = $lote->lances->sortByDesc('created_at')->first();
                     @endphp
                     <div class="row px-4">
                         <div class="form-group col-12">
                             <label for="" style="color: black;">Digite o valor do lance</label>
-                            <input type="number"
-                                class="form-control" name="valor" id="valor_lance" aria-describedby="helpId" style="width: 100%" placeholder="" @if($lote->lances->count() == 0) min="{{$lote->preco}}" @else min="{{$lance->valor + 1}}" step="0.01" @endif>
-                            <small id="helpId" class="form-text text-muted">O valor deve ser maior que o último lance ou que o valor mínimo caso ainda não haja lances</small>
+                            <input type="number" class="form-control" name="valor" id="valor_lance"
+                                aria-describedby="helpId" style="width: 100%" placeholder=""
+                                @if ($lote->lances->count() == 0) min="{{ $lote->preco }}" @else min="{{ $lance->valor + 1 }}" step="0.01" @endif>
+                            <small id="helpId" class="form-text text-muted">O valor deve ser maior que o último lance ou
+                                que o valor mínimo caso ainda não haja lances</small>
                         </div>
                         <div class="form-group col-12 text-right">
                             <button type="submit" id="enviar_lance" class="btn btn-laranja py-1">Enviar</button>
@@ -1030,12 +1212,13 @@ if(session()->get("cliente")){
 
                 verifica_lance();
 
-                function verifica_lance(){
-                    setTimeout(function(){
+                function verifica_lance() {
+                    setTimeout(function() {
                         console.log("rodou");
                         $.ajaxSetup({
                             headers: {
-                                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr(
+                                    'content')
                             }
                         });
 
@@ -1043,18 +1226,19 @@ if(session()->get("cliente")){
                             type: "GET",
                             url: "{!! route('fazenda.lote.lance.maior', ['lote' => $lote->id]) !!}",
                             success: function(ret) {
-                                if(ret != "erro"){
-                                    if($("#text_maior_lance").attr("lid") != ret.id){
+                                if (ret != "erro") {
+                                    if ($("#text_maior_lance").attr("lid") != ret.id) {
                                         $("#text_maior_lance").attr("lid", ret.id);
                                         var html = ret.nome;
-                                        html += " - <b> R$" + parseFloat(ret.valor).toFixed(2) + "</b>";
+                                        html += " - <b> R$" + parseFloat(ret.valor)
+                                            .toFixed(2) + "</b>";
                                         $("#text_maior_lance").html(html);
                                         $("#modalLance").modal("hide");
                                         var audio = new Audio('/audios/cash.mp3');
                                         audio.play();
                                     }
                                 }
-                                
+
                             },
                             error: function(ret) {
                                 console.log("Deu muito ruim");
@@ -1066,13 +1250,22 @@ if(session()->get("cliente")){
                     }, 5000);
                 }
 
-                $("#enviar_lance").click(function(){
+                $(window).scroll(function(){
+                    if($(this).scrollTop() > $("#row-preco-compra").height() + "80"){
+                        $(".barra-lote-fixa").slideDown(300);
+                    }else{
+                        $(".barra-lote-fixa").slideUp(300);
+                    }
+                });
+
+                $("#enviar_lance").click(function() {
 
                     var valor = $("#valor_lance").val();
 
                     $.ajaxSetup({
                         headers: {
-                            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr(
+                                'content')
                         }
                     });
 
@@ -1087,16 +1280,17 @@ if(session()->get("cliente")){
                         //     $("#gif-ajax-direto").show();
                         // },
                         success: function(ret) {
-                            if(ret != "erro"){
+                            if (ret != "erro") {
                                 $("#text_maior_lance").attr("lid", ret.id);
                                 var html = ret.nome;
-                                html += " - <b> R$" + parseFloat(ret.valor).toFixed(2) + "</b>";
+                                html += " - <b> R$" + parseFloat(ret.valor).toFixed(2) +
+                                    "</b>";
                                 $("#text_maior_lance").html(html);
                                 $("#modalLance").modal("hide");
                                 var audio = new Audio('/audios/cash.mp3');
                                 audio.play();
                             }
-                            
+
                         },
                         error: function(ret) {
                             console.log("Deu muito ruim");
@@ -1113,44 +1307,51 @@ if(session()->get("cliente")){
 
                     // normal options...
                     slidesToShow: 4,
-                    infinite: false,
+                    infinite: true,
                     dots: true,
                     adaptiveHeight: true,
-                    arrows: false,
-                    autoplay: false,
-                    autoplaySpeed: 2000,
+                    arrows: true,
+                    autoplay: true,
+                    autoplaySpeed: 4000,
+                    // centerMode: true,
                     // the magic
                     responsive: [{
 
-                        breakpoint: 1180,
+                        breakpoint: 1400,
                         settings: {
-                        slidesToShow: 3,
-                        infinite: false,
-                        dots: true,
-                        adaptiveHeight: true,
-                        arrows: false,
+                            slidesToShow: 3,
+                            infinite: true,
+                            dots: true,
+                            adaptiveHeight: true,
+                            arrows: true,
+                            autoplay: true,
+                            autoplaySpeed: 4000,
                         }
 
                     }, {
 
-                        breakpoint: 924,
+                        breakpoint: 1030,
                         settings: {
-                        slidesToShow: 2,
-                        infinite: false,
-                        dots: true,
-                        adaptiveHeight: true,
-                        arrows: false,
+                            slidesToShow: 2,
+                            infinite: true,
+                            dots: true,
+                            adaptiveHeight: true,
+                            arrows: true,
+                            autoplay: true,
+                            autoplaySpeed: 4000,
                         }
 
                     }, {
 
-                        breakpoint: 630,
+                        breakpoint: 760,
                         settings: {
-                        slidesToShow: 1,
-                        infinite: false,
-                        dots: true,
-                        adaptiveHeight: true,
-                        arrows: false,
+                            slidesToShow: 1,
+                            infinite: true,
+                            dots: true,
+                            adaptiveHeight: true,
+                            arrows: true,
+                            autoplay: true,
+                            autoplaySpeed: 4000,
                         }
 
                     }]

@@ -229,7 +229,7 @@
                 <div class="w800 mx-auto">
                     <div class="row justify-content-center align-items-center py-5 mt-5 mt-lg-0 mx-0 px-0">
                         <div class="text-viva">
-                            <h1>VIVA MOBILE</h1>
+                            <h1>VIVA</h1>
                         </div>
                         <div class="ml-3 text-viva text-center text-lg-left">
                             <h2>a nova era da<br>comercialização<br>de gado.</h2>

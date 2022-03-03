@@ -2253,3 +2253,23 @@ label {
 .link-filtro-racas.ativo{
     color: var(--laranja) !important;
 }
+
+.barra-lote-fixa{
+    width: 100%;
+    background-color: black;
+    /* height: 100px; */
+    position: fixed;
+    top: 80px;
+    z-index: 10;
+}
+
+@media(max-width:768px){
+    .barra-lote-fixa{
+        width: 100%;
+        background-color: black;
+        /* height: 100px; */
+        position: fixed;
+        top: 70px;
+        z-index: 10;
+    }
+}

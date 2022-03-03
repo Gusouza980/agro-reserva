@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/floating-wpp.css') }}" />
     @toastr_css
+    @livewireStyles
     @yield("styles")
     <!-- Google Tag Manager -->
     <script>
@@ -478,6 +479,8 @@
     </script>
     @toastr_js
     @toastr_render
+    @livewireScripts
+
     @yield("scripts")
 
     @if (session()->get('cadastro_finalizado'))

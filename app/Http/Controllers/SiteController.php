@@ -209,6 +209,7 @@ class SiteController extends Controller
             return redirect()->route("login");
         }
         $visita = new Visita;
+        $configuracao = Configuracao::first();
 
         if(session()->get("cliente")){
             $visita->cliente_id = session()->get("cliente")["id"];
@@ -264,7 +265,7 @@ class SiteController extends Controller
 
         $lote->video = $this->convertYoutube($lote->video);
         $fazenda = Fazenda::where("slug", $slug)->first();
-        return view("lote", ["lote" => $lote, "lote_bkp" => $lote, "reserva" => $lote->reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome]);
+        return view("lote", ["configuracao" => $configuracao, "lote" => $lote, "lote_bkp" => $lote, "reserva" => $lote->reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome]);
     }
 
     public function lance(Request $request, Lote $lote){
