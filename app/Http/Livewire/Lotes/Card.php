@@ -21,6 +21,8 @@ class Card extends Component
 
     public function render()
     {
-        return view('livewire.lotes.card', ['lotes' => $this->carregar ? $this->reserva->lotes->where('ativo', true)->where('membro_pacote', false) : []]);
+        $livres = $this->reserva->lotes->where('ativo', true)->where('membro_pacote', false)->where("reservado", false);
+        $reservados = $this->reserva->lotes->where('ativo', true)->where('membro_pacote', false)->where("reservado", true);
+        return view('livewire.lotes.card', ['livres' => $this->carregar ? $livres : [], 'reservados' => $this->carregar ? $reservados : []]);
     }
 }

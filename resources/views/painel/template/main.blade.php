@@ -18,7 +18,9 @@
         <!-- Icons Css -->
         <link href="{{asset('admin/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
+        @livewireStyles
         @yield("styles")
+        @stack('styles')
         <link href="{{asset('admin/css/app.min.css')}}?v=1.3" id="app-style" rel="stylesheet" type="text/css" />
         @toastr_css
     </head>
@@ -137,6 +139,20 @@
                                     </a>
                                     <ul class="sub-menu" aria-expanded="false">
                                         <li><a href="{{ route('painel.usuarios') }}" key="t-saas">Consultar</a></li>
+                                        {{-- <li><a href="{{ route('painel.vendedores') }}" key="t-saas">Vendedores</a></li> --}}
+                                    </ul>
+                                </li>
+                            @endif
+
+                            {{-- CLIENTES --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.marketplaces")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="fas fa-store"></i>
+                                        <span key="t-dashboards">Marketplace</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{{ route('painel.marketplace.vendedores') }}" key="t-saas">Vendedores</a></li>
                                         {{-- <li><a href="{{ route('painel.vendedores') }}" key="t-saas">Vendedores</a></li> --}}
                                     </ul>
                                 </li>
@@ -375,6 +391,7 @@
         @jquery
         @toastr_js
         @toastr_render
+        @livewireScripts
         @yield("scripts")
     </body>
 </html>

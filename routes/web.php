@@ -270,6 +270,18 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/noticias/publicar/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'publicar'])->name("painel.noticia.publicar");
     Route::get('/painel/noticias/destacar/{noticia}', [\App\Http\Controllers\NoticiasController::class, 'destacar'])->name("painel.noticia.destacar");
 
+
+    // ROTAS DE MARKETPLACE
+    Route::get('/painel/marketplace/vendedores', [\App\Http\Controllers\MarketplaceVendedoresController::class, 'consultar'])->name("painel.marketplace.vendedores");
+    Route::get('/painel/marketplace/vendedores/cadastrar', [\App\Http\Controllers\MarketplaceVendedoresController::class, 'cadastrar'])->name("painel.marketplace.vendedores.cadastrar");
+    Route::post('/painel/marketplace/vendedores/salvar', [\App\Http\Controllers\MarketplaceVendedoresController::class, 'salvar'])->name("painel.marketplace.vendedores.salvar");
+    Route::get('/painel/marketplace/vendedores/editar/{vendedor}', [\App\Http\Controllers\MarketplaceVendedoresController::class, 'editar'])->name("painel.marketplace.vendedores.editar");
+    Route::get('/painel/marketplace/vendedores/{vendedor}/produtos', [\App\Http\Controllers\MarketplaceProdutosController::class, 'consultar'])->name("painel.marketplace.vendedores.produtos");
+    Route::get('/painel/marketplace/vendedores/{vendedor}/produtos/cadastrar', [\App\Http\Controllers\MarketplaceProdutosController::class, 'cadastrar'])->name("painel.marketplace.vendedores.produtos.cadastrar");
+    Route::get('/painel/marketplace/vendedores/{vendedor}/produtos/{produto}/editar', [\App\Http\Controllers\MarketplaceProdutosController::class, 'editar'])->name("painel.marketplace.vendedores.produtos.editar");
+    Route::post('/painel/marketplace/vendedores/{vendedor}/produtos/salvar', [\App\Http\Controllers\MarketplaceProdutosController::class, 'salvar'])->name("painel.marketplace.vendedores.produtos.salvar");
+
+
     // ROTAS DE CONFIGURACOES
 
     // LIVE

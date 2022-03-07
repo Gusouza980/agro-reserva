@@ -1,6 +1,55 @@
 <div class="row justify-content-center justify-content-lg-between" id="container-lotes" wire:init='setCarregar'>
-    @if($lotes)
-        @foreach ($lotes as $lote)
+    @if($livres)
+        @foreach ($livres as $lote)
+
+            @if($lote->pacote)
+                @switch($lote->modelo_exibicao)
+                    @case(0)
+                        @include('includes.lotes.pacotes.modelo00')
+                    @break;
+                    @case(2)
+                        @include('includes.lotes.pacotes.modelo00')
+                    @break;
+                    @default
+                        @include('includes.lotes.pacotes.modelo00')
+                    @break;
+                @endswitch
+            @else
+                @switch($lote->modelo_exibicao)
+                    @case(0)
+                        @include('includes.lotes.modelo00')
+                    @break;
+                    @case(1)
+                        @include('includes.lotes.modelo01')
+                    @break;
+                    @case(2)
+                        @include('includes.lotes.modelo02')
+                    @break;
+                    @case(3)
+                        @include('includes.lotes.modelo03')
+                    @break;
+                    @case(4)
+                        @include('includes.lotes.modelo04')
+                    @break;
+                    @case(5)
+                        @include('includes.lotes.modelo05')
+                    @break;
+                    @case(6)
+                        @include('includes.lotes.modelo06')
+                    @break;
+                    @case(7)
+                        @include('includes.lotes.modelo07')
+                    @break;
+                    @default
+                        @include('includes.lotes.modelo02')
+                    @break;
+                @endswitch
+            @endif
+
+        @endforeach
+    @endif
+    @if($reservados)
+        @foreach ($reservados as $lote)
 
             @if($lote->pacote)
                 @switch($lote->modelo_exibicao)

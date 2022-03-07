@@ -11,6 +11,9 @@ return [
         "consulta_completa" => [0,4],
         "visualizar" => [0, 4],
     ],
+    'marketplaces' => [
+        "consulta" => [0],
+    ],
     'fazendas' => [
         "consulta" => [0, 3, 4],
         "cadastro" => [0, 3, 4],
