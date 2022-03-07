@@ -28,7 +28,7 @@ class CreateMarketplaceProdutosTable extends Migration
             $table->boolean("boleto");
             $table->boolean("ativo");
             $table->unsignedBigInteger("marketplace_categoria_id")->nullable();
-            $table->morphs('produtable')->nullable();
+            $table->morphs('produtable');
             $table->timestamps();
         });
     }
