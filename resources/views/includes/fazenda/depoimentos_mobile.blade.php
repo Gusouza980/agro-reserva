@@ -7,7 +7,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12 px-0 text-section2-fazenda text-center text-md-left">
-                                <h2>{{$depoimento->titulo}}</h2>
+                                <h2>{{\App\Classes\Util::convertYoutube($depoimento->titulo)}}</h2>
                             </div>
                         </div>
                         <div class="row py-4">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-7 video-container video-container-depoimento mb-5 mb-lg-0">
-                    {!! $depoimento->video !!}
+                    {!! \App\Classes\Util::convertYoutube($depoimento->video) !!}
                 </div>
                 <div class="col-12 px-0 text-section2-fazenda text-center text-md-left pb-4">
                     <a name="" id="" class="btn btn-vermelho py-2 px-4 mt-3" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}" role="button">Ver animais à venda</a>
