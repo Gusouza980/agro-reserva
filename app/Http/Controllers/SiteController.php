@@ -178,7 +178,14 @@ class SiteController extends Controller
         }
         $fazendas = Fazenda::whereIn("id", $fazendas)->get();
         $finalizadas = "";
-        return view("fazenda", ["fazenda" => $fazenda, "fazendas" => $fazendas, "reserva" => $reserva, "finalizadas" => $finalizadas, "nome_pagina" => "Conheça"]);
+        $agent = new Agent();
+        if($agent->isMobile()){
+            $view = "mobile";
+            // $view = "index";
+        }else{
+            $view = "desktop";
+        }
+        return view("fazenda", ["view" => $view, "fazenda" => $fazenda, "fazendas" => $fazendas, "reserva" => $reserva, "finalizadas" => $finalizadas, "nome_pagina" => "Conheça"]);
     }
 
     public function lotes($slug){

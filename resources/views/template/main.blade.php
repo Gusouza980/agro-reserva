@@ -502,6 +502,7 @@
     @livewireScripts
 
     @yield("scripts")
+    @stack("scripts")
 
     @if (session()->get('cadastro_finalizado'))
         <script>

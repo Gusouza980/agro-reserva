@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid mt-5 mt-md-0">
     <div class="container">
         @if(!$reserva->multi_fazendas)
             <div class="row">
@@ -19,7 +19,7 @@
                                 <span>{{$fazenda->texto_conheca}}</span>
                             </div>
                         </div>
-                        <div class="row mt-2 pb-4">
+                        <div class="row mt-2 pb-0 pb-md-4">
                             <div class="d-none d-md-block col-12 px-0 text-section2-fazenda text-center text-md-left">
                                 <a name="" id="" class="btn btn-vermelho py-2 px-4 mt-3" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}" role="button">Ver animais à venda</a>
                                 <br class="d-lg-none">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-7 video-container video-container-depoimento mb-5 mb-lg-0">
+                <div class="col-12 col-lg-7 video-container video-container-depoimento mb-lg-0">
                     {{--  <iframe src="{{$fazenda->video_conheca}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  --}}
                     {!! \App\Classes\Util::convertYoutube($fazenda->video_conheca) !!}
                 </div>

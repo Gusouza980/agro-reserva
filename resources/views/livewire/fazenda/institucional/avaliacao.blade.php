@@ -10,10 +10,10 @@
                     </div>
                     <div class="row py-4">
                         <div class="col-12 px-0 text-avaliacao-section2-fazenda text-center text-md-left">
-                            <span class="cpointer link-avaliacao-section2-fazenda @if($avaliacao == 0) active @endif" wire:click='trocaAvaliacao(0)'>Resumo</span>
-                            <span class="ml-3 link-avaliacao-section2-fazenda @if($avaliacao == 1) active @endif cpointer" wire:click='trocaAvaliacao(1)'>Produção</span>
-                            <span class="ml-3 link-avaliacao-section2-fazenda @if($avaliacao == 2) active @endif cpointer" wire:click='trocaAvaliacao(2)'>Provas e Avaliações</span>
-                            <span class="ml-3 link-avaliacao-section2-fazenda @if($avaliacao == 3) active @endif cpointer" wire:click='trocaAvaliacao(3)'>Diferencial</span>
+                            <span class="cpointer link-avaliacao-section2-fazenda @if($avaliacao == 0) active @endif" wire:click='trocaAvaliacao(0)' style="line-height: 30px;">Resumo</span>
+                            <span class="ml-3 link-avaliacao-section2-fazenda @if($avaliacao == 1) active @endif cpointer" wire:click='trocaAvaliacao(1)' style="line-height: 30px;">Produção</span>
+                            <span class="ml-3 link-avaliacao-section2-fazenda @if($avaliacao == 2) active @endif cpointer" wire:click='trocaAvaliacao(2)' style="line-height: 30px;">Provas e Avaliações</span>
+                            <span class="ml-3 link-avaliacao-section2-fazenda @if($avaliacao == 3) active @endif cpointer" wire:click='trocaAvaliacao(3)' style="line-height: 30px;">Diferencial</span>
                         </div>
                     </div>
                     <div class="container-fluid px-0 conteudo-avaliacao" @if($avaliacao != 0) style="display:none;" @endif>

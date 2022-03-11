@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid mt-5 mt-md-0">
     <div class="container">
         @php
             $cont = 0;

@@ -11,6 +11,9 @@
     --laranja: #E8521B;
 }
 
+html{
+    scroll-behavior: smooth;
+}
 
 /* GLOBALS */
 

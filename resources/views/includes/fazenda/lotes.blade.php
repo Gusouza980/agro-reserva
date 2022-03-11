@@ -21,7 +21,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="row py-4">
+                    <div class="row pb-2 py-md-4">
                         <div class="d-none d-md-block col-12 px-0 text-section2-fazenda text-center text-md-left">
                             <a name="" id="" class="btn btn-vermelho py-2 px-4 mt-3" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}" role="button">Ver animais à venda</a>
                             <br class="d-lg-none">
@@ -30,8 +30,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-7 video-container video-container-depoimento mb-5 mb-lg-0 px-0">
-                {!! $fazenda->video_conheca_lotes !!}
+            <div class="col-12 col-lg-7 video-container video-container-depoimento mb-2 mb-lg-0 px-0">
+                {!! \App\Classes\Util::convertYoutube($fazenda->video_conheca_lotes) !!}
             </div>
             <div class="d-md-none col-12 px-0 text-section2-fazenda text-center text-md-left pb-4">
                 <a name="" id="" class="btn btn-vermelho py-2 px-4 mt-3" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}" role="button">Ver animais à venda</a>
