@@ -16,7 +16,7 @@
     @endphp
 @endif --}}
 
-<div style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-size: cover;">
+<div style="background: url(/{{$fazenda->fundo_conheca_lotes}}); background-attachment: fixed; background-size: cover; background-repeat: no-repeat;">
     <div class="" style="background-color: rgba(0,0,0,0.5);">
         <div class="container-fluid py-5" id="nav-fazenda">
             <div class="container">
