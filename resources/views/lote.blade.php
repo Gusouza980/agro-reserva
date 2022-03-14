@@ -249,7 +249,7 @@ if (session()->get('cliente')) {
                     <div class="row py-4 px-5 justify-content-between">
                         <div>
                             @if (!isset($finalizadas))
-                                <a href="{{ route('fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug]) }}"><span
+                                <a href="{{ route('fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
                                         style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
                                             class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
                             @else
@@ -697,7 +697,7 @@ if (session()->get('cliente')) {
                                 <div class="col-12">
                                     @if (!isset($finalizadas))
                                         <a
-                                            href="{{ route('fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug]) }}"><span
+                                            href="{{ route('fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
                                                 style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
                                                     class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
                                     @else

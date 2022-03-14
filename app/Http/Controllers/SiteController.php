@@ -153,9 +153,9 @@ class SiteController extends Controller
         // $pdf->gerarBoleto($pdf::OUTPUT_SAVE, public_path('imagens/cef.pdf'));
     }
 
-    public function conheca($slug){
+    public function conheca($slug, Reserva $reserva){
         $fazenda = Fazenda::where("slug", $slug)->first();
-        $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        // $reserva = $fazenda->reservas->where("ativo", 1)->first();
         if(!$reserva->institucional){
             return redirect()->route("fazenda.lotes", ["fazenda" => $fazenda->slug]);
         }
@@ -188,9 +188,9 @@ class SiteController extends Controller
         return view("fazenda", ["view" => $view, "fazenda" => $fazenda, "fazendas" => $fazendas, "reserva" => $reserva, "finalizadas" => $finalizadas, "nome_pagina" => "Conheça"]);
     }
 
-    public function lotes($slug){
+    public function lotes($slug, Reserva $reserva){
         $fazenda = Fazenda::where("slug", $slug)->first();
-        $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        // $reserva = $fazenda->reservas->where("ativo", 1)->first();
         if(!$reserva->institucional){
             if(!session()->get("popup_institucional")){
                 $popup_institucional = false;
@@ -208,7 +208,7 @@ class SiteController extends Controller
         return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "popup_institucional" => $popup_institucional, "prioridades" => $prioridades, "lotes" => $lotes, "nome_pagina" => "Lotes"]);
     }
 
-    public function lote($slug, Lote $lote){
+    public function lote($slug, Reserva $reserva, Lote $lote){
         if(!session()->get("cliente")){
             session()->flash("erro", "Para acessar os lotes, faça seu login.");
             session()->put(["pagina_retorno" => url()->full()]);
@@ -272,7 +272,7 @@ class SiteController extends Controller
 
         $lote->video = $this->convertYoutube($lote->video);
         $fazenda = Fazenda::where("slug", $slug)->first();
-        return view("lote", ["configuracao" => $configuracao, "lote" => $lote, "lote_bkp" => $lote, "reserva" => $lote->reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome]);
+        return view("lote", ["configuracao" => $configuracao, "lote" => $lote, "lote_bkp" => $lote, "reserva" => $reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome]);
     }
 
     public function lance(Request $request, Lote $lote){
@@ -478,5 +478,22 @@ class SiteController extends Controller
             "<iframe width=\"350\" height=\"200\" src=\"//www.youtube.com/embed/$2\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
             $string
         );
+    }
+
+    public function redirect_fazenda($slug, Lote $lote = null){
+        $fazenda = Fazenda::where("slug", $slug)->first();
+        $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        if(url()->current() == route('fazenda.conheca.antigo', ['fazenda' => $slug]) || url()->current() == route('fazenda.conheca.lotes.antigo', ['fazenda' => $slug]) || url()->current() == route('fazenda.conheca.depoimentos.antigo', ['fazenda' => $slug]) || url()->current() == route('fazenda.conheca.avaliacoes.antigo', ['fazenda' => $slug])){
+            return redirect()->route("fazenda.conheca", ["fazenda" => $slug, "reserva" => $reserva]);
+        }
+        if(url()->current() == route('fazenda.lotes.antigo', ['fazenda' => $slug])){
+            return redirect()->route("fazenda.lotes", ["fazenda" => $slug, "reserva" => $reserva]);
+        }
+        if(url()->current() == route('fazenda.conheca.antigo', ['fazenda' => $slug])){
+            return redirect()->route("fazenda.conheca", ["fazenda" => $slug, "reserva" => $reserva]);
+        }
+        if(url()->current() == route('fazenda.lote.antigo', ['fazenda' => $slug, 'lote' => $lote])){
+            return redirect()->route("fazenda.lote", ["fazenda" => $slug, "reserva" => $reserva, "lote" => $lote]);
+        }
     }
 }

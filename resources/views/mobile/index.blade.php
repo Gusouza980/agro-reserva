@@ -60,7 +60,7 @@
                             <div class="col-12">
                                 <div class="slick">
                                     @foreach ($lotes_destaque as $lote)
-                                        <div class="px-0 py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote])}}'">
+                                        <div class="px-0 py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
                                             {{-- <div data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
                                             <div class=""
                                                 style="background: url({{ asset($lote->preview) }}); background-size: cover; background-position: center; width: 280px; height: 250px; border-radius: 15px; position: relative; overflow: hidden;">
@@ -159,7 +159,7 @@
                                                 <div class="row mt-3" style="">
                                                     <div class="col-12 text-center">
                                                         <a name="" id="" class="btn @if ($reserva->encerrada) btn-vermelho-outline @else btn-vermelho @endif py-2 px-4"
-                                                            href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug]) }}"
+                                                            href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva]) }}"
                                                             role="button">Mostrar a Reserva</a>
                                                     </div>
                                                 </div>

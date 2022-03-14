@@ -75,7 +75,7 @@
                                                                         <i class="fas fa-bars" aria-hidden="true"></i>
                                                                     </a>
                                                                     <div class="dropdown-menu" style="margin: 0px;">
-                                                                        <a name="" href="{{route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug])}}" id="" class="dropdown-item py-2"
+                                                                        <a name="" href="{{route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva])}}" id="" class="dropdown-item py-2"
                                                                             target="_blank" role="button">Página da Reserva</a>
                                                                         <a name="" id="" class="dropdown-item py-2" data-bs-toggle="modal"
                                                                             data-bs-target="#modalEditaReserva{{ $reserva->id }}"

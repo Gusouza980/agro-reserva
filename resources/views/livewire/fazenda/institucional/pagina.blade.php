@@ -1,4 +1,4 @@
-{{-- @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug]))
+{{-- @if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug, 'reserva' => $reserva]))
     @php
         $background = $fazenda->fundo_conheca;
     @endphp
@@ -25,18 +25,18 @@
                         <img src="{{asset($fazenda->logo)}}" style="max-width: 100%;" alt="">
                     </div>
                     <div class="col-12 col-md-9 d-none d-lg-flex align-items-center text-white text-nav-fazenda">
-                        <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #FEB000;">Con</span>heça a fazenda</span></a> 
-                        <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #FEB000;">Lot</span>es à venda</span> </a>
+                        <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])}}"><span><span style="border-bottom: 2px solid #FEB000;">Con</span>heça a fazenda</span></a> 
+                        <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])}}"><span><span style="border-bottom: 2px solid #FEB000;">Lot</span>es à venda</span> </a>
                     </div>
                     <div class="col-12 d-block d-lg-none">
                         <div class="row">
                             <div class="col-12 text-nav-fazenda text-center mt-4">
-                                <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #FEB000;">Con</span>heça a fazenda</span></a> 
+                                <a class="@if(url()->current() == route('fazenda.conheca', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])) active @endif" href="{{route('fazenda.conheca', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])}}"><span><span style="border-bottom: 2px solid #FEB000;">Con</span>heça a fazenda</span></a> 
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 text-nav-fazenda text-center mt-4">
-                                <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug])}}"><span><span style="border-bottom: 2px solid #FEB000;">Lot</span>es a venda</span> </a>
+                                <a class="mx-5 @if(url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])) active @endif" href="{{route('fazenda.lotes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])}}"><span><span style="border-bottom: 2px solid #FEB000;">Lot</span>es a venda</span> </a>
                             </div>
                         </div>
                     </div>

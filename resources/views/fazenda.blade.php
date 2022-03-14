@@ -10,9 +10,9 @@
 @section('conteudo')
     
     @if($view == "desktop")
-        @livewire('fazenda.institucional.pagina', ["fazenda" => $fazenda, "reserva" => $reserva])
+        @livewire('fazenda.institucional.pagina', ["fazenda" => $fazenda, "reserva" => $reserva, "fazendas" => $fazendas])
     @else
-        @livewire('fazenda.institucional.pagina-mobile', ["fazenda" => $fazenda, "reserva" => $reserva])
+        @livewire('fazenda.institucional.pagina-mobile', ["fazenda" => $fazenda, "reserva" => $reserva, "fazendas" => $fazendas])
     @endif
 @endsection
 

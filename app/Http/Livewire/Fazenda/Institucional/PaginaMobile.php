@@ -11,14 +11,16 @@ class PaginaMobile extends Component
     public $fazenda;
     public $reserva;
     public $pagina;
+    public $fazendas;
 
     protected $listeners = ["trocarPagina"];
 
-    public function mount($fazenda, $reserva){
+    public function mount($fazenda, $reserva, $fazendas = null){
         $this->fazenda = $fazenda;
         $this->reserva = $reserva;
         $this->pagina = 0;
         $this->avaliacao = 0;
+        $this->fazendas = $fazendas;
         $this->dispatchBrowserEvent("mostraConteudo");
     }
 

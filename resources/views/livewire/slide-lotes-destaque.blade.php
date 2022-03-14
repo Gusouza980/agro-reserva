@@ -3,7 +3,7 @@
         <div class="col-12">
             <div class="slick">
                 @foreach ($lotes_destaque as $lote)
-                    <div class="px-0 py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote])}}'">
+                    <div class="px-0 py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
                         {{-- <div data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
                         <div class="caixa-lote-home-imagem"
                             style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 330px; height: 250px; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464; box-shadow: 0px 15px 22px rgba(0,0,0,0.6);">
