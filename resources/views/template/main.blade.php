@@ -485,7 +485,7 @@
 
     </div> --}}
 
-    <div class="container-fluid fixed-bottom barra-inferior-mobile d-md-none">
+    {{-- <div class="container-fluid fixed-bottom barra-inferior-mobile d-md-none">
         <div class="row justify-content-center align-items-center">
             <div class="col-12 d-flex flex-row text-center justify-content-around align-items-center">
                 <div class="barra-inferior-mobile-icone mx-3 fa-lg">
@@ -510,7 +510,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- @livewire("site.pesquisa-lotes") --}}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
