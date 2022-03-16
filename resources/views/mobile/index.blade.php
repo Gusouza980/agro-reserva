@@ -48,16 +48,16 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid" style="background-color: black;">
+    <div class="container-fluid" style="background-color: #15171e;">
         <div class="container-fluid pb-5" id="header-index">
-            <div class="row pb-5 justify-content-center" id="row-cards-fazendas" style="position: relative; z-index: 1;">
+            <div class="row pb-5 justify-content-center px-0" id="row-cards-fazendas" style="position: relative; z-index: 1;">
                 @if($configuracao->mostrar_lotes_destaque && $lotes_destaque)
                     <div class="col-12 text-center text-header-index d-lg-block mt-5 mt-lg-0">
                         <h5>Animais em Destaque</h5>
                     </div>
                     <div class="vitrine-animais mt-4">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-12 px-0">
                                 <div class="slick">
                                     @foreach ($lotes_destaque as $lote)
                                         <div class="px-0 py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
@@ -111,93 +111,97 @@
                 <div class="col-12 text-center text-header-index mt-5">
                     <h5>Vitrine de reservas</h5>
                 </div>
-                <div class="col-12 mt-4">
-                    <div class="slick py-3">
-                        @foreach ($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'asc']]) as $reserva)
-                            <div class="px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2 caixa-reserva-home">
-                            {{-- <div data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
-                                <div
-                                    style="background: url(/{{ $reserva->fazenda->fundo_destaque }}); background-size: cover; width: 280px; height: 250px; border-radius: 15px;">
-                                    <div class="d-flex align-items-center card-reserva @if ($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if ($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if ($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif" >
-                                        <div class="container-fluid">
-                                            <div class="row" style="">
-                                                <div class="col-12 text-center">
-                                                    <img class="mx-auto" src="{{ asset($reserva->fazenda->logo) }}" style="max-width: 200px; 
-                                                                    @if (($reserva->aberto &&
-                                                    !$reserva->encerrada && !$reserva->compra_disponivel) || ($reserva->aberto
-                                                    && !$reserva->encerrada && $reserva->compra_disponivel &&
-                                                    $reserva->fim))
-                                                    height: 80px;
-                                                @else
-                                                    height: 100%; max-height:110px;
-                                                    @endif"
-                                                    alt="{{ $reserva->fazenda->nome }}">
+                <div class="w-100">
+                    <div class="row">
+                        <div class="col-12 px-0 mt-4">
+                            <div class="slick py-3">
+                                @foreach ($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'asc']]) as $reserva)
+                                    <div class="px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2 caixa-reserva-home">
+                                    {{-- <div data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
+                                        <div
+                                            style="background: url(/{{ $reserva->fazenda->fundo_destaque }}); background-size: cover; width: 280px; height: 250px; border-radius: 15px;">
+                                            <div class="d-flex align-items-center card-reserva @if ($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if ($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if ($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif" >
+                                                <div class="container-fluid">
+                                                    <div class="row" style="">
+                                                        <div class="col-12 text-center">
+                                                            <img class="mx-auto" src="{{ asset($reserva->fazenda->logo) }}" style="max-width: 200px; 
+                                                                            @if (($reserva->aberto &&
+                                                            !$reserva->encerrada && !$reserva->compra_disponivel) || ($reserva->aberto
+                                                            && !$reserva->encerrada && $reserva->compra_disponivel &&
+                                                            $reserva->fim))
+                                                            height: 80px;
+                                                        @else
+                                                            height: 100%; max-height:110px;
+                                                            @endif"
+                                                            alt="{{ $reserva->fazenda->nome }}">
+                                                        </div>
+                                                    </div>
+                                                    @if ($reserva->aberto)
+                                                        <div class="row mt-3" style="">
+                                                            <div class="col-12 text-center">
+                                                                @if (!$reserva->encerrada)
+                                                                    @if ($reserva->mostrar_datas)
+                                                                        @if (!$reserva->compra_disponivel)
+                                                                            <h1 class="text-abertura">Inicio em</h1>
+                                                                            <h2 class="data-abertura mt-n2">
+                                                                                {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
+                                                                        @else
+                                                                            @if ($reserva->fim)
+                                                                                <h1 class="text-abertura">Disponível até</h1>
+                                                                                <h2 class="data-abertura mt-n2">
+                                                                                    {{ date('d/m/Y', strtotime($reserva->fim)) }}</h2>
+                                                                            @endif
+                                                                        @endif
+                                                                    @endif
+                                                                @else
+                                                                    <h1 class="text-abertura">ENCERRADA</h1>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-3" style="">
+                                                            <div class="col-12 text-center">
+                                                                <a name="" id="" class="btn @if ($reserva->encerrada) btn-vermelho-outline @else btn-vermelho @endif py-2 px-4"
+                                                                    href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva]) }}"
+                                                                    role="button">Mostrar a Reserva</a>
+                                                            </div>
+                                                        </div>
+                                                        @if ($reserva->tarja_vendas)
+                                                            <div class="tarja-diagonal text-center"
+                                                                style="background-color: #15bd3d; width: 100%; height: 50px; position: absolute; top: 0px; left: -110px; transform: rotate(-45deg);">
+                                                                <h5
+                                                                    style="color: white; position: absolute; top: 22px; left: 28.5%; font-size: 10px; font-weight: bold; font-family: Gobold Regular; letter-spacing: 3px;">
+                                                                    {{ number_format($reserva->tarja_vendas, 0, ',', '.') }}%
+                                                                    VENDIDO
+                                                                </h5>
+                                                            </div>
+                                                        @endif
+                                                    @else
+                                                        @if ($reserva->mostrar_datas)
+                                                            <div class="row mt-4" style="">
+                                                                <div class="col-12 text-center">
+        
+                                                                    <h2 class="data-abertura-futura mt-n2">Inicia em
+                                                                        {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
+        
+                                                                </div>
+                                                            </div>
+                                                        @else
+                                                            <div class="row mt-4" style="">
+                                                                <div class="col-12 text-center">
+        
+                                                                    <h2 class="data-abertura-futura mt-n2">Aguarde</h2>
+        
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    @endif
                                                 </div>
                                             </div>
-                                            @if ($reserva->aberto)
-                                                <div class="row mt-3" style="">
-                                                    <div class="col-12 text-center">
-                                                        @if (!$reserva->encerrada)
-                                                            @if ($reserva->mostrar_datas)
-                                                                @if (!$reserva->compra_disponivel)
-                                                                    <h1 class="text-abertura">Inicio em</h1>
-                                                                    <h2 class="data-abertura mt-n2">
-                                                                        {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
-                                                                @else
-                                                                    @if ($reserva->fim)
-                                                                        <h1 class="text-abertura">Disponível até</h1>
-                                                                        <h2 class="data-abertura mt-n2">
-                                                                            {{ date('d/m/Y', strtotime($reserva->fim)) }}</h2>
-                                                                    @endif
-                                                                @endif
-                                                            @endif
-                                                        @else
-                                                            <h1 class="text-abertura">ENCERRADA</h1>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                                <div class="row mt-3" style="">
-                                                    <div class="col-12 text-center">
-                                                        <a name="" id="" class="btn @if ($reserva->encerrada) btn-vermelho-outline @else btn-vermelho @endif py-2 px-4"
-                                                            href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva]) }}"
-                                                            role="button">Mostrar a Reserva</a>
-                                                    </div>
-                                                </div>
-                                                @if ($reserva->tarja_vendas)
-                                                    <div class="tarja-diagonal text-center"
-                                                        style="background-color: #15bd3d; width: 100%; height: 50px; position: absolute; top: 0px; left: -110px; transform: rotate(-45deg);">
-                                                        <h5
-                                                            style="color: white; position: absolute; top: 22px; left: 28.5%; font-size: 10px; font-weight: bold; font-family: Gobold Regular; letter-spacing: 3px;">
-                                                            {{ number_format($reserva->tarja_vendas, 0, ',', '.') }}%
-                                                            VENDIDO
-                                                        </h5>
-                                                    </div>
-                                                @endif
-                                            @else
-                                                @if ($reserva->mostrar_datas)
-                                                    <div class="row mt-4" style="">
-                                                        <div class="col-12 text-center">
-
-                                                            <h2 class="data-abertura-futura mt-n2">Inicia em
-                                                                {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
-
-                                                        </div>
-                                                    </div>
-                                                @else
-                                                    <div class="row mt-4" style="">
-                                                        <div class="col-12 text-center">
-
-                                                            <h2 class="data-abertura-futura mt-n2">Aguarde</h2>
-
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endif
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
-                        @endforeach
+                        </div>
                     </div>
                 </div>
                 @php

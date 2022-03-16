@@ -111,12 +111,12 @@
     </a> --}}
     <div class="container-fluid bg-preto" id="container-navbar">
         <div class="container">
-            <nav class="navbar d-block d-lg-none navbar-expand-lg navbar-light">
+            <nav class="navbar align-items-center d-lg-none navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="{{ route('index') }}"><img
                         src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Agroreserva"></a>
                 <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon text-white"><i class="fas fa-bars"></i>
+                    <span class="navbar-toggler-icon text-white"><i class="fas fa-bars mt-1"></i>
 
                     </span>
                 </button>
@@ -481,8 +481,35 @@
             </div>
         </div>
     @endif
-    <div id="div-whatsapp" style="left: auto; right: 15px;">
+    {{-- <div id="div-whatsapp" style="left: auto; right: 15px;">
 
+    </div> --}}
+
+    <div class="container-fluid fixed-bottom barra-inferior-mobile d-md-none">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 d-flex flex-row text-center justify-content-around align-items-center">
+                <div class="barra-inferior-mobile-icone mx-3 fa-lg">
+                    <i class="fas fa-home"></i>
+                    <p>Início</p>
+                </div>
+                <div class="barra-inferior-mobile-icone mx-3 fa-lg">
+                    <i class="fas fa-blog"></i>
+                    <p>Blog</p>
+                </div>
+                <div class="barra-inferior-mobile-icone mx-3 fa-lg">
+                    <i class="fas fa-user"></i>
+                    <p>Minha Conta</p>
+                </div>
+                <div class="barra-inferior-mobile-icone mx-3 fa-lg">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Carrinho</p>
+                </div>
+                <div class="barra-inferior-mobile-icone mx-3 fa-lg">
+                    <i class="fab fa-whatsapp"></i>
+                    <p>Contato</p>
+                </div>
+            </div>
+        </div>
     </div>
     {{-- @livewire("site.pesquisa-lotes") --}}
     <!-- Optional JavaScript -->

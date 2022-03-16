@@ -157,7 +157,7 @@ class SiteController extends Controller
         $fazenda = Fazenda::where("slug", $slug)->first();
         // $reserva = $fazenda->reservas->where("ativo", 1)->first();
         if(!$reserva->institucional){
-            return redirect()->route("fazenda.lotes", ["fazenda" => $fazenda->slug]);
+            return redirect()->route("fazenda.lotes", ["fazenda" => $fazenda->slug, "reserva" => $reserva]);
         }
         if($fazenda->video_conheca){
             $fazenda->video_conheca = $this->convertYoutube($fazenda->video_conheca);

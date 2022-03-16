@@ -2287,3 +2287,15 @@ label {
         font-size: 11px;
     }
 }
+
+.barra-inferior-mobile{
+    background-color: #15171e;
+    color: white;
+    padding: 15px 0px;
+}
+
+.barra-inferior-mobile-icone > p{
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 13px;
+}
