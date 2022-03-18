@@ -14,6 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         //
         '/logar',
-        
+        '/cadastro/finalizar',
+        '/cadastro/finalizar/salvar',
     ];
 }

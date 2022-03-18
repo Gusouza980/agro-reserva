@@ -100,6 +100,8 @@ Route::middleware(['popup', 'cookie'])->group(function () {
         Route::post('/conta/senha/alterar', [\App\Http\Controllers\ContaController::class, 'alterar_senha'])->name("conta.senha.alterar");
         Route::get('/conta/boleto/download/{boleto}', [\App\Http\Controllers\ContaController::class, 'baixar_boleto'])->name("conta.boleto.download");
     
+        Route::get('/conta/reserva/{reserva}/relatorio/', [\App\Http\Controllers\ContaController::class, 'relatorio_vendas'])->name("conta.reserva.relatorio");
+
     });
     
     Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("contato");

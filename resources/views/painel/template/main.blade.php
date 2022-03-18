@@ -393,5 +393,6 @@
         @toastr_render
         @livewireScripts
         @yield("scripts")
+        @stack("scripts")
     </body>
 </html>
