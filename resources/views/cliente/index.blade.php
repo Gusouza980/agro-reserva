@@ -25,7 +25,7 @@
                 <div class="row mt-3">
                     <div class="col-12 text-center text-md-left card-conta-content">
                         <span class="cpointer link-card-conta active" num="0"><span style="border-bottom: 2px solid #E8521B;">Comp</span>ras</span>
-                        @if($cliente->fazendas) <span class="ml-3 link-card-conta cpointer" num="1"><span style="border-bottom: 2px solid #E8521B;">Rese</span>rvas</span> @endif
+                        @if($cliente->fazendas->count() > 0) <span class="ml-3 link-card-conta cpointer" num="1"><span style="border-bottom: 2px solid #E8521B;">Rese</span>rvas</span> @endif
                         {{--  <span class="ml-3 link-card-conta cpointer" num="2"><span style="border-bottom: 2px solid #E8521B;">Ende</span>reço de Correspondência</span>  --}}
                         {{--  <span class="ml-3 link-card-conta cpointer" num="3"><span style="border-bottom: 2px solid #E8521B;">Pref</span>erências</span>  --}}
                         <span class="ml-3 link-card-conta cpointer" num="4"><span style="border-bottom: 2px solid #E8521B;">Infor</span>mações de conta</span>
@@ -106,7 +106,7 @@
                     @endif
                     
                 </div>
-                @if($cliente->fazendas)
+                @if($cliente->fazendas->count() > 0)
                     <div class="container-fluid container-card-conta" num="1" style="display: none;">
                         <div class="row">
                             <div class="col-12 card-conta-content">
@@ -129,7 +129,7 @@
                                                 <tr>
                                                     <td>#{{ $reserva->id }}</td>
                                                     <td>De <b>{{ date("d/m/Y", strtotime($reserva->inicio)) }}</b> até <b>{{ date("d/m/Y", strtotime($reserva->fim)) }}</b></td>
-                                                    <td class="text-center"><a name="" id="" class="btn btn-warning" href="{{ route('conta.reserva.relatorio', ['reserva' => $reserva]) }}" role="button"><i class="fas fa-file-pdf"></i></a></td>
+                                                    <td class="text-center"><a name="" id="" onclick="exibeCarregamento()" href="{{ route('conta.reserva.relatorio', ['reserva' => $reserva]) }}" class="btn btn-warning"  role="button"><i class="fas fa-file-pdf"></i></a></td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -437,6 +437,11 @@
             </div>
         </div>
     </div>
+    <div id="modal-carregamento" class="modal-carregamento align-items-center justify-content-center" style="display: none;">
+        <div class="modal-carregamento-caixa">
+            <img src="imagens/gif_relogio.gif" alt="">
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -454,6 +459,11 @@
 @endif
 
 <script>
+    function exibeCarregamento(){
+        // alert("FOI");
+        $("#modal-carregamento").css("display", "flex");
+    }
+
     $(document).ready(function(){
         {{--  $(".ver_mais").click(function(){
             vid = $(this).attr("vid");
