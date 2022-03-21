@@ -2,6 +2,17 @@
     <div class="col-12 col-md-9">
         <div class="card">
             <div class="card-body" style="overflow-x: scroll;">
+                <p>
+                    Mostrando 
+                    <select name="" id="" wire:model="items_pagina">
+                        <option value="15">15</option>
+                        <option value="30">30</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                    </select>
+                    Resultados por página
+                </p>
                 <table class="table">
                     <thead>
                         <tr>
