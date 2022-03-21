@@ -26,7 +26,7 @@ class Datatable extends Component
         if($this->filtro_lote){
             $this->filtros["lotes"][] = ["lotes.nome", "LIKE", "%". $this->filtro_lote. "%"]; 
         }
-        if($this->filtro_raca){
+        if($this->filtro_raca && $this->filtro_raca != -1){
             $this->filtros["lotes"][] = ["lotes.raca_id", "=" , $this->filtro_raca]; 
         }
     }
