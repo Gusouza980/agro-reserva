@@ -12,4 +12,8 @@ class CarrinhoProduto extends Model
     public function lote(){
         return $this->belongsTo(Lote::class);
     }
+
+    public function carrinho(){
+        return $this->belongsTo(Carrinho::class);
+    }
 }

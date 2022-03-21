@@ -5116,3 +5116,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
 .icone-compra.ativo{
     color: #0fff0f;
 }
+
+.row-paginacao > div > nav{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}

@@ -177,6 +177,10 @@ class VendasController extends Controller
         return redirect()->back();
     }
 
+    public function lotes(){
+        return view("painel.vendas.lotes");
+    }
+
     public function envia_comprovante(Venda $venda){
         $data = ["venda" => $venda];
         $pdf = PDF::loadView('cliente.comprovante2', $data);
