@@ -64,6 +64,7 @@
                                 <th>Cadastro</th>
                                 <th>Email</th>
                                 <th>Whatsapp</th>
+                                <th>Compras</th>
                             </tr>
                         </thead>
 
@@ -122,6 +123,19 @@
                                         @else
                                             {{$cliente->telefone}}
                                         @endif
+                                    </td>
+                                    <td>
+                                        @php
+                                            $qtd = 0;
+                                        @endphp
+
+                                        @foreach($cliente->carrinhos->where("aberto", false) as $carrinho)
+                                            @php
+                                                $qtd += $carrinho->produtos->count();
+                                            @endphp
+                                        @endforeach
+
+                                        {{ $qtd }} lotes
                                     </td>
                                 </tr>
                             @endforeach
