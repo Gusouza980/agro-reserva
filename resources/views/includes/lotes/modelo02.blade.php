@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
-                    @if($lote->nascimento)
+                    @if($lote->previsao_parto)
                         <div style="width: 130px;">
                             <b class="mr-3">PREV. PARTO.: </b>
                         </div>
