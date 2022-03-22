@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w1200 mx-auto">
+            <div class="w1200 mx-auto pb-4">
                 <div class="row">
                     <div class="col-12 text-center text-cta-comissao-lotes">
                         <h2>RESERVA</h2>
