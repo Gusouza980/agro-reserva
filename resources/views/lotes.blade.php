@@ -10,8 +10,7 @@
 @endsection
 
 @section('conteudo')
-    <div class="" style=" background: url(/{{ $fazenda->fundo_conheca_lotes }}); background-size: cover;
-        background-position: center;">
+    <div class="" style="background-color: #15171e; background-blend-mode: darken; @if($reserva->fazenda->fundo_conheca_lotes) background: rgba(0, 0, 0, .65) url(/{{ $reserva->fazenda->fundo_conheca_lotes }}) @endif; background-size: cover; background-position: center;"
         <div class="pb-5" style="background-color: rgba(0,0,0,0.5);">
             <div class="container-fluid py-5">
                 <div class="container">
