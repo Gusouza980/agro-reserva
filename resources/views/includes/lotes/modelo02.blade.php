@@ -50,7 +50,7 @@
                             <b class="mr-3">PREV. PARTO.: </b>
                         </div>
                         <div>
-                            <span class="card-lote-info-text">{{date("m/Y", strtotime($lote->nascimento))}}</span>
+                            <span class="card-lote-info-text">{{date("m/Y", strtotime($lote->previsao_parto))}}</span>
                         </div>
                     @else
                         <div class="text-center mx-auto">
