@@ -127,7 +127,7 @@ if (session()->get('cliente')) {
     </div>
     @if (!$lote->pacote)
         <div class=""
-            style="background-color: #15171e; background-blend-mode: darken; background: rgba(0, 0, 0, .65) url(/{{ $reserva->fazenda->fundo_conheca_lotes }}); background-size: cover; background-position: center;">
+            style="background-color: #15171e; background-blend-mode: darken; @if($reserva->fazenda->fundo_conheca_lotes) background: rgba(0, 0, 0, .65) url(/{{ $reserva->fazenda->fundo_conheca_lotes }}) @endif; background-size: cover; background-position: center;">
             <div class="container-fluid bg-preto py-5 py-lg-2" id="row-preco-compra">
                 <div class="container pt-4">
                     <div class="row align-items-center pb-4">
