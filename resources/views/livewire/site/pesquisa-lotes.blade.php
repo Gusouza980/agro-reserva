@@ -19,7 +19,7 @@
             <table class="table">
                 <tbody>
                     @foreach($resultados as $lote)
-                        <tr class="tr-pesquisa" wire:key='{{ $loop->index }}' onclick="window.location.href='{{ route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote]) }}'">
+                        <tr class="tr-pesquisa" wire:key='{{ $loop->index }}' onclick="window.location.href='{{ route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva]) }}'">
                             <td style="vertical-align: middle;" scope="row" wire:key='{{ $loop->index }}'>{{ $lote->nome }}</td>
                             <td style="vertical-align: middle;" wire:key='{{ $loop->index }}'>{{ $lote->fazenda->nome_fazenda }}</td>
                             <td style="vertical-align: middle;" wire:key='{{ $loop->index }}'>R${{ number_format($lote->preco, 2, ",", ".") }}</td>
