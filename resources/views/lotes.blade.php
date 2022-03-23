@@ -132,7 +132,7 @@
 @endsection
 
 @section('scripts')
-    @if(!$reserva->institucional && $reserva->institucional_popup)
+    @if(!$reserva->institucional && $reserva->institucional_popup && $popup_institucional)
         <script>
             $(document).ready(function(){
                 $("#modalInstitucional").modal("show");
