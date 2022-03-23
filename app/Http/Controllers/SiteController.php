@@ -193,8 +193,8 @@ class SiteController extends Controller
         // $reserva = $fazenda->reservas->where("ativo", 1)->first();
         if(!$reserva->institucional){
             if(!session()->get("popup_institucional")){
-                $popup_institucional = false;
-                session(["popup_institucional" => false]);
+                $popup_institucional = true;
+                session(["popup_institucional" => true]);
             }else{
                 $popup_institucional = false;
             }
