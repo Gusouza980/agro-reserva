@@ -1679,7 +1679,7 @@ label {
 }
 
 .logo-fazenda > img{
-    filter: contrast(0%);
+    /* filter: contrast(0%); */
 }
 
 .numero-lote > h4{
