@@ -93,7 +93,7 @@
                 </div>
             </div>
         </div>
-        @if($reserva->multi_fazendas)
+        @if($reserva->multi_fazendas && $reserva->mostrar_logos_fazendas)
             <div class="container" wire:ignore>
                 <div class="row">
                     <div class="col-12">
