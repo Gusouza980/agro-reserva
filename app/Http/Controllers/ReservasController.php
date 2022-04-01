@@ -152,4 +152,18 @@ class ReservasController extends Controller
         $reserva->save();
         return redirect()->back();
     }
+
+    public function relatorio_vendas(Reserva $reserva){
+        $carrinhos = Carrinho::whereHas("lotes", function($q) use ($reserva){
+            $q->whereIn("lotes.id", $reserva->lotes->pluck("id"));
+        })->get();
+        $vendas = Venda::whereIn("carrinho_id", $carrinhos->pluck("id"))->get();
+        // dd($vendas);
+        $data = [
+            "reserva" => $reserva,
+            "vendas" => $vendas
+        ];
+        $pdf = PDF::loadView('cliente.relatorios.vendas2', $data);
+        return $pdf->stream();
+    }
 }

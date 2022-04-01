@@ -21,7 +21,7 @@
         @livewireStyles
         @yield("styles")
         @stack('styles')
-        <link href="{{asset('admin/css/app.min.css')}}?v=1.3" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="{{asset('admin/css/app.min.css')}}?v=1.4" id="app-style" rel="stylesheet" type="text/css" />
         @toastr_css
     </head>
 

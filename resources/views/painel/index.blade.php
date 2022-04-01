@@ -100,7 +100,10 @@
                                                                             class="dropdown-item py-2" role="button">Lotes</a>
                                                                         <a name="" id=""
                                                                             href="{{ route('painel.fazenda.reservas.relatorio', ['reserva' => $reserva]) }}"
-                                                                            class="dropdown-item py-2" role="button">Relatório</a>
+                                                                            class="dropdown-item py-2" role="button">Relatório de Visitas</a>
+                                                                        <a name="" id=""
+                                                                            onclick="exibeCarregamento()" href="{{ route('painel.fazenda.reservas.relatorio', ['reserva' => $reserva]) }}"
+                                                                            class="dropdown-item py-2" role="button">Mapa de Compras</a>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -300,7 +303,11 @@
             </div>
         </div>
     </div>
-
+    <div id="modal-carregamento" class="modal-carregamento align-items-center justify-content-center" style="display: none;">
+        <div class="modal-carregamento-caixa">
+            <img src="imagens/gif_relogio.gif" alt="">
+        </div>
+    </div>
     <!-- Modal -->
     @foreach ($reservas as $reserva)
     <div class="modal fade" id="modalEditaReserva{{ $reserva->id }}" tabindex="-1" role="dialog"
@@ -373,6 +380,9 @@
 <script src="{{ asset('admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
+    function exibeCarregamento(){
+        $("#modal-carregamento").css("display", "flex");
+    }
     $(document).ready(function() {
         $('#datatable').DataTable({
             language: datatable_ptbr
