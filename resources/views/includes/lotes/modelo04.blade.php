@@ -58,7 +58,11 @@
                             <b class="">LACT. ATUAL.: </b>
                         </div>
                         <div class="pl-2">
-                            <span class="card-lote-info-text">{{$lote->lact_atual}} KG/Dia</span>
+                            <span class="card-lote-info-text">
+                                @if($lote->lact_atual > 0)
+                                    {{$lote->lact_atual}} KG/Dia
+                                @endif
+                            </span>
                         </div>
                     @else
                         <div class="col-12 text-center">
