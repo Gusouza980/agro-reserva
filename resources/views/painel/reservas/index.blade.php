@@ -76,6 +76,9 @@
                                                 <a name="" id=""
                                                     href="{{ route('painel.fazenda.reservas.relatorio', ['reserva' => $reserva]) }}"
                                                     class="dropdown-item py-2" role="button">Relatório</a>
+                                                <a name="" id=""
+                                                    onclick="exibeCarregamento()" href="{{ route('painel.fazenda.reservas.relatorio', ['reserva' => $reserva]) }}"
+                                                    class="dropdown-item py-2" role="button">Mapa de Compras</a>
                                             </div>
                                         </div>
                                     </td>
