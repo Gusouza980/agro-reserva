@@ -16,6 +16,10 @@
                         <img src="{{asset('imagens/selo-50.png')}}" style="width: 50px; height: 50px;" alt="">
                     </div>
                 @endif
+                <div class="numero-lote">
+                    <h4>LOTE</h4>
+                    <h5 class="mb-2">{{str_pad($lote->numero, 3, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</h5>
+                </div>
             </div>
         </a>
         @if($lote->prioridade)
@@ -23,10 +27,7 @@
                 <img src="{{ asset('imagens/medalha_prioridade.png') }}" width="50" alt="">
             </div>
         @endif
-        <div class="numero-lote">
-            <h4>LOTE</h4>
-            <h5 class="mb-2">{{str_pad($lote->numero, 3, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</h5>
-        </div>
+        
         @if($lote->reserva->multi_fazendas)
             <div class="logo-fazenda">
                 <img src="{{asset($lote->fazenda->logo)}}" style="width: 100%;" alt="">
