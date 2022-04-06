@@ -18,6 +18,11 @@
                 @endif
             </div>
         </a>
+        @if($lote->prioridade)
+            <div class="lote-prioridade">
+                <img src="{{ asset('imagens/medalha_prioridade.png') }}" width="50" alt="">
+            </div>
+        @endif
         <div class="numero-lote">
             <h4>LOTE</h4>
             <h5 class="mb-2">{{str_pad($lote->numero, 3, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</h5>
