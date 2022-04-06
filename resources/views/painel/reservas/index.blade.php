@@ -23,7 +23,7 @@
     <div class="row justify-content-start">
         <div class="col-12 col-lg-10">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="min-height:100vh;">
 
                     <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead>
