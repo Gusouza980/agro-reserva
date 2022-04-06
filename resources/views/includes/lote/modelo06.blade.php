@@ -12,8 +12,10 @@
             <span><b>Botton:</b> {{$lote->botton}}</span><br>
             <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
         @endif
-        <span><b>Nascimento:</b> {{date("d/m/Y", strtotime($lote->nascimento))}}</span><br>
-        <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
+        @if($lote->nascimento)
+            <span><b>Nascimento:</b> {{date("d/m/Y", strtotime($lote->nascimento))}}</span><br>
+            <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
+        @endif
     </div>
     <div class="px-4 px-lg-0 ml-lg-4 flex-grow-1 text-white text-lote-info text-center text-lg-left">
         <span><b>Raça:</b> {{$lote->raca->nome}}</span><br>

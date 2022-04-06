@@ -56,7 +56,9 @@
                         <b class="mr-3">NASC.: </b>
                     </div>
                     <div>
-                        <span class="card-lote-info-text">{{date("d/m/Y", strtotime($lote->nascimento))}}</span>
+                        @if($lote->nascimento)
+                            <span class="card-lote-info-text">{{date("d/m/Y", strtotime($lote->nascimento))}}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
