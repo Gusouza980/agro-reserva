@@ -202,10 +202,7 @@ class SiteController extends Controller
             $popup_institucional = false;
         }
         $lotes = $reserva->lotes->where('ativo', true)->where('membro_pacote', false);
-        $prioridades = $lotes->where("prioridade", true)->sortBy("numero");
-        $lotes = $lotes->where("prioridade", false)->sortBy("numero");
-        $lotes = $prioridades->merge($lotes);
-        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "popup_institucional" => $popup_institucional, "prioridades" => $prioridades, "lotes" => $lotes, "nome_pagina" => "Lotes"]);
+        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "popup_institucional" => $popup_institucional, "lotes" => $lotes, "nome_pagina" => "Lotes"]);
     }
 
     public function lote($slug, Reserva $reserva, Lote $lote){
