@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="row py-1" style="border-bottom: 1px solid black;">
-                    @if($lote->lact_atual)
+                    @if($lote->lact_atual === null)
                         <div>
                             <b class="">LACT. ATUAL.: </b>
                         </div>
