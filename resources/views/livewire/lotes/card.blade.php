@@ -1,6 +1,6 @@
 <div class="row justify-content-center justify-content-lg-between" id="container-lotes" wire:init='setCarregar'>
     @if($livres)
-        @foreach($livres->where("destaque", true) as $lote)
+        @foreach($livres->where("prioridade", true) as $lote)
             @if($lote->pacote)
                 @switch($lote->modelo_exibicao)
                     @case(0)
@@ -45,7 +45,7 @@
                 @endswitch
             @endif
         @endforeach
-        @foreach ($livres->where("destaque", false) as $lote)
+        @foreach ($livres->where("prioridade", false) as $lote)
 
             @if($lote->pacote)
                 @switch($lote->modelo_exibicao)
