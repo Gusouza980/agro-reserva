@@ -157,7 +157,7 @@ class ReservasController extends Controller
         $carrinhos = \App\Models\Carrinho::whereHas("lotes", function($q) use ($reserva){
             $q->whereIn("lotes.id", $reserva->lotes->pluck("id"));
         })->get();
-        $vendas = \App\Models\Venda::whereIn("carrinho_id", $carrinhos->pluck("id"))->get();
+        $vendas = \App\Models\Venda::whereIn("carrinho_id", $carrinhos->pluck("id"))->with("cliente")->get()->sortBy("cliente.nome_dono");
         // dd($vendas);
         $data = [
             "reserva" => $reserva,
