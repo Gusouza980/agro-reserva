@@ -195,10 +195,10 @@
                     <td class="py-0" style="width: 80%; background-color: #15171e; text-align: right; color: white; font-weight: bold; font-size: 15px; border-right: 1px solid white !important;">FATURAMENTO TOTAL DO EVENTO</td>
                     <td class="py-0" style="width: 20%; background-color: #15171e; text-align: right; color: white; font-weight: bold; font-size: 15px;">R$ {{ number_format($vendas->sum("total"), 2, ",", ".") }}</td>
                 </tr>
-                <tr>
+                {{-- <tr>
                     <td class="py-0" style="width: 80%; text-align: right; color: black; font-weight: bold; font-size: 15px;">VALOR MENSAL ESTIMADO DAS PARCELAS</td>
                     <td class="py-0" style="width: 20%; text-align: right; color: black; font-weight: bold; font-size: 15px;">R${{ number_format($vendas->sum("valor_parcela"), 2, ",", ".") }}</td>
-                </tr>
+                </tr> --}}
             </table>
 
             <hr style="margin-top: 40px; border-top: 1px dotted black">
