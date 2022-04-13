@@ -249,6 +249,7 @@
                                     <ul class="sub-menu" aria-expanded="false">
                                         <li><a href="{{ route('painel.vendas') }}" key="t-saas">Consultar</a></li>
                                         <li><a href="{{ route('painel.vendas.lotes') }}" key="t-saas">Lotes</a></li>
+                                        <li><a href="{{ route('painel.compradores') }}" key="t-saas">Compradores</a></li>
                                     </ul>
                                 </li>
                             @endif

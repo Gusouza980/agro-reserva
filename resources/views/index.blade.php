@@ -171,6 +171,11 @@
         </div>
     </div>
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <button onclick="submitAjax()">TESTE</button>
+            </div>
+        </div>
         <div class="row px-0 mx-0 align-items-center" id="div-viva">
             <div class="col-12">
                 <div class="w800 mx-auto">
@@ -289,9 +294,28 @@
 
         rotacao_automatica_desktop();
 
+        function submitAjax(){
+            var serie = 'RBBG';
+            var rgn = '241';
+            $.ajax({
+                type: "POST",
+                url: "https://www.abcz.org.br/produtos-e-servicos/consulta-publica-de-animais-ajax",
+                data: {
+                    serie: serie,
+                    rgn: rgn
+                },
+                success: function(ret) {
+                    console.log(ret);
+                },
+                error: function(ret) {
+                    console.log("Deu muito ruim");
+                    console.log(ret);
+                }
+            });
+        }
+
         function troca_banner(direcao) {
             var atual = $("#container-banner-desktop > img.active");
-            console.log(atual);
             if(!trava) {
                 var atual_num = atual.attr("num");
                 if (direcao == "proximo") {

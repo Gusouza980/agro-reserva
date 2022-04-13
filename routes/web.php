@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\BrowserKit\HttpBrowser;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +41,40 @@ Route::middleware(['popup', 'cookie'])->group(function () {
         return redirect()->route("index")->withCookie($cookie);
     })->name("sair");
     
+
+    Route::get("/scrap", function(){
+        // $browser = new HttpBrowser(HttpClient::create(['verify_peer' => false, 'verify_host' => false]));
+        $client = new Goutte\Client(HttpClient::create(['verify_peer' => false, 'verify_host' => false]));
+        $crawler = $client->request('GET', 'http://www.abcz.org.br/produtos-e-servicos/consulta-publica-de-animais');
+        // $form = $crawler->filter('form')->each(function ($node) {
+        //     echo "FOI" . "<br>";
+        // });
+        $form = $crawler->filter('form')->each(function($node) use ($client, $crawler){
+            // $url = str_replace($node->getBaseHref(), "", $)
+            // dd($node->getBaseHref());
+            if($node->getUri() == "https://www.abcz.org.br/produtos-e-servicos/consulta-publica-de-animais"){
+                $form = $node->form();
+                if($form->has("serie")){
+                    $form->setValues([
+                        "serie" => "RBBG",
+                        "rgn" => "241"
+                    ]);
+                    $button = $crawler->selectButton("Buscar")->first()->button();
+                    dd($button);
+
+                    $crawler = $client->click($button);
+                    dd($crawler);
+                }
+            }
+            // dd($node->getUri());
+        });
+        dd($form);
+        $crawler->filter('input[name=serie]')->each(function ($node) {
+            echo "FOI";
+        });
+
+        echo "FIM";
+    });
     
     // Route::get('/teste', [\App\Http\Controllers\ContaController::class, 'teste']);
     
@@ -243,6 +279,7 @@ Route::middleware(['admin'])->group(function () {
     // ROTAS RELACIONADAS A VENDAS
     Route::match(['get', 'post'],'/painel/visitas', [\App\Http\Controllers\PainelController::class, 'visitas'])->name("painel.visitas");
     Route::match(['get', 'post'],'/painel/vendas', [\App\Http\Controllers\VendasController::class, 'index'])->name("painel.vendas");
+    Route::get('/painel/compradores', [\App\Http\Controllers\VendasController::class, 'compradores'])->name("painel.compradores");
     Route::get('/painel/vendas/lotes', [\App\Http\Controllers\VendasController::class, 'lotes'])->name("painel.vendas.lotes");
     Route::post('/painel/vendas/nova', [\App\Http\Controllers\VendasController::class, 'venda_manual'])->name("painel.vendas.nova");
     Route::get('/painel/venda/{venda}', [\App\Http\Controllers\VendasController::class, 'visualizar'])->name("painel.vendas.visualizar");

@@ -195,4 +195,9 @@ class VendasController extends Controller
         return redirect()->back();
     }
 
+    public function compradores(){
+        $compradores = Cliente::whereHas("compras")->get();
+        return view("painel.vendas.compradores", ["compradores" => $compradores]);
+    }
+
 }
