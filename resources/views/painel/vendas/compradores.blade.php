@@ -52,7 +52,9 @@
                                             
                                         @endphp
                                         <td>{{ implode(", ", $lotes) }}</td>
-                                        <td>{{$compra->carrinho->lotes->first()->fazenda->nome_fazenda}}</td>
+                                        @if($compra->carrinho)
+                                            <td>{{$compra->carrinho->lotes->first()->fazenda->nome_fazenda}}</td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             @endforeach
