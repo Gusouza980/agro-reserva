@@ -47,14 +47,11 @@
                                                     $lotes[] = $lote->numero . $lote->letra . " - " . $lote->nome;
                                                 }
                                             }else{
-                                                echo "ERRO NA VENDA: " . $compra->codigo;
+                                                $lotes = [];
                                             }
-                                            
                                         @endphp
                                         <td>{{ implode(", ", $lotes) }}</td>
-                                        @if($compra->carrinho)
-                                            <td>{{$compra->carrinho->lotes->first()->fazenda->nome_fazenda}}</td>
-                                        @endif
+                                        <td> @if($compra->carrinho){{$compra->carrinho->lotes->first()->fazenda->nome_fazenda}} @endif</td>
                                     </tr>
                                 @endforeach
                             @endforeach
