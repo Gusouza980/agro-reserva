@@ -41,10 +41,15 @@
                                         <td>{{ $comprador->email }}</td>
                                         <td>{{ number_format($compra->total, 2, ",", ".") }}</td>
                                         @php
-                                            $lotes = [];
-                                            foreach($compra->carrinho->lotes as $lote){
-                                                $lotes[] = $lote->numero . $lote->letra . " - " . $lote->nome;
+                                            if($compra->carrinho){
+                                                $lotes = [];
+                                                foreach($compra->carrinho->lotes as $lote){
+                                                    $lotes[] = $lote->numero . $lote->letra . " - " . $lote->nome;
+                                                }
+                                            }else{
+                                                echo "ERRO NA VENDA: " . $compra->codigo;
                                             }
+                                            
                                         @endphp
                                         <td>{{ implode(", ", $lotes) }}</td>
                                         <td>{{$compra->carrinho->lotes->first()->fazenda->nome_fazenda}}</td>
