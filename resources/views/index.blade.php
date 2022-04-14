@@ -171,11 +171,11 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-12">
                 <button onclick="submitAjax()">TESTE</button>
             </div>
-        </div>
+        </div> --}}
         <div class="row px-0 mx-0 align-items-center" id="div-viva">
             <div class="col-12">
                 <div class="w800 mx-auto">
