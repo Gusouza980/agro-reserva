@@ -8,6 +8,13 @@ use App\Models\Lote;
 use App\Models\InteresseLote;
 use App\Models\CurtidaLote;
 use App\Models\Venda;
+use App\Models\Cliente;
+use Illuminate\Support\Facades\Hash;
+use App\Classes\Email;
+use Illuminate\Support\Str;
+use PDF;
+use Illuminate\Support\Facades\Log;
+use \App\Classes\Util;
 
 class ApiController extends Controller
 {
@@ -87,5 +94,137 @@ class ApiController extends Controller
         }
         $venda->save();
         return response()->json($status);
+    }
+
+    public function recuperar_senha(Request $request){
+        $cliente = Cliente::where("email", $request->email)->first();
+        if(!$cliente){
+            session()->flash("erro", "Não existe uma conta com o e-mail informado");
+            return response()->json(["codigo" => 0, "mensagem" => "Não existe uma conta com o e-mail informado"]);
+        }else{
+            $nova_senha = Str::random(6);
+            $cliente->senha = Hash::make($nova_senha);
+            $cliente->save();
+            $file = "Olá <b>" . $cliente->nome . "</b><br>";
+            $file .= "Estamos enviando uma senha para que consiga acessar nosso sistema !<br>";
+            $file .= "Caso deseje, você poderá alterá-la facilmente acessando o seu painel de cliente e clicando no botão 'Alterar Senha'. Após isso, basta informar a senha recebida no email no campo 'Senha Antiga' e a senha desejada no campo 'Nova Senha'.<br>";
+            $file .= "Se tiver mais dúvidas, nossos consultores estão sempre disponíveis !";
+            $file .= "<br><br>Nova Senha: " . $nova_senha;
+            if(Email::enviar($file, "Nova senha", $cliente->email)){
+                session()->flash("sucesso", "Uma senha temporária foi enviada para o e-mail informado no seu cadastro.");
+                return response()->json(["codigo" => 200]);
+            }else{
+                session()->flash("erro", "Não foi possível enviar um e-mail com sua nova senha temporária no momento. Por favor, tente mais tarde.");
+                return response()->json(["codigo" => 1, "mensagem" => "Não foi possível enviar um e-mail com sua nova senha temporária no momento. Por favor, tente mais tarde."]);
+            } 
+        }
+    }
+
+    public function cadastrar(Request $request){
+        $cliente = Cliente::where("email", $request->email)->first();
+
+        if($cliente){
+            session()->flash("erro_email", "O email informado já está sendo utilizado.");
+            return response()->json(["codigo" => 0, "mensagem" => "E-mail informado já está sendo utilizado."]);
+        }
+
+        $cliente = new Cliente;
+        $cliente->email = $request->email;
+        $cliente->nome_dono = $request->nome;
+        $cliente->telefone = $request->telefone;
+        $cliente->senha = Hash::make($request->senha);
+
+        if($request->segmento){
+            $cliente->segmentos = implode(",", $request->segmento);
+        }
+
+        $cliente->finalizado = false;
+        $cliente->save();
+
+        $rdStation = new \RDStation\RDStation($cliente->email);
+        $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+        $rdStation->setLeadData('name', $cliente->nome_dono);
+        $rdStation->setLeadData('identifier', 'precadastro');
+        $rdStation->setLeadData('telefone', $cliente->telefone);
+        $rdStation->setLeadData('cadastro-finalizado', "Não");
+        $rdStation->sendLead();
+
+        $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
+        $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
+        $file = str_replace("{{usuario}}", $cliente->email, $file);
+        $file = str_replace("{{senha}}", $request->senha, $file);
+        Email::enviar($file, "Confirmação de Cadastro", $cliente->email, false);
+
+        return response()->json(["codigo" => 200]);
+    }
+
+    public function cadastro_final(Request $request){
+
+        if($request->pessoa_fisica == "1"){
+            $cliente = Cliente::where("cpf", $request->cpf)->orWhere("documento", $request->cpf)->first();
+            if($cliente){
+                session()->flash("erro_email", "O cpf informado já está sendo utilizado.");
+                return response()->json(["codigo" => 0, "mensagem" => "O CPF informado já está sendo utilizado."]);
+            }
+        }else{
+            $cliente = Cliente::where("cnpj", $request->cnpj)->orWhere("documento", $request->cnpj)->first();
+            if($cliente){
+                session()->flash("erro_email", "O cnpj informado já está sendo utilizado.");
+                return response()->json(["codigo" => 0, "mensagem" => "O CNPJ informado já está sendo utilizado."]);
+            }
+        }
+
+        $cliente = Cliente::find($request->cliente_id);
+
+        $cliente->nome_fazenda = $request->nome_fazenda;
+        $cliente->rg = $request->rg;
+        if($request->pessoa_fisica == "1"){
+            $cliente->pessoa_fisica = true;
+            $cliente->cpf = $request->cpf;
+            $cliente->documento = $request->cpf;
+            $cliente->nascimento = Util::convertDateToString($request->nascimento);
+        }else{
+            $cliente->pessoa_fisica = false;
+            $cliente->cnpj = $request->cnpj;
+            $cliente->documento = $request->cnpj;
+        }
+
+        $cliente->inscricao_produtor_rural = $request->inscricao_produtor_rural;
+        $cliente->cep = $request->cep;
+        $cliente->rua = $request->rua;
+        $cliente->numero = $request->numero;
+        $cliente->complemento = $request->complemento;
+        $cliente->cidade = $request->cidade;
+        $cliente->estado = $request->estado;
+        $cliente->bairro = $request->bairro;
+        $cliente->pais = $request->pais;
+        $cliente->referencia_bancaria_banco = $request->referencia_bancaria_banco;
+        $cliente->referencia_bancaria_gerente = $request->referencia_bancaria_gerente;
+        $cliente->referencia_bancaria_tel = $request->referencia_bancaria_tel;
+        $cliente->referencia_comercial1 = $request->referencia_comercial1;
+        $cliente->referencia_comercial1_tel = $request->referencia_comercial1_tel;
+        $cliente->referencia_comercial2 = $request->referencia_comercial2;
+        $cliente->referencia_comercial2_tel = $request->referencia_comercial2_tel;
+        $cliente->finalizado = true;
+        
+        $cliente->save();
+        
+        return response()->json(["codigo" => 200]);
+
+    }
+
+    public function logar(Request $request){
+        $usuario = Cliente::where("email", $request->email)->first();
+        if($usuario){
+            if(Hash::check($request->senha, $usuario->senha)){
+                $usuario->ultimo_acesso = date('Y-m-d');
+                $usuario->save();
+                return response()->json(["codigo" => 200]);
+            }else{
+                return response()->json(["codigo" => 0, "mensagem" => "Senha incorreta"]);
+            }
+        }else{
+            return response()->json(["codigo" => 1, "mensagem" => "E-mail incorreto"]);
+        }      
     }
 }

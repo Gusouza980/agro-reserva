@@ -51,7 +51,7 @@
                 <div class="row pb-5 justify-content-center" id="row-cards-fazendas" style="position: relative; z-index: 1;">
                     @if($configuracao->mostrar_lotes_destaque && $lotes_destaque)
                         <div class="col-12 mt-5 text-center text-header-index d-none d-lg-block">
-                            <h5>Animais em Destaque</h5>
+                            <h5>{!! __('messages.home.animais_em_destaque') !!}</h5>
                         </div>
                         @livewire("slide-lotes-destaque") 
 
@@ -60,7 +60,7 @@
                     
                     
                     <div class="col-12 text-center text-header-index d-none d-lg-block mt-5">
-                        <h5>Vitrine de reservas</h5>
+                        <h5>{{ __('messages.home.vitrine_de_reservas') }}</h5>
                     </div>
                     @foreach ($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'asc']]) as $reserva)
                         <div class="px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
@@ -155,7 +155,7 @@
                         <i class="fas fa-angle-double-down fa-md"></i>
                     </div>
                     <div class="text-center text-white text-header-index ml-4">
-                        <h4>Conheça a Agro Reserva</h4>
+                        <h4>{{ __('messages.home.conheca_a_agroreserva') }}</h4>
                     </div>
                 </div>
             {{-- </div> --}}
@@ -181,10 +181,10 @@
                 <div class="w800 mx-auto">
                     <div class="row justify-content-center align-items-center py-5 mt-5 mt-lg-0 mx-0 px-0">
                         <div class="text-viva">
-                            <h1>VIVA</h1>
+                            <h1>{{ __('messages.home.viva') }}</h1>
                         </div>
                         <div class="ml-3 text-viva text-center text-lg-left">
-                            <h2>a nova era da<br>comercialização<br>de gado.</h2>
+                            <h2>{!! __('messages.home.texto_viva') !!}</h2>
                         </div>
                     </div>
                     <div class="row justify-content-center my-3 py-5">
@@ -200,9 +200,7 @@
                 <div class="w1200 mx-auto">
                     <div class="row">
                         <div class="col-12 text-viva text-center pt-3 pb-lg-5 mb-lg-5">
-                            <span><b>Somos a Agro Reserva, a evolução do seu modelo de negócios dentro da pecuária.
-                                    Modernidade sem perder a tradição, facilidade com todas as garantias, diferente de tudo
-                                    que você já viu.</b></span>
+                            <span><b>{!! __('messages.home.texto_somos') !!}</b></span>
                         </div>
                     </div>
                 </div>
@@ -215,16 +213,13 @@
                 <div class="w1200 mx-auto">
                     <div class="row align-items-center justify-content-center">
                         <div class="text-digital text-left text-lg-right">
-                            <h1>100% Digital</h1>
-                            <h2>100% Pecuária</h2>
-                            <h3>100% Com você</h3>
+                            <h1>100% {!! __('messages.home.digital') !!}</h1>
+                            <h2>100% {!! __('messages.home.pecuaria') !!}</h2>
+                            <h3>100% {!! __('messages.home.com_voce') !!}</h3>
                         </div>
                         <div class="px-3 px-lg-0 ml-lg-4 text-digital text-center text-lg-left">
                             <span>
-                                Estamos ao seu lado em cada etapa de compra e venda.<br>A agilidade da tecnologia digital
-                                amparada por um atendimento<br>próximo, humanizado e completo. Uma caminhada onde você
-                                nunca<br>estará sozinho, novos rumos, novas experiências,<br>novas conquistas
-                                compartilhadas. Vem com a gente!
+                                {!! __('messages.home.texto_ao_seu_lado') !!}
                             </span>
                         </div>
                     </div>
@@ -239,7 +234,7 @@
                     <div class="row">
                         <div class="col-12 text-cta-comissao text-center py-4 py-lg-0"
                             style="background: url({{ asset('imagens/brush-laranja.png') }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
-                            <h1>COMPRE SEM COMISSÃO</h1>
+                            <h1>{!! __('messages.gerais.compre_sem_comissao') !!}</h1>
                         </div>
                     </div>
                     {{-- <div class="row mt-3">

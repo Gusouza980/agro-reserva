@@ -1,0 +1,68 @@
+<?php
+
+return [
+    'navbar' => [
+        'inicio' => 'Comienzo',
+        'blog' => 'Blog',
+        'quem_somos' => 'Quienes somos',
+        'reservas_finalizadas' => 'Reservas Finalizadas',
+        'cadastre_se' => 'Registro',
+        'entrar' => 'Iniciar sesión',
+        'quero_vender' => 'Quiero Vender',
+        'finalizar_cadastro' => 'Finalizar el Registro'
+    ],
+    'gerais' => [
+        'compre_sem_comissao' => "COMPRAR SIN COMISIÓN",
+    ],
+    'home' => [
+        "mostrar_reserva" => 'Mostrar Reserva',
+        "aguarde" => 'Esperar',
+        "animais_em_destaque" => "Animales Destacados",
+        "vitrine_de_reservas" => 'Escaparate de Reservas',
+        'conheca_a_agroreserva' => 'Descubre la Agroreserva',
+        'viva' => 'VIVA',
+        'texto_viva' => 'la nueva era de la<br>comercialización<br>del ganado.',
+        'texto_somos' => 'Somos Agro Reserva, la evolución de su modelo de negocio dentro de la ganadería. Modernidad sin perder la tradición, facilidad con todas las garantías, diferente a todo lo que hayas visto.',
+        'digital' => "Digital",
+        'pecuaria' => "Ganado",
+        'com_voce' => "Contigo",
+        'texto_ao_seu_lado' => "Estamos a tu lado en cada paso de la compra-venta.<br>La agilidad de la tecnología digital apoyada en un<br>servicio cercano, humanizado y completo. Un viaje<br>en el que nunca estarás solo, nuevas direcciones,<br>nuevas experiencias, nuevos logros compartidos.<br>¡Ven con nosotros!",
+    ],
+    'botoes' => [
+        'compre_agora' => 'Compre ahora'
+    ],
+    "cadastro" => [
+        "vamos_criar_acesso" => "Creamos tu acceso",
+        "nome_completo" => "Nombre completo",
+        "telefone" => "Teléfono",
+        "senha_acesso" => "Crear una contraseña de acceso",
+        "segmento_interesse" => "Segmento de interés",
+        "leite" => "Leche",
+        "corte" => "Cortar",
+        "ja_tem_conta" => "¿Ya tienes una cuenta? <a href='" . route('login') . "'><u>Haga clic aquí</u></a>",
+        "cadastrar" => "Registrar",
+        "pessoa_fisica" => "Persona física",
+        "pessoa_juridica" => "Persona jurídica",
+        "cadastro_final_texto1" => "Si tiene alguna pregunta durante el registro, llame al Brete! Siempre hay alguien aquí dispuesto a ayudarte.",
+        "nascimento" => "Fecha de nacimiento",
+        "nome_fazenda" => "Nombre de la granja",
+        "inscricao_produtor_rural" => "Registro de Productores Rurales",
+        "cidade" => "Ciudad",
+        "estado" => "Estado Federativo",
+        "rua" => "Calle",
+        "numero" => "Número",
+        "bairro" => "Vecindario",
+        "complemento" => "Complementar",
+        "pais" => "País",
+        "referencia_comercial" => "Referencia Comercial",
+        "referencia_bancaria" => "Referencia Bancaria",
+        "gerente" => "Gerente",
+        "finalizar" => "Finalizar",
+        "cadastro_inicial_texto_confirmacao" => '<b>Su cuenta ha sido creada con éxito</b>. Pero recuerda: para completar la compra, tu registro <b>debe estar completo y aprobado</b> por nuestro equipo. ¡Rápido, práctico y seguro! ¿Vamos a completar ahora?',
+        "completar_agora" => "Complete ahora",
+        "voltar_site" => "Volver",
+        "cadastro_final_texto_confirmacao" => '¡Oye! <b>Su registro completo ha sido enviado</b>. Tan pronto como nuestro equipo de revisión lo apruebe, recibirá un correo electrónico y podrá comprar con nosotros.'
+    ]
+];
+
+?>

@@ -111,6 +111,12 @@
     </a> --}}
     <div class="container-fluid bg-preto" id="container-navbar">
         <div class="container">
+            <div class="row pt-3 d-lg-none">
+                <div class="col-12 text-white text-right">
+                    <img onclick="window.location.href = '{{ route('lang.change', [ 'lang' => 'pt_BR']) }}'" class="cpointer @if(App::currentLocale() != "pt_BR") linguagem-inativa @endif" src="{{ asset('imagens/bandeira_brasil.svg') }}" title="Português Brasil" width="20" alt="">
+                    <img onclick="window.location.href = '{{ route('lang.change', [ 'lang' => 'es']) }}'" class="cpointer @if(App::currentLocale() != "es") linguagem-inativa @endif ml-2" src="{{ asset('imagens/bandeira_espanha.svg') }}" title="Espanhol" width="20" alt="">
+                </div>
+            </div>
             <nav class="navbar align-items-center d-lg-none navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="{{ route('index') }}"><img
                         src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Agroreserva"></a>
@@ -124,30 +130,28 @@
                     <ul class="navbar-nav px-5 text-center">
                         @if (session()->get('cliente'))
                             <li class="nav-item active mt-4">
-                                <a class="nav-link" href="{{ route('index') }}">Início</span></a>
+                                <a class="nav-link" href="{{ route('index') }}">{{ __('messages.navbar.inicio') }}</span></a>
                             </li>
                             <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{ route('blog') }}">Blog</span></a>
+                                <a class="nav-link" href="{{ route('blog') }}">{{ __('messages.navbar.blog') }}</span></a>
                             </li>
                             <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{ route('sobre') }}">Quem somos</span></a>
+                                <a class="nav-link" href="{{ route('sobre') }}">{{ __('messages.navbar.quem_somos') }}</span></a>
                             </li>
                             @if(!isset(session()->get("cliente")["vendedor"]) || !session()->get("cliente")["vendedor"])
                                 <li class="nav-item active mt-2">
-                                    <a class="nav-link" href="{{ route('cadastro.vendedor') }}">Quero vender</span></a>
+                                    <a class="nav-link" href="{{ route('cadastro.vendedor') }}">{{ __('messages.navbar.quero_vender') }}</span></a>
                                 </li>
                             @endif
                             <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{ route('reservas.finalizadas') }}">Reservas
-                                    Finalizadas</span></a>
+                                <a class="nav-link" href="{{ route('reservas.finalizadas') }}">{{ __('messages.navbar.reservas_finalizadas') }}</span></a>
                             </li>
                             {{-- <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
                             </li> --}}
                             @if (!session()->get('cliente')['finalizado'])
                                 <li class="nav-item active mt-2" id="finalizar-cadastro-mobile">
-                                    <a class="nav-link" href="{{ route('cadastro.finalizar') }}">Finalizar
-                                        Cadastro</span></a>
+                                    <a class="nav-link" href="{{ route('cadastro.finalizar') }}">{{ __('messages.navbar.finalizar_cadastro') }}</a>
                                 </li>
                             @endif
 
@@ -161,22 +165,21 @@
                             </li>
                         @else
                             <li class="nav-item active mt-4">
-                                <a class="nav-link" href="{{ route('index') }}">Início</span></a>
+                                <a class="nav-link" href="{{ route('index') }}">{{ __('messages.navbar.inicio') }}</span></a>
                             </li>
                             <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{ route('blog') }}">Blog</span></a>
+                                <a class="nav-link" href="{{ route('blog') }}">{{ __('messages.navbar.blog') }}</span></a>
                             </li>
                             <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{ route('sobre') }}">Quem somos</span></a>
+                                <a class="nav-link" href="{{ route('sobre') }}">{{ __('messages.navbar.quem_somos') }}</span></a>
                             </li>
                             <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{ route('reservas.finalizadas') }}">Reservas
-                                    Finalizadas</span></a>
+                                <a class="nav-link" href="{{ route('reservas.finalizadas') }}">{{ __('messages.navbar.reservas_finalizadas') }}</span></a>
                             </li>
 
                             @if(!isset(session()->get("cliente")["vendedor"]) || !session()->get("cliente")["vendedor"])
                                 <li class="nav-item active mt-2">
-                                    <a class="nav-link" href="{{ route('cadastro.vendedor') }}">Quero vender</span></a>
+                                    <a class="nav-link" href="{{ route('cadastro.vendedor') }}">{{ __('messages.navbar.quero_vender') }}</span></a>
                                 </li>
                             @endif
                             {{-- <li class="nav-item active mt-2">
@@ -184,10 +187,10 @@
                             </li> --}}
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{ route('cadastro') }}"
-                                    id="cadastre-mobile">Cadastre-se</span></a>
+                                    id="cadastre-mobile">{{ __('messages.navbar.cadastre_se') }}</a>
                             </li>
                             <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{ route('login') }}">Entrar</span></a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('messages.navbar.entrar') }}</a>
                             </li>
                         @endif
                         @if (session()->get('carrinho'))
@@ -200,20 +203,25 @@
                 </div>
 
             </nav>
-            <div class="row d-none d-lg-flex py-3">
+            <div class="row pt-3 d-none d-lg-flex">
+                <div class="col-12 text-white text-right">
+                    <img onclick="window.location.href = '{{ route('lang.change', [ 'lang' => 'pt_BR']) }}'" class="cpointer @if(App::currentLocale() != "pt_BR") linguagem-inativa @endif" src="{{ asset('imagens/bandeira_brasil.svg') }}" title="Português Brasil" width="20" alt="">
+                    <img onclick="window.location.href = '{{ route('lang.change', [ 'lang' => 'es']) }}'" class="cpointer @if(App::currentLocale() != "es") linguagem-inativa @endif ml-2" src="{{ asset('imagens/bandeira_espanha.svg') }}" title="Espanhol" width="20" alt="">
+                </div>
+            </div>
+            <div class="row d-none d-lg-flex pb-3">
                 <div class="col-lg-3">
                     <a class="navbar-brand" href="{{ route('index') }}"><img
                             src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Agroreserva"></a>
                 </div>
                 <div class="col-lg-6 d-flex text-white justify-content-start align-items-center">
                     {{-- <a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a> --}}
-                    <span class="text-nav-header"><a href="{{ route('index') }}">Início</a></span>
-                    <span class="text-nav-header ml-4"><a href="{{ route('blog') }}">Blog</a></span>
-                    <span class="text-nav-header ml-4"><a href="{{ route('sobre') }}">Quem somos</a></span>
-                    <span class="text-nav-header ml-4"><a href="{{ route('reservas.finalizadas') }}">Reservas
-                            Finalizadas</a></span>
+                    <span class="text-nav-header"><a href="{{ route('index') }}">{{ __('messages.navbar.inicio') }}</a></span>
+                    <span class="text-nav-header ml-4"><a href="{{ route('blog') }}">{{ __('messages.navbar.blog') }}</a></span>
+                    <span class="text-nav-header ml-4"><a href="{{ route('sobre') }}">{{ __('messages.navbar.quem_somos') }}</a></span>
+                    <span class="text-nav-header ml-4"><a href="{{ route('reservas.finalizadas') }}">{{ __('messages.navbar.reservas_finalizadas') }}</a></span>
                     @if(!session()->get('cliente') || (!isset(session()->get("cliente")["vendedor"]) || !session()->get("cliente")["vendedor"]))
-                        <span class="text-nav-header ml-4"><a href="{{ route('cadastro.vendedor') }}">Quero vender</span>
+                        <span class="text-nav-header ml-4"><a href="{{ route('cadastro.vendedor') }}">{{ __('messages.navbar.quero_vender') }}</a></span>
                     @endif
                     {{-- <span  class="text-nav-header"><a href="{{route('cadastro')}}">Como comprar</a></span> --}}
                 </div>
@@ -224,27 +232,26 @@
                         {{-- Bem vindo @if (isset(session()->get('cliente')['nome_dono'])), {{explode(" ", session()->get("cliente")["nome_dono"])[0]}} @endif --}}
                         @if (!session()->get('cliente')['finalizado'])
                             <span class="ml-3 text-nav-header"><a href="{{ route('cadastro.finalizar') }}"
-                                    id="finalizar-cadastro"><span
-                                        style="border-bottom: 2px solid #FEB000;">Fin</span>alizar
-                                    Cadastro</a></span>
+                                    id="finalizar-cadastro">{{ __('messages.navbar.finalizar_cadastro') }}</a></span>
                         @endif
-                        <span class="cpointer" data-toggle="modal" data-target="#modalPesquisa"><i class="fas fa-search"></i></span>
-                        <span class="ml-3 text-nav-header"><a href="{{ route('conta.index') }}"><i class="fas fa-user"></i></a></span> </span>
+                        {{-- <span class="cpointer" data-toggle="modal" data-target="#modalPesquisa"><i class="fas fa-search"></i></span> --}}
+                        <span class="ml-3 text-nav-header"><a href="{{ route('conta.index') }}"><i class="fas fa-user"></i></a></span>
                         @if (session()->get('cliente'))
                             <span class="ml-3 text-nav-header"><a class="text-nav-header"
                                     href="{{ route('sair') }}"><i class="fas fa-sign-out-alt"></i></a></span>
                         @endif
                         @if (session()->get('carrinho'))
-                            <a class="ml-4" href="{{ route('carrinho') }}"><i
-                                    class="fas fa-shopping-cart text-white cart-icone"></i></span></a>
+                            <a class="ml-3" href="{{ route('carrinho') }}"><i
+                                    class="fas fa-shopping-cart text-white cart-icone"></i></a>
                         @endif
                     @else
-                        <a href="{{ route('cadastro') }}"><span style="border-bottom: 2px solid #FEB000;"
-                                id="cadastre">Cad</span>astre-se</a>
-                        <a class="ml-4" href="{{ route('login') }}"><span
-                                style="border-bottom: 2px solid #FEB000;">Ent</span>rar</a>
+                        <span class="text-nav-header">
+                            <a href="{{ route('cadastro') }}">{{ __('messages.navbar.cadastre_se') }}</a>
+                        </span>
+                        <span class="text-nav-header">
+                            <a class="ml-4" href="{{ route('login') }}">{{ __('messages.navbar.entrar') }}</a>
+                        </span>
                     @endif
-                    </span>
                 </div>
             </div>
         </div>
@@ -298,54 +305,38 @@
                             <div class="row">
                                 <div class="col-12 text-nav-footer text-center text-lg-left">
                                     <a class="" href=" {{ route('index') }}"><span><span
-                                                style="border-bottom: 2px solid #FEB000;">Iní</span>cio</span> </a>
+                                                style="border-bottom: 2px solid #FEB000;">{{ __('messages.navbar.inicio') }}</a>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 text-nav-footer text-center text-lg-left">
                                     <a class="" href=" {{ route('blog') }}"><span><span
-                                                style="border-bottom: 2px solid #FEB000;">Blo</span>g</span> </a>
+                                                style="border-bottom: 2px solid #FEB000;">{{ __('messages.navbar.blog') }} </a>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col-12 text-nav-footer text-center text-lg-left">
                                     <a class="" href=" {{ route('sobre') }}"><span><span
-                                                style="border-bottom: 2px solid #FEB000;">Que</span>m somos</span> </a>
+                                                style="border-bottom: 2px solid #FEB000;">{{ __('messages.navbar.quem_somos') }} </a>
                                 </div>
                             </div>
-                            {{-- <div class="row mt-2">
-                                <div class="col-12 text-nav-footer text-center text-lg-left">
-                                    <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Com</span>o Comprar</span> </a>
-                                </div>
-                            </div>
-                            <div class="row mt-2">
-                                <div class="col-12 text-nav-footer text-center text-lg-left">
-                                    <a class="" href="{{route('cadastro')}}"><span><span style="border-bottom: 2px solid #FEB000;">Clu</span>be de Benefícios</span> </a>
-                                </div>
-                            </div> --}}
                             @if (!session()->get('cliente'))
                                 <div class="row mt-2">
                                     <div class="col-12 text-nav-footer text-center text-lg-left">
-                                        <a class="" href=" {{ route('cadastro') }}"><span><span
-                                                    style="border-bottom: 2px solid #FEB000;"
-                                                    id="cadastre-rodape">Cad</span>astre-se</span>
+                                        <a class="" href=" {{ route('cadastro') }}"><span>{{ __('messages.navbar.cadastre_se') }}</span>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-12 text-nav-footer text-center text-lg-left">
-                                        <a class="" href=" {{ route('login') }}"><span><span
-                                                    style="border-bottom: 2px solid #FEB000;">Ent</span>rar</span> </a>
+                                        <a class="" href=" {{ route('login') }}"><span>{{ __('messages.navbar.entrar') }}</span> </a>
                                     </div>
                                 </div>
                             @else
                                 @if (!session()->get('cliente')['finalizado'])
                                     <div class="row mt-2">
                                         <div class="col-12 text-nav-footer text-center text-lg-left">
-                                            <a class="" href=" {{ route('cadastro.finalizar') }}"><span><span
-                                                        style="border-bottom: 2px solid #FEB000;"
-                                                        id="finalizar-cadastro-rodape">Fin</span>alizar
-                                                    Cadastro</span> </a>
+                                            <a class="" id="finalizar-cadastro-rodape" href=" {{ route('cadastro.finalizar') }}">{{ __('messages.navbar.finalizar_cadastro') }}</a>
                                         </div>
                                     </div>
                                 @endif

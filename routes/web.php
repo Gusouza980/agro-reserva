@@ -104,7 +104,13 @@ Route::middleware(['popup', 'cookie'])->group(function () {
     Route::get('/quem-somos', [\App\Http\Controllers\SiteController::class, 'sobre'])->name("sobre");
     Route::get('/pre_to_main', [\App\Http\Controllers\ClienteController::class, 'pre_to_main']);
     Route::post('/senha/recuperar', [\App\Http\Controllers\ContaController::class, 'recuperar_senha'])->name("conta.senha.recuperar");
-    
+
+    // ROTAS DE API
+    Route::post('/api/senha/recuperar', [\App\Http\Controllers\ApiController::class, 'recuperar_senha'])->name("api.conta.senha.recuperar");
+    Route::post('/api/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastrar'])->name("cadastro.salvar");
+    Route::post('/api/cadastro/finalizar/salvar', [\App\Http\Controllers\ClienteController::class, 'cadastro_final'])->name("cadastro.finalizar.salvar");
+    Route::post('/api/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
+
     //ROTAS DE RESERVAS ANTIGAS
     Route::get('/reservas/finalizadas', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
     // Route::get('/reservas/finalizadas/{reserva}/{fazenda}', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
@@ -145,9 +151,8 @@ Route::middleware(['popup', 'cookie'])->group(function () {
     Route::get('/facebook/autenticar', [\App\Http\Controllers\FacebookController::class, 'autenticar'])->name("facebook.autenticar");
     Route::get('/facebook/callback', [\App\Http\Controllers\FacebookController::class, 'callback'])->name("facebook.callback");
     
-    
-    
-    
+    Route::get('lang/change/{lang}', [\App\Http\Controllers\LangController::class, 'trocar'])->name('lang.change');
+
 });
 
 Route::get('/painel/login', [\App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");

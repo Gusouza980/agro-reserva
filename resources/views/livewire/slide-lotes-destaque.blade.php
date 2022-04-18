@@ -8,7 +8,7 @@
                         <div class="caixa-lote-home-imagem"
                             style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 330px; height: 250px; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464; box-shadow: 0px 15px 22px rgba(0,0,0,0.6);">
                             <div class="text-center justify-content-center align-items-center lote-home-hover" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 50px; background-color: rgba(232,82,29,0.85); display:none; ">
-                                <p style="margin-top: 12px;">Compre Agora</p>
+                                <p style="margin-top: 12px;">{{ __('messages.botoes.compre_agora') }}</p>
                             </div>
                         </div>
                         <div class="row px-4 mt-3 align-items-center justify-content-start">

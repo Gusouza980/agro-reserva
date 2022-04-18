@@ -6,7 +6,7 @@
         @if (!session()->get('cliente'))
             <div class="row justify-content-center mt-5">
                 <div class="col-10 col-md-6 col-lg-4 text-center text-white">
-                    <h2>Vamos criar seu acesso</h2>
+                    <h2>{{ __('messages.cadastro.vamos_criar_acesso') }}</h2>
                 </div>
             </div>
         @endif
@@ -18,40 +18,39 @@
                             @csrf
                             <input type="hidden" name="anterior" value="{{ $anterior }}">
                             <div class="form-group col-12 input-cadastro">
-                                <label for="nome">Nome Completo</label>
-                                <input type="text" class="form-control" name="nome" id="nome" aria-describedby="" required
-                                    placeholder="Informe seu nome completo">
+                                <label for="nome">{{ __('messages.cadastro.nome_completo') }}</label>
+                                <input type="text" class="form-control" name="nome" id="nome" aria-describedby="" required>
                             </div>
                             <div class="form-group col-12 input-cadastro">
                                 <label for="email">E-mail</label>
                                 <input type="email" class="form-control" name="email" id="email" aria-describedby=""
-                                    required placeholder="exemplo@exemplo.com">
+                                    required>
                             </div>
                             <div class="form-group col-12 input-cadastro">
-                                <label for="telefone">Telefone</label>
+                                <label for="telefone">{{ __('messages.cadastro.telefone') }}</label>
                                 <input type="text" class="form-control" name="telefone" id="telefone" aria-describedby=""
                                     required placeholder="(99) 99999-9999">
                             </div>
                  
                             <div class="form-group col-12 input-cadastro">
-                                <label for="senha">Crie uma senha de acesso</label>
+                                <label for="senha">{{ __('messages.cadastro.senha_acesso') }}</label>
                                 <input type="password" class="form-control" name="senha" id="senha" aria-describedby=""
                                     required placeholder="******">
                             </div>
 
                             <div class="form-group col-12 input-cadastro">
-                                <label for="telefone">Segmento de Interesse</label>
+                                <label for="telefone">{{ __('messages.cadastro.segmento_interesse') }}</label>
                                 <div class="form-group input-cadastro d-flex justify-content-start">
                                     <div class="mx-3">
                                         <div class="form-check form-check-inline mt-2">
                                             <input class="form-check-input-radio" type="checkbox" name="segmento[]" value="Leite">
-                                            <label class="form-check-label ml-2 label-branca">Leite</label>
+                                            <label class="form-check-label ml-2 label-branca">{{ __('messages.cadastro.leite') }}</label>
                                         </div>
                                     </div>
                                     <div class="mx-3">
                                         <div class="form-check form-check-inline mt-2">
                                             <input class="form-check-input-radio" type="checkbox" name="segmento[]" value="Corte">
-                                            <label class="form-check-label ml-2 label-branca">Corte</label>
+                                            <label class="form-check-label ml-2 label-branca">{{ __('messages.cadastro.corte') }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -69,10 +68,10 @@
                         @endforeach --}}
                             <div class="form-group col-12 text-center text-lg-right">
                                 <button type="submit" class="btn btn-vermelho py-2" role="button"
-                                    id="confirmar-precadastro">Cadastrar</button>
+                                    id="confirmar-precadastro">{{ __('messages.cadastro.cadastrar') }}</button>
                             </div>
                             <div class="col-12 text-center text-lg-left text-white form-cadastro0">
-                                <span>Já tem uma conta? <a href="{{ route('login') }}"><u>Clique aqui</u></a></span>
+                                <span>{!! __('messages.cadastro.ja_tem_conta') !!}</span>
                             </div>
                         </form>
                     @else
@@ -86,21 +85,16 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-12 text-center modal-precadastro-text">
-                                        <h4 style="line-height: 35px; letter-spacing: 1px;"><b>Sua conta foi
-                                                criada com sucesso</b>. Mas lembre-se: para finalizar a compra, seu cadastro
-                                            <b>precisa estar completo e aprovado</b> pelo nosso time. Rápido, prático e
-                                            seguro! "Bora" preencher agora?
-                                        </h4>
+                                        <h4 style="line-height: 35px; letter-spacing: 1px;">{!! __('messages.cadastro.cadastro_inicial_texto_confirmacao') !!}</h4>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <div class="text-center" id="botoes-finalizar">
                                             <a href="{{ route('cadastro.finalizar') }}"><button type="submit"
-                                                    class="btn-vermelho px-4 py-2 mt-3">Completar Agora</button></a>
+                                                    class="btn-vermelho px-4 py-2 mt-3">{{ __('messages.cadastro.completar_agora') }}</button></a>
                                             <a @if (session()->get('pagina_retorno')) href="{{ session()->get('pagina_retorno') }}" @else href="/"  @endif><button type="submit"
-                                                    class="btn-vermelho-outline-2 px-4 py-2 ml-md-3 mt-3">Voltar ao
-                                                    Site</button></a>
+                                                    class="btn-vermelho-outline-2 px-4 py-2 ml-md-3 mt-3">{{ __('messages.cadastro.voltar_site') }}</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +106,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    {{-- <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="width: 100%; max-width: 500px;" role="document">
             <div class="modal-content" style="padding: 0px 0 30px 0; border-radius: 20px;">
@@ -153,7 +147,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 @endsection
 
