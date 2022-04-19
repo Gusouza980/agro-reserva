@@ -334,21 +334,21 @@ if (session()->get('cliente')) {
                                         <div class="mb-3 icones-info">
                                             <img src="{{ asset('imagens/icon_frete.png') }}" height="50" alt="">
                                         </div>
-                                        <span>Frete</span>
+                                        <span>{!! __('messages.lote.frete') !!}</span>
                                     </div>
                                     <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
                                         data-target="#modalPagamento">
                                         <div class="mb-3 icones-info">
                                             <img src="{{ asset('imagens/icon_pagamento.png') }}" height="50" alt="">
                                         </div>
-                                        <span>Pagamentos<br>e Condições</span>
+                                        <span>{!! __('messages.lote.pagamentos_condicoes') !!}</span>
                                     </div>
                                     <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer"
                                         data-toggle="modal" data-target="#modalSeguranca">
                                         <div class="mb-3 icones-info">
                                             <img src="{{ asset('imagens/icon_seguranca.png') }}" height="50" alt="">
                                         </div>
-                                        <span>Segurança</span>
+                                        <span>{!! __('messages.lote.seguranca') !!}</span>
                                     </div>
                                 </div>
                                 <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
@@ -364,14 +364,14 @@ if (session()->get('cliente')) {
                                         <div class="mx-auto mb-3 icones-info">
                                             <img src="{{ asset('imagens/icon_pagamento.png') }}" height="80" alt="">
                                         </div>
-                                        <span>{!! __('messages.lote.pagamentos_condicoes') !!}:</span>
+                                        <span>{!! __('messages.lote.pagamentos_condicoes') !!}</span>
                                     </div>
                                     <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer"
                                         data-toggle="modal" data-target="#modalSeguranca">
                                         <div class="mx-auto mb-3 icones-info">
                                             <img src="{{ asset('imagens/icon_seguranca.png') }}" height="80" alt="">
                                         </div>
-                                        <span>{{ __('messages.lote.seguranca') }}:</span>
+                                        <span>{{ __('messages.lote.seguranca') }}</span>
                                     </div>
                                 </div>
                             </div>

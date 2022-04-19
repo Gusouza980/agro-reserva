@@ -2265,7 +2265,7 @@ label {
 
 .barra-lote-fixa{
     width: 100%;
-    background-color: black;
+    background-color: #15171e;
     /* height: 100px; */
     position: fixed;
     top: 110px;
@@ -2275,10 +2275,10 @@ label {
 @media(max-width:768px){
     .barra-lote-fixa{
         width: 100%;
-        background-color: black;
+        background-color: #15171e;
         /* height: 100px; */
         position: fixed;
-        top: 70px;
+        top: 100px;
         z-index: 10;
     }
 }
