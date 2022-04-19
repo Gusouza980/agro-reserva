@@ -146,9 +146,6 @@
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{ route('reservas.finalizadas') }}">{{ __('messages.navbar.reservas_finalizadas') }}</span></a>
                             </li>
-                            {{-- <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
-                            </li> --}}
                             @if (!session()->get('cliente')['finalizado'])
                                 <li class="nav-item active mt-2" id="finalizar-cadastro-mobile">
                                     <a class="nav-link" href="{{ route('cadastro.finalizar') }}">{{ __('messages.navbar.finalizar_cadastro') }}</a>
@@ -182,9 +179,6 @@
                                     <a class="nav-link" href="{{ route('cadastro.vendedor') }}">{{ __('messages.navbar.quero_vender') }}</span></a>
                                 </li>
                             @endif
-                            {{-- <li class="nav-item active mt-2">
-                                <a class="nav-link" href="{{route('conta.index')}}">Como comprar</span></a>
-                            </li> --}}
                             <li class="nav-item active mt-2">
                                 <a class="nav-link" href="{{ route('cadastro') }}"
                                     id="cadastre-mobile">{{ __('messages.navbar.cadastre_se') }}</a>

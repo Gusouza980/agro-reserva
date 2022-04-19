@@ -76,9 +76,9 @@
                 <div class="row">
                     <div class="col-12 card-lote-botao text-center">
                         @if(!isset($finalizadas))
-                            <a class="card-lote-botao" href="{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}"><button class="px-3 py-1">VER MAIS</button></a>
+                            <a class="card-lote-botao" href="{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}"><button class="px-3 py-1">{{ __('messages.lotes.ver_mais') }}</button></a>
                         @else
-                            <a class="card-lote-botao" href="{{route('reservas.finalizadas.fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $reserva])}}"><button class="px-3 py-1">VER MAIS</button></a>
+                            <a class="card-lote-botao" href="{{route('reservas.finalizadas.fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $reserva])}}"><button class="px-3 py-1">{{ __('messages.lotes.ver_mais') }}</button></a>
                         @endif
                     </div>
                 </div>

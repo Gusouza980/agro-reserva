@@ -10,7 +10,7 @@
 @endsection
 
 @section('conteudo')
-    <div class="" style="background-color: #15171e; background-blend-mode: darken; @if($reserva->fazenda->fundo_conheca_lotes) background: rgba(0, 0, 0, .65) url(/{{ $reserva->fazenda->fundo_conheca_lotes }}) @endif; background-size: cover; background-position: center;"
+    <div class="container-fluid" style="background-color: #15171e; background-blend-mode: darken; @if($reserva->fazenda->fundo_conheca_lotes) background: rgba(0, 0, 0, .65) url(/{{ $reserva->fazenda->fundo_conheca_lotes }}) @endif; background-size: cover; background-position: center;"
         <div class="pb-5" style="background-color: rgba(0,0,0,0.5);">
             <div class="container-fluid py-5">
                 <div class="container">
@@ -53,58 +53,56 @@
             <div class="container-fluid py-5">
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-8 text-center text-cadastro-lotes">
-                        <h1>Conheça nossos lotes</h1>
+                        <h1>{{ __('messages.lotes.conheca_nossos_lotes') }}</h1>
                     </div>
                 </div>
             </div>
             <div class="w1200 mx-auto pb-4">
                 <div class="row">
                     <div class="col-12 text-center text-cta-comissao-lotes">
-                        <h2>RESERVA</h2>
+                        <h2>{{ __('messages.lotes.reserva') }}</h2>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="text-cta-comissao-lotes text-center py-4 px-5 py-lg-0"
                         style="background: url({{ asset('imagens/brush-laranja.png') }}); background-position: center; background-size: contain; background-repeat: no-repeat;">
-                        <h1> 0% de comissão </h1>
+                        <h1>{{ __('messages.lotes.0_comissao') }}</h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 text-center text-cta-comissao-lotes">
-                        <h2>COMPRADOR</h2>
+                        <h2>{{ __('messages.lotes.comprador') }}</h2>
                     </div>
                 </div>
-                {{-- <div class="row mt-3">
-                    <div class="col-12 text-cta-comissao text-center">
-                        <h2 class="cpointer" data-aos="fade-in" data-toggle="modal" data-target="#modalComissao">Consulte condições</h2>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
-    <div class="w1200 mx-auto py-5">
-        <div class="row">
-            <div
-                class="col-12 col-lg-8 justify-content-center justify-content-lg-start text-center text-lg-left align-items-center text-lotes d-flex">
-                <h3>Reserva {{ $fazenda->nome_fazenda }}</h3>
+    <div class="container-fluid">
+        <div class="w1200 mx-auto py-5">
+            <div class="row">
+                <div
+                    class="col-12 col-lg-8 justify-content-center justify-content-lg-start text-center text-lg-left align-items-center text-lotes d-flex">
+                    <h3>Reserva {{ $fazenda->nome_fazenda }}</h3>
+                </div>
+                <div class="col-12 col-lg-4 text-center text-lg-right" id="filtro-racas">
+                    <a class="link-filtro-racas cpointer ativo" raca="0">Todos</a>
+                    @foreach($lotes->unique("raca_id") as $lote)
+                        <a class="link-filtro-racas ml-3 cpointer" raca="{{$lote->raca->id}}">{{$lote->raca->nome}}</a>
+                    @endforeach
+                </div>
             </div>
-            <div class="col-12 col-lg-4 text-center text-lg-right" id="filtro-racas">
-                <a class="link-filtro-racas cpointer ativo" raca="0">Todos</a>
-                @foreach($lotes->unique("raca_id") as $lote)
-                    <a class="link-filtro-racas ml-3 cpointer" raca="{{$lote->raca->id}}">{{$lote->raca->nome}}</a>
-                @endforeach
+            <div class="row py-4">
+                <div class="col-12">
+                    <a href="{{ route('index')}}"><span
+                            style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
+                                class="fas fa-arrow-left mr-2"></i> {{ __('messages.botoes.voltar') }}</span></a>
+    
+                </div>
             </div>
+            @livewire("lotes.card", ['fazenda' => $fazenda, 'reserva' => $reserva])
         </div>
-        <div class="row py-4">
-            <div class="col-12">
-                <a href="{{ route('index')}}"><span
-                        style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
-                            class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
-
-            </div>
-        </div>
-        @livewire("lotes.card", ['fazenda' => $fazenda, 'reserva' => $reserva])
     </div>
+    
 
     @if(!$reserva->institucional && $reserva->institucional_popup)
         <div class="modal fade" id="modalInstitucional" tabindex="-1" aria-labelledby="exampleModalLabel"

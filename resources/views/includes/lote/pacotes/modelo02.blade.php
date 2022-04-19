@@ -5,7 +5,7 @@
             <span><b>RGD:</b> {{ $membro->registro }}</span><br>
             <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
         @endif
-        <span><b>Raça:</b> {{ $membro->raca->nome }}</span><br>
+        <span><b>{{ __('messages.lote.raca') }}:</b> {{ $membro->raca->nome }}</span><br>
         <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
     </div>
     <div class="px-4 px-lg-0 ml-lg-4 flex-grow-1 text-white text-lote-info text-center text-lg-left">

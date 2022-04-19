@@ -30,8 +30,17 @@ return [
     ],
 
     'botoes' => [
-        'compre_agora' => 'Compre ahora'
+        'compre_agora' => 'Compre agora',
+        "voltar" => "Voltar",
+        "comprar" => "Comprar",
+        "entre_comprar" => "Entre para comprar",
+        "encerrada" => "Encerrada",
+        "disponivel_live" => "Disponível na Live",
+        "vendido" => "Vendido",
+        "reservado" => "Reservado",
+        "falar_consultor" => "Quero falar com um consultor",
     ],
+
     "cadastro" => [
         "vamos_criar_acesso" => "Vamos criar seu acesso",
         "nome_completo" => "Nome Completo",
@@ -63,6 +72,28 @@ return [
         "completar_agora" => "Completar agora",
         "voltar_site" => "Voltar ao site",
         "cadastro_final_texto_confirmacao" => 'Oba! <b>Seu cadastro completo foi enviado</b>. Assim que o nosso time de análise aprovar, você receberá um email e já pode comprar conosco.'
+    ],
+    "lotes" => [
+        "conheca_nossos_lotes" => "Conheça nossos lotes",
+        "reserva" => "RESERVA",
+        "0_comissao" => "0% de comissão",
+        "comprador" => "COMPRADOR",
+        "raca" => "RAÇA",
+        "prenhez_a_fazer" => "PRENHEZ A FAZER",
+        "ultimo_parto" => "ÚLTIMO PARTO EM",
+        "ver_mais" => "VER MAIS",
+        "baixar_pdf_catalogo" => "Baixar PDF do catálogo"
+    ],
+    "lote" => [
+        "a_vista" => "à vista",
+        "ou" => "ou",
+        "raca" => "RAÇA",
+        "nascimento" => "NASCIMENTO",
+        "observacoes" => "Observações",
+        "genealogia" => "Genealogia",
+        "frete" => "Frete",
+        "pagamentos_condicoes" => "Pagamentos<br>e Condições",
+        "seguranca" => "Segurança"
     ]
 ];
 

@@ -29,7 +29,16 @@ return [
         'texto_ao_seu_lado' => "Estamos a tu lado en cada paso de la compra-venta.<br>La agilidad de la tecnología digital apoyada en un<br>servicio cercano, humanizado y completo. Un viaje<br>en el que nunca estarás solo, nuevas direcciones,<br>nuevas experiencias, nuevos logros compartidos.<br>¡Ven con nosotros!",
     ],
     'botoes' => [
-        'compre_agora' => 'Compre ahora'
+        'compre_agora' => 'Compre ahora',
+        "voltar" => "Regresar",
+        "comprar" => "Compra",
+        "entre_comprar" => "Iniciar sesión para comprar",
+        "encerrada" => "Cerrado",
+        "disponivel_live" => "Disponible en Live",
+        "vendido" => "Vendido",
+        "reservado" => "Reservado",
+        "falar_consultor" => "Quiero hablar con un asesor",
+
     ],
     "cadastro" => [
         "vamos_criar_acesso" => "Creamos tu acceso",
@@ -62,6 +71,28 @@ return [
         "completar_agora" => "Complete ahora",
         "voltar_site" => "Volver",
         "cadastro_final_texto_confirmacao" => '¡Oye! <b>Su registro completo ha sido enviado</b>. Tan pronto como nuestro equipo de revisión lo apruebe, recibirá un correo electrónico y podrá comprar con nosotros.'
+    ],
+    "lotes" => [
+        "conheca_nossos_lotes" => "Descubre nuestros lotes",
+        "reserva" => "RESERVA",
+        "0_comissao" => "0% comisión",
+        "comprador" => "COMPRADOR",
+        "raca" => "RAZA",
+        "prenhez_a_fazer" => "EMBARAZO PARA HACER",
+        "ultimo_parto" => "ÚLTIMO NACIMIENTO EN",
+        "ver_mais" => "VER MÁS",
+        "baixar_pdf_catalogo" => "Descargar pdf del catálogo"
+    ],
+    "lote" => [
+        "a_vista" => "a la vista",
+        "ou" => "o",
+        "raca" => "RAZA",
+        "nascimento" => "NACIMIENTO",
+        "observacoes" => "Comentarios",
+        "genealogia" => "Genealogía",
+        "frete" => "Flete",
+        "pagamentos_condicoes" => "Pagos<br>y Condiciones",
+        "seguranca" => "La seguridad"
     ]
 ];
 

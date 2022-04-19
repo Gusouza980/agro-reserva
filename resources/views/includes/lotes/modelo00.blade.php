@@ -65,7 +65,7 @@
                     <div class="row">
                         <div class="col-12 card-lote-parto text-center" style="height: 30px;">
                             @if($lote->parto)
-                                <h3>ÚLTIMO PARTO EM <b>{{date('d/m/Y', strtotime($lote->parto))}}</b></h3>
+                                <h3>{{ __('messages.lotes.ultimo_parto') }} <b>{{date('d/m/Y', strtotime($lote->parto))}}</b></h3>
                             @else
                                 <h3>SEXO: {{mb_strtoupper($lote->sexo)}}</h3>
                             @endif
@@ -76,9 +76,9 @@
                 <div class="row">
                     <div class="col-12 card-lote-botao text-center">
                         @if(!isset($finalizadas))
-                            <a class="card-lote-botao" href="{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}"><button class="px-3 py-1">VER MAIS</button></a>
+                            <a class="card-lote-botao" href="{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}"><button class="px-3 py-1">{{ __('messages.lotes.ver_mais') }}</button></a>
                         @else
-                            <a class="card-lote-botao" href="{{route('reservas.finalizadas.fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote, 'reserva' => $reserva])}}"><button class="px-3 py-1">VER MAIS</button></a>
+                            <a class="card-lote-botao" href="{{route('reservas.finalizadas.fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote, 'reserva' => $reserva])}}"><button class="px-3 py-1">{{ __('messages.lotes.ver_mais') }}</button></a>
                         @endif
                     </div>
                 </div>
