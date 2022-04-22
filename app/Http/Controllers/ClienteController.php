@@ -240,6 +240,7 @@ class ClienteController extends Controller
         $cliente->estrangeiro = $request->estrangeiro;
         // $cliente->interesses = $request->interesse;
         $cliente->senha = Hash::make($request->senha);
+        $cliente->admin = false;
 
         if($request->segmento){
             $cliente->segmentos = implode(",", $request->segmento);
@@ -265,6 +266,7 @@ class ClienteController extends Controller
         $rdStation->sendLead();
 
         session(["cliente" => $cliente->toArray()]);
+
         $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
         $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
         $file = str_replace("{{usuario}}", $cliente->email, $file);
