@@ -236,7 +236,8 @@ class ClienteController extends Controller
         $cliente = new Cliente;
         $cliente->email = $request->email;
         $cliente->nome_dono = $request->nome;
-        $cliente->telefone = $request->telefone;
+        $cliente->telefone = "(" . $request->ddd . ") " . $request->telefone;
+        $cliente->estrangeiro = $request->estrangeiro;
         // $cliente->interesses = $request->interesse;
         $cliente->senha = Hash::make($request->senha);
 

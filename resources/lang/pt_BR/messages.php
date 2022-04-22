@@ -44,6 +44,9 @@ return [
     "cadastro" => [
         "vamos_criar_acesso" => "Vamos criar seu acesso",
         "nome_completo" => "Nome Completo",
+        "nascionalidade" => "Nascionalidade",
+        "brasileiro" => "Brasileiro",
+        "estrangeiro" => "Estrangeiro",
         "telefone" => "Telefone",
         "senha_acesso" => "Crie uma senha de acesso",
         "segmento_interesse" => "Segmento de Interesse",

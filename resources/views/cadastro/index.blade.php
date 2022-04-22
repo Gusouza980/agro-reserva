@@ -27,9 +27,32 @@
                                     required>
                             </div>
                             <div class="form-group col-12 input-cadastro">
+                                <label for="telefone">{{ __('messages.cadastro.nascionalidade') }}</label>
+                                <div class="form-group input-cadastro d-flex justify-content-start">
+                                    <div class="mx-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio" type="radio" name="estrangeiro" value="0">
+                                            <label class="form-check-label ml-2 label-branca">{{ __('messages.cadastro.brasileiro') }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="mx-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio" type="radio" name="estrangeiro" value="1">
+                                            <label class="form-check-label ml-2 label-branca">{{ __('messages.cadastro.estrangeiro') }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-3 input-cadastro">
+                                <label for="ddd">DDD</label>
+                                <input type="text" class="form-control" name="ddd" id="ddd" maxlength="2" aria-describedby=""
+                                    required placeholder="">
+                            </div>
+
+                            <div class="form-group col-9 input-cadastro">
                                 <label for="telefone">{{ __('messages.cadastro.telefone') }}</label>
                                 <input type="text" class="form-control" name="telefone" id="telefone" aria-describedby=""
-                                    required placeholder="(99) 99999-9999">
+                                    required placeholder="99999-9999">
                             </div>
                  
                             <div class="form-group col-12 input-cadastro">
@@ -167,7 +190,8 @@
     <script src="{{ asset('js/jquery.mask.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('input[name="telefone"]').mask('(00) 00000-0000', );
+            $('input[name="telefone"]').mask('00000-0000', );
+            $('input[name="ddd"]').mask('00', );
             $("select[name='estado']").change(function() {
                 var estado = $("select[name='estado']").val();
                 $.ajaxSetup({

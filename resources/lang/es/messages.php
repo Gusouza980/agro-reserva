@@ -43,6 +43,9 @@ return [
     "cadastro" => [
         "vamos_criar_acesso" => "Creamos tu acceso",
         "nome_completo" => "Nombre completo",
+        "nascionalidade" => "Nacionalidad",
+        "brasileiro" => "Brasileño",
+        "estrangeiro" => "Extranjero",
         "telefone" => "Teléfono",
         "senha_acesso" => "Crear una contraseña de acceso",
         "segmento_interesse" => "Segmento de interés",
