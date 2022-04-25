@@ -439,13 +439,13 @@
                 arrows: true,
                 autoplay: true,
                 autoplaySpeed: 4000,
-                // centerMode: true,
+                centerMode: true,
                 // the magic
                 responsive: [{
 
                     breakpoint: 1400,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 4,
                         infinite: true,
                         dots: true,
                         adaptiveHeight: true,
