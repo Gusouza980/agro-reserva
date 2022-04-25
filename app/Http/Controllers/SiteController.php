@@ -242,7 +242,7 @@ class SiteController extends Controller
             $cep = $query["zip"];
         }
 
-        if(!session()->get("cliente") || (isset(session()->get("cliente")["admin"]) && session()->get("cliente")["admin"] != true)){
+        if((isset(session()->get("cliente")["admin"]) && session()->get("cliente")["admin"] != true)){
             $visita->ip = $ip;
             $visita->lote_id = $lote->id;
             $visita->estado = $estado;

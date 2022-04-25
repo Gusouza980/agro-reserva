@@ -77,7 +77,9 @@ class ClienteController extends Controller
         }
         $anterior = redirect()->back()->getTargetUrl();
         session()->flash("nome_pagina", "Pré Cadastro");
-        return view('cadastro.index', ["anterior" => $anterior]);
+        $json = file_get_contents("json/mascaras_telefone.json");
+        $paises = json_decode($json);
+        return view('cadastro.index', ["anterior" => $anterior, "paises" => $paises]);
     }
 
     public function cadastro_vendedor(){
@@ -236,9 +238,8 @@ class ClienteController extends Controller
         $cliente = new Cliente;
         $cliente->email = $request->email;
         $cliente->nome_dono = $request->nome;
-        $cliente->telefone = "(" . $request->ddd . ") " . $request->telefone;
-        $cliente->estrangeiro = $request->estrangeiro;
-        // $cliente->interesses = $request->interesse;
+        $cliente->telefone = $request->telefone;
+        $cliente->pais = $request->pais;
         $cliente->senha = Hash::make($request->senha);
         $cliente->admin = false;
 

@@ -92,8 +92,6 @@
                                 </div>
                             </div>
 
-                        </div>
-                        <div class="row">
                             <div class="col-6 col-md-4">
                                 <div class="mb-3">
                                     <label for="gpta" class="form-label">GPTA</label>
@@ -112,8 +110,6 @@
                                     <input type="date" class="form-control" name="parto" id="parto">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-6 col-md-3">
                                 <div class="mb-3">
                                     <label for="peso" class="form-label">Peso</label>
@@ -150,24 +146,7 @@
                                     <input type="number" class="form-control" name="lact_atual" id="lact_atual" step="0.01">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="observacoes" class="form-label">Observações</label>
-                                    <textarea class="form-control" name="observacoes" maxlength="250"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="texto_destaque" class="form-label">Texto de Destaque</label>
-                                    <input type="text" class="form-control" name="texto_destaque" id="texto_destaque">
-                                    <small>Será exibido caso o lote apareça nos destaques da home</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-12 mb-3">
+                            <div class="form-group col-4 mb-3">
                                 <label for="tags">Palavras Chaves</label>
                                 <select class="js-example-basic-multiple js-states form-control" multiple="multiple" name="chaves[]" id="select_tag" multiple required>
                                     <option value="" label="default"></option>
@@ -176,6 +155,24 @@
                                     @endforeach
                                 </select>
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="observacoes" class="form-label">Observações</label>
+                                    <textarea class="form-control" name="observacoes" maxlength="250"></textarea>
+                                </div>
+                            </div>
+                            {{-- <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="texto_destaque" class="form-label">Texto de Destaque</label>
+                                    <input type="text" class="form-control" name="texto_destaque" id="texto_destaque">
+                                    <small>Será exibido caso o lote apareça nos destaques da home</small>
+                                </div>
+                            </div> --}}
+                        </div>
+                        <div class="row">
+                            
                         </div>
                         <div class="row">
                             @if ($reserva->multi_fazendas)
