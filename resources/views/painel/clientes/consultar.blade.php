@@ -63,6 +63,7 @@
                                 <th>Aprovação</th>
                                 <th>Cadastro</th>
                                 <th>Email</th>
+                                <th>País</th>
                                 <th>Whatsapp</th>
                                 <th>Compras</th>
                             </tr>
@@ -115,6 +116,7 @@
                                         @endif
                                     </td>
                                     <td style="vertical-align: middle; text-align:center;">{{$cliente->email}}</td>
+                                    <td style="vertical-align: middle; text-align:center;">{{$cliente->pais}}</td>
                                     <td style="vertical-align: middle; text-align:center;">
                                         @if($cliente->whatsapp && $cliente->telefone)
                                             {{$cliente->whatsapp}} / {{$cliente->telefone}}
@@ -400,7 +402,7 @@
                         columnDefs: [
                             {
                                 visible: false,
-                                targets: [5, 6]
+                                targets: [5, 6, 7]
                             }
                         ],
                         order: [[1, "desc"]]
