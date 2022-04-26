@@ -2326,3 +2326,7 @@ label {
 .linguagem-inativa{
     filter: grayscale(100);
 }
+
+#row_iframe_google > iframe{
+    width: 100% !important;
+}

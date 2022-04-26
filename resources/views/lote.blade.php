@@ -447,17 +447,27 @@ if (session()->get('cliente')) {
         </div>
         {{-- <hr> --}}
         <div class="container-fluid py-5" style="background-color: black;">
-            <div class="row justify-content-center">
+            {{-- <div class="row justify-content-center"> --}}
                 @if ($configuracao->mostrar_lotes_destaque)
-                    <div class="col-12 mt-5 text-center text-header-index">
-                        <h5>Animais em Destaque</h5>
-                    </div>
-                    @livewire("slide-lotes-destaque")
-
-                    <div class="borda-cinza-vitrines mt-5"></div>
+                    {{-- <div class="col-12 mt-5 text-center text-header-index"> --}}
+                        {{-- <h5>Animais em Destaque</h5> --}}
+                    {{-- </div> --}}
+                    {{-- <div class="col-12"> --}}
+                        @livewire("slide-lotes-destaque")
+                    {{-- </div> --}}
+                    {{-- <div class="borda-cinza-vitrines mt-5"></div> --}}
                 @endif
-            </div>
+            {{-- </div> --}}
         </div>
+        @if($reserva->fazenda->iframe_google)
+            <div class="container-fluid px-0">
+                <div class="row px-0">
+                    <div class="col-12" id="row_iframe_google">
+                        {!! $reserva->fazenda->iframe_google !!}
+                    </div>
+                </div>
+            </div>
+        @endif
         @if ($lote->recomendados->count() > 0)
             <div class="container-fluid py-5">
                 <div class="w1200 mx-auto">
@@ -1314,6 +1324,7 @@ if (session()->get('cliente')) {
                             slidesToShow: 1,
                             infinite: true,
                             dots: true,
+                            centerMode: true,
                             adaptiveHeight: true,
                             arrows: true,
                             autoplay: true,

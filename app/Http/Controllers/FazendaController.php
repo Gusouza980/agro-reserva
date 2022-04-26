@@ -90,6 +90,7 @@ class FazendaController extends Controller
         $fazenda->email = $request->email;
         $fazenda->endereco = $request->endereco;
         $fazenda->whatsapp = $request->whatsapp;
+        $fazenda->iframe_google = $request->iframe_google;
         $fazenda->save();
         toastr()->success("Conteúdo salvo com sucesso!");
         return redirect()->back();

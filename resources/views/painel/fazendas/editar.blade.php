@@ -97,6 +97,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="iframe_google" class="form-label">Iframe Google Maps *</label>
+                                <input type="text" class="form-control" name="iframe_google" id="iframe_google" value="{{$fazenda->iframe_google}}" maxlength="500">
+                            </div>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>
