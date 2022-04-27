@@ -1,5 +1,5 @@
 <div class="vitrine-animais">
-    <div class="row justify-content-center">
+    <div class="row">
         {{-- <div class="col-12"> --}}
             <div class="slick">
                 @foreach ($lotes_destaque as $lote)
