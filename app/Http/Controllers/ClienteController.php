@@ -440,6 +440,7 @@ class ClienteController extends Controller
         if($response->status() == 200){
             $token = $response->object()->token;
         }else{
+            dd($response);
             toastr()->error("Erro na autenticação", "Erro");
             return redirect()->back();
         }

@@ -1,6 +1,6 @@
 <div class="vitrine-animais">
-    <div class="row">
-        <div class="col-12">
+    <div class="row justify-content-center">
+        {{-- <div class="col-12"> --}}
             <div class="slick">
                 @foreach ($lotes_destaque as $lote)
                     <div class="px-0 py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
@@ -42,6 +42,6 @@
                     </div>
                 @endforeach
             </div>
-        </div>
+        {{-- </div> --}}
     </div>
 </div> 
