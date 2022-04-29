@@ -345,6 +345,7 @@
                             </div>
                         </div>
                     </div>
+                    <br>
                 @endforeach
             </div>
             <div style="width: 100%; margin-top: 50px; text-align:center; font-weight:bold; font-size: 14px;">
