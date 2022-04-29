@@ -101,13 +101,6 @@
             </div>
             @livewire("lotes.card", ['fazenda' => $fazenda, 'reserva' => $reserva])
         </div>
-        @if($fazenda->iframe_google)
-            <div class="row">
-                <div class="col-12" id="row_iframe_google">
-                    {!! $fazenda->iframe_google !!}
-                </div>
-            </div>
-        @endif
     </div>
     
 

@@ -2329,4 +2329,5 @@ label {
 
 #row_iframe_google > iframe{
     width: 100% !important;
+    height: 300px;
 }

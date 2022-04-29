@@ -459,15 +459,6 @@ if (session()->get('cliente')) {
                 @endif
             {{-- </div> --}}
         </div>
-        @if($reserva->fazenda->iframe_google)
-            <div class="container-fluid px-0">
-                <div class="row px-0">
-                    <div class="col-12" id="row_iframe_google">
-                        {!! $reserva->fazenda->iframe_google !!}
-                    </div>
-                </div>
-            </div>
-        @endif
         @if ($lote->recomendados->count() > 0)
             <div class="container-fluid py-5">
                 <div class="w1200 mx-auto">
@@ -574,11 +565,13 @@ if (session()->get('cliente')) {
                                 {!! $lote->reserva->texto_local_retirada !!}
                             </div>
                         </div>
-                        {{-- <div class="row mt-3">
-                            <div class="col-12 text-center">
-                                <a href="" class="btn btn-vermelho px-4">Contato</a>
+                        @if($fazenda->iframe_google)
+                            <div class="row mt-3 px-4">
+                                <div class="col-12" id="row_iframe_google">
+                                    {!! $fazenda->iframe_google !!}
+                                </div>
                             </div>
-                        </div> --}}
+                        @endif
                     </div>
                 </div>
             </div>
