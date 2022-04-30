@@ -49,16 +49,7 @@
                 @endif
                 
                 <div class="row pb-5 justify-content-center" id="row-cards-fazendas" style="position: relative; z-index: 1;">
-                    @if($configuracao->mostrar_lotes_destaque && $lotes_destaque)
-                        <div class="col-12 mt-5 text-center text-header-index d-none d-lg-block">
-                            <h5>{!! __('messages.home.animais_em_destaque') !!}</h5>
-                        </div>
-                        @livewire("slide-lotes-destaque") 
-
-                        <div class="borda-cinza-vitrines mt-5"></div>
-                    @endif
-                    
-                    
+                    @livewire("slide-lotes-destaque") 
                     <div class="col-12 text-center text-header-index d-none d-lg-block mt-5">
                         <h5>{{ __('messages.home.vitrine_de_reservas') }}</h5>
                     </div>
@@ -439,7 +430,7 @@
                 arrows: true,
                 autoplay: true,
                 autoplaySpeed: 4000,
-                centerMode: true,
+                centerMode: false,
                 // the magic
                 responsive: [{
 
@@ -450,6 +441,7 @@
                         dots: true,
                         adaptiveHeight: true,
                         arrows: true,
+                        centerMode: true,
                         autoplay: true,
                         autoplaySpeed: 4000,
                     }

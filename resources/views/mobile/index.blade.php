@@ -51,14 +51,7 @@
     <div class="container-fluid" style="background-color: #15171e;">
         <div class="container-fluid pb-5" id="header-index">
             <div class="row pb-5 justify-content-center px-0" id="row-cards-fazendas" style="position: relative; z-index: 1;">
-                @if($configuracao->mostrar_lotes_destaque && $lotes_destaque)
-                    <div class="col-12 text-center text-header-index d-lg-block mt-5 mt-lg-0">
-                        <h5>{!! __('messages.home.animais_em_destaque') !!}</h5>
-                    </div>
-                    @livewire("slide-lotes-destaque")  
-                    <div class="borda-cinza-vitrines mt-5"></div>
-
-                @endif
+                @livewire("slide-lotes-destaque")  
 
                 
                 <div class="col-12 text-center text-header-index mt-5">

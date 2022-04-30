@@ -71,28 +71,6 @@ class SiteController extends Controller
     public function index(){
         $configuracao = Configuracao::first();
         $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
-        $reserva_aberta = Reserva::where([["aberto", true], ['encerrada', false]])->first();
-        if($configuracao->mostrar_lotes_destaque){
-            if($configuracao->opcao_destaque == 0){
-                $lotes = $reserva_aberta->lotes;
-                $lotes_destaque = $lotes->where("reservado", false)->where('pre_reserva', false)->sortByDesc("visitas");
-            }else{
-                $lotes_destaque = Lote::whereHas("reserva", function($q){
-                    $q->where("compra_disponivel", true)->orWhere([["aberto", true], ["encerrada", false]]);
-                })->where([["reservado", false], ['pre_reserva', false]])->orderBy("visitas", "DESC")->take(15)->get();
-                // dd($lotes_destaque);
-            }
-            $lotes_destaque = $lotes_destaque->shuffle();
-            // $lotes = $reserva_aberta->lotes;
-            // $lotes_destaque = $lotes->where("reservado", false)->sortByDesc("visualizacoes");
-            // if($lotes_destaque->count() < 10){
-            //     $count = 10 - $lotes_destaque->count();
-            //     $lotes_destaque = $lotes_destaque->merge($lotes->where("reservado", true)->sortByDesc("visualizacoes")->take($count));
-            // }
-        }else{
-            $lotes_destaque = null;
-        }
-
         $banners = HomeBanner::orderBy("prioridade", "ASC")->get();
         
         $agent = new Agent();
@@ -102,7 +80,7 @@ class SiteController extends Controller
         }else{
             $view = "index";
         }
-        return view($view, ["reservas" => $reservas, "configuracao" => $configuracao, "lotes_destaque" => $lotes_destaque, "banners" => $banners]);
+        return view($view, ["reservas" => $reservas, "configuracao" => $configuracao, "banners" => $banners]);
         // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(
         //     [
         //         'nome'      => 'Agroreserva',
