@@ -13,7 +13,7 @@ class SlideLotesDestaque extends Component
     public $configuracao;
     public $reserva_selecionada;
 
-    public function mount(Reserva $reserva = null){
+    public function mount($reserva = null){
         $this->configuracao = Configuracao::first();
         $this->reserva_selecionada = $reserva;
     }

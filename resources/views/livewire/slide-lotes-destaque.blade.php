@@ -1,6 +1,6 @@
 <div class="vitrine-animais mx-auto">
     @if($configuracao->mostrar_lotes_destaque)
-        @if($reserva_selecionada->count() > 0)
+        @if(!$reserva_selecionada)
             @foreach(\App\Models\Reserva::where([["ativo", true], ["aberto", true]])->get() as $reserva_aberta)
                 @php
                     $lotes_destaque = $reserva_aberta->lotes->where("ativo", true)->where("reservado", false)->shuffle();
