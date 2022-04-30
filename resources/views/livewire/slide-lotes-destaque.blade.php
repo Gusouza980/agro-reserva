@@ -2,7 +2,7 @@
     @if($configuracao->mostrar_lotes_destaque)
         @foreach(\App\Models\Reserva::where([["ativo", true], ["aberto", true]])->get() as $reserva_aberta)
             @php
-                $lotes_destaque = $reserva_aberta->lotes->where("reservado", false)->shuffle();
+                $lotes_destaque = $reserva_aberta->lotes->where("ativo", true)->where("reservado", false)->shuffle();
             @endphp
             @if($lotes_destaque->count() > 0)
                 <div class="col-12 mt-5 text-center text-header-index d-lg-block">
