@@ -282,7 +282,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 text-end">
+                            <div class="col-12 text-end" style="position: fixed; bottom: 15px; right: 15px;">
                                 <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>
                         </div>
