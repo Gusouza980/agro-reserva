@@ -453,7 +453,7 @@ if (session()->get('cliente')) {
                         {{-- <h5>Animais em Destaque</h5> --}}
                     {{-- </div> --}}
                     {{-- <div class="col-12"> --}}
-                        @livewire("slide-lotes-destaque")
+                        @livewire("slide-lotes-destaque", ["reserva" => $reserva])
                     {{-- </div> --}}
                     {{-- <div class="borda-cinza-vitrines mt-5"></div> --}}
                 @endif
