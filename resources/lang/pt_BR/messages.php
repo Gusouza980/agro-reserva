@@ -17,7 +17,7 @@ return [
     'home' => [
         "mostrar_reserva" => 'Mostrar a Reserva',
         "aguarde" => 'Aguarde',
-        "animais_em_destaque" => "Animais em Destaque",
+        "animais_em_destaque" => "Destaque",
         "vitrine_de_reservas" => 'Vitrine de Reservas',
         "conheca_a_agroreserva" => 'Conheça a Agroreserva',
         'viva' => 'VIVA',

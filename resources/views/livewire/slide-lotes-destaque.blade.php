@@ -6,7 +6,7 @@
             @endphp
             @if($lotes_destaque->count() > 0)
                 <div class="col-12 mt-5 text-center text-header-index d-lg-block">
-                    <h5>{{ $reserva_aberta->fazenda->nome_fazenda }}</h5>
+                    <h5> {{ __('messages.home.animais_em_destaque') }} - {{ $reserva_aberta->fazenda->nome_fazenda }} </h5>
                 </div>
                 
                 <div class="row">
