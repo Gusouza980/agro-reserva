@@ -281,9 +281,11 @@
                                 <input type="file" name="catalogo" id="catalogo">
                             </div>
                         </div>
-                        {{-- <div class="" style="position: fixed; bottom: 15px; right: 15px; z-index: 1000;">
-                            <button type="submit" class="btn btn-primary">Salvar</button>
-                        </div> --}}
+                        <div class="row">
+                            <div class="d-grid gap-2">
+                              <button type="button" name="" id="" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <!-- end card body -->
