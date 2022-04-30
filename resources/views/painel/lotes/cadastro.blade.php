@@ -281,7 +281,7 @@
                                 <input type="file" name="catalogo" id="catalogo">
                             </div>
                         </div>
-                        <div class="" style="position: fixed; bottom: 15px; left: 15px; z-index: 1000;">
+                        <div class="" style="position: fixed; bottom: 15px; right: 15px; z-index: 1000;">
                             <button type="submit" class="btn btn-primary">Salvar</button>
                         </div>
                     </form>
