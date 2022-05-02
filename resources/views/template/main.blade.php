@@ -111,8 +111,8 @@
     </a> --}}
     <div class="container-fluid bg-preto" id="container-navbar">
         <div class="container">
-            <div class="row pt-3 d-lg-none">
-                <div class="col-12 text-white text-right">
+            <div class="pt-3 row d-lg-none">
+                <div class="text-right text-white col-12">
                     <img onclick="window.location.href = '{{ route('lang.change', [ 'lang' => 'pt_BR']) }}'" class="cpointer @if(App::currentLocale() != "pt_BR") linguagem-inativa @endif" src="{{ asset('imagens/bandeira_brasil.svg') }}" title="Português Brasil" width="20" alt="">
                     <img onclick="window.location.href = '{{ route('lang.change', [ 'lang' => 'es']) }}'" class="cpointer @if(App::currentLocale() != "es") linguagem-inativa @endif ml-2" src="{{ asset('imagens/bandeira_espanha.svg') }}" title="Espanhol" width="20" alt="">
                 </div>
@@ -120,106 +120,106 @@
             <nav class="navbar align-items-center d-lg-none navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="{{ route('index') }}"><img
                         src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Agroreserva"></a>
-                <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarNav"
+                <button class="float-right navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon text-white"><i class="fas fa-bars mt-1"></i>
+                    <span class="text-white navbar-toggler-icon"><i class="mt-1 fas fa-bars"></i>
 
                     </span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav px-5 text-center">
+                    <ul class="px-5 text-center navbar-nav">
                         @if (session()->get('cliente'))
-                            <li class="nav-item active mt-4">
+                            <li class="mt-4 nav-item active">
                                 <a class="nav-link" href="{{ route('index') }}">{{ __('messages.navbar.inicio') }}</span></a>
                             </li>
-                            <li class="nav-item active mt-2">
+                            <li class="mt-2 nav-item active">
                                 <a class="nav-link" href="{{ route('blog') }}">{{ __('messages.navbar.blog') }}</span></a>
                             </li>
-                            <li class="nav-item active mt-2">
+                            <li class="mt-2 nav-item active">
                                 <a class="nav-link" href="{{ route('sobre') }}">{{ __('messages.navbar.quem_somos') }}</span></a>
                             </li>
                             @if(!isset(session()->get("cliente")["vendedor"]) || !session()->get("cliente")["vendedor"])
-                                <li class="nav-item active mt-2">
+                                <li class="mt-2 nav-item active">
                                     <a class="nav-link" href="{{ route('cadastro.vendedor') }}">{{ __('messages.navbar.quero_vender') }}</span></a>
                                 </li>
                             @endif
-                            <li class="nav-item active mt-2">
+                            <li class="mt-2 nav-item active">
                                 <a class="nav-link" href="{{ route('reservas.finalizadas') }}">{{ __('messages.navbar.reservas_finalizadas') }}</span></a>
                             </li>
                             @if (!session()->get('cliente')['finalizado'])
-                                <li class="nav-item active mt-2" id="finalizar-cadastro-mobile">
+                                <li class="mt-2 nav-item active" id="finalizar-cadastro-mobile">
                                     <a class="nav-link" href="{{ route('cadastro.finalizar') }}">{{ __('messages.navbar.finalizar_cadastro') }}</a>
                                 </li>
                             @endif
 
-                            <li class="nav-item active mt-2">
+                            <li class="mt-2 nav-item active">
                                 <a class="nav-link" href="{{ route('conta.index') }}">Minha
                                     Conta</span></a>
                             </li>
 
-                            <li class="nav-item active mt-2">
+                            <li class="mt-2 nav-item active">
                                 <a class="nav-link" href="{{ route('sair') }}">Sair</span></a>
                             </li>
                         @else
-                            <li class="nav-item active mt-4">
+                            <li class="mt-4 nav-item active">
                                 <a class="nav-link" href="{{ route('index') }}">{{ __('messages.navbar.inicio') }}</span></a>
                             </li>
-                            <li class="nav-item active mt-2">
+                            <li class="mt-2 nav-item active">
                                 <a class="nav-link" href="{{ route('blog') }}">{{ __('messages.navbar.blog') }}</span></a>
                             </li>
-                            <li class="nav-item active mt-2">
+                            <li class="mt-2 nav-item active">
                                 <a class="nav-link" href="{{ route('sobre') }}">{{ __('messages.navbar.quem_somos') }}</span></a>
                             </li>
-                            <li class="nav-item active mt-2">
+                            <li class="mt-2 nav-item active">
                                 <a class="nav-link" href="{{ route('reservas.finalizadas') }}">{{ __('messages.navbar.reservas_finalizadas') }}</span></a>
                             </li>
 
                             @if(!isset(session()->get("cliente")["vendedor"]) || !session()->get("cliente")["vendedor"])
-                                <li class="nav-item active mt-2">
+                                <li class="mt-2 nav-item active">
                                     <a class="nav-link" href="{{ route('cadastro.vendedor') }}">{{ __('messages.navbar.quero_vender') }}</span></a>
                                 </li>
                             @endif
-                            <li class="nav-item active mt-2">
+                            <li class="mt-2 nav-item active">
                                 <a class="nav-link" href="{{ route('cadastro') }}"
                                     id="cadastre-mobile">{{ __('messages.navbar.cadastre_se') }}</a>
                             </li>
-                            <li class="nav-item active mt-2">
+                            <li class="mt-2 nav-item active">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('messages.navbar.entrar') }}</a>
                             </li>
                         @endif
                         @if (session()->get('carrinho'))
-                            <li class="nav-item active mt-2">
+                            <li class="mt-2 nav-item active">
                                 <a class="nav-link" href="{{ route('carrinho') }}"><i
-                                        class="fas fa-shopping-cart text-white"></i></span></a>
+                                        class="text-white fas fa-shopping-cart"></i></span></a>
                             </li>
                         @endif
                     </ul>
                 </div>
 
             </nav>
-            <div class="row pt-3 d-none d-lg-flex">
-                <div class="col-12 text-white text-right">
+            <div class="pt-3 row d-none d-lg-flex">
+                <div class="text-right text-white col-12">
                     <img onclick="window.location.href = '{{ route('lang.change', [ 'lang' => 'pt_BR']) }}'" class="cpointer @if(App::currentLocale() != "pt_BR") linguagem-inativa @endif" src="{{ asset('imagens/bandeira_brasil.svg') }}" title="Português Brasil" width="20" alt="">
                     <img onclick="window.location.href = '{{ route('lang.change', [ 'lang' => 'es']) }}'" class="cpointer @if(App::currentLocale() != "es") linguagem-inativa @endif ml-2" src="{{ asset('imagens/bandeira_espanha.svg') }}" title="Espanhol" width="20" alt="">
                 </div>
             </div>
-            <div class="row d-none d-lg-flex pb-3">
+            <div class="pb-3 row d-none d-lg-flex">
                 <div class="col-lg-3">
                     <a class="navbar-brand" href="{{ route('index') }}"><img
                             src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="Agroreserva"></a>
                 </div>
-                <div class="col-lg-6 d-flex text-white justify-content-start align-items-center">
-                    {{-- <a class="btn btn-outline-transparente px-5 py-1 mx-3" href="{{route('cadastro.fazenda')}}">Venda</span></a> --}}
+                <div class="text-white col-lg-6 d-flex justify-content-start align-items-center">
+                    {{-- <a class="px-5 py-1 mx-3 btn btn-outline-transparente" href="{{route('cadastro.fazenda')}}">Venda</span></a> --}}
                     <span class="text-nav-header"><a href="{{ route('index') }}">{{ __('messages.navbar.inicio') }}</a></span>
-                    <span class="text-nav-header ml-4"><a href="{{ route('blog') }}">{{ __('messages.navbar.blog') }}</a></span>
-                    <span class="text-nav-header ml-4"><a href="{{ route('sobre') }}">{{ __('messages.navbar.quem_somos') }}</a></span>
-                    <span class="text-nav-header ml-4"><a href="{{ route('reservas.finalizadas') }}">{{ __('messages.navbar.reservas_finalizadas') }}</a></span>
+                    <span class="ml-4 text-nav-header"><a href="{{ route('blog') }}">{{ __('messages.navbar.blog') }}</a></span>
+                    <span class="ml-4 text-nav-header"><a href="{{ route('sobre') }}">{{ __('messages.navbar.quem_somos') }}</a></span>
+                    <span class="ml-4 text-nav-header"><a href="{{ route('reservas.finalizadas') }}">{{ __('messages.navbar.reservas_finalizadas') }}</a></span>
                     @if(!session()->get('cliente') || (!isset(session()->get("cliente")["vendedor"]) || !session()->get("cliente")["vendedor"]))
-                        <span class="text-nav-header ml-4"><a href="{{ route('cadastro.vendedor') }}">{{ __('messages.navbar.quero_vender') }}</a></span>
+                        <span class="ml-4 text-nav-header"><a href="{{ route('cadastro.vendedor') }}">{{ __('messages.navbar.quero_vender') }}</a></span>
                     @endif
                     {{-- <span  class="text-nav-header"><a href="{{route('cadastro')}}">Como comprar</a></span> --}}
                 </div>
-                <div class="col-lg-3 d-flex text-white justify-content-end align-items-center">
+                <div class="text-white col-lg-3 d-flex justify-content-end align-items-center">
 
                     {{-- @if ($_SESSION['userid']) --}}
                     @if (session()->get('cliente'))
@@ -236,7 +236,7 @@
                         @endif
                         @if (session()->get('carrinho'))
                             <a class="ml-3" href="{{ route('carrinho') }}"><i
-                                    class="fas fa-shopping-cart text-white cart-icone"></i></a>
+                                    class="text-white fas fa-shopping-cart cart-icone"></i></a>
                         @endif
                     @else
                         <span class="text-nav-header">
@@ -255,87 +255,93 @@
 
     </div>
 
+    @if(session()->get("cliente") && isset(session()->get("cliente")["finalizado"]) && !session()->get("cliente")["finalizado"])
+        <div class="d-lg-none" onclick="window.location.href = '{{ route('cadastro.finalizar') }}'" style="position: fixed; background-color: rgba(0, 180, 0); color: white; width: 100%; z-index: 100; text-align: center; font-size: 14px; bottom: 0px; padding: 10px 5px;">
+            <b>Clique aqui para finalizar seu cadastro agora e sair na frente!</b>
+        </div>
+    @endif
+    
     @yield('conteudo')
 
     <div class="container-fluid" id="footer"
         style="background: url(/imagens/rodape.jpg); background-size: cover; background-position:center; background-repeat: no-repeat;">
-        <div class="row align-items-center py-5">
-            <div class="col-12 col-lg-4 text-center">
-                <div class="w400 ml-auto mr-auto mr-lg-0">
+        <div class="py-5 row align-items-center">
+            <div class="text-center col-12 col-lg-4">
+                <div class="ml-auto mr-auto w400 mr-lg-0">
                     <div class="row">
-                        <div class="col-12 px-5 px-lg-0 text-center text-lg-left text-nav-footer">
+                        <div class="px-5 text-center col-12 px-lg-0 text-lg-left text-nav-footer">
                             <img src="{{ asset('imagens/logo-footer.png') }}" style="" alt="">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 mt-5 text-nav-footer text-center text-lg-left">
+                        <div class="mt-5 text-center col-12 text-nav-footer text-lg-left">
                             <span><a href="tel:+553433052102">+55 34 3305-2102</a></span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 text-nav-footer text-center text-lg-left">
+                        <div class="text-center col-12 text-nav-footer text-lg-left">
                             <span>contato@agroreserva.com.br</span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 text-nav-footer text-center text-lg-left">
+                        <div class="text-center col-12 text-nav-footer text-lg-left">
                             <span>
                                 <a href="https://www.instagram.com/agro_reserva/" target="_blank"><i
                                         class="fab fa-instagram fa-lg"></i></a>
                                 <a href="https://www.facebook.com/Agro-Reserva-109027191237838" target="_blank"><i
-                                        class="fab fa-facebook-square ml-4 fa-lg"></i></a>
+                                        class="ml-4 fab fa-facebook-square fa-lg"></i></a>
                                 <a href="https://www.youtube.com/c/AgroReserva" target="_blank"><i
-                                        class="fab fa-youtube ml-4 fa-lg"></i></a>
+                                        class="ml-4 fab fa-youtube fa-lg"></i></a>
                             </span>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <div class="col-12 offset-lg-4 col-lg-4 mt-5 mt-lg-0">
+            <div class="mt-5 col-12 offset-lg-4 col-lg-4 mt-lg-0">
                 <div class="row">
                     <div class="col-12">
-                        <div class="w400 mx-auto">
+                        <div class="mx-auto w400">
                             <div class="row">
-                                <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <div class="text-center col-12 text-nav-footer text-lg-left">
                                     <a class="" href=" {{ route('index') }}"><span><span
                                                 style="border-bottom: 2px solid #FEB000;">{{ __('messages.navbar.inicio') }}</a>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <div class="text-center col-12 text-nav-footer text-lg-left">
                                     <a class="" href=" {{ route('blog') }}"><span><span
                                                 style="border-bottom: 2px solid #FEB000;">{{ __('messages.navbar.blog') }} </a>
                                 </div>
                             </div>
-                            <div class="row mt-2">
-                                <div class="col-12 text-nav-footer text-center text-lg-left">
+                            <div class="mt-2 row">
+                                <div class="text-center col-12 text-nav-footer text-lg-left">
                                     <a class="" href=" {{ route('sobre') }}"><span><span
                                                 style="border-bottom: 2px solid #FEB000;">{{ __('messages.navbar.quem_somos') }} </a>
                                 </div>
                             </div>
                             @if (!session()->get('cliente'))
-                                <div class="row mt-2">
-                                    <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <div class="mt-2 row">
+                                    <div class="text-center col-12 text-nav-footer text-lg-left">
                                         <a class="" href=" {{ route('cadastro') }}"><span>{{ __('messages.navbar.cadastre_se') }}</span>
                                         </a>
                                     </div>
                                 </div>
-                                <div class="row mt-2">
-                                    <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <div class="mt-2 row">
+                                    <div class="text-center col-12 text-nav-footer text-lg-left">
                                         <a class="" href=" {{ route('login') }}"><span>{{ __('messages.navbar.entrar') }}</span> </a>
                                     </div>
                                 </div>
                             @else
                                 @if (!session()->get('cliente')['finalizado'])
-                                    <div class="row mt-2">
-                                        <div class="col-12 text-nav-footer text-center text-lg-left">
+                                    <div class="mt-2 row">
+                                        <div class="text-center col-12 text-nav-footer text-lg-left">
                                             <a class="" id="finalizar-cadastro-rodape" href=" {{ route('cadastro.finalizar') }}">{{ __('messages.navbar.finalizar_cadastro') }}</a>
                                         </div>
                                     </div>
                                 @endif
-                                <div class="row mt-2">
-                                    <div class="col-12 text-nav-footer text-center text-lg-left">
+                                <div class="mt-2 row">
+                                    <div class="text-center col-12 text-nav-footer text-lg-left">
                                         <a class="" href=" {{ route('conta.index') }}"><span><span
                                                     style="border-bottom: 2px solid #FEB000;">Min</span>ha conta</span>
                                         </a>
@@ -349,8 +355,8 @@
         </div>
     </div>
     <div class="container-fluid" id="container-footer">
-        <div class="w1200 mx-auto">
-            <div class="row py-0 justify-content-center">
+        <div class="mx-auto w1200">
+            <div class="py-0 row justify-content-center">
                 <div class="text-center footer-links">
                     <a href="{{ route('termos') }}" class="px-4 footer-links-superior">Termos e condições de uso</a>
                     |
@@ -358,7 +364,7 @@
                         Privacidade</a>
                 </div>
             </div>
-            <div class="row py-2 justify-content-center">
+            <div class="py-2 row justify-content-center">
                 <div class="text-center footer-links d-none d-lg-block">
                     <span class="px-4 footer-links-superior"><b>Razão Social:</b><span> Agro Reserva Pecuaria Digital
                             LTDA</span></span>
@@ -366,7 +372,7 @@
                     <span class="px-4 footer-links-superior"><b>CNPJ:</b><span> 41.893.302/0001-13</span></span>
                 </div>
 
-                <div class="col-12 mt-3 d-flex d-lg-none text-center footer-link-ultimo">
+                <div class="mt-3 text-center col-12 d-flex d-lg-none footer-link-ultimo">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12 footer-link-ultimo">
@@ -374,14 +380,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 footer-link-ultimo mt-1">
+                            <div class="mt-1 col-12 footer-link-ultimo">
                                 <span>Agro Reserva Pecuaria Digital LTDA</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-12 mt-3 d-flex d-lg-none text-center footer-link-ultimo">
+                <div class="mt-3 text-center col-12 d-flex d-lg-none footer-link-ultimo">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12 footer-link-ultimo">
@@ -389,7 +395,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 footer-link-ultimo mt-1">
+                            <div class="mt-1 col-12 footer-link-ultimo">
                                 <span>41.893.302/0001-13</span>
                             </div>
                         </div>
@@ -401,7 +407,7 @@
     <div class="modal fade" id="modalSucesso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-body modal-body-sucesso text-center py-4">
+                <div class="py-4 text-center modal-body modal-body-sucesso">
                     <div class="row">
                         <div class="col-12 conteudo-modal">
                             <h3>Obrigado <span id="nome_modal"></span>.</h3>
@@ -416,9 +422,9 @@
                     </div>
                     <div class="row">
                         <div class="col-12 conteudo-modal">
-                            <button class="botao-confirma py-2 px-5 mt-4" onclick="fechaModal()">Continuar
+                            <button class="px-5 py-2 mt-4 botao-confirma" onclick="fechaModal()">Continuar
                                 Navegando</button>
-                            <button class="botao-confirma py-2 px-5 mt-4" onclick="fechaModal()">Falar com um
+                            <button class="px-5 py-2 mt-4 botao-confirma" onclick="fechaModal()">Falar com um
                                 consultor</button>
                         </div>
                     </div>
@@ -455,7 +461,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body text-center px-3 pt-2 pb-4">
+                    <div class="px-3 pt-2 pb-4 text-center modal-body">
                         <div class="row">
                             <div class="col-12">
                                 <img src="{{ asset(session()->get('ver_popup')) }}" style="max-width: 100%;" alt="">
@@ -472,24 +478,24 @@
 
     {{-- <div class="container-fluid fixed-bottom barra-inferior-mobile d-md-none">
         <div class="row justify-content-center align-items-center">
-            <div class="col-12 d-flex flex-row text-center justify-content-around align-items-center">
-                <div class="barra-inferior-mobile-icone mx-3 fa-lg">
+            <div class="flex-row text-center col-12 d-flex justify-content-around align-items-center">
+                <div class="mx-3 barra-inferior-mobile-icone fa-lg">
                     <i class="fas fa-home"></i>
                     <p>Início</p>
                 </div>
-                <div class="barra-inferior-mobile-icone mx-3 fa-lg">
+                <div class="mx-3 barra-inferior-mobile-icone fa-lg">
                     <i class="fas fa-blog"></i>
                     <p>Blog</p>
                 </div>
-                <div class="barra-inferior-mobile-icone mx-3 fa-lg">
+                <div class="mx-3 barra-inferior-mobile-icone fa-lg">
                     <i class="fas fa-user"></i>
                     <p>Minha Conta</p>
                 </div>
-                <div class="barra-inferior-mobile-icone mx-3 fa-lg">
+                <div class="mx-3 barra-inferior-mobile-icone fa-lg">
                     <i class="fas fa-shopping-cart"></i>
                     <p>Carrinho</p>
                 </div>
-                <div class="barra-inferior-mobile-icone mx-3 fa-lg">
+                <div class="mx-3 barra-inferior-mobile-icone fa-lg">
                     <i class="fab fa-whatsapp"></i>
                     <p>Contato</p>
                 </div>
