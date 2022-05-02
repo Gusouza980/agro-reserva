@@ -39,7 +39,7 @@
                                 <td style="vertical-align: middle; text-align:center;">{{$carrinho->created_at->diffForHumans()}}</td>
                                 <td style="vertical-align: middle; text-align:center;">
                                     @foreach($carrinho->lotes as $lote)
-                                        <span class="badge bg-dark px-1">{{$lote->numero}}</span> 
+                                        <span class="badge bg-dark px-1">{{ $lote->reserva->fazenda->nome_fazenda }} - {{ $lote->numero }}</span> 
                                     @endforeach
                                 </td>
                             </tr>
