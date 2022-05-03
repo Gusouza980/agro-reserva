@@ -439,7 +439,7 @@
                 arrows: true,
                 autoplay: true,
                 autoplaySpeed: 4000,
-                centerMode: true,
+                centerMode: false,
                 variableWidth: true,
                 // the magic
                 responsive: [{
