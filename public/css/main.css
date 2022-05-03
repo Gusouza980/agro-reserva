@@ -107,6 +107,7 @@ a:active {
 .w1200{
     width: 100%;
     max-width: 1200px;
+    margin: 0 auto !important;
 }
 
 .w1400{
@@ -2330,4 +2331,11 @@ label {
 #row_iframe_google > iframe{
     width: 100% !important;
     height: 300px;
+}
+
+
+@media(min-width:1200px){
+    .slick-lotes .slick-track{
+        left: -140px !important;
+    }
 }
