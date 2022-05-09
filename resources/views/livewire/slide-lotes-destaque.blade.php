@@ -1,18 +1,21 @@
 <div class="mx-auto vitrine-animais">
-    <div class="row">
-        <div class="mt-4 mb-2 text-center text-white col-12">
-            <h4><b>{{ mb_strtoupper(__('messages.home.animais_em_destaque')) }}</b></h4>
-        </div>
-    </div>
     @if($configuracao->mostrar_lotes_destaque)
+        <div class="row">
+            <div class="mt-4 mb-2 text-center text-white col-12">
+                <h4><b>{{ mb_strtoupper(__('messages.home.animais_em_destaque')) }}</b></h4>
+            </div>
+        </div>
         @if(!$reserva_selecionada)
             @foreach(\App\Models\Reserva::where([["ativo", true], ["aberto", true], ["encerrada", false]])->get() as $reserva_aberta)
                 @php
                     $lotes_destaque = $reserva_aberta->lotes->where("ativo", true)->where("reservado", false)->shuffle();
                 @endphp
                 @if($lotes_destaque->count() > 0)
-                    <div class="text-center col-12 text-header-index d-lg-block" style="margin-top: 30px;">
+                    {{-- <div class="mb-3 text-center col-12 text-header-index d-lg-block" style="margin-top: 30px;">
                         <h5> {{ mb_strtoupper($reserva_aberta->fazenda->nome_fazenda) }} </h5>
+                    </div> --}}
+                    <div class="text-center col-12 text-header-index d-lg-block" style="margin-top: 30px;">
+                        <img src="{{ $reserva_aberta->fazenda->logo }}" width="200" alt="">
                     </div>
                     
                     <div class="mt-4 row">
