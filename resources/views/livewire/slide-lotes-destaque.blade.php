@@ -176,9 +176,9 @@
                         settings: {
                             slidesToShow: 1,
                             infinite: true,
-                            dots: true,
+                            // dots: true,
                             adaptiveHeight: true,
-                            arrows: true,
+                            // arrows: true,
                             autoplay: true,
                             autoplaySpeed: 4000,
                         }
