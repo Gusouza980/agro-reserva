@@ -203,6 +203,7 @@
 
                         // normal options...
                         slidesToShow: {!! ($num_lotes < 4) ? $num_lotes : 4  !!},
+                        {!! ($num_lotes < 4) ? 'settings: "unslick",' : '' !!}
                         infinite: true,
                         // dots: true,
                         adaptiveHeight: true,
