@@ -472,9 +472,9 @@
             </div>
         </div>
     @endif
-    {{-- <div id="div-whatsapp" style="left: auto; right: 15px;">
+    <div id="div-whatsapp" style="left: auto; right: 15px;">
 
-    </div> --}}
+    </div>
 
     {{-- <div class="container-fluid fixed-bottom barra-inferior-mobile d-md-none">
         <div class="row justify-content-center align-items-center">
