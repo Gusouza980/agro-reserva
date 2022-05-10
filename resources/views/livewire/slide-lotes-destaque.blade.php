@@ -244,8 +244,8 @@
                             breakpoint: 760,
                             settings: {
                                 slidesToShow: 1,
-                                dots: false;
-                                arrows: false;
+                                dots: false,
+                                arrows: false,
                                 infinite: true,
                                 adaptiveHeight: true,
                                 autoplay: true,
