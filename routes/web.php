@@ -79,6 +79,7 @@ Route::middleware(['popup', 'cookie'])->group(function () {
     // Route::get('/teste', [\App\Http\Controllers\ContaController::class, 'teste']);
     
     Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("index");
+    Route::get('/index/2', [\App\Http\Controllers\SiteController::class, 'index2'])->name("index");
     Route::get('/login', [\App\Http\Controllers\SiteController::class, 'login'])->name("login");
     Route::post('/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
     Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");

@@ -151,7 +151,7 @@
         </div>
     </div>
 
-    {{-- <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="width: 100%; max-width: 500px;" role="document">
             <div class="modal-content" style="padding: 0px 0 30px 0; border-radius: 20px;">
@@ -192,7 +192,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
 @endsection
 

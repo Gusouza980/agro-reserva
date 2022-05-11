@@ -81,54 +81,21 @@ class SiteController extends Controller
             $view = "index";
         }
         return view($view, ["reservas" => $reservas, "configuracao" => $configuracao, "banners" => $banners]);
-        // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(
-        //     [
-        //         'nome'      => 'Agroreserva',
-        //         'endereco'  => 'Rua Dom Pedro II, 74',
-        //         'cep'       => '37131-456',
-        //         'uf'        => 'MG',
-        //         'cidade'    => 'Alfenas',
-        //         'documento' => '41.893.302/0001-13',
-        //     ]
-        // );
+    }
+
+    public function index2(){
+        $configuracao = Configuracao::first();
+        $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
+        $banners = HomeBanner::orderBy("prioridade", "ASC")->get();
         
-        // $pagador = new \Eduardokum\LaravelBoleto\Pessoa(
-        //     [
-        //         'nome'      => 'Luis Gustavo',
-        //         'endereco'  => 'Rua Dom Pedro II, 74',
-        //         'bairro'    => 'Vila Formosa',
-        //         'cep'       => '37131-456',
-        //         'uf'        => 'MG',
-        //         'cidade'    => 'Alfenas',
-        //         'documento' => '111.021.656-46',
-        //     ]
-        // );
-        
-        // $boleto = new \Eduardokum\LaravelBoleto\Boleto\Banco\Caixa(
-        //     [
-        //         'logo'                   => asset('imagens/logo-caixa.png'),
-        //         'dataVencimento'         => new \Carbon\Carbon(),
-        //         'valor'                  => 100.41,
-        //         'multa'                  => false,
-        //         'juros'                  => false,
-        //         'numero'                 => 1,
-        //         'numeroDocumento'        => 1,
-        //         'pagador'                => $pagador,
-        //         'beneficiario'           => $beneficiario,
-        //         'agencia'                => 4393,
-        //         'conta'                  => 13319,
-        //         'carteira'               => 'RG',
-        //         'codigoCliente'          => 20,
-        //         'descricaoDemonstrativo' => ['demonstrativo 1', 'demonstrativo 2', 'demonstrativo 3'],
-        //         'instrucoes'             => ['instrucao 1', 'instrucao 2', 'instrucao 3'],
-        //         'aceite'                 => 'S',
-        //         'especieDoc'             => 'DM',
-        //     ]
-        // );
-        
-        // $pdf = new \Eduardokum\LaravelBoleto\Boleto\Render\Pdf();
-        // $pdf->addBoleto($boleto);
-        // $pdf->gerarBoleto($pdf::OUTPUT_SAVE, public_path('imagens/cef.pdf'));
+        $agent = new Agent();
+        if($agent->isMobile()){
+            $view = "mobile.index";
+            // $view = "index";
+        }else{
+            $view = "index2";
+        }
+        return view($view, ["reservas" => $reservas, "configuracao" => $configuracao, "banners" => $banners]);
     }
 
     public function conheca($slug, Reserva $reserva){
