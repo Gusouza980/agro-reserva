@@ -20,6 +20,8 @@
 
 <x-institucional.slide_lotes_visitados></x-institucional.slide_lotes_visitados>
 
+<x-institucional.experiencias></x-institucional.experiencias>
+
 @endsection
 
 @section("scripts")
