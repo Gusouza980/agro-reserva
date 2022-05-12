@@ -8,34 +8,34 @@
         <div class="row">
             <div class="col-12 px-0">
                 <div class="slick" id="slide-navegue-racas">
-                    <div class="mx-2" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
+                    <div class="mx-2 hover:animate-spin cpointer" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
                     </div>
-                    <div class="mx-2" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
+                    <div class="mx-2 hover:animate-spin cpointer" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
                     </div>
-                    <div class="mx-2" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
+                    <div class="mx-2 hover:animate-spin cpointer" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
                     </div>
-                    <div class="mx-2" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
+                    <div class="mx-2 hover:animate-spin cpointer" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
                     </div>
-                    <div class="mx-2" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
+                    <div class="mx-2 hover:animate-spin cpointer" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
                     </div>
-                    <div class="mx-2" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
+                    <div class="mx-2 hover:animate-spin cpointer" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
                     </div>
-                    <div class="mx-2" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
+                    <div class="mx-2 hover:animate-spin cpointer" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
                     </div>
-                    <div class="mx-2" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
+                    <div class="mx-2 hover:animate-spin cpointer" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
                     </div>
-                    <div class="mx-2" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
+                    <div class="mx-2 hover:animate-spin cpointer" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
                     </div>
-                    <div class="mx-2" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
+                    <div class="mx-2 hover:animate-spin cpointer" style="border-radius: 50%; overflow: hidden; position: relative; width: 150px; height: 150px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
                     </div>
                 </div>
