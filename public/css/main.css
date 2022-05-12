@@ -2141,8 +2141,12 @@ label {
     width: 280px;
 }
 
-.slick-list{
+.slick-lotes .slick-list{
     min-height: 300px!important;
+}
+
+#slide-navegue-racas .slick-prev:before, #slide-navegue-racas .slick-next:before{
+    color: var(--laranja);
 }
 
 .caixa-lote-home-logo{

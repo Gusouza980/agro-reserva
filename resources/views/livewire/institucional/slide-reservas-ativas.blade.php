@@ -71,7 +71,7 @@
 @push("scripts")
     <script>
         $(document).ready(function(){
-            $(".slick").slick({
+            $("#slide-reservas-ativas").slick({
                 // normal options...
                 slidesToShow: 4,
                 infinite: true,

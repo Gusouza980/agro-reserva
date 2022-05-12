@@ -16,6 +16,8 @@
 
 <x-institucional.comprar_vender></x-institucional.comprar_vender>
 
+<x-institucional.navegue-racas></x-institucional.navegue-racas>
+
 @endsection
 
 @section("scripts")
