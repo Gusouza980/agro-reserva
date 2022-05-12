@@ -59,11 +59,11 @@
                     id="dropdown">
                     <ul class="py-1" aria-labelledby="dropdown">
                         <li>
-                            <a href="#"
+                            <a href="{{ route('login') }}"
                                 class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Entrar</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{ route('carrinho') }}"
                                 class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Cadastrar</a>
                         </li>
                     </ul>
