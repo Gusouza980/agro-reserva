@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Boleto;
 use App\Models\Venda;
+use App\Models\Carrinho;
+use App\Models\Reserva;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use App\Classes\Email;
 use Illuminate\Support\Str;
 use PDF;
+use Illuminate\Support\Facades\Log;
 
 class ContaController extends Controller
 {
@@ -82,6 +85,20 @@ class ContaController extends Controller
         $data = ["venda" => $venda];
         $cliente = $venda->cliente;
         $pdf = PDF::loadView('cliente.comprovante2', $data);
+        return $pdf->stream();
+    }
+
+    public function relatorio_vendas(Reserva $reserva){
+        $carrinhos = Carrinho::whereHas("lotes", function($q) use ($reserva){
+            $q->whereIn("lotes.id", $reserva->lotes->pluck("id"));
+        })->get();
+        $vendas = Venda::whereIn("carrinho_id", $carrinhos->pluck("id"))->with("cliente")->get()->sortBy("cliente.nome_dono");
+        // dd($vendas);
+        $data = [
+            "reserva" => $reserva,
+            "vendas" => $vendas
+        ];
+        $pdf = PDF::loadView('cliente.relatorios.vendas2', $data);
         return $pdf->stream();
     }
 }

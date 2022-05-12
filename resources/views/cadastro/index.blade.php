@@ -6,7 +6,7 @@
         @if (!session()->get('cliente'))
             <div class="row justify-content-center mt-5">
                 <div class="col-10 col-md-6 col-lg-4 text-center text-white">
-                    <h2>Vamos criar seu acesso</h2>
+                    <h2>{{ __('messages.cadastro.vamos_criar_acesso') }}</h2>
                 </div>
             </div>
         @endif
@@ -17,41 +17,85 @@
                         <form id="form-pre-cadastro" action="{{ route('cadastro.salvar') }}" class="row form-cadastro0" method="post">
                             @csrf
                             <input type="hidden" name="anterior" value="{{ $anterior }}">
+                            <input type="hidden" name="pais" value="">
                             <div class="form-group col-12 input-cadastro">
-                                <label for="nome">Nome Completo</label>
-                                <input type="text" class="form-control" name="nome" id="nome" aria-describedby="" required
-                                    placeholder="Informe seu nome completo">
+                                <label for="nome">{{ __('messages.cadastro.nome_completo') }}</label>
+                                <input type="text" class="form-control" name="nome" id="nome" aria-describedby="" required>
                             </div>
                             <div class="form-group col-12 input-cadastro">
                                 <label for="email">E-mail</label>
                                 <input type="email" class="form-control" name="email" id="email" aria-describedby=""
-                                    required placeholder="exemplo@exemplo.com">
+                                    required>
                             </div>
-                            <div class="form-group col-12 input-cadastro">
-                                <label for="telefone">Telefone</label>
+                            {{-- <div class="form-group col-12 input-cadastro">
+                                <label for="telefone">{{ __('messages.cadastro.nascionalidade') }}</label>
+                                <div class="form-group input-cadastro d-flex justify-content-start">
+                                    <div class="mx-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio" type="radio" name="estrangeiro" value="0">
+                                            <label class="form-check-label ml-2 label-branca">{{ __('messages.cadastro.brasileiro') }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="mx-3">
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input-radio" type="radio" name="estrangeiro" value="1">
+                                            <label class="form-check-label ml-2 label-branca">{{ __('messages.cadastro.estrangeiro') }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
+
+                            <div class="form-group col-5 input-cadastro">
+                                <label for="ddd">
+                                    DDI 
+                                    <picture>
+                                        <img
+                                            id="flag-icon"    
+                                            src=""
+                                            width="16"
+                                            height="12"
+                                            style="display: none;">
+                                    </picture>
+                                
+                                </label>
+                                <select class="form-control" name="ddi" id="ddi" required>
+                                    @foreach($paises as $pais)
+                                        <option value="{{ $pais->code }}" @if($pais->iso == "BR") selected @endif>{{ $pais->name }} ({{ $pais->code }})</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            {{-- <div class="form-group col-2 input-cadastro">
+                                <label for="ddd">DDD</label>
+                                <input type="text" class="form-control" name="ddd" id="ddd" maxlength="2" aria-describedby=""
+                                    required placeholder="">
+                            </div> --}}
+
+                            <div class="form-group col-7 input-cadastro">
+                                <label for="telefone">{{ __('messages.cadastro.telefone') }}</label>
                                 <input type="text" class="form-control" name="telefone" id="telefone" aria-describedby=""
-                                    required placeholder="(99) 99999-9999">
+                                    required placeholder="99999-9999">
                             </div>
                  
                             <div class="form-group col-12 input-cadastro">
-                                <label for="senha">Crie uma senha de acesso</label>
+                                <label for="senha">{{ __('messages.cadastro.senha_acesso') }}</label>
                                 <input type="password" class="form-control" name="senha" id="senha" aria-describedby=""
                                     required placeholder="******">
                             </div>
 
                             <div class="form-group col-12 input-cadastro">
-                                <label for="telefone">Segmento de Interesse</label>
+                                <label for="telefone">{{ __('messages.cadastro.segmento_interesse') }}</label>
                                 <div class="form-group input-cadastro d-flex justify-content-start">
                                     <div class="mx-3">
                                         <div class="form-check form-check-inline mt-2">
                                             <input class="form-check-input-radio" type="checkbox" name="segmento[]" value="Leite">
-                                            <label class="form-check-label ml-2 label-branca">Leite</label>
+                                            <label class="form-check-label ml-2 label-branca">{{ __('messages.cadastro.leite') }}</label>
                                         </div>
                                     </div>
                                     <div class="mx-3">
                                         <div class="form-check form-check-inline mt-2">
                                             <input class="form-check-input-radio" type="checkbox" name="segmento[]" value="Corte">
-                                            <label class="form-check-label ml-2 label-branca">Corte</label>
+                                            <label class="form-check-label ml-2 label-branca">{{ __('messages.cadastro.corte') }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -69,10 +113,10 @@
                         @endforeach --}}
                             <div class="form-group col-12 text-center text-lg-right">
                                 <button type="submit" class="btn btn-vermelho py-2" role="button"
-                                    id="confirmar-precadastro">Cadastrar</button>
+                                    id="confirmar-precadastro">{{ __('messages.cadastro.cadastrar') }}</button>
                             </div>
                             <div class="col-12 text-center text-lg-left text-white form-cadastro0">
-                                <span>Já tem uma conta? <a href="{{ route('login') }}"><u>Clique aqui</u></a></span>
+                                <span>{!! __('messages.cadastro.ja_tem_conta') !!}</span>
                             </div>
                         </form>
                     @else
@@ -86,21 +130,16 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-12 text-center modal-precadastro-text">
-                                        <h4 style="line-height: 35px; letter-spacing: 1px;"><b>Sua conta foi
-                                                criada com sucesso</b>. Mas lembre-se: para finalizar a compra, seu cadastro
-                                            <b>precisa estar completo e aprovado</b> pelo nosso time. Rápido, prático e
-                                            seguro! "Bora" preencher agora?
-                                        </h4>
+                                        <h4 style="line-height: 35px; letter-spacing: 1px;">{!! __('messages.cadastro.cadastro_inicial_texto_confirmacao') !!}</h4>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <div class="text-center" id="botoes-finalizar">
                                             <a href="{{ route('cadastro.finalizar') }}"><button type="submit"
-                                                    class="btn-vermelho px-4 py-2 mt-3">Completar Agora</button></a>
+                                                    class="btn-vermelho px-4 py-2 mt-3">{{ __('messages.cadastro.completar_agora') }}</button></a>
                                             <a @if (session()->get('pagina_retorno')) href="{{ session()->get('pagina_retorno') }}" @else href="/"  @endif><button type="submit"
-                                                    class="btn-vermelho-outline-2 px-4 py-2 ml-md-3 mt-3">Voltar ao
-                                                    Site</button></a>
+                                                    class="btn-vermelho-outline-2 px-4 py-2 ml-md-3 mt-3">{{ __('messages.cadastro.voltar_site') }}</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -173,7 +212,65 @@
     <script src="{{ asset('js/jquery.mask.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('input[name="telefone"]').mask('(00) 00000-0000', );
+
+            $.getJSON("json/mascaras_telefone.json", function(data){
+                var mascaras = data
+                $(mascaras).each(function(index, element){
+                    if(element.iso == "BR"){
+                        var mask = $(element.mask).get(-1);
+                        $('input[name="pais"]').val(element.name);
+                        $('input[name="telefone"]').mask(mask.replaceAll("#", "0"), );
+                        $('input[name="telefone"]').attr("placeholder", mask.replaceAll("#", "0"));
+                        $('input[name="telefone"]').attr("minlength", mask.length);
+                        $('input[name="telefone"]').attr("maxlength", mask.length);
+                        var flag = element.iso.toLowerCase();
+                        console.log("https://flagcdn.com/16x12/" + flag + ".webp");
+                        $("#flag-icon").attr("src", "https://flagcdn.com/16x12/" + flag + ".webp");
+                        $("#flag-icon").show();
+                    }
+                });
+            });
+
+            $("#ddi").change(function(){
+                var ddi = $(this).val();
+                $.getJSON("json/mascaras_telefone.json", function(data){
+                    var mascaras = data;
+                    var achou = false;
+                    $(mascaras).each(function(index, element){
+                        if(element.code == ddi){
+                            achou = true;
+                            $('input[name="telefone"]').val("");
+                            $('input[name="pais"]').val(element.name);
+                            if(Array.isArray(element.mask)){
+                                var mask = $(element.mask).get(-1);
+                                $('input[name="telefone"]').mask(mask.replaceAll("#", "0"), );
+                                $('input[name="telefone"]').attr("placeholder", mask.replaceAll("#", "0"));
+                                $('input[name="telefone"]').attr("minlength", mask.length);
+                                $('input[name="telefone"]').attr("maxlength", mask.length);
+                                var flag = element.iso.toLowerCase();
+                                console.log("https://flagcdn.com/16x12/" + flag + ".webp");
+                                $("#flag-icon").attr("src", "https://flagcdn.com/16x12/" + flag + ".webp");
+                            }else{
+                                $('input[name="telefone"]').mask(element.mask.replaceAll("#", "0"), );
+                                $('input[name="telefone"]').attr("placeholder", element.mask.replaceAll("#", "0"));
+                                $('input[name="telefone"]').attr("minlength", element.mask.length);
+                                $('input[name="telefone"]').attr("maxlength", element.mask.length);
+                                var flag = element.iso.toLowerCase();
+                                console.log("https://flagcdn.com/16x12/" + flag + ".webp");
+                                $("#flag-icon").attr("src", "https://flagcdn.com/16x12/" + flag + ".webp");
+                            }
+                        }
+                    });
+                    if(!achou){
+                        $('input[name="telefone"]').mask("#", );
+                        $('input[name="telefone"]').attr("placeholder", "Digite seu telefone completo");
+                        $('input[name="telefone"]').removeAttr("minlength");
+                    }
+                }); 
+            })
+            
+
+            $('input[name="ddd"]').mask('00', );
             $("select[name='estado']").change(function() {
                 var estado = $("select[name='estado']").val();
                 $.ajaxSetup({

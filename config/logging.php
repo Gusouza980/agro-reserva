@@ -41,6 +41,18 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        'acessos_painel' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/acessos_painel.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+        ],
+
+        'reservas' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/reservas.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+        ],
+
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),

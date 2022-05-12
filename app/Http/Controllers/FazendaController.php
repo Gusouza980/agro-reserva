@@ -13,16 +13,26 @@ use App\Models\Producao;
 use App\Models\Fazendeiro;
 use App\Models\LoteNumero;
 use App\Models\FazendaAvaliacao;
+use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class FazendaController extends Controller
 {
 
     public function index(){
+        if(!Util::acesso("fazendas", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         $fazendas = Fazenda::all();
         return view("painel.fazendas.consultar", ["fazendas" => $fazendas]);
     }
 
     public function cadastro(){
+        if(!Util::acesso("fazendas", "cadastro")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.fazendas.cadastro");
     }
 
@@ -41,6 +51,10 @@ class FazendaController extends Controller
     }
 
     public function editar(Fazenda $fazenda){
+        if(!Util::acesso("fazendas", "cadastro")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.fazendas.editar", ["fazenda" => $fazenda]);
     }
 
@@ -76,6 +90,7 @@ class FazendaController extends Controller
         $fazenda->email = $request->email;
         $fazenda->endereco = $request->endereco;
         $fazenda->whatsapp = $request->whatsapp;
+        $fazenda->iframe_google = $request->iframe_google;
         $fazenda->save();
         toastr()->success("Conteúdo salvo com sucesso!");
         return redirect()->back();

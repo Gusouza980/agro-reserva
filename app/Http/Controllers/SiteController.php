@@ -10,6 +10,7 @@ use App\Models\Lote;
 use App\Models\Visita;
 use App\Models\Carrinho;
 use App\Models\Lance;
+use App\Models\HomeBanner;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use App\Models\Configuracao;
@@ -17,6 +18,8 @@ use \App\Classes\Util;
 use Cookie;
 use Analytics;
 use Spatie\Analytics\Period;
+use Jenssegers\Agent\Agent;
+use Illuminate\Support\Facades\Log;
 
 class SiteController extends Controller
 {
@@ -66,68 +69,43 @@ class SiteController extends Controller
     }
 
     public function index(){
-        // dd($cliente->toArray());
         $configuracao = Configuracao::first();
         $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
-        return view("index", ["reservas" => $reservas, "configuracao" => $configuracao]);
-        // $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(
-        //     [
-        //         'nome'      => 'Agroreserva',
-        //         'endereco'  => 'Rua Dom Pedro II, 74',
-        //         'cep'       => '37131-456',
-        //         'uf'        => 'MG',
-        //         'cidade'    => 'Alfenas',
-        //         'documento' => '41.893.302/0001-13',
-        //     ]
-        // );
+        $banners = HomeBanner::orderBy("prioridade", "ASC")->get();
         
-        // $pagador = new \Eduardokum\LaravelBoleto\Pessoa(
-        //     [
-        //         'nome'      => 'Luis Gustavo',
-        //         'endereco'  => 'Rua Dom Pedro II, 74',
-        //         'bairro'    => 'Vila Formosa',
-        //         'cep'       => '37131-456',
-        //         'uf'        => 'MG',
-        //         'cidade'    => 'Alfenas',
-        //         'documento' => '111.021.656-46',
-        //     ]
-        // );
-        
-        // $boleto = new \Eduardokum\LaravelBoleto\Boleto\Banco\Caixa(
-        //     [
-        //         'logo'                   => asset('imagens/logo-caixa.png'),
-        //         'dataVencimento'         => new \Carbon\Carbon(),
-        //         'valor'                  => 100.41,
-        //         'multa'                  => false,
-        //         'juros'                  => false,
-        //         'numero'                 => 1,
-        //         'numeroDocumento'        => 1,
-        //         'pagador'                => $pagador,
-        //         'beneficiario'           => $beneficiario,
-        //         'agencia'                => 4393,
-        //         'conta'                  => 13319,
-        //         'carteira'               => 'RG',
-        //         'codigoCliente'          => 20,
-        //         'descricaoDemonstrativo' => ['demonstrativo 1', 'demonstrativo 2', 'demonstrativo 3'],
-        //         'instrucoes'             => ['instrucao 1', 'instrucao 2', 'instrucao 3'],
-        //         'aceite'                 => 'S',
-        //         'especieDoc'             => 'DM',
-        //     ]
-        // );
-        
-        // $pdf = new \Eduardokum\LaravelBoleto\Boleto\Render\Pdf();
-        // $pdf->addBoleto($boleto);
-        // $pdf->gerarBoleto($pdf::OUTPUT_SAVE, public_path('imagens/cef.pdf'));
+        $agent = new Agent();
+        if($agent->isMobile()){
+            $view = "mobile.index";
+            // $view = "index";
+        }else{
+            $view = "index";
+        }
+        return view($view, ["reservas" => $reservas, "configuracao" => $configuracao, "banners" => $banners]);
     }
 
-    public function conheca($slug){
+    public function index2(){
+        $configuracao = Configuracao::first();
+        $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
+        $banners = HomeBanner::orderBy("prioridade", "ASC")->get();
+        
+        return view("index2", ["reservas" => $reservas, "configuracao" => $configuracao, "banners" => $banners]);
+    }
+
+    public function conheca($slug, Reserva $reserva){
         $fazenda = Fazenda::where("slug", $slug)->first();
-        $fazenda->video_conheca = $this->convertYoutube($fazenda->video_conheca);
-        $fazenda->video_conheca_lotes = $this->convertYoutube($fazenda->video_conheca_lotes);
+        // $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        if(!$reserva->institucional){
+            return redirect()->route("fazenda.lotes", ["fazenda" => $fazenda->slug, "reserva" => $reserva]);
+        }
+        if($fazenda->video_conheca){
+            $fazenda->video_conheca = $this->convertYoutube($fazenda->video_conheca);
+        }
+        if($fazenda->video_conheca_lotes){
+            $fazenda->video_conheca_lotes = $this->convertYoutube($fazenda->video_conheca_lotes);
+        }
         foreach($fazenda->depoimentos as $depoimento){
             $depoimento->video = $this->convertYoutube($depoimento->video);
         }
-        $reserva = $fazenda->reservas->where("ativo", 1)->first();
         $fazendas = [];
         $logos = [];
         foreach($reserva->lotes as $lote){
@@ -136,21 +114,36 @@ class SiteController extends Controller
                 $logos[] = $lote->fazenda->logo;
             }
         }
+        $fazendas = Fazenda::whereIn("id", $fazendas)->get();
         $finalizadas = "";
-        return view("fazenda", ["fazenda" => $fazenda, "logos" => $logos, "reserva" => $reserva, "finalizadas" => $finalizadas, "nome_pagina" => "Conheça"]);
+        $agent = new Agent();
+        if($agent->isMobile()){
+            $view = "mobile";
+            // $view = "index";
+        }else{
+            $view = "desktop";
+        }
+        return view("fazenda", ["view" => $view, "fazenda" => $fazenda, "fazendas" => $fazendas, "reserva" => $reserva, "finalizadas" => $finalizadas, "nome_pagina" => "Conheça"]);
     }
 
-    public function lotes($slug){
+    public function lotes($slug, Reserva $reserva){
         $fazenda = Fazenda::where("slug", $slug)->first();
-        $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        // $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        if(!$reserva->institucional){
+            if(!session()->get("popup_institucional")){
+                $popup_institucional = true;
+                session(["popup_institucional" => true]);
+            }else{
+                $popup_institucional = false;
+            }
+        }else{
+            $popup_institucional = false;
+        }
         $lotes = $reserva->lotes->where('ativo', true)->where('membro_pacote', false);
-        $prioridades = $lotes->where("prioridade", true)->sortBy("numero");
-        $lotes = $lotes->where("prioridade", false)->sortBy("numero");
-        $lotes = $prioridades->merge($lotes);
-        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "prioridades" => $prioridades, "lotes" => $lotes, "nome_pagina" => "Lotes"]);
+        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "popup_institucional" => $popup_institucional, "lotes" => $lotes, "nome_pagina" => "Lotes"]);
     }
 
-    public function lote($slug, Lote $lote){
+    public function lote($slug, Reserva $reserva, Lote $lote){
         if(!session()->get("cliente")){
             session()->flash("erro", "Para acessar os lotes, faça seu login.");
             session()->put(["pagina_retorno" => url()->full()]);
@@ -158,6 +151,7 @@ class SiteController extends Controller
             return redirect()->route("login");
         }
         $visita = new Visita;
+        $configuracao = Configuracao::first();
 
         if(session()->get("cliente")){
             $visita->cliente_id = session()->get("cliente")["id"];
@@ -186,7 +180,7 @@ class SiteController extends Controller
             $cep = $query["zip"];
         }
 
-        if(!session()->get("cliente") || (isset(session()->get("cliente")["admin"]) && session()->get("cliente")["admin"] != true)){
+        if((isset(session()->get("cliente")["admin"]) && session()->get("cliente")["admin"] != true)){
             $visita->ip = $ip;
             $visita->lote_id = $lote->id;
             $visita->estado = $estado;
@@ -213,7 +207,7 @@ class SiteController extends Controller
 
         $lote->video = $this->convertYoutube($lote->video);
         $fazenda = Fazenda::where("slug", $slug)->first();
-        return view("lote", ["lote" => $lote, "lote_bkp" => $lote, "reserva" => $lote->reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome]);
+        return view("lote", ["configuracao" => $configuracao, "lote" => $lote, "lote_bkp" => $lote, "reserva" => $reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome]);
     }
 
     public function lance(Request $request, Lote $lote){
@@ -250,19 +244,6 @@ class SiteController extends Controller
         return response()->json($res);
     }
 
-    public function cadastro_fazenda(){
-        return view("cadastro.fazenda");
-    }
-
-    public function cadastro_passos(){
-
-        if(!session()->get("cliente")){
-            return redirect()->route("cadastro");
-        }
-
-        return view('cadastro.passos');
-    }
-
     public function login(){
         if(session()->get("cliente")){
             return redirect()->route("index");
@@ -277,7 +258,13 @@ class SiteController extends Controller
             if(Hash::check($request->senha, $usuario->senha)){
                 $usuario->ultimo_acesso = date('Y-m-d');
                 $usuario->save();
-                $cookie = Cookie::forever('cliente', $usuario->id);
+                // dd($usuario);
+                // $cookie = cookie()->forever('cliente', $usuario->id);
+                // $cookie = Cookie::forget('cliente');
+                Cookie::queue('cliente', $usuario->id, 518400);
+                // $response->withCookie(cookie()->forever($usuario->id));
+                // return response("view")->withCookie($cookie);
+                // dd(cookie("cliente"));
                 session(["cliente" => $usuario->toArray()]);
                 
                 $carrinhos = Carrinho::where([["cliente_id", $usuario->id], ["aberto", true]])->get();
@@ -304,11 +291,11 @@ class SiteController extends Controller
                 }
             }else{
                 session()->flash("erro", "Usuário ou senha incorretos");
-                return redirect()->back();
+                return redirect()->back()->withInput($request->except('senha'));
             } 
         }else{
             session()->flash("erro", "Usuário ou senha incorretos");
-            return redirect()->back();
+            return redirect()->back()->withInput($request->except('senha'));
         }      
     }
 
@@ -326,6 +313,9 @@ class SiteController extends Controller
     }
 
     public function conheca_finalizadas(Reserva $reserva, $slug){
+        if(!$reserva->institucional){
+            return redirect()->route("fazenda.lotes", ["fazenda" => $fazenda]);
+        }
         $fazenda = Fazenda::where("slug", $slug)->first();
         $fazenda->video_conheca = $this->convertYoutube($fazenda->video_conheca);
         $fazenda->video_conheca_lotes = $this->convertYoutube($fazenda->video_conheca_lotes);
@@ -342,7 +332,8 @@ class SiteController extends Controller
                 }
             }
         }
-        return view("finalizadas.fazenda", ["fazenda" => $fazenda, "logos" => $logos, "reserva" => $reserva]);
+        $fazendas = Fazenda::whereIn("id", $fazendas)->get();
+        return view("finalizadas.fazenda", ["fazenda" => $fazenda, "fazendas" => $fazendas, "reserva" => $reserva]);
     }
 
     public function lotes_finalizadas(Reserva $reserva, $slug){
@@ -422,5 +413,22 @@ class SiteController extends Controller
             "<iframe width=\"350\" height=\"200\" src=\"//www.youtube.com/embed/$2\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
             $string
         );
+    }
+
+    public function redirect_fazenda($slug, Lote $lote = null){
+        $fazenda = Fazenda::where("slug", $slug)->first();
+        $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        if(url()->current() == route('fazenda.conheca.antigo', ['fazenda' => $slug]) || url()->current() == route('fazenda.conheca.lotes.antigo', ['fazenda' => $slug]) || url()->current() == route('fazenda.conheca.depoimentos.antigo', ['fazenda' => $slug]) || url()->current() == route('fazenda.conheca.avaliacoes.antigo', ['fazenda' => $slug])){
+            return redirect()->route("fazenda.conheca", ["fazenda" => $slug, "reserva" => $reserva]);
+        }
+        if(url()->current() == route('fazenda.lotes.antigo', ['fazenda' => $slug])){
+            return redirect()->route("fazenda.lotes", ["fazenda" => $slug, "reserva" => $reserva]);
+        }
+        if(url()->current() == route('fazenda.conheca.antigo', ['fazenda' => $slug])){
+            return redirect()->route("fazenda.conheca", ["fazenda" => $slug, "reserva" => $reserva]);
+        }
+        if(url()->current() == route('fazenda.lote.antigo', ['fazenda' => $slug, 'lote' => $lote])){
+            return redirect()->route("fazenda.lote", ["fazenda" => $slug, "reserva" => $reserva, "lote" => $lote]);
+        }
     }
 }

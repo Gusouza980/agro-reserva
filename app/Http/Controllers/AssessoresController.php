@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Assessor;
 use App\Models\Venda;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class AssessoresController extends Controller
 {

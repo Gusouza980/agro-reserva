@@ -28,14 +28,35 @@ use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use App\Classes\Email;
 use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class ClienteController extends Controller
 {
     //
 
-    public function index(){
-        $clientes = Cliente::all();
-        return view("painel.clientes.consultar", ["clientes" => $clientes]);
+    public function index(Request $request){
+        if(!Util::acesso("clientes", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
+
+        if ($request->isMethod('get')) {
+            $clientes = Cliente::all();
+            return view("painel.clientes.consultar", ["clientes" => $clientes]);
+        } else {
+            $filtros = [];
+            if ($request->inicio_cadastro != null) {
+                $filtros[] = ["created_at", ">=", $request->inicio_cadastro];
+            }
+            if ($request->fim_cadastro != null) {
+                $filtros[] = ["created_at", "<=", $request->fim_cadastro];
+            }
+            if ($request->situacao != null) {
+                $filtros[] = ["aprovado", "=", $request->situacao];
+            }
+            $clientes = Cliente::where($filtros)->get();
+            return view("painel.clientes.consultar", ['clientes' => $clientes, "filtros" => $request->all()]);
+        }
     }
 
     public function exportar(){
@@ -43,6 +64,10 @@ class ClienteController extends Controller
     }
 
     public function visualizar(Cliente $cliente){
+        if(!Util::acesso("clientes", "visualizar")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.clientes.visualizar", ['cliente' => $cliente]);
     }
 
@@ -52,7 +77,18 @@ class ClienteController extends Controller
         }
         $anterior = redirect()->back()->getTargetUrl();
         session()->flash("nome_pagina", "Pré Cadastro");
-        return view('cadastro.index', ["anterior" => $anterior]);
+        $json = file_get_contents("json/mascaras_telefone.json");
+        $paises = json_decode($json);
+        return view('cadastro.index', ["anterior" => $anterior, "paises" => $paises]);
+    }
+
+    public function cadastro_vendedor(){
+        if(session()->get("cliente") && isset(session()->get("cliente")["vendedor"]) && session()->get("cliente")["vendedor"] && session()->get("cliente")["finalizado"]){
+            return redirect()->route("index");
+        }
+        $anterior = redirect()->back()->getTargetUrl();
+        session()->flash("nome_pagina", "Quero Vender");
+        return view('cadastro.vendedor', ["anterior" => $anterior]);
     }
 
     public function cadastro_painel(Request $request){
@@ -99,6 +135,98 @@ class ClienteController extends Controller
         return view('cadastro.finalizar', ["anterior" => $anterior, "finalizar" => $finalizar]);
     }
 
+    public function cadastrar_vendedor(Request $request){
+        
+        if($request->email){
+            $cliente = Cliente::where("email", $request->email)->first();
+            if($cliente){
+                session()->flash("erro_email", "O email informado já está sendo utilizado.");
+                return redirect()->back()->withInput();
+            }
+        }
+
+        if(session()->get("cliente")){
+            $cliente = Cliente::find(session()->get("cliente")["id"]);
+        }else{
+            $cliente = new Cliente;
+        }
+
+        if($request->email){
+            $cliente->email = $request->email;
+        }
+        
+        if($request->nome_dono){
+            $cliente->nome_dono = $request->nome_dono;
+        }
+
+        if($request->telefone){
+            $cliente->telefone = $request->telefone;
+        }
+
+        if($request->nome_fazenda){
+            $cliente->nome_fazenda = $request->nome_fazenda; 
+        }  
+
+        if($request->senha){
+            $cliente->senha = Hash::make($request->senha);
+        }
+
+        if($request->vender_registro){
+            $cliente->vender_registro = $request->vender_registro;
+        }
+
+        if($request->racas_vender){
+            $cliente->racas_vender = $request->racas_vender;
+        }
+
+        $cliente->vendedor = 1;
+
+        if(!$cliente->finalizado){
+            $cliente->finalizado = false;
+        }
+
+        $cliente->save();
+
+        $rdStation = new \RDStation\RDStation($cliente->email);
+        $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+        $rdStation->setLeadData('name', $cliente->nome_dono);
+        $rdStation->setLeadData('identifier', 'precadastro');
+        $rdStation->setLeadData('telefone', $cliente->telefone);
+        $rdStation->setLeadData('nome_fazenda', $cliente->nome_fazenda);
+        if($cliente->vender_registro){
+            $rdStation->setLeadData('registro', "Com Registro");
+        }else{
+            $rdStation->setLeadData('registro', "Sem Registro");
+        }
+        $rdStation->setLeadData('racas_vender', $cliente->racas_vender);
+        $rdStation->setLeadData('cadastro-finalizado', "Não");
+        if(session()->get("lote_origem")){
+            $lote = Lote::find(session()->get("lote_origem"));
+            $rdStation->setLeadData('nome_lote_origem', $lote->nome);
+            $rdStation->setLeadData('numero_lote_origem', $lote->numero . $lote->letra);
+            $rdStation->setLeadData('raca_lote_origem', $lote->raca->nome);
+            $rdStation->setLeadData('fazenda_lote_origem', $lote->fazenda->nome_fazenda);
+        }
+        $rdStation->sendLead();
+
+        session(["cliente" => $cliente->toArray()]);
+        $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
+        $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
+        $file = str_replace("{{usuario}}", $cliente->email, $file);
+        $file = str_replace("{{senha}}", $request->senha, $file);
+        Email::enviar($file, "Confirmação de Cadastro", session()->get("cliente")["email"], false);
+
+        return redirect()->back();
+        
+        // if(session()->get("pagina_retorno")){
+        //     $pagina = session()->get("pagina_retorno");
+        //     session()->forget("pagina_retorno");
+        //     return redirect($pagina);
+        // }else{
+        //     return redirect()->route("index");
+        // }
+    }
+
     public function cadastrar(Request $request){
         $cliente = Cliente::where("email", $request->email)->first();
 
@@ -111,8 +239,9 @@ class ClienteController extends Controller
         $cliente->email = $request->email;
         $cliente->nome_dono = $request->nome;
         $cliente->telefone = $request->telefone;
-        // $cliente->interesses = $request->interesse;
+        $cliente->pais = $request->pais;
         $cliente->senha = Hash::make($request->senha);
+        $cliente->admin = false;
 
         if($request->segmento){
             $cliente->segmentos = implode(",", $request->segmento);
@@ -138,6 +267,7 @@ class ClienteController extends Controller
         $rdStation->sendLead();
 
         session(["cliente" => $cliente->toArray()]);
+
         $file = file_get_contents('templates/emails/confirma-cadastro/confirma-cadastro.html');
         $file = str_replace("{{nome}}", $cliente->nome_dono, $file);
         $file = str_replace("{{usuario}}", $cliente->email, $file);
@@ -188,11 +318,11 @@ class ClienteController extends Controller
 
         $cliente->nome_fazenda = $request->nome_fazenda;
         $cliente->rg = $request->rg;
-        $cliente->nascimento = Util::convertDateToString($request->nascimento);
         if($request->pessoa_fisica == "1"){
             $cliente->pessoa_fisica = true;
             $cliente->cpf = $request->cpf;
             $cliente->documento = $request->cpf;
+            $cliente->nascimento = Util::convertDateToString($request->nascimento);
         }else{
             $cliente->pessoa_fisica = false;
             $cliente->cnpj = $request->cnpj;
@@ -304,7 +434,7 @@ class ClienteController extends Controller
             'Content-Type' => 'application/json'
         ])->post('https://api.scccheck.com.br/login', [
             "logon" => "2249099",
-            "senha" => "@Agro2021"
+            "senha" => "agro@1234"
         ]);
 
         if($response->status() == 200){
@@ -509,13 +639,22 @@ class ClienteController extends Controller
         // $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
     }
 
+    public function salvar_observacoes_analise(Request $request, CreditoAnalise $analise){
+        $analise->observacoes = $request->observacoes;
+        $analise->save();
+        toastr()->success("Observação salva com sucesso!");
+        return redirect()->back();
+    }
+
     public function aprovacao(Cliente $cliente, $aprovacao){
         if($aprovacao == "reprovado"){
             $cliente->aprovado = -1;
             toastr()->success("Cliente reprovado!");
+            $cliente->data_reprovacao = date("Y-m-d");
         }else{
             $cliente->aprovado = 1;
             toastr()->success("Cliente aprovado!");
+            $cliente->data_reprovacao = null;
         }
         $cliente->save();
         
@@ -528,22 +667,8 @@ class ClienteController extends Controller
         return redirect()->back();
     }
 
-    public function pre_to_main(){
-        $clientes = Cliente::all();
-        foreach($clientes as $cliente){
-            if(is_numeric($cliente->cidade)){
-                $cidade = Cidade::find($cliente->cidade);
-                if($cidade){
-                    $cliente->cidade = $cidade->nome;
-                }
-            }
-            if(is_numeric($cliente->estado)){
-                $estado = Estado::find($cliente->estado);
-                if($estado){
-                    $cliente->estado = $estado->uf;
-                }
-            }
-            $cliente->save();
-        }
+    public function pesquisar(Request $request){
+        $clientes = Cliente::where("nome_dono", "LIKE", "%" . $request->nome . "%")->get();
+        return response()->json($clientes);
     }
 }

@@ -18,10 +18,33 @@
          <a name="" id="" class="btn btn-primary cpointer ml-3" data-bs-toggle="modal" data-bs-target="#modalNovoCliente" role="button">Novo Cliente</a> 
     </div>
 </div>
+<form action="" class="row row-cols-lg-auto g-3 align-items-center mb-3" method="POST">
+    @csrf
+    <div class="form-group">
+        <label for="">Início</label>
+        <input type="date" name="inicio" id="" class="form-control" placeholder="" value="{{$inicio}}">
+    </div>
+    <div class="form-group">
+        <label for="">Fim</label>
+        <input type="date" name="fim" id="" class="form-control" placeholder="" value="{{$fim}}">
+    </div>
+    <div class="form-group">
+        <label for="">Reserva</label>
+        <select name="reserva" id="" class="form-control">
+            <option value="-1">Todas</option>
+            @foreach(\App\Models\Reserva::all() as $reserva)
+                <option value="{{$reserva->id}}" @if(isset($filtro_reserva) && $filtro_reserva == $reserva->id) selected @endif>{{$reserva->fazenda->nome_fazenda}} - {{date("d/m/y", strtotime($reserva->inicio))}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary mt-4">Filtrar</button>
+    </div>
+</form>
 <div class="row justify-content-center">
     <div class="col-12">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="overflow-x: scroll;">
 
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
@@ -79,28 +102,45 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row" action="{{route('painel.vendas.nova')}}" method="post">
+                <form action="{{route('painel.vendas.nova')}}" method="post">
                     @csrf
-                    <div class="form-group col-12 mb-3">
-                        <label for="">Cliente</label><br>
-                        <select class="form-select select2" style="width: 100%;" name="cliente" required>
-                            @foreach(\App\Models\Cliente::all() as $cliente)
-                                <option value="{{$cliente->id}}">{{$cliente->nome_dono}}</option>
-                            @endforeach 
-                        </select>
+                    <div class="row">
+                        <div class="form-group col-12 mb-3">
+                            <label for="">Cliente</label><br>
+                            <select class="form-select select2" style="width: 100%;" name="cliente" required>
+                                @foreach(\App\Models\Cliente::all() as $cliente)
+                                    <option value="{{$cliente->id}}">{{$cliente->nome_dono}}</option>
+                                @endforeach 
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group col-12 mb-3">
-                        <label for="tags">Lotes</label>
-                        <br>
-                        <select class="js-example-basic-multiple js-states form-control" style="width: 100%;" multiple="multiple" name="lotes[]" id="select_lotes" multiple required>
-                            <option value="" label="default"></option>
-                            @foreach(\App\Models\Reserva::where([["compra_disponivel", true],["aberto", true]])->get() as $reserva)
-                                @foreach($reserva->lotes->sortBy("numero") as $lote)
-                                    <option value="{{$lote->id}}" data-preco="{{$lote->preco}}">{{$lote->fazenda->nome_fazenda}}: Lote {{$lote->numero}}{{$lote->letra}} @if($lote->reservado) (Reservado) @endif</option>
+                    <div class="row align-items-center">
+                        <div class="form-group col-8 mb-3">
+                            <label for="tags">Lotes</label>
+                            <br>
+                            <select class="js-example-basic-multiple js-states form-control" style="width: 100%;" multiple="multiple" name="lotes[]" id="select_lotes" multiple required>
+                                <option value="" label="default"></option>
+                                @foreach(\App\Models\Reserva::where([["compra_disponivel", true],["aberto", true]])->orWhere([["ativo", true], ["encerrada", false]])->get() as $reserva)
+                                    @foreach($reserva->lotes->sortBy("numero") as $lote)
+                                        <option value="{{$lote->id}}" data-preco="{{$lote->preco}}">{{$lote->fazenda->nome_fazenda}}: Lote {{$lote->numero}}{{$lote->letra}} @if($lote->reservado) (Reservado) @endif</option>
+                                    @endforeach
                                 @endforeach
-                            @endforeach
-                        </select>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="tarjar" id="" value="1" checked> Tarjar
+                                </label>
+    
+                                <label class="form-check-label ms-5">
+                                    <input class="form-check-input" type="radio" name="tarjar" id="" value="0"> Não Tarjar
+                                </label>
+                            
+                            </div>
+                        </div>
                     </div>
+                    
                     <div class="row">
                         <div class="col-12 col-lg-6">
                             <div class="row">

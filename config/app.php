@@ -168,6 +168,9 @@ return [
         Yoeunes\Toastr\ToastrServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
+        Weidner\Goutte\GoutteServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -230,6 +233,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        "Util" => App\Classes\Util::class,
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'Goutte' => Weidner\Goutte\GoutteFacade::class,
     ],
 
 ];

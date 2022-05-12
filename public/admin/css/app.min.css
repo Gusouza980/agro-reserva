@@ -5108,3 +5108,34 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
 .icone-prioridade.ativo{
     color: #0fff0f;
 }
+
+.icone-preco.ativo{
+    color: #0fff0f;
+}
+
+.icone-compra.ativo{
+    color: #0fff0f;
+}
+
+.row-paginacao > div > nav{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.modal-carregamento{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 10000;
+}
+
+.modal-carregamento-caixa{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    /* background-color: white; */
+}

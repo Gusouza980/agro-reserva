@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Configuracao;
+use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class LiveController extends Controller
 {
     //
 
     public function index(){
+        if(!Util::acesso("live", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         $configuracao = Configuracao::first();
         return view("painel.configuracoes.live", ["configuracao" => $configuracao]);
     }

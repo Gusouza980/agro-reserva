@@ -24,8 +24,8 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-12 text-center text-md-left card-conta-content">
-                        <span class="cpointer link-card-conta active" num="0"><span style="border-bottom: 2px solid #E8521B;">Rese</span>rvas</span>
-                        {{--  <span class="ml-3 link-card-conta cpointer" num="1"><span style="border-bottom: 2px solid #E8521B;">Seus</span> Dados</span>  --}}
+                        <span class="cpointer link-card-conta active" num="0"><span style="border-bottom: 2px solid #E8521B;">Comp</span>ras</span>
+                        @if($cliente->fazendas->count() > 0) <span class="ml-3 link-card-conta cpointer" num="1"><span style="border-bottom: 2px solid #E8521B;">Rese</span>rvas</span> @endif
                         {{--  <span class="ml-3 link-card-conta cpointer" num="2"><span style="border-bottom: 2px solid #E8521B;">Ende</span>reço de Correspondência</span>  --}}
                         {{--  <span class="ml-3 link-card-conta cpointer" num="3"><span style="border-bottom: 2px solid #E8521B;">Pref</span>erências</span>  --}}
                         <span class="ml-3 link-card-conta cpointer" num="4"><span style="border-bottom: 2px solid #E8521B;">Infor</span>mações de conta</span>
@@ -35,7 +35,7 @@
                 <div class="container-fluid container-card-conta active" num="0">
                     <div class="row">
                         <div class="col-12 card-conta-content">
-                            <h5>Suas Reservas</h5>
+                            <h5>Suas Compras</h5>
                         </div>
                     </div>
                     @if($cliente->compras->count() > 0)
@@ -106,7 +106,40 @@
                     @endif
                     
                 </div>
-                <div class="container-fluid container-card-conta" num="1" style="display: none;">
+                @if($cliente->fazendas->count() > 0)
+                    <div class="container-fluid container-card-conta" num="1" style="display: none;">
+                        <div class="row">
+                            <div class="col-12 card-conta-content">
+                                <h5>Relatório de Reservas</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                @foreach($cliente->fazendas as $fazenda)
+                                    <table class="table table-bordered">
+                                        <thead class="table-dark">
+                                            <tr class="text-left">
+                                                <th colspan="3">
+                                                    {{ $fazenda->nome_fazenda }}
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($fazenda->reservas as $reserva)
+                                                <tr>
+                                                    <td>#{{ $reserva->id }}</td>
+                                                    <td>De <b>{{ date("d/m/Y", strtotime($reserva->inicio)) }}</b> até <b>{{ date("d/m/Y", strtotime($reserva->fim)) }}</b></td>
+                                                    <td class="text-center"><a name="" id="" onclick="exibeCarregamento()" href="{{ route('conta.reserva.relatorio', ['reserva' => $reserva]) }}" class="btn btn-warning"  role="button"><i class="fas fa-file-pdf"></i></a></td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                {{-- <div class="container-fluid container-card-conta" num="1" style="display: none;">
                     <div class="row">
                         <div class="col-12">
                             <form action="">
@@ -214,7 +247,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="container-fluid container-card-conta" num="2" style="display: none;">
                     <div class="row">
                         <div class="col-12">
@@ -404,6 +437,11 @@
             </div>
         </div>
     </div>
+    <div id="modal-carregamento" class="modal-carregamento align-items-center justify-content-center" style="display: none;">
+        <div class="modal-carregamento-caixa">
+            <img src="imagens/gif_relogio.gif" alt="">
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -421,6 +459,11 @@
 @endif
 
 <script>
+    function exibeCarregamento(){
+        // alert("FOI");
+        $("#modal-carregamento").css("display", "flex");
+    }
+
     $(document).ready(function(){
         {{--  $(".ver_mais").click(function(){
             vid = $(this).attr("vid");

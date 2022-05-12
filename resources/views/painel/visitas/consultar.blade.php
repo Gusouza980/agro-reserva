@@ -24,7 +24,16 @@
         <input type="date" name="fim" id="" class="form-control" placeholder="" value="{{$fim}}">
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary mt-4">Salvar</button>
+        <label for="">Reserva</label>
+        <select name="reserva" id="" class="form-control">
+            <option value="-1">Todas</option>
+            @foreach(\App\Models\Reserva::all() as $reserva)
+                <option value="{{$reserva->id}}" @if(isset($filtro_reserva) && $filtro_reserva == $reserva->id) selected @endif>{{$reserva->fazenda->nome_fazenda}} - {{date("d/m/y", strtotime($reserva->inicio))}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary mt-4">Filtrar</button>
     </div>
 </form>
 <div class="row justify-content-center">

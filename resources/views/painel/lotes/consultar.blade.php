@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="overflow-x: scroll;">
 
                     <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead class="text-center">
@@ -34,8 +34,10 @@
                                 <th>Registro</th>
                                 <th>Preço</th>
                                 <th>Visitas</th>
+                                <th>Pré R.</th>
                                 <th>Reservado</th>
-                                <th>Exibição</th>
+                                <th><i class="fas fa-money-bill-wave"></i></th>
+                                <th><i class="fas fa-cash-register"></i></th>
                                 <th>Ativo</th>
                                 <th>Prioridade</th>
                                 {{-- <th></th> --}}
@@ -76,6 +78,13 @@
                                     <td>R${{ number_format($lote->preco, 2, ',', '.') }}</td>
                                     <td>{{ $lote->visitas }}</td>
                                     <td>
+                                        @if ($lote->pre_reserva)
+                                            <i class="fas fa-handshake cpointer" style="color: orangered;"  lid="{{$lote->id}}"></i>
+                                        @else
+                                            <i class="fas fa-handshake cpointer"  lid="{{$lote->id}}"></i>
+                                        @endif
+                                    </td>
+                                    <td>
                                         @if ($lote->reservado)
                                             <i class="fas fa-handshake cpointer icone-reservado ativo"  lid="{{$lote->id}}"></i>
                                         @else
@@ -83,14 +92,17 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if (!$lote->liberar_preco && !$lote->liberar_compra)
-                                            Padrão da Reserva
-                                        @elseif($lote->liberar_preco && !$lote->liberar_compra)
-                                            <b>Preço:</b> Liberado / <b>Compra:</b> Padrão
-                                        @elseif(!$lote->liberar_preco && $lote->liberar_compra)
-                                            <b>Preço:</b> Padrão / <b>Compra:</b> Liberada
-                                        @elseif($lote->liberar_preco && $lote->liberar_compra)
-                                            <b>Preço:</b> Liberado / <b>Compra:</b> Liberada
+                                        @if ($lote->liberar_preco)
+                                            <i class="fas fa-eye cpointer icone-preco ativo" lid="{{$lote->id}}" aria-hidden="true"></i>
+                                        @else
+                                            <i class="fas fa-eye cpointer icone-preco" lid="{{$lote->id}}" aria-hidden="true"></i>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($lote->liberar_compra)
+                                            <i class="fas fa-eye cpointer icone-compra ativo" lid="{{$lote->id}}" aria-hidden="true"></i>
+                                        @else
+                                            <i class="fas fa-eye cpointer icone-compra" lid="{{$lote->id}}" aria-hidden="true"></i>
                                         @endif
                                     </td>
                                     <td>
@@ -253,6 +265,62 @@
                         }else{
                             elemento.removeClass("ativo");
                             toastr.success("Lote disponível!", 'Sucesso')
+                        }
+                    },
+                    error: function(){
+                        toastr.error('Erro na operação. Atualize a página e tente novamente.', 'Erro')
+                    }
+                });
+            });
+
+            $(".icone-preco").click(function(){
+                var lote = $(this).attr("lid");
+                var elemento = $(this);
+                var _token = $('meta[name="_token"]').attr('content');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': _token
+                    }
+                });
+                $.ajax({
+                    url: '/painel/fazenda/reserva/lote/preco/' + lote,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success: function(data) {
+                        if(data){
+                            elemento.addClass("ativo");
+                            toastr.success("Preço liberado!", 'Sucesso')    
+                        }else{
+                            elemento.removeClass("ativo");
+                            toastr.success("Preço escondido!", 'Sucesso')
+                        }
+                    },
+                    error: function(){
+                        toastr.error('Erro na operação. Atualize a página e tente novamente.', 'Erro')
+                    }
+                });
+            });
+
+            $(".icone-compra").click(function(){
+                var lote = $(this).attr("lid");
+                var elemento = $(this);
+                var _token = $('meta[name="_token"]').attr('content');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': _token
+                    }
+                });
+                $.ajax({
+                    url: '/painel/fazenda/reserva/lote/comprar/' + lote,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success: function(data) {
+                        if(data){
+                            elemento.addClass("ativo");
+                            toastr.success("Compra liberado!", 'Sucesso')    
+                        }else{
+                            elemento.removeClass("ativo");
+                            toastr.success("Compra escondido!", 'Sucesso')
                         }
                     },
                     error: function(){

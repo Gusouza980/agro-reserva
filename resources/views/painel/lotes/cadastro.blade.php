@@ -11,7 +11,7 @@
 
 @section('conteudo')
     <div class="row">
-        <div class="col-12 col-lg-8">
+        <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -25,20 +25,20 @@
                         method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <div class="mb-3">
                                     <label for="numero" class="form-label">Lote</label>
                                     <input type="number" class="form-control" name="numero" id="numero" min="1" step="1"
                                         value="1">
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <div class="mb-3">
                                     <label for="letra" class="form-label">Letra</label>
                                     <input type="text" class="form-control" name="letra" id="letra" maxlength="2">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="nome" class="form-label">Nome do Lote *</label>
                                     <input type="text" class="form-control" name="nome" id="nome" maxlength="100"
@@ -54,9 +54,6 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label for="registro" class="form-label">Registro</label>
@@ -69,13 +66,19 @@
                                     <input type="text" class="form-control" name="rgn" id="rgn" maxlength="10">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-4">
+                            <div class="col-2">
                                 <div class="mb-3">
                                     <label for="nascimento" class="form-label">Data de Nascimento</label>
                                     <input type="date" class="form-control" name="nascimento" id="nascimento">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-4">
+                            <div class="col-2">
+                                <div class="mb-3">
+                                    <label for="previsao_parto" class="form-label">Previsão de Parto</label>
+                                    <input type="date" class="form-control" name="previsao_parto" id="previsao_parto">
+                                </div>
+                            </div>
+                            <div class="col-2">
                                 <div class="mb-3">
                                     <label for="raca" class="form-label">Raça *</label>
                                     <select name="raca" id="raca" class="form-select">
@@ -86,75 +89,61 @@
                                 </div>
                             </div>
 
-                        </div>
-                        <div class="row">
-                            <div class="col-6 col-md-4">
+                            <div class="col-2">
                                 <div class="mb-3">
                                     <label for="gpta" class="form-label">GPTA</label>
                                     <input type="text" class="form-control" name="gpta" id="gpta" maxlength="12">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-4">
+                            <div class="col-2">
                                 <div class="mb-3">
                                     <label for="ccg" class="form-label">CCG</label>
                                     <input type="text" class="form-control" name="ccg" id="ccg" maxlength="20">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-4">
+                            <div class="col-2">
                                 <div class="mb-3">
                                     <label for="parto" class="form-label">Último Parto</label>
                                     <input type="date" class="form-control" name="parto" id="parto">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 col-md-3">
+                            <div class="col-2">
                                 <div class="mb-3">
                                     <label for="peso" class="form-label">Peso</label>
                                     <input type="text" class="form-control" name="peso" id="peso" maxlength="10">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-3">
+                            <div class="col-2">
                                 <div class="mb-3">
                                     <label for="iabczg" class="form-label">IABCZg</label>
                                     <input type="text" class="form-control" name="iabczg" id="iabczg" maxlength="10">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-3">
+                            <div class="col-2">
                                 <div class="mb-3">
                                     <label for="ce" class="form-label">C.E</label>
                                     <input type="text" class="form-control" name="ce" id="ce" maxlength="10">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-3">
+                            <div class="col-2">
                                 <div class="mb-3">
                                     <label for="deca" class="form-label">Deca</label>
                                     <input type="number" class="form-control" name="deca" id="deca" step="1">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-3">
+                            <div class="col-2">
                                 <div class="mb-3">
                                     <label for="botton" class="form-label">Botton</label>
                                     <input type="text" class="form-control" name="botton" id="botton" maxlength="10">
                                 </div>
                             </div>
-                            <div class="col-6 col-md-3">
+                            <div class="col-2">
                                 <div class="mb-3">
                                     <label for="lact_atual" class="form-label">Lact. Atual</label>
                                     <input type="number" class="form-control" name="lact_atual" id="lact_atual" step="0.01">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="observacoes" class="form-label">Observações</label>
-                                    <textarea class="form-control" name-"observacoes" maxlength="250"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-12 mb-3">
+                            <div class="form-group col-4 mb-3">
                                 <label for="tags">Palavras Chaves</label>
                                 <select class="js-example-basic-multiple js-states form-control" multiple="multiple" name="chaves[]" id="select_tag" multiple required>
                                     <option value="" label="default"></option>
@@ -163,6 +152,33 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <label for="ativo" class="form-label">Iniciar como</label>
+                                    <select name="ativo" id="ativo" class="form-select">
+                                        <option value="1">Ativo</option>
+                                        <option value="0">Inativo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="observacoes" class="form-label">Observações</label>
+                                    <textarea class="form-control" name="observacoes" maxlength="250"></textarea>
+                                </div>
+                            </div>
+                            {{-- <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="texto_destaque" class="form-label">Texto de Destaque</label>
+                                    <input type="text" class="form-control" name="texto_destaque" id="texto_destaque">
+                                    <small>Será exibido caso o lote apareça nos destaques da home</small>
+                                </div>
+                            </div> --}}
+                        </div>
+                        <div class="row">
+                            
                         </div>
                         <div class="row">
                             @if ($reserva->multi_fazendas)
@@ -177,15 +193,7 @@
                                     </select>
                                 </div>
                             @endif
-                            <div class="col-12 col-lg-4">
-                                <div class="mb-3">
-                                    <label for="ativo" class="form-label">Iniciar como</label>
-                                    <select name="ativo" id="ativo" class="form-select">
-                                        <option value="1">Ativo</option>
-                                        <option value="0">Inativo</option>
-                                    </select>
-                                </div>
-                            </div>
+                            
                         </div>
                         <hr>
                         <h4 class="card-title my-4">Informações de Pagamento</h4>
@@ -274,8 +282,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 text-end">
-                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            <div class="col-12 text-start">
+                              <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>
                         </div>
                     </form>

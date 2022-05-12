@@ -10,11 +10,17 @@ use App\Models\Visita;
 use App\Models\CurtidaLote;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class ReservasController extends Controller
 {
 
     public function index(Fazenda $fazenda){
+        if(!Util::acesso("reservas", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         $reservas = $fazenda->reservas;
         return view("painel.reservas.index", ["reservas" => $reservas, "fazenda" => $fazenda]);
     }
@@ -31,6 +37,7 @@ class ReservasController extends Controller
         $reserva->preco_disponivel = false;
         $reserva->compra_disponivel = false;
         $reserva->save();
+        Log::channel('reservas')->warning('O usuário <b>' . session()->get("admin")["nome"] . '</b> cadastrou uma reserva pra fazenda ' . $reserva->fazenda->nome_fazenda . '.');
         toastr()->success("Reserva cadastrada com sucesso!");
         return redirect()->back();
     }   
@@ -43,6 +50,7 @@ class ReservasController extends Controller
         $reserva->desconto_live_valor = $request->desconto_live_valor;
         $reserva->multi_fazendas = $request->multi_fazendas;
         $reserva->save();
+        Log::channel('reservas')->warning('O usuário <b>' . session()->get("admin")["nome"] . '</b> editou a reserva ' . $reserva->id . ' da fazenda ' . $reserva->fazenda->nome_fazenda . '.');
         toastr()->success("Alterações salvas com sucesso!");
         return redirect()->back();
     }   
@@ -69,6 +77,25 @@ class ReservasController extends Controller
         ];
         $file = "Relatório de visitas da reserva da fazenda " . $reserva->fazenda->nome_fazenda . " gerado no dia " . date("d/m/Y"). ".";
         $pdf = PDF::loadView('painel.reservas.pdf.relatorio', $data);
+        return $pdf->stream();
+    }
+
+    public function relatorio_inicio_definido(Reserva $reserva, $inicio){
+        $total_visitas = Visita::where([["logado", true], ['created_at', ">=", $inicio]])->whereIn("lote_id", $reserva->lotes->map->only(['id']))->count();
+        $cinco_clientes_mais_visitas = Visita::select("cliente_id", "cidade", "estado", DB::raw("COUNT(*) as visitas"))->where([["logado", true], ['created_at', ">=", $inicio]])->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy(['cliente_id', 'cidade', 'estado'])->orderBy("visitas", "DESC")->limit(5)->get();
+        $cinco_clientes_mais_visitas_lotes = Visita::select("cliente_id", "lote_id", DB::raw("COUNT(*) as visitas"))->where([["logado", true], ['created_at', ">=", $inicio]])->whereIn("lote_id", $reserva->lotes->map->only(['id']))->whereIn("cliente_id", $cinco_clientes_mais_visitas->map->only(['cliente_id']))->groupBy(['cliente_id', "lote_id"])->orderBy("cliente_id", "ASC")->orderBy("visitas", "DESC")->get();
+        $visitas_lote = Visita::select("lote_id", DB::raw("COUNT(*) as visitas"))->where([["logado", true], ['created_at', ">=", $inicio]])->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy("lote_id")->orderBy("visitas", "DESC")->get();
+        $visitas_dia = Visita::select(DB::raw("DATE_FORMAT(created_at, '%d/%m/%Y') as data"), DB::raw("COUNT(*) as visitas"))->where([["logado", true], ['created_at', ">=", $inicio]])->whereIn("lote_id", $reserva->lotes->map->only(['id']))->groupBy("data")->orderBy("data", "ASC")->get();
+        $data = [
+            "reserva" => $reserva,
+            "cinco_clientes_mais_visitas" => $cinco_clientes_mais_visitas,
+            "cinco_clientes_mais_visitas_lotes" => $cinco_clientes_mais_visitas_lotes,
+            "visitas_dia" => $visitas_dia,
+            "visitas_lote" => $visitas_lote,
+            "total_visitas" => $total_visitas,
+        ];
+        $file = "Relatório de visitas da reserva da fazenda " . $reserva->fazenda->nome_fazenda . " gerado no dia " . date("d/m/Y"). ".";
+        $pdf = PDF::loadView('painel.reservas.pdf.relatorio2', $data);
         return $pdf->stream();
     }
 
@@ -124,5 +151,19 @@ class ReservasController extends Controller
         }
         $reserva->save();
         return redirect()->back();
+    }
+
+    public function relatorio_vendas(Reserva $reserva){
+        $carrinhos = \App\Models\Carrinho::whereHas("lotes", function($q) use ($reserva){
+            $q->whereIn("lotes.id", $reserva->lotes->pluck("id"));
+        })->get();
+        $vendas = \App\Models\Venda::whereIn("carrinho_id", $carrinhos->pluck("id"))->with("cliente")->get()->sortBy("cliente.nome_dono");
+        // dd($vendas);
+        $data = [
+            "reserva" => $reserva,
+            "vendas" => $vendas
+        ];
+        $pdf = \PDF::loadView('cliente.relatorios.vendas2', $data);
+        return $pdf->stream();
     }
 }

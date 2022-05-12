@@ -6,8 +6,7 @@
         @if (!session()->get('cliente')['finalizado'])
             <div class="row justify-content-center mt-5">
                 <div class="col-10 col-md-6 col-lg-4 text-center text-white">
-                    <h3>Se ao longo do cadastro surgir alguma dúvida, chama no brete! Sempre tem alguém de cá pronto para te
-                        atender.</h3>
+                    <h3>{{ __('messages.cadastro.cadastro_final_texto1') }}</h3>
                 </div>
             </div>
             <div class="row justify-content-center mt-3">
@@ -32,13 +31,13 @@
                                 <div class="mx-3">
                                     <div class="form-check form-check-inline mt-2">
                                         <input class="form-check-input-radio" type="radio" name="pessoa_fisica" value="1">
-                                        <label class="form-check-label ml-2 label-branca">Pessoa Física</label>
+                                        <label class="form-check-label ml-2 label-branca">{{ __('messages.cadastro.pessoa_fisica') }}</label>
                                     </div>
                                 </div>
                                 <div class="mx-3">
                                     <div class="form-check form-check-inline mt-2">
                                         <input class="form-check-input-radio" type="radio" name="pessoa_fisica" value="0">
-                                        <label class="form-check-label ml-2 label-branca">Pessoa Jurídica</label>
+                                        <label class="form-check-label ml-2 label-branca">{{ __('messages.cadastro.pessoa_juridica') }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -47,16 +46,15 @@
                                     <div class="form-group col-12 input-cadastro">
                                         <label for="documento">CPF*</label>
                                         <input type="text" class="form-control" name="cpf" id="cpf"
-                                            aria-describedby="" maxlenght="50" required placeholder="Informe seu CPF"
-                                            required>
+                                            aria-describedby="" maxlenght="50" required>
                                     </div>
                                     <div class="form-group col-12 input-cadastro">
                                         <label for="rg">RG *</label>
                                         <input type="text" class="form-control" name="rg" id="rg" aria-describedby=""
-                                            maxlenght="50" required placeholder="Informe seu RG" required>
+                                            maxlenght="50" required>
                                     </div>
                                     <div class="form-group col-12 input-cadastro">
-                                        <label for="nascimento">Data de Nascimento</label>
+                                        <label for="nascimento">{{ __('messages.cadastro.nascimento') }}</label>
                                         <input type="text" class="form-control" pattern="\d{1,2}/\d{1,2}/\d{4}" placeholder="dd/mm/aaaa" name="nascimento" id="nascimento">
                                     </div>
                                 </div>
@@ -66,64 +64,62 @@
                                     <div class="form-group col-12 input-cadastro">
                                         <label for="cnpj">CNPJ*</label>
                                         <input type="text" class="form-control" name="cnpj" id="cnpj"
-                                            aria-describedby="" maxlenght="50" required placeholder="Informe seu CNPJ"
-                                            required>
+                                            aria-describedby="" maxlenght="50" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="container-fluid" id="campo_cep" style="display: none;">
                                 <div class="row">
                                     <div class="form-group col-12 input-cadastro">
-                                        <label for="nome_fazenda">Nome da Fazenda</label>
+                                        <label for="nome_fazenda">{{ __('messages.cadastro.nome_fazenda') }}</label>
                                         <input type="text" class="form-control" name="nome_fazenda" id="nome_fazenda" aria-describedby=""
-                                            maxlenght="150" required placeholder="Informe o nome da sua fazenda" required>
+                                            maxlenght="150" @if(isset(session()->get("cliente")["nome_fazenda"])) value="{{session()->get("cliente")["nome_fazenda"]}}" @endif required>
                                     </div>
                                     <div class="form-group col-12 input-cadastro">
                                         <label for="inscricao_produtor_rural">Inscrição de Produtor Rural</label>
                                         <input type="text" class="form-control" name="inscricao_produtor_rural" id="inscricao_produtor_rural" aria-describedby=""
-                                            maxlenght="20" required placeholder="Informe sua inscrição de produtor rural" required>
+                                            maxlenght="20" required>
                                     </div>
                                     <div class="form-group col-12 input-cadastro">
                                         <label for="cep">CEP (De correspondência)*</label>
-                                        <input type="text" class="form-control" name="cep" id="cep" aria-describedby="" required
-                                            placeholder="Informe seu cep">
+                                        <input type="text" class="form-control" name="cep" id="cep" aria-describedby="" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="container-fluid" id="endereco" style="display: none;">
                                 <div class="row">
                                     <div class="form-group col-12 col-md-6 input-cadastro">
-                                        <label for="cidade">Cidade *</label>
+                                        <label for="cidade">{{ __('messages.cadastro.cidade') }} *</label>
                                         <input type="text" class="form-control" name="cidade" id="cidade" required
                                             maxlenght="50" aria-describedby="" placeholder="">
                                     </div>
                                     <div class="form-group col-12 col-md-6 input-cadastro">
-                                        <label for="estado">Estado *</label>
+                                        <label for="estado">{{ __('messages.cadastro.estado') }} *</label>
                                         <input type="text" class="form-control" name="estado" id="estado" required
                                             maxlenght="2" pattern="[a-zA-Z]{2}" aria-describedby="" placeholder="">
                                     </div>
                                     <div class="form-group col-12 col-md-8 input-cadastro">
-                                        <label for="rua">Rua</label>
+                                        <label for="rua">{{ __('messages.cadastro.rua') }}</label>
                                         <input type="text" class="form-control" name="rua" id="rua" maxlenght="255"
                                             aria-describedby="" placeholder="">
                                     </div>
                                     <div class="form-group col-12 col-md-4 input-cadastro">
-                                        <label for="numero">Número</label>
+                                        <label for="numero">{{ __('messages.cadastro.numero') }}</label>
                                         <input type="text" class="form-control" name="numero" id="numero" maxlenght="6"
                                             aria-describedby="" placeholder="">
                                     </div>
                                     <div class="form-group col-12 input-cadastro">
-                                        <label for="complemento">Complemento</label>
+                                        <label for="complemento">{{ __('messages.cadastro.complemento') }}</label>
                                         <input type="text" class="form-control" name="complemento" id="complemento"
                                             maxlenght="255" aria-describedby="" placeholder="">
                                     </div>
                                     <div class="form-group col-12 col-md-6 input-cadastro">
-                                        <label for="bairro">Bairro</label>
+                                        <label for="bairro">{{ __('messages.cadastro.bairro') }}</label>
                                         <input type="text" class="form-control" name="bairro" id="bairro"
                                             aria-describedby="" maxlenght="50" placeholder="">
                                     </div>
                                     <div class="form-group col-12 col-md-6 input-cadastro">
-                                        <label for="pais">País *</label>
+                                        <label for="pais">{{ __('messages.cadastro.pais') }} *</label>
                                         <input type="text" class="form-control" name="pais" id="pais" required
                                             aria-describedby="" maxlenght="50" placeholder="">
                                     </div>
@@ -132,39 +128,39 @@
 
                                 <div class="row mt-3">
                                     <div class="form-group col-12 col-md-6 input-cadastro">
-                                        <label for="referencia_comercial1">Referência Comercial 1 *</label>
+                                        <label for="referencia_comercial1">{{ __('messages.cadastro.referencia_comercial') }} 1 *</label>
                                         <input type="text" class="form-control" name="referencia_comercial1"
                                             id="referencia_comercial1" aria-describedby="" placeholder="" required>
                                     </div>
                                     <div class="form-group col-12 col-md-6 input-cadastro">
-                                        <label for="referencia_comercial1_tel">Telefone *</label>
+                                        <label for="referencia_comercial1_tel">{{ __('messages.cadastro.telefone') }} *</label>
                                         <input type="text" class="form-control telefone" name="referencia_comercial1_tel"
-                                            id="referencia_comercial1_tel" aria-describedby="" placeholder="Telefone da Referência Comercial 1" required>
+                                            id="referencia_comercial1_tel" aria-describedby="" required>
                                     </div>
                                     <div class="form-group col-12 col-md-6 input-cadastro">
-                                        <label for="referencia_comercial2">Referência Comercial 2</label>
+                                        <label for="referencia_comercial2">{{ __('messages.cadastro.referencia_comercial') }} 2</label>
                                         <input type="text" class="form-control" name="referencia_comercial2"
                                             id="referencia_comercial2" aria-describedby="" placeholder="">
                                     </div>
                                     <div class="form-group col-12 col-md-6 input-cadastro">
-                                        <label for="referencia_comercial2_tel">Telefone</label>
+                                        <label for="referencia_comercial2_tel">{{ __('messages.cadastro.telefone') }}</label>
                                         <input type="text" class="form-control telefone" name="referencia_comercial2_tel"
-                                            id="referencia_comercial2_tel" aria-describedby="" placeholder="Telefone da Referência Comercial 2">
+                                            id="referencia_comercial2_tel" aria-describedby="">
                                     </div>
                                     <div class="form-group col-12 col-md-4 input-cadastro">
-                                        <label for="referencia_bancaria_banco">Referência Bancária</label>
+                                        <label for="referencia_bancaria_banco">{{ __('messages.cadastro.referencia_bancaria') }}</label>
                                         <input type="text" class="form-control" name="referencia_bancaria_banco"
                                             id="referencia_bancaria_banco" aria-describedby="" placeholder="">
                                     </div>
                                     <div class="form-group col-12 col-md-4 input-cadastro">
-                                        <label for="referencia_bancaria_gerente">Gerente</label>
+                                        <label for="referencia_bancaria_gerente">{{ __('messages.cadastro.gerente') }}</label>
                                         <input type="text" class="form-control" name="referencia_bancaria_gerente"
                                             id="referencia_bancaria_gerente" aria-describedby="" placeholder="">
                                     </div>
                                     <div class="form-group col-12 col-md-4 input-cadastro">
-                                        <label for="referencia_bancaria_tel">Telefone</label>
+                                        <label for="referencia_bancaria_tel">{{ __('messages.cadastro.telefone') }}</label>
                                         <input type="text" class="form-control telefone" name="referencia_bancaria_tel"
-                                            id="referencia_bancaria_tel" aria-describedby="" placeholder="Telefone do Gerente">
+                                            id="referencia_bancaria_tel" aria-describedby="">
                                     </div>
                                 </div>
 
@@ -188,17 +184,14 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-12 text-center modal-precadastro-text">
-                                        <h4 style="line-height: 35px; letter-spacing: 1px;">Oba! <b>Seu cadastro completo
-                                                foi enviado</b>. Assim que o nosso time de análise aprovar, você receberá um
-                                            email e já pode comprar conosco.</h4>
+                                        <h4 style="line-height: 35px; letter-spacing: 1px;">{!! __('messages.cadastro.cadastro_final_texto_confirmacao') !!}</h4>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <div class="text-center" id="botoes-finalizar">
                                             <a @if (session()->get('pagina_retorno')) href="{{ session()->get('pagina_retorno') }}" @else href="/"  @endif><button type="submit"
-                                                    class="btn-vermelho-outline-2 px-4 py-2 ml-md-3 mt-3">Voltar ao
-                                                    Site</button></a>
+                                                    class="btn-vermelho-outline-2 px-4 py-2 ml-md-3 mt-3">{{ __('messages.cadastro.voltar_site') }}</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -210,7 +203,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    {{-- <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="width: 100%; max-width: 500px;" role="document">
             <div class="modal-content" style="padding: 0px 0 30px 0; border-radius: 20px;">
@@ -251,7 +244,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 @endsection
 

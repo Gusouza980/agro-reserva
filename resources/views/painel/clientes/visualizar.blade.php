@@ -9,7 +9,8 @@
 @endsection
 
 @section('titulo')
-    <a href="{{route('painel.index')}}">Inicio</a> / <a href="{{route('painel.clientes')}}">Clientes</a> / <a href="{{route('painel.cliente.visualizar', ['cliente' => $cliente])}}">{{$cliente->nome_dono}}</a>
+    <a href="{{ route('painel.index') }}">Inicio</a> / <a href="{{ route('painel.clientes') }}">Clientes</a> / <a
+        href="{{ route('painel.cliente.visualizar', ['cliente' => $cliente]) }}">{{ $cliente->nome_dono }}</a>
 @endsection
 
 @section('conteudo')
@@ -72,6 +73,14 @@
                                 <span class="d-none d-sm-block">Informações Pessoais</span>
                             </a>
                         </li>
+                        @if ($cliente->vendedor)
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#vendedor" role="tab">
+                                    <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                    <span class="d-none d-sm-block">Informações de Vendedor</span>
+                                </a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#profile1" role="tab">
                                 <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
@@ -115,8 +124,8 @@
                                     <div class="form-group col-12 col-lg-4 form-conta mb-3">
                                         <label for="pessoa_fisica">Tipo de Pessoa</label>
                                         <select class="form-control" name="pessoa_fisica" id="pessoa_fisica">
-                                            <option value="0" @if(!$cliente->pessoa_fisica) selected @endif>Jurídica</option>
-                                            <option value="1" @if($cliente->pessoa_fisica) selected @endif>Física</option>
+                                            <option value="0" @if (!$cliente->pessoa_fisica) selected @endif>Jurídica</option>
+                                            <option value="1" @if ($cliente->pessoa_fisica) selected @endif>Física</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-12 col-lg-4 form-conta mb-3">
@@ -142,7 +151,7 @@
                                     <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                         <label for="whatsapp">Whatsapp</label>
                                         <input type="text" class="form-control" name="whatsapp" id="whatsapp"
-                                            aria-describedby="helpId" value="@if($cliente->telefone) {{ $cliente->telefone }} @else {{ $cliente->whataspp }} @endif">
+                                            aria-describedby="helpId" value="@if ($cliente->telefone) {{ $cliente->telefone }} @else {{ $cliente->whataspp }} @endif">
                                     </div>
                                     <div class="form-group col-12 col-lg-6 form-conta mb-3">
                                         <label for="interesse">Interesse</label>
@@ -318,6 +327,65 @@
                                 </div>
                             </form>
                         </div>
+                        @if ($cliente->vendedor)
+                            <div class="tab-pane" id="vendedor" role="tabpanel">
+                                <form action="{{ route('painel.vendedor.informacoes.salvar', ['cliente' => $cliente]) }}"
+                                    method="POST">
+                                    @csrf
+                                    <div class="row mb-3">
+                                        <div class="form-group col-12 col-lg-6 form-conta mb-3">
+                                            <label for="racas_vender">Raça que deseja vender</label>
+                                            <input type="text" class="form-control" name="racas_vender" id="racas_vender"
+                                                aria-describedby="helpId" value="{{ $cliente->racas_vender }}">
+                                        </div>
+                                        <div class="form-group col-12 col-lg-6 form-conta mb-3">
+                                            <label for="telefone">Segmento de Interesse</label>
+                                            <div class="form-group form-conta d-flex justify-content-start mt-2">
+                                                <div class="mx-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="vender_registro" id="" value="1"
+                                                                @if ($cliente->vender_registro) checked @endif>
+                                                            Com Registro
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="mx-3">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="vender_registro" id="" value="0"
+                                                                @if (!$cliente->vender_registro) checked @endif>
+                                                            Sem Registro
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-12 col-lg-6 form-conta mb-3">
+                                            <label for="fazenda_id">Ligar vendedor a fazenda</label>
+                                            <select class="form-control" name="fazenda_id" id="fazenda_id"
+                                                value="{{ $cliente->racas_vender }}">
+                                                <option value="-1" @if (!$cliente->fazenda) selected @endif>Nenhuma</option>
+                                                @foreach (\App\Models\Fazenda::all() as $fazenda)
+                                                    <option value="{{ $fazenda->id }}" @if ($cliente->fazenda && $cliente->fazenda->id == $fazenda->id) selected @endif>
+                                                        {{ $fazenda->nome_fazenda }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row mb-3">
+                                        <div class="col-12 text-right">
+                                            <button class="btn btn-vermelho btn-hover-preto px-5">
+                                                Salvar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        @endif
                         <div class="tab-pane" id="profile1" role="tabpanel">
                             <div class="container-fluid">
                                 <div class="row">
@@ -331,11 +399,11 @@
                                         <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                                             <thead>
                                                 <tr>
+                                                    <th></th>
                                                     <th>Nome</th>
                                                     <th>Nascimento</th>
                                                     <th>Situação</th>
                                                     <th>Data da Situação</th>
-                                                    <th></th>
                                                 </tr>
                                             </thead>
 
@@ -343,6 +411,27 @@
                                             <tbody>
                                                 @foreach ($cliente->analises as $analise)
                                                     <tr>
+                                                        <td>
+                                                            <div class="dropdown mt-4 mt-sm-0">
+                                                                <a href="#" class="btn btn-light dropdown-toggle"
+                                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <i class="fas fa-bars" aria-hidden="true"></i>
+                                                                </a>
+                                                                <div class="dropdown-menu" style="margin: 0px;">
+                                                                    <a name="" id="" class="dropdown-item py-2 cpointer"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#modalAnalise{{ $analise->id }}"
+                                                                        role="button">Visualizar</a>
+                                                                    <a name="" id="" class="dropdown-item py-2 cpointer"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#modalAnaliseObservacao{{ $analise->id }}"
+                                                                        role="button">Observações</a>
+                                                                    <a name="" id="" class="dropdown-item py-2 cpointer"
+                                                                        href="{{ route('painel.cliente.credito.analise.exportar', ['analise' => $analise]) }}"
+                                                                        target="_blank" role="button">Exportar</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
                                                         <td style="vertical-align: middle; text-align:center;">
                                                             {{ $analise->nome }}</td>
                                                         <td style="vertical-align: middle; text-align:center;">
@@ -351,15 +440,6 @@
                                                             {{ $analise->doc_situacao }}</td>
                                                         <td style="vertical-align: middle; text-align:center;">
                                                             {{ date('d/m/Y', strtotime($analise->data_situacao)) }}</td>
-                                                        <td style="vertical-align: middle; text-align:center;">
-                                                            <a name="" id="" class="btn btn-warning cpointer"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#modalAnalise{{ $analise->id }}"
-                                                                role="button">Visualizar</a>
-                                                            <a name="" id="" class="btn btn-primary cpointer ml-3"
-                                                                href="{{ route('painel.cliente.credito.analise.exportar', ['analise' => $analise]) }}"
-                                                                target="_blank" role="button">Exportar</a>
-                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -378,7 +458,6 @@
     </div> <!-- end row -->
 
     @foreach ($cliente->analises as $analise)
-
         <div id="modalAnalise{{ $analise->id }}" class="modal fade" tabindex="-1"
             aria-labelledby="#modalAnalise{{ $analise->id }}Label" aria-hidden="true">
             <div class="modal-dialog modal-fullscreen">
@@ -1102,6 +1181,31 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div id="modalAnaliseObservacao{{ $analise->id }}" class="modal fade" tabindex="-1"
+            aria-labelledby="#modalAnaliseObservacao{{ $analise->id }}Label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form
+                            action="{{ route('painel.cliente.credito.analise.observacoes.salvar', ['analise' => $analise]) }}"
+                            method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label for="">Observações</label>
+                                <textarea class="form-control" name="observacoes" id="">{!! $analise->observacoes !!}</textarea>
+                            </div>
+                            <div class="text-end mt-3">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->

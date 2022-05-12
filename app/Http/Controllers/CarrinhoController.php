@@ -11,6 +11,7 @@ use App\Models\Venda;
 use App\Classes\Email;
 use Illuminate\Support\Str;
 use PDF;
+use Illuminate\Support\Facades\Log;
 
 class CarrinhoController extends Controller
 {

@@ -23,7 +23,7 @@
                     @foreach($reservas->sortBy([['fim', 'desc']]) as $reserva)
                         <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
                             <div style="background: url(/{{$reserva->fazenda->fundo_destaque}}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
-                                <div class="d-flex align-items-center @if($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif">
+                                <div class="d-flex align-items-center card-reserva @if($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif">
                                     <div class="container-fluid">
                                         <div class="row" style="">
                                             <div class="col-12 text-center">
@@ -48,7 +48,7 @@
                                             </div>
                                             <div class="row mt-3" style="">
                                                 <div class="col-12 text-center">
-                                                    <a name="" id="" class="btn @if($reserva->encerrada) btn-vermelho-outline @else btn-vermelho @endif py-2 px-4" href="{{route('reservas.finalizadas.fazenda.conheca', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva])}}" role="button">Mostrar a Reserva</a>
+                                                    <a name="" id="" class="btn @if($reserva->encerrada) btn-vermelho-outline @else btn-vermelho @endif py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva])}}" role="button">Mostrar a Reserva</a>
                                                 </div>
                                             </div>
                                             @if($reserva->tarja_vendas)

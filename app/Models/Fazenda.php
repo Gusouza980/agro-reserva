@@ -21,9 +21,9 @@ class Fazenda extends Model
         return $this->hasMany(Lote::class);
     }
 
-    public function usuarios(){
-        return $this->hasMany(Fazendeiro::class);
-    }
+    // public function usuarios(){
+    //     return $this->hasMany(Fazendeiro::class);
+    // }
 
     public function vendas(){
         return $this->hasMany(Venda::class);
@@ -39,5 +39,9 @@ class Fazenda extends Model
 
     public function avaliacoes(){
         return $this->hasMany(FazendaAvaliacao::class);
+    }
+
+    public function usuarios(){
+        return $this->belongsToMany(Cliente::class, "fazenda_clientes");
     }
 }

@@ -9,15 +9,25 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Reserva;
 use App\Models\Chave;
+use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class LotesController extends Controller
 {
     //
     public function index(Reserva $reserva){
+        if(!Util::acesso("reservas", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.lotes.consultar", ["reserva" => $reserva]);
     }
 
     public function cadastro(Reserva $reserva){
+        if(!Util::acesso("fazendas", "cadastro")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.lotes.cadastro", ["reserva" => $reserva]);
     }
 
@@ -33,6 +43,7 @@ class LotesController extends Controller
         $lote->deca = $request->deca;
         $lote->botton = $request->botton;
         $lote->lact_atual = $request->lact_atual;
+        $lote->texto_destaque = $request->texto_destaque;
         $lote->gpta = $request->gpta;
         $lote->ccg = $request->ccg;
         $lote->parto = $request->parto;
@@ -40,6 +51,7 @@ class LotesController extends Controller
         $lote->sexo = $request->sexo;
         $lote->letra = $request->letra;
         $lote->nascimento = $request->nascimento;
+        $lote->previsao_parto = $request->previsao_parto;
         $lote->observacoes = $request->observacoes;
         $lote->raca_id = $request->raca;
         $lote->preco = $request->preco;
@@ -95,6 +107,10 @@ class LotesController extends Controller
     }
 
     public function editar(Lote $lote){
+        if(!Util::acesso("fazendas", "cadastro")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         return view("painel.lotes.editar", ["lote" => $lote]);
     }
 
@@ -108,6 +124,7 @@ class LotesController extends Controller
         $lote->deca = $request->deca;
         $lote->botton = $request->botton;
         $lote->lact_atual = $request->lact_atual;
+        $lote->texto_destaque = $request->texto_destaque;
         $lote->gpta = $request->gpta;
         $lote->ccg = $request->ccg;
         $lote->parto = $request->parto;
@@ -115,6 +132,7 @@ class LotesController extends Controller
         $lote->sexo = $request->sexo;
         $lote->letra = $request->letra;
         $lote->nascimento = $request->nascimento;
+        $lote->previsao_parto = $request->previsao_parto;
         $lote->observacoes = $request->observacoes;
         $lote->raca_id = $request->raca;
         $lote->preco = $request->preco;
@@ -206,25 +224,29 @@ class LotesController extends Controller
     public function preco(Lote $lote){
         if($lote->liberar_preco){
             $lote->liberar_preco = false;
+            $lote->save();
             toastr()->success("Usando padrão de preço");
+            return response()->json(false);
         }else{
             $lote->liberar_preco = true;
+            $lote->save();
             toastr()->success("Preço liberado");
+            return response()->json(true);
         }
-        $lote->save();
-        return redirect()->back();
     }
 
     public function comprar(Lote $lote){
         if($lote->liberar_compra){
             $lote->liberar_compra = false;
-            toastr()->success("Usando padrão de compra");
+            $lote->save();
+            toastr()->success("Usando padrão de preço");
+            return response()->json(false);
         }else{
             $lote->liberar_compra = true;
-            toastr()->success("Compra liberada");
+            $lote->save();
+            toastr()->success("Preço liberado");
+            return response()->json(true);
         }
-        $lote->save();
-        return redirect()->back();
     }
 
     public function prioridade(Lote $lote){

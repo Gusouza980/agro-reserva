@@ -78,6 +78,13 @@
                             </div>
                             <div class="col-6 col-md-4">
                                 <div class="mb-3">
+                                    <label for="previsao_parto" class="form-label">Previsão de Parto</label>
+                                    <input type="date" class="form-control" name="previsao_parto" id="previsao_parto"
+                                        value="{{$lote->previsao_parto}}">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="mb-3">
                                     <label for="raca" class="form-label">Raça *</label>
                                     <select name="raca" id="raca" class="form-select">
                                         @foreach (App\Models\Raca::all() as $raca)
@@ -155,6 +162,13 @@
                                     <label for="observacoes" class="form-label">Observações</label>
                                     <textarea class="form-control" name="observacoes"
                                         maxlength="250">{!! $lote->observacoes !!}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="texto_destaque" class="form-label">Texto de Destaque</label>
+                                    <input type="text" class="form-control" name="texto_destaque" id="texto_destaque" value="{{$lote->texto_destaque}}">
+                                    <small>Será exibido caso o lote apareça nos destaques da home</small>
                                 </div>
                             </div>
                         </div>

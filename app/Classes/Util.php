@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Classes;
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 class Util{
     
@@ -26,6 +28,24 @@ class Util{
         $day = substr($string, 0, 2);
 
         return $year . "-" . $month . "-" . $day;
+    }
+
+    public static function acesso($setor, $funcao){
+        if(in_array(session()->get("admin")["acesso"], config("acessos." . $setor)[$funcao])){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static function limparLivewireTemp(){
+        $storage = Storage::disk('local');
+        foreach($storage->allFiles('livewire-tmp') as $filePathname){
+           $stamp = now()->subSeconds(4)->timestamp;
+           if($stamp > $storage->lastModified($filePathname)){
+               $storage->delete($filePathname);
+           }
+        }
     }
 
 }

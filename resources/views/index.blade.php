@@ -14,218 +14,148 @@
 @endsection
 
 @section('conteudo')
-    <div class="container-fluid d-lg-none" style="background-color: black;">
-        <div class="row px-0">
-            <div id="container-banner-mobile" class="carousel slide d-lg-none" data-ride="carousel">
-                {{-- <div
-                    style="pointer-events: none; position: absolute; bottom:-10px; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,0.9850315126050421) 20%, rgba(0,212,255,0) 100%); height: 150px; z-index: 5;">
-
-                </div> --}}
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="{{asset('imagens/banner2-mobile.jpg')}}" class="d-block w-100">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{asset('imagens/banner3-mobile.jpg')}}" class="d-block w-100">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#container-banner-mobile" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#container-banner-mobile" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid" style="background-color: black;">
-        <div class="container-fluid pb-5" id="header-index">
-            {{-- <div class="container-fluid py-5 px-0" id="container-section1"> --}}
-                <div class="row">
-                    <div id="container-banner-desktop" class="d-none d-lg-block" style="">
-                        <img class="active cpointer" src="{{ asset('imagens/banner2.jpg') }}" num="1" style="width: 100%;" alt="">
-                        <img class="cpointer" src="{{ asset('imagens/banner3.jpg') }}" num="2" style="display:none; width: 100%;" alt="">
-                        {{-- <div
-                            style="position: absolute; bottom:0; left:0; width: 100%;background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 25%, rgba(0,212,255,0) 100%); height: 250px;">
-                        </div> --}}
-                        <div id="banner-arrow-left"
-                            style="position: absolute; left: 30px; top: calc(50% - 60px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
-                            <i class="fas fa-chevron-left text-white fa-lg"></i>
-                        </div>
-                        <div id="banner-arrow-right"
-                            style="position: absolute; right: 30px; top: calc(50% - 60px); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
-                            <i class="fas fa-chevron-right text-white fa-lg"></i>
-                        </div>
-                    </div>
-                </div>
-                
+    <div class="container-fluid" style="background-color: #15171e;">
+        <div class="px-0 pb-5 container-fluid" id="header-index">
+            {{-- <div class="px-0 py-5 container-fluid" id="container-section1"> --}}
                 @if ($configuracao->live_ativo && $configuracao->live_link)
-                    <div class="row mt-5 d-lg-none">
-                        <div class="col-12 text-center text-header-index">
-                            <h5>DE OLHO NA LIVE</h5>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center mb-5 d-lg-none">
-                        <div id="caixa-live">
+                    <div class="row d-none d-lg-flex">
+                        <div id="container-banner-desktop">
+                            <img src="{{asset('imagens/banner-live.png')}}" style="width: 100%;" alt="">
                             {!! $configuracao->live_link !!}
                         </div>
                     </div>
+                @else
+                    <div class="px-0 row">
+                        <div id="container-banner-desktop" class="px-0 d-none d-lg-block" style="position: relative; width: 100%;">
+                            @php
+                                $cont = 0;
+                            @endphp
+                            @foreach($banners as $banner)
+                                @php
+                                    $cont = $cont + 1;
+                                @endphp
+                                <img class="@if($cont == 1) active @endif cpointer" src="{{ asset($banner->caminho) }}" num="{{$cont}}" @if($banner->link) onclick="window.location.href='{{ $banner->link }}'" @endif style="width: 100%; @if($cont != 1) display:none; @endif" alt="">
+                            @endforeach
+                            <div id="banner-arrow-left"
+                                style="position: absolute; left: 30px; top: calc(50%); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
+                                <i class="text-white fas fa-chevron-left fa-lg"></i>
+                            </div>
+                            <div id="banner-arrow-right"
+                                style="position: absolute; right: 30px; top: calc(50%); padding: 7px 10px 5px 10px; background-color: rgba(0,0,0, 0.8); border-radius: 5px; cursor: pointer;">
+                                <i class="text-white fas fa-chevron-right fa-lg"></i>
+                            </div>
+                        </div>
+                    </div>
                 @endif
-                {{-- <div class="row" id="row-section1-text">
-                    <div class="col-12 text-center text-header-index">
-                        <h3>SEJA<span class="destaque"> BEM-VINDO</span> À PLATAFORMA DE <span
-                                class="destaque">COMPRA E <br class="d-none d-lg-block">VENDA</span> DAS MARCAS QUE
-                            EVOLUEM <span class="destaque">A PECUÁRIA</span></h3>
+                
+                <div class="pb-5 row justify-content-center" id="row-cards-fazendas" style="position: relative; z-index: 1;">
+                    @livewire("slide-lotes-destaque") 
+                    <div class="mt-5 text-center col-12 text-header-index d-none d-lg-block">
+                        <h5>{{ __('messages.home.vitrine_de_reservas') }}</h5>
                     </div>
-                </div> --}}
-                <div class="row pb-5 justify-content-center" id="row-cards-fazendas" style="position: relative; z-index: 1;">
-                    @if ($configuracao->live_ativo && $configuracao->live_link)
-                        <div class="container-fluid">
-                            <div class="row mt-5 d-none d-lg-flex">
-                                <div class="col-12 text-center text-header-index">
-                                    <h5>DE OLHO NA LIVE</h5>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center mb-5 d-none d-lg-flex">
-                                <div id="caixa-live">
-                                    {!! $configuracao->live_link !!}
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                    @if(true)
-                        <div class="col-12 text-center text-header-index d-none d-lg-block">
-                            <h5>Vitrine de animais</h5>
-                        </div>
-                        <div class="vitrine-animais">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="slick">
-                                        @foreach (\App\Models\Lote::take(8)->get() as $lote)
-                                            <div class="px-0 py-2 mt-4 caixa-lote-home cpointer">
-                                                {{-- <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
-                                                <div class=""
-                                                    style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 330px; height: 250px; border-radius: 15px; position: relative; overflow: hidden;">
-                                                    <div class="text-center justify-content-center align-items-center lote-home-hover" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 50px; background-color: rgba(255,0,0,0.7); display:none; ">
-                                                        <p style="margin-top: 12px;">Ver lote</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row px-3 mt-3 align-items-center">
-                                                    <div>
-                                                        <button class="badge-lote-home">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
-                                                    </div>
-                                                    @if($lote->registro)
-                                                        <div class="ml-3 lote-home-rgd">
-                                                            RGD: {{$lote->registro}}
+                    <div class="mx-auto vitrine-animais">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="slick">
+                                    @foreach ($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'asc']]) as $reserva)
+                                        <div class="px-0 py-2 mt-4 mr-3 mt-lg-0">
+                                            <div
+                                                style="background: url(/{{ $reserva->fazenda->fundo_destaque }}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
+                                                <div class="d-flex align-items-center card-reserva @if ($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if ($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if ($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif" style="">
+                                                    <div class="container-fluid">
+                                                        <div class="row" style="">
+                                                            <div class="text-center col-12">
+                                                                <img class="mx-auto" src="{{ asset($reserva->fazenda->logo) }}" style="max-width: 200px; 
+                                                                                @if (($reserva->aberto &&
+                                                                !$reserva->encerrada && !$reserva->compra_disponivel) || ($reserva->aberto
+                                                                && !$reserva->encerrada && $reserva->compra_disponivel &&
+                                                                $reserva->fim))
+                                                                height: 80px;
+                                                            @else
+                                                                height: 100%; max-height:110px;
+                                                                @endif"
+                                                                alt="{{ $reserva->fazenda->nome }}">
+                                                            </div>
                                                         </div>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-                    @endif
-                    
-                    <div class="col-12 text-center text-header-index d-none d-lg-block mt-5">
-                        <h5>Vitrine de reservas</h5>
-                    </div>
-                    @foreach ($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'asc']]) as $reserva)
-                        <div class="px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
-                        {{-- <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2"> --}}
-                            <div
-                                style="background: url(/{{ $reserva->fazenda->fundo_destaque }}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
-                                <div class="d-flex align-items-center @if ($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if ($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if ($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif" style="box-shadow: 0px 0px 4px white;">
-                                    <div class="container-fluid">
-                                        <div class="row" style="">
-                                            <div class="col-12 text-center">
-                                                <img src="{{ asset($reserva->fazenda->logo) }}" style="max-width: 100%; 
-                                                                @if (($reserva->aberto &&
-                                                !$reserva->encerrada && !$reserva->compra_disponivel) || ($reserva->aberto
-                                                && !$reserva->encerrada && $reserva->compra_disponivel &&
-                                                $reserva->fim))
-                                                height: 80px;
-                                            @else
-                                                height: 100%; max-height:110px;
-                                                @endif"
-                                                alt="{{ $reserva->fazenda->nome }}">
-                                            </div>
-                                        </div>
-                                        @if ($reserva->aberto)
-                                            <div class="row mt-3" style="">
-                                                <div class="col-12 text-center">
-                                                    @if (!$reserva->encerrada)
-                                                        @if (!$reserva->compra_disponivel)
-                                                            <h1 class="text-abertura">Inicio em</h1>
-                                                            <h2 class="data-abertura mt-n2">
-                                                                {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
+                                                        @if ($reserva->aberto)
+                                                            <div class="mt-3 row" style="">
+                                                                <div class="text-center col-12">
+                                                                    @if (!$reserva->encerrada)
+                                                                        @if ($reserva->mostrar_datas)
+                                                                            @if (!$reserva->compra_disponivel)
+                                                                                <h1 class="text-abertura">Inicio em</h1>
+                                                                                <h2 class="data-abertura mt-n2">
+                                                                                    {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
+                                                                            @else
+                                                                                @if ($reserva->fim)
+                                                                                    <h1 class="text-abertura">Disponível até</h1>
+                                                                                    <h2 class="data-abertura mt-n2">
+                                                                                        {{ date('d/m/Y', strtotime($reserva->fim)) }}</h2>
+                                                                                @endif
+                                                                            @endif
+                                                                        @endif
+                                                                    @else
+                                                                        <h1 class="text-abertura">ENCERRADA</h1>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-3 row" style="">
+                                                                <div class="text-center col-12">
+                                                                    <a name="" id="" class="btn @if ($reserva->encerrada) btn-vermelho-outline @else btn-vermelho @endif py-2 px-4"
+                                                                        href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva]) }}"
+                                                                        role="button">Mostrar a Reserva</a>
+                                                                </div>
+                                                            </div>
+                                                            @if ($reserva->tarja_vendas)
+                                                                <div class="text-center tarja-diagonal"
+                                                                    style="background-color: #15bd3d; width: 100%; height: 50px; position: absolute; top: 0px; left: -110px; transform: rotate(-45deg);">
+                                                                    <h5
+                                                                        style="color: white; position: absolute; top: 22px; left: 28.5%; font-size: 10px; font-weight: bold; font-family: Gobold Regular; letter-spacing: 3px;">
+                                                                        {{ number_format($reserva->tarja_vendas, 0, ',', '.') }}%
+                                                                        VENDIDO
+                                                                    </h5>
+                                                                </div>
+                                                            @endif
                                                         @else
-                                                            @if ($reserva->fim)
-                                                                <h1 class="text-abertura">Disponível até</h1>
-                                                                <h2 class="data-abertura mt-n2">
-                                                                    {{ date('d/m/Y', strtotime($reserva->fim)) }}</h2>
+                                                            @if ($reserva->mostrar_datas)
+                                                                <div class="mt-4 row" style="">
+                                                                    <div class="text-center col-12">
+                    
+                                                                        <h2 class="data-abertura-futura mt-n2">Inicia em
+                                                                            {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
+                    
+                                                                    </div>
+                                                                </div>
+                                                            @else
+                                                                <div class="mt-4 row" style="">
+                                                                    <div class="text-center col-12">
+                    
+                                                                        <h2 class="data-abertura-futura mt-n2">Aguarde</h2>
+                    
+                                                                    </div>
+                                                                </div>
                                                             @endif
                                                         @endif
-                                                    @else
-                                                        <h1 class="text-abertura">ENCERRADA</h1>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="row mt-3" style="">
-                                                <div class="col-12 text-center">
-                                                    <a name="" id="" class="btn @if ($reserva->encerrada) btn-vermelho-outline @else btn-vermelho @endif py-2 px-4"
-                                                        href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug]) }}"
-                                                        role="button">Mostrar a Reserva</a>
-                                                </div>
-                                            </div>
-                                            @if ($reserva->tarja_vendas)
-                                                <div class="tarja-diagonal text-center"
-                                                    style="background-color: #15bd3d; width: 100%; height: 50px; position: absolute; top: 0px; left: -110px; transform: rotate(-45deg);">
-                                                    <h5
-                                                        style="color: white; position: absolute; top: 22px; left: 28.5%; font-size: 10px; font-weight: bold; font-family: Gobold Regular; letter-spacing: 3px;">
-                                                        {{ number_format($reserva->tarja_vendas, 0, ',', '.') }}%
-                                                        VENDIDO
-                                                    </h5>
-                                                </div>
-                                            @endif
-                                        @else
-                                            @if ($reserva->mostrar_datas)
-                                                <div class="row mt-4" style="">
-                                                    <div class="col-12 text-center">
-    
-                                                        <h2 class="data-abertura-futura mt-n2">Inicia em
-                                                            {{ date('d/m/Y', strtotime($reserva->inicio)) }}</h2>
-    
                                                     </div>
                                                 </div>
-                                            @else
-                                                <div class="row mt-4" style="">
-                                                    <div class="col-12 text-center">
-    
-                                                        <h2 class="data-abertura-futura mt-n2">Aguarde</h2>
-    
-                                                    </div>
-                                                </div>
-                                            @endif
-                                        @endif
-                                    </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    </div>
+                    
                     @php
                         $reserva = null;
                     @endphp
                 </div>
                 <div class="row justify-content-center pb-lg-0" style="position: relative; z-index: 1;">
-                    <div id="mouse" class="cpointer text-white">
+                    <div id="mouse" class="text-white cpointer">
                         <i class="fas fa-angle-double-down fa-md"></i>
                     </div>
-                    <div class="text-center text-white text-header-index ml-4">
-                        <h4>Conheça a Agro Reserva</h4>
+                    <div class="ml-4 text-center text-white text-header-index">
+                        <h4>{{ __('messages.home.conheca_a_agroreserva') }}</h4>
                     </div>
                 </div>
             {{-- </div> --}}
@@ -241,20 +171,25 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row px-0 mx-0 align-items-center" id="div-viva">
+        {{-- <div class="row">
             <div class="col-12">
-                <div class="w800 mx-auto">
-                    <div class="row justify-content-center align-items-center py-5 mt-5 mt-lg-0 mx-0 px-0">
-                        <div data-aos="fade-in" class="text-viva">
-                            <h1>VIVA</h1>
+                <button onclick="submitAjax()">TESTE</button>
+            </div>
+        </div> --}}
+        <div class="px-0 mx-0 row align-items-center" id="div-viva">
+            <div class="col-12">
+                <div class="mx-auto w800">
+                    <div class="px-0 py-5 mx-0 mt-5 row justify-content-center align-items-center mt-lg-0">
+                        <div class="text-viva">
+                            <h1>{{ __('messages.home.viva') }}</h1>
                         </div>
-                        <div data-aos="fade-in" class="ml-3 text-viva text-center text-lg-left">
-                            <h2>a nova era da<br>comercialização<br>de gado.</h2>
+                        <div class="ml-3 text-center text-viva text-lg-left">
+                            <h2>{!! __('messages.home.texto_viva') !!}</h2>
                         </div>
                     </div>
-                    <div class="row justify-content-center my-3 py-5">
+                    <div class="py-5 my-3 row justify-content-center">
                         <div
-                            class="lazy col-12 d-flex justify-content-center text-section1-index video-container text-center">
+                            class="text-center lazy col-12 d-flex justify-content-center text-section1-index video-container">
                             <iframe loading="lazy" width="1863" height="770" src="https://www.youtube.com/embed/JZaf0PGdYiI"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -262,34 +197,29 @@
                         </div>
                     </div>
                 </div>
-                <div data-aos="fade-in" class="w1200 mx-auto">
+                <div class="mx-auto w1200">
                     <div class="row">
-                        <div class="col-12 text-viva text-center pt-3 pb-lg-5 mb-lg-5">
-                            <span><b>Somos a Agro Reserva, a evolução do seu modelo de negócios dentro da pecuária.
-                                    Modernidade sem perder a tradição, facilidade com todas as garantias, diferente de tudo
-                                    que você já viu.</b></span>
+                        <div class="pt-3 text-center col-12 text-viva pb-lg-5 mb-lg-5">
+                            <span><b>{!! __('messages.home.texto_somos') !!}</b></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid px-0">
-        <div class="row align-items-center mx-0" id="tarja-branca">
+    <div class="px-0 container-fluid">
+        <div class="mx-0 row align-items-center" id="tarja-branca">
             <div class="col-12">
-                <div class="w1200 mx-auto">
+                <div class="mx-auto w1200">
                     <div class="row align-items-center justify-content-center">
-                        <div data-aos="fade-in" class="text-digital text-left text-lg-right">
-                            <h1>100% Digital</h1>
-                            <h2>100% Pecuária</h2>
-                            <h3>100% Com você</h3>
+                        <div class="text-left text-digital text-lg-right">
+                            <h1>100% {!! __('messages.home.digital') !!}</h1>
+                            <h2>100% {!! __('messages.home.pecuaria') !!}</h2>
+                            <h3>100% {!! __('messages.home.com_voce') !!}</h3>
                         </div>
-                        <div class="px-3 px-lg-0 ml-lg-4 text-digital text-center text-lg-left">
-                            <span data-aos="fade-in">
-                                Estamos ao seu lado em cada etapa de compra e venda.<br>A agilidade da tecnologia digital
-                                amparada por um atendimento<br>próximo, humanizado e completo. Uma caminhada onde você
-                                nunca<br>estará sozinho, novos rumos, novas experiências,<br>novas conquistas
-                                compartilhadas. Vem com a gente!
+                        <div class="px-3 text-center px-lg-0 ml-lg-4 text-digital text-lg-left">
+                            <span>
+                                {!! __('messages.home.texto_ao_seu_lado') !!}
                             </span>
                         </div>
                     </div>
@@ -300,16 +230,16 @@
     <div class="container-fluid mt-n5">
         <div class="row align-items-center" id="cta-comissao">
             <div class="col-12">
-                <div class="w1200 mx-auto">
+                <div class="mx-auto w1200">
                     <div class="row">
-                        <div data-aos="fade-in" class="col-12 text-cta-comissao text-center py-4 py-lg-0"
+                        <div class="py-4 text-center col-12 text-cta-comissao py-lg-0"
                             style="background: url({{ asset('imagens/brush-laranja.png') }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
-                            <h1>COMPRE SEM COMISSÃO</h1>
+                            <h1>{!! __('messages.gerais.compre_sem_comissao') !!}</h1>
                         </div>
                     </div>
-                    {{-- <div class="row mt-3">
-                        <div class="col-12 text-cta-comissao text-center">
-                            <h2 class="cpointer" data-aos="fade-in" data-toggle="modal" data-target="#modalComissao">Consulte condições</h2>
+                    {{-- <div class="mt-3 row">
+                        <div class="text-center col-12 text-cta-comissao">
+                            <h2 class="cpointer" data-toggle="modal" data-target="#modalComissao">Consulte condições</h2>
                         </div>
                     </div> --}}
                 </div>
@@ -328,12 +258,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12 text-center text-red">
+                        <div class="text-center col-12 text-red">
                             <h4><b>Como funciona?</b></h4>
                         </div>
                     </div>
-                    <div class="row px-4">
-                        <div class="col-12 text-left">
+                    <div class="px-4 row">
+                        <div class="text-left col-12">
                             <p>A Agro Reserva traz benefícios para você, <b>comprador</b>, com <b>descontos progressivos</b>
                                 que podem chegar a <b>0% de comissão</b>. Confira! </p>
                             <ul class="mt-3">
@@ -354,14 +284,33 @@
 @section('scripts')
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
-        var num_banners = 2;
+        var num_banners = @if(isset($cont)) {!! $cont !!} @endif;
         var trava = false;
 
         rotacao_automatica_desktop();
 
+        function submitAjax(){
+            var serie = 'RBBG';
+            var rgn = '241';
+            $.ajax({
+                type: "POST",
+                url: "https://www.abcz.org.br/produtos-e-servicos/consulta-publica-de-animais-ajax",
+                data: {
+                    serie: serie,
+                    rgn: rgn
+                },
+                success: function(ret) {
+                    console.log(ret);
+                },
+                error: function(ret) {
+                    console.log("Deu muito ruim");
+                    console.log(ret);
+                }
+            });
+        }
+
         function troca_banner(direcao) {
             var atual = $("#container-banner-desktop > img.active");
-            console.log(atual);
             if(!trava) {
                 var atual_num = atual.attr("num");
                 if (direcao == "proximo") {
@@ -485,22 +434,24 @@
                 // normal options...
                 slidesToShow: 4,
                 infinite: true,
-                dots: true,
+                // dots: true,
                 adaptiveHeight: true,
                 arrows: true,
                 autoplay: true,
                 autoplaySpeed: 4000,
-                // centerMode: true,
+                centerMode: false,
+                variableWidth: true,
                 // the magic
                 responsive: [{
 
                     breakpoint: 1400,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 4,
                         infinite: true,
-                        dots: true,
+                        // dots: true,
                         adaptiveHeight: true,
                         arrows: true,
+                        centerMode: true,
                         autoplay: true,
                         autoplaySpeed: 4000,
                     }
@@ -511,7 +462,7 @@
                     settings: {
                         slidesToShow: 2,
                         infinite: true,
-                        dots: true,
+                        // dots: true,
                         adaptiveHeight: true,
                         arrows: true,
                         autoplay: true,

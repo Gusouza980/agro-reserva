@@ -18,8 +18,10 @@
         <!-- Icons Css -->
         <link href="{{asset('admin/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
+        @livewireStyles
         @yield("styles")
-        <link href="{{asset('admin/css/app.min.css')}}?v=1.3" id="app-style" rel="stylesheet" type="text/css" />
+        @stack('styles')
+        <link href="{{asset('admin/css/app.min.css')}}?v=1.4" id="app-style" rel="stylesheet" type="text/css" />
         @toastr_css
     </head>
 
@@ -107,11 +109,8 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                {{--  <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
-                                <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">My Wallet</span></a>
-                                <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
-                                <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a>
-                                <div class="dropdown-divider"></div>  --}}
+                                <a class="dropdown-item cpointer" data-bs-toggle="modal" data-bs-target="#modalAlteraSenha"><i class="bx bx-key font-size-16 align-middle me-1"></i> <span key="t-profile">Alterar Senha</span></a>
+                                <div class="dropdown-divider"></div> 
                                 <a class="dropdown-item text-danger" href="{{route('painel.sair')}}"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Sair</span></a>
                             </div>
                         </div>
@@ -130,7 +129,175 @@
                         <!-- Left Menu Start -->
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li class="menu-title" key="t-menu">Menu</li>
-                            @include('painel.includes.menus.acesso' . session()->get("admin")["acesso"])
+
+                            {{-- CLIENTES --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.usuarios")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="fas fa-user"></i>
+                                        <span key="t-dashboards">Usuários</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{{ route('painel.usuarios') }}" key="t-saas">Consultar</a></li>
+                                        {{-- <li><a href="{{ route('painel.vendedores') }}" key="t-saas">Vendedores</a></li> --}}
+                                    </ul>
+                                </li>
+                            @endif
+
+                            {{-- CLIENTES --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.marketplaces")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="fas fa-store"></i>
+                                        <span key="t-dashboards">Marketplace</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{{ route('painel.marketplace.vendedores') }}" key="t-saas">Vendedores</a></li>
+                                        {{-- <li><a href="{{ route('painel.vendedores') }}" key="t-saas">Vendedores</a></li> --}}
+                                    </ul>
+                                </li>
+                            @endif
+
+                            {{-- CLIENTES --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.clientes")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="fas fa-user"></i>
+                                        <span key="t-dashboards">Clientes</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{{ route('painel.clientes') }}" key="t-saas">Consultar</a></li>
+                                        {{-- <li><a href="{{ route('painel.vendedores') }}" key="t-saas">Vendedores</a></li> --}}
+                                    </ul>
+                                </li>
+                            @endif
+
+                            {{-- FAZENDAS --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.fazendas")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="fas fa-tractor"></i>
+                                        <span key="t-dashboards">Fazendas</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        {{-- <li><a href="{{route('painel.fazenda.cadastro')}}" key="t-saas">Cadastro</a></li> --}}
+                                        <li><a href="{{ route('painel.fazendas') }}" key="t-saas">Consultar</a></li>
+                                    </ul>
+                                </li>
+                            @endif
+
+                            {{-- NOTICIAS --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.noticias")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="far fa-sticky-note" aria-hidden="true"></i>
+                                        <span key="t-dashboards">Notícias</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{{ route('painel.noticias') }}" key="t-default">Cadastros</a></li>
+                                        <li><a href="{{ route('painel.categorias') }}" key="t-default">Categorias</a></li>
+                                    </ul>
+                                </li>
+                            @endif
+
+                            {{-- RAÇAS --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.racas")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="fas fa-horse-head"></i>
+                                        <span key="t-dashboards">Raças</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{{ route('painel.racas') }}" key="t-saas">Consultar</a></li>
+                                    </ul>
+                                </li>
+                            @endif
+
+                            {{-- ASSESSORES --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.assessores")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="fas fa-user-tie"></i>
+                                        <span key="t-dashboards">Assessores</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{{ route('painel.assessores') }}" key="t-saas">Consultar</a></li>
+                                    </ul>
+                                </li>
+                            @endif
+                            
+                            {{-- VISITAS --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.visitas")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="fas fa-user"></i>
+                                        <span key="t-dashboards">Visitas</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{{ route('painel.visitas') }}" key="t-saas">Consultar</a></li>
+                                    </ul>
+                                </li>
+                            @endif
+                            
+                            {{-- VENDAS --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.vendas")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="fas fa-money-bill-alt"></i>
+                                        <span key="t-dashboards">Vendas</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{{ route('painel.vendas') }}" key="t-saas">Consultar</a></li>
+                                        <li><a href="{{ route('painel.vendas.lotes') }}" key="t-saas">Lotes</a></li>
+                                        <li><a href="{{ route('painel.compradores') }}" key="t-saas">Compradores</a></li>
+                                    </ul>
+                                </li>
+                            @endif
+
+                            {{-- CARRINHOS --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.carrinhos")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <span key="t-dashboards">Carrinhos</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{{ route('painel.carrinhos.abertos') }}" key="t-saas">Abertos</a></li>
+                                    </ul>
+                                </li>
+                            @endif
+
+                            {{-- POPUPS --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.popups")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="fas fa-bullhorn"></i>
+                                        <span key="t-dashboards">Popups</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{{ route('painel.popups') }}" key="t-saas">Consultar</a></li>
+                                    </ul>
+                                </li>
+                            @endif
+                            
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect">
+                                    <i class="fas fa-cog"></i>
+                                    <span key="t-dashboards">Configurações</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    {{-- LIVE --}}
+                                    @if(in_array(session()->get("admin")["acesso"], config("acessos.live")["consulta"]))
+                                        <li><a href="{{ route('painel.configuracoes.live') }}" key="t-saas">Live</a></li>
+                                    @endif
+
+                                    {{-- BANNERS --}}
+                                    @if(in_array(session()->get("admin")["acesso"], config("acessos.banners")["consulta"]))
+                                        <li><a href="{{ route('painel.configuracoes.home.banners') }}" key="t-saas">Banners</a></li>
+                                    @endif
+                                </ul>
+                            </li>
+                            
                         </ul>
                     </div>
                     <!-- Sidebar -->
@@ -182,6 +349,37 @@
         </div>
         <!-- END layout-wrapper -->
 
+        <div class="modal fade" id="modalAlteraSenha" tabindex="-1" role="dialog"
+            aria-labelledby="modalAlteraSenhaLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAlteraSenhaLabel">Alteração de Senha</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('painel.usuarios.senha.alterar') }}"
+                            method="post">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <label for="senha_antiga">Senha Antiga</label>
+                                <input type="password" class="form-control" name="senha_antiga"
+                                    value="" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="senha_nova">Senha Nova</label>
+                                <input type="password" class="form-control" name="senha_nova"
+                                    value="" required>
+                            </div>
+                            <div class="form-group text-end">
+                                <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- JAVASCRIPT -->
         <script src="{{asset('admin/libs/jquery/jquery.min.js')}}"></script>
         <script src="{{asset('admin/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -195,6 +393,8 @@
         @jquery
         @toastr_js
         @toastr_render
+        @livewireScripts
         @yield("scripts")
+        @stack("scripts")
     </body>
 </html>

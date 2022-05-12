@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Raca;
+use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class RacasController extends Controller
 {
     //
     public function index(){
+        if(!Util::acesso("racas", "consulta")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
         $racas = Raca::all();
         return view("painel.racas.index", ["racas" => $racas]);
     }

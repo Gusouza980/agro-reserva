@@ -11,6 +11,7 @@ use App\Models\Visita;
 use App\Models\Venda;
 use Analytics;
 use Spatie\Analytics\Period;
+use Illuminate\Support\Facades\Log;
 
 class PainelController extends Controller
 {
@@ -30,6 +31,12 @@ class PainelController extends Controller
         $usuario = Usuario::where("usuario", $request->usuario)->first();
 
         if($usuario && Hash::check($request->senha, $usuario->senha)){
+            if(!$usuario->ativo){
+                Log::channel('acessos_painel')->warning('LOGIN: O usuário bloqueado <b>' . $usuario->nome . '</b> realizou uma tentativa de login no sistema.');
+                toastr()->error("Seu acesso está bloqueado. Contate um dos administradores do sistema");
+                return redirect()->back();
+            }
+            Log::channel('acessos_painel')->warning('LOGIN: O usuário <b>' . $usuario->nome . '</b> entrou no sistema.');
             session()->put(["admin" => $usuario->toArray()]);
             return redirect()->route("painel.index");
         }else{
@@ -46,49 +53,10 @@ class PainelController extends Controller
     }
 
     public function index(){
-        // Usuários no site atualmente
         
-        $analyticsData = Analytics::getAnalyticsService()->data_realtime->get('ga:' . env('ANALYTICS_VIEW_ID'), 'rt:activeVisitors')->totalsForAllResults['rt:activeVisitors'];
-        $analytics["numero_acessos_atuais"] = $analyticsData;
-
-        // ==============================================================================
-
-        // Número de acessos nos últimos 7 dias
-        
-        $analyticsData = $analyticsData = Analytics::performQuery(
-            Period::days(6),
-            'ga:sessions',
-            [
-                'metrics' => 'ga:users, ga:newUsers',
-                'dimensions' => 'ga:date'
-            ]
-        );
-
-        $analytics["numero_acessos"] = $analyticsData->rows;
-
-        // ===============================================================================
-
-        // Melhores origens de acessos ao site
-
-        $analyticsData = $analyticsData = Analytics::fetchTopReferrers(Period::days(6));
-        $analytics["top_referencias"] = $analyticsData;
-
-        // ================================================================================
-
-        // Tipos de usuários que acessaram
-
-        $analyticsData = $analyticsData = Analytics::fetchUserTypes(Period::days(6));
-        $analytics["tipos_usuarios"] = $analyticsData;
-        // =================================================================================
-
-        // Páginas mais visualizadas
-
-        $analyticsData = $analyticsData = Analytics::fetchMostVisitedPages(Period::days(6), 7);
-        $analytics["paginas_mais_visualizadas"] = $analyticsData;
-        // dd($analytics);
-        // ==================================================================================
         $reservas = \App\Models\Reserva::where("ativo", true)->get();
-        return view("painel.index", ['reservas' => $reservas, "analytics" => $analytics]);
+
+        return view("painel.index", ['reservas' => $reservas]);
     }
 
     public function visitas(Request $request){
@@ -97,6 +65,12 @@ class PainelController extends Controller
             $fim = $request->fim;
             $inicio_time = $request->inicio . " 00:00:00";
             $fim_time = $request->fim . " 23:59:59";
+            if($request->reserva != -1){
+                $visitas = Visita::whereBetween("created_at", [$inicio_time, $fim_time])->whereHas("lote", function($q) use ($request){
+                    $q->where("reserva_id", $request->reserva);
+                })->orderBy("created_at", "ASC")->get();
+                return view("painel.visitas.consultar", ["visitas" => $visitas, "inicio" => $inicio, "fim" => $fim, "filtro_reserva" => $request->reserva]);
+            }
         }else{
             $inicio = date('Y-m-d', strtotime('-14 days'));
             $fim = date('Y-m-d');
