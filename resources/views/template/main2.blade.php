@@ -31,7 +31,6 @@
         a:hover,
         a:focus,
         a:active {
-            color: inherit !important;
             text-decoration: none;
         }
     </style>

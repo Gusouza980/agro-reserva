@@ -23,14 +23,6 @@ body{
     margin: 0;
 }
 
-a,
-a:hover,
-a:focus,
-a:active {
-    color: white !important;
-    text-decoration: none;
-}
-
 
 /* UTILS */
 

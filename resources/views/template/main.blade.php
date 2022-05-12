@@ -38,6 +38,15 @@
     @toastr_css
     @livewireStyles
     @yield("styles")
+    <style>
+        a,
+        a:hover,
+        a:focus,
+        a:active {
+            color: white !important;
+            text-decoration: none;
+        }
+    </style>
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
