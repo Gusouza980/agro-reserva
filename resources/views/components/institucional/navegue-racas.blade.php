@@ -8,22 +8,22 @@
         <div class="row">
             <div class="col-12 px-0">
                 <div class="slick" id="slide-navegue-racas">
-                    <div class="mx-2 cpointer hover:scale-105" style="border-radius: 50%; overflow:visible; position: relative; width: 250px; height: 250px;">
+                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="border-radius: 50%; overflow:visible; position: relative; width: 250px; height: 250px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" style="border-radius: 50%;" class="w-100" alt="">
                     </div>
-                    <div class="mx-2 cpointer hover:scale-105" style="border-radius: 50%; overflow:visible; position: relative; width: 250px; height: 250px;">
+                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="border-radius: 50%; overflow:visible; position: relative; width: 250px; height: 250px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" style="border-radius: 50%;" class="w-100" alt="">
                     </div>
-                    <div class="mx-2 cpointer hover:scale-105" style="border-radius: 50%; overflow:visible; position: relative; width: 250px; height: 250px;">
+                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="border-radius: 50%; overflow:visible; position: relative; width: 250px; height: 250px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" style="border-radius: 50%;" class="w-100" alt="">
                     </div>
-                    <div class="mx-2 cpointer hover:scale-105" style="border-radius: 50%; overflow:visible; position: relative; width: 250px; height: 250px;">
+                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="border-radius: 50%; overflow:visible; position: relative; width: 250px; height: 250px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" style="border-radius: 50%;" class="w-100" alt="">
                     </div>
-                    <div class="mx-2 cpointer hover:scale-105" style="border-radius: 50%; overflow:visible; position: relative; width: 250px; height: 250px;">
+                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="border-radius: 50%; overflow:visible; position: relative; width: 250px; height: 250px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" style="border-radius: 50%;" class="w-100" alt="">
                     </div>
-                    <div class="mx-2 cpointer hover:scale-105" style="border-radius: 50%; overflow:visible; position: relative; width: 250px; height: 250px;">
+                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="border-radius: 50%; overflow:visible; position: relative; width: 250px; height: 250px;">
                         <img src="{{ asset('imagens/nelore-gado.jpg') }}" style="border-radius: 50%;" class="w-100" alt="">
                     </div>
                     {{-- <div class="mx-2 cpointer hover:scale-105" style="border-radius: 50%; overflow: hidden; position: relative; width: 250px; height: 250px;">
