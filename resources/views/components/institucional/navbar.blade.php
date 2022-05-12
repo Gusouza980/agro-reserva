@@ -48,6 +48,27 @@
                     </svg>
                 </button>
             </div>
+        @else
+            <div class="flex items-center md:order-2">
+                <a class="flex align-items-center mr-3 text-sm rounded-full md:mr-0 cpointer"
+                    id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
+                    <span class="text-white ml-2">Entrar/Cadastrar <i class="fas fa-chevron-down fa-sm text-white ml-2"></i> </span>
+                </a>
+                <!-- Dropdown menu -->
+                <div class="hidden z-50 my-4 text-base list-none bg-preto rounded divide-y divide-gray-100 shadow dark:divide-gray-600"
+                    id="dropdown">
+                    <ul class="py-1" aria-labelledby="dropdown">
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Entrar</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Cadastrar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         @endif
         <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
             <ul class="flex flex-col md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
