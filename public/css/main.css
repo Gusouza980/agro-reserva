@@ -2178,6 +2178,14 @@ label {
     color: white;
 }
 
+.caixa-lotes-visitados-home-text > span{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 13px;
+    color: black;
+}
+
 .badge-lote-home{
     background-color: #F4B13B;
     color: #121212;
@@ -2190,6 +2198,13 @@ label {
 
 .lote-home-rgd{
     color: rgba(255,255,255, 0.7);
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: medium;
+}
+
+.lotes-visitados-home-rgd{
+    color: rgba(0,0,0, 1);
     font-size: 12px;
     font-family: 'Montserrat', sans-serif;
     font-weight: medium;

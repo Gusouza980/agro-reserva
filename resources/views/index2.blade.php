@@ -18,6 +18,8 @@
 
 <x-institucional.navegue-racas></x-institucional.navegue-racas>
 
+<x-institucional.slide_lotes_visitados></x-institucional.slide_lotes_visitados>
+
 @endsection
 
 @section("scripts")
