@@ -27,7 +27,7 @@ a,
 a:hover,
 a:focus,
 a:active {
-    /* color: white !important; */
+    color: white !important;
     text-decoration: none;
 }
 
