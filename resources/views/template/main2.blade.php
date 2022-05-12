@@ -13,8 +13,12 @@
         crossorigin />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1.5.9" />
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}" />
@@ -22,15 +26,16 @@
     @toastr_css
     @livewireStyles
     @yield("styles")
+    <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
 </head>
 
-<body>
+<body x-data="{start: true}">
     <x-institucional.navbar></x-institucional.navbar>
 
-    <div id="espacamento-nav">
+    {{-- <div id="espacamento-nav">
 
-    </div>
+    </div> --}}
     @if(session()->get("cliente") && isset(session()->get("cliente")["finalizado"]) && !session()->get("cliente")["finalizado"])
         <div class="d-lg-none" onclick="window.location.href = '{{ route('cadastro.finalizar') }}'" style="position: fixed; background-color: rgba(0, 180, 0); color: white; width: 100%; z-index: 100; text-align: center; font-size: 14px; bottom: 0px; padding: 10px 5px;">
             <b>Clique aqui para finalizar seu cadastro agora e sair na frente!</b>
@@ -262,6 +267,8 @@
     <script type="text/javascript" async
         src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js">
     </script>
+    <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     @toastr_js
     @toastr_render
     @livewireScripts

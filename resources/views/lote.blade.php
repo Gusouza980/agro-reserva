@@ -30,16 +30,33 @@ if (session()->get('cliente')) {
 @endsection
 
 @section('conteudo')
+    <div class="d-flex flex-column align-items-center justify-content-center" style="position: fixed; top: calc(50% - 100px); left: 0px; background-color: rgba(21, 23, 30, 0.90); width: 70px; z-index: 90;">
+        <div class="mt-4 icones-info d-flex flex-column align-items-center" data-toggle="modal"
+        data-target="#modalFrete">
+            <img class="cpointer mb-2" src="{{ asset('imagens/icon_frete.png') }}" style="width: 35px; height: auto;" alt="">
+            <span style="font-size: 10px;">Frete</span>
+        </div>
+        <div class="my-4 icones-info d-flex flex-column align-items-center" data-toggle="modal"
+        data-target="#modalPagamento">
+            <img class="cpointer" src="{{ asset('imagens/icon_pagamento.png') }}" style="width: 35px; height: auto;" alt="">
+            <span style="font-size: 10px;">Pagamento</span>
+        </div>
+        <div class="mb-4 icones-info d-flex flex-column align-items-center" data-toggle="modal"
+        data-target="#modalSeguranca">
+            <img class="cpointer" src="{{ asset('imagens/icon_seguranca.png') }}" style="width: 35px; height: auto;" alt="">
+            <span style="font-size: 10px;">Segurança</span>
+        </div>
+    </div>
     <div class="container-fluid barra-lote-fixa" style="display: none;">
         <div class="w1200 mx-auto">
             <div class="row align-items-center py-3">
                 <div class="col-12 col-sm-6 text-white">
                     @if(session()->get("cliente"))
                         <div class="row">
-                            <div class="col-12 text-center text-sm-left @if (!$lote->reserva->preco_disponivel && !$lote->liberar_preco) blur @endif">
+                            <div class="col-6 text-center text-sm-left @if (!$lote->reserva->preco_disponivel && !$lote->liberar_preco) blur @endif">
                                 @if ($lote->reserva->preco_disponivel || $lote->liberar_preco)
                                     @if ($lote->reserva->parcelas_mes == 1)
-                                        <h4><b>{{ $lote->parcelas }}x</b> de
+                                        <h4 style="font-size: 18px;"><b>{{ $lote->parcelas }}x</b> de
                                             <b>R${{ number_format($lote->preco / $lote->parcelas, 2, ',', '.') }}</b>
                                         </h4>
                                     @else
@@ -52,10 +69,6 @@ if (session()->get('cliente')) {
                                 @else
                                     <h4><b>0x</b> de <b>R$0000,00</b></h4>
                                 @endif
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 text-center text-lg-left @if (!$lote->reserva->preco_disponivel && !$lote->liberar_preco) blur @endif">
                                 @if ($lote->reserva->preco_disponivel || $lote->liberar_preco)
                                     <span>{{ __('messages.lote.ou') }} R${{ number_format($lote->preco - ($lote->preco * $lote->reserva->desconto) / 100, 2, ',', '.') }}
                                         {{ __('messages.lote.a_vista') }}</span>
@@ -63,58 +76,59 @@ if (session()->get('cliente')) {
                                     <span>R$00000,00</span>
                                 @endif
                             </div>
+                            <div class="col-6 d-flex align-items-center justify-content-center justify-content-sm-end mt-lg-0">
+                                <div class="text-center text-white">
+                                    @if (!$lote->reserva->encerrada)
+                                        @if (!$lote->reserva->compra_disponivel && !$lote->liberar_compra)
+                                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                style="max-width:350px;">{{ __('messages.botoes.disponivel_live') }}</button>
+                                        @else
+                                            @if (!$lote->reservado && !$lote->negociacao)
+                                                @if (session()->get('cliente'))
+                                                    @if ($cliente->aprovado)
+                                                        @if ($lote->modalidade == 0)
+                                                            <a name="" id=""
+                                                                class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                                style="max-width:350px;"
+                                                                href="{{ route('carrinho.adicionar', ['lote' => $lote]) }}"
+                                                                role="button">{{ __('messages.botoes.comprar') }}</a>
+                                                        @else
+                                                            <a name="" id=""
+                                                                class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
+                                                                data-toggle="modal" data-target="#modalLance"
+                                                                style="max-width:350px;" role="button">Dar Lance</a>
+                                                        @endif
+                                                    @else
+                                                        <a name="" id=""
+                                                            class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
+                                                            data-toggle="modal" data-target="#modalBloqueio"
+                                                            style="max-width:350px;" role="button">{{ __('messages.botoes.comprar') }}</a>
+                                                    @endif
+                                                @else
+                                                    <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                        style="max-width:350px;" href="{{ route('login') }}"
+                                                        role="button">{{ __('messages.botoes.entre_comprar') }}</a>
+                                                @endif
+                                            @else
+                                                @if ($lote->reservado)
+                                                    <button name="" id="" class="btn btn-verde btn-block py-2 px-5 mx-auto"
+                                                        style="max-width:350px;">{{ __('messages.botoes.vendido') }}</button>
+                                                @else
+                                                    <button name="" id="" class="btn-laranja btn-block py-2 px-5 mx-auto"
+                                                        style="max-width:350px;">{{ __('messages.botoes.reservado') }}</button>
+                                                @endif
+                                            @endif
+                                        @endif
+                                    @else
+                                        <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                            style="max-width:350px;">{{ __('messages.botoes.encerrada') }}</button>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     @endif
                 </div>
-                <div class="col-12 col-sm-6 d-flex align-items-center justify-content-center justify-content-sm-end mt-3 mt-lg-0">
-                    <div class="text-center text-white">
-                        @if (!$lote->reserva->encerrada)
-                            @if (!$lote->reserva->compra_disponivel && !$lote->liberar_compra)
-                                <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                    style="max-width:350px;">{{ __('messages.botoes.disponivel_live') }}</button>
-                            @else
-                                @if (!$lote->reservado && !$lote->negociacao)
-                                    @if (session()->get('cliente'))
-                                        @if ($cliente->aprovado)
-                                            @if ($lote->modalidade == 0)
-                                                <a name="" id=""
-                                                    class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                                    style="max-width:350px;"
-                                                    href="{{ route('carrinho.adicionar', ['lote' => $lote]) }}"
-                                                    role="button">{{ __('messages.botoes.comprar') }}</a>
-                                            @else
-                                                <a name="" id=""
-                                                    class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
-                                                    data-toggle="modal" data-target="#modalLance"
-                                                    style="max-width:350px;" role="button">Dar Lance</a>
-                                            @endif
-                                        @else
-                                            <a name="" id=""
-                                                class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
-                                                data-toggle="modal" data-target="#modalBloqueio"
-                                                style="max-width:350px;" role="button">{{ __('messages.botoes.comprar') }}</a>
-                                        @endif
-                                    @else
-                                        <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                            style="max-width:350px;" href="{{ route('login') }}"
-                                            role="button">{{ __('messages.botoes.entre_comprar') }}</a>
-                                    @endif
-                                @else
-                                    @if ($lote->reservado)
-                                        <button name="" id="" class="btn btn-verde btn-block py-2 px-5 mx-auto"
-                                            style="max-width:350px;">{{ __('messages.botoes.vendido') }}</button>
-                                    @else
-                                        <button name="" id="" class="btn-laranja btn-block py-2 px-5 mx-auto"
-                                            style="max-width:350px;">{{ __('messages.botoes.reservado') }}</button>
-                                    @endif
-                                @endif
-                            @endif
-                        @else
-                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
-                                style="max-width:350px;">{{ __('messages.botoes.encerrada') }}</button>
-                        @endif
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -446,18 +460,9 @@ if (session()->get('cliente')) {
             </div> --}}
         </div>
         {{-- <hr> --}}
-        <div class="container-fluid py-5" style="background-color: black;">
-            {{-- <div class="row justify-content-center"> --}}
-                @if ($configuracao->mostrar_lotes_destaque)
-                    {{-- <div class="col-12 mt-5 text-center text-header-index"> --}}
-                        {{-- <h5>Animais em Destaque</h5> --}}
-                    {{-- </div> --}}
-                    {{-- <div class="col-12"> --}}
-                        @livewire("slide-lotes-destaque", ["reserva" => $reserva])
-                    {{-- </div> --}}
-                    {{-- <div class="borda-cinza-vitrines mt-5"></div> --}}
-                @endif
-            {{-- </div> --}}
+        @if ($configuracao->mostrar_lotes_destaque)
+                @livewire("slide-lotes-destaque", ["reserva" => $reserva])
+        @endif
         </div>
         @if ($lote->recomendados->count() > 0)
             <div class="container-fluid py-5">

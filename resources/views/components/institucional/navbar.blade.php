@@ -1,182 +1,80 @@
+<nav class="bg-preto border-gray-200 px-2 sm:px-4 py-4">
+    <div class="container flex flex-wrap justify-between items-center align-items-center mx-auto">
+        <a href="https://flowbite.com" class="flex items-center">
+            <img src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+            {{-- <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> --}}
+        </a>
+        @if(session()->get("cliente"))
+            <div class="flex items-center md:order-2">
+                <button type="button"
+                    class="flex align-items-center mr-3 text-sm  rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    id="user-menu-button" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
+                    <img class="w-8 h-8 rounded-full" src="{{ asset('imagens/gif_relogio.gif') }}" alt="user photo">
+                    <span class="text-white ml-2">{{ explode(" ", session()->get("cliente")["nome_dono"])[0] }} <i class="fas fa-chevron-down fa-sm text-white ml-2"></i> </span>
+                </button>
 
-<div class="dark:bg-gray-900" x-data="{open_cart: false, cont: '0'}">
-    <div>
-        <div class="relative">
-            <!-- For md screen size -->
-            <div id="md-searchbar" class="dark:bg-gray-900 dark:bg-gray-900 hidden lg:hidden py-5 px-6 items-center justify-between">
-                <div class="flex items-center space-x-3 text-gray-800 dark:text-white">
-                    <div>
-                        <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg2.svg" alt="search">
-                        <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg2dark.svg" alt="search">
+                <!-- Dropdown menu -->
+                <div class="hidden z-50 my-4 text-base list-none bg-preto rounded divide-y divide-gray-100 shadow dark:divide-gray-600"
+                    id="dropdown">
+                    <div class="py-3 px-4">
+                        <span class="block text-sm text-gray-900 dark:text-white">{{ session()->get("cliente")["nome_dono"] }}</span>
+                        <span
+                            class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{{ session()->get("cliente")["email"] }}</span>
                     </div>
-                    <input type="text" placeholder="Search for products" class="text-sm leading-none dark:text-gray-300 dark:bg-gray-900 text-gray-600 focus:outline-none" />
-                </div>
-                <div class="space-x-6">
-                    <button aria-label="view favourites" class="text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800">
-                        <img class="w-5 dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg3.svg" alt="favourites">
-                        <img class="w-5 dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg3dark.svg" alt="favourites">
-                    </button>
-                    <button aria-label="go to cart" class="text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800">
-                        <img class="w-5 dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg4.svg" alt="bag">
-                        <img class="w-5 dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg4dark.svg" alt="bag">
-                    </button>
-                </div>
-            </div>
-            <!-- For md screen size -->
-
-            <!-- For large screens -->
-            <div class="dark:bg-gray-900 bg-gray-50 px-6 py-9">
-                <div class="container mx-auto flex items-center justify-between">
-                    <h1 class="md:w-2/12 cursor-pointer text-gray-800 dark:text-white" aria-label="the Crib.">
-                        <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg1.svg" alt="logo">
-                        <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg1dark.svg" alt="logo">
-                    </h1>
-                    <ul class="hidden w-8/12 md:flex items-center justify-center space-x-8">
+                    <ul class="py-1" aria-labelledby="dropdown">
                         <li>
-                            <a href="javascript:void(0)" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"><h5 x-text="cont"></h5></a>
+                            <a href="#"
+                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Perfil</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">Furniture</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">Lookbook</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">Support</a>
-                        </li>
-                    </ul>
-
-                    <div class="md:w-2/12 justify-end flex items-center space-x-4 xl:space-x-8">
-                        <div class="hidden lg:flex items-center">
-                            <button onclick="toggleSearch()" aria-label="search items" class="w-5 text-gray-800 dark:hover:text-gray-300 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800">
-                                <img class="transform rotate-90 dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg2.svg" alt="search">
-                                <img class="transform rotate-90 dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg2dark.svg" alt="search">
-                            </button>
-                            <input id="searchInput" type="text" placeholder="search" class="hidden text-sm dark:bg-gray-900 dark:placeholder-gray-300 text-gray-600 rounded ml-1 border border-transparent focus:outline-none focus:border-gray-400 px-1" />
-                        </div>
-                        <div class="hidden lg:flex items-center space-x-4 xl:space-x-8">
-                            <button aria-label="view favourites" class="w-6 text-gray-800 dark:hover:text-gray-300 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800" x-on:click="open_cart = !open_cart">
-                                <img class=" dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg3.svg" alt="favourites">
-                                <img class=" dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg3dark.svg" alt="favourites">
-                            </button>
-                            <button x-show="open_cart" x-transition:enter.duration.1500ms x-transition:leave.duration.1500ms aria-label="go to cart" class="w-6 text-gray-800 dark:hover:text-gray-300 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800">
-                                <img class=" dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg4.svg" alt="bag">
-                                <img class=" dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg4dark.svg" alt="bag">
-                            </button>
-                        </div>
-
-                        <div class="flex lg:hidden">
-                            <button aria-label="show options" onclick="mdOptionsToggle()" class="text-black dark:text-white dark:hover:text-gray-300 hidden md:flex focus:outline-none focus:ring-2 rounded focus:ring-gray-600">
-                                <img class=" dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg5.svg" alt="toggler">
-                                <img class=" dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg5dark.svg" alt="toggler">
-                            </button>
-
-                            <button aria-label="open menu" onclick="openMenu()" class="text-black dark:text-white dark:hover:text-gray-300 md:hidden focus:outline-none focus:ring-2 rounded focus:ring-gray-600">
-                                <img class=" dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg5.svg" alt="toggler">
-                                <img class=" dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg5dark.svg" alt="toggler">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- For small screen -->
-            <div id="mobile-menu" class="hidden absolute dark:bg-gray-900 z-10 inset-0 md:hidden dark:bg-gray-900 flex flex-col h-screen w-full">
-                <div class="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 pb-4 p-4">
-                    <div class="flex items-center space-x-3">
-                        <div>
-                            <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg2.svg" alt="search">
-                            <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg2dark.svg" alt="search">  
-                        </div>
-                        <input type="text" placeholder="Search for products" class="text-sm dark:bg-gray-900 text-gray-600 placeholder-gray-600 dark:placeholder-gray-300 focus:outline-none" />
-                    </div>
-
-                    <button onclick="closeMenu()" aria-label="close menu" class="focus:outline-none focus:ring-2 rounded focus:ring-gray-600">
-                        <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg6.svg" alt="cross">
-                        <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg6dark.svg" alt="cross">  
-                    </button>
-                </div>
-                <div class="mt-6 p-4">
-                    <ul class="flex flex-col space-y-6">
-                        <li>
-                            <a href="javascript:void(0)" class="dark:text-white flex items-center justify-between hover:underline text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800">
-                                Home
-                                <div>
-                                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg7.svg" alt="arrow">
-                                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg7dark.svg" alt="arrow">  
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="dark:text-white flex items-center justify-between hover:underline text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800">
-                                Furniture
-                                <div>
-                                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg7.svg" alt="arrow">
-                                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg7dark.svg" alt="arrow">  
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="dark:text-white flex items-center justify-between hover:underline text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800">
-                                Lookbook
-                                <div>
-                                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg7.svg" alt="arrow">
-                                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg7dark.svg" alt="arrow">  
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="dark:text-white flex items-center justify-between hover:underline text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800">
-                                Support
-                                <div>
-                                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg7.svg" alt="arrow">
-                                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg7dark.svg" alt="arrow">  
-                                </div>
-                            </a>
+                            <a href="#"
+                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-red-500 dark:hover:text-white">Sair</a>
                         </li>
                     </ul>
                 </div>
-                <div class="h-full flex items-end">
-                    <ul class="flex flex-col space-y-8 bg-gray-50 w-full py-10 p-4 dark:bg-gray-800">
-                        <li>
-                            <a href="javascript:void(0)" class="dark:text-white text-gray-800 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
-                                <div>
-                                    <img class="w-5 dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg4.svg" alt="bag">
-                                    <img class="w-5 dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg4dark.svg" alt="bag">
-                                </div>
-                                <p class="text-base">Cart</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="dark:text-white text-gray-800 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
-                                <div>
-                                    <img class="w-5 dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg3.svg" alt="favourites">
-                                    <img class="w-5 dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/navigation-I-svg3dark.svg" alt="favourites">
-                                </div>
-                                <p class="text-base">Wishlist</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <button data-collapse-toggle="mobile-menu-2" type="button"
+                    class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="mobile-menu-2" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
             </div>
+        @endif
+        <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
+            <ul class="flex flex-col md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+                <li>
+                    <a href="#"
+                        class="transition duration-300 ease-in-out block py-2 pr-4 pl-3 rounded md:p-0 dark:text-white dark:md:hover:text-orange-400"
+                        aria-current="page">Início</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="transition duration-300 ease-in-out block py-2 pr-4 pl-3 md:p-0 dark:text-white dark:md:hover:text-orange-400">Blog</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="transition duration-300 ease-in-out block py-2 pr-4 pl-3 md:p-0 dark:text-white dark:md:hover:text-orange-400">Quem Somos</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="transition duration-300 ease-in-out block py-2 pr-4 pl-3 md:p-0 dark:text-white dark:md:hover:text-orange-400">Reserva Finalizada</a>
+                </li>
+                @if(session()->get("cliente") && !session()->get("cliente")["finalizado"])
+                    <li>
+                        <a href="#"
+                            class="transition duration-300 ease-in-out block py-2 pr-4 pl-3 md:p-0 dark:text-white dark:md:hover:text-orange-400">Finalizar Cadastro</a>
+                    </li>
+                @endif
+            </ul>
         </div>
     </div>
-</div>
-        
-        
-@push("scripts")
-    <script>
-        const toggleSearch = () => {
-            document.getElementById("searchInput").classList.toggle("hidden");
-        };
-        const mdOptionsToggle = () => {
-            document.getElementById("md-searchbar").classList.toggle("hidden");
-            document.getElementById("md-searchbar").classList.toggle("flex");
-        };
-        const openMenu = () => {
-            document.getElementById("mobile-menu").classList.remove("hidden");
-        };
-        const closeMenu = () => {
-            document.getElementById("mobile-menu").classList.add("hidden");
-        };
-    </script>
-@endpush
+</nav>

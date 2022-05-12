@@ -27,7 +27,7 @@ a,
 a:hover,
 a:focus,
 a:active {
-    color: white !important;
+    /* color: white !important; */
     text-decoration: none;
 }
 
@@ -1948,6 +1948,10 @@ label {
     height: 50px;
 }
 
+.icones-info > img:hover{
+    transform: scale(1.1);
+}
+
 @media (max-width: 768px){
 
     .icones-info{
@@ -2131,7 +2135,7 @@ label {
 }
 
 .borda-cinza-vitrines{
-    width: 80%;
+    width: 100%;
     border-bottom: 1px solid #4A5860;
     margin: auto;
 }
@@ -2189,6 +2193,16 @@ label {
     font-size: 12px;
     font-family: 'Montserrat', sans-serif;
     font-weight: medium;
+}
+
+.lote-home-hover{
+    position: absolute; 
+    bottom: 0px; 
+    left: 0px; 
+    width: 100%; 
+    height: 50px; 
+    background-color: rgba(232,82,29,0.85); 
+    display:none; 
 }
 
 .lote-home-hover > p{
@@ -2338,4 +2352,13 @@ label {
     .slick-lotes .slick-track{
         left: -140px !important;
     }
+}
+
+
+#slide-reservas-ativas .slick-slide{
+    height: 610px !important;
+}
+
+#slide-reservas-ativas .slick-slide img{
+    height: 610px !important;
 }

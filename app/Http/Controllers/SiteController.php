@@ -88,14 +88,7 @@ class SiteController extends Controller
         $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
         $banners = HomeBanner::orderBy("prioridade", "ASC")->get();
         
-        $agent = new Agent();
-        if($agent->isMobile()){
-            $view = "mobile.index";
-            // $view = "index";
-        }else{
-            $view = "index2";
-        }
-        return view($view, ["reservas" => $reservas, "configuracao" => $configuracao, "banners" => $banners]);
+        return view("index2", ["reservas" => $reservas, "configuracao" => $configuracao, "banners" => $banners]);
     }
 
     public function conheca($slug, Reserva $reserva){
