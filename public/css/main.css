@@ -2149,6 +2149,10 @@ label {
     color: var(--laranja);
 }
 
+#slide-lotes-visitados .slick-prev:before, #slide-lotes-visitados .slick-next:before{
+    color: var(--laranja) !important;
+}
+
 #slide-navegue-racas .slick-list{
     padding: 15px;
 }
