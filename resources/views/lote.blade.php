@@ -30,23 +30,25 @@ if (session()->get('cliente')) {
 @endsection
 
 @section('conteudo')
-    <div class="d-flex flex-column align-items-center justify-content-center" style="position: fixed; top: calc(50% - 100px); left: 0px; background-color: rgba(21, 23, 30, 0.90); width: 70px; z-index: 90;">
-        <div class="mt-4 icones-info d-flex flex-column align-items-center" data-toggle="modal"
-        data-target="#modalFrete">
-            <img class="cpointer mb-2" src="{{ asset('imagens/icon_frete.png') }}" style="width: 35px; height: auto;" alt="">
-            <span style="font-size: 10px;">Frete</span>
+    @if (!$lote->reserva->encerrada)
+        <div class="d-flex flex-column align-items-center justify-content-center" style="position: fixed; top: calc(50% - 100px); left: 0px; background-color: rgba(21, 23, 30, 0.90); width: 70px; z-index: 90;">
+            <div class="mt-4 icones-info d-flex flex-column align-items-center" data-toggle="modal"
+            data-target="#modalFrete">
+                <img class="cpointer mb-2" src="{{ asset('imagens/icon_frete.png') }}" style="width: 35px; height: auto;" alt="">
+                <span style="font-size: 10px;">Frete</span>
+            </div>
+            <div class="my-4 icones-info d-flex flex-column align-items-center" data-toggle="modal"
+            data-target="#modalPagamento">
+                <img class="cpointer" src="{{ asset('imagens/icon_pagamento.png') }}" style="width: 35px; height: auto;" alt="">
+                <span style="font-size: 10px;">Pagamento</span>
+            </div>
+            <div class="mb-4 icones-info d-flex flex-column align-items-center" data-toggle="modal"
+            data-target="#modalSeguranca">
+                <img class="cpointer" src="{{ asset('imagens/icon_seguranca.png') }}" style="width: 35px; height: auto;" alt="">
+                <span style="font-size: 10px;">Segurança</span>
+            </div>
         </div>
-        <div class="my-4 icones-info d-flex flex-column align-items-center" data-toggle="modal"
-        data-target="#modalPagamento">
-            <img class="cpointer" src="{{ asset('imagens/icon_pagamento.png') }}" style="width: 35px; height: auto;" alt="">
-            <span style="font-size: 10px;">Pagamento</span>
-        </div>
-        <div class="mb-4 icones-info d-flex flex-column align-items-center" data-toggle="modal"
-        data-target="#modalSeguranca">
-            <img class="cpointer" src="{{ asset('imagens/icon_seguranca.png') }}" style="width: 35px; height: auto;" alt="">
-            <span style="font-size: 10px;">Segurança</span>
-        </div>
-    </div>
+    @endif
     <div class="container-fluid barra-lote-fixa" style="display: none;">
         <div class="w1200 mx-auto">
             <div class="row align-items-center py-3">
@@ -139,7 +141,7 @@ if (session()->get('cliente')) {
                 <div class="container pt-4">
                     <div class="row align-items-center pb-4">
                         <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
-                            <img src="{{ asset($fazenda->logo) }}" style="width: 100%; max-width: 300px;" alt="">
+                            <img src="{{ asset($fazenda->logo) }}" style="width: 100%; max-width: 250px;" alt="">
                         </div>
                         <div class="col-12 col-lg-7 text-white mt-5 mt-lg-0">
                             <div class="row">
@@ -243,7 +245,7 @@ if (session()->get('cliente')) {
                 </div>
             </div>
             <div class="w1200 mx-auto pt-5 pb-5 pb-lg-0" style="">
-                <div class="container-fluid">
+                <div class="container-fluid pb-4">
                     <div class="row py-4 px-5 justify-content-between">
                         <div>
                             @if (!isset($finalizadas))
@@ -338,65 +340,6 @@ if (session()->get('cliente')) {
                         </div>
                     </div>
                 </div>
-                @if (!$lote->reserva->encerrada)
-                    <div class="container-fluid" style="">
-                        <div class="row align-items-center justify-content-center" style="min-height: 300px;">
-                            <div class="container-fluid">
-                                <div class="row justify-content-center py-4 py-lg-0 d-none d-lg-flex">
-                                    <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                        data-target="#modalFrete">
-                                        <div class="mb-3 icones-info">
-                                            <img src="{{ asset('imagens/icon_frete.png') }}" height="50" alt="">
-                                        </div>
-                                        <span>{!! __('messages.lote.frete') !!}</span>
-                                    </div>
-                                    <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                        data-target="#modalPagamento">
-                                        <div class="mb-3 icones-info">
-                                            <img src="{{ asset('imagens/icon_pagamento.png') }}" height="50" alt="">
-                                        </div>
-                                        <span>{!! __('messages.lote.pagamentos_condicoes') !!}</span>
-                                    </div>
-                                    <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer"
-                                        data-toggle="modal" data-target="#modalSeguranca">
-                                        <div class="mb-3 icones-info">
-                                            <img src="{{ asset('imagens/icon_seguranca.png') }}" height="50" alt="">
-                                        </div>
-                                        <span>{!! __('messages.lote.seguranca') !!}</span>
-                                    </div>
-                                </div>
-                                <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
-                                    <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                        data-target="#modalFrete">
-                                        <div class="mx-auto mb-3 icones-info">
-                                            <img src="{{ asset('imagens/icon_frete.png') }}" height="80" alt="">
-                                        </div>
-                                        <span>{{ __('messages.lote.frete') }}</span>
-                                    </div>
-                                    <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
-                                        data-target="#modalPagamento">
-                                        <div class="mx-auto mb-3 icones-info">
-                                            <img src="{{ asset('imagens/icon_pagamento.png') }}" height="80" alt="">
-                                        </div>
-                                        <span>{!! __('messages.lote.pagamentos_condicoes') !!}</span>
-                                    </div>
-                                    <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer"
-                                        data-toggle="modal" data-target="#modalSeguranca">
-                                        <div class="mx-auto mb-3 icones-info">
-                                            <img src="{{ asset('imagens/icon_seguranca.png') }}" height="80" alt="">
-                                        </div>
-                                        <span>{{ __('messages.lote.seguranca') }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @else
-                    <div class="row py-4">
-
-                    </div>
-                @endif
-
             </div>
         </div>
 
@@ -460,10 +403,11 @@ if (session()->get('cliente')) {
             </div> --}}
         </div>
         {{-- <hr> --}}
+        
+        </div>
         @if ($configuracao->mostrar_lotes_destaque)
                 @livewire("slide-lotes-destaque", ["reserva" => $reserva])
         @endif
-        </div>
         @if ($lote->recomendados->count() > 0)
             <div class="container-fluid py-5">
                 <div class="w1200 mx-auto">
