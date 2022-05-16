@@ -2389,7 +2389,7 @@ label {
 }
 
 .slick-lotes .slick-prev{
-    width: 35px;
+    width: 45px;
     height: 35px;
     /* background-color: rgba(255,255,255); */
     backdrop-filter: blur(12px);
@@ -2406,10 +2406,11 @@ label {
 
 .slick-lotes .slick-prev:hover{
     background-color: rgba(255,255,255) !important;
+    color: var(--laranja);
 }
 
 .slick-lotes .slick-next{
-    width: 35px;
+    width: 45px;
     height: 35px;
     backdrop-filter: blur(12px);
     /* background-color: rgba(255,255,255); */
@@ -2426,6 +2427,7 @@ label {
 
 .slick-lotes .slick-next:hover{
     background-color: rgba(255,255,255) !important;
+    color: var(--laranja);
 }
 
 .slick-lotes .slick-prev:before, .slick-lotes .slick-next:before{
