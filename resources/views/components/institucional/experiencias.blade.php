@@ -1,4 +1,4 @@
-<div class="container-fluid px-0 bg-slate-50 py-5" x-data="{ show: false }" x-intersect.enter="show = true">
+<div class="container-fluid px-0 bg-white py-5" x-data="{ show: false }" x-intersect.enter="show = true">
     <div class="w1400 mx-auto px-3 px-lg-0" x-show="show" x-transition.opacity.duration.3000ms>
         <div class="row mb-5">
             <div class="col-12 text-center" style="font-family: Montserrat; font-size: 25px; font-weight: medium;">
