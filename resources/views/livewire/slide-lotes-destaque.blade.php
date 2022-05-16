@@ -24,7 +24,7 @@
                                         <div class="@if($lotes_destaque->count() >= 4 || $mobile) px-0 @else px-3 @endif py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
                                             {{-- <div data-aos-duration="500" class="px-0 py-2 mx-0 mt-4 lazy mt-lg-0 mx-lg-2"> --}}
                                             <div class="caixa-lote-home-imagem"
-                                                style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 350px; height: 250px; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464; box-shadow: 0px 15px 22px rgba(0,0,0,0.6);">
+                                                style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 350px; height: 250px; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464;">
                                                 <div class="text-center justify-content-center align-items-center lote-home-hover">
                                                     <p style="margin-top: 12px;">{{ __('messages.botoes.compre_agora') }}</p>
                                                 </div>
@@ -44,7 +44,7 @@
                                                             </div>
                                                         @endif
                                                     </div>
-                                                    <div class="text-left caixa-lote-home-text">
+                                                    <div class="text-left caixa-lote-home-text mt-2">
                                                         <span>@if($lote->preco > 0) {{ $lote->parcelas . "x de R$" . number_format($lote->preco / $lote->parcelas, 2, ",", ".")  }}  @else {{ $lote->reserva->desconto }}% de desconto no<br>pagamento à vista @endif</span>
                                                     </div>
                                                 </div>
