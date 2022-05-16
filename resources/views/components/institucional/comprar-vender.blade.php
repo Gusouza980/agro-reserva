@@ -1,4 +1,4 @@
-<div class="container-fluid px-0 bg-slate-50 py-5" x-data="{ show: false }" x-intersect.enter="show = true">
+<div class="container-fluid px-0 bg-white pb-5" x-data="{ show: false }" x-intersect.enter="show = true">
     <div class="w1400 mx-auto px-3 px-lg-0" x-show="show" x-transition.opacity.duration.3000ms>
         <div class="row">
             <div class="col-12 col-lg-6 mb-4">

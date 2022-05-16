@@ -2423,14 +2423,71 @@ label {
     content: url('/imagens/slide-lotes-arrow-right.png');
 }
 
-#slide-reservas-ativas .slick-next:before{
-    color: var(--laranja);
-}
-
 #slide-reservas-ativas .slick-prev:before{
-    color: var(--laranja);
+    content: ' ';
+    display: inline-block;
+    background: url('/imagens/slide-lotes-arrow-left.png');
+    background-size: 28px 32px;
+    height: 32px;
+    width: 28px;
+    z-index: 100;
+    margin-right: 15px;
 }
 
+#slide-reservas-ativas .slick-next:before{
+    content: ' ';
+    display: inline-block;
+    background: url('/imagens/slide-lotes-arrow-right.png');
+    background-size: 28px 32px;
+    height: 32px;
+    width: 28px;
+    z-index: 100;
+    margin-right: 15px;
+}
+
+#slide-reservas-ativas .slick-next{
+    right: -25px !important;
+}
+
+#slide-reservas-ativas .slick-prev{
+    left: -35px !important;
+}
+
+#slide-navegue-racas .slick-next{
+    right: -35px !important;
+}
+
+#slide-navegue-racas .slick-prev{
+    left: -35px !important;
+}
+
+
+#slide-navegue-racas .slick-prev, #slide-navegue-racas .slick-next{
+    width: 28px;
+    height: 32px;
+}
+
+#slide-navegue-racas .slick-prev:before{
+    content: ' ';
+    display: inline-block;
+    background: url('/imagens/slide-lotes-arrow-left.png');
+    background-size: 28px 32px;
+    height: 32px;
+    width: 28px;
+    z-index: 100;
+    margin-right: 15px;
+}
+
+#slide-navegue-racas .slick-next:before{
+    content: ' ';
+    display: inline-block;
+    background: url('/imagens/slide-lotes-arrow-right.png');
+    background-size: 28px 32px;
+    height: 32px;
+    width: 28px;
+    z-index: 100;
+    margin-right: 15px;
+}
 
 .slick-lotes .slick-prev:before, .slick-lotes .slick-next:before{
     color: white;

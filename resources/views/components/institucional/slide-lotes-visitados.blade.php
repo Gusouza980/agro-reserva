@@ -1,5 +1,5 @@
-<div class="container-fluid px-0 bg-slate-50" x-data="{ show: false }" x-intersect.enter="show = true" style="overflow-x: hidden; min-height: 550px;">
-    <div class="mx-auto vitrine-animais mt-5" x-show="show" x-transition.opacity.duration.3000ms>
+<div class="bg-white" x-data="{ show: false }" x-intersect.enter="show = true" style="overflow-x: hidden; min-height: 550px;">
+    <div class="mt-5" x-show="show" x-transition.opacity.duration.3000ms>
         <div class="row mb-5">
             <div class="col-12 text-center" style="font-family: Montserrat; font-size: 25px; font-weight: medium;">
                 LOTES MAIS VISITADOS

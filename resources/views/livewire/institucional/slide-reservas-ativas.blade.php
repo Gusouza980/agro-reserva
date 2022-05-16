@@ -1,4 +1,4 @@
-<div class="container-fluid px-0 bg-[#F7F7F7] py-5" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative; min-height: 800px;">
+<div class="container-fluid px-0 bg-white py-5" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative; min-height: 800px;">
     <div class="vitrine-animais mx-auto" x-show="show" x-transition.opacity.duration.3000ms>
         <div class="col-12 px-0">
             <div class="slick" id="slide-reservas-ativas">

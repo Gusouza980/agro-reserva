@@ -1,4 +1,4 @@
-<div class="bg-[#F7F7F7] py-5">
+<div class="bg-white py-5">
     <div class="w1400 mx-auto flex flex-wrap justify-content-between align-items-center">
         <div class="flex align-items-center">
             <div class="mr-3">

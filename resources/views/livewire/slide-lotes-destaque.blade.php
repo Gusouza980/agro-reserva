@@ -1,4 +1,4 @@
-<div class="bg-[#F7F7F7]" x-data="{ show: false }" x-intersect.enter="show = true" style="overflow-x: hidden; min-height: 550px;">
+<div class="bg-white" x-data="{ show: false }" x-intersect.enter="show = true" style="overflow-x: hidden; min-height: 550px;">
     <div class="" x-show="show" x-transition.opacity.duration.3000ms>
         @if($configuracao->mostrar_lotes_destaque)
             <div class="row">
