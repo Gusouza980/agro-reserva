@@ -1,61 +1,47 @@
-<div class="container-fluid px-0 bg-[#F7F7F7] py-5" style="background: url('/imagens/bg-racas.png')" x-data="{ show: false }" x-intersect.enter="show = true">
-    <div class="w1400 mx-auto px-3 px-lg-0" x-show="show" x-transition.opacity.duration.3000ms>
+<div class="container-fluid px-0 bg-white py-5" style="background: url('/imagens/bg-racas.png')" x-data="{ show: false }" x-intersect.enter="show = true">
+    <div class="vitrine-animais mx-auto" x-show="show" x-transition.opacity.duration.3000ms>
         <div class="row mb-5 mt-4">
             <div class="col-12 text-center" style="font-family: Montserrat; font-size: 25px; font-weight: medium;">
                 NAVEGUE POR RAÇAS
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 px-0">
-                <div class="slick" id="slide-navegue-racas">
-                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
-                        <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                        <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                            Girleiteiro
-                        </div>
+        <div class="col-12 px-0">
+            <div class="slick" id="slide-navegue-racas">
+                <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
+                    <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
+                    <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        Girleiteiro
                     </div>
-                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
-                        <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                        <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                            Girleiteiro
-                        </div>
+                </div>
+                <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
+                    <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
+                    <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        Girleiteiro
                     </div>
-                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
-                        <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                        <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                            Girleiteiro
-                        </div>
+                </div>
+                <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
+                    <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
+                    <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        Girleiteiro
                     </div>
-                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
-                        <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                        <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                            Girleiteiro
-                        </div>
+                </div>
+                <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
+                    <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
+                    <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        Girleiteiro
                     </div>
-                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
-                        <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                        <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                            Girleiteiro
-                        </div>
+                </div>
+                <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
+                    <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
+                    <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        Girleiteiro
                     </div>
-                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
-                        <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                        <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                            Girleiteiro
-                        </div>
+                </div>
+                <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
+                    <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
+                    <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        Girleiteiro
                     </div>
-                    {{-- <div class="mx-2 cpointer hover:scale-105" style="border-radius: 50%; overflow: hidden; position: relative; width: 250px; height: 250px;">
-                        <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                    </div>
-                    <div class="mx-2 cpointer hover:scale-105" style="border-radius: 50%; overflow: hidden; position: relative; width: 250px; height: 250px;">
-                        <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
-                    </div>
-                    <div class="mx-2 cpointer hover:scale-105" style="border-radius: 50%; overflow: hidden; position: relative; width: 250px; height: 250px;">
-                        <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
-                    </div>
-                    <div class="mx-2 cpointer hover:scale-105" style="border-radius: 50%; overflow: hidden; position: relative; width: 250px; height: 250px;">
-                        <img src="{{ asset('imagens/nelore-gado.jpg') }}" class="w-100" alt="">
-                    </div> --}}
                 </div>
             </div>
         </div>
