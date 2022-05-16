@@ -2406,7 +2406,7 @@ label {
 
 .slick-lotes .slick-prev:hover{
     background-color: rgba(255,255,255) !important;
-    color: var(--laranja);
+    color: var(--laranja) !important;
 }
 
 .slick-lotes .slick-next{
@@ -2427,7 +2427,7 @@ label {
 
 .slick-lotes .slick-next:hover{
     background-color: rgba(255,255,255) !important;
-    color: var(--laranja);
+    color: var(--laranja) !important;
 }
 
 .slick-lotes .slick-prev:before, .slick-lotes .slick-next:before{
