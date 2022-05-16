@@ -2438,6 +2438,14 @@ label {
     /* backdrop-filter: blur(9px); */
 }
 
+.slick-lotes .slide-prev:hover .slick-prev:before, .slick-lotes .slick-next:hover .slick-next:before{
+    color: white;
+    /* background-color: rgba(0,0,0,0.5); */
+    font-size: 30px;
+    margin-top: 3px;
+    /* backdrop-filter: blur(9px); */
+}
+
 #slide-reservas-ativas .slick-slide{
     height: 610px !important;
 }
