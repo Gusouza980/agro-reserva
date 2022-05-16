@@ -112,6 +112,17 @@
             </div>
         @else
             <div class="flex items-center md:order-2">
+                <div class="mr-3 text-center cpointer transition duration-500 hover:scale-105" style="font-size: 10px;">
+                    <svg class="mx-auto" id="Grupo_3728" data-name="Grupo 3728" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+                        <g id="Elipse_309" data-name="Elipse 309" fill="#fcfcfc" stroke="#80828b" stroke-width="1.5">
+                            <circle cx="18" cy="18" r="18" stroke="none"/>
+                            <circle cx="18" cy="18" r="17.25" fill="none"/>
+                        </g>
+                        <text id="_" data-name="?" transform="translate(10 28)" fill="#80828b" font-size="28" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">?</tspan></text>
+                    </svg>
+                    Precisa de Ajuda
+                </div>
+                
                 <div class="mr-3 text-center cpointer transition duration-500 hover:scale-105" style="font-size: 10px;" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
                     <svg class="mx-auto" id="Grupo_3722" data-name="Grupo 3722" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37.018" height="37" viewBox="0 0 37.018 37">
                         <defs>
