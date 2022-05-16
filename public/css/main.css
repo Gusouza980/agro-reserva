@@ -2439,7 +2439,7 @@ label {
 }
 
 .slick-lotes .slide-prev:hover .slick-prev:before, .slick-lotes .slick-next:hover .slick-next:before{
-    color: white;
+    color: var(--laranja);
     /* background-color: rgba(0,0,0,0.5); */
     font-size: 30px;
     margin-top: 3px;
