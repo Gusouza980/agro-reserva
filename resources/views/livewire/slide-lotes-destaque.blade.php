@@ -1,9 +1,9 @@
-<div class="container-fluid px-0 bg-preto" x-data="{ show: false }" x-intersect.enter="show = true" style="overflow-x: hidden; min-height: 550px;">
+<div class="bg-[#F7F7F7]" x-data="{ show: false }" x-intersect.enter="show = true" style="overflow-x: hidden; min-height: 550px;">
     <div class="mx-auto vitrine-animais" x-show="show" x-transition.opacity.duration.3000ms>
         @if($configuracao->mostrar_lotes_destaque)
             <div class="row">
-                <div class="mt-4 mb-2 text-center text-white col-12">
-                    <h4><b>{{ mb_strtoupper(__('messages.home.animais_em_destaque')) }}</b></h4>
+                <div class="mt-4 mb-2 text-center col-12" style="font-size: 25px; font-family: Montserrat; font-weight: 500; color: #757887;">
+                    <h4>{{ mb_strtoupper(__('messages.home.animais_em_destaque')) }}</h4>
                 </div>
             </div>
             @if(!$reserva_selecionada)
@@ -12,8 +12,9 @@
                         $lotes_destaque = $reserva_aberta->lotes->where("ativo", true)->where("reservado", false)->shuffle();
                     @endphp
                     @if($lotes_destaque->count() > 0)
-                        <div class="text-center col-12" style="margin-top: 30px;">
-                            <img src="{{ asset($reserva_aberta->fazenda->logo) }}" class="mx-auto" width="150" alt="">
+                        <div class="text-center flex justify-content-center col-12" style="margin-top: 30px;">
+                            <img src="{{ asset("imagens/marca-reserva.png") }}" width="150" alt="">
+                            <img class="ml-3" src="{{ asset($reserva_aberta->fazenda->logo) }}" width="150" alt="">
                         </div>
                         
                         <div class="mt-4 row">

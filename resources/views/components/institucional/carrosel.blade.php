@@ -4,8 +4,11 @@
             @php
                 $cont = 0;
             @endphp
+            <div class="carousel-item relative active float-left w-full">
+                <img src="{{ asset('imagens/banner1.jpg') }}" class="block w-full" alt="..." />
+            </div>
             @foreach ($banners as $banner)
-                <div class="carousel-item @if ($cont == 0) active @endif relative float-left w-full">
+                <div class="carousel-item relative float-left w-full">
                     <img src="{{ asset($banner->caminho) }}" class="block w-full" alt="..." />
                 </div>
                 @php
