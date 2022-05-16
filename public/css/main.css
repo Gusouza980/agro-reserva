@@ -2392,7 +2392,7 @@ label {
     width: 35px;
     height: 35px;
     /* background-color: rgba(255,255,255); */
-    backdrop-filter: blur(9px);
+    backdrop-filter: blur(12px);
     z-index: 90;
     position: absolute;
     top: calc(50% - 30px);
@@ -2411,7 +2411,8 @@ label {
 .slick-lotes .slick-next{
     width: 35px;
     height: 35px;
-    background-color: rgba(255,255,255);
+    backdrop-filter: blur(12px);
+    /* background-color: rgba(255,255,255); */
     z-index: 90;
     position: absolute;
     top: calc(50% - 30px);
@@ -2428,7 +2429,7 @@ label {
 }
 
 .slick-lotes .slick-prev:before, .slick-lotes .slick-next:before{
-    color: var(--laranja);
+    color: white;
     /* background-color: rgba(0,0,0,0.5); */
     font-size: 30px;
     margin-top: 3px;
