@@ -2438,7 +2438,7 @@ label {
     /* backdrop-filter: blur(9px); */
 }
 
-.slick-lotes .slide-prev:hover .slick-prev:before, .slick-lotes .slick-next:hover .slick-next:before{
+.slick-lotes .slick-prev:hover:before, .slick-lotes .slick-next:hover:before{
     color: var(--laranja);
     /* background-color: rgba(0,0,0,0.5); */
     font-size: 30px;
