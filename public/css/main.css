@@ -2378,6 +2378,61 @@ label {
     }
 }
 
+.slick-lotes .slick-next{
+    width: 35px;
+    height: 35px;
+    /* background-color: rgba(0,0,0,0.8); */
+    z-index: 90;
+    position: absolute;
+    top: calc(50% - 10px);
+    right: 10px;
+}
+
+.slick-lotes .slick-prev{
+    width: 35px;
+    height: 35px;
+    background-color: rgba(255,255,255);
+    z-index: 90;
+    position: absolute;
+    top: calc(50% - 30px);
+    left: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+}
+
+.slick-lotes .slick-prev:hover{
+    background-color: rgba(255,255,255) !important;
+}
+
+.slick-lotes .slick-next{
+    width: 35px;
+    height: 35px;
+    background-color: rgba(255,255,255);
+    z-index: 90;
+    position: absolute;
+    top: calc(50% - 30px);
+    right: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+}
+
+.slick-lotes .slick-next:hover{
+    background-color: rgba(255,255,255) !important;
+}
+
+.slick-lotes .slick-prev:before, .slick-lotes .slick-next:before{
+    color: var(--laranja);
+    /* background-color: rgba(0,0,0,0.5); */
+    font-size: 30px;
+    margin-top: 3px;
+    /* backdrop-filter: blur(9px); */
+}
 
 #slide-reservas-ativas .slick-slide{
     height: 610px !important;

@@ -18,7 +18,7 @@
                         </div>
                         
                         <div class="mt-4 row">
-                            <div class="col-12">
+                            <div class="col-12 relative">
                                 <div @if($lotes_destaque->count() >= 4 || $mobile) class="slick-lotes" id="slick{{ $reserva_aberta->id }}" @else class="d-flex justify-content-center"  @endif>
                                     @foreach ($lotes_destaque as $lote)
                                         <div class="@if($lotes_destaque->count() >= 4 || $mobile) px-0 @else px-3 @endif py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
