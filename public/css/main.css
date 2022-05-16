@@ -2423,6 +2423,14 @@ label {
     content: url('/imagens/slide-lotes-arrow-right.png');
 }
 
+#slide-reservas-ativas .slick-next:before{
+    color: var(--laranja);
+}
+
+#slide-reservas-ativas .slick-prev:before{
+    color: var(--laranja);
+}
+
 
 .slick-lotes .slick-prev:before, .slick-lotes .slick-next:before{
     color: white;
@@ -2441,9 +2449,11 @@ label {
 }
 
 #slide-reservas-ativas .slick-slide{
-    height: 610px !important;
+    height: 603px !important;
+    width: 340px !important;
 }
 
 #slide-reservas-ativas .slick-slide img{
-    height: 610px !important;
+    height: 603px !important;
+    width: 340px !important;
 }
