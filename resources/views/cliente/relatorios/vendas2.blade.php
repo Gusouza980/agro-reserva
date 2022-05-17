@@ -100,7 +100,7 @@
                     <tr>
                         <td style="text-align: left; width: 20%;"><img src="{{asset('imagens/logo_agroreserva_leite_escura.svg')}}" width="100" alt=""></td>
                         <td style="text-align: center; font-size: 18px !important; width: 60%;"><h3>MAPA DE COMPRA DA RESERVA {{ $reserva->fazenda->nome_fazenda }}</h3></td>
-                        <td style="text-align: right; width: 20%;"><img src="{{asset($reserva->fazenda->logo)}}" style="filter:grayscale(100%);" width="100" alt=""></td>
+                        <td style="text-align: right; width: 20%;"><img src="{{asset($jpg)}}" style="filter:grayscale(100%);" width="100" alt=""></td>
                     </tr>
                 </tbody>
             </table>
