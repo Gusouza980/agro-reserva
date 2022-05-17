@@ -13,7 +13,7 @@
                     @endphp
                     @if($lotes_destaque->count() > 0)
                         <div class="text-center flex justify-content-center col-12" style="margin-top: 30px;">
-                            <img src="{{ asset("imagens/marca-reserva.png") }}" width="150" alt="">
+                            {{-- <img src="{{ asset("imagens/marca-reserva.png") }}" width="150" alt=""> --}}
                             <img class="ml-3" src="{{ asset($reserva_aberta->fazenda->logo) }}" width="150" alt="">
                         </div>
                         
