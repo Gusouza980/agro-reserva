@@ -108,9 +108,9 @@ Route::middleware(['popup', 'cookie'])->group(function () {
 
     // ROTAS DE API
     Route::post('/api/senha/recuperar', [\App\Http\Controllers\ApiController::class, 'recuperar_senha'])->name("api.conta.senha.recuperar");
-    Route::post('/api/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastrar'])->name("cadastro.salvar");
-    Route::post('/api/cadastro/finalizar/salvar', [\App\Http\Controllers\ClienteController::class, 'cadastro_final'])->name("cadastro.finalizar.salvar");
-    Route::post('/api/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
+    Route::post('/api/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastrar'])->name("api.cadastro.salvar");
+    Route::post('/api/cadastro/finalizar/salvar', [\App\Http\Controllers\ClienteController::class, 'cadastro_final'])->name("api.cadastro.finalizar.salvar");
+    Route::post('/api/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("api.logar");
 
     //ROTAS DE RESERVAS ANTIGAS
     Route::get('/reservas/finalizadas', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
