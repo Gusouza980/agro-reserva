@@ -92,6 +92,9 @@
     </head>
     <body>
         <div class="container-fluid w650 px-0">
+            @php
+                $jpg = Image::make(asset($reserva->fazenda->logo))->encode("jpg")->save('imagens/temp/' . $reserva->fazenda->id . 'jpg');
+            @endphp
             <table class="w100p mt-4">
                 <tbody>
                     <tr>
