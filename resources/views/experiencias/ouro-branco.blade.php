@@ -17,7 +17,7 @@
             @php
                 // dd($video->contentDetails->videoId);
             @endphp
-            <div class="basis-1/1 lg:basis-1/3 px-2 mb-3">
+            <div class="w-full lg:w-1/3 px-2 mb-3">
                 @livewire('experiencias.video', ['video' => $video])
                 <div class="" style="font-size: 16px; font-family: Montserrat;">
                     {{ $video->snippet->title }}
