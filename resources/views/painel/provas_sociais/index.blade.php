@@ -7,37 +7,41 @@
 @endsection
 
 @section('titulo')
-    Listagem de Raças
+    Listagem de Provas Sociais
 @endsection
 
 @section('conteudo')
 
 <div class="row my-3">
     <div class="col-12">
-        <a name="" id="" class="btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalCadastraRaca" role="button">Nova Raça</a>
+        <a name="" id="" class="btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalCadastraProva" role="button">Nova Prova Social</a>
     </div>
 </div>
 <div class="row justify-content-center">
-    <div class="col-12 col-lg-6">
+    <div class="col-12">
         <div class="card">
             <div class="card-body">
 
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Nome</th>
+                            <th>Visualizações</th>
                             <th></th>
                         </tr>
                     </thead>
 
 
                     <tbody>
-                        @foreach($racas as $raca)
+                        @foreach($provas as $prova)
                             <tr>
-                                <td style="vertical-align: middle; text-align:center;">{{$raca->nome}}</td>
+                                <td style="vertical-align: middle; text-align:center;">{{$prova->id}}</td>
+                                <td style="vertical-align: middle; text-align:center;">{{$prova->nome}}</td>
+                                <td style="vertical-align: middle; text-align:center;">{{$prova->visualizacoes}}</td>
                                 <td style="vertical-align: middle; text-align:center;">
-                                    <a name="" id="" class="btn btn-warning cpointer" data-bs-toggle="modal" data-bs-target="#modalEditaRaca{{$raca->id}}" role="button">Editar</a>
-                                    <a name="" id="" class="btn btn-danger" href="{{route('painel.raca.excluir', ['raca' => $raca])}}" role="button">Excluir</a>
+                                    <a name="" id="" class="btn btn-warning cpointer" data-bs-toggle="modal" data-bs-target="#modalEditaProvaSocial{{$prova->id}}" role="button">Editar</a>
+                                    <a name="" id="" class="btn btn-danger" href="{{route('painel.provas_sociais.excluir', ['prova_social' => $prova])}}" role="button">Excluir</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -50,33 +54,39 @@
 </div> <!-- end row -->
 
 <!-- Modal -->
-@foreach($racas as $raca)
-    <div class="modal fade" id="modalEditaRaca{{$raca->id}}" tabindex="-1" role="dialog" aria-labelledby="modalEditaRaca{{$raca->id}}Label" aria-hidden="true">
+@foreach($provas as $prova)
+    <div class="modal fade" id="modalEditaProvaSocial{{$prova->id}}" tabindex="-1" role="dialog" aria-labelledby="modalEditaProvaSocial{{$prova->id}}Label" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalEditaRaca{{$raca->id}}Label">Editando a raça {{$raca->nome}}</h5>
+                    <h5 class="modal-title" id="modalEditaProvaSocial{{$prova->id}}Label">Editando a Prova Social {{$prova->nome}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('painel.raca.editar', ['raca' => $raca])}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('painel.prova_social.salvar')}}" method="post" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="prova_id" value="{{ $prova->id }}">
                         <div class="form-group mb-3">
                           <label for="nome">Nome</label>
                           <input type="text"
-                            class="form-control" name="nome" value="{{$raca->nome}}" required>
+                            class="form-control" name="nome" value="{{$prova->nome}}" required>
                         </div>
-                        @if($raca->imagem)
+                        <div class="form-group mb-3">
+                            <label for="nome">Vídeo</label>
+                            <input type="text"
+                              class="form-control" name="video" value="{{$prova->video}}" required>
+                        </div>
+                        @if($prova->thumbnail)
                             <div class="row">
                                 <div class="col-12 text-center">
-                                    <img src="{{ asset($raca->imagem) }}" width="250" class="mx-auto" alt="">
+                                    <img src="{{ asset($prova->thumbnail) }}" width="250" class="mx-auto" alt="">
                                 </div>
                             </div>
                         @endif
                         <div class="mb-3">
                             <label for="" class="form-label">Imagem</label>
-                            <input type="file" class="form-control" name="imagem" id="" placeholder="" aria-describedby="fileHelpId">
-                            <small id="fileHelpId" class="form-text text-muted">250x200</small>
+                            <input type="file" class="form-control" name="thumbnail" id="" placeholder="" aria-describedby="fileHelpId">
+                            <small id="fileHelpId" class="form-text text-muted">200x350</small>
                         </div>
                         <div class="form-group text-end">
                             <button type="submit" class="btn btn-primary mt-3">Salvar</button>
@@ -88,25 +98,30 @@
     </div>
 @endforeach
 
-<div class="modal fade" id="modalCadastraRaca" tabindex="-1" role="dialog" aria-labelledby="modalCadastraRacaLabel" aria-hidden="true">
+<div class="modal fade" id="modalCadastraProva" tabindex="-1" role="dialog" aria-labelledby="modalCadastraProvaLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCadastraRacaLabel">Cadastrar nova raça</h5>
+                <h5 class="modal-title" id="modalCadastraProvaLabel">Cadastrar nova Prova Social</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('painel.raca.cadastrar')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('painel.prova_social.salvar')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mb-3">
                         <label for="nome">Nome</label>
                         <input type="text"
-                            class="form-control" name="nome" placeholder="Digite o nome da raça" required>
+                            class="form-control" name="nome" placeholder="Digite um nome descritivo" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="nome">Vídeo</label>
+                        <input type="text"
+                            class="form-control" name="video" placeholder="Cole aqui o link do vídeo no youtube" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Imagem</label>
-                        <input type="file" class="form-control" name="imagem" id="" placeholder="" aria-describedby="fileHelpId">
-                        <small id="fileHelpId" class="form-text text-muted">250x200</small>
+                        <input type="file" class="form-control" name="thumbnail" id="" placeholder="" aria-describedby="fileHelpId">
+                        <small id="fileHelpId" class="form-text text-muted">200x350</small>
                     </div>
                     <div class="form-group text-end">
                         <button type="submit" class="btn btn-primary mt-3">Salvar</button>

@@ -1,5 +1,5 @@
 <nav class="bg-[#F7F7F7] border-gray-200 px-2 sm:px-4 py-3 sticky top-0 z-30">
-    <div class="container flex flex-wrap justify-between items-center align-items-center mx-auto">
+    <div class="w1400 flex flex-wrap justify-between items-center align-items-center mx-auto">
         <a href="https://flowbite.com" class="flex items-center">
             <img src="{{ asset('imagens/logo_agroreserva_leite_escura.svg') }}" class="mr-3 h-10 sm:h-14" alt="Flowbite Logo" />
         </a>
@@ -62,7 +62,7 @@
                     </ul>
                 </div>
 
-                <div class="mr-3 text-center cpointer transition duration-500 hover:scale-105" style="font-size: 10px;">
+                <div class="text-center cpointer transition duration-500 hover:scale-105" style="font-size: 10px;">
                     <svg class="mx-auto" id="Grupo_3723" data-name="Grupo 3723" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36.992" height="37" viewBox="0 0 36.992 37">
                         <defs>
                           <clipPath id="clip-path">

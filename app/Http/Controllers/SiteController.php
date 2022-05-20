@@ -20,6 +20,7 @@ use Analytics;
 use Spatie\Analytics\Period;
 use Jenssegers\Agent\Agent;
 use Illuminate\Support\Facades\Log;
+use Alaouy\Youtube\Facades\Youtube;
 
 class SiteController extends Controller
 {
@@ -430,5 +431,10 @@ class SiteController extends Controller
         if(url()->current() == route('fazenda.lote.antigo', ['fazenda' => $slug, 'lote' => $lote])){
             return redirect()->route("fazenda.lote", ["fazenda" => $slug, "reserva" => $reserva, "lote" => $lote]);
         }
+    }
+
+    public function experiencia_ouro_branco(){
+        $videos = Youtube::getPlaylistItemsByPlaylistId('PLnqvSti-aWALfE84ooJzeFQlW_o45kuPB');
+        return view("experiencias.ouro-branco", ["videos" => $videos["results"]]);
     }
 }

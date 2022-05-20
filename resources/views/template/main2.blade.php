@@ -52,147 +52,76 @@
     
     @yield('conteudo')
 
-    <div class="container-fluid" id="footer"
+    <div class="flex justify-content-center" id="footer"
         style="background: url(/imagens/rodape.jpg); background-size: cover; background-position:center; background-repeat: no-repeat;">
-        <div class="py-5 row align-items-center">
-            <div class="text-center col-12 col-lg-4">
-                <div class="ml-auto mr-auto w400 mr-lg-0">
-                    <div class="row">
-                        <div class="px-5 text-center col-12 px-lg-0 text-lg-left text-nav-footer">
-                            <img src="{{ asset('imagens/logo-footer.png') }}" style="" alt="">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="mt-5 text-center col-12 text-nav-footer text-lg-left">
-                            <span><a href="tel:+553433052102">+55 34 3305-2102</a></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center col-12 text-nav-footer text-lg-left">
-                            <span>contato@agroreserva.com.br</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center col-12 text-nav-footer text-lg-left">
-                            <span>
-                                <a href="https://www.instagram.com/agro_reserva/" target="_blank"><i
-                                        class="fab fa-instagram fa-lg"></i></a>
-                                <a href="https://www.facebook.com/Agro-Reserva-109027191237838" target="_blank"><i
-                                        class="ml-4 fab fa-facebook-square fa-lg"></i></a>
-                                <a href="https://www.youtube.com/c/AgroReserva" target="_blank"><i
-                                        class="ml-4 fab fa-youtube fa-lg"></i></a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
+        <div class="py-5 row w1400 align-items-center justify-content-between">
+            <div class="col-12 text-center">
+                <img src="{{ asset('imagens/logo-footer.png') }}" class="mx-auto" style="" alt="">
             </div>
-            <div class="mt-5 col-12 offset-lg-4 col-lg-4 mt-lg-0">
+            <div class="mt-5 col-12 col-lg-4 mt-lg-0">
                 <div class="row">
                     <div class="col-12">
-                        <div class="mx-auto w400">
-                            <div class="row">
-                                <div class="text-center col-12 text-nav-footer text-lg-left">
-                                    <a class="" href=" {{ route('index') }}"><span><span
-                                                style="border-bottom: 2px solid #FEB000;">{{ __('messages.navbar.inicio') }}</a>
-                                </div>
+                        <div class="row">
+                            <div class="text-center col-12 text-nav-footer text-lg-left">
+                                <a class="" href=" {{ route('index') }}">{{ __('messages.navbar.inicio') }}</a>
                             </div>
-                            <div class="row">
-                                <div class="text-center col-12 text-nav-footer text-lg-left">
-                                    <a class="" href=" {{ route('blog') }}"><span><span
-                                                style="border-bottom: 2px solid #FEB000;">{{ __('messages.navbar.blog') }} </a>
-                                </div>
-                            </div>
+                        </div>
+                        @if (!session()->get('cliente'))
                             <div class="mt-2 row">
                                 <div class="text-center col-12 text-nav-footer text-lg-left">
-                                    <a class="" href=" {{ route('sobre') }}"><span><span
-                                                style="border-bottom: 2px solid #FEB000;">{{ __('messages.navbar.quem_somos') }} </a>
+                                    <a class="" href=" {{ route('cadastro') }}">{{ __('messages.navbar.cadastre_se') }}
+                                    </a>
                                 </div>
                             </div>
-                            @if (!session()->get('cliente'))
-                                <div class="mt-2 row">
-                                    <div class="text-center col-12 text-nav-footer text-lg-left">
-                                        <a class="" href=" {{ route('cadastro') }}"><span>{{ __('messages.navbar.cadastre_se') }}</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="mt-2 row">
-                                    <div class="text-center col-12 text-nav-footer text-lg-left">
-                                        <a class="" href=" {{ route('login') }}"><span>{{ __('messages.navbar.entrar') }}</span> </a>
-                                    </div>
-                                </div>
-                            @else
-                                @if (!session()->get('cliente')['finalizado'])
-                                    <div class="mt-2 row">
-                                        <div class="text-center col-12 text-nav-footer text-lg-left">
-                                            <a class="" id="finalizar-cadastro-rodape" href=" {{ route('cadastro.finalizar') }}">{{ __('messages.navbar.finalizar_cadastro') }}</a>
-                                        </div>
-                                    </div>
-                                @endif
-                                <div class="mt-2 row">
-                                    <div class="text-center col-12 text-nav-footer text-lg-left">
-                                        <a class="" href=" {{ route('conta.index') }}"><span><span
-                                                    style="border-bottom: 2px solid #FEB000;">Min</span>ha conta</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endif
+                        @endif
+                        <div class="mt-2 row">
+                            <div class="text-center col-12 text-nav-footer text-lg-left">
+                                <a class="" href=" {{ route('blog') }}">{{ __('messages.navbar.blog') }} </a>
+                            </div>
+                        </div>
+                        <div class="mt-2 row">
+                            <div class="text-center col-12 text-nav-footer text-lg-left">
+                                <a class="" href=" {{ route('sobre') }}">{{ __('messages.navbar.quem_somos') }} </a>
+                            </div>
+                        </div>
+                        <div class="mt-2 row">
+                            <div class="text-center col-12 text-nav-footer text-lg-left">
+                                <a class="" href=" {{ route('reservas.finalizadas') }}">{{ __('messages.navbar.reservas_finalizadas') }} </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="text-center col-12 col-lg-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="text-center col-12 text-nav-footer text-lg-right">
+                                <a class="" href="{{ route('termos') }}">Termos e Condições</a>
+                            </div>
+                        </div>
+                        <div class="mt-2 row">
+                            <div class="text-center col-12 text-nav-footer text-lg-right">
+                                <a class="" href="{{ route('politicas') }}">Política e Privacidade</a>
+                            </div>
+                        </div>
+                        <div class="mt-2 row">
+                            <div class="text-center col-12 text-nav-footer text-lg-right">
+                                <a class="" href="{{ route('blog') }}">Clube de Benefícios</a>
+                            </div>
+                        </div>
+                        <div class="mt-2 row">
+                            <div class="text-center col-12 text-nav-footer text-lg-right">
+                                <a class="" href="{{ route('sobre') }}">Falar com os acessores</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
-    <div class="container-fluid" id="container-footer">
-        <div class="mx-auto w1200">
-            <div class="py-0 row justify-content-center">
-                <div class="text-center footer-links">
-                    <a href="{{ route('termos') }}" class="px-4 footer-links-superior">Termos e condições de uso</a>
-                    |
-                    <a href="{{ route('politicas') }}" class="px-4 footer-links-superior">Políticas de
-                        Privacidade</a>
-                </div>
-            </div>
-            <div class="py-2 row justify-content-center">
-                <div class="text-center footer-links d-none d-lg-block">
-                    <span class="px-4 footer-links-superior"><b>Razão Social:</b><span> Agro Reserva Pecuaria Digital
-                            LTDA</span></span>
-                    |
-                    <span class="px-4 footer-links-superior"><b>CNPJ:</b><span> 41.893.302/0001-13</span></span>
-                </div>
 
-                <div class="mt-3 text-center col-12 d-flex d-lg-none footer-link-ultimo">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12 footer-link-ultimo">
-                                <b>Razão Social</b>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mt-1 col-12 footer-link-ultimo">
-                                <span>Agro Reserva Pecuaria Digital LTDA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-3 text-center col-12 d-flex d-lg-none footer-link-ultimo">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12 footer-link-ultimo">
-                                <b>CNPJ</b>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mt-1 col-12 footer-link-ultimo">
-                                <span>41.893.302/0001-13</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="modal fade" id="modalSucesso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">

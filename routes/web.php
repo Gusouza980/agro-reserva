@@ -106,6 +106,8 @@ Route::middleware(['popup', 'cookie'])->group(function () {
     Route::get('/pre_to_main', [\App\Http\Controllers\ClienteController::class, 'pre_to_main']);
     Route::post('/senha/recuperar', [\App\Http\Controllers\ContaController::class, 'recuperar_senha'])->name("conta.senha.recuperar");
 
+    Route::get('/experciencias/ouro-branco', [\App\Http\Controllers\SiteController::class, 'experiencia_ouro_branco'])->name("experiencias.ouro_branco");
+
     // ROTAS DE API
     Route::post('/api/senha/recuperar', [\App\Http\Controllers\ApiController::class, 'recuperar_senha'])->name("api.conta.senha.recuperar");
     Route::post('/api/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastrar'])->name("api.cadastro.salvar");
@@ -253,6 +255,12 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/raca/cadastrar', [\App\Http\Controllers\RacasController::class, 'cadastrar'])->name("painel.raca.cadastrar");
     Route::post('/painel/raca/editar/{raca}', [\App\Http\Controllers\RacasController::class, 'editar'])->name("painel.raca.editar");
     Route::get('/painel/raca/excluir/{raca}', [\App\Http\Controllers\RacasController::class, 'excluir'])->name("painel.raca.excluir");
+
+    //ROTAS RELACIONADAS A RAÇAS
+    Route::get('/painel/provas_sociais', [\App\Http\Controllers\ProvasSociaisController::class, 'index'])->name("painel.provas_sociais");
+    Route::post('/painel/provas_sociais/cadastrar', [\App\Http\Controllers\ProvasSociaisController::class, 'cadastrar'])->name("painel.prova_social.cadastrar");
+    Route::post('/painel/provas_sociais/editar/{prova_social}', [\App\Http\Controllers\ProvasSociaisController::class, 'editar'])->name("painel.prova_social.editar");
+    Route::get('/painel/provas_sociais/excluir/{prova_social}', [\App\Http\Controllers\ProvasSociaisController::class, 'excluir'])->name("painel.prova_social.excluir");
 
     //ROTAS RELACIONADAS A POPUPS
     Route::get('/painel/popups', [\App\Http\Controllers\PopupController::class, 'index'])->name("painel.popups");

@@ -7,42 +7,14 @@
         </div>
         <div class="col-12 px-0">
             <div class="slick" id="slide-navegue-racas">
-                <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
-                    <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                    <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        Girleiteiro
+                @foreach(\App\Models\Raca::where('ativo', true)->orderBy("nome")->get() as $raca)
+                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
+                        <img src="{{ asset($raca->imagem) }}" class="w-100" alt="">
+                        <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                            {{ $raca->nome }}
+                        </div>
                     </div>
-                </div>
-                <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
-                    <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                    <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        Girleiteiro
-                    </div>
-                </div>
-                <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
-                    <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                    <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        Girleiteiro
-                    </div>
-                </div>
-                <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
-                    <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                    <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        Girleiteiro
-                    </div>
-                </div>
-                <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
-                    <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                    <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        Girleiteiro
-                    </div>
-                </div>
-                <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
-                    <img src="{{ asset('imagens/raca-gir.png') }}" class="w-100" alt="">
-                    <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        Girleiteiro
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

@@ -24,6 +24,8 @@
 
 <x-institucional.experiencias></x-institucional.experiencias>
 
+<x-institucional.newsletter></x-institucional.newsletter>
+
 @endsection
 
 @section("scripts")

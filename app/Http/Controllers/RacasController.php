@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Raca;
 use App\Classes\Util;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 
 class RacasController extends Controller
@@ -22,6 +23,11 @@ class RacasController extends Controller
     public function cadastrar(Request $request){
         $raca = new Raca;
         $raca->nome = $request->nome;
+        if($request->file("imagem")){
+            $raca->imagem = $request->file('imagem')->store(
+                'site/imagens/racas/', 'local'
+            );
+        }
         $raca->save();
         toastr()->success("Raça cadastrada com sucesso!");
         return redirect()->back();
@@ -29,6 +35,12 @@ class RacasController extends Controller
 
     public function editar(Request $request, Raca $raca){
         $raca->nome = $request->nome;
+        if($request->file("imagem")){
+            Storage::delete($raca->imagem);
+            $raca->imagem = $request->file('imagem')->store(
+                'site/imagens/racas/', 'local'
+            );
+        }
         $raca->save();
         toastr()->success("Alterações salvas com sucesso!");
         return redirect()->back();

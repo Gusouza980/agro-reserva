@@ -225,6 +225,19 @@
                                     </ul>
                                 </li>
                             @endif
+
+                            {{-- ASSESSORES --}}
+                            @if(in_array(session()->get("admin")["acesso"], config("acessos.assessores")["consulta"]))
+                                <li>
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="fas fa-user-tie"></i>
+                                        <span key="t-dashboards">Provas Sociais</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{{ route('painel.provas_sociais') }}" key="t-saas">Consultar</a></li>
+                                    </ul>
+                                </li>
+                            @endif
                             
                             {{-- VISITAS --}}
                             @if(in_array(session()->get("admin")["acesso"], config("acessos.visitas")["consulta"]))
