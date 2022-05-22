@@ -1,6 +1,6 @@
 <div class="bg-white py-5">
     <div class="w1400 mx-auto flex flex-wrap px-3 px-lg-0 justify-content-between align-items-center">
-        <div class="flex align-items-center mb-4 mb-lg-0">
+        <div class="flex align-items-center mb-4 mb-lg-0 animate-in fade-in delay-300 duration-1000">
             <div class="mr-3">
                 <img src="{{ asset('imagens/icone_comissao.svg') }}" width="60" alt="">
             </div>
@@ -9,7 +9,7 @@
                 <span style="font-family: Montserrat; font-size: 13px; font-weight: 500;">Na Agro Reserva o<br >comprador não paga<br >comissão</span>
             </div>
         </div>
-        <div class="flex align-items-center mb-4 mb-lg-0">
+        <div class="flex align-items-center mb-4 mb-lg-0 animate-in fade-in delay-300 duration-1000">
             <div class="mr-3">
                 <img src="{{ asset('imagens/icone_animais.svg') }}" style="width: 60px;" width="60" alt="">
             </div>
@@ -18,7 +18,7 @@
                 <span style="font-family: Montserrat; font-size: 13px; font-weight: 500;">É isto mesmo, comprando na<br >Agro Reserva você paga o<br >valor do animal e nada mais.</span>
             </div>
         </div>
-        <div class="flex align-items-center mb-4 mb-lg-0">
+        <div class="flex align-items-center mb-4 mb-lg-0 animate-in fade-in delay-300 duration-1000">
             <div class="mr-3">
                 <img src="{{ asset('imagens/icone_parcelamento.svg') }}" width="60" alt="">
             </div>
@@ -27,7 +27,7 @@
                 <span style="font-family: Montserrat; font-size: 13px; font-weight: 500;">Facilidade para comprar<br >parcelado no boleto em 12x,<br >15x e até 30x sem juros</span>
             </div>
         </div>
-        <div class="flex align-items-center mb-4 mb-lg-0">
+        <div class="flex align-items-center mb-4 mb-lg-0 animate-in fade-in delay-300 duration-1000">
             <div class="mr-3">
                 <img src="{{ asset('imagens/icone_frete.svg') }}" width="60" alt="">
             </div>

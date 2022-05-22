@@ -7,22 +7,19 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="preload" as="style" href="{{ asset('css/main.css') }}?v=1.5.9" />
-    <link rel="preload" as="image" href="{{ asset('imagens/bg-home-min-2.jpg') }}" />
-    <link rel="preload" href="{{ asset('fontes/gobold/Gobold Regular.otf') }}" as="font" type="font/otf"
-        crossorigin />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1.6" />
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/floating-wpp.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
+    {{-- <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" /> --}}
     @toastr_css
     @livewireStyles
     @yield("styles")
@@ -204,6 +201,7 @@
     <script type="text/javascript" async
         src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js">
     </script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     @toastr_js

@@ -177,7 +177,7 @@
         @endif
         <div class="hidden ml-4 flex-auto justify-center md:justify-start items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
             <div class="flex align-items-center w-full relative mr-3 text-gray-400 mt-4 mt-md-0">
-                <input class="placeholder:text-gray-400 w-3/5 mx-auto border-1 border-gray-400 bg-white h-9 pl-10 rounded-3xl text-sm focus:outline-none focus:ring-gray-400 focus:border-gray-400"
+                <input class="placeholder:text-gray-400 w-3/5 mx-auto border border-solid border-gray-400 bg-white h-9 pl-10 rounded-3xl text-sm focus:outline-none focus:ring-gray-400 focus:border-gray-400"
                   type="text" name="search" placeholder="Pesquisar..."></input>    
             </div>
             <ul class="md:hidden flex flex-col md:flex-row md:space-x-3 md:mt-0 md:text-sm md:font-medium">

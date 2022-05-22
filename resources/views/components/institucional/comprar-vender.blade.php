@@ -1,7 +1,7 @@
 <div class="container-fluid px-0 bg-white pb-5" x-data="{ show: false }" x-intersect.enter="show = true">
     <div class="w1400 mx-auto px-3 px-lg-0" x-show="show" x-transition.opacity.duration.3000ms>
         <div class="row">
-            <div class="col-12 col-lg-6 mb-4">
+            <div class="col-12 col-lg-6 mb-4 animate-in slide-in-from-left delay-300 duration-1000">
                 <div class="shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-orange-400 hover:text-white cpointer">
                     <div class="rounded-t-md">
                         <img src="{{ asset('imagens/banner-comprar.jpg') }}" style="max-width: 100%;" alt="">
@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-6 mb-4">
+            <div class="col-12 col-lg-6 mb-4 animate-in slide-in-from-right delay-300 duration-1000">
                 <div class="shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-orange-400 hover:text-white cpointer">
                     <div class="rounded-t-md">
                         <img src="{{ asset('imagens/banner-vender.jpg') }}" style="max-width: 100%;" alt="">
