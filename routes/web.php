@@ -275,7 +275,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/assessor/editar/{assessor}', [\App\Http\Controllers\AssessoresController::class, 'editar'])->name("painel.assessor.editar");
     Route::get('/painel/assessor/excluir/{assessor}', [\App\Http\Controllers\AssessoresController::class, 'excluir'])->name("painel.assessor.excluir");
 
-    Route::match(['get','post'], '/painel/clientes', [\App\Http\Controllers\ApiController::class, 'index'])->name("painel.clientes");
+    Route::match(['get','post'], '/painel/clientes', [\App\Http\Controllers\ClienteController::class, 'index'])->name("painel.clientes");
     Route::post('/painel/clientes/pesquisar', [\App\Http\Controllers\ClienteController::class, 'pesquisar'])->name("painel.cliente.pesquisar");
     Route::get('/painel/clientes/export', [\App\Http\Controllers\ClienteController::class, 'export'])->name("painel.clientes.export");
     Route::post('/painel/cliente/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastro_painel'])->name("painel.cliente.cadastrar");
