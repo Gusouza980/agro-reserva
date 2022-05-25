@@ -24,11 +24,13 @@
                                     href="{{ route('fazenda.conheca', ['fazenda' => $fazenda->slug, 'reserva' => $reserva]) }}"><span><span
                                             style="border-bottom: 2px solid #FEB000;">Con</span>heça a fazenda</span></a>
                             @endif
-                            <a class="mx-5 @if (url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])) active @endif"
+                            @if($reserva->lotes->count() > 0)
+                            <a class="ml-5 @if (url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])) active @endif"
                                 href="{{ route('fazenda.lotes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva]) }}"><span><span
                                         style="border-bottom: 2px solid #FEB000;">Lot</span>es à venda</span> </a>
+                            @endif
                             @if($reserva->embrioes->count() > 0)
-                                <a class="@if (url()->current() == route('fazenda.embrioes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])) active @endif"
+                                <a class="ml-5 @if (url()->current() == route('fazenda.embrioes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])) active @endif"
                                     href="{{ route('fazenda.embrioes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva]) }}"><span><span
                                             style="border-bottom: 2px solid #FEB000;">Emb</span>riões à venda</span> </a>
                             @endif
@@ -44,17 +46,19 @@
                                     </div>
                                 </div>
                             @endif
-                            <div class="row">
-                                <div class="mt-4 text-center col-12 text-nav-fazenda">
-                                    <a class="mx-5 @if (url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])) active @endif"
-                                        href="{{ route('fazenda.lotes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva]) }}"><span><span
-                                                style="border-bottom: 2px solid #FEB000;">Lot</span>es a venda</span> </a>
+                            @if($reserva->lotes->count() > 0)
+                                <div class="row">
+                                    <div class="mt-4 text-center col-12 text-nav-fazenda">
+                                        <a class="ml-5 @if (url()->current() == route('fazenda.lotes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])) active @endif"
+                                            href="{{ route('fazenda.lotes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva]) }}"><span><span
+                                                    style="border-bottom: 2px solid #FEB000;">Lot</span>es a venda</span> </a>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             @if($reserva->embrioes->count() > 0)
                                 <div class="row">
                                     <div class="mt-4 text-center col-12 text-nav-fazenda">
-                                        <a class="@if (url()->current() == route('fazenda.embrioes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])) active @endif"
+                                        <a class="ml-5 @if (url()->current() == route('fazenda.embrioes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva])) active @endif"
                                             href="{{ route('fazenda.embrioes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva]) }}"><span><span
                                                     style="border-bottom: 2px solid #FEB000;">Emb</span>riões à venda</span> </a>
                                     </div>

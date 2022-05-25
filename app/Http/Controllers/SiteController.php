@@ -147,6 +147,9 @@ class SiteController extends Controller
     }
 
     public function lotes($slug, Reserva $reserva){
+        if($reserva->lotes->count() == 0){
+            return redirect()->route();
+        }
         $fazenda = Fazenda::where("slug", $slug)->first();
         // $reserva = $fazenda->reservas->where("ativo", 1)->first();
         if(!$reserva->institucional){
