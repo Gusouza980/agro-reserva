@@ -121,7 +121,7 @@
                 @php
                     $fazenda = \App\Models\Fazenda::find($fazenda);
                 @endphp
-                <div class="row">
+                <div class="mt-4 row">
                     <div class="px-3 py-3 mx-auto bg-preto">
                         <img src="{{ asset($fazenda->logo) }}" width="200" alt="">
                     </div>
