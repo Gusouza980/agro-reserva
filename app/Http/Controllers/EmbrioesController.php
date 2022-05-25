@@ -58,6 +58,7 @@ class EmbrioesController extends Controller
         $embriao->numero = $request->numero;
 
         if($request->file("catalogo")){
+            Storage::delete($embriao->catalogo);
             $embriao->catalogo = $request->file('catalogo')->store(
                 'imagens/fazendas/' . Str::slug($reserva->fazenda->nome_fazenda) . "/embrioes", 'local'
             );
