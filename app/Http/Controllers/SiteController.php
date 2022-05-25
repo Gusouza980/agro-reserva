@@ -147,10 +147,10 @@ class SiteController extends Controller
     }
 
     public function lotes($slug, Reserva $reserva){
-        if($reserva->lotes->count() == 0){
-            return redirect()->route();
-        }
         $fazenda = Fazenda::where("slug", $slug)->first();
+        if($reserva->lotes->count() == 0){
+            return redirect()->route('fazenda.embrioes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva]);
+        }
         // $reserva = $fazenda->reservas->where("ativo", 1)->first();
         if(!$reserva->institucional){
             if(!session()->get("popup_institucional")){
