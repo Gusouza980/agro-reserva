@@ -35,7 +35,7 @@
                             <div class="col-md-1">
                                 <div class="mb-3">
                                     <label for="numero" class="form-label">Número</label>
-                                    <input type="number" class="form-control" name="numero" step="1" value="1" value="{{ $embriao->numero }}" required>
+                                    <input type="number" class="form-control" name="numero" step="1" value="{{ $embriao->numero }}" required>
                                 </div>
                             </div>
                             <div class="col-md-1">
