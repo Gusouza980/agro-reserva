@@ -99,10 +99,10 @@
                     <h3>Reserva {{ $fazenda->nome_fazenda }}</h3>
                 </div>
                 <div class="text-center col-12 col-lg-4 text-lg-right" id="filtro-racas">
-                    <a class="link-filtro-racas cpointer ativo" raca="0">Todos</a>
+                    {{-- <a class="link-filtro-racas cpointer ativo" raca="0">Todos</a>
                     @foreach($lotes->unique("raca_id") as $lote)
                         <a class="ml-3 link-filtro-racas cpointer" raca="{{$lote->raca->id}}">{{$lote->raca->nome}}</a>
-                    @endforeach
+                    @endforeach --}}
                 </div>
             </div>
             <div class="py-4 row">
@@ -113,7 +113,86 @@
     
                 </div>
             </div>
-            @livewire("lotes.card", ['fazenda' => $fazenda, 'reserva' => $reserva])
+            @foreach($fazendas as $key => $fazenda)
+                @php
+                    $fazenda = \App\Models\Fazenda::find($fazenda);
+                @endphp
+                <div class="row">
+                    <div class="px-3 py-3 mx-auto bg-preto">
+                        <img src="{{ asset($fazenda->logo) }}" width="200" alt="">
+                    </div>
+                </div>
+                <div class="row justify-content-center justify-content-lg-between" id="container-lotes">
+                    @foreach($embrioes->where("fazenda_id", $fazenda->id)->sortBy("numero") as $embriao)
+                        <div class="mt-4 coluna-caixa-lote">
+                            <div class="mx-auto card card-caixa-lote">
+                                <a href="{{ route('fazenda.embriao', ['fazenda' => $fazenda->slug, 'reserva' => $embriao->reserva, 'embriao' => $embriao]) }}">
+                                    <div class="d-flex align-items-center justify-content-center" style="position: relative; border-top-left-radius: 20px; border-top-right-radius: 20px; object-fit: contain; height:200px;">
+                                        <img src="{{ asset('imagens/logo_crv.png') }}" width="200" alt="">
+                                        <div class="numero-lote" style="background-color: #15171e !important; color: white !important;">
+                                            <h4 style="color: white !important;">LOTE</h4>
+                                            <h5 class="mb-2" style="color: white !important;">@if($embriao->prefixo_numero){{$embriao->prefixo_numero}}@endif{{str_pad($embriao->numero, 3, "0", STR_PAD_LEFT)}}@if($embriao->sufixo_numero){{$embriao->sufixo_numero}}@endif</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                                {{-- <div class="logo-fazenda d-flex justify-content-center align-items-center" style="background-color: #15171e !important; height: 59px;">
+                                    <img src="{{asset($embriao->reserva->fazenda->logo)}}" style="width: 100%;" alt="">
+                                </div> --}}
+                                <div class="card-body card-lote-body" style="position: relative;">
+                                    {{--  <a class="icone-compartilhamento" data-toggle="modal" data-target="#modalCompartilhamentoLote{{$lote->id}}"><i class="fas fa-info-circle"></i> Mais Informações</a>  --}}
+                                    {{-- <div class="text-center d-flex align-items-center justify-content-center" style="height: 50px;">
+                                        <a><h5 class="text-black card-title card-lote-nome"><b>{{$embriao->grau_sangue}}</b></h5></a>
+                                    </div> --}}
+                                    <div class="px-3 container-fluid">
+                                        <div class="pb-1 row justify-content-center" style="border-bottom: 1px solid black;">
+                                            <div>
+                                                <b>{{mb_strtoupper($embriao->grau_sangue)}}</b>
+                                            </div>
+                                        </div>
+                                        <div class="py-1 row" style="border-bottom: 1px solid black;">
+                                            <div style="width: 55px;">
+                                                <b class="mr-3">Pai.: </b>
+                                            </div>
+                                            <div>
+                                                <span class="">{{$embriao->nome_pai}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="py-1 row" style="border-bottom: 1px solid black;">
+                                            <div style="width: 55px;">
+                                                <b class="mr-3">Mãe.: </b>
+                                            </div>
+                                            <div>
+                                                <span class="">{{$embriao->nome_mae}}</span>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <small>LACT. {{ $embriao->info_lactacao_mae }}</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 container-fluid">
+                                        <div class="row">
+                                            <div class="text-center col-12 card-lote-parto" style="height: 30px;">
+                                                <h3>CATEGORIA: {{ mb_strtoupper(config("embrioes.categorias")[$embriao->categoria]) }}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 container-fluid">
+                                        <div class="row">
+                                            <div class="text-center col-12 card-lote-botao">
+                                                <a class="card-lote-botao" href="{{ route('fazenda.embriao', ['fazenda' => $fazenda->slug, 'reserva' => $embriao->reserva, 'embriao' => $embriao]) }}"><button class="px-3 py-1">{{ __('messages.lotes.ver_mais') }}</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+            {{-- @livewire("lotes.card", ['fazenda' => $fazenda, 'reserva' => $reserva]) --}}
         </div>
     </div>
     
@@ -154,144 +233,4 @@
             })
         </script>
     @endif
-    <script>
-        $(document).ready(function() {
-
-            $(".link-filtro-racas").click(function(){
-                var raca = $(this).attr("raca");
-                $(".link-filtro-racas.ativo").removeClass("ativo");
-                $(this).addClass("ativo");
-                $("#container-lotes").slideUp(300,function(){
-                    if(raca != 0){
-                        $(".coluna-caixa-lote[raca!='"+raca+"']").hide();
-                        $(".coluna-caixa-lote[raca='"+raca+"']").show();
-                        $("#container-lotes").slideDown(300);
-                    }else{
-                        $(".coluna-caixa-lote").show();
-                        $("#container-lotes").slideDown(300);
-                    }
-                });
-            });
-
-            $(".sino-lote").click(function() {
-                var lid = $(this).attr("lid");
-                var icone = $(this);
-                var _token = $('meta[name="csrf-token"]').attr('content');
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': _token
-                    }
-                });
-                $.ajax({
-                    url: '/api/declararInteresseLote/' + lid,
-                    type: 'GET',
-                    dataType: 'JSON',
-                    success: function(data) {
-                        if (data == "adicionado") {
-                            icone.addClass("interessado");
-                            icone.attr("title", "Desativar notificação")
-                            $("#modalInteresse").modal();
-                        } else {
-                            icone.removeClass("interessado");
-                            icone.attr("title", "Ativar notificação")
-                        }
-                    },
-                    error: function() {
-                        console.log("deu ruim");
-                    }
-                });
-
-
-            });
-
-            $(".icone-curtir").click(function() {
-                var lid = $(this).attr("lid");
-                var icone = $(this);
-                var _token = $('meta[name="csrf-token"]').attr('content');
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': _token
-                    }
-                });
-                $.ajax({
-                    url: '/api/curtirLote/' + lid,
-                    type: 'GET',
-                    dataType: 'JSON',
-                    success: function(data) {
-                        if (data == "marcado") {
-                            icone.addClass("marcado");
-                            var qtd = parseInt($(".qtd-curtidas[lid='" + lid + "']").html());
-                            qtd = qtd + 1;
-                            $(".qtd-curtidas[lid='" + lid + "']").html(qtd);
-                            $(".icone-descurtir[lid='" + lid + "']").removeClass("marcado");
-                        } else if (data == "trocado") {
-                            //Marca icone de curtir e aumenta sua quantidade
-                            icone.addClass("marcado");
-                            var qtd = parseInt($(".qtd-curtidas[lid='" + lid + "']").html());
-                            qtd = qtd + 1;
-                            $(".qtd-curtidas[lid='" + lid + "']").html(qtd);
-
-                            //Desmarca icone de descurtir e diminui sua quantidade
-                            $(".icone-descurtir[lid='" + lid + "']").removeClass("marcado");
-                            var qtd = parseInt($(".qtd-descurtidas[lid='" + lid + "']").html());
-                            qtd = qtd - 1;
-                            $(".qtd-descurtidas[lid='" + lid + "']").html(qtd);
-                        } else {
-                            icone.removeClass("marcado");
-                            var qtd = parseInt($(".qtd-curtidas[lid='" + lid + "']").html());
-                            qtd = qtd - 1;
-                            $(".qtd-curtidas[lid='" + lid + "']").html(qtd);
-                        }
-                    },
-                    error: function() {
-                        console.log("deu ruim");
-                    }
-                });
-            });
-
-            $(".icone-descurtir").click(function() {
-                var lid = $(this).attr("lid");
-                var icone = $(this);
-                var _token = $('meta[name="csrf-token"]').attr('content');
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': _token
-                    }
-                });
-                $.ajax({
-                    url: '/api/descurtirLote/' + lid,
-                    type: 'GET',
-                    dataType: 'JSON',
-                    success: function(data) {
-                        if (data == "marcado") {
-                            icone.addClass("marcado");
-                            var qtd = parseInt($(".qtd-descurtidas[lid='" + lid + "']").html());
-                            qtd = qtd + 1;
-                            $(".qtd-descurtidas[lid='" + lid + "']").html(qtd);
-                        } else if (data == "trocado") {
-                            //Marca icone de descurtir e aumenta sua quantidade
-                            icone.addClass("marcado");
-                            var qtd = parseInt($(".qtd-descurtidas[lid='" + lid + "']").html());
-                            qtd = qtd + 1;
-                            $(".qtd-descurtidas[lid='" + lid + "']").html(qtd);
-
-                            //Desmarca icone de curtir e diminui sua quantidade
-                            $(".icone-curtir[lid='" + lid + "']").removeClass("marcado");
-                            var qtd = parseInt($(".qtd-curtidas[lid='" + lid + "']").html());
-                            qtd = qtd - 1;
-                            $(".qtd-curtidas[lid='" + lid + "']").html(qtd);
-                        } else {
-                            icone.removeClass("marcado");
-                            var qtd = parseInt($(".qtd-descurtidas[lid='" + lid + "']").html());
-                            qtd = qtd - 1;
-                            $(".qtd-descurtidas[lid='" + lid + "']").html(qtd);
-                        }
-                    },
-                    error: function() {
-                        console.log("deu ruim");
-                    }
-                });
-            });
-        })
-    </script>
 @endsection

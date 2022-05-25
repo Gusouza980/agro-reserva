@@ -7,6 +7,7 @@ use App\Models\Fazenda;
 use App\Models\Reserva;
 use App\Models\Cliente;
 use App\Models\Lote;
+use App\Models\Embriao;
 use App\Models\Visita;
 use App\Models\Carrinho;
 use App\Models\Lance;
@@ -127,6 +128,24 @@ class SiteController extends Controller
         return view("fazenda", ["view" => $view, "fazenda" => $fazenda, "fazendas" => $fazendas, "reserva" => $reserva, "finalizadas" => $finalizadas, "nome_pagina" => "Conheça"]);
     }
 
+    public function embrioes($slug, Reserva $reserva){
+        $fazenda = Fazenda::where("slug", $slug)->first();
+        // $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        if(!$reserva->institucional){
+            if(!session()->get("popup_institucional")){
+                $popup_institucional = true;
+                session(["popup_institucional" => true]);
+            }else{
+                $popup_institucional = false;
+            }
+        }else{
+            $popup_institucional = false;
+        }
+        $fazendas = $reserva->embrioes->unique("fazenda_id")->pluck("fazenda_id");
+        $embrioes = $reserva->embrioes;
+        return view("embrioes", ["fazenda" => $fazenda, "fazendas" => $fazendas, "reserva" => $reserva, "popup_institucional" => $popup_institucional, "embrioes" => $embrioes, "nome_pagina" => "Embriões"]);
+    }
+
     public function lotes($slug, Reserva $reserva){
         $fazenda = Fazenda::where("slug", $slug)->first();
         // $reserva = $fazenda->reservas->where("ativo", 1)->first();
@@ -209,6 +228,72 @@ class SiteController extends Controller
         $lote->video = $this->convertYoutube($lote->video);
         $fazenda = Fazenda::where("slug", $slug)->first();
         return view("lote", ["configuracao" => $configuracao, "lote" => $lote, "lote_bkp" => $lote, "reserva" => $reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $lote->numero . $lote->letra . " - " . $lote->nome]);
+    }
+
+    public function embriao($slug, Reserva $reserva, Embriao $embriao){
+        // if(!session()->get("cliente")){
+        //     session()->flash("erro", "Para acessar os lotes, faça seu login.");
+        //     session()->put(["pagina_retorno" => url()->full()]);
+        //     session()->put(["lote_origem" => $lote->id]);
+        //     return redirect()->route("login");
+        // }
+        $visita = new Visita;
+        $configuracao = Configuracao::first();
+
+        if(session()->get("cliente")){
+            $visita->cliente_id = session()->get("cliente")["id"];
+            $visita->logado = true;
+        }
+
+        if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+            //ip from share internet
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+            //ip pass from proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }else{
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+    
+        $estado = null;
+        $cidade = null;
+        $cep = null;
+    
+        $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+    
+        if($query && $query["status"] == "success"){
+            $estado = $query["region"];
+            $cidade = $query["city"];
+            $cep = $query["zip"];
+        }
+
+        // if((isset(session()->get("cliente")["admin"]) && session()->get("cliente")["admin"] != true)){
+        //     $visita->ip = $ip;
+        //     $visita->embriao_id = $embriao->id;
+        //     $visita->estado = $estado;
+        //     $visita->cidade = $cidade;
+        //     $visita->cep = $cep;
+
+        //     $visita->save();
+
+        //     $embriao->visitas += 1;
+        //     $embriao->save();
+
+        //     if(session()->get("cliente")){
+        //         $rdStation = new \RDStation\RDStation(session()->get("cliente")["email"]);
+        //         $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+        //         $rdStation->setLeadData('name', session()->get("cliente")["nome_dono"]);
+        //         $rdStation->setLeadData('identifier', 'interesse-lote');
+        //         $rdStation->setLeadData('numero-lote', "" . $lote->numero . $lote->letra);
+        //         $rdStation->setLeadData('nome-lote', $lote->nome);
+        //         $rdStation->setLeadData('fazenda-lote', $lote->fazenda->nome_fazenda);
+        //         $rdStation->sendLead();
+        //     }
+            
+        // }
+
+        $fazenda = Fazenda::where("slug", $slug)->first();
+        return view("embriao", ["configuracao" => $configuracao, "embriao" => $embriao, "reserva" => $reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $embriao->prefixo_numero . $embriao->numero . $embriao->sufixo_numero . " - " . $embriao->grau_sangue]);
     }
 
     public function lance(Request $request, Lote $lote){

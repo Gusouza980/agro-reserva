@@ -13,6 +13,10 @@ class Reserva extends Model
         return $this->hasMany(Lote::class);
     }
 
+    public function embrioes(){
+        return $this->hasMany(Embriao::class);
+    }
+
     public function fazenda(){
         return $this->belongsTo(Fazenda::class);
     }

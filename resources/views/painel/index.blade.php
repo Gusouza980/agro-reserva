@@ -12,7 +12,7 @@
 
 @if(in_array(session()->get("admin")["acesso"], config("acessos.reservas")["consulta"]))
     <div class="col-12">
-        <div class="row mb-3">
+        <div class="mb-3 row">
             <div class="col-12">
                 <a href="{{route('painel.rotinas.recomendacoes.calcular')}}" class="btn btn-laranja">Caclular Recomendações</a>
             </div>
@@ -36,7 +36,7 @@
                 </ul>
 
                 <!-- Tab panes -->
-                <div class="tab-content p-3 text-muted">
+                <div class="p-3 tab-content text-muted">
                     <div class="tab-pane active" id="reservas" role="tabpanel">
                         <div class="container-fluid">
                             <div class="row">
@@ -69,41 +69,41 @@
                                                     @foreach ($reservas as $reserva)
                                                         <tr>
                                                             <td class="text-center">
-                                                                <div class="dropdown mt-4 mt-sm-0">
+                                                                <div class="mt-4 dropdown mt-sm-0">
                                                                     <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
                                                                         aria-expanded="false">
                                                                         <i class="fas fa-bars" aria-hidden="true"></i>
                                                                     </a>
                                                                     <div class="dropdown-menu" style="margin: 0px;">
-                                                                        <a name="" href="{{route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva])}}" id="" class="dropdown-item py-2"
+                                                                        <a name="" href="{{route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva])}}" id="" class="py-2 dropdown-item"
                                                                             target="_blank" role="button">Página da Reserva</a>
-                                                                        <a name="" id="" class="dropdown-item py-2" data-bs-toggle="modal"
+                                                                        <a name="" id="" class="py-2 dropdown-item" data-bs-toggle="modal"
                                                                             data-bs-target="#modalEditaReserva{{ $reserva->id }}"
                                                                             role="button">Editar</a>
                                                                         <a name="" id=""
                                                                             href="{{ route('painel.fazenda.editar', ['fazenda' => $reserva->fazenda]) }}"
-                                                                            class="dropdown-item py-2" role="button">Editar Fazenda</a>
+                                                                            class="py-2 dropdown-item" role="button">Editar Fazenda</a>
                                                                         <a name="" id=""
                                                                             href="{{ route('painel.fazenda.reservas.abertura', ['reserva' => $reserva]) }}"
-                                                                            class="dropdown-item py-2" role="button">@if ($reserva->aberto) Fechar @else Abrir @endif
+                                                                            class="py-2 dropdown-item" role="button">@if ($reserva->aberto) Fechar @else Abrir @endif
                                                                             Reserva</a>
                                                                         <a name="" id=""
                                                                             href="{{ route('painel.fazenda.reservas.preco', ['reserva' => $reserva]) }}"
-                                                                            class="dropdown-item py-2" role="button">@if ($reserva->preco_disponivel) Esconder @else Liberar @endif
+                                                                            class="py-2 dropdown-item" role="button">@if ($reserva->preco_disponivel) Esconder @else Liberar @endif
                                                                             Preços</a>
                                                                         <a name="" id=""
                                                                             href="{{ route('painel.fazenda.reservas.compras', ['reserva' => $reserva]) }}"
-                                                                            class="dropdown-item py-2" role="button">@if ($reserva->compra_disponivel) Bloquear @else Liberar @endif
+                                                                            class="py-2 dropdown-item" role="button">@if ($reserva->compra_disponivel) Bloquear @else Liberar @endif
                                                                             Compras</a>
                                                                         <a name="" id=""
-                                                                            href="{{ route('painel.fazenda.reserva.lotes', ['reserva' => $reserva]) }}"
-                                                                            class="dropdown-item py-2" role="button">Lotes</a>
+                                                                            href="{{ route('painel.fazenda.reserva.embrioes', ['reserva' => $reserva]) }}"
+                                                                            class="py-2 dropdown-item" role="button">Embriões</a>
                                                                         <a name="" id=""
                                                                             href="{{ route('painel.fazenda.reservas.relatorio', ['reserva' => $reserva]) }}"
-                                                                            class="dropdown-item py-2" role="button">Relatório de Visitas</a>
+                                                                            class="py-2 dropdown-item" role="button">Relatório de Visitas</a>
                                                                         <a name="" id=""
                                                                             onclick="exibeCarregamento()" href="{{ route('painel.fazenda.reservas.relatorio', ['reserva' => $reserva]) }}"
-                                                                            class="dropdown-item py-2" role="button">Mapa de Compras</a>
+                                                                            class="py-2 dropdown-item" role="button">Mapa de Compras</a>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -180,22 +180,22 @@
                     <form action="{{ route('painel.fazenda.reserva.editar', ['reserva' => $reserva]) }}"
                         method="post">
                         @csrf
-                        <div class="form-group mb-3">
+                        <div class="mb-3 form-group">
                             <label for="inicio">Início</label>
                             <input type="date" class="form-control" name="inicio"
                                 value="{{ date('Y-m-d', strtotime($reserva->inicio)) }}" required>
                         </div>
-                        <div class="form-group mb-3">
+                        <div class="mb-3 form-group">
                             <label for="fim">Fim</label>
                             <input type="date" class="form-control" name="fim"
                                 value="{{ date('Y-m-d', strtotime($reserva->fim)) }}" required>
                         </div>
-                        <div class="form-group mb-3">
+                        <div class="mb-3 form-group">
                             <label for="desconto_live_valor">Desconto de Live (%)</label>
                             <input type="number" class="form-control" name="desconto_live_valor" min="0" step="0.01"
                                 value="{{ $reserva->desconto_live_valor }}" required>
                         </div>
-                        <div class="form-group mb-3">
+                        <div class="mb-3 form-group">
                             <label for="multi_fazendas">Reserva Multi Fazendas ?</label>
                             <select class="form-control" name="multi_fazendas">
                                 <option value="0" @if (!$reserva->multi_fazendas) selected @endif>Não</option>
@@ -203,14 +203,14 @@
                             </select>
                         </div>
                         <div class="row">
-                            <div class="form-group col-12 col-lg-6 mb-3">
+                            <div class="mb-3 form-group col-12 col-lg-6">
                                 <label for="ativo">Ativo</label>
                                 <select class="form-control" name="ativo">
                                     <option value="0" @if (!$reserva->ativo) selected @endif>Não</option>
                                     <option value="1" @if ($reserva->ativo) selected @endif>Sim</option>
                                 </select>
                             </div>
-                            <div class="form-group col-12 col-lg-6 mb-3">
+                            <div class="mb-3 form-group col-12 col-lg-6">
                                 <label for="mostrar_datas">Mostrar Data</label>
                                 <select class="form-control" name="mostrar_datas">
                                     <option value="0" @if (!$reserva->mostrar_datas) selected @endif>Não</option>
@@ -220,7 +220,7 @@
                         </div>
                         
                         <div class="form-group text-end">
-                            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                            <button type="submit" class="mt-3 btn btn-primary">Salvar</button>
                         </div>
                     </form>
                 </div>
