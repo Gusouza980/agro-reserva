@@ -12,4 +12,8 @@ class Embriao extends Model
     public function reserva(){
         return $this->belongsTo(Reserva::class);
     }
+
+    public function fazenda(){
+        return $this->belongsTo(Fazenda::class);
+    }
 }

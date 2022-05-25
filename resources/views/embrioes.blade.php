@@ -131,8 +131,7 @@
                         <div class="mt-4 coluna-caixa-lote">
                             <div class="mx-auto card card-caixa-lote">
                                 <a href="{{ route('fazenda.embriao', ['fazenda' => $fazenda->slug, 'reserva' => $embriao->reserva, 'embriao' => $embriao]) }}">
-                                    <div class="d-flex align-items-center justify-content-center" style="position: relative; border-top-left-radius: 20px; border-top-right-radius: 20px; object-fit: contain; height:200px;">
-                                        <img src="{{ asset('imagens/logo_crv.png') }}" width="200" alt="">
+                                    <div class="d-flex align-items-center justify-content-center" style="position: relative; border-top-left-radius: 20px; border-top-right-radius: 20px; object-fit: contain; height:200px; background: url({{asset('imagens/genetica.png')}}); background-size: cover; background-position: top; background-repeat: no-repeat;">
                                         <div class="numero-lote" style="background-color: #15171e !important; color: white !important;">
                                             <h4 style="color: white !important;">LOTE</h4>
                                             <h5 class="mb-2" style="color: white !important;">@if($embriao->prefixo_numero){{$embriao->prefixo_numero}}@endif{{str_pad($embriao->numero, 3, "0", STR_PAD_LEFT)}}@if($embriao->sufixo_numero){{$embriao->sufixo_numero}}@endif</h5>

@@ -88,7 +88,7 @@ if (session()->get('cliente')) {
                                     class="mr-2 fas fa-arrow-left"></i> {{ __('messages.botoes.voltar') }}</span></a>
                     </div>
                     <div class="text-center d-none d-lg-block">
-                        <img src="{{ asset($embriao->reserva->fazenda->logo) }}" width="200" alt="">
+                        <img src="{{ asset($embriao->fazenda->logo) }}" width="200" alt="">
                     </div>
                     <div class="text-right">
                         <i class="text-white fas fa-paper-plane fa-lg cpointer" data-toggle="modal"
@@ -97,7 +97,7 @@ if (session()->get('cliente')) {
                 </div>
                 <div class="row justify-content-center d-lg-none">
                     <div class="text-center col-12">
-                        <img src="{{ asset($embriao->reserva->fazenda->logo) }}" width="200" alt="">
+                        <img src="{{ asset($embriao->fazenda->logo) }}" width="200" alt="">
                     </div>
                 </div>
             </div>
