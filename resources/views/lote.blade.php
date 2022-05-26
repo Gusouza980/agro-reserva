@@ -34,7 +34,7 @@ if (session()->get('cliente')) {
         <div class="d-flex flex-column align-items-center justify-content-center" style="position: fixed; top: calc(50% - 100px); left: 0px; background-color: rgba(21, 23, 30, 0.90); width: 70px; z-index: 90;">
             <div class="mt-4 icones-info d-flex flex-column align-items-center" data-toggle="modal"
             data-target="#modalFrete">
-                <img class="cpointer mb-2" src="{{ asset('imagens/icon_frete.png') }}" style="width: 35px; height: auto;" alt="">
+                <img class="mb-2 cpointer" src="{{ asset('imagens/icon_frete.png') }}" style="width: 35px; height: auto;" alt="">
                 <span style="font-size: 10px;">Frete</span>
             </div>
             <div class="my-4 icones-info d-flex flex-column align-items-center" data-toggle="modal"
@@ -50,9 +50,9 @@ if (session()->get('cliente')) {
         </div>
     @endif
     <div class="container-fluid barra-lote-fixa" style="display: none;">
-        <div class="w1200 mx-auto">
-            <div class="row align-items-center py-3">
-                <div class="col-12 col-sm-6 text-white">
+        <div class="mx-auto w1200">
+            <div class="py-3 row align-items-center">
+                <div class="text-white col-12 col-sm-6">
                     @if(session()->get("cliente"))
                         <div class="row">
                             <div class="col-6 text-center text-sm-left @if (!$lote->reserva->preco_disponivel && !$lote->liberar_preco) blur @endif">
@@ -82,7 +82,7 @@ if (session()->get('cliente')) {
                                 <div class="text-center text-white">
                                     @if (!$lote->reserva->encerrada)
                                         @if (!$lote->reserva->compra_disponivel && !$lote->liberar_compra)
-                                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                            <button name="" id="" class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                                 style="max-width:350px;">{{ __('messages.botoes.disponivel_live') }}</button>
                                         @else
                                             @if (!$lote->reservado && !$lote->negociacao)
@@ -90,39 +90,39 @@ if (session()->get('cliente')) {
                                                     @if ($cliente->aprovado)
                                                         @if ($lote->modalidade == 0)
                                                             <a name="" id=""
-                                                                class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                                class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                                                 style="max-width:350px;"
                                                                 href="{{ route('carrinho.adicionar', ['lote' => $lote]) }}"
                                                                 role="button">{{ __('messages.botoes.comprar') }}</a>
                                                         @else
                                                             <a name="" id=""
-                                                                class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
+                                                                class="px-5 py-2 mx-auto btn btn-vermelho btn-block cpointer"
                                                                 data-toggle="modal" data-target="#modalLance"
                                                                 style="max-width:350px;" role="button">Dar Lance</a>
                                                         @endif
                                                     @else
                                                         <a name="" id=""
-                                                            class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
+                                                            class="px-5 py-2 mx-auto btn btn-vermelho btn-block cpointer"
                                                             data-toggle="modal" data-target="#modalBloqueio"
                                                             style="max-width:350px;" role="button">{{ __('messages.botoes.comprar') }}</a>
                                                     @endif
                                                 @else
-                                                    <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                    <a name="" id="" class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                                         style="max-width:350px;" href="{{ route('login') }}"
                                                         role="button">{{ __('messages.botoes.entre_comprar') }}</a>
                                                 @endif
                                             @else
                                                 @if ($lote->reservado)
-                                                    <button name="" id="" class="btn btn-verde btn-block py-2 px-5 mx-auto"
+                                                    <button name="" id="" class="px-5 py-2 mx-auto btn btn-verde btn-block"
                                                         style="max-width:350px;">{{ __('messages.botoes.vendido') }}</button>
                                                 @else
-                                                    <button name="" id="" class="btn-laranja btn-block py-2 px-5 mx-auto"
+                                                    <button name="" id="" class="px-5 py-2 mx-auto btn-laranja btn-block"
                                                         style="max-width:350px;">{{ __('messages.botoes.reservado') }}</button>
                                                 @endif
                                             @endif
                                         @endif
                                     @else
-                                        <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                        <button name="" id="" class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                             style="max-width:350px;">{{ __('messages.botoes.encerrada') }}</button>
                                     @endif
                                 </div>
@@ -137,15 +137,15 @@ if (session()->get('cliente')) {
     @if (!$lote->pacote)
         <div class=""
             style="background-color: #15171e; background-blend-mode: darken; @if($reserva->fazenda->fundo_conheca_lotes) background: rgba(0, 0, 0, .65) url(/{{ $reserva->fazenda->fundo_conheca_lotes }}) @endif; background-size: cover; background-position: center;">
-            <div class="container-fluid bg-preto py-5 py-lg-2" id="row-preco-compra">
+            <div class="py-5 container-fluid bg-preto py-lg-2" id="row-preco-compra">
                 <div class="container pt-4">
-                    <div class="row align-items-center pb-4">
-                        <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
+                    <div class="pb-4 row align-items-center">
+                        <div class="text-white col-12 col-lg-2 justify-content-center d-flex align-items-center">
                             <img src="{{ asset($fazenda->logo) }}" style="width: 100%; max-width: 250px;" alt="">
                         </div>
-                        <div class="col-12 col-lg-7 text-white mt-5 mt-lg-0">
+                        <div class="mt-5 text-white col-12 col-lg-7 mt-lg-0">
                             <div class="row">
-                                <div class="col-12 text-center text-lg-right">
+                                <div class="text-center col-12 text-lg-right">
                                     <h2>{{ $lote->nome }}</h2>
                                 </div>
                             </div>
@@ -177,7 +177,7 @@ if (session()->get('cliente')) {
                                         </div>
                                     @else
                                         <div class="row">
-                                            <div class="col-12 text-center text-lg-right">
+                                            <div class="text-center col-12 text-lg-right">
                                                 <span><b>Maior lance:</b>
                                                     @php
                                                         $lance = $lote->lances->sortByDesc('created_at')->first();
@@ -192,11 +192,11 @@ if (session()->get('cliente')) {
                                 @endif
                             @endif
                         </div>
-                        <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
+                        <div class="mt-3 col-12 col-lg-3 d-flex align-items-center justify-content-center mt-lg-0">
                             <div class="text-center text-white">
                                 @if (!$lote->reserva->encerrada)
                                     @if (!$lote->reserva->compra_disponivel && !$lote->liberar_compra)
-                                        <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                        <button name="" id="" class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                             style="max-width:350px;">{{ __('messages.botoes.disponivel_live') }}</button>
                                     @else
                                         @if (!$lote->reservado && !$lote->negociacao)
@@ -204,39 +204,39 @@ if (session()->get('cliente')) {
                                                 @if ($cliente->aprovado)
                                                     @if ($lote->modalidade == 0)
                                                         <a name="" id=""
-                                                            class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                            class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                                             style="max-width:350px;"
                                                             href="{{ route('carrinho.adicionar', ['lote' => $lote]) }}"
                                                             role="button">{{ __('messages.botoes.comprar') }}</a>
                                                     @else
                                                         <a name="" id=""
-                                                            class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
+                                                            class="px-5 py-2 mx-auto btn btn-vermelho btn-block cpointer"
                                                             data-toggle="modal" data-target="#modalLance"
                                                             style="max-width:350px;" role="button">Dar Lance</a>
                                                     @endif
                                                 @else
                                                     <a name="" id=""
-                                                        class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
+                                                        class="px-5 py-2 mx-auto btn btn-vermelho btn-block cpointer"
                                                         data-toggle="modal" data-target="#modalBloqueio"
                                                         style="max-width:350px;" role="button">{{ __('messages.botoes.comprar') }}</a>
                                                 @endif
                                             @else
-                                                <a name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                <a name="" id="" class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                                     style="max-width:350px;" href="{{ route('login') }}"
                                                     role="button">{{ __('messages.botoes.entre_comprar') }}</a>
                                             @endif
                                         @else
                                             @if ($lote->reservado)
-                                                <button name="" id="" class="btn btn-verde btn-block py-2 px-5 mx-auto"
+                                                <button name="" id="" class="px-5 py-2 mx-auto btn btn-verde btn-block"
                                                     style="max-width:350px;">{{ __('messages.botoes.vendido') }}</button>
                                             @else
-                                                <button name="" id="" class="btn-laranja btn-block py-2 px-5 mx-auto"
+                                                <button name="" id="" class="px-5 py-2 mx-auto btn-laranja btn-block"
                                                     style="max-width:350px;">{{ __('messages.botoes.reservado') }}</button>
                                             @endif
                                         @endif
                                     @endif
                                 @else
-                                    <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                    <button name="" id="" class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                         style="max-width:350px;">{{ __('messages.botoes.encerrada') }}</button>
                                 @endif
                             </div>
@@ -244,39 +244,39 @@ if (session()->get('cliente')) {
                     </div>
                 </div>
             </div>
-            <div class="w1200 mx-auto pt-5 pb-5 pb-lg-0" style="">
-                <div class="container-fluid pb-4">
-                    <div class="row py-4 px-5 justify-content-between">
+            <div class="pt-5 pb-5 mx-auto w1200 pb-lg-0" style="">
+                <div class="pb-4 container-fluid">
+                    <div class="px-5 py-4 row justify-content-between">
                         <div>
                             @if (!isset($finalizadas))
                                 <a href="{{ route('fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
                                         style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
-                                            class="fas fa-arrow-left mr-2"></i> {{ __('messages.botoes.voltar') }}</span></a>
+                                            class="mr-2 fas fa-arrow-left"></i> {{ __('messages.botoes.voltar') }}</span></a>
                             @else
                                 <a
                                     href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $lote->reserva->fazenda->slug,'reserva' => $reserva]) }}"><span
                                         style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
-                                            class="fas fa-arrow-left mr-2"></i> {{ __('messages.botoes.voltar') }}</span></a>
+                                            class="mr-2 fas fa-arrow-left"></i> {{ __('messages.botoes.voltar') }}</span></a>
                             @endif
                         </div>
                         <div class="text-right">
-                            <i class="fas fa-paper-plane fa-lg text-white cpointer" data-toggle="modal"
+                            <i class="text-white fas fa-paper-plane fa-lg cpointer" data-toggle="modal"
                                 data-target="#modalCompartilhamento"></i>
                         </div>
                     </div>
-                    <div class="row justify-content-center mt-5" style="position: relative;">
-                        <div class="text-center video-lote px-3 px-lg-0" style="max-width: 100%; position: relative;">
+                    <div class="mt-5 row justify-content-center" style="position: relative;">
+                        <div class="px-3 text-center video-lote px-lg-0" style="max-width: 100%; position: relative;">
                             {!! $lote->video !!}
                             @if ($lote->porcentagem < 100)
                                 <img class="" src=" {{ asset('imagens/selo-50.png') }}"
                                     style="width: 50px; height: 50px; position: absolute; right:0px; top:-10px;" alt="">
                             @endif
                         </div>
-                        <div class="ml-0 ml-lg-5 mt-4 mt-lg-0 px-lg-0 px-4 text-center text-lg-left"
+                        <div class="px-4 mt-4 ml-0 text-center ml-lg-5 mt-lg-0 px-lg-0 text-lg-left"
                             style="position: relative;">
 
                             <div class="row">
-                                <div class="col-12 text-white text-lote-info px-0">
+                                <div class="px-0 text-white col-12 text-lote-info">
                                     <h1>Lote {{ str_pad($lote->numero, 3, '0', STR_PAD_LEFT) }}{{ $lote->letra }}</h1>
                                     <h2>{{ $lote->nome }}</h2>
                                 </div>
@@ -329,8 +329,8 @@ if (session()->get('cliente')) {
 
                                 ;
                             @endswitch
-                            <div class="row justify-content-center justify-content-lg-start mt-2">
-                                <div class="col-12 text-white text-lote-info px-0">
+                            <div class="mt-2 row justify-content-center justify-content-lg-start">
+                                <div class="px-0 text-white col-12 text-lote-info">
                                     <div class="text-lote-info" style="width: 100%; max-width: 540px;">
                                         <span><b>{{ __('messages.lote.observacoes') }}:</b></span><br>
                                         <span>{!! str_replace("\n", '<br>', $lote->observacoes) !!}</span>
@@ -343,11 +343,11 @@ if (session()->get('cliente')) {
             </div>
         </div>
 
-        <div class="container-fluid mt-5">
+        <div class="mt-5 container-fluid">
 
-            <div class="w1200 mx-auto">
+            <div class="mx-auto w1200">
                 <div class="row">
-                    <div class="col-12 text-center text-lg-left">
+                    <div class="text-center col-12 text-lg-left">
                         <h4>{{ __('messages.lote.genealogia') }}</h4>
                     </div>
                 </div>
@@ -355,7 +355,7 @@ if (session()->get('cliente')) {
 
             @if ($lote->genealogia)
                 <div class="row">
-                    <div class="col-12 text-center py-5">
+                    <div class="py-5 text-center col-12">
                         <a id="link-genealogia" href="{{ asset($lote->genealogia) }}">
                             <img id="imagem-genealogia" src="{{ asset($lote->genealogia) }}" style="max-width: 100%;"
                                 alt="Genealogia">
@@ -364,10 +364,10 @@ if (session()->get('cliente')) {
                 </div>
             @endif
             <div class="container-fluid">
-                <div class="row py-4">
-                    <div class="col-12 text-center">
+                <div class="py-4 row">
+                    <div class="text-center col-12">
                         <a href="https://api.whatsapp.com/send?phone={{ $lote->reserva->telefone_consultor }}"
-                            target="_blank" class="btn btn-vermelho px-4 py-2">{{ __('messages.botoes.falar_consultor') }}:</a>
+                            target="_blank" class="px-4 py-2 btn btn-vermelho">{{ __('messages.botoes.falar_consultor') }}:</a>
                     </div>
                 </div>
             </div>
@@ -376,29 +376,29 @@ if (session()->get('cliente')) {
         {{-- <hr> --}}
         <div class="container-fluid">
             @if ($lote->catalogo)
-                <div class="row py-3">
-                    <div class="col-12 text-center link-download-catalogo">
+                <div class="py-3 row">
+                    <div class="text-center col-12 link-download-catalogo">
                         <a class="link-download-catalogo" href="{{ asset($lote->catalogo) }}"
                             download="{{ $lote->numero . '-' . $lote->nome }}"><i
-                                class="fas fa-file-download mr-3"></i>Baixar
+                                class="mr-3 fas fa-file-download"></i>Baixar
                             PDF do Lote</a>
                     </div>
                 </div>
             @endif
-            {{-- <div class="row mt-4 mb-lg-2">
-                <div class="col-12 text-center">
-                    <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalFrete">Frete e Pagamento</button>
+            {{-- <div class="mt-4 row mb-lg-2">
+                <div class="text-center col-12">
+                    <button class="px-3 py-2 my-2 btn btn-vermelho my-lg-0" data-toggle="modal" data-target="#modalFrete">Frete e Pagamento</button>
                     <br class="d-lg-none">
-                    <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalSeguranca">Segurança e Garantia</button>
+                    <button class="px-3 py-2 my-2 btn btn-vermelho my-lg-0" data-toggle="modal" data-target="#modalSeguranca">Segurança e Garantia</button>
                     <br class="d-lg-none">
-                    <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalAssessoria">Assessoria</button>
+                    <button class="px-3 py-2 my-2 btn btn-vermelho my-lg-0" data-toggle="modal" data-target="#modalAssessoria">Assessoria</button>
                 </div>
             </div>
-            <div class="row mb-4">
-                <div class="col-12 text-center">
-                    <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalFunciona">Como funciona</button>
+            <div class="mb-4 row">
+                <div class="text-center col-12">
+                    <button class="px-3 py-2 my-2 btn btn-vermelho my-lg-0" data-toggle="modal" data-target="#modalFunciona">Como funciona</button>
                     <br class="d-lg-none">
-                    <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalPapel">Papel da Agroreserva</button>
+                    <button class="px-3 py-2 my-2 btn btn-vermelho my-lg-0" data-toggle="modal" data-target="#modalPapel">Papel da Agroreserva</button>
                 </div>
             </div> --}}
         </div>
@@ -409,10 +409,10 @@ if (session()->get('cliente')) {
                 @livewire("slide-lotes-destaque", ["reserva" => $reserva])
         @endif
         @if ($lote->recomendados->count() > 0)
-            <div class="container-fluid py-5">
-                <div class="w1200 mx-auto">
+            <div class="py-5 container-fluid">
+                <div class="mx-auto w1200">
                     <div class="row">
-                        <div class="col-12 text-center">
+                        <div class="text-center col-12">
                             <h5>Você também pode gostar:</h5>
                         </div>
                     </div>
@@ -468,9 +468,11 @@ if (session()->get('cliente')) {
                                             ;
                                             @case(5)
                                                 @include('includes.lotes.modelo05')
-                                            @break
+                                            @break;
 
-                                            ;
+                                            @case(8)
+                                                @include('includes.lotes.modelo08')
+                                            @break;
 
                                             @default
                                                 @include('includes.lotes.modelo02')
@@ -503,19 +505,19 @@ if (session()->get('cliente')) {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body pb-4">
+                    <div class="pb-4 modal-body">
                         <div class="row">
-                            <div class="col-12 text-center text-red">
+                            <div class="text-center col-12 text-red">
                                 <h4><b>FRETE</b></h4>
                             </div>
                         </div>
-                        <div class="row mt-3 px-4">
+                        <div class="px-4 mt-3 row">
                             <div class="col-12">
                                 {!! $lote->reserva->texto_local_retirada !!}
                             </div>
                         </div>
                         @if($fazenda->iframe_google)
-                            <div class="row mt-3 px-4">
+                            <div class="px-4 mt-3 row">
                                 <div class="col-12" id="row_iframe_google">
                                     {!! $fazenda->iframe_google !!}
                                 </div>
@@ -535,15 +537,15 @@ if (session()->get('cliente')) {
                 style="background-color: black; background-size: cover; background-position: center;">
                 @if ($cont == 0)
                     {{-- FAIXA DE PREÇO --}}
-                    <div class="container-fluid bg-preto py-5 py-lg-2">
+                    <div class="py-5 container-fluid bg-preto py-lg-2">
                         <div class="container">
                             <div class="row align-items-center">
-                                <div class="col-12 col-lg-2 text-white justify-content-center d-flex align-items-center">
+                                <div class="text-white col-12 col-lg-2 justify-content-center d-flex align-items-center">
                                     <img src="{{ asset($fazenda->logo) }}" style="width: 100%; max-width: 300px;" alt="">
                                 </div>
-                                <div class="col-12 col-lg-7 text-white mt-5 mt-lg-0">
+                                <div class="mt-5 text-white col-12 col-lg-7 mt-lg-0">
                                     <div class="row">
-                                        <div class="col-12 text-center text-lg-right">
+                                        <div class="text-center col-12 text-lg-right">
                                             <h2>{{ $lote->nome }}</h2>
                                         </div>
                                     </div>
@@ -559,43 +561,43 @@ if (session()->get('cliente')) {
                                     @endswitch
 
                                 </div>
-                                <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center mt-3 mt-lg-0">
+                                <div class="mt-3 col-12 col-lg-3 d-flex align-items-center justify-content-center mt-lg-0">
                                     <div class="text-center text-white">
                                         @if (!$lote->reserva->encerrada)
                                             @if (!$lote->reserva->compra_disponivel && !$lote->liberar_compra)
-                                                {{-- <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto" style="max-width:350px;">Disponível {{date("d/m", strtotime($lote->reserva->inicio))}}</button> --}}
-                                                <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                {{-- <button name="" id="" class="px-5 py-2 mx-auto btn btn-vermelho btn-block" style="max-width:350px;">Disponível {{date("d/m", strtotime($lote->reserva->inicio))}}</button> --}}
+                                                <button name="" id="" class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                                     style="max-width:350px;">Disponível na Live</button>
                                             @else
                                                 @if (!$lote->reservado)
                                                     @if (session()->get('cliente'))
                                                         @if ($cliente->aprovado)
                                                             <a name="" id=""
-                                                                class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                                class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                                                 style="max-width:350px;"
                                                                 href="{{ route('carrinho.adicionar', ['lote' => $lote]) }}"
                                                                 role="button">Comprar</a>
                                                         @else
                                                             <a name="" id=""
-                                                                class="btn btn-vermelho btn-block py-2 px-5 mx-auto cpointer"
+                                                                class="px-5 py-2 mx-auto btn btn-vermelho btn-block cpointer"
                                                                 data-toggle="modal" data-target="#modalBloqueio"
                                                                 style="max-width:350px;" role="button">Comprar</a>
                                                         @endif
                                                     @else
                                                         <a name="" id=""
-                                                            class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                            class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                                             style="max-width:350px;" href="{{ route('login') }}"
                                                             role="button">Entre
                                                             para comprar</a>
                                                     @endif
                                                 @else
                                                     <button name="" id=""
-                                                        class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                                        class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                                         style="max-width:350px;">Reservado</button>
                                                 @endif
                                             @endif
                                         @else
-                                            <button name="" id="" class="btn btn-vermelho btn-block py-2 px-5 mx-auto"
+                                            <button name="" id="" class="px-5 py-2 mx-auto btn btn-vermelho btn-block"
                                                 style="max-width:350px;">Encerrada</button>
                                         @endif
                                     </div>
@@ -604,41 +606,41 @@ if (session()->get('cliente')) {
                         </div>
                     </div>
                 @endif
-                <div class="w1200 mx-auto pt-5 pb-5 pb-lg-0" style="">
+                <div class="pt-5 pb-5 mx-auto w1200 pb-lg-0" style="">
                     <div class="container-fluid">
                         @if ($cont == 0)
                             {{-- BOTÃO DE VOLTAR --}}
-                            <div class="row py-4 px-4">
+                            <div class="px-4 py-4 row">
                                 <div class="col-12">
                                     @if (!isset($finalizadas))
                                         <a
                                             href="{{ route('fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug, 'reserva' => $reserva]) }}"><span
                                                 style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
-                                                    class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                                                    class="mr-2 fas fa-arrow-left"></i> Voltar</span></a>
                                     @else
                                         <a
                                             href="{{ route('reservas.finalizadas.fazenda.lotes', ['fazenda' => $membro->reserva->fazenda->slug,'reserva' => $reserva]) }}"><span
                                                 style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i
-                                                    class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                                                    class="mr-2 fas fa-arrow-left"></i> Voltar</span></a>
                                     @endif
                                 </div>
                             </div>
                         @endif
-                        <div class="row justify-content-center mt-5" style="position: relative;">
+                        <div class="mt-5 row justify-content-center" style="position: relative;">
                             {{-- <img class="d-none d-lg-block" src="{{asset('imagens/selo-50.png')}}" style="width: 50px; height: 50px; position: absolute; right:0px; top:0px;" alt=""> --}}
 
-                            <div class="text-center video-lote px-3 px-lg-0" style="max-width: 100%; position: relative;">
+                            <div class="px-3 text-center video-lote px-lg-0" style="max-width: 100%; position: relative;">
                                 {!! \App\Classes\Util::convertYoutube($membro->video) !!}
                                 @if ($membro->porcentagem < 100)
                                     <img class="" src=" {{ asset('imagens/selo-50.png') }}"
                                         style="width: 50px; height: 50px; position: absolute; right:0px; top:-10px;" alt="">
                                 @endif
                             </div>
-                            <div class="ml-0 ml-lg-5 mt-4 mt-lg-0 px-lg-0 px-4 text-center text-lg-left"
+                            <div class="px-4 mt-4 ml-0 text-center ml-lg-5 mt-lg-0 px-lg-0 text-lg-left"
                                 style="position: relative;">
 
                                 <div class="row">
-                                    <div class="col-12 text-white text-lote-info px-0">
+                                    <div class="px-0 text-white col-12 text-lote-info">
                                         <h1>Lote
                                             {{ str_pad($membro->numero, 3, '0', STR_PAD_LEFT) }}{{ $membro->letra }}
                                         </h1>
@@ -663,8 +665,8 @@ if (session()->get('cliente')) {
 
                                     ;
                                 @endswitch
-                                <div class="row justify-content-center justify-content-lg-start mt-2">
-                                    <div class="col-12 text-white text-lote-info px-0">
+                                <div class="mt-2 row justify-content-center justify-content-lg-start">
+                                    <div class="px-0 text-white col-12 text-lote-info">
                                         <div class="text-lote-info" style="width: 100%; max-width: 540px;">
                                             <span><b>Observações:</b></span><br>
                                             <span>{!! str_replace("\n", '<br>', $membro->observacoes) !!}</span>
@@ -679,15 +681,15 @@ if (session()->get('cliente')) {
                             <div class="container-fluid" style="">
                                 <div class="row align-items-center justify-content-center" style="min-height: 300px;">
                                     <div class="container-fluid">
-                                        <div class="row justify-content-center py-4 py-lg-0 d-none d-lg-flex">
-                                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                        <div class="py-4 row justify-content-center py-lg-0 d-none d-lg-flex">
+                                            <div class="px-3 text-center icones-info px-lg-5 cpointer" data-toggle="modal"
                                                 data-target="#modalFrete">
                                                 <div class="mb-3 icones-info">
                                                     <img src="{{ asset('imagens/icon_frete.png') }}" height="50" alt="">
                                                 </div>
                                                 <span>{{ __('messages.lote.raca') }}:</span>
                                             </div>
-                                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                            <div class="px-3 text-center icones-info px-lg-5 cpointer" data-toggle="modal"
                                                 data-target="#modalPagamento">
                                                 <div class="mb-3 icones-info">
                                                     <img src="{{ asset('imagens/icon_pagamento.png') }}" height="50"
@@ -695,7 +697,7 @@ if (session()->get('cliente')) {
                                                 </div>
                                                 <span>{{ __('messages.lote.pagamentos_condicoes') }}:</span>
                                             </div>
-                                            <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer"
+                                            <div class="px-3 mt-4 text-center icones-info mt-lg-0 px-lg-5 cpointer"
                                                 data-toggle="modal" data-target="#modalSeguranca">
                                                 <div class="mb-3 icones-info">
                                                     <img src="{{ asset('imagens/icon_seguranca.png') }}" height="50"
@@ -703,22 +705,22 @@ if (session()->get('cliente')) {
                                                 </div>
                                                 <span>{{ __('messages.lote.seguranca') }}:</span>
                                             </div>
-                                            {{-- <div class="icones-info text-center mt-4 mt-lg-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
+                                            {{-- <div class="px-3 mt-4 text-center icones-info mt-lg-0 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
                                             <div class="mb-3 icones-info">
                                                 <img src="{{asset('imagens/icon_porcentagem.png')}}" height="50" alt="">
                                             </div>
                                             <span>Comissão</span>
                                         </div> --}}
                                         </div>
-                                        <div class="row justify-content-center py-4 py-lg-0 d-lg-none">
-                                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                        <div class="py-4 row justify-content-center py-lg-0 d-lg-none">
+                                            <div class="px-3 text-center icones-info px-lg-5 cpointer" data-toggle="modal"
                                                 data-target="#modalFrete">
                                                 <div class="mx-auto mb-3 icones-info">
                                                     <img src="{{ asset('imagens/icon_frete.png') }}" height="80" alt="">
                                                 </div>
                                                 <span>{{ __('messages.lote.frete') }}:</span>
                                             </div>
-                                            <div class="icones-info text-center px-3 px-lg-5 cpointer" data-toggle="modal"
+                                            <div class="px-3 text-center icones-info px-lg-5 cpointer" data-toggle="modal"
                                                 data-target="#modalPagamento">
                                                 <div class="mx-auto mb-3 icones-info">
                                                     <img src="{{ asset('imagens/icon_pagamento.png') }}" height="80"
@@ -726,7 +728,7 @@ if (session()->get('cliente')) {
                                                 </div>
                                                 <span>{{ __('messages.lote.pagamentos_condicoes') }}:</span>
                                             </div>
-                                            <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer"
+                                            <div class="px-3 mt-4 text-center icones-info mt-md-0 px-lg-5 cpointer"
                                                 data-toggle="modal" data-target="#modalSeguranca">
                                                 <div class="mx-auto mb-3 icones-info">
                                                     <img src="{{ asset('imagens/icon_seguranca.png') }}" height="80"
@@ -734,7 +736,7 @@ if (session()->get('cliente')) {
                                                 </div>
                                                 <span>{{ __('messages.lote.seguranca') }}:</span>
                                             </div>
-                                            {{-- <div class="icones-info text-center mt-4 mt-md-0 px-3 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
+                                            {{-- <div class="px-3 mt-4 text-center icones-info mt-md-0 px-lg-5 cpointer" data-toggle="modal" data-target="#modalComissao">
                                             <div class="mx-auto mb-3 icones-info">
                                                 <img src="{{asset('imagens/icon_porcentagem.png')}}" height="80" alt="">
                                             </div>
@@ -748,19 +750,19 @@ if (session()->get('cliente')) {
                     @endif
                 </div>
                 {{-- <div class="container-fluid">
-                    <div class="row pb-4">
-                        <div class="col-12 text-center">
-                            <a href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank" class="btn btn-vermelho px-4 py-2">Quero falar com um consultor</a>
+                    <div class="pb-4 row">
+                        <div class="text-center col-12">
+                            <a href="https://api.whatsapp.com/send?phone=5514981809051" target="_blank" class="px-4 py-2 btn btn-vermelho">Quero falar com um consultor</a>
                         </div>
                     </div>
                 </div> --}}
             </div>
 
-            <div class="container-fluid mt-5">
+            <div class="mt-5 container-fluid">
 
-                <div class="w1200 mx-auto">
+                <div class="mx-auto w1200">
                     <div class="row">
-                        <div class="col-12 text-center text-lg-left">
+                        <div class="text-center col-12 text-lg-left">
                             <h4>{{ __('messages.lote.genealogia') }}:</h4>
                         </div>
                     </div>
@@ -768,7 +770,7 @@ if (session()->get('cliente')) {
 
                 @if ($membro->genealogia)
                     <div class="row">
-                        <div class="col-12 text-center py-5">
+                        <div class="py-5 text-center col-12">
                             <a id="link-genealogia" href="{{ asset($membro->genealogia) }}">
                                 <img id="imagem-genealogia" src="{{ asset($membro->genealogia) }}"
                                     style="max-width: 100%;" alt="Genealogia">
@@ -777,10 +779,10 @@ if (session()->get('cliente')) {
                     </div>
                 @endif
                 <div class="container-fluid">
-                    <div class="row py-4">
-                        <div class="col-12 text-center">
+                    <div class="py-4 row">
+                        <div class="text-center col-12">
                             <a href="https://api.whatsapp.com/send?phone={{ $membro->reserva->telefone_consultor }}"
-                                target="_blank" class="btn btn-vermelho px-4 py-2">{{ __('messages.botoes.falar_consultor') }}:</a>
+                                target="_blank" class="px-4 py-2 btn btn-vermelho">{{ __('messages.botoes.falar_consultor') }}:</a>
                         </div>
                     </div>
                 </div>
@@ -789,28 +791,28 @@ if (session()->get('cliente')) {
             <hr>
             <div class="container-fluid">
                 @if ($membro->catalogo)
-                    <div class="row py-3">
-                        <div class="col-12 text-center link-download-catalogo">
+                    <div class="py-3 row">
+                        <div class="text-center col-12 link-download-catalogo">
                             <a class="link-download-catalogo" href="{{ asset($membro->catalogo) }}"
                                 download="{{ $membro->numero . '-' . $membro->nome }}"><i
-                                    class="fas fa-file-download mr-3"></i>{{ __('messages.lotes.baixar_pdf_catalogo') }}:</a>
+                                    class="mr-3 fas fa-file-download"></i>{{ __('messages.lotes.baixar_pdf_catalogo') }}:</a>
                         </div>
                     </div>
                 @endif
-                {{-- <div class="row mt-4 mb-lg-2">
-                    <div class="col-12 text-center">
-                        <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalFrete">Frete e Pagamento</button>
+                {{-- <div class="mt-4 row mb-lg-2">
+                    <div class="text-center col-12">
+                        <button class="px-3 py-2 my-2 btn btn-vermelho my-lg-0" data-toggle="modal" data-target="#modalFrete">Frete e Pagamento</button>
                         <br class="d-lg-none">
-                        <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalSeguranca">Segurança e Garantia</button>
+                        <button class="px-3 py-2 my-2 btn btn-vermelho my-lg-0" data-toggle="modal" data-target="#modalSeguranca">Segurança e Garantia</button>
                         <br class="d-lg-none">
-                        <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalAssessoria">Assessoria</button>
+                        <button class="px-3 py-2 my-2 btn btn-vermelho my-lg-0" data-toggle="modal" data-target="#modalAssessoria">Assessoria</button>
                     </div>
                 </div>
-                <div class="row mb-4">
-                    <div class="col-12 text-center">
-                        <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalFunciona">Como funciona</button>
+                <div class="mb-4 row">
+                    <div class="text-center col-12">
+                        <button class="px-3 py-2 my-2 btn btn-vermelho my-lg-0" data-toggle="modal" data-target="#modalFunciona">Como funciona</button>
                         <br class="d-lg-none">
-                        <button class="btn btn-vermelho px-3 py-2 my-2 my-lg-0" data-toggle="modal" data-target="#modalPapel">Papel da Agroreserva</button>
+                        <button class="px-3 py-2 my-2 btn btn-vermelho my-lg-0" data-toggle="modal" data-target="#modalPapel">Papel da Agroreserva</button>
                     </div>
                 </div> --}}
             </div>
@@ -825,18 +827,18 @@ if (session()->get('cliente')) {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body pb-4">
+                        <div class="pb-4 modal-body">
                             <div class="row">
-                                <div class="col-12 text-center text-red">
+                                <div class="text-center col-12 text-red">
                                     <h4><b>FRETE</b></h4>
                                 </div>
                             </div>
-                            <div class="row mt-3 px-4">
+                            <div class="px-4 mt-3 row">
                                 {!! $lote->reserva->texto_local_retirada !!}
                             </div>
-                            {{-- <div class="row mt-3">
-                                <div class="col-12 text-center">
-                                    <a href="" class="btn btn-vermelho px-4">Contato</a>
+                            {{-- <div class="mt-3 row">
+                                <div class="text-center col-12">
+                                    <a href="" class="px-4 btn btn-vermelho">Contato</a>
                                 </div>
                             </div> --}}
                         </div>
@@ -859,14 +861,14 @@ if (session()->get('cliente')) {
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body pb-4">
+                <div class="pb-4 modal-body">
                     <div class="row">
-                        <div class="col-12 text-center">
+                        <div class="text-center col-12">
                             <h5>Compartilhar em:</h5>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-12 text-center">
+                    <div class="mt-3 row">
+                        <div class="text-center col-12">
                             <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->full() }}" target="_blank"><i
                                     class="fab fa-facebook fa-2x" style="color: #3b5998;" aria-hidden="true"></i></a>
                             <a href="https://api.whatsapp.com/send?text={{ url()->full() }}" class="ml-3"
@@ -879,9 +881,9 @@ if (session()->get('cliente')) {
                                     style="color: #0088CC;"></i></a>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-12 text-center">
-                            <div class="input-group mb-2">
+                    <div class="mt-3 row">
+                        <div class="text-center col-12">
+                            <div class="mb-2 input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Link</div>
                                 </div>
@@ -904,20 +906,20 @@ if (session()->get('cliente')) {
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body pb-4">
+                <div class="pb-4 modal-body">
                     <div class="row">
-                        <div class="col-12 text-center text-red">
+                        <div class="text-center col-12 text-red">
                             <h4><b>PAGAMENTOS E CONDIÇÕES</b></h4>
                         </div>
                     </div>
-                    <div class="row mt-3 px-4">
-                        <div class="col-12 text-justify">
+                    <div class="px-4 mt-3 row">
+                        <div class="text-justify col-12">
                             {!! $lote->reserva->texto_forma_pagamento !!}
                         </div>
                     </div>
-                    {{-- <div class="row mt-3">
-                    <div class="col-12 text-center">
-                        <a href="" class="btn btn-vermelho px-4">Contato</a>
+                    {{-- <div class="mt-3 row">
+                    <div class="text-center col-12">
+                        <a href="" class="px-4 btn btn-vermelho">Contato</a>
                     </div>
                 </div> --}}
                 </div>
@@ -937,12 +939,12 @@ if (session()->get('cliente')) {
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12 text-center text-red">
+                        <div class="text-center col-12 text-red">
                             <h4><b>SEGURANÇA</b></h4>
                         </div>
                     </div>
-                    <div class="row px-4">
-                        <div class="col-12 text-justify">
+                    <div class="px-4 row">
+                        <div class="text-justify col-12">
                             <p>A Agro Reserva toma todas as medidas cabíveis para garantir o cumprimento dos padrões de
                                 confidencialidade e segurança, firmando acordos ou contratos com o objetivo de proteger a
                                 privacidade dos dados pessoais de nossos usuários e cumprir a legislação aplicável.</p>
@@ -966,12 +968,12 @@ if (session()->get('cliente')) {
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12 text-center text-red">
+                        <div class="text-center col-12 text-red">
                             <h4><b>Como funciona?</b></h4>
                         </div>
                     </div>
-                    <div class="row px-4">
-                        <div class="col-12 text-left">
+                    <div class="px-4 row">
+                        <div class="text-left col-12">
                             <p>A Agro Reserva traz benefícios para você, <b>comprador</b>, <b>ZERANDO</b> totalmente a
                                 comissão.</p>
                             {{-- <ul class="mt-3">
@@ -998,19 +1000,19 @@ if (session()->get('cliente')) {
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12 text-center text-red">
+                        <div class="text-center col-12 text-red">
                             <h4><b>Desculpe</b></h4>
                         </div>
                     </div>
-                    <div class="row px-4">
-                        <div class="col-12 text-left">
+                    <div class="px-4 row">
+                        <div class="text-left col-12">
                             <p>O seu cadastro <b>não está apto</b> a realizar compras nessa reserva. O mesmo pode estar em
                                 análise ou ter sido reprovado.</p>
                             <p>Você pode consultar sua situação no seu painel de cliente ou falando com nosso consultor</p>
-                            <div class="row my-3">
-                                <div class="col-12 text-center">
+                            <div class="my-3 row">
+                                <div class="text-center col-12">
                                     <a href="https://api.whatsapp.com/send?phone={{ $lote->reserva->telefone_consultor }}"
-                                        target="_blank" class="btn btn-laranja px-4 py-2">Falar com consultor</a>
+                                        target="_blank" class="px-4 py-2 btn btn-laranja">Falar com consultor</a>
                                 </div>
                             </div>
                         </div>
@@ -1033,7 +1035,7 @@ if (session()->get('cliente')) {
                     @php
                         $lance = $lote->lances->sortByDesc('created_at')->first();
                     @endphp
-                    <div class="row px-4">
+                    <div class="px-4 row">
                         <div class="form-group col-12">
                             <label for="" style="color: black;">Digite o valor do lance</label>
                             <input type="number" class="form-control" name="valor" id="valor_lance"
@@ -1042,8 +1044,8 @@ if (session()->get('cliente')) {
                             <small id="helpId" class="form-text text-muted">O valor deve ser maior que o último lance ou
                                 que o valor mínimo caso ainda não haja lances</small>
                         </div>
-                        <div class="form-group col-12 text-right">
-                            <button type="submit" id="enviar_lance" class="btn btn-laranja py-1">Enviar</button>
+                        <div class="text-right form-group col-12">
+                            <button type="submit" id="enviar_lance" class="py-1 btn btn-laranja">Enviar</button>
                         </div>
                     </div>
                 </div>
@@ -1063,12 +1065,12 @@ if (session()->get('cliente')) {
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12 text-center text-red">
+                        <div class="text-center col-12 text-red">
                             <h4>Papel da Agroreserva</h4>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 text-left">
+                        <div class="text-left col-12">
                             <span>
                                 A Agroreserva atua oferecendo uma intermediação segura, assessorada e
                                 com atendimento total para a sua compra de animais e materiais genéticos.
@@ -1088,9 +1090,9 @@ if (session()->get('cliente')) {
                             <span>Para mais informações, entre em contato com o botão abaixo.</span>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-12 text-center">
-                            <a href="" class="btn btn-vermelho px-4">Contato</a>
+                    <div class="mt-3 row">
+                        <div class="text-center col-12">
+                            <a href="" class="px-4 btn btn-vermelho">Contato</a>
                         </div>
                     </div>
                 </div>
@@ -1107,7 +1109,7 @@ if (session()->get('cliente')) {
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body px-0 py-0">
+                <div class="px-0 py-0 modal-body">
                     <img id="imagem-modal" src="" alt="" style="transform: rotate(-90deg); max-width: 100vh;">
                 </div>
             </div>

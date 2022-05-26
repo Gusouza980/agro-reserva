@@ -85,6 +85,9 @@
                     @case(7)
                         @include('includes.lotes.modelo07')
                     @break;
+                    @case(8)
+                        @include('includes.lotes.modelo08')
+                    @break;
                     @default
                         @include('includes.lotes.modelo02')
                     @break;
@@ -143,12 +146,12 @@
         @endforeach
     @endif
     @if ($fazenda->catalogo)
-        <div class="col-12 text-center mt-5 link-download-catalogo">
+        <div class="mt-5 text-center col-12 link-download-catalogo">
             <a class="link-download-catalogo" href="{{ asset($fazenda->catalogo) }}" class="card-lote-botao"
                 href="#" role="button" download="catalogo-{{ $fazenda->slug }}.pdf"><i
-                    class="fas fa-file-download mr-3"></i>{{ __('messages.lotes.baixar_pdf_catalogo') }}</a>
+                    class="mr-3 fas fa-file-download"></i>{{ __('messages.lotes.baixar_pdf_catalogo') }}</a>
         </div>
-        {{-- <div class="col-12 text-center mt-5">
+        {{-- <div class="mt-5 text-center col-12">
         <a name="" id="" ><button class="px-4 py-2">Baixar Catálogo</button></a>
     </div> --}}
     @endif
