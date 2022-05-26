@@ -1,4 +1,4 @@
-<div class="bg-black" x-data="{ show: false }" x-intersect.enter="show = true" style="overflow-x: hidden; min-height: 550px;">
+<div class="bg-preto" x-data="{ show: false }" x-intersect.enter="show = true" style="overflow-x: hidden; min-height: 550px;">
     <div class="" x-show="show" x-transition.opacity.duration.3000ms>
         @if($configuracao->mostrar_lotes_destaque)
             <div class="row">
@@ -12,13 +12,13 @@
                         $lotes_destaque = $reserva_aberta->lotes->where("ativo", true)->where("reservado", false)->shuffle();
                     @endphp
                     @if($lotes_destaque->count() > 0)
-                        <div class="text-center flex justify-content-center col-12" style="margin-top: 30px;">
+                        <div class="flex text-center justify-content-center col-12" style="margin-top: 30px;">
                             {{-- <img src="{{ asset("imagens/marca-reserva.png") }}" width="150" alt=""> --}}
                             <img class="ml-3" src="{{ asset($reserva_aberta->fazenda->logo) }}" width="150" alt="">
                         </div>
                         
                         <div class="mt-4 row">
-                            <div class="col-12 relative">
+                            <div class="relative col-12">
                                 <div @if($lotes_destaque->count() >= 4 || $mobile) class="slick-lotes" id="slick{{ $reserva_aberta->id }}" @else class="d-flex justify-content-center"  @endif>
                                     @foreach ($lotes_destaque as $lote)
                                         <div class="@if($lotes_destaque->count() >= 4 || $mobile) px-0 @else px-3 @endif py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
@@ -36,7 +36,7 @@
                                                 <div class="ml-4">
                                                     <div class="d-flex justify-content-start align-items-center">
                                                         <div>
-                                                            <button class="badge-lote-home px-2">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
+                                                            <button class="px-2 badge-lote-home">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
                                                         </div>
                                                         @if($lote->registro)
                                                             <div class="ml-3 lote-home-rgd">
@@ -44,7 +44,7 @@
                                                             </div>
                                                         @endif
                                                     </div>
-                                                    <div class="text-left caixa-lote-home-text mt-2">
+                                                    <div class="mt-2 text-left caixa-lote-home-text">
                                                         <span>@if($lote->preco > 0) {{ $lote->parcelas . "x de R$" . number_format($lote->preco / $lote->parcelas, 2, ",", ".")  }}  @else {{ $lote->reserva->desconto }}% de desconto no<br>pagamento à vista @endif</span>
                                                     </div>
                                                 </div>
