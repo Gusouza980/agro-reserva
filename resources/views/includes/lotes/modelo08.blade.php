@@ -56,7 +56,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-2 container-fluid">
+            <div class="mt-4 container-fluid">
                 <div class="row">
                     <div class="text-center col-12 card-lote-botao">
                         @if(!isset($finalizadas))
