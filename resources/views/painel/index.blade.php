@@ -96,6 +96,9 @@
                                                                             class="py-2 dropdown-item" role="button">@if ($reserva->compra_disponivel) Bloquear @else Liberar @endif
                                                                             Compras</a>
                                                                         <a name="" id=""
+                                                                            href="{{ route('painel.fazenda.reserva.lotes', ['reserva' => $reserva]) }}"
+                                                                            class="py-2 dropdown-item" role="button">Lotes</a>
+                                                                        <a name="" id=""
                                                                             href="{{ route('painel.fazenda.reserva.embrioes', ['reserva' => $reserva]) }}"
                                                                             class="py-2 dropdown-item" role="button">Embriões</a>
                                                                         <a name="" id=""
