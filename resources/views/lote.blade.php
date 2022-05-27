@@ -51,7 +51,7 @@ if (session()->get('cliente')) {
     @endif
     <div class="container-fluid barra-lote-fixa" style="display: none;">
         <div class="mx-auto w1200">
-            <div class="py-3 row align-items-center">
+            <div class="py-3 row align-items-center justify-content-center">
                 <div class="text-white col-12 col-sm-6">
                     @if(session()->get("cliente"))
                         <div class="row">
