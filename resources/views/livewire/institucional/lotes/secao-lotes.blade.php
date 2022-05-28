@@ -6,12 +6,18 @@
         @foreach($lotes as $lote)
             <div class="transition duration-500 shadow-md hover:scale-105">
                 <div class="relative">
-                    <div class="absolute bottom-0 left-0 px-1 rounded-tr-md bg-[#F7F7F7]">
+                    <div class="absolute bottom-[-1px] left-0 px-1 rounded-tr-md @if(!$lote->reservado) bg-[#F7F7F7] @else bg-green-600 text-white @endif">
                         <small class="font-bold">Lote {{ str_pad($lote->numero, 3, "0", STR_PAD_LEFT) }}</small>
                     </div>
                     <img src="{{ asset($lote->preview) }}" class="w-full" alt="">
+                    @if($lote->reservado)
+                        <div class="absolute bottom-[-1px] right-0 px-1 text-white bg-green-600 rounded-tl-md">
+                            <small class="font-bold">VENDIDO</small>
+                        </div>
+                    @endif
                 </div>
-                <div class="py-2 text-center bg-[#F7F7F7]">
+                
+                <div class="py-2 text-center @if(!$lote->reservado) bg-[#F7F7F7] @else bg-green-600 text-white @endif">
                     <div class="px-2 mx-auto rounded-md w-fit">
                         <small class="ml-3">RGD: {{ $lote->registro }}</small>
                     </div>
