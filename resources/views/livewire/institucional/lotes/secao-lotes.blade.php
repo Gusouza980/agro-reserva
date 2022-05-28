@@ -5,13 +5,13 @@
     <div class="grid grid-cols-1 gap-5 px-4 mx-auto my-4 md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1400">
         @foreach($lotes as $lote)
             <div class="transition duration-500 shadow-md hover:scale-105">
-                <div class="relative">
-                    <div class="absolute bottom-[-1px] left-0 px-1 rounded-tr-md @if(!$lote->reservado) bg-[#F7F7F7] @else bg-green-600 text-white @endif">
+                <div class="relative @if($lote->reservado) border-2 border-green-600 @endif">
+                    <div class="absolute bottom-[-1px] left-[-1px] px-1 rounded-tr-md @if(!$lote->reservado) bg-[#F7F7F7] @else bg-green-600 text-white @endif">
                         <small class="font-bold">Lote {{ str_pad($lote->numero, 3, "0", STR_PAD_LEFT) }}</small>
                     </div>
                     <img src="{{ asset($lote->preview) }}" class="w-full" alt="">
                     @if($lote->reservado)
-                        <div class="absolute bottom-[-1px] right-0 px-1 text-white bg-green-600 rounded-tl-md">
+                        <div class="absolute bottom-[-1px] right-[-1px] px-1 text-white bg-green-600 rounded-tl-md">
                             <small class="font-bold">VENDIDO</small>
                         </div>
                     @endif

@@ -116,6 +116,12 @@
 .bottom-\[-1px\] {
     bottom: -1px
 }
+.left-\[-1px\] {
+    left: -1px
+}
+.right-\[-1px\] {
+    right: -1px
+}
 .z-30 {
     z-index: 30
 }
@@ -461,6 +467,9 @@
 .border-0 {
     border-width: 0px
 }
+.border-2 {
+    border-width: 2px
+}
 .border-t {
     border-top-width: 1px
 }
@@ -477,6 +486,10 @@
 .border-gray-400 {
     --tw-border-opacity: 1;
     border-color: rgb(156 163 175 / var(--tw-border-opacity))
+}
+.border-green-600 {
+    --tw-border-opacity: 1;
+    border-color: rgb(22 163 74 / var(--tw-border-opacity))
 }
 .bg-white {
     --tw-bg-opacity: 1;
