@@ -5,7 +5,7 @@
     <div class="grid grid-cols-1 gap-5 px-4 mx-auto my-4 md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1400">
         @foreach($lotes as $lote)
             <div class="transition duration-500 shadow-md hover:scale-105">
-                <div class="relative @if($lote->reservado) border-2 border-green-600 @endif">
+                <div class="relative @if(!$lote->reservado) border-2 border-transparent @else border-2 border-green-600 @endif">
                     <div class="absolute bottom-[-1px] left-[-1px] px-1 rounded-tr-md @if(!$lote->reservado) bg-[#F7F7F7] @else bg-green-600 text-white @endif">
                         <small class="font-bold">Lote {{ str_pad($lote->numero, 3, "0", STR_PAD_LEFT) }}</small>
                     </div>
@@ -25,7 +25,7 @@
                     <div class="px-2 mx-auto rounded-md w-fit">
                     </div>
                 </div>
-                <div class="py-3">
+                <div class="py-3 @if(!$lote->reservado) border-2 border-transparent @else border-2 border-green-600 @endif">
                     <div class="px-3 hover:bg-slate-200">
                         <b>GPTA:.</b> {{ $lote->gpta }}
                     </div>
@@ -39,7 +39,7 @@
                         <b>SEXO:.</b> {{ mb_strtoupper($lote->sexo, 'UTF-8') }}
                     </div>
                 </div>
-                <div class="py-2 cursor-pointer text-center text-[15px] hover:font-bold bg-orange-500 hover:bg-orange-600" style="font-family: Montserrat;">
+                <div class="py-2 cursor-pointer text-center text-[15px] hover:font-bold @if(!$lote->reservado) bg-orange-500 hover:bg-orange-600 @else bg-green-600 hover:bg-green-700 @endif" style="font-family: Montserrat;">
                     <a href="" class="text-white hover:text-white focus:text-white focus-within:text-white active:text-white visited:text-white">Ver lote</a>
                 </div>
             </div>
