@@ -166,6 +166,26 @@ class SiteController extends Controller
         return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "popup_institucional" => $popup_institucional, "lotes" => $lotes, "nome_pagina" => "Lotes"]);
     }
 
+    public function lotes2($slug, Reserva $reserva){
+        if($reserva->lotes->count() == 0){
+            return redirect()->route('fazenda.embrioes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva]);
+        }
+        // $reserva = $fazenda->reservas->where("ativo", 1)->first();
+        if(!$reserva->institucional){
+            if(!session()->get("popup_institucional")){
+                $popup_institucional = true;
+                session(["popup_institucional" => true]);
+            }else{
+                $popup_institucional = false;
+            }
+        }else{
+            $popup_institucional = false;
+        }
+        $fazenda = $reserva->fazenda;
+        $lotes = $reserva->lotes->where('ativo', true)->where('membro_pacote', false);
+        return view("lotes2", ["fazenda" => $fazenda, "reserva" => $reserva, "popup_institucional" => $popup_institucional, "lotes" => $lotes, "nome_pagina" => "Lotes"]);
+    }
+
     public function lote($slug, Reserva $reserva, Lote $lote){
         if(!session()->get("cliente")){
             session()->flash("erro", "Para acessar os lotes, faça seu login.");
