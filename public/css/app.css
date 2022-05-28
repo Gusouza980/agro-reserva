@@ -1155,6 +1155,10 @@
         padding-left: 2rem;
         padding-right: 2rem
     }
+    .lg\:px-0 {
+        padding-left: 0px;
+        padding-right: 0px
+    }
 }
 
 
