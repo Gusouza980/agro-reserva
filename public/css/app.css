@@ -1116,6 +1116,10 @@
     .md\:p-0 {
         padding: 0px
     }
+    .md\:px-0 {
+        padding-left: 0px;
+        padding-right: 0px
+    }
     .md\:text-sm {
         font-size: 0.875rem;
         line-height: 1.25rem

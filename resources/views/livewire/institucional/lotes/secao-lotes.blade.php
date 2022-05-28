@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 gap-5 mx-auto my-4 md:grid-cols-3 lg:grid-cols-4 w1400">
+<div class="grid grid-cols-1 gap-5 px-4 mx-auto my-4 md:px-0 md:grid-cols-3 lg:grid-cols-4 w1400">
     @foreach($lotes as $lote)
         <div class="transition duration-500 shadow-md hover:scale-105">
             <div class="relative">
