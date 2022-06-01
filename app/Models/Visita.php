@@ -17,4 +17,8 @@ class Visita extends Model
         return $this->belongsTo(Lote::class);
     }
 
+    public function embriao(){
+        return $this->belongsTo(Embriao::class);
+    }
+
 }
