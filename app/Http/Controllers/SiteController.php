@@ -307,9 +307,9 @@ class SiteController extends Controller
                 $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
                 $rdStation->setLeadData('name', session()->get("cliente")["nome_dono"]);
                 $rdStation->setLeadData('identifier', 'interesse-lote');
-                $rdStation->setLeadData('numero-lote', "" . $lote->numero . $lote->letra);
-                $rdStation->setLeadData('nome-lote', $lote->nome);
-                $rdStation->setLeadData('fazenda-lote', $lote->fazenda->nome_fazenda);
+                $rdStation->setLeadData('numero-lote', "" . $embriao->numero);
+                $rdStation->setLeadData('nome-lote', $embriao->nome);
+                $rdStation->setLeadData('fazenda-lote', $embriao->fazenda->nome_fazenda);
                 $rdStation->sendLead();
             }
             
