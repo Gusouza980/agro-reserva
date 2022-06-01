@@ -254,12 +254,12 @@ class SiteController extends Controller
     }
 
     public function embriao($slug, Reserva $reserva, Embriao $embriao){
-        // if(!session()->get("cliente")){
-        //     session()->flash("erro", "Para acessar os lotes, faça seu login.");
-        //     session()->put(["pagina_retorno" => url()->full()]);
-        //     session()->put(["lote_origem" => $lote->id]);
-        //     return redirect()->route("login");
-        // }
+        if(!session()->get("cliente")){
+            session()->flash("erro", "Para acessar os lotes, faça seu login.");
+            session()->put(["pagina_retorno" => url()->full()]);
+            session()->put(["lote_origem" => $lote->id]);
+            return redirect()->route("login");
+        }
         $visita = new Visita;
         $configuracao = Configuracao::first();
 
@@ -290,30 +290,30 @@ class SiteController extends Controller
             $cep = $query["zip"];
         }
 
-        // if((isset(session()->get("cliente")["admin"]) && session()->get("cliente")["admin"] != true)){
-        //     $visita->ip = $ip;
-        //     $visita->embriao_id = $embriao->id;
-        //     $visita->estado = $estado;
-        //     $visita->cidade = $cidade;
-        //     $visita->cep = $cep;
+        if((isset(session()->get("cliente")["admin"]) && session()->get("cliente")["admin"] != true)){
+            $visita->ip = $ip;
+            $visita->embriao_id = $embriao->id;
+            $visita->estado = $estado;
+            $visita->cidade = $cidade;
+            $visita->cep = $cep;
 
-        //     $visita->save();
+            $visita->save();
 
-        //     $embriao->visitas += 1;
-        //     $embriao->save();
+            $embriao->visitas += 1;
+            $embriao->save();
 
-        //     if(session()->get("cliente")){
-        //         $rdStation = new \RDStation\RDStation(session()->get("cliente")["email"]);
-        //         $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
-        //         $rdStation->setLeadData('name', session()->get("cliente")["nome_dono"]);
-        //         $rdStation->setLeadData('identifier', 'interesse-lote');
-        //         $rdStation->setLeadData('numero-lote', "" . $lote->numero . $lote->letra);
-        //         $rdStation->setLeadData('nome-lote', $lote->nome);
-        //         $rdStation->setLeadData('fazenda-lote', $lote->fazenda->nome_fazenda);
-        //         $rdStation->sendLead();
-        //     }
+            if(session()->get("cliente")){
+                $rdStation = new \RDStation\RDStation(session()->get("cliente")["email"]);
+                $rdStation->setApiToken('ff3c1145b001a01c18bfa3028660b6c6');
+                $rdStation->setLeadData('name', session()->get("cliente")["nome_dono"]);
+                $rdStation->setLeadData('identifier', 'interesse-lote');
+                $rdStation->setLeadData('numero-lote', "" . $lote->numero . $lote->letra);
+                $rdStation->setLeadData('nome-lote', $lote->nome);
+                $rdStation->setLeadData('fazenda-lote', $lote->fazenda->nome_fazenda);
+                $rdStation->sendLead();
+            }
             
-        // }
+        }
 
         $fazenda = Fazenda::where("slug", $slug)->first();
         return view("embriao", ["configuracao" => $configuracao, "embriao" => $embriao, "reserva" => $reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $embriao->prefixo_numero . $embriao->numero . $embriao->sufixo_numero . " - " . $embriao->grau_sangue]);
