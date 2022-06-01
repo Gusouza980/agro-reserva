@@ -13,7 +13,7 @@
 @endsection
 
 @section('conteudo')
-<form action="" class="row row-cols-lg-auto g-3 align-items-center mb-3" method="POST">
+<form action="" class="mb-3 row row-cols-lg-auto g-3 align-items-center" method="POST">
     @csrf
     <div class="form-group">
         <label for="">Início</label>
@@ -33,7 +33,7 @@
         </select>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary mt-4">Filtrar</button>
+        <button type="submit" class="mt-4 btn btn-primary">Filtrar</button>
     </div>
 </form>
 <div class="row justify-content-center">
@@ -66,8 +66,8 @@
                                         {{$visita->ip}}
                                     @endif
                                 </td>
-                                <td style="vertical-align: middle; text-align:center;">{{$visita->lote->fazenda->nome_fazenda}}</td>
-                                <td style="vertical-align: middle; text-align:center;">LOTE {{$visita->lote->numero . ": " . $visita->lote->nome}}</td>
+                                <td style="vertical-align: middle; text-align:center;">@if($visita->lote) {{$visita->lote->fazenda->nome_fazenda}} @else {{$visita->embriao->fazenda->nome_fazenda}} @endif</td>
+                                <td style="vertical-align: middle; text-align:center;">@if($visita->lote) LOTE {{$visita->lote->numero . ": " . $visita->lote->nome}} @else LOTE {{$visita->embriao->numero . ": " . $visita->embriao->nome}} @endif</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->cidade}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->estado}}</td>
                                 @if($visita->logado)
