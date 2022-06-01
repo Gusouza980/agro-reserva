@@ -68,6 +68,8 @@ class PainelController extends Controller
             if($request->reserva != -1){
                 $visitas = Visita::whereBetween("created_at", [$inicio_time, $fim_time])->whereHas("lote", function($q) use ($request){
                     $q->where("reserva_id", $request->reserva);
+                })->orWhereHas("embriao", function($q) use ($request){
+                    $q->where("reserva_id", $request->reserva);
                 })->orderBy("created_at", "ASC")->get();
                 return view("painel.visitas.consultar", ["visitas" => $visitas, "inicio" => $inicio, "fim" => $fim, "filtro_reserva" => $request->reserva]);
             }
