@@ -290,7 +290,7 @@ class SiteController extends Controller
             $cep = $query["zip"];
         }
 
-        // if((isset(session()->get("cliente")["admin"]) && session()->get("cliente")["admin"] != true)){
+        if((isset(session()->get("cliente")["admin"]) && session()->get("cliente")["admin"] != true)){
             $visita->ip = $ip;
             $visita->embriao_id = $embriao->id;
             $visita->estado = $estado;
@@ -313,7 +313,7 @@ class SiteController extends Controller
                 $rdStation->sendLead();
             }
             
-        // }
+        }
 
         $fazenda = Fazenda::where("slug", $slug)->first();
         return view("embriao", ["configuracao" => $configuracao, "embriao" => $embriao, "reserva" => $reserva, "fazenda" => $fazenda, "nome_pagina" =>  "Lote: " . $embriao->prefixo_numero . $embriao->numero . $embriao->sufixo_numero . " - " . $embriao->grau_sangue]);
