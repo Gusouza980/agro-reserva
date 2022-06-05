@@ -1,22 +1,22 @@
-<div class="container-fluid px-0 bg-white pb-5" x-data="{ show: false }" x-intersect.enter="show = true">
-    <div class="w1400 mx-auto px-3 px-lg-0" x-show="show" x-transition.opacity.duration.3000ms>
+<div class="px-0 pb-5 bg-white container-fluid" x-data="{ show: false }" x-intersect.enter="show = true">
+    <div class="px-3 mx-auto w1400 px-lg-0" x-show="show" x-transition.opacity.duration.3000ms>
         <div class="row">
-            <div class="col-12 col-lg-6 mb-4 animate-in slide-in-from-left delay-300 duration-1000">
-                <div class="shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-orange-400 hover:text-white cpointer">
-                    <div class="rounded-t-md">
+            <div class="mb-4 duration-1000 delay-300 col-12 col-lg-6 animate-in slide-in-from-left">
+                <div class="rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer">
+                    <div class="">
                         <img src="{{ asset('imagens/banner-comprar.jpg') }}" style="max-width: 100%;" alt="">
                     </div>
-                    <div class="text-center py-2 bg-inherit rounded-b-md cpointer text-inherit" style="width: 100%; font-family: Montserrat; font-size: 18px;">
+                    <div class="py-2 text-center bg-inherit cpointer text-inherit" style="width: 100%; font-family: Montserrat; font-size: 18px;">
                         Quero Comprar
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-6 mb-4 animate-in slide-in-from-right delay-300 duration-1000">
-                <div class="shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-orange-400 hover:text-white cpointer">
-                    <div class="rounded-t-md">
+            <div class="mb-4 duration-1000 delay-300 col-12 col-lg-6 animate-in slide-in-from-right">
+                <div class="rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer">
+                    <div class="">
                         <img src="{{ asset('imagens/banner-vender.jpg') }}" style="max-width: 100%;" alt="">
                     </div>
-                    <div class="text-center py-2 bg-inherit rounded-b-md cpointer text-inherit" style="width: 100%; font-family: Montserrat; font-size: 18px;">
+                    <div class="py-2 text-center bg-inherit cpointer text-inherit" style="width: 100%; font-family: Montserrat; font-size: 18px;">
                         Quero Vender
                     </div>
                 </div>

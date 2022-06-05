@@ -542,7 +542,6 @@ class SiteController extends Controller
     }
 
     public function experiencia_ouro_branco(){
-        $videos = Youtube::getPlaylistItemsByPlaylistId('PLnqvSti-aWALfE84ooJzeFQlW_o45kuPB');
-        return view("experiencias.ouro-branco", ["videos" => $videos["results"]]);
+        return view("experiencias.ouro-branco");
     }
 }
