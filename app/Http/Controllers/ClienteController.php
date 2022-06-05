@@ -433,8 +433,8 @@ class ClienteController extends Controller
             'Accept' => 'application/json',
             'Content-Type' => 'application/json'
         ])->post('https://api.scccheck.com.br/login', [
-            "logon" => "2249099",
-            "senha" => "agro@1234"
+            "logon" => "3385293",
+            "senha" => "@Agro2020"
         ]);
 
         if($response->status() == 200){
