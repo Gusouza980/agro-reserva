@@ -83,7 +83,7 @@
                                     <label for="raca" class="form-label">Raça *</label>
                                     <select name="raca" id="raca" class="form-select">
                                         @foreach (App\Models\Raca::all() as $raca)
-                                            <option value="{{ $raca->id }}">{{ $raca->nome }}</option>
+                                            <option value="{{ $raca->id }}" @if($reserva->raca_id == $raca->id) selected @endif>{{ $raca->nome }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -207,7 +207,7 @@
                             <div class="col-6 col-md-4">
                                 <div class="mb-3">
                                     <label for="parcelas" class="form-label">Parcelas</label>
-                                    <input type="number" name="parcelas" class="form-control" min="0" step="1" required>
+                                    <input type="number" name="parcelas" class="form-control" min="0" step="1" value="{{ $reserva->max_parcelas }}" required>
                                 </div>
                             </div>
                         </div>

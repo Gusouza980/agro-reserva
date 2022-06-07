@@ -181,6 +181,22 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="mb-3 form-group col-12 col-lg-6">
+                                    <label for="ativo">Raça Pré-definida</label>
+                                    <select class="form-control" name="raca_id">
+                                        <option value="-1">Nenhuma</option>
+                                        @foreach(\App\Models\Raca::all() as $raca)
+                                            <option value="{{ $raca->id }}" @if($reserva->raca_id == $raca->id) selected @endif>{{ $raca->nome }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3 form-group col-12 col-lg-6">
+                                    <label for="mostrar_datas">Pracelas Pré-definidas</label>
+                                    <input type="number" class="form-control" name="max_parlceas" min="0" step="1"
+                                        value="{{ $reserva->max_parcelas }}" required>
+                                </div>
+                            </div>
                             <div class="form-group text-end">
                                 <button type="submit" class="mt-3 btn btn-primary">Salvar</button>
                             </div>
@@ -223,12 +239,36 @@
                                 <option value="1">Sim</option>
                             </select>
                         </div>
-                        <div class="mb-3 form-group">
-                            <label for="ativo">Ativo</label>
-                            <select class="form-control" name="ativo">
-                                <option value="0">Não</option>
-                                <option value="1">Sim</option>
-                            </select>
+                        <div class="row">
+                            <div class="mb-3 form-group col-12 col-lg-6">
+                                <label for="ativo">Ativo</label>
+                                <select class="form-control" name="ativo">
+                                    <option value="0">Não</option>
+                                    <option value="1">Sim</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 form-group col-12 col-lg-6">
+                                <label for="mostrar_datas">Mostrar Data</label>
+                                <select class="form-control" name="mostrar_datas">
+                                    <option value="0">Não</option>
+                                    <option value="1" selected>Sim</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 form-group col-12 col-lg-6">
+                                <label for="ativo">Raça Pré-definida</label>
+                                <select class="form-control" name="raca_id">
+                                    <option value="-1">Nenhuma</option>
+                                    @foreach(\App\Models\Raca::all() as $raca)
+                                        <option value="{{ $raca->id }}">{{ $raca->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3 form-group col-12 col-lg-6">
+                                <label for="mostrar_datas">Pracelas Pré-definidas</label>
+                                <input type="number" class="form-control" name="max_parlceas" min="0" step="1" required>
+                            </div>
                         </div>
                         <div class="form-group text-end">
                             <button type="submit" class="mt-3 btn btn-primary">Salvar</button>
