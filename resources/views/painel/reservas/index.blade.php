@@ -192,8 +192,8 @@
                                     </select>
                                 </div>
                                 <div class="mb-3 form-group col-12 col-lg-6">
-                                    <label for="mostrar_datas">Pracelas Pré-definidas</label>
-                                    <input type="number" class="form-control" name="max_parlceas" min="0" step="1"
+                                    <label for="mostrar_datas">Parcelas Pré-definidas</label>
+                                    <input type="number" class="form-control" name="max_parcelas" min="0" step="1"
                                         value="{{ $reserva->max_parcelas }}" required>
                                 </div>
                             </div>
@@ -266,8 +266,8 @@
                                 </select>
                             </div>
                             <div class="mb-3 form-group col-12 col-lg-6">
-                                <label for="mostrar_datas">Pracelas Pré-definidas</label>
-                                <input type="number" class="form-control" name="max_parlceas" min="0" step="1" required>
+                                <label for="mostrar_datas">Parcelas Pré-definidas</label>
+                                <input type="number" class="form-control" name="max_parcelas" min="0" step="1" required>
                             </div>
                         </div>
                         <div class="form-group text-end">
