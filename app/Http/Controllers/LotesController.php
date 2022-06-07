@@ -183,16 +183,19 @@ class LotesController extends Controller
 
         $lote->chaves()->detach();
 
-        foreach($request->chaves as $chave){
-            if(is_numeric($chave)){
-                $lote->chaves()->attach($chave);
-            }else{
-                $nova_chave = new Chave;
-                $nova_chave->palavra = $chave;
-                $nova_chave->save();
-                $lote->chaves()->attach($nova_chave);
-            }
-        }   
+        
+        if($request->chaves){
+            foreach($request->chaves as $chave){
+                if(is_numeric($chave)){
+                    $lote->chaves()->attach($chave);
+                }else{
+                    $nova_chave = new Chave;
+                    $nova_chave->palavra = $chave;
+                    $nova_chave->save();
+                    $lote->chaves()->attach($nova_chave);
+                }
+            }   
+        }
 
         $lote->save();
 
