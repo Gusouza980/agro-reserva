@@ -31,6 +31,10 @@ class ReservasController extends Controller
         $reserva->inicio = $request->inicio;
         $reserva->fim = $request->fim;
         $reserva->ativo = $request->ativo;
+        if($request->raca_id != -1){
+            $reserva->raca_id = $request->raca_id;
+        }
+        $reserva->max_parcelas = $request->max_parcelas;
         $reserva->desconto_live_valor = $request->desconto_live_valor;
         $reserva->aberto = false;
         $reserva->multi_fazendas = $request->multi_fazendas;
@@ -46,6 +50,12 @@ class ReservasController extends Controller
         $reserva->inicio = $request->inicio;
         $reserva->fim = $request->fim;
         $reserva->ativo = $request->ativo;
+        if($request->raca_id != -1){
+            $reserva->raca_id = $request->raca_id;
+        }else{
+            $reserva->raca_id = null;
+        }
+        $reserva->max_parcelas = $request->max_parcelas;
         $reserva->mostrar_datas = $request->mostrar_datas;
         $reserva->desconto_live_valor = $request->desconto_live_valor;
         $reserva->multi_fazendas = $request->multi_fazendas;
