@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="slick">
-                                    @foreach ($reservas->sortBy([['aberta', 'desc'], ['encerrada', 'asc'], ['inicio', 'desc']]) as $reserva)
+                                    @foreach ($reservas->sortBy([['aberta', 'asc'], ['encerrada', 'asc'], ['inicio', 'desc']]) as $reserva)
                                         <div class="px-0 py-2 mt-4 mr-3 mt-lg-0">
                                             <div
                                                 style="background: url(/{{ $reserva->fazenda->fundo_destaque }}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
