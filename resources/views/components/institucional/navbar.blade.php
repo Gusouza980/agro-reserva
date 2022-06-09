@@ -5,7 +5,7 @@
         </a>
         @if(session()->get("cliente"))
             <div class="flex items-center md:order-2">
-                <div class="mr-3 text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;">
+                <div class="mr-5 text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;">
                     <svg class="mx-auto" id="Grupo_3728" data-name="Grupo 3728" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
                         <g id="Elipse_309" data-name="Elipse 309" fill="#fcfcfc" stroke="#80828b" stroke-width="1.5">
                             <circle cx="18" cy="18" r="18" stroke="none"/>
@@ -16,7 +16,7 @@
                     Precisa de Ajuda
                 </div>
 
-                <div class="mr-3 text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
+                <div class="mr-5 text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
                     <svg class="mx-auto" id="Grupo_3722" data-name="Grupo 3722" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37.018" height="37" viewBox="0 0 37.018 37">
                         <defs>
                           <clipPath id="clip-path">
@@ -87,7 +87,7 @@
                 
                   
                 {{-- <button type="button"
-                    class="flex mr-3 text-sm rounded-full align-items-center md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    class="flex mr-5 text-sm rounded-full align-items-center md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                     id="user-menu-button" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
                     <img class="w-8 h-8 rounded-full" src="{{ asset('imagens/gif_relogio.gif') }}" alt="user photo">
                     <span class="ml-2 text-white">{{ explode(" ", session()->get("cliente")["nome_dono"])[0] }} <i class="ml-2 text-white fas fa-chevron-down fa-sm"></i> </span>
@@ -112,7 +112,7 @@
             </div>
         @else
             <div class="flex items-center md:order-2">
-                <div class="mr-3 text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;">
+                <div class="mr-5 text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;">
                     <svg class="mx-auto" id="Grupo_3728" data-name="Grupo 3728" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
                         <g id="Elipse_309" data-name="Elipse 309" fill="#fcfcfc" stroke="#80828b" stroke-width="1.5">
                             <circle cx="18" cy="18" r="18" stroke="none"/>
@@ -123,7 +123,7 @@
                     Precisa de Ajuda
                 </div>
                 
-                <div class="mr-3 text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
+                <div class="mr-5 text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
                     <svg class="mx-auto" id="Grupo_3722" data-name="Grupo 3722" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37.018" height="37" viewBox="0 0 37.018 37">
                         <defs>
                           <clipPath id="clip-path">
@@ -203,8 +203,8 @@
     </div>
 </nav>
 <div class="hidden md:flex w-full bg-[#80828B] py-2 border-b-2 border-[#F5B01F] justify-content-center align-items-center text-white" style="font-size: 13px; font-weight: 500; font-family: Montserrat, sans-serif;">
-    <a class="mr-5 hover:!text-[#F5B01F]" href="">Reservas Abertas</a>
-    <a class="mr-5 hover:!text-[#F5B01F]" href="">Embriões e Sêmen</a>
-    <a class="mr-5 hover:!text-[#F5B01F]" href="">Navegue por Raças</a>
-    <a class="hover:!text-[#F5B01F]" href="">Reservas Finalizadas</a>
+    <a class="mx-5 hover:!text-[#F5B01F]" href="">Reservas Abertas</a>
+    <a class="mx-5 hover:!text-[#F5B01F]" href="">Embriões e Sêmen</a>
+    <a class="mx-5 hover:!text-[#F5B01F]" href="">Navegue por Raças</a>
+    <a class="mx-5 hover:!text-[#F5B01F]" href="">Reservas Finalizadas</a>
 </div>

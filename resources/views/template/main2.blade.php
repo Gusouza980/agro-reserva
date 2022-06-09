@@ -23,6 +23,7 @@
     @toastr_css
     @livewireStyles
     @yield("styles")
+    @stack("styles")
     <style>
         a,
         a:hover,
