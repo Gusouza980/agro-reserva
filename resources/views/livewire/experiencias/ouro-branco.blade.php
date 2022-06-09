@@ -2,7 +2,7 @@
     <div class="flex py-4 justify-content-center relative">
         <div class="w-full lg:w-1/2 overflow-hidden rounded-md">
             @if($video_atual !== 0)
-                <img src="{{ $videos[0]["snippet"]["thumbnails"]["medium"]["url"] }}" class="w-full shadow-lg cpointer" style="filter: brightness(25%);" alt="" wire:click="mostrar({{ 0 }})">
+                <img @if(isset($videos[0]["snippet"]["thumbnails"]["maxres"])) src="{{ $videos[0]["snippet"]["thumbnails"]["maxres"]["url"] }}" @else src="{{ $videos[0]["snippet"]["thumbnails"]["medium"]["url"] }}" @endif class="w-full shadow-lg cpointer" style="filter: brightness(25%);" alt="" wire:click="mostrar({{ 0 }})">
                 <img class="cpointer" src="{{ asset('imagens/play-button2.jpg') }}" width="60" style="position: absolute; top: calc(50% - 30px); left: calc(50% - 30px);" wire:click="mostrar({{ 0 }})">
             @else
                 {!! App\Classes\Util::convertYoutube("https://www.youtube.com/watch?v=" . $videos[0]["contentDetails"]["videoId"]) !!}
@@ -16,7 +16,7 @@
                     <div class="relative w-full" x-data="{ show: false }" x-intersect.enter="show = true">
                         <div class="w-full overflow-hidden rounded-md" x-show="show" x-transition.opacity.duration.1500ms>
                             @if($video_atual !== $i)
-                                <img src="{{ $videos[$i]["snippet"]["thumbnails"]["medium"]["url"] }}" class="w-full shadow-lg cpointer" style="" alt="" wire:click="mostrar({{ $i }})">
+                                <img @if(isset($videos[$i]["snippet"]["thumbnails"]["maxres"])) src="{{ $videos[$i]["snippet"]["thumbnails"]["maxres"]["url"] }}" @else src="{{ $videos[$i]["snippet"]["thumbnails"]["medium"]["url"] }}" @endif class="w-full shadow-lg cpointer" style="" alt="" wire:click="mostrar({{ $i }})">
                                 <img class="cpointer" src="{{ asset('imagens/play-button2.jpg') }}" width="60" style="position: absolute; top: calc(50% - 30px); left: calc(50% - 30px);" wire:click="mostrar({{ $i }})">
                             @else
                                 {!! App\Classes\Util::convertYoutube("https://www.youtube.com/watch?v=" . $videos[$i]["contentDetails"]["videoId"]) !!}
