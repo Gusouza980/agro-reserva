@@ -1,6 +1,6 @@
 <div class="w-full py-5">
-    <div class="flex py-4 justify-content-center relative">
-        <div class="w-full lg:w-1/2 overflow-hidden rounded-md border border-[#D7D8E4] border-solid">
+    <div class="w-full lg:w-1/2 mx-auto flex py-4 justify-content-center relative">
+        <div class="w-full shadow-md overflow-hidden rounded-md border border-[#D7D8E4] border-solid">
             @if($video_atual !== 0)
                 <img @if(isset($videos[0]["snippet"]["thumbnails"]["maxres"])) src="{{ $videos[0]["snippet"]["thumbnails"]["maxres"]["url"] }}" @else src="{{ $videos[0]["snippet"]["thumbnails"]["medium"]["url"] }}" @endif class="w-full shadow-lg cpointer" style="" alt="" wire:click="mostrar({{ 0 }})">
                 <img class="cpointer" src="{{ asset('imagens/play-button2.jpg') }}" width="60" style="position: absolute; top: calc(50% - 30px); left: calc(50% - 30px);" wire:click="mostrar({{ 0 }})">
