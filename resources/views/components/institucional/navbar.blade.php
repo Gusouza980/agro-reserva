@@ -4,7 +4,7 @@
             <img src="{{ asset('imagens/logo_agroreserva_leite_escura.svg') }}" class="h-10 mr-3 sm:h-14" alt="Flowbite Logo" />
         </a>
         @if(session()->get("cliente"))
-            <div class="flex items-center md:order-2">
+            <div class="flex items-center md:order-2" style="font-family: 'Montserrat', sans-serif;">
                 <div class="mr-5 text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;">
                     <svg class="mx-auto" id="Grupo_3728" data-name="Grupo 3728" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
                         <g id="Elipse_309" data-name="Elipse 309" fill="#fcfcfc" stroke="#80828b" stroke-width="1.5">
@@ -84,15 +84,6 @@
                     </svg>
                     Meu Carrinho
                 </div>
-                
-                  
-                {{-- <button type="button"
-                    class="flex mr-5 text-sm rounded-full align-items-center md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                    id="user-menu-button" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
-                    <img class="w-8 h-8 rounded-full" src="{{ asset('imagens/gif_relogio.gif') }}" alt="user photo">
-                    <span class="ml-2 text-white">{{ explode(" ", session()->get("cliente")["nome_dono"])[0] }} <i class="ml-2 text-white fas fa-chevron-down fa-sm"></i> </span>
-                </button> --}}
-
                 
                 <button data-collapse-toggle="mobile-menu-2" type="button"
                     class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -202,7 +193,7 @@
         </div>
     </div>
 </nav>
-<div class="hidden md:flex w-full bg-[#80828B] py-2 border-b-2 border-[#F5B01F] justify-content-center align-items-center text-white" style="font-size: 13px; font-weight: 500; font-family: Montserrat, sans-serif;">
+<div class="hidden md:flex w-full bg-[#80828B] py-2 border-b-2 border-[#F5B01F] justify-content-center align-items-center text-white" style="font-size: 13px; font-weight: 500; font-family: 'Montserrat', sans-serif, sans-serif;">
     <a class="mx-5 hover:!text-[#F5B01F]" href="">Reservas Abertas</a>
     <a class="mx-5 hover:!text-[#F5B01F]" href="">Embriões e Sêmen</a>
     <a class="mx-5 hover:!text-[#F5B01F]" href="">Navegue por Raças</a>
