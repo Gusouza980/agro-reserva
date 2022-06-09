@@ -175,7 +175,7 @@
                         <div class="row">
                             <div class="form-group col-12 mb-3">
                                 <label for="tags">Palavras Chaves</label>
-                                <select class="js-example-basic-multiple js-states form-control" multiple="multiple" name="chaves[]" id="select_tag" multiple required>
+                                <select class="js-example-basic-multiple js-states form-control" multiple="multiple" name="chaves[]" id="select_tag" multiple>
                                     <option value="" label="default"></option>
                                     @foreach (App\Models\Chave::all() as $chave)
                                         <option value="{{$chave->id}}" @if($lote->chaves->contains($chave->id)) selected @endif>{{$chave->palavra}}</option>
