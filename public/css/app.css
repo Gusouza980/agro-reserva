@@ -3251,6 +3251,9 @@ body[dir="rtl"] .checkbox:checked,
 .-ml-\[15px\] {
     margin-left: -15px
 }
+.-ml-\[11px\] {
+    margin-left: -11px
+}
 .block {
     display: block
 }
@@ -3793,6 +3796,10 @@ body[dir="rtl"] .checkbox:checked,
 .text-slate-500 {
     --tw-text-opacity: 1;
     color: rgb(100 116 139 / var(--tw-text-opacity))
+}
+.text-slate-400 {
+    --tw-text-opacity: 1;
+    color: rgb(148 163 184 / var(--tw-text-opacity))
 }
 .underline {
     -webkit-text-decoration-line: underline;
