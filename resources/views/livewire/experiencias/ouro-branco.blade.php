@@ -1,4 +1,4 @@
-<div class="w-full">
+<div class="w-full py-5">
     <div class="flex py-4 justify-content-center relative">
         <div class="w-full lg:w-1/2 overflow-hidden rounded-md">
             @if($video_atual !== 0)
@@ -34,14 +34,14 @@
             <label wire:click="mostrar_mais" wire:loading.class='swap-active' wire:target='mostrar_mais' class="swap absolute" style="top: -15px; left: calc(50% - 15px)">
                 {{-- <input type="checkbox" /> --}}
                 <div class="swap-on">
-                    <img src="{{ asset('imagens/gif_relogio.gif') }}" width="30" height="30" alt="">
+                    <img src="{{ asset('imagens/gif_relogio.gif') }}" width="27" height="27" alt="">
                 </div>
                 <div class="swap-off">
-                    <svg  xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle text-slate-500 bg-white" viewBox="0 0 16 16">
+                    <svg  xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-plus-circle text-slate-500 bg-white mb-1" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                     </svg>
-                    <span class="text-slate-500 -ml-[15px]">Ver Mais</span>
+                    <span class="text-slate-400 -ml-[13px] font-medium text-sm">Ver Mais</span>
                 </div>
             </label>
         </div>
