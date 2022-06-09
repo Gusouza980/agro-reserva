@@ -3493,6 +3493,10 @@ body[dir="rtl"] .checkbox:checked,
     --tw-border-opacity: 1;
     border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
+.border-\[\#D7D8E4\] {
+    --tw-border-opacity: 1;
+    border-color: rgb(215 216 228 / var(--tw-border-opacity))
+}
 .bg-white {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity))

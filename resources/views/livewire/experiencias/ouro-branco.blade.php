@@ -1,6 +1,6 @@
 <div class="w-full py-5">
     <div class="flex py-4 justify-content-center relative">
-        <div class="w-full lg:w-1/2 overflow-hidden rounded-md">
+        <div class="w-full lg:w-1/2 overflow-hidden rounded-md border border-[#D7D8E4] border-solid">
             @if($video_atual !== 0)
                 <img @if(isset($videos[0]["snippet"]["thumbnails"]["maxres"])) src="{{ $videos[0]["snippet"]["thumbnails"]["maxres"]["url"] }}" @else src="{{ $videos[0]["snippet"]["thumbnails"]["medium"]["url"] }}" @endif class="w-full shadow-lg cpointer" style="" alt="" wire:click="mostrar({{ 0 }})">
                 <img class="cpointer" src="{{ asset('imagens/play-button2.jpg') }}" width="60" style="position: absolute; top: calc(50% - 30px); left: calc(50% - 30px);" wire:click="mostrar({{ 0 }})">
@@ -14,7 +14,7 @@
             @for($i = 1; $i < $take; $i++)
                 <div class="px-2 md:px-0 px-md-0">
                     <div class="relative w-full" x-data="{ show: false }" x-intersect.enter="show = true">
-                        <div class="w-full overflow-hidden rounded-md" x-show="show" x-transition.opacity.duration.1500ms>
+                        <div class="w-full overflow-hidden rounded-md border border-[#D7D8E4] border-solid" x-show="show" x-transition.opacity.duration.1500ms>
                             @if($video_atual !== (count($videos) - $i))
                                 <img @if(isset($videos[(count($videos) - $i)]["snippet"]["thumbnails"]["maxres"])) src="{{ $videos[(count($videos) - $i)]["snippet"]["thumbnails"]["maxres"]["url"] }}" @else src="{{ $videos[(count($videos) - $i)]["snippet"]["thumbnails"]["medium"]["url"] }}" @endif class="w-full shadow-lg cpointer" style="" alt="" wire:click="mostrar({{ (count($videos) - $i) }})">
                                 <img class="cpointer" src="{{ asset('imagens/play-button2.jpg') }}" width="60" style="position: absolute; top: calc(50% - 30px); left: calc(50% - 30px);" wire:click="mostrar({{ (count($videos) - $i) }})">
