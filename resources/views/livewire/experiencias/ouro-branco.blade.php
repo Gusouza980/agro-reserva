@@ -15,17 +15,17 @@
                 <div class="px-2 md:px-0 px-md-0">
                     <div class="relative w-full" x-data="{ show: false }" x-intersect.enter="show = true">
                         <div class="w-full overflow-hidden rounded-md" x-show="show" x-transition.opacity.duration.1500ms>
-                            @if($video_atual !== $i)
-                                <img @if(isset($videos[$i]["snippet"]["thumbnails"]["maxres"])) src="{{ $videos[$i]["snippet"]["thumbnails"]["maxres"]["url"] }}" @else src="{{ $videos[$i]["snippet"]["thumbnails"]["medium"]["url"] }}" @endif class="w-full shadow-lg cpointer" style="" alt="" wire:click="mostrar({{ $i }})">
-                                <img class="cpointer" src="{{ asset('imagens/play-button2.jpg') }}" width="60" style="position: absolute; top: calc(50% - 30px); left: calc(50% - 30px);" wire:click="mostrar({{ $i }})">
+                            @if($video_atual !== (count($videos) - $i))
+                                <img @if(isset($videos[(count($videos) - $i)]["snippet"]["thumbnails"]["maxres"])) src="{{ $videos[(count($videos) - $i)]["snippet"]["thumbnails"]["maxres"]["url"] }}" @else src="{{ $videos[(count($videos) - $i)]["snippet"]["thumbnails"]["medium"]["url"] }}" @endif class="w-full shadow-lg cpointer" style="" alt="" wire:click="mostrar({{ (count($videos) - $i) }})">
+                                <img class="cpointer" src="{{ asset('imagens/play-button2.jpg') }}" width="60" style="position: absolute; top: calc(50% - 30px); left: calc(50% - 30px);" wire:click="mostrar({{ (count($videos) - $i) }})">
                             @else
-                                {!! App\Classes\Util::convertYoutube("https://www.youtube.com/watch?v=" . $videos[$i]["contentDetails"]["videoId"]) !!}
+                                {!! App\Classes\Util::convertYoutube("https://www.youtube.com/watch?v=" . $videos[(count($videos) - $i)]["contentDetails"]["videoId"]) !!}
                             @endif
                         </div>
                     </div>
                     
                     <div class="mt-3" style="font-size: 18px; font-weight: 500; font-family: Montserrat;">
-                        {{ $videos[$i]["snippet"]["title"] }}
+                        {{ $videos[(count($videos) - $i)]["snippet"]["title"] }}
                     </div>
                 </div>
             @endfor
