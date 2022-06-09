@@ -8,8 +8,11 @@ use Alaouy\Youtube\Facades\Youtube;
 class OuroBranco extends Component
 {
     public $videos;
-    public $take = 6;
+    public $take = 7;
     public $video_atual;
+    public $carregando_videos = false;
+
+    protected $listeners = ["mostrar_mais"];
 
     public function mount(){
         $this->videos = Youtube::getPlaylistItemsByPlaylistId('PLnqvSti-aWALfE84ooJzeFQlW_o45kuPB')["results"];
@@ -24,6 +27,7 @@ class OuroBranco extends Component
         }else{
             $this->take = count($this->videos);
         }
+        $this->carregando_videos = false;
     }
 
     public function mostrar($i){

@@ -81,7 +81,7 @@
                 autoplay: true,
                 autoplaySpeed: 4000,
                 centerMode: false,
-                variableWidth: true,
+                variableWidth: false,
                 // the magic
                 responsive: [{
 
