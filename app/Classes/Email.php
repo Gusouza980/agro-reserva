@@ -18,7 +18,7 @@ class Email{
             $mail->Host = "smtp.gmail.com"; // Endereço do servidor SMTP
             $mail->SMTPAuth = true; // Enable SMTP authentication
             $mail->Username = 'naoresponda.agroreserva@gmail.com'; // SMTP username
-            $mail->Password = 'AgroAdmin123@'; // SMTP password
+            $mail->Password = 'rkepjjqxezjtnbgy'; // SMTP password
             $mail->SMTPSecure = 'ssl'; // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 465;
 
