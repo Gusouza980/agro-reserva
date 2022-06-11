@@ -44,22 +44,22 @@
                     </div>
                 </div>
                 <div class="py-3">
-                    <div class="bg-slate-100 rounded-md px-3 py-3">
+                    <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262]" style="font-family: 'Montserrat', sans-serif;">
                         @if($lote->gpta)
                             <div class="">
-                                <b>GPTA:.</b> {{ $lote->gpta }}
+                                <b>GPTA:.</b> <span class="font-medium ml-2">{{ $lote->gpta }}</span>
                             </div>
                         @endif
                         @if($lote->nascimento)
                         <div class="">
-                            <b>NASCIMENTO:.</b> {{ date("d/m/Y", strtotime($lote->nascimento)) }}
+                            <b>NASCIMENTO:.</b> <span class="font-medium ml-2">{{ date("d/m/Y", strtotime($lote->nascimento)) }}</span>
                         </div>
                         @endif
                         <div class="">
-                            <b>RAÇA:.</b> {{ mb_strtoupper($lote->raca->nome, 'UTF-8') }}
+                            <b>RAÇA:.</b> <span class="font-medium ml-2">{{ mb_strtoupper($lote->raca->nome, 'UTF-8') }}</span>
                         </div>
                         <div class="">
-                            <b>SEXO:.</b> {{ mb_strtoupper($lote->sexo, 'UTF-8') }}
+                            <b>SEXO:.</b> <span class="font-medium ml-2">{{ mb_strtoupper($lote->sexo, 'UTF-8') }}</span>
                         </div>
                     </div>
                 </div>
