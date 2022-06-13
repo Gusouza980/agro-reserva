@@ -25,11 +25,10 @@
                 </label>
             </div>
         </div>
-        
     </div>
-    <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto my-5 md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1400">
+    <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[80px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1400">
         @foreach($lotes as $lote)
-            <div class="transition duration-500 hover:scale-105 group hover:z-20">
+            <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20">
                 <div class="relative">
                     <div class="absolute flex justify-content-center h-[35px] top-[-25px] px-2 pt-1 z-0 rounded-t-[12px] bg-slate-500 text-white" style="font-family: 'Montserrat', sans-serif;">
                         <small class="font-medium text-[15px]">LOTE: {{ str_pad($lote->numero, 3, "0", STR_PAD_LEFT) }}</small>
@@ -63,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mais-info hidden transition duration-800 group-hover:flex flex-col justify-content-center align-items-center h-[100px] absolute bottom-[-100px] left-0 w-full bg-white">
+                <div class="mais-info hidden shadow-md transition duration-800 group-hover:flex flex-col justify-content-center align-items-center h-[100px] absolute bottom-[-100px] left-0 w-full bg-white">
                     <div class="text-center w-full z-20">
                         <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 20px;">R${{ number_format($lote->preco, 2, ",", ".") }} em até {{ $lote->parcelas }}x</span>
                     </div>

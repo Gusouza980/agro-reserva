@@ -36,16 +36,11 @@
     <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
 </head>
 
-<body x-data="{start: true}">
+<body x-data="{start: true, mostrarCarrinho: false}">
     <x-institucional.navbar></x-institucional.navbar>
-
-    {{-- <div id="espacamento-nav">
-
-    </div> --}}
-    @if(session()->get("cliente") && isset(session()->get("cliente")["finalizado"]) && !session()->get("cliente")["finalizado"])
-        <div class="d-lg-none" onclick="window.location.href = '{{ route('cadastro.finalizar') }}'" style="position: fixed; background-color: rgba(0, 180, 0); color: white; width: 100%; z-index: 100; text-align: center; font-size: 14px; bottom: 0px; padding: 10px 5px;">
-            <b>Clique aqui para finalizar seu cadastro agora e sair na frente!</b>
-        </div>
+    
+    @if(session()->get("cliente"))
+        @livewire('institucional.barra-lateral-carrinho')
     @endif
     
     @yield('conteudo')
@@ -256,7 +251,7 @@
                 showOnIE: false,
                 headerTitle: 'Seja Bem-Vindo!',
                 headerColor: '#00ba38',
-                backgroundColor: 'crimson',
+                backgroundColor: '',
                 buttonImage: '<img src="/imagens/whatsapp-button.png"/>',
                 size: "60px",
                 zIndex: 999999

@@ -62,7 +62,7 @@
                     </ul>
                 </div>
 
-                <div class="text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;">
+                <div class="text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;" @click="mostrarCarrinho = true">
                     <svg class="mx-auto" id="Grupo_3723" data-name="Grupo 3723" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36.992" height="37" viewBox="0 0 36.992 37">
                         <defs>
                           <clipPath id="clip-path">
