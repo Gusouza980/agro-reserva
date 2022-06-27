@@ -1,6 +1,6 @@
 <nav class="bg-[#F7F7F7] border-gray-200 px-2 sm:px-4 py-3 sticky top-0 z-30">
     <div class="flex flex-wrap items-center justify-between mx-auto w1400 align-items-center">
-        <a href="https://flowbite.com" class="flex items-center">
+        <a href="{{ route('index') }}" class="flex items-center">
             <img src="{{ asset('imagens/logo_agroreserva_leite_escura.svg') }}" class="h-10 mr-3 sm:h-14" alt="Flowbite Logo" />
         </a>
         @if(session()->get("cliente"))
@@ -37,27 +37,27 @@
                 </div>
                 
                 <!-- Dropdown menu -->
-                <div class="z-50 hidden my-4 text-base list-none divide-y divide-gray-100 rounded shadow bg-preto dark:divide-gray-600"
+                <div class="z-60 hidden my-4 text-base list-none divide-y rounded shadow bg-[#F2F2F2] divide-gray-600"
                     id="dropdown">
                     <div class="px-4 py-3">
-                        <span class="block text-sm text-gray-900 dark:text-white">{{ session()->get("cliente")["nome_dono"] }}</span>
+                        <span class="block text-sm text-gray-900 font-semibold">{{ session()->get("cliente")["nome_dono"] }}</span>
                         <span
-                            class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{{ session()->get("cliente")["email"] }}</span>
+                            class="block text-sm font-medium text-gray-500 truncate ">{{ session()->get("cliente")["email"] }}</span>
                     </div>
                     <ul class="py-1" aria-labelledby="dropdown">
                         @if(session()->get("cliente") && !session()->get("cliente")["finalizado"])
                             <li>
                                 <a href="#"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Finalizar Cadastro</a>
+                                    class="block px-4 py-2 text-sm text-gray-500 hover:text-gray-900">Finalizar Cadastro</a>
                             </li>
                         @endif
                         <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Perfil</a>
+                            <a href="{{ route('conta.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-500 hover:text-gray-900">Perfil</a>
                         </li>
                         <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-red-500 dark:hover:text-white">Sair</a>
+                            <a href="{{ route('sair') }}"
+                                class="block px-4 py-2 text-sm text-red-500 hover:text-red-800">Sair</a>
                         </li>
                     </ul>
                 </div>
@@ -167,9 +167,13 @@
             </div>
         @endif
         <div class="items-center justify-center flex-auto hidden w-full ml-4 md:justify-start md:flex md:w-auto md:order-1" id="mobile-menu-2">
-            <div class="relative flex w-full mt-4 mr-3 text-gray-400 align-items-center mt-md-0">
-                <input class="w-3/5 pl-10 mx-auto text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400"
-                  type="text" name="search" placeholder="Pesquisar..."></input>    
+            <div class="flex w-full mt-4 mr-3 text-gray-400 align-items-center mt-md-0">
+                <div class="w-3/5 mx-auto relative">
+                    <input class="w-full pl-10 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400"
+                        type="text" name="search" placeholder="Pesquisar..."></input>  
+                        <i class="fas fa-search text-grey-400 absolute left-[10px] top-[10px]"></i>
+
+                </div>
             </div>
             <ul class="flex flex-col md:hidden md:flex-row md:space-x-3 md:mt-0 md:text-sm md:font-medium">
                 <li class="text-center">
@@ -193,7 +197,7 @@
         </div>
     </div>
 </nav>
-<div class="hidden md:flex w-full bg-[#80828B] py-2 border-b-2 border-[#F5B01F] justify-content-center align-items-center text-white" style="font-size: 13px; font-weight: 500; font-family: 'Montserrat', sans-serif, sans-serif;">
+<div class="hidden md:flex w-full sticky bg-[#80828B] py-2 border-b-2 border-[#F5B01F] justify-content-center align-items-center text-white" style="font-size: 13px; font-weight: 500; font-family: 'Montserrat', sans-serif, sans-serif;">
     <a class="mx-5 hover:!text-[#F5B01F]" href="">Reservas Abertas</a>
     <a class="mx-5 hover:!text-[#F5B01F]" href="">Embriões e Sêmen</a>
     <a class="mx-5 hover:!text-[#F5B01F]" href="">Navegue por Raças</a>

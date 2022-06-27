@@ -1004,13 +1004,6 @@ label {
     width: 270px;
 }
 
-.form-cadastro0>span {
-    font: normal normal 600 15px 'Titillium Web', sans-serif;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    opacity: 1;
-}
-
 .circulo-passo {
     font: normal normal bold 23px 'Titillium Web', sans-serif;
     letter-spacing: 0px;
@@ -2514,4 +2507,13 @@ label {
 #slide-reservas-ativas .slick-slide img{
     height: 603px !important;
     width: 330px !important;
+}
+
+
+.font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.text-cinza-escuro{
+    color: #626262;
 }

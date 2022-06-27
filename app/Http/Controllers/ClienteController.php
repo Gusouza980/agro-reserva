@@ -127,7 +127,7 @@ class ClienteController extends Controller
 
     public function finalizar_cadastro(){
         if(session()->get("cliente") && session()->get("cliente")["finalizado"]){
-            return redirect()->route("index");
+            // return redirect()->route("index");
         }
         $anterior = redirect()->back()->getTargetUrl();
         $finalizar = true;

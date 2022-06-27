@@ -25,29 +25,35 @@
         </div>
     </div>
     <div class="w-full mt-5 flex flex-column">
-        @foreach($carrinho->produtos as $produto)
-            <div class="flex flex-collumn border-b border-slate-400 border-solid py-3">
-                <div class="w-1/3">
-                    <img class="w-full rounded-md shadow-md" src="{{ asset($produto->lote->preview) }}" alt="">
+        @if($carrinho)
+            @foreach($carrinho->produtos as $produto)
+                <div class="flex flex-collumn border-b border-slate-400 border-solid py-3">
+                    <div class="w-1/3">
+                        <img class="w-full rounded-md shadow-md" src="{{ asset($produto->lote->preview) }}" alt="">
+                    </div>
+                    <div class="w-2/3 pl-2 relative">
+                        <div>
+                            <span class="text-[15px] text-[#626262] font-semibold">{{ $produto->lote->nome }}</span>
+                        </div>
+                        <div class="mt-[-5px]">
+                            <span class="text-[12px] text-[#626262] font-medium">RGD: {{ $produto->lote->registro }}</span>
+                        </div>
+                        <div class="mt-[-5px]">
+                            <span class="text-[14px] text-[#626262] font-semibold">R${{ number_format($produto->lote->preco, 2, ",", ".") }}</span>
+                        </div>
+                        
+                        <i class="text-danger absolute bottom-2 right-0 fas fa-trash hover:scale-110 duration-300 cpointer"></i>
+                    </div>
                 </div>
-                <div class="w-2/3 pl-2 relative">
-                    <div>
-                        <span class="text-[15px] text-[#626262] font-semibold">{{ $produto->lote->nome }}</span>
-                    </div>
-                    <div class="mt-[-5px]">
-                        <span class="text-[12px] text-[#626262] font-medium">RGD: {{ $produto->lote->registro }}</span>
-                    </div>
-                    <div class="mt-[-5px]">
-                        <span class="text-[14px] text-[#626262] font-semibold">R${{ number_format($produto->lote->preco, 2, ",", ".") }}</span>
-                    </div>
-                    
-                    <i class="text-danger absolute bottom-2 right-0 fas fa-trash hover:scale-110 duration-300 cpointer"></i>
-                </div>
+            @endforeach
+            <div class="grid grid-cols-2 gap-x-3 mt-4">
+                <button class="border-2 border-slate-400 text-[#80828B] py-2 w-full font-medium rounded-[30px]" @click="mostrarCarrinho = false">Continuar</button>
+                <button class="border border-[#14C656] bg-[#14C656] text-white py-2 w-full font-semibold rounded-[30px]">Finalizar</button>
             </div>
-        @endforeach
-        <div class="grid grid-cols-2 gap-x-3 mt-4">
-            <button class="border-2 border-slate-400 text-[#80828B] py-2 w-full font-medium rounded-[30px]" @click="mostrarCarrinho = false">Continuar</button>
-            <button class="border border-[#14C656] bg-[#14C656] text-white py-2 w-full font-semibold rounded-[30px]">Finalizar</button>
-        </div>
+        @else
+            <div class="w-full py-3 text-center">
+                <span class="font-montserrat font-[15px] font-medium text-cinza-escuro">Seu carrinho está vazio !</span>
+            </div>
+        @endif
     </div>
 </div>

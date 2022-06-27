@@ -6,9 +6,15 @@
                     <img src="{{ asset('imagens/stories.jpg') }}" class="w-100" alt="">
                     <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
                         <div class="text-center">
-                            <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
-                            <h3 class="my-2" style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
-                            <a name="" id="" class="px-4 py-1 btn btn-laranja" href="#" role="button">Ver Reserva</a>
+                            <div>
+                                <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
+                            </div>
+                            <div class="mt-2 mb-3">
+                                <h3 style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
+                            </div>
+                            <div>
+                                <a name="" id="" class="px-4 py-1 btn-laranja" href="#" role="button">Ver Reserva</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -16,9 +22,15 @@
                     <img src="{{ asset('imagens/stories.jpg') }}" class="w-100" alt="">
                     <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
                         <div class="text-center">
-                            <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
-                            <h3 class="my-2" style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
-                            <a name="" id="" class="px-4 py-1 btn btn-laranja" href="#" role="button">Ver Reserva</a>
+                            <div>
+                                <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
+                            </div>
+                            <div class="mt-2 mb-3">
+                                <h3 style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
+                            </div>
+                            <div>
+                                <a name="" id="" class="px-4 py-1 btn-laranja" href="#" role="button">Ver Reserva</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -26,9 +38,15 @@
                     <img src="{{ asset('imagens/stories.jpg') }}" class="w-100" alt="">
                     <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
                         <div class="text-center">
-                            <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
-                            <h3 class="my-2" style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
-                            <a name="" id="" class="px-4 py-1 btn btn-laranja" href="#" role="button">Ver Reserva</a>
+                            <div>
+                                <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
+                            </div>
+                            <div class="mt-2 mb-3">
+                                <h3 style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
+                            </div>
+                            <div>
+                                <a name="" id="" class="px-4 py-1 btn-laranja" href="#" role="button">Ver Reserva</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -36,9 +54,15 @@
                     <img src="{{ asset('imagens/stories.jpg') }}" class="w-100" alt="">
                     <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
                         <div class="text-center">
-                            <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
-                            <h3 class="my-2" style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
-                            <a name="" id="" class="px-4 py-1 btn btn-laranja" href="#" role="button">Ver Reserva</a>
+                            <div>
+                                <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
+                            </div>
+                            <div class="mt-2 mb-3">
+                                <h3 style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
+                            </div>
+                            <div>
+                                <a name="" id="" class="px-4 py-1 btn-laranja" href="#" role="button">Ver Reserva</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -46,9 +70,15 @@
                     <img src="{{ asset('imagens/stories.jpg') }}" class="w-100" alt="">
                     <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
                         <div class="text-center">
-                            <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
-                            <h3 class="my-2" style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
-                            <a name="" id="" class="px-4 py-1 btn btn-laranja" href="#" role="button">Ver Reserva</a>
+                            <div>
+                                <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
+                            </div>
+                            <div class="mt-2 mb-3">
+                                <h3 style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
+                            </div>
+                            <div>
+                                <a name="" id="" class="px-4 py-1 btn-laranja" href="#" role="button">Ver Reserva</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,9 +86,15 @@
                     <img src="{{ asset('imagens/stories.jpg') }}" class="w-100" alt="">
                     <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
                         <div class="text-center">
-                            <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
-                            <h3 class="my-2" style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
-                            <a name="" id="" class="px-4 py-1 btn btn-laranja" href="#" role="button">Ver Reserva</a>
+                            <div>
+                                <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
+                            </div>
+                            <div class="mt-2 mb-3">
+                                <h3 style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
+                            </div>
+                            <div>
+                                <a name="" id="" class="px-4 py-1 btn-laranja" href="#" role="button">Ver Reserva</a>
+                            </div>
                         </div>
                     </div>
                 </div>
