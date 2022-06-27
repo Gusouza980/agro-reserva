@@ -24,6 +24,8 @@
 
 <x-institucional.experiencias></x-institucional.experiencias>
 
+<x-institucional.depoimentos></x-institucional.depoimentos>
+
 <x-institucional.newsletter></x-institucional.newsletter>
 
 @endsection

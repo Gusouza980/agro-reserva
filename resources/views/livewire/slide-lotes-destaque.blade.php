@@ -7,7 +7,7 @@
                 </div>
             </div>
             @if(!$reserva_selecionada)
-                @foreach(\App\Models\Reserva::where([["ativo", true], ["aberto", true], ["encerrada", false]])->get() as $reserva_aberta)
+                @foreach(\App\Models\Reserva::where([["ativo", true], ["aberto", true], ["encerrada", false]])->orderBy("inicio", "DESC")->get() as $reserva_aberta)
                     @php
                         $lotes_destaque = $reserva_aberta->lotes->where("ativo", true)->where("reservado", false)->shuffle();
                     @endphp

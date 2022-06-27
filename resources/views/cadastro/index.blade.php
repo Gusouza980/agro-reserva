@@ -1,33 +1,40 @@
-@extends('template.main')
+@extends('template.main2')
 
 @section('conteudo')
-    <div class="container-fluid py-5 min-vh-100"
-        style="background: url({{ asset('imagens/fundo-cadastro1.jpg') }}); background-position: bottom; background-size: cover;">
+<div class="w-full px-2 px-md-0 py-4 bg-[#F1F1F1]">
+    <div class="w-fit mx-auto rounded-[15px] px-5 bg-white py-5 shadow-md relative">
+        {{-- <img src="{{ asset('imagens/vetor-cowboy.png') }}" class="absolute left-0 bottom-0 opacity-10" alt=""> --}}
+        <div class="w-full flex justify-content-center">
+            <ul class="steps">
+                <li class="step step-warning text-cinza-escuro text-[12px] md:text-[15px]">Cadastro Inicial</li>
+                <li class="step @if (session()->get('cliente')) step-warning @endif text-cinza-escuro text-[12px] md:text-[15px]">Cadastro Incial Completo</li>
+                <li class="step text-cinza-escuro text-[12px] md:text-[15px]">Cadastro Final</li>
+                <li class="step text-cinza-escuro text-[12px] md:text-[15px]">Tudo Pronto</li>
+            </ul>
+        </div>
         @if (!session()->get('cliente'))
-            <div class="row justify-content-center mt-5">
-                <div class="col-10 col-md-6 col-lg-4 text-center text-white">
-                    <h2>{{ __('messages.cadastro.vamos_criar_acesso') }}</h2>
-                </div>
+            <div class="w-full flex justify-content-center mt-5 text-center">
+                <h2 class="text-cinza-escuro font-montserrat text-[18px] font-bold">{{ __('messages.cadastro.vamos_criar_acesso') }}</h2>
             </div>
         @endif
-        <div class="row justify-content-center mt-5">
-            <div class="col-12 text-left">
+        <div class="w-full flex justify-content-center mt-5">
+            <div class="w-full text-left">
                 <div id="container-form-cadastro">
                     @if (!session()->get('cliente'))
-                        <form id="form-pre-cadastro" action="{{ route('cadastro.salvar') }}" class="row form-cadastro0" method="post">
+                        <form id="form-pre-cadastro" action="{{ route('cadastro.salvar') }}" class="w-full flex flex-wrap items-end form-cadastro0" method="post">
                             @csrf
                             <input type="hidden" name="anterior" value="{{ $anterior }}">
                             <input type="hidden" name="pais" value="">
-                            <div class="form-group col-12 input-cadastro">
-                                <label for="nome">{{ __('messages.cadastro.nome_completo') }}</label>
+                            <div class="w-full mb-3">
+                                <label for="nome" class="font-montserrat text-cinza-escuro">{{ __('messages.cadastro.nome_completo') }}</label>
                                 <input type="text" class="form-control" name="nome" id="nome" aria-describedby="" required>
                             </div>
-                            <div class="form-group col-12 input-cadastro">
-                                <label for="email">E-mail</label>
+                            <div class="w-full mb-3">
+                                <label for="email" class="font-montserrat text-cinza-escuro">E-mail</label>
                                 <input type="email" class="form-control" name="email" id="email" aria-describedby=""
                                     required>
                             </div>
-                            {{-- <div class="form-group col-12 input-cadastro">
+                            {{-- <div class="w-full mb-3">
                                 <label for="telefone">{{ __('messages.cadastro.nascionalidade') }}</label>
                                 <div class="form-group input-cadastro d-flex justify-content-start">
                                     <div class="mx-3">
@@ -45,10 +52,10 @@
                                 </div>
                             </div> --}}
 
-                            <div class="form-group col-5 input-cadastro">
-                                <label for="ddd">
+                            <div class="w-1/3 mb-3">
+                                <label for="ddd" class="flex flex-row items-center text-cinza-escuro font-montserrat">
                                     DDI 
-                                    <picture>
+                                    <picture class="ml-2">
                                         <img
                                             id="flag-icon"    
                                             src=""
@@ -65,84 +72,57 @@
                                 </select>
                             </div>
 
-                            {{-- <div class="form-group col-2 input-cadastro">
-                                <label for="ddd">DDD</label>
-                                <input type="text" class="form-control" name="ddd" id="ddd" maxlength="2" aria-describedby=""
-                                    required placeholder="">
-                            </div> --}}
-
-                            <div class="form-group col-7 input-cadastro">
-                                <label for="telefone">{{ __('messages.cadastro.telefone') }}</label>
+                            <div class="w-2/3 mb-3 pl-2">
+                                <label for="telefone" class="font-montserrat text-cinza-escuro">{{ __('messages.cadastro.telefone') }}</label>
                                 <input type="text" class="form-control" name="telefone" id="telefone" aria-describedby=""
                                     required placeholder="99999-9999">
                             </div>
                  
-                            <div class="form-group col-12 input-cadastro">
-                                <label for="senha">{{ __('messages.cadastro.senha_acesso') }}</label>
+                            <div class="w-full mb-3">
+                                <label for="senha" class="font-montserrat text-cinza-escuro">{{ __('messages.cadastro.senha_acesso') }}</label>
                                 <input type="password" class="form-control" name="senha" id="senha" aria-describedby=""
                                     required placeholder="******">
                             </div>
 
-                            <div class="form-group col-12 input-cadastro">
-                                <label for="telefone">{{ __('messages.cadastro.segmento_interesse') }}</label>
+                            <div class="w-full mb-3">
+                                <label for="telefone" class="font-montserrat text-cinza-escuro">{{ __('messages.cadastro.segmento_interesse') }}</label>
                                 <div class="form-group input-cadastro d-flex justify-content-start">
                                     <div class="mx-3">
-                                        <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input-radio" type="checkbox" name="segmento[]" value="Leite">
-                                            <label class="form-check-label ml-2 label-branca">{{ __('messages.cadastro.leite') }}</label>
+                                        <div class="flex items-center mt-2">
+                                            <input class="checkbox border-warning checked:bg-[#e0a800] checked:bg-none" type="checkbox" name="segmento[]" value="Leite">
+                                            <label class="form-check-label ml-2 text-cinza-escuro">{{ __('messages.cadastro.leite') }}</label>
                                         </div>
                                     </div>
                                     <div class="mx-3">
-                                        <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input-radio" type="checkbox" name="segmento[]" value="Corte">
-                                            <label class="form-check-label ml-2 label-branca">{{ __('messages.cadastro.corte') }}</label>
+                                        <div class="flex items-center mt-2">
+                                            <input class="checkbox border-warning checked:bg-[#e0a800] checked:bg-none" type="checkbox" name="segmento[]" value="Corte">
+                                            <label class="form-check-label ml-2 text-cinza-escuro">{{ __('messages.cadastro.corte') }}</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="col-12 my-3">
-                            <label for="senha">Quais raças te interessam hoje?</label>
-                        </div>
-                        @foreach (\App\Models\Raca::all() as $raca)
-                            <div class="form-group col-6 col-md-3 col-sm-4 col-lg-3">
-                                <label class="containerr">{{$raca->nome}}
-                                    <input type="checkbox" name="racas[]" value="{{$raca->id}}">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        @endforeach --}}
                             <div class="form-group col-12 text-center text-lg-right">
-                                <button type="submit" class="btn btn-vermelho py-2" role="button"
+                                <button type="submit" class="btn btn-warning hover:bg-orange-500" role="button"
                                     id="confirmar-precadastro">{{ __('messages.cadastro.cadastrar') }}</button>
                             </div>
-                            <div class="col-12 text-center text-lg-left text-white form-cadastro0">
+                            <div class="col-12 text-center text-lg-left text-cinza-escuro form-cadastro0">
                                 <span>{!! __('messages.cadastro.ja_tem_conta') !!}</span>
                             </div>
                         </form>
                     @else
-                        <div class="py-4 px-4" id="caixa-sucesso-cadastro">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        <img src="{{ asset('imagens/icone_pre_cadastro.png') }}" style="width: 100px;"
-                                            alt="Ícone de Pré Cadastro">
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-12 text-center modal-precadastro-text">
-                                        <h4 style="line-height: 35px; letter-spacing: 1px;">{!! __('messages.cadastro.cadastro_inicial_texto_confirmacao') !!}</h4>
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
-                                    <div class="col-12">
-                                        <div class="text-center" id="botoes-finalizar">
-                                            <a href="{{ route('cadastro.finalizar') }}"><button type="submit"
-                                                    class="btn-vermelho px-4 py-2 mt-3">{{ __('messages.cadastro.completar_agora') }}</button></a>
-                                            <a @if (session()->get('pagina_retorno')) href="{{ session()->get('pagina_retorno') }}" @else href="/"  @endif><button type="submit"
-                                                    class="btn-vermelho-outline-2 px-4 py-2 ml-md-3 mt-3">{{ __('messages.cadastro.voltar_site') }}</button></a>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="w-full flex flex-column py-4 px-4" id="caixa-sucesso-cadastro">
+                            <div class="w-full flex justify-content-center">
+                                <img src="{{ asset('imagens/icone_pre_cadastro.png') }}" style="width: 100px;"
+                                    alt="Ícone de Pré Cadastro">
+                            </div>
+                            <div class="w-full mt-3 text-center modal-precadastro-text">
+                                <h4 style="line-height: 35px; letter-spacing: 1px;">{!! __('messages.cadastro.cadastro_inicial_texto_confirmacao') !!}</h4>
+                            </div>
+                            <div class="w-full flex justify-content-center mt-4" id="botoes-finalizar">
+                                    <a href="{{ route('cadastro.finalizar') }}"><button type="submit"
+                                            class="btn-vermelho px-4 py-2 mt-3">{{ __('messages.cadastro.completar_agora') }}</button></a>
+                                    <a @if (session()->get('pagina_retorno')) href="{{ session()->get('pagina_retorno') }}" @else href="/"  @endif><button type="submit"
+                                            class="btn-vermelho-outline-2 px-4 py-2 ml-md-3 mt-3">{{ __('messages.cadastro.voltar_site') }}</button></a>
                             </div>
                         </div>
                     @endif
@@ -150,6 +130,8 @@
             </div>
         </div>
     </div>
+</div>
+    
 
     <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

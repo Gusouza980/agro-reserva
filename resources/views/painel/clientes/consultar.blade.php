@@ -167,7 +167,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-4">
         <div class="col-12">
             <div class="card">
                 <div class="card-body" style="overflow-x: scroll;">
@@ -185,6 +185,49 @@
                             </tr>
                         </thead>
                         <tbody id="body-pesquisa">
+                            @foreach(\App\Models\Cliente::where("finalizado", false)->where("created_at", ">=", date("Y-m-d", strtotime("-15 Days")))->orderBy("created_at", "DESC")->get() as $cliente)
+                                <tr>
+                                    <td>{{ date("d/m/Y H:i:s", strtotime($cliente->created_at)) }}</td>
+                                    <td>{{ $cliente->nome_dono }}</td>
+                                    <td style="vertical-align: middle; text-align:center;">
+                                        @if($cliente->cpf && $cliente->cnpj)
+                                            <b>CPF:</b> {{$cliente->cpf}} / <b>CNPJ:</b> {{$cliente->cnpj}}
+                                        @elseif($cliente->cpf)
+                                            <b>CPF:</b> {{$cliente->cpf}}
+                                        @elseif($cliente->cnpj)
+                                            <b>CNPJ:</b> {{$cliente->cnpj}}
+                                        @else
+                                            {{$cliente->documento}}
+                                        @endif
+                                    </td>
+                                    <td style="vertical-align: middle; text-align:center;">
+                                        @if($cliente->aprovado == 0)
+                                            <span>Em Análise</span>
+                                        @elseif($cliente->aprovado == -1)
+                                            <span style="color: red;">Reprovado</span>
+                                        @else
+                                            <span style="color: green;">Aprovado</span>
+                                        @endif
+                                    </td>
+                                    <td style="vertical-align: middle; text-align:center;">
+                                        @if($cliente->finalizado == 0)
+                                            Pré
+                                        @else
+                                            Finalizado
+                                        @endif
+                                    </td>
+                                    <td style="vertical-align: middle; text-align:center;">{{$cliente->email}}</td>
+                                    <td style="vertical-align: middle; text-align:center;">
+                                        @if($cliente->whatsapp && $cliente->telefone)
+                                            {{$cliente->whatsapp}} / {{$cliente->telefone}}
+                                        @elseif($cliente->whatsapp)
+                                            {{$cliente->whatsapp}}
+                                        @else
+                                            {{$cliente->telefone}}
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
@@ -222,30 +265,6 @@
         $(document).ready(function () {
             $.fn.dataTable.moment( 'DD/MM/YYYY HH:mm:ss' );    //Formatação com Hora
             $.fn.dataTable.moment('DD/MM/YYYY');    //Formatação sem Hor
-            $("select[name='estado']").change(function(){
-                var estado = $("select[name='estado']").val();
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: 'GET',
-                    url: '/api/getCidadesByUf/' + estado,
-                    dataType: 'json',
-                    success: function (data) {
-                        html = "";
-                        var cidades = JSON.parse(data);
-                        for(var cidade in cidades){
-                            html += "<option value='"+cidades[cidade].id+"'>"+cidades[cidade].nome+"</option>"
-                        }
-                        $("select[name='cidade']").html(html);
-                    },
-                    error: function (data) {
-                        console.log(data);
-                    }
-                });
-            });
             $("#datatable").DataTable(),
                 $("#datatable-buttons")
                     .DataTable({

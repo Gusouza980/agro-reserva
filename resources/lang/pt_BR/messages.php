@@ -52,7 +52,7 @@ return [
         "segmento_interesse" => "Segmento de Interesse",
         "leite" => "Leite",
         "corte" => "Corte",
-        "ja_tem_conta" => "Já tem uam conta ? <a href='" . route('login') . "'><u>Clique aqui</u></a>",
+        "ja_tem_conta" => "Já tem uma conta ? <a href='" . route('login') . "'><b><u>Clique aqui</u></b></a>",
         "cadastrar" => "Cadastrar",
         "pessoa_fisica" => "Pessoa Física",
         "pessoa_juridica" => "Pessoa Jurídica",
