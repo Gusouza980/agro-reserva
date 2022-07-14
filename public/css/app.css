@@ -4878,6 +4878,14 @@ body[dir="rtl"] .checkbox:checked,
         padding-left: 0px;
         padding-right: 0px
     }
+    .md\:px-20 {
+        padding-left: 5rem;
+        padding-right: 5rem
+    }
+    .md\:py-24 {
+        padding-top: 6rem;
+        padding-bottom: 6rem
+    }
     .md\:text-sm {
         font-size: 0.875rem;
         line-height: 1.25rem
