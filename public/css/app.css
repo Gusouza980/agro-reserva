@@ -3821,6 +3821,9 @@ body[dir="rtl"] .checkbox:checked,
 .gap-x-20 {
     column-gap: 5rem
 }
+.gap-y-10 {
+    row-gap: 2.5rem
+}
 .divide-y > :not([hidden]) ~ :not([hidden]) {
     --tw-divide-y-reverse: 0;
     border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -4037,6 +4040,10 @@ body[dir="rtl"] .checkbox:checked,
 .bg-success {
     --tw-bg-opacity: 1;
     background-color: hsl(var(--su) / var(--tw-bg-opacity))
+}
+.bg-red-600 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(220 38 38 / var(--tw-bg-opacity))
 }
 .bg-no-repeat {
     background-repeat: no-repeat
@@ -4408,6 +4415,10 @@ body[dir="rtl"] .checkbox:checked,
 .text-\[\#4A5860\] {
     --tw-text-opacity: 1;
     color: rgb(74 88 96 / var(--tw-text-opacity))
+}
+.text-\[\#8F8F8F\] {
+    --tw-text-opacity: 1;
+    color: rgb(143 143 143 / var(--tw-text-opacity))
 }
 .underline {
     -webkit-text-decoration-line: underline;
@@ -4845,6 +4856,9 @@ body[dir="rtl"] .checkbox:checked,
     }
     .md\:gap-6 {
         gap: 1.5rem
+    }
+    .md\:gap-y-0 {
+        row-gap: 0px
     }
     .md\:space-x-3 > :not([hidden]) ~ :not([hidden]) {
         --tw-space-x-reverse: 0;
