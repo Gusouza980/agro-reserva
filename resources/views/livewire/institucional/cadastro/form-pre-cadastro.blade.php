@@ -11,16 +11,16 @@
             <form class="flex flex-wrap w-full mt-4" wire:submit.prevent='salvar'>
                 <div class="w-full mb-3">
                     <label class="form-label" for="">Nome Completo ou Razão Social</label>
-                    <input type="text" class="w-full form-input-text" wire:model="nome_dono" maxlength="100" required>
+                    <input type="text" class="w-full form-input-text" wire:model.defer="nome_dono" maxlength="100" required>
                 </div>
                 <div class="w-full mb-3">
                     <label class="form-label" for="">E-mail</label>
-                    <input type="email" class="w-full form-input-text" wire:model="email" maxlength="100" required>
+                    <input type="email" class="w-full form-input-text" wire:model.defer="email" maxlength="100" required>
                     @error('email') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
                 <div class="w-1/2 pr-1 mb-3">
                     <label for="ddi" class="form-label">DDI</label>
-                    <select class="w-full form-input-select" name="ddi" id="ddi" wire:model="ddi" required>
+                    <select class="w-full form-input-select" name="ddi" id="ddi" required>
                         @foreach ($paises as $pais)
                             <option value="{{ $pais->code }}"
                                 @if ($pais->iso == 'BR') selected @endif>{{ $pais->name }}
@@ -30,23 +30,23 @@
                 </div>
                 <div class="w-1/2 pl-1 mb-3">
                     <label for="telefone" class="form-label">{{ __('messages.cadastro.telefone') }}</label>
-                    <input type="text" class="w-full form-input-text" name="telefone" id="telefone" placeholder="(35) 99999-9999" wire:model="telefone" required>
+                    <input type="text" class="w-full form-input-text" name="telefone" id="telefone" placeholder="(35)99999-9999" wire:model.defer="telefone" required>
                 </div>
                 <div class="w-1/2 pr-1 mb-3">
                     <label class="form-label" for="">Crie a senha de acesso</label>
-                    <input type="password" class="w-full form-input-text" wire:model="senha" required>
+                    <input type="password" class="w-full form-input-text" wire:model.defer="senha" required>
                 </div>
                 <div class="w-1/2 pl-1 mb-3">
                     <label class="form-label" for="">Confirmar senha</label>
-                    <input type="password" class="w-full form-input-text" wire:model="confirmacao_senha" required>
+                    <input type="password" class="w-full form-input-text" wire:model.defer="confirmacao_senha" required>
                     @error('confirmacao_senha') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
                 <div class="flex items-center w-full mt-2">
-                    <input type="checkbox" class="mr-2 checkbox" wire:model="assinante_newsletter"/>
+                    <input type="checkbox" class="mr-2 checkbox" wire:model.defer="assinante_newsletter"/>
                     <span class="mt-1 text-black font-montserrat text-[14px] font-medium">Deseja receber novidades da Agroreserva ?</span>
                 </div>
                 <div class="flex items-center w-full mt-3">
-                    <input type="checkbox" class="mr-2 checkbox" wire:model="termos_aceitos" required/>
+                    <input type="checkbox" class="mr-2 checkbox" wire:model.defer="termos_aceitos" required/>
                     <span class="mt-1 text-black font-montserrat text-[14px] font-medium">Li e concordo com os <u>TERMOS E CONDIÇÕES DE USO</u> do site e <u>POLITICA DE PRIVACIDADE</u></span>
                 </div>
                 <div class="w-full mt-4 text-center">

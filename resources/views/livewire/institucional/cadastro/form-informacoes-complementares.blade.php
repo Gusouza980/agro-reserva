@@ -12,8 +12,7 @@
                 <h1 class="text-[30px] text-[#4A5860] font-montserrat font-medium">Informações Complementares</h1>
             </div>
             <div class="w-full mt-5">
-                <div class="flex flex-wrap items-center w-full ">
-
+                <form class="flex flex-wrap items-center w-full" wire:submit.prevent='salvar'>
                     <div class="w-1/3 mb-3">
                         <label class="form-label" for="">Referência Bancária</label>
                         <input type="text" class="w-full form-input-text" wire:model="referencia_bancaria_banco"
@@ -26,8 +25,8 @@
                     </div>
                     <div class="w-1/3 pl-3 mb-3">
                         <label class="form-label" for="">Telefone</label>
-                        <input type="text" class="w-full form-input-text" wire:model="referencia_bancaria_tel"
-                            maxlength="15" required>
+                        <input type="text" class="w-full form-input-text telefone" wire:model="referencia_bancaria_tel"
+                            maxlength="14" minlength="14" required>
                     </div>
                     <div class="w-1/3 mb-3">
                         <label class="form-label" for="">Referência Comercial</label>
@@ -36,8 +35,8 @@
                     </div>
                     <div class="w-1/3 pl-3 mb-3">
                         <label class="form-label" for="">Telefone</label>
-                        <input type="text" class="w-full form-input-text" wire:model="referencia_comercial1_tel"
-                            maxlength="15" required>
+                        <input type="text" class="w-full form-input-text telefone" wire:model="referencia_comercial1_tel"
+                            maxlength="14" minlength="14" required>
                     </div>
                     <div class="w-1/3">
 
@@ -49,14 +48,14 @@
                     </div>
                     <div class="w-1/3 pl-3 mb-3">
                         <label class="form-label" for="">Telefone</label>
-                        <input type="text" class="w-full form-input-text" wire:model="referencia_comercial1_te2"
-                            maxlength="15">
+                        <input type="text" class="w-full form-input-text telefone" wire:model="referencia_comercial2_tel"
+                            maxlength="14" minlength="14">
                     </div>
                     <div class="w-full mt-5 text-right">
                         <button
                             class="shadow-md rounded-[15px] bg-[#FDAF3C] hover:bg-[#de8a10] border-2 border-[##FDAF3C] text-white px-5 py-3 font-montserrat text-[20px] font-medium">Avançar</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

@@ -12,63 +12,62 @@
                 <h1 class="text-[30px] text-[#4A5860] font-montserrat font-medium">Dados da propriedade Rural</h1>
             </div>
             <div class="w-full mt-5">
-                <div class="flex flex-wrap items-center w-full ">
-
+                <form class="flex flex-wrap items-center w-full" wire:submit.prevent='salvar'>
                     <div class="w-1/2 mb-3">
                         <label class="form-label" for="">Nome da Fazenda</label>
-                        <input type="text" class="w-full form-input-text" wire:model="nome_fazenda"
+                        <input type="text" class="w-full form-input-text" wire:model.defer="nome_fazenda"
                             maxlength="150" required>
                     </div>
                     <div class="w-1/2 pl-3 mb-3">
                         <label class="form-label" for="">Inscrição de Produtor Rural</label>
                         <input type="text" class="w-full form-input-text"
-                            wire:model="inscricao_produtor_rural" maxlength="100" required>
+                            wire:model.defer="inscricao_produtor_rural" maxlength="20" required>
                     </div>
                     <div class="w-1/3 mb-3">
                         <label class="form-label" for="">CEP</label>
-                        <input type="text" class="w-full form-input-text" wire:model="cep_propriedade"
-                            maxlength="10" required>
+                        <input type="text" class="w-full form-input-text cep" wire:model.defer="cep_propriedade"
+                            maxlength="9" minlength="9" required>
                     </div>
                     <div class="w-2/3 pl-3 mb-3">
                         <label class="form-label" for="">Endereço Comercial</label>
-                        <input type="text" class="w-full form-input-text" wire:model="rua_propriedade"
+                        <input type="text" class="w-full form-input-text" wire:model.defer="rua_propriedade"
                             maxlength="50" required>
                     </div>
                     <div class="w-3/12 mb-3">
                         <label class="form-label" for="">Número</label>
-                        <input type="text" class="w-full form-input-text" wire:model="numero_propriedade"
+                        <input type="text" class="w-full form-input-text" wire:model.defer="numero_propriedade"
                             maxlength="10" required>
                     </div>
                     <div class="w-4/12 pl-3 mb-3">
                         <label class="form-label" for="">Bairro</label>
-                        <input type="text" class="w-full form-input-text" wire:model="bairro_propriedade"
+                        <input type="text" class="w-full form-input-text" wire:model.defer="bairro_propriedade"
                             maxlength="50" required>
                     </div>
                     <div class="w-5/12 pl-3 mb-3">
                         <label class="form-label" for="">Cidade</label>
-                        <input type="text" class="w-full form-input-text" wire:model="cidade_propriedade"
+                        <input type="text" class="w-full form-input-text" wire:model.defer="cidade_propriedade"
                             maxlength="50" required>
                     </div>
                     <div class="w-2/12 mb-3">
                         <label class="form-label" for="">Estado</label>
-                        <input type="text" class="w-full form-input-text" wire:model="estado_propriedade"
-                            maxlength="2" required>
+                        <input type="text" class="w-full form-input-text" wire:model.defer="estado_propriedade"
+                            maxlength="2" minlength="2" required>
                     </div>
                     <div class="w-4/12 pl-3 mb-3">
                         <label class="form-label" for="">País</label>
-                        <input type="text" class="w-full form-input-text" wire:model="pais_propriedade"
-                            maxlength="50" required>
+                        <input type="text" class="w-full form-input-text" wire:model.defer="pais_propriedade"
+                            maxlength="30" required>
                     </div>
                     <div class="w-6/12 pl-3 mb-3">
                         <label class="form-label" for="">Complemento (Opcional)</label>
                         <input type="text" class="w-full form-input-text"
-                            wire:model="complemento_propriedade" maxlength="255">
+                            wire:model.defer="complemento_propriedade" maxlength="100">
                     </div>
                     <div class="w-full mt-5 text-right">
                         <button
                             class="shadow-md rounded-[15px] bg-[#FDAF3C] hover:bg-[#de8a10] border-2 border-[##FDAF3C] text-white px-5 py-3 font-montserrat text-[20px] font-medium">Avançar</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

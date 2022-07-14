@@ -55,8 +55,7 @@
 
     <script src="{{ asset('js/jquery.js') }}">
     </script>
-    <script src="{{ asset('js/aos.js') }}"></script>
-    <script src="{{ asset('js/floating-wpp.js') }}"></script>
+    {{-- <script src="{{ asset('js/floating-wpp.js') }}"></script> --}}
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" async
@@ -65,6 +64,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <script src="{{ asset('js/jquery.mask.js') }}"></script>
     @toastr_js
     @toastr_render
     @livewireScripts
@@ -79,20 +79,11 @@
         src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js">
     </script>
     <script>
-        $(document).ready(function(){
-            $('#div-whatsapp').floatingWhatsApp({
-                phone: telefone,
-                popupMessage: 'Olá! Como podemos ajudar?',
-                message: "",
-                showPopup: true,
-                showOnIE: false,
-                headerTitle: 'Seja Bem-Vindo!',
-                headerColor: '#00ba38',
-                backgroundColor: '',
-                buttonImage: '<img src="/imagens/whatsapp-button.png"/>',
-                size: "60px",
-                zIndex: 999999
-            });
+        window.addEventListener("carregaMascaras", (event) => {
+            $(".cpf").mask("000.000.000-00");
+            $(".cep").mask("00000-000");
+            $(".cnpj").mask("00.000.000/0000-00");
+            $(".telefone").mask("(00)90000-0000");
         });
     </script>
 </body>

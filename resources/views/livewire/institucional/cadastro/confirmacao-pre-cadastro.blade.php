@@ -19,10 +19,10 @@
             </div>
             <div class="grid w-full grid-cols-2 gap-8 mt-5">
                 <div class="text-right">
-                    <button class="rounded-[15px] border-2 border-[#80828B] hover:bg-gray-500 hover:text-white text-[#15171E] px-5 py-3 font-montserrat text-[20px] font-medium">Voltar ao site</button>
+                    <a href="{{ route('index') }}" class="rounded-[15px] border-2 border-[#80828B] hover:bg-gray-500 hover:text-white text-[#15171E] px-5 py-3 font-montserrat text-[20px] font-medium">Voltar ao site</a>
                 </div>
                 <div class="text-left">
-                    <button class="rounded-[15px] bg-[#FDAF3C] hover:bg-[#de8a10] border-2 border-[##FDAF3C] text-white px-5 py-3 font-montserrat text-[20px] font-medium">Completar Agora</button>
+                    <button class="rounded-[15px] bg-[#FDAF3C] hover:bg-[#de8a10] border-2 border-[##FDAF3C] text-white px-5 py-3 font-montserrat text-[20px] font-medium" wire:click="avancar">Completar Agora</button>
                 </div>
             </div>
         </div>

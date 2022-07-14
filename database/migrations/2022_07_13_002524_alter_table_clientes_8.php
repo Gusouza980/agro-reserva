@@ -24,6 +24,8 @@ class AlterTableClientes8 extends Migration
             $table->string("bairro_propriedade", 50)->nullable();
             $table->string("cidade_propriedade", 50)->nullable();
             $table->string("estado_propriedade", 2)->nullable();
+            $table->string("pais_propriedade", 30)->nullable();
+            $table->string("complemento_propriedade", 50)->nullable();
         });
     }
 

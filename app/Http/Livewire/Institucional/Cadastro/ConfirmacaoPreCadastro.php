@@ -18,6 +18,11 @@ class ConfirmacaoPreCadastro extends Component
         $this->show = $show;
     }
 
+    public function avancar(){
+        $this->show = false;
+        $this->emit("showListaEtapas");
+    }
+
     public function render()
     {
         return view('livewire.institucional.cadastro.confirmacao-pre-cadastro');

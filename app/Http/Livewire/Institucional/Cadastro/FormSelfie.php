@@ -8,9 +8,9 @@ class FormSelfie extends Component
 {
     public $show;
 
-    protected $listeners = ["showFormInformacoesComplementares"];
+    protected $listeners = ["showFormSelfie"];
 
-    public function showFormInformacoesComplementares($categoria){
+    public function showFormSelfie(){
         $this->show = true;
     }
 

@@ -567,7 +567,7 @@
                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75" />
                         </g>
                     </svg>
-                    <button class="rounded-[15px] border-2 border-[#80828B] hover:bg-gray-500 hover:text-white text-[#15171E] px-5 py-3 font-montserrat text-[20px] font-medium mt-5">Pessoa Física</button>
+                    <button class="rounded-[15px] border-2 border-[#80828B] hover:bg-gray-500 hover:text-white text-[#15171E] px-5 py-3 font-montserrat text-[20px] font-medium mt-5" @click="showSelecaoCategoria = false; $wire.emit('showFormDadosPessoais', 0)">Pessoa Física</button>
                 </div>
                 <div class="text-center">
                     <svg class="h-64 mx-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -1114,7 +1114,7 @@
                             </g>
                         </g>
                     </svg>
-                    <button class="rounded-[15px] border-2 border-[#80828B] hover:bg-gray-500 hover:text-white text-[#15171E] px-5 py-3 font-montserrat text-[20px] font-medium mt-5">Pessoa Jurídica</button>
+                    <button class="rounded-[15px] border-2 border-[#80828B] hover:bg-gray-500 hover:text-white text-[#15171E] px-5 py-3 font-montserrat text-[20px] font-medium mt-5" @click="showSelecaoCategoria = false; $wire.emit('showFormDadosPessoais', 1)">Pessoa Jurídica</button>
                 </div>
             </div>
         </div>

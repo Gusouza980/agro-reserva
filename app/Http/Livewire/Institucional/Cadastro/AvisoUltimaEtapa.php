@@ -18,6 +18,11 @@ class AvisoUltimaEtapa extends Component
         $this->show = $show;
     }
 
+    public function avancar(){
+        $this->show = false;
+        $this->emit("showFormSelfie");
+    }
+
     public function render()
     {
         return view('livewire.institucional.cadastro.aviso-ultima-etapa');

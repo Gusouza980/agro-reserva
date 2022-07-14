@@ -14,8 +14,9 @@
                     Acessar ou criar uma conta no seu nome.</h2>
             </div>
             <div class="flex-col w-full mt-5">
-                <div class="flex items-center w-full px-4 rounded-lg shadow-[2px_5px_10px_rgba(18,97,177,0.1)]">
-                    <div class="py-4">
+                {{-- ETAPA 1 --}}
+                <div class="flex items-center w-full px-4 rounded-lg @if(!$cliente) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif py-4">
+                    <div class="relative">
                         <svg class="duration-300 animation hover:scale-105" xmlns="http://www.w3.org/2000/svg"
                             width="74.524" height="74.524" viewBox="0 0 74.524 74.524">
                             <g id="Grupo_9439" data-name="Grupo 9439" transform="translate(-674.498 -437.499)">
@@ -41,6 +42,9 @@
                                 </g>
                             </g>
                         </svg>
+                        @if($cliente)
+                            <i class="fas fa-check-circle text-success fa-lg absolute bottom-[5px] right-[5px]"></i>
+                        @endif
                     </div>
                     <div class="px-4">
                         <h3 class="text-black text-[23px] font-medium">Pré Cadastro</h3>
@@ -48,11 +52,12 @@
                             conta</h4>
                     </div>
                     <div>
-                        <a class="text-white btn btn-warning hover:btn-success" @click="showListaEtapas = false; $wire.emit('showFormPreCadastro')">Validar</a>
+                        <a class="text-white btn btn-warning hover:btn-success @if(!$cliente) visible @else invisible @endif" @click="showListaEtapas = false; $wire.emit('showFormPreCadastro')">Validar</a>
                     </div>
                 </div>
-                <div class="flex items-center w-full px-4 mt-4 rounded-lg">
-                    <div class="py-4">
+                {{-- ETAPA 2 --}}
+                <div class="flex items-center w-full px-4 py-4 mt-4 rounded-lg @if($cliente && $cliente->etapa_cadastro == 2) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif">
+                    <div class="relative">
                         <svg class="duration-300 animation hover:scale-105" xmlns="http://www.w3.org/2000/svg"
                             width="74.524" height="74.524" viewBox="0 0 74.524 74.524">
                             <g id="Grupo_9441" data-name="Grupo 9441" transform="translate(-465.379 -842.765)">
@@ -87,6 +92,9 @@
                                     transform="translate(38.206 797.496)" fill="#efab1e" />
                             </g>
                         </svg>
+                        @if($cliente && $cliente->etapa_cadastro > 2)
+                            <i class="fas fa-check-circle text-success fa-lg absolute bottom-[5px] right-[5px]"></i>
+                        @endif
                     </div>
                     <div class="px-4">
                         <h3 class="text-black text-[23px] font-medium">Dados pessoais</h3>
@@ -94,11 +102,12 @@
                             nome.</h4>
                     </div>
                     <div>
-                        <a class="invisible text-white btn btn-warning hover:btn-success">Validar</a>
+                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 2) visible @else invisible @endif" @click="showListaEtapas = false; $wire.emit('showSelecaoCategoria')">Validar</a>
                     </div>
                 </div>
-                <div class="flex items-center w-full px-4 mt-4 rounded-lg">
-                    <div class="py-4">
+                {{-- ETAPA 3 --}}
+                <div class="flex items-center w-full px-4 mt-4 rounded-lg @if($cliente && $cliente->etapa_cadastro == 3) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif py-4">
+                    <div class="relative">
                         <svg class="duration-300 animation hover:scale-105" xmlns="http://www.w3.org/2000/svg"
                             width="74.338" height="74.338" viewBox="0 0 74.338 74.338">
                             <path id="Caminho_2995" data-name="Caminho 2995"
@@ -126,7 +135,9 @@
                             <rect id="Retângulo_2650" data-name="Retângulo 2650" width="1.56" height="1.572"
                                 transform="translate(36.296 38.805)" fill="#efab1e" />
                         </svg>
-
+                        @if($cliente && $cliente->etapa_cadastro > 3)
+                            <i class="fas fa-check-circle text-success fa-lg absolute bottom-[5px] right-[5px]"></i>
+                        @endif
                     </div>
                     <div class="px-4">
                         <h3 class="text-black text-[23px] font-medium">Dados da propriedade</h3>
@@ -134,11 +145,12 @@
                             conta.</h4>
                     </div>
                     <div>
-                        <a class="invisible text-white btn btn-warning hover:btn-success">Validar</a>
+                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 3) visible @else invisible @endif" @click="showListaEtapas = false; $wire.emit('showFormDadosPropriedade')">Validar</a>
                     </div>
                 </div>
-                <div class="flex items-center w-full px-4 mt-4 rounded-lg">
-                    <div class="py-4">
+                {{-- ETAPA 4 --}}
+                <div class="flex items-center w-full px-4 mt-4 rounded-lg @if($cliente && $cliente->etapa_cadastro == 4) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif py-4">
+                    <div class="relative">
                         <svg class="duration-300 animation hover:scale-105" xmlns="http://www.w3.org/2000/svg"
                             width="74.516" height="74.516" viewBox="0 0 74.516 74.516">
                             <g id="Grupo_9444" data-name="Grupo 9444" transform="translate(-673.999 -842.785)">
@@ -159,7 +171,9 @@
                                     transform="translate(-492.077 797.707)" fill="#efab1e" />
                             </g>
                         </svg>
-
+                        @if($cliente && $cliente->etapa_cadastro > 4)
+                            <i class="fas fa-check-circle text-success fa-lg absolute bottom-[5px] right-[5px]"></i>
+                        @endif
                     </div>
                     <div class="px-4">
                         <h3 class="text-black text-[23px] font-medium">Informações complementares</h3>
@@ -167,7 +181,43 @@
                             printing and typesetting industry.</h4>
                     </div>
                     <div>
-                        <a class="invisible text-white btn btn-warning hover:btn-success">Validar</a>
+                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 4) visible @else invisible @endif" @click="showListaEtapas = false; $wire.emit('showFormInformacoesComplementares')">Validar</a>
+                    </div>
+                </div>
+                {{-- ETAPA 5 --}}
+                <div class="flex items-center w-full px-4 mt-4 rounded-lg @if($cliente && $cliente->etapa_cadastro == 5) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif py-4">
+                    <div class="relative">
+                        <svg class="duration-300 animation hover:scale-105" xmlns="http://www.w3.org/2000/svg"
+                            width="74.516" height="74.516" viewBox="0 0 74.516 74.516">
+                            <g id="Grupo_9444" data-name="Grupo 9444" transform="translate(-673.999 -842.785)">
+                                <circle id="Elipse_333" data-name="Elipse 333" cx="36.669" cy="36.669"
+                                    r="36.669" transform="translate(674.5 843.461) rotate(-0.137)" fill="none"
+                                    stroke="#efeef2" stroke-miterlimit="10" stroke-width="1" />
+                                <path id="Caminho_2990" data-name="Caminho 2990"
+                                    d="M1216.729,121.838q5.569,0,11.139,0a2.761,2.761,0,0,1,.031,5.521c-1.543.015-3.085,0-4.628,0q-8.866,0-17.733,0a2.761,2.761,0,1,1-.03-5.522q5.61-.01,11.221,0m-.043,3.858h10.728a5.507,5.507,0,0,0,.573-.016,1.085,1.085,0,0,0-.006-2.157,5.26,5.26,0,0,0-.531-.015h-21.537a5.184,5.184,0,0,0-.532.015,1.086,1.086,0,0,0,.006,2.159c.189.019.381.015.572.015h10.728"
+                                    transform="translate(-504.739 755.431)" fill="#efab1e" />
+                                <path id="Caminho_2991" data-name="Caminho 2991"
+                                    d="M1216.7,81.927q5.529,0,11.057,0a2.708,2.708,0,0,1,2.825,2.367,2.742,2.742,0,0,1-2.18,3.082,4.747,4.747,0,0,1-.772.072q-10.955.006-21.909,0a2.825,2.825,0,0,1-2.819-1.835,2.741,2.741,0,0,1,2.578-3.686c3.74-.011,7.48,0,11.22,0m-.026,3.847h10.77c.177,0,.356.006.532-.011a1.072,1.072,0,0,0,.963-.96,1.05,1.05,0,0,0-.759-1.163,3.023,3.023,0,0,0-.769-.075q-10.729-.005-21.459,0a3.292,3.292,0,0,0-.691.052,1.043,1.043,0,0,0-.849,1.1,1.094,1.094,0,0,0,1.246,1.059q5.508,0,11.016,0"
+                                    transform="translate(-504.738 784.189)" fill="#efab1e" />
+                                <path id="Caminho_2992" data-name="Caminho 2992"
+                                    d="M1216.694,167.275c-3.754,0-7.507.01-11.261,0a2.72,2.72,0,0,1-2.618-3.236,2.764,2.764,0,0,1,2.876-2.281q4.668-.008,9.337,0,6.327,0,12.654,0a2.8,2.8,0,0,1,2.812,1.9,2.744,2.744,0,0,1-2.579,3.626h-11.221Zm.006-3.846h-10.77a5.19,5.19,0,0,0-.532.011,1.073,1.073,0,0,0-.959.964,1.047,1.047,0,0,0,.763,1.16,3.065,3.065,0,0,0,.77.074q10.729.005,21.458,0a3.2,3.2,0,0,0,.691-.053,1.065,1.065,0,0,0,.838-1.223,1.11,1.11,0,0,0-1.243-.932q-5.508,0-11.016,0"
+                                    transform="translate(-504.763 726.672)" fill="#efab1e" />
+                                <path id="Caminho_2993" data-name="Caminho 2993"
+                                    d="M1222.422,81.052c.027-2.664.027-5.347-.005-8.008q0-.1,0-.2a1.2,1.2,0,0,0,.014-.177c.006-2.117.026-4.235-.006-6.352a3.178,3.178,0,0,0-3.173-3.151q-16-.01-32,0a3.015,3.015,0,0,0-1.764.563,3.3,3.3,0,0,0-1.4,2.93c.015,5.218.006,10.436.006,15.654,0,5.245.029,10.491-.014,15.736a3.372,3.372,0,0,0,3.47,3.461c10.475-.04,20.951-.02,31.426-.022a4.038,4.038,0,0,0,.774-.044,3.231,3.231,0,0,0,2.682-3.287q.005-8.421,0-16.842c0-.087,0-.175-.007-.261m-1.62,3.9q0,6.474,0,12.949a2.033,2.033,0,0,1-.328,1.324,1.808,1.808,0,0,1-1.553.661q-15.672-.008-31.344,0c-.082,0-.164,0-.246,0a1.6,1.6,0,0,1-1.612-1.654q0-15.9,0-31.8a1.766,1.766,0,0,1,.058-.484,1.636,1.636,0,0,1,1.757-1.172h31.426c.1,0,.192,0,.287,0a1.608,1.608,0,0,1,1.477,1.163,3.674,3.674,0,0,1,.075.854c.007,1.967,0,3.934.009,5.9a1.245,1.245,0,0,0,.014.175c0,.105,0,.211-.006.32-.019,1.379,0,2.769,0,4.155h0c0,1.27-.011,2.543,0,3.809,0,.024,0,.046,0,.071-.007,1.243,0,2.486,0,3.729"
+                                    transform="translate(-492.077 797.707)" fill="#efab1e" />
+                            </g>
+                        </svg>
+                        @if($cliente && $cliente->etapa_cadastro > 5)
+                            <i class="fas fa-check-circle text-success fa-lg absolute bottom-[5px] right-[5px]"></i>
+                        @endif
+                    </div>
+                    <div class="px-4">
+                        <h3 class="text-black text-[23px] font-medium">Verificação de Documento</h3>
+                        <h4 class="text-black text-[17px] font-light mt-2">Lorem Ipsum is simply dummy text of the
+                            printing and typesetting industry.</h4>
+                    </div>
+                    <div>
+                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 5) visible @else invisible @endif" @click="showListaEtapas = false; $wire.emit('showFormSelfie')">Validar</a>
                     </div>
                 </div>
             </div>

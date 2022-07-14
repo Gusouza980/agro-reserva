@@ -17,7 +17,6 @@ class FormPreCadastro extends Component
     public $confirmacao_senha;
     public $assinante_newsletter;
     public $termos_aceitos;
-    public $erros;
 
     protected $listeners = ["showFormPreCadastro"];
     protected $rules = [
@@ -26,6 +25,7 @@ class FormPreCadastro extends Component
     ];
 
     protected $messages = [
+        "email.unique" => "Já existe um cadastro com o e-mail informado.",
         "confirmacao_senha.same" => "Os campos de senha não coincidem."
     ];
 
@@ -39,6 +39,25 @@ class FormPreCadastro extends Component
 
     public function salvar(){
         $this->validate();
+        $cliente = new Cliente;
+        $cliente->nome_dono = $this->nome_dono;
+        $cliente->email = $this->email;
+        $cliente->telefone = $this->telefone;
+        $cliente->senha = $this->senha;
+
+        if($this->assinante_newsletter){
+            $cliente->assinante_newsletter = true;
+        }else{
+            $cliente->assinante_newsletter = false;
+        }
+
+        $cliente->termos_aceitos = true;
+        $cliente->finalizado = false;
+        $cliente->etapa_cadastro = 2;
+        $cliente->save();
+
+        session()->put(["cliente" => $cliente->toArray()]);
+
         $this->show = false;
         $this->emit("showConfirmacaoPreCadastro");
     }

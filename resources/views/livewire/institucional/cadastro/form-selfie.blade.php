@@ -6,11 +6,11 @@
         <div class="w-full">
             <i class="fas fa-chevron-left fa-md text-[#D7D8E4] mr-2"></i> <span class="text-[#D7D8E4]">Voltar</span>
         </div>
-        <div class="w-full px-3 py-3 md:px-20 md:py-24 mt-3 bg-white rounded-t-lg shadow-[6px_6px_20px_rgba(36,62,111,0.11)]">
+        <div class="w-full px-6 py-6 md:px-20 md:py-24 mt-3 bg-white rounded-t-lg shadow-[6px_6px_20px_rgba(36,62,111,0.11)]">
             <x-institucional.cadastro.step-bar step="5"></x-institucional.cadastro.step-bar>
             <div class="w-full mt-3 text-center">
                 <h2 class="text-[19px] text-[#15171E] font-montserrat">Tire uma selfie segurando o documento</h2>
-                <svg id="svg-upload" class="max-w-full mx-auto my-5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="434" height="263" viewBox="0 0 434 263">
+                <svg id="svg-upload" class="max-w-full mx-auto my-6 md:my-14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="434" height="263" viewBox="0 0 434 263">
                     <g id="Retângulo_2557" data-name="Retângulo 2557" fill="#fff" stroke="#707070" stroke-width="1">
                       <rect width="434" height="263" rx="25" stroke="none"/>
                       <rect x="0.5" y="0.5" width="433" height="262" rx="24.5" fill="none"/>
