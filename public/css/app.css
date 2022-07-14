@@ -4301,6 +4301,12 @@ body[dir="rtl"] .checkbox:checked,
 .text-\[30px\] {
     font-size: 30px
 }
+.text-\[9px\] {
+    font-size: 9px
+}
+.text-\[10px\] {
+    font-size: 10px
+}
 .font-semibold {
     font-weight: 600
 }
@@ -4898,6 +4904,10 @@ body[dir="rtl"] .checkbox:checked,
     }
     .md\:text-\[15px\] {
         font-size: 15px
+    }
+    .md\:text-xs {
+        font-size: 0.75rem;
+        line-height: 1rem
     }
     .md\:font-medium {
         font-weight: 500

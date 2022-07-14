@@ -8,7 +8,7 @@
                     </span>
                 </div>
             </div>
-            <div class="text-xs text-center md:text-sm">Pré Cadastro</div>
+            <div class="text-[10px] text-center md:text-sm" style="word-wrap: break-word;">Pré Cadastro</div>
         </div>
 
         <div class="w-1/4">
@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <div class="text-xs text-center md:text-sm">Dados Pessoais</div>
+            <div class="text-[10px] text-center md:text-sm" style="word-wrap: break-word;">Dados Pessoais</div>
         </div>
 
         <div class="w-1/4">
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <div class="text-xs text-center md:text-sm">Dados da Propriedade</div>
+            <div class="text-[10px] text-center md:text-sm" style="word-wrap: break-word;">Dados da Propriedade</div>
         </div>
 
         <div class="w-1/4">
@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <div class="text-xs text-center md:text-sm">Informações Complementares</div>
+            <div class="text-[10px] text-center md:text-sm" style="word-wrap: break-word;">Informações Complementares</div>
         </div>
 
         <div class="w-1/4">
@@ -87,7 +87,7 @@
                 </div>
             </div>
 
-            <div class="text-xs text-center md:text-sm">Tudo Pronto</div>
+            <div class="text-[10px] text-center md:text-sm" style="word-wrap: break-word;">Tudo Pronto</div>
         </div>
     </div>
 </div>
