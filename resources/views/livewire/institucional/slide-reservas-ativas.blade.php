@@ -1,6 +1,6 @@
-<div class="px-0 py-5 bg-white container-fluid" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative; min-height: 800px;">
+<div class="px-0 py-5 bg-white w-full" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative; min-height: 800px;">
     <div class="mx-auto vitrine-animais" x-show="show" x-transition.opacity.duration.3000ms>
-        <div class="px-0 col-12">
+        <div class="px-0 w-full">
             <div class="slick" id="slide-reservas-ativas">
                 <div class="mx-2" style="border-radius: 15px; overflow: hidden; position: relative;">
                     <img src="{{ asset('imagens/stories.jpg') }}" class="w-100" alt="">
@@ -151,12 +151,13 @@
                     breakpoint: 760,
                     settings: {
                         slidesToShow: 1,
-                        infinite: true,
                         dots: false,
-                        adaptiveHeight: true,
                         arrows: false,
-                        autoplay: true,
+                        infinite: true,
+                        adaptiveHeight: true,
+                        variableWidth: true,
                         centerMode: true,
+                        autoplay: false,
                         autoplaySpeed: 4000,
                     }
 
