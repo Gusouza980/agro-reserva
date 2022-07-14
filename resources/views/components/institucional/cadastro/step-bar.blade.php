@@ -40,7 +40,7 @@
                 </div>
 
                 <div
-                    class="flex items-center mx-auto text-lg text-white @if($step == 3) bg-[#FDAF3C] @elseif($step > 3) bg-[#14C656] @else bg-[#32343E] @endif border-2 border-gray-200 rounded-full w-7 h-7">
+                    class="flex items-center mx-auto text-lg text-white @if($step == 3) bg-[#FDAF3C] @elseif($step > 3) bg-[#14C656] @else bg-[#32343E] @endif rounded-full w-7 h-7">
                     <span class="w-full text-center text-white">
                         3
                     </span>
@@ -60,7 +60,7 @@
                 </div>
 
                 <div
-                    class="flex items-center mx-auto text-lg text-white @if($step == 4) bg-[#FDAF3C] @elseif($step > 4) bg-[#14C656] @else bg-[#32343E] @endif border-2 border-gray-200 rounded-full w-7 h-7">
+                    class="flex items-center mx-auto text-lg text-white @if($step == 4) bg-[#FDAF3C] @elseif($step > 4) bg-[#14C656] @else bg-[#32343E] @endif rounded-full w-7 h-7">
                     <span class="w-full text-center text-white">
                         4
                     </span>
@@ -80,7 +80,7 @@
                 </div>
 
                 <div
-                    class="flex items-center mx-auto text-lg text-white @if($step == 5) bg-[#FDAF3C] @elseif($step > 5) bg-[#14C656] @else bg-[#32343E] @endif border-2 border-gray-200 rounded-full w-7 h-7">
+                    class="flex items-center mx-auto text-lg text-white @if($step == 5) bg-[#FDAF3C] @elseif($step > 5) bg-[#14C656] @else bg-[#32343E] @endif rounded-full w-7 h-7">
                     <span class="w-full text-center text-white">
                         5
                     </span>
