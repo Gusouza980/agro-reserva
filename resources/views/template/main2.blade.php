@@ -1,3 +1,7 @@
+@php
+    $agent = new Jenssegers\Agent\Agent;
+@endphp
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -38,7 +42,11 @@
 
 <body x-data="{start: true, mostrarCarrinho: false}">
     <x-institucional.navbar></x-institucional.navbar>
-    
+
+    @if($agent->isMobile())
+        <x-institucional.nav-footer></x-institucional.nav-footer>
+    @endif
+
     @if(session()->get("cliente"))
         @livewire('institucional.barra-lateral-carrinho')
     @endif
@@ -183,9 +191,6 @@
             </div>
         </div>
     @endif
-    <div id="div-whatsapp" style="left: auto; right: 15px;">
-
-    </div>
 
     <script src="{{ asset('js/jquery.js') }}">
     </script>

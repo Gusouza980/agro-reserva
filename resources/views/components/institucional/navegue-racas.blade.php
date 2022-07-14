@@ -1,11 +1,11 @@
-<div class="container-fluid px-0 bg-white py-5" style="background: url('/imagens/bg-racas.png')" x-data="{ show: false }" x-intersect.enter="show = true">
+<div class="w-full bg-white py-5" style="background: url('/imagens/bg-racas.png')" x-data="{ show: false }" x-intersect.enter="show = true">
     <div class="vitrine-animais mx-auto" x-show="show" x-transition.opacity.duration.3000ms>
-        <div class="row mb-5 mt-4">
-            <div class="col-12 text-center" style="font-family: Montserrat; font-size: 25px; font-weight: medium;">
+        <div class="w-full mb-5 mt-4">
+            <div class="w-full text-center" style="font-family: Montserrat; font-size: 25px; font-weight: medium;">
                 NAVEGUE POR RAÇAS
             </div>
         </div>
-        <div class="col-12 px-0">
+        <div class="w-full px-0">
             <div class="slick" id="slide-navegue-racas">
                 @foreach(\App\Models\Raca::where('ativo', true)->orderBy("nome")->get() as $raca)
                     <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
