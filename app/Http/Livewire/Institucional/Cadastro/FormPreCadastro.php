@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Institucional\Cadastro;
 
 use Livewire\Component;
 use App\Models\Cliente;
+use Illuminate\Support\Facades\Hash;
 
 class FormPreCadastro extends Component
 {
@@ -43,7 +44,7 @@ class FormPreCadastro extends Component
         $cliente->nome_dono = $this->nome_dono;
         $cliente->email = $this->email;
         $cliente->telefone = $this->telefone;
-        $cliente->senha = $this->senha;
+        $cliente->senha = Hash::make($this->senha);
 
         if($this->assinante_newsletter){
             $cliente->assinante_newsletter = true;

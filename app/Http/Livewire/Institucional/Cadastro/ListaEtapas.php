@@ -27,6 +27,7 @@ class ListaEtapas extends Component
         if(session()->get("cliente")){
             $cliente = Cliente::find(session()->get("cliente")["id"]);
         }
+
         return view('livewire.institucional.cadastro.lista-etapas', ["cliente" => $cliente]);
     }
 }

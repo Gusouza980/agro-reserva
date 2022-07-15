@@ -52,7 +52,7 @@
                             conta</h4>
                     </div>
                     <div>
-                        <a class="text-white btn btn-warning hover:btn-success @if(!$cliente) visible @else invisible @endif" @click="showListaEtapas = false; $wire.emit('showFormPreCadastro')">Validar</a>
+                        <a class="text-white btn btn-warning hover:btn-success @if(!$cliente) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormPreCadastro')">Validar</a>
                     </div>
                 </div>
                 {{-- ETAPA 2 --}}
@@ -102,7 +102,8 @@
                             nome.</h4>
                     </div>
                     <div>
-                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 2) visible @else invisible @endif" @click="showListaEtapas = false; $wire.emit('showSelecaoCategoria')">Validar</a>
+                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 2) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showSelecaoCategoria')">Validar</a>
+                        <a class="text-white btn btn-default hover:btn-primary @if($cliente && $cliente->etapa_cadastro > 2) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showSelecaoCategoria')">Editar</a>
                     </div>
                 </div>
                 {{-- ETAPA 3 --}}
@@ -145,7 +146,8 @@
                             conta.</h4>
                     </div>
                     <div>
-                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 3) visible @else invisible @endif" @click="showListaEtapas = false; $wire.emit('showFormDadosPropriedade')">Validar</a>
+                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 3) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormDadosPropriedade')">Validar</a>
+                        <a class="text-white btn btn-default hover:btn-primary @if($cliente && $cliente->etapa_cadastro > 3) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormDadosPropriedade')">Editar</a>
                     </div>
                 </div>
                 {{-- ETAPA 4 --}}
@@ -181,7 +183,8 @@
                             printing and typesetting industry.</h4>
                     </div>
                     <div>
-                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 4) visible @else invisible @endif" @click="showListaEtapas = false; $wire.emit('showFormInformacoesComplementares')">Validar</a>
+                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 4) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormInformacoesComplementares')">Validar</a>
+                        <a class="text-white btn btn-default hover:btn-primary @if($cliente && $cliente->etapa_cadastro > 4) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormInformacoesComplementares')">Editar</a>
                     </div>
                 </div>
                 {{-- ETAPA 5 --}}
@@ -217,7 +220,7 @@
                             printing and typesetting industry.</h4>
                     </div>
                     <div>
-                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 5) visible @else invisible @endif" @click="showListaEtapas = false; $wire.emit('showFormSelfie')">Validar</a>
+                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 5) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormSelfie')">Validar</a>
                     </div>
                 </div>
             </div>

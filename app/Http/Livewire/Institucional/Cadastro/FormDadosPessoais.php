@@ -12,6 +12,8 @@ class FormDadosPessoais extends Component
 
     public $rg;
     public $cpf;
+    public $cnpj;
+    public $nome_fantasia;
     public $nascimento;
     public $cep;
     public $rua;
@@ -38,9 +40,14 @@ class FormDadosPessoais extends Component
         $cliente = Cliente::find(session()->get("cliente")["id"]);
 
         $cliente->pessoa_fisica = !$this->categoria;
-        $cliente->rg = $this->rg;
-        $cliente->cpf = $this->cpf;
-        $cliente->nascimento = $this->nascimento;
+        if($cliente->pessoa_fisica){
+            $cliente->rg = $this->rg;
+            $cliente->cpf = $this->cpf;
+            $cliente->nascimento = $this->nascimento;
+        }else{
+            $cliente->cnpj = $this->cnpj;
+            $cliente->nome_fantasia = $this->nome_fantasia;
+        }
         $cliente->cep = $this->cep;
         $cliente->rua = $this->rua;
         $cliente->numero = $this->numero;
@@ -49,7 +56,9 @@ class FormDadosPessoais extends Component
         $cliente->estado = $this->estado;
         $cliente->pais = $this->pais;
         $cliente->complemento = $this->complemento;
-        $cliente->etapa_cadastro = 3;
+        if($cliente->etapa_cadastro < 3){
+            $cliente->etapa_cadastro = 3;
+        }
 
         $cliente->save();
 
