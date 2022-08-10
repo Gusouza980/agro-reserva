@@ -1,5 +1,5 @@
-<div class="px-0 pb-5 bg-white container-fluid" x-data="{ show: false }" x-intersect.enter="show = true">
-    <div class="px-3 mx-auto w1400 px-lg-0" x-show="show" x-transition.opacity.duration.3000ms>
+<div class="px-0 pb-5 bg-white container-fluid">
+    <div class="px-3 mx-auto w1200 px-lg-0">
         <div class="row">
             <div class="mb-4 duration-1000 delay-300 col-12 col-lg-6 animate-in slide-in-from-left">
                 <div class="rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer">

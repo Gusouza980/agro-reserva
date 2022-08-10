@@ -35,12 +35,14 @@
         a:active {
             text-decoration: none;
         }
+        [x-cloak] { display: none !important; }
     </style>
     <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
 </head>
 
 <body x-data="{start: true, mostrarCarrinho: false}">
+    <x-institucional.barra-topo></x-institucional.barra-topo>
     <x-institucional.navbar></x-institucional.navbar>
 
     @if($agent->isMobile())
@@ -53,75 +55,7 @@
     
     @yield('conteudo')
 
-    <div class="flex justify-content-center" id="footer"
-        style="background: url(/imagens/rodape.jpg); background-size: cover; background-position:center; background-repeat: no-repeat;">
-        <div class="py-5 row w1400 align-items-center justify-content-between">
-            <div class="col-12 text-center">
-                <img src="{{ asset('imagens/logo-footer.png') }}" class="mx-auto" style="" alt="">
-            </div>
-            <div class="mt-5 col-12 col-lg-4 mt-lg-0">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="text-center col-12 text-nav-footer text-lg-left">
-                                <a class="" href=" {{ route('index') }}">{{ __('messages.navbar.inicio') }}</a>
-                            </div>
-                        </div>
-                        @if (!session()->get('cliente'))
-                            <div class="mt-2 row">
-                                <div class="text-center col-12 text-nav-footer text-lg-left">
-                                    <a class="" href=" {{ route('cadastro') }}">{{ __('messages.navbar.cadastre_se') }}
-                                    </a>
-                                </div>
-                            </div>
-                        @endif
-                        <div class="mt-2 row">
-                            <div class="text-center col-12 text-nav-footer text-lg-left">
-                                <a class="" href=" {{ route('blog') }}">{{ __('messages.navbar.blog') }} </a>
-                            </div>
-                        </div>
-                        <div class="mt-2 row">
-                            <div class="text-center col-12 text-nav-footer text-lg-left">
-                                <a class="" href=" {{ route('sobre') }}">{{ __('messages.navbar.quem_somos') }} </a>
-                            </div>
-                        </div>
-                        <div class="mt-2 row">
-                            <div class="text-center col-12 text-nav-footer text-lg-left">
-                                <a class="" href=" {{ route('reservas.finalizadas') }}">{{ __('messages.navbar.reservas_finalizadas') }} </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center col-12 col-lg-4">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="text-center col-12 text-nav-footer text-lg-right">
-                                <a class="" href="{{ route('termos') }}">Termos e Condições</a>
-                            </div>
-                        </div>
-                        <div class="mt-2 row">
-                            <div class="text-center col-12 text-nav-footer text-lg-right">
-                                <a class="" href="{{ route('politicas') }}">Política e Privacidade</a>
-                            </div>
-                        </div>
-                        <div class="mt-2 row">
-                            <div class="text-center col-12 text-nav-footer text-lg-right">
-                                <a class="" href="{{ route('blog') }}">Clube de Benefícios</a>
-                            </div>
-                        </div>
-                        <div class="mt-2 row">
-                            <div class="text-center col-12 text-nav-footer text-lg-right">
-                                <a class="" href="{{ route('sobre') }}">Falar com os acessores</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
+    <x-institucional.footer></x-institucional.footer>
 
     <div class="modal fade" id="modalSucesso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

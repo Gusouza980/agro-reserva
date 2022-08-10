@@ -1,5 +1,5 @@
 <div class="w-full bg-white py-5" style="background: url('/imagens/bg-racas.png')" x-data="{ show: false }" x-intersect.enter="show = true">
-    <div class="vitrine-animais mx-auto" x-show="show" x-transition.opacity.duration.3000ms>
+    <div class="w1200 mx-auto" x-show="show" x-transition.opacity.duration.3000ms>
         <div class="w-full mb-5 mt-4">
             <div class="w-full text-center" style="font-family: Montserrat; font-size: 25px; font-weight: medium;">
                 NAVEGUE POR RAÇAS

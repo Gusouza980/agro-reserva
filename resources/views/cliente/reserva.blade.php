@@ -2,7 +2,7 @@
 
 @section('conteudo')
 <div class="w-full bg-[#F2F2F2] py-5 px-md-0" style="min-height: 40vh;">
-    <div class="w1400 mx-auto bg-white px-3 py-3 rounded-lg">
+    <div class="w1200 mx-auto bg-white px-3 py-3 rounded-lg">
         <div class="w-full py-3">
             <a href="{{route('conta.index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
         </div>

@@ -3,6 +3,7 @@
 namespace App\View\Components\Institucional;
 
 use Illuminate\View\Component;
+use Jenssegers\Agent\Agent;
 
 class Carrosel extends Component
 {
@@ -12,11 +13,14 @@ class Carrosel extends Component
      * @return void
      */
     public $banners;
+    public $agent;
 
     public function __construct($banners)
     {
         //
         $this->banners = $banners;
+        $this->agent = new Agent();
+
     }
 
     /**

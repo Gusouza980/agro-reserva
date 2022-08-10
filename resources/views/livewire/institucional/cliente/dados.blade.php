@@ -1,4 +1,4 @@
-<div class="w1400 mx-auto">
+<div class="w1200 mx-auto">
     
     <div class="alert alert-success shadow-lg mb-5 @if(!session()->get("sucesso")) hidden @endif" id="alert-salvamento-dados">
         <div>

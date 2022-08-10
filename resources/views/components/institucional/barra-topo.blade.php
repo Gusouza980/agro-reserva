@@ -1,0 +1,29 @@
+<div class="w-full bg-[#EFEFEF]">
+    <div class="flex py-1 mx-auto w1200">
+        <div class="flex-grow hidden text-start md:block">
+            <span class="font-montserrat font-medium text-[12px]">Olá, seja bem vindo(a)!</span>
+        </div>
+        <div class="flex justify-center flex-grow">
+            <div class="px-4 border-r border-black">
+                <span class="font-montserrat font-bold text-[10px] md:text-[12px] text-[#3FDB67]">100%</span> <span class="font-montserrat text-[10px] md:text-[12px] font-medium">Digital</span>
+            </div>
+            <div class="px-4 border-r border-black">
+                <span class="font-montserrat font-bold text-[10px] md:text-[12px] text-[#EE682A]">100%</span> <span class="font-montserrat text-[10px] md:text-[12px] font-medium">Pecuária</span>
+            </div>
+            <div class="px-4">
+                <span class="font-montserrat font-bold text-[10px] md:text-[12px] text-[#F3B248]">100%</span> <span class="font-montserrat text-[10px] md:text-[12px] font-medium">Com Você</span>
+            </div>
+        </div>
+        <div class="items-center justify-end flex-grow hidden md:flex">
+            <div class="px-3">
+                <i class="fab fa-facebook-square text-[#80828B] fa-lg"></i>
+            </div>
+            <div class="px-3">
+                <i class="fab fa-youtube text-[#80828B] fa-lg"></i>
+            </div>
+            <div class="pl-3">
+                <i class="fab fa-instagram text-[#80828B] fa-lg"></i>
+            </div>
+        </div>
+    </div>
+</div>

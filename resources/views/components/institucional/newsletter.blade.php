@@ -1,5 +1,5 @@
 <div class="container-fluid px-0 bg-white py-5" style="background: url('/imagens/bg-newsletter.png')" x-data="{ show: false }" x-intersect.enter="show = true">
-    <div class="w1400 mx-auto px-3 px-lg-0" x-show="show" x-transition.opacity.duration.2000ms>
+    <div class="w1200 mx-auto px-3 px-lg-0" x-show="show" x-transition.opacity.duration.2000ms>
         <div class="row align-items-center">
             <div class="col-12 col-lg-6 mb-4 mt-5 mt-md-0 flex justify-content-center justify-content-lg-start animate-in slide-in-from-left delay-300 duration-1000">
                 <img src="{{ asset('imagens/newsletter.png') }}" class="w-40 lg:w-full" style="max-width: 500px;" alt="">

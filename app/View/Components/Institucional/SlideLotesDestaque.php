@@ -3,6 +3,7 @@
 namespace App\View\Components\Institucional;
 
 use Illuminate\View\Component;
+use App\Models\Reserva;
 
 class SlideLotesDestaque extends Component
 {
@@ -13,7 +14,7 @@ class SlideLotesDestaque extends Component
      */
     public $reserva;
 
-    public function __construct($reserva)
+    public function __construct(Reserva $reserva)
     {
         //
         $this->reserva = $reserva;

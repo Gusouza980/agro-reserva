@@ -1,6 +1,6 @@
-<div x-show="mostrarCarrinho" @click.outside="mostrarCarrinho = false" class="flex flex-col fixed top-0 right-0 h-full py-5 px-3 bg-slate-200 border border-solid border-slate-400 shadow-md w-full md:w-[350px] z-50">
+<div x-show="mostrarCarrinho" x-cloak @click.outside="mostrarCarrinho = false" class="flex flex-col fixed top-0 right-0 h-full py-5 px-3 bg-slate-200 border border-solid border-slate-400 shadow-md w-full md:w-[350px] z-50">
     <i class="fas fa-times text-[#80828b] fa-lg absolute top-5 right-5 hover:scale-110 duration-300 cpointer" @click="mostrarCarrinho = false"></i>
-    <div class="text-center w-full flex flex-row">
+    <div class="flex flex-row w-full text-center">
         <div class="flex flex-row mx-auto">
             <svg class="" id="Grupo_3723" data-name="Grupo 3723" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
                 <defs>
@@ -24,14 +24,14 @@
             <h5 class="text-[20px] text-[#80828b] font-semibold mt-[14px] ml-3" style="font-family: 'Montserrat', sans-serif;">CAMINHÃO</h5>
         </div>
     </div>
-    <div class="w-full mt-5 flex flex-column">
+    <div class="flex w-full mt-5 flex-column">
         @if($carrinho)
             @foreach($carrinho->produtos as $produto)
-                <div class="flex flex-collumn border-b border-slate-400 border-solid py-3">
+                <div class="flex py-3 border-b border-solid flex-collumn border-slate-400">
                     <div class="w-1/3">
                         <img class="w-full rounded-md shadow-md" src="{{ asset($produto->lote->preview) }}" alt="">
                     </div>
-                    <div class="w-2/3 pl-2 relative">
+                    <div class="relative w-2/3 pl-2">
                         <div>
                             <span class="text-[15px] text-[#626262] font-semibold">{{ $produto->lote->nome }}</span>
                         </div>
@@ -42,11 +42,11 @@
                             <span class="text-[14px] text-[#626262] font-semibold">R${{ number_format($produto->lote->preco, 2, ",", ".") }}</span>
                         </div>
                         
-                        <i class="text-danger absolute bottom-2 right-0 fas fa-trash hover:scale-110 duration-300 cpointer"></i>
+                        <i class="absolute right-0 duration-300 text-danger bottom-2 fas fa-trash hover:scale-110 cpointer"></i>
                     </div>
                 </div>
             @endforeach
-            <div class="grid grid-cols-2 gap-x-3 mt-4">
+            <div class="grid grid-cols-2 mt-4 gap-x-3">
                 <button class="border-2 border-slate-400 text-[#80828B] py-2 w-full font-medium rounded-[30px]" @click="mostrarCarrinho = false">Continuar</button>
                 <button class="border border-[#14C656] bg-[#14C656] text-white py-2 w-full font-semibold rounded-[30px]">Finalizar</button>
             </div>

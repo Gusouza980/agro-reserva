@@ -16,13 +16,13 @@ use Illuminate\Support\Facades\Log;
 class ReservasController extends Controller
 {
 
-    public function index(Fazenda $fazenda){
+    public function index(Fazenda $fazenda = null){
         if(!Util::acesso("reservas", "consulta")){
             toastr()->error("Você não tem permissão para acessar essa página");
             return redirect()->back();
         }
-        $reservas = $fazenda->reservas;
-        return view("painel.reservas.index", ["reservas" => $reservas, "fazenda" => $fazenda]);
+        // $reservas = $fazenda->reservas;
+        return view("painel.reservas.index2", ["fazenda" => $fazenda]);
     }
 
     public function cadastrar(Request $request, Fazenda $fazenda){

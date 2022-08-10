@@ -18,6 +18,8 @@
         <div class="col-12">
             <a href="{{ route('painel.fazenda.reserva.lote.cadastro', ['reserva' => $reserva]) }}" class="btn btn-primary"
                 role="button">Novo Lote</a>
+            <a data-bs-toggle="modal" data-bs-target="#modalImport" class="btn btn-primary"
+                role="button">Importar Excel</a>
         </div>
     </div>
     <div class="row">
@@ -128,7 +130,7 @@
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
-    <div class="modal fade" id="modalReservar" tabindex="-1" role="dialog" aria-labelledby="modalReservarLabel"
+    <div class="modal fade" id="modalImport" tabindex="-1" role="dialog" aria-labelledby="modalReservarLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -137,32 +139,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('painel.raca.cadastrar') }}" method="post">
+                    <form action="{{ route('painel.fazenda.reserva.lotes.importar') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="lote_id" value="">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" name="cliente">
-                                @foreach (\App\Models\Cliente::orderBy('nome_dono', 'DESC')->get() as $cliente)
-                                    <option value="{{ $cliente->id }}">{{ $cliente->nome_dono }}</option>
-                                @endforeach
-                            </select>
-                            <label for="select-situacao">Cliente</label>
+                        <input type="hidden" name="reserva_id" value="{{ $reserva->id }}">
+                        <input type="hidden" name="fazenda_id" value="{{ $reserva->fazenda->id }}">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Selecione a Planilha de Excel</label>
+                            <input type="file" class="form-control" name="planilha" id="" placeholder="" aria-describedby="fileHelpId">
                         </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" name="assessor">
-                                <option value="0">Nenhum</option>
-                                @foreach (\App\Models\Assessor::orderBy('nome', 'DESC')->get() as $assessor)
-                                    <option value="{{ $assessor->id }}">{{ $assessor->nome }}</option>
-                                @endforeach
-                            </select>
-                            <label for="select-situacao">Assessor</label>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Parcelas</label>
-                            <input type="number" class="form-control" name="parcelas" min="0" step="1">
-                        </div>
-                        <div class="form-group text-end">
-                            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                        <div class="mb-3">
+                            <div class="d-grid gap-2">
+                                <button type="submit" name="" id="" class="btn btn-primary">Importar</button>
+                            </div>
                         </div>
                     </form>
                 </div>

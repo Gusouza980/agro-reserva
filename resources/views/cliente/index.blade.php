@@ -7,7 +7,7 @@
 @section('conteudo')
 
     <div class="w-full py-5 bg-[#F2F2F2] px-3 px-lg-0" style="min-height: 40vh;">
-        <div class="w1400 mx-auto">
+        <div class="w1200 mx-auto">
             <div class="row d-lg-none mb-3">
                 <div class="col-12 text-right">
                     <a class="btn btn-warning" href="#modalAlterarSenha">Alterar Senha</a>

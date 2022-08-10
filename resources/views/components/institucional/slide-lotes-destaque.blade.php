@@ -1,37 +1,27 @@
-<div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4 bg-preto">
-    <div class="w-full relative flex items-center justify-center">
-        <button aria-label="slide backward"
-            class="d-none d-lg-block absolute z-30 left-0 ml-10 bg-gray-600 px-3 py-2 rounded-full focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer"
-            id="prev">
-            <svg class="dark:text-white" width="8" height="14" viewBox="0 0 8 14" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </button>
-        <div class="xs:w-full lg:w-4/5 h-full mx-auto overflow-x-hidden overflow-y-hidden">
-            <div id="slider"
-                class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-center transition ease-out duration-700">
-                @php
-                    $lotes = $reserva->lotes->where("ativo", true)->where("reservado", false)->shuffle();
-                @endphp
-                @foreach($lotes as $lote)
-                    <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                        <div class="px-0 py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
-                            <div class="caixa-lote-home-imagem"
-                                style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 280px; height: 200px; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464; box-shadow: 0px 15px 22px rgba(0,0,0,0.6);">
-                                <div class="text-center justify-content-center align-items-center lote-home-hover" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 50px; background-color: rgba(232,82,29,0.85); display:none; ">
-                                    <p style="margin-top: 12px;">{{ __('messages.botoes.compre_agora') }}</p>
+<div class="relative w-full">
+    <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-lotes-destaque">
+        <div class="flex flex-nowrap">
+            @php
+                $lotes = $reserva->lotes->where("ativo", true)->shuffle();
+            @endphp
+            @foreach($lotes as $lote)
+                <div class="inline-block mx-[6px] slide-item">
+                    <div class="relative flex flex-shrink-0 w-full sm:w-auto">
+                        <div class="py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
+                            <div class="caixa-lote-home-imagem" style="width: 350px; border-radius: 15px; position: relative; overflow: hidden;">
+                                <img src="{{ asset($lote->preview) }}" class="w-full" alt="">
+                                <div class="absolute bottom-0 left-0 flex items-center justify-center invisible w-full py-2 text-center text-white transition duration-150 bg-green-500 slide-lote-destaque-botao group-hover:visible font-montserrat">
+                                    <p style="">{{ __('messages.botoes.compre_agora') }}</p>
                                 </div>
                             </div>
-                            <div class="px-4 mt-3 row align-items-center justify-content-start">
-                                <div class="caixa-lote-home-logo d-flex align-items-center justify-content-center">
+                            <div class="flex items-center justify-start w-full mt-3">
+                                <div class="flex items-center justify-center caixa-lote-home-logo">
                                     <img src="{{ asset($lote->fazenda->logo) }}" alt="">
                                 </div>
                                 <div class="ml-4">
-                                    <div class="d-flex justify-content-start align-items-center">
+                                    <div class="flex items-center justify-start">
                                         <div>
-                                            <button class="badge-lote-home px-2">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
+                                            <button class="px-2 badge-lote-home">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
                                         </div>
                                         @if($lote->registro)
                                             <div class="ml-3 lote-home-rgd">
@@ -39,48 +29,74 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="text-left caixa-lote-home-text">
+                                    <div class="mt-2 text-left caixa-lote-home-text">
                                         <span>@if($lote->preco > 0) {{ $lote->parcelas . "x de R$" . number_format($lote->preco / $lote->parcelas, 2, ",", ".")  }}  @else {{ $lote->reserva->desconto }}% de desconto no<br>pagamento à vista @endif</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
-        <button aria-label="slide forward"
-            class="d-none d-lg-block absolute px-3 py-2 rounded-full z-30 right-0 mr-10 focus:outline-none bg-gray-600 hover:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
-            id="next">
-            <svg class="dark:text-white" width="8" height="14" viewBox="0 0 8 14" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </button>
+        <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-lotes-destaque-left" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); left: -50px;" alt="">
+        <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-lotes-destaque-right" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); right: -50px;" alt="">
     </div>
 </div>
 
 
 @push("scripts")
 
-<script>
-    let defaultTransform = 0;
-    function goNext() {
-        defaultTransform = defaultTransform - 398;
-        var slider = document.getElementById("slider");
-        if (Math.abs(defaultTransform) >= slider.scrollWidth / 1.7) defaultTransform = 0;
-        slider.style.transform = "translateX(" + defaultTransform + "px)";
+<style>
+    .hide-scroll-bar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
-    next.addEventListener("click", goNext);
-    function goPrev() {
-        var slider = document.getElementById("slider");
-        if (Math.abs(defaultTransform) === 0) defaultTransform = 0;
-        else defaultTransform = defaultTransform + 398;
-        slider.style.transform = "translateX(" + defaultTransform + "px)";
-    }
-    prev.addEventListener("click", goPrev);
 
+    .hide-scroll-bar::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+
+        var item_width = 362;
+
+        function updateButtons(){
+            var min = 0;
+            var max = $("#slide-lotes-destaque")[0].scrollWidth - $("#slide-lotes-destaque")[0].clientWidth;
+            if($("#slide-lotes-destaque").scrollLeft() == min){
+                $("#slide-lotes-destaque-left").attr("disabled", "disabled");
+                $("#slide-lotes-destaque-left").css("opacity", "0.4")
+                $("#slide-lotes-destaque-right").removeAttr("disabled"); 
+                $("#slide-lotes-destaque-right").css("opacity", "1")       
+            }else if($("#slide-lotes-destaque").scrollLeft() >= (max - 1)){
+                $("#slide-lotes-destaque-right").attr("disabled", "disabled");
+                $("#slide-lotes-destaque-right").css("opacity", "0.4")
+                $("#slide-lotes-destaque-left").removeAttr("disabled");
+                $("#slide-lotes-destaque-left").css("opacity", "1")
+            }else{
+                $("#slide-lotes-destaque-left").removeAttr("disabled");
+                $("#slide-lotes-destaque-left").css("opacity", "1")
+                $("#slide-lotes-destaque-right").removeAttr("disabled");
+                $("#slide-lotes-destaque-right").css("opacity", "1")
+            }
+        }
+
+        updateButtons();
+
+        $("#slide-lotes-destaque-left").click(function(){
+            $("#slide-lotes-destaque").animate({scrollLeft: $("#slide-lotes-destaque").scrollLeft() - item_width}, function(){
+                updateButtons();
+            });
+        });
+
+        $("#slide-lotes-destaque-right").click(function(){
+            $("#slide-lotes-destaque").animate({scrollLeft: $("#slide-lotes-destaque").scrollLeft() + item_width}, function(){
+                updateButtons();
+            });
+        });
+    })
 </script>
 
 @endpush

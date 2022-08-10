@@ -11,6 +11,8 @@ use App\Models\Reserva;
 use App\Models\Chave;
 use App\Classes\Util;
 use Illuminate\Support\Facades\Log;
+use App\Imports\LotesImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LotesController extends Controller
 {
@@ -264,5 +266,20 @@ class LotesController extends Controller
             $lote->save();
             return response()->json(true);
         }
+    }
+
+    public function importar(Request $request){
+        if($request->file("planilha")){
+            $caminho = $request->file('planilha')->store(
+                'tmp_planilha/', 'local'
+            );
+        }
+
+        Excel::import(new LotesImport($request->reserva_id, $request->fazenda_id), $caminho);
+
+        Storage::delete($caminho);
+
+        toastr()->success("Lotes importados com sucesso!");
+        return redirect()->back();
     }
 }

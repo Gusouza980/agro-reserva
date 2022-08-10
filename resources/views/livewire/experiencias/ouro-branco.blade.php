@@ -9,7 +9,7 @@
             @endif
         </div>
     </div>
-    <div class="mx-auto mt-5 w1400">
+    <div class="mx-auto mt-5 w1200">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-9 justify-content-center">
             @for($i = 1; $i < $take; $i++)
                 <div class="px-2 md:px-0 px-md-0">

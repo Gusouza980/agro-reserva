@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;500;600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;600;700&display=swap');
 
 @font-face {
     font-family: Gobold Regular;
@@ -103,15 +104,19 @@ body{
     max-width: 800px;
 }
 
+.w1000{
+    width: 100%;
+    max-width: 1000px;
+}
+
 .w1200{
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto !important;
 }
 
-.w1400{
+.w1500{
     width: 100%;
-    max-width: 1400px;
+    max-width: 1500px;
 }
 
 /* BUTTONS */
@@ -2232,6 +2237,10 @@ label {
     color: white;
 }
 
+.slide-item:hover .slide-lote-destaque-botao{
+    visibility: visible !important;
+}
+
 .lote-home-texto-destaque > span{
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
@@ -2419,6 +2428,10 @@ label {
     content: url('/imagens/slide-lotes-arrow-right.png');
 }
 
+#slide-reservas-ativas .slide-item{
+    width: 300px;
+}
+
 #slide-reservas-ativas .slick-prev:before{
     content: ' ';
     display: inline-block;
@@ -2521,6 +2534,10 @@ label {
 
 .font-montserrat {
     font-family: 'Montserrat', sans-serif;
+}
+
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
 }
 
 .text-cinza-escuro{

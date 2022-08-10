@@ -1,5 +1,5 @@
-<nav class="bg-[#F7F7F7] border-gray-200 px-2 sm:px-4 py-3 sticky top-0 z-30">
-    <div class="flex flex-wrap items-center justify-between mx-auto w1400 align-items-center">
+<nav class="bg-[#FCFCFC] border-gray-200 px-2 sm:px-4 py-3 sticky top-0 z-30">
+    <div class="flex flex-wrap items-center justify-between mx-auto w1200 align-items-center">
         <a href="{{ route('index') }}" class="flex items-center">
             <img src="{{ asset('imagens/logo_agroreserva_leite_escura.svg') }}" class="h-10 mr-3 sm:h-14" alt="Flowbite Logo" />
         </a>
@@ -71,7 +71,7 @@
 
                 
                 {{-- BOTÃO MEU CARRINHO --}}
-                <div class="mr-4 ml-md-0 text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;" @click="mostrarCarrinho = true">
+                <div class="ml-md-0 text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;" @click="mostrarCarrinho = true">
                     <svg class="mx-auto" id="Grupo_3723" data-name="Grupo 3723" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36.992" height="37" viewBox="0 0 36.992 37">
                         <defs>
                           <clipPath id="clip-path">

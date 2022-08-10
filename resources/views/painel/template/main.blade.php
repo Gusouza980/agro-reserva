@@ -39,7 +39,7 @@
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
                             <a href="{{route('painel.index')}}" class="logo logo-light">
-                                <span class="logo-sm text-white">
+                                <span class="text-white logo-sm">
                                     <i class="fas fa-clock fa-2x"></i>
                                 </span>
                                 <span class="logo-lg">
@@ -48,7 +48,7 @@
                             </a>
                         </div>
 
-                        <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
+                        <button type="button" class="px-3 btn btn-sm font-size-16 header-item waves-effect" id="vertical-menu-btn">
                             <i class="fa fa-fw fa-bars"></i>
                         </button>
 
@@ -62,7 +62,7 @@
                                 <i class="bx bx-bell bx-tada"></i>
                                 <span class="badge bg-danger rounded-pill">3</span>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                            <div class="p-0 dropdown-menu dropdown-menu-lg dropdown-menu-end"
                                 aria-labelledby="page-header-notifications-dropdown">
                                 <div class="p-3">
                                     <div class="row align-items-center">
@@ -94,7 +94,7 @@
 
                                 </div>
                                 <div class="p-2 border-top d-grid">
-                                    <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+                                    <a class="text-center btn btn-sm btn-link font-size-14" href="javascript:void(0)">
                                         <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">View More..</span> 
                                     </a>
                                 </div>
@@ -109,9 +109,9 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <a class="dropdown-item cpointer" data-bs-toggle="modal" data-bs-target="#modalAlteraSenha"><i class="bx bx-key font-size-16 align-middle me-1"></i> <span key="t-profile">Alterar Senha</span></a>
+                                <a class="dropdown-item cpointer" data-bs-toggle="modal" data-bs-target="#modalAlteraSenha"><i class="align-middle bx bx-key font-size-16 me-1"></i> <span key="t-profile">Alterar Senha</span></a>
                                 <div class="dropdown-divider"></div> 
-                                <a class="dropdown-item text-danger" href="{{route('painel.sair')}}"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Sair</span></a>
+                                <a class="dropdown-item text-danger" href="{{route('painel.sair')}}"><i class="align-middle bx bx-power-off font-size-16 me-1 text-danger"></i> <span key="t-logout">Sair</span></a>
                             </div>
                         </div>
 
@@ -180,7 +180,7 @@
                                         <span key="t-dashboards">Fazendas</span>
                                     </a>
                                     <ul class="sub-menu" aria-expanded="false">
-                                        {{-- <li><a href="{{route('painel.fazenda.cadastro')}}" key="t-saas">Cadastro</a></li> --}}
+                                        <li><a href="{{route('painel.reservas')}}" key="t-saas">Reservas</a></li>
                                         <li><a href="{{ route('painel.fazendas') }}" key="t-saas">Consultar</a></li>
                                     </ul>
                                 </li>
@@ -374,18 +374,18 @@
                         <form action="{{ route('painel.usuarios.senha.alterar') }}"
                             method="post">
                             @csrf
-                            <div class="form-group mb-3">
+                            <div class="mb-3 form-group">
                                 <label for="senha_antiga">Senha Antiga</label>
                                 <input type="password" class="form-control" name="senha_antiga"
                                     value="" required>
                             </div>
-                            <div class="form-group mb-3">
+                            <div class="mb-3 form-group">
                                 <label for="senha_nova">Senha Nova</label>
                                 <input type="password" class="form-control" name="senha_nova"
                                     value="" required>
                             </div>
                             <div class="form-group text-end">
-                                <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                                <button type="submit" class="mt-3 btn btn-primary">Salvar</button>
                             </div>
                         </form>
                     </div>
@@ -407,6 +407,15 @@
         @toastr_js
         @toastr_render
         @livewireScripts
+        <script>
+            window.addEventListener('notificaToastr', event => {
+                if (event.detail.tipo == 'success') {
+                    toastr.success(event.detail.mensagem);
+                } else if (event.detail.tipo == 'error') {
+                    toastr.error(event.detail.mensagem);
+                }
+            });
+        </script>
         @yield("scripts")
         @stack("scripts")
     </body>

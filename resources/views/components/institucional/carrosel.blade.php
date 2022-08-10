@@ -4,12 +4,16 @@
             @php
                 $cont = 0;
             @endphp
-            <div class="carousel-item relative active float-left w-full">
+            {{-- <div class="carousel-item relative active float-left w-full">
                 <img src="{{ asset('imagens/banner1.jpg') }}" class="block w-full" alt="..." />
-            </div>
+            </div> --}}
             @foreach ($banners as $banner)
-                <div class="carousel-item relative float-left w-full">
-                    <img src="{{ asset($banner->caminho) }}" class="block w-full" alt="..." />
+                <div class="carousel-item @if($cont == 0) active @endif relative float-left w-full">
+                    @if($agent->isMobile())
+                        <img src="{{ asset($banner->caminho_mobile) }}" class="block w-full" alt="..." />
+                    @else
+                        <img src="{{ asset($banner->caminho) }}" class="block w-full" alt="..." />
+                    @endif
                 </div>
                 @php
                     $cont++;
@@ -20,13 +24,13 @@
             class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
             type="button" data-bs-target="#carouselBannersHome" data-bs-slide="prev">
             <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span class="visually-hidden">Anterior</span>
         </button>
         <button
             class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
             type="button" data-bs-target="#carouselBannersHome" data-bs-slide="next">
             <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span class="visually-hidden">Próximo</span>
         </button>
     </div>
 </div>
