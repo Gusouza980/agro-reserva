@@ -21,7 +21,7 @@ class CreateReservaFormasPagamentoRegrasTable extends Migration
             $table->unsignedTinyInteger("posicao");
             $table->timestamps();
 
-            $table->foreign('reserva_formas_pagamento_id')->references('id')->on('reserva_formas_pagamentos')->on("reserva_regras_pagamento")->onDelete('cascade');
+            $table->foreign('reserva_formas_pagamento_id', 'reserva_regras_pagamento')->references('id')->on('reserva_formas_pagamentos')->onDelete('cascade');
         });
     }
 
