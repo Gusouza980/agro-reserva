@@ -3825,6 +3825,9 @@ body[dir="rtl"] .checkbox:checked,
 .max-w-\[250px\] {
     max-width: 250px
 }
+.max-w-\[150\] {
+    max-width: 150
+}
 .flex-auto {
     flex: 1 1 auto
 }
@@ -4001,6 +4004,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .overflow-hidden {
     overflow: hidden
+}
+.overflow-y-visible {
+    overflow-y: visible
 }
 .overflow-x-scroll {
     overflow-x: scroll
@@ -4736,6 +4742,18 @@ body[dir="rtl"] .checkbox:checked,
 }
 .blur {
     --tw-blur: blur(8px);
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+.grayscale {
+    --tw-grayscale: grayscale(100%);
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+.grayscale-0 {
+    --tw-grayscale: grayscale(0);
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+.invert {
+    --tw-invert: invert(100%);
     filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 .filter {

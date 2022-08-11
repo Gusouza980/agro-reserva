@@ -22,11 +22,11 @@
 
 <x-institucional.navegue-racas></x-institucional.navegue-racas>
 
-<x-institucional.slide_lotes_visitados></x-institucional.slide_lotes_visitados>
-
-<x-institucional.experiencias></x-institucional.experiencias>
+{{-- <x-institucional.slide_lotes_visitados></x-institucional.slide_lotes_visitados> --}}
 
 <x-institucional.depoimentos></x-institucional.depoimentos>
+
+<x-institucional.experiencias></x-institucional.experiencias>
 
 <x-institucional.newsletter></x-institucional.newsletter>
 

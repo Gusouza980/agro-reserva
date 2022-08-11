@@ -11,17 +11,17 @@
                 <div class="mx-auto md:mx-0 mx-md-0 text-center sm:text-left text-sm-left font-montserrat text-[16px] text-[#D7D8E4]">
                     <ul>
                         <li>Início</li>
-                        <li class="mt-[20px]">Cadastre-se</li>
-                        <li class="mt-[20px]">Minha Conta</li>
-                        <li class="mt-[20px]">Reservas Abertas</li>
+                        <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Cadastre-se</li>
+                        <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Minha Conta</li>
+                        <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Reservas Abertas</li>
                     </ul>
                 </div>
                 <div class="mx-auto text-center sm:text-left text-sm-left mt-4 sm:mt-0 mt-sm-0 font-montserrat text-[16px] text-[#D7D8E4]">
                     <ul>
                         <li>Navegue por raças</li>
-                        <li class="mt-[20px]">Novidades (Blog)</li>
-                        <li class="mt-[20px]">Quem Somos</li>
-                        <li class="mt-[20px]">Reservas Finalizadas</li>
+                        <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Novidades (Blog)</li>
+                        <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Quem Somos</li>
+                        <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Reservas Finalizadas</li>
                     </ul>
                 </div>
             </div>
@@ -33,14 +33,14 @@
             <div class="w-full grid grid-cols-1 sm:grid-cols-2 mt-[25px]">
                 <div class="mx-auto sm:mx-0 mx-sm-0 text-center sm:text-left text-sm-left font-montserrat text-[16px] text-[#D7D8E4]">
                     <ul>
-                        <li>Termos e Condições</li>
-                        <li class="mt-[20px]">Política e Privacidade</li>
+                        <li class="hover:!text-[#F5B01F] cpointer">Termos e Condições</li>
+                        <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Política e Privacidade</li>
                     </ul>
                 </div>
                 <div class="mx-auto mx-sm-0 text-center sm:text-left text-sm-left font-montserrat text-[16px] text-[#D7D8E4]">
                     <ul>
-                        <li class="mt-[20px] sm:mt-0">Precisa de Ajuda</li>
-                        <li class="mt-[20px]">Falar com os assessores</li>
+                        <li class="mt-[20px] sm:mt-0 hover:!text-[#F5B01F] cpointer">Precisa de Ajuda</li>
+                        <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Falar com os assessores</li>
                     </ul>
                 </div>
             </div>
