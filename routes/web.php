@@ -98,6 +98,8 @@ Route::middleware(['popup', 'cookie'])->group(function () {
     Route::post('/cadastro/login', [\App\Http\Controllers\ClienteController::class, 'login_cadastro'])->name("cadastro.login");
     Route::get('/cadastro/fazenda', [\App\Http\Controllers\SiteController::class, 'cadastro_fazenda'])->name("cadastro.fazenda");
     Route::get('/cadastro/passos', [\App\Http\Controllers\SiteController::class, 'cadastro_passos'])->name("cadastro.passos");
+    Route::get('/pesquisa', [\App\Http\Controllers\SiteController::class, 'pesquisa'])->name("pesquisa");
+    Route::get('/raca/{slug}', [\App\Http\Controllers\SiteController::class, 'raca'])->name("raca");
     Route::get('/fazenda/{fazenda}/conheca/{reserva}/', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca");
     Route::get('/fazenda/{fazenda}/conheca/', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.conheca.antigo");
     Route::get('/fazenda/{fazenda}/conheca/lotes', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.conheca.lotes.antigo");

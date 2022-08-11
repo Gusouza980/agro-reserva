@@ -8,7 +8,7 @@
         <div class="w-full px-0">
             <div class="slick" id="slide-navegue-racas">
                 @foreach(\App\Models\Raca::where('ativo', true)->orderBy("nome")->get() as $raca)
-                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;">
+                    <div class="mx-2 cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;" onclick="window.location.href = '{{ route('raca', ['slug' => $raca->slug]) }}'">
                         <img src="{{ asset($raca->imagem) }}" class="w-100" alt="">
                         <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                             {{ $raca->nome }}

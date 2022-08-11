@@ -1,52 +1,63 @@
-<div class="relative w-full">
-    <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-lotes-destaque">
-        <div class="flex flex-nowrap">
-            @php
-                $lotes = $reserva->lotes->where("ativo", true)->shuffle();
-            @endphp
-            @foreach($lotes as $lote)
-                <div class="inline-block mx-[6px] slide-item">
-                    <div class="relative flex flex-shrink-0 w-full sm:w-auto">
-                        <div class="py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
-                            <div class="caixa-lote-home-imagem" style="width: 350px; border-radius: 15px; position: relative; overflow: hidden;">
-                                <img src="{{ asset($lote->preview) }}" class="w-full" alt="">
-                                <div class="absolute bottom-0 left-0 flex items-center justify-center invisible w-full py-2 text-center text-white transition duration-150 bg-green-500 slide-lote-destaque-botao group-hover:visible font-montserrat">
-                                    <p style="">{{ __('messages.botoes.compre_agora') }}</p>
+<div class="w-full px-0 py-5 bg-white" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative;">
+    <div class="relative mx-auto w1200">
+        <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-lotes-destaque" x-show="show" x-transition.opacity.duration.3000ms>
+            <div class="flex flex-nowrap space-x-[6px]">
+                @foreach ($lotes as $lote)
+                    <div class="inline-block slide-item py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
+                        <div class="caixa-lote-home-imagem"
+                            style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 350px; height: 250px; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464;">
+                            <div class="text-center justify-content-center align-items-center lote-home-hover">
+                                <p style="margin-top: 12px;">{{ __('messages.botoes.compre_agora') }}</p>
+                            </div>
+                        </div>
+                        <div class="px-4 mt-3 row align-items-center justify-content-start">
+                            <div class="caixa-lote-home-logo d-flex align-items-center justify-content-center">
+                                <img src="{{ asset($lote->fazenda->logo) }}" alt="">
+                            </div>
+                            <div class="ml-4">
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <div>
+                                        <button class="px-2 badge-lote-home">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
+                                    </div>
+                                    @if($lote->registro)
+                                        <div class="ml-3 lote-home-rgd">
+                                            RGD: {{$lote->registro}}
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="mt-2 text-left caixa-lote-home-text">
+                                    <span>@if($lote->preco > 0) {{ $lote->parcelas . "x de R$" . number_format($lote->preco / $lote->parcelas, 2, ",", ".")  }}  @else {{ $lote->reserva->desconto }}% de desconto no<br>pagamento à vista @endif</span>
                                 </div>
                             </div>
-                            <div class="flex items-center justify-start w-full mt-3">
-                                <div class="flex items-center justify-center caixa-lote-home-logo">
-                                    <img src="{{ asset($lote->fazenda->logo) }}" alt="">
-                                </div>
-                                <div class="ml-4">
-                                    <div class="flex items-center justify-start">
-                                        <div>
-                                            <button class="px-2 badge-lote-home">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
-                                        </div>
-                                        @if($lote->registro)
-                                            <div class="ml-3 lote-home-rgd">
-                                                RGD: {{$lote->registro}}
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="mt-2 text-left caixa-lote-home-text">
-                                        <span>@if($lote->preco > 0) {{ $lote->parcelas . "x de R$" . number_format($lote->preco / $lote->parcelas, 2, ",", ".")  }}  @else {{ $lote->reserva->desconto }}% de desconto no<br>pagamento à vista @endif</span>
-                                    </div>
-                                </div>
+                            
+                        </div>
+                    </div>
+                @endforeach
+                {{-- <div class="inline-block mx-[6px] slide-item" style="border-radius: 15px; overflow: hidden; position: relative;">
+                    <img src="{{ asset('imagens/stories.jpg') }}" class="w-100" alt="">
+                    <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
+                        <div class="text-center">
+                            <div>
+                                <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
+                            </div>
+                            <div class="mt-2 mb-3">
+                                <h3 style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
+                            </div>
+                            <div>
+                                <a name="" id="" class="px-4 py-1 btn-laranja" href="#" role="button">Ver Reserva</a>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                </div> --}}
+            </div>
         </div>
         <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-lotes-destaque-left" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); left: -50px;" alt="">
         <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-lotes-destaque-right" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); right: -50px;" alt="">
     </div>
+    
 </div>
 
-
 @push("scripts")
-
 <style>
     .hide-scroll-bar {
         -ms-overflow-style: none;
@@ -60,7 +71,7 @@
 <script>
     $(document).ready(function(){
 
-        var item_width = 362;
+        var item_width = 350;
 
         function updateButtons(){
             var min = 0;
@@ -98,5 +109,4 @@
         });
     })
 </script>
-
 @endpush

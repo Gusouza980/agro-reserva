@@ -4,7 +4,6 @@ namespace App\View\Components\Institucional;
 
 use Illuminate\View\Component;
 use App\Models\Lote;
-use Jenssegers\Agent\Agent;
 
 class SlideLotesVisitados extends Component
 {
@@ -22,8 +21,6 @@ class SlideLotesVisitados extends Component
         $this->lotes = Lote::where("ativo", true)->where("reservado", false)->whereHas("reserva", function ($q) {
             $q->where("reservas.ativo", true)->where("aberto", true)->where("encerrada", false);
         })->orderBy("visitas")->take(10)->get();
-        $agent = new Agent;
-        $this->mobile = $agent->isMobile();
     }
 
     /**

@@ -1189,7 +1189,7 @@
                                 maxlength="9" minlength="9" required>
                         </div>
                         <div class="w-2/3 pl-3 mb-3">
-                            <label class="form-label" for="">Endereço Comercial</label>
+                            <label class="form-label" for="">Endereço Residencial</label>
                             <input type="text" class="w-full form-input-text" wire:model.defer="rua"
                                 maxlength="50" required>
                         </div>

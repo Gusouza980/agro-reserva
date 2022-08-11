@@ -1,32 +1,49 @@
 <div class="px-0 bg-[#F5F5F5] py-5">
     <div class="grid grid-cols-1 gap-4 px-3 mx-auto md:grid-cols-2 align-items-center w1200 md:px-0">
-        <div class="relative flex w-full mt-4 mr-3 text-gray-400 align-items-center mt-md-0">
+        <div class="relative flex flex-col w-full mr-3 text-gray-400 mt-md-0">
+            <label for="" class="font-montserrat text-[12px] text-gray-400">Pesquisar</label>
             <input class="w-full pl-3 pr-10 mx-auto text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400"
               type="text" name="search" placeholder="Pesquise por nome, número do lote ou registro" wire:model.debounce.400ms="pesquisa_lote"></input>
-            <i class="fas fa-search text-grey-400 absolute right-[10px]"></i>
+            <i class="fas fa-search text-grey-400 absolute bottom-[10px] right-[10px]"></i>
         </div>
-        <div class="flex w-full justify-content-center justify-content-md-start">
-            <div class="">
-                <label class="inline-flex items-center mb-0 text-gray-400">
-                    <input type="radio" class="mr-1 text-gray-400 border-gray-300 rounded shadow-sm form-radio focus:border-gray-400 focus:ring focus:ring-offset-0 focus:ring-gray-400 focus:ring-opacity-50" name="filtro_disponibilidade" wire:model="filtro_disponibilidade" value="-1" checked>
-                    Todos
-                </label>
+        <div class="flex flex-wrap w-full md:space-x-4 justify-between md:justify-start">
+            <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
+                <label for="" class="font-montserrat text-[12px] text-gray-400">Disponibilidade</label>
+                <select name="" class="text-sm bg-white border px-4 border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_disponibilidade">
+                    <option value="-1"> Todos</option>
+                    <option value="0"> Disponíveis</option>
+                    <option value="1"> Vendidos</option>
+                </select>
             </div>
-            <div class="ml-3">
-                <label class="inline-flex items-center mb-0 text-gray-400">
-                    <input type="radio" class="mr-1 text-gray-400 border-gray-300 rounded shadow-sm form-radio focus:border-gray-400 focus:ring focus:ring-offset-0 focus:ring-gray-400 focus:ring-opacity-50" name="filtro_disponibilidade" wire:model="filtro_disponibilidade" value="0" checked>
-                    Disponíveis
-                </label>
-            </div>
-            <div class="ml-3">
-                <label class="inline-flex items-center mb-0 text-gray-400">
-                    <input type="radio" class="mr-1 text-gray-400 border-gray-300 rounded shadow-sm form-radio focus:border-gray-400 focus:ring focus:ring-offset-0 focus:ring-gray-400 focus:ring-opacity-50" name="filtro_disponibilidade" wire:model="filtro_disponibilidade" value="1" checked>
-                    Vendidos
-                </label>
+            @if(!$pagina_raca)
+                <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
+                    <label for="" class="font-montserrat text-[12px] text-gray-400">Raça</label>
+                    <select name="" class="text-sm bg-white border px-4 border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_raca">
+                        <option value="-1">Todas</option>
+                        @foreach(\App\Models\Raca::orderBy("nome", "ASC")->get() as $raca)
+                            <option value="{{ $raca->id }}">{{ $raca->nome }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            @endif
+            <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
+                <label for="" class="font-montserrat text-[12px] text-gray-400">Sexo</label>
+                <select name="" class="text-sm bg-white border px-4 border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_sexo">
+                    <option value="-1">Todos</option>
+                    <option value="Fêmea">Fêmea</option>
+                    <option value="Macho">Macho</option>
+                </select>
             </div>
         </div>
     </div>
     <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[80px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
+        @if($reserva)
+            <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 px-3 py-3 rounded-[15px] bg-white">
+                <div class="w-full bg-black flex items-center justify-center h-full px-3">
+                    <img src="{{ asset($reserva->fazenda->logo) }}" class="w-full" alt="">
+                </div>
+            </div>
+        @endif
         @foreach($lotes as $lote)
             <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 px-3 py-3 rounded-[15px] bg-white">
                 <div>
@@ -45,7 +62,15 @@
                             <span class="ml-3 text-[#626262] font-medium text-[15px]">RGD: {{ $lote->registro }}</span>
                         </div>
                     </div>
-                    <div class="mt-3">
+                    <div class="mt-3 relative">
+                        <div class="absolute top-[-25px] right-0">
+                            <svg class="fill-pink-500" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gender-female" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5z"/>
+                            </svg>
+                            {{-- <svg class="fill-blue-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gender-male" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2H9.5zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+                            </svg> --}}
+                        </div>
                         <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
                             {{-- @if($lote->gpta)
                                 <div class="">
@@ -78,6 +103,20 @@
             </div>
         @endforeach
     </div>    
+    @if($lotes->count() == 0)
+        <div class="w1200 mx-auto mb-5">
+            <div class="alert alert-warning shadow-lg">
+                <div>
+                    @if(!$pagina_raca)
+                        <span>Desculpe, não temos nenhum lote que corresponde a sua pesquisa!</span>
+                    @else
+                        <span>Desculpe, não temos nenhum lote dessa raça disponível no momento. Mas calma lá, que tal se você ajudasse a mudar isso ? Clique aqui e venda com a gente.</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+    @endif
+    <hr class="mt-3">
 </div>
 
 @push("styles")

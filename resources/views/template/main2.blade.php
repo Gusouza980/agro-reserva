@@ -19,9 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1.6" />
-    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/aos.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/floating-wpp.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" /> --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
     {{-- <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" /> --}}
     @toastr_css

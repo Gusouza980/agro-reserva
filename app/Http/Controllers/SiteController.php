@@ -7,6 +7,7 @@ use App\Models\Fazenda;
 use App\Models\Reserva;
 use App\Models\Cliente;
 use App\Models\Lote;
+use App\Models\Raca;
 use App\Models\Embriao;
 use App\Models\Visita;
 use App\Models\Carrinho;
@@ -124,6 +125,16 @@ class SiteController extends Controller
         }
         $lotes = $reserva->lotes->where('ativo', true)->where('membro_pacote', false);
         return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "popup_institucional" => $popup_institucional, "lotes" => $lotes, "nome_pagina" => "Lotes"]);
+    }
+
+    public function pesquisa(Request $request){
+        $pesquisa = $request->pesquisa;
+        return view("pesquisa", ["pesquisa" => $pesquisa]);
+    }
+
+    public function raca($slug){
+        $raca = Raca::where("slug", $slug)->first();
+        return view("raca", ["raca" => $raca]);
     }
 
     public function lotes2($slug, Reserva $reserva){

@@ -12,7 +12,9 @@
 
 <x-institucional.highlights></x-institucional.highlights>
 
-@livewire('slide-lotes-destaque')
+<x-institucional.slide-lotes-destaque></x-institucional.slide-lotes-destaque>
+
+{{-- @livewire('slide-lotes-destaque') --}}
 
 @livewire('institucional.slide-reservas-ativas')
 
