@@ -204,39 +204,14 @@
             <div class="flex-1 px-[25px] py-[25px] border-2 border-[#D7D7D7] rounded-[15px]" x-data="{ open: false }">
                 <div class="flex items-center justify-center w-full space-x-6">
                     <div class="">
-                        <img src="{{ asset('imagens/caminhao_frete_lote.svg') }}" alt="">
+                        <img src="{{ asset('imagens/caminhao_frete_lote.svg') }}" width="70" alt="">
                     </div>
                     <div class="">
-                        <span class="font-montserrat font-medium text-[30px] text-[#FEAF2A]">FRETE E<br>RETIRADA</span>
+                        <span class="font-gobold font-medium text-[30px] text-[#FEAF2A]">FRETE E<br>RETIRADA</span>
                     </div>
                 </div>
                 <div class="w-full">
-                    <div x-show="open" x-cloak class="w-full border-t border-[#D7D7D7] mt-[35px] pt-3" x-transition:enter="duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-                    x-transition:leave="duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                        <p>
-                            <b>FRETE</b>
-                        </p>
-                        <p>
-                            FRETE POR CONTA DO COMPRADOR
-                        </p>
-                    </div>
-                </div>
-                <div class="w-full mt-[35px] text-center font-montserrat text-[#80828B] font-medium text-[18px]">
-                    <span x-show="!open" class="cpointer" @click="open = true;">Ver mais <i class="ml-2 fas fa-chevron-down"></i></span>
-                    <span x-show="open" x-cloak class="cpointer" @click="open = false;">Ver menos <i class="ml-2 fas fa-chevron-up"></i></span>
-                </div>
-            </div>
-            <div class="flex-1 px-[25px] py-[25px] border-2 border-[#D7D7D7] rounded-[15px]" x-data="{ open: false }">
-                <div class="flex items-center justify-center w-full space-x-4 border border-orange-600">
-                    <div class="">
-                        <img src="{{ asset('imagens/pagamento_lote.svg') }}" alt="">
-                    </div>
-                    <div class="">
-                        <span class="font-montserrat font-medium text-[30px] text-[#FEAF2A]">PAGAMENTOS<br>E CONDIÇÕES</span>
-                    </div>
-                </div>
-                <div class="w-full">
-                    <div x-show="open" x-cloak class="w-full border-t border-[#D7D7D7] mt-[35px] pt-3" x-transition:enter="duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                    <div x-show="open" x-cloak class="w-full border-t border-[#D7D7D7] mt-[35px] pt-3 font-montserrat" x-transition:enter="duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                     x-transition:leave="duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
                         <p>
                             <b>FRETE</b>
@@ -254,14 +229,39 @@
             <div class="flex-1 px-[25px] py-[25px] border-2 border-[#D7D7D7] rounded-[15px]" x-data="{ open: false }">
                 <div class="flex items-center justify-center w-full space-x-4">
                     <div class="">
-                        <img src="{{ asset('imagens/seguranca_lote.svg') }}" alt="">
+                        <img src="{{ asset('imagens/pagamento_lote.svg') }}" width="70" alt="">
                     </div>
                     <div class="">
-                        <span class="font-montserrat font-medium text-[30px] text-[#FEAF2A]">SEGURANÇA E<br>PRIVACIDADE</span>
+                        <span class="font-gobold font-medium text-[30px] text-[#FEAF2A]">PAGAMENTOS<br>E CONDIÇÕES</span>
                     </div>
                 </div>
                 <div class="w-full">
-                    <div x-show="open" x-cloak class="w-full border-t border-[#D7D7D7] mt-[35px] pt-3" x-transition:enter="duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                    <div x-show="open" x-cloak class="w-full border-t border-[#D7D7D7] mt-[35px] pt-3 font-montserrat" x-transition:enter="duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                    x-transition:leave="duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+                        <p>
+                            <b>FRETE</b>
+                        </p>
+                        <p>
+                            FRETE POR CONTA DO COMPRADOR
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full mt-[35px] text-center font-montserrat text-[#80828B] font-medium text-[18px]">
+                    <span x-show="!open" class="cpointer" @click="open = true;">Ver mais <i class="ml-2 fas fa-chevron-down"></i></span>
+                    <span x-show="open" x-cloak class="cpointer" @click="open = false;">Ver menos <i class="ml-2 fas fa-chevron-up"></i></span>
+                </div>
+            </div>
+            <div class="flex-1 px-[25px] py-[25px] border-2 border-[#D7D7D7] rounded-[15px]" x-data="{ open: false }">
+                <div class="flex items-center justify-center w-full space-x-4">
+                    <div class="">
+                        <img src="{{ asset('imagens/seguranca_lote.svg') }}" width="70" alt="">
+                    </div>
+                    <div class="">
+                        <span class="font-gobold font-medium text-[30px] text-[#FEAF2A]">SEGURANÇA E<br>PRIVACIDADE</span>
+                    </div>
+                </div>
+                <div class="w-full">
+                    <div x-show="open" x-cloak class="w-full border-t border-[#D7D7D7] mt-[35px] pt-3 font-montserrat" x-transition:enter="duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                     x-transition:leave="duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
                         <p>
                             <b>FRETE</b>

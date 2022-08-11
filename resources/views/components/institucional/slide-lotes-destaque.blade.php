@@ -1,4 +1,4 @@
-<div class="w-full px-0 py-5 bg-white" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative;">
+<div class="w-full px-0 py-5" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative;">
     <div class="w-1200 mx-auto">
         <div class="w-full justify-center items-center flex space-x-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="max-w-[150px]" xmlns:xlink="http://www.w3.org/1999/xlink" width="229" height="169" viewBox="0 0 229 169">
