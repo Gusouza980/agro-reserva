@@ -1,5 +1,5 @@
 <div class="w-full relative flex justify-center" x-data="{ show: false }" x-intersect.enter="show = true">
-    <div class="absolute h-[400px] md:h-[300px] flex justify-center items-center -top-[400px] md:-top-[300px] w1500 mx-auto px-6 md:px-[100px] py-[40px] bg-[#41434E] rounded-[50px]" style="box-shadow: 0 12 22 rgba(0,0,0,0.2)" x-show="show" x-transition.opacity.duration.2000ms>
+    <div class="absolute h-[400px] md:h-[300px] flex justify-center items-center -top-[400px] md:-top-[300px] w1500 mx-auto px-6 md:px-[100px] py-[40px] bg-[#41434E] rounded-[50px]" style="box-shadow: 0px 12px 22px rgba(0,0,0,0.2)" x-show="show" x-transition.opacity.duration.2000ms>
         <div class="w-full items-center justify-center flex flex-wrap md:flex-nowrap md:space-x-10">
             <div class="w-full md:w-auto flex justify-content-center justify-content-lg-start animate-in slide-in-from-left delay-300 duration-1000">
                 <img src="{{ asset('imagens/icone_newsletter.svg') }}" class="w-40 lg:w-full" style="max-width: 447px; max-height: 250px;" alt="">
