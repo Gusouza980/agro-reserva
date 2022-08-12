@@ -6,14 +6,14 @@
             </div>
             <div class="mt-8 md:mt-0 text-center animate-in slide-in-from-right delay-300 duration-1000">
                 <h5 class="text-[26px] md:text-[55px] text-[#FFB02A] font-montserrat">RECEBA EM PRIMEIRA MÃO</h5>
-                <p class="text-[16px] md:text-[23px] text-[#D7D8E4] font-roboto">Informe seu e-mail e fique atualizado</p>
+                <p class="text-[16px] md:text-[23px] text-[#D7D8E4] font-montserrat">Informe seu e-mail e fique atualizado</p>
                 <div class="flex align-items-center justify-content-center w-full mt-4">
                     <div class="mb-3 flex-1 relative">
-                        <input type="email" class="w-full py-2 px-[50px] md:px-[100px] bg-[#363741] border border-[#F5F5F5] rounded-[12px]" name="" id="" aria-describedby="" placeholder="Seu e-mail">
+                        <input type="email" class="font-montserrat w-full py-2 px-[50px] md:px-[100px] bg-[#363741] border border-[#F5F5F5] rounded-[12px]" name="" id="" aria-describedby="" placeholder="Seu e-mail">
                         <i class="far fa-envelope fa-2x text-[#FFB02A] absolute top-[4px] left-[10px] md:left-[50px]"></i>                    
                     </div>
                     <div class="mb-3 ml-4">
-                        <button class="px-4 py-2 transition duration-500 text-[#353741] bg-[#FFB02A] hover:bg-[#db9722] rounded-[6px]">
+                        <button class="px-4 py-2 transition duration-500 text-[#353741] bg-[#FFB02A] hover:bg-[#db9722] font-montserrat rounded-[6px]">
                             <span class="hidden md:block">Enviar</span>
                             <span class="md:hidden"><i class="fa-solid fa-paper-plane"></i></span>
                         </button>
