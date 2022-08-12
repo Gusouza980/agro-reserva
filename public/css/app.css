@@ -4440,6 +4440,10 @@ body[dir="rtl"] .checkbox:checked,
     --tw-bg-opacity: 1;
     background-color: rgb(255 176 42 / var(--tw-bg-opacity))
 }
+.bg-\[\#2E313C\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(46 49 60 / var(--tw-bg-opacity))
+}
 .bg-cover {
     background-size: cover
 }
