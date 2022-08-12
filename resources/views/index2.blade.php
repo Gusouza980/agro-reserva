@@ -28,7 +28,7 @@
 
 <x-institucional.experiencias></x-institucional.experiencias>
 
-<x-institucional.newsletter></x-institucional.newsletter>
+{{-- <x-institucional.newsletter></x-institucional.newsletter> --}}
 
 <div vw class="enabled">
     <div vw-access-button class="active"></div>

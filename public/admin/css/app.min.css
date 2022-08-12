@@ -5139,3 +5139,19 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
     margin: auto;
     /* background-color: white; */
 }
+
+.cell-foto-lote{
+    cursor: pointer;
+}
+
+.cell-foto-lote:hover img{
+    filter: blur(2px);
+}
+
+.cell-foto-lote i{
+    display: none;
+}
+
+.cell-foto-lote:hover i{
+    display: block;
+}

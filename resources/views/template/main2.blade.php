@@ -13,9 +13,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw==" crossorigin="anonymous" referrerpolicy="no-referrer" />{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1.6" />
@@ -39,14 +38,14 @@
     <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
 </head>
 
-<body x-data="{start: true, mostrarCarrinho: false}">
+<body x-data="{start: true}">
     <x-institucional.barra-topo></x-institucional.barra-topo>
     <x-institucional.navbar></x-institucional.navbar>
 
     @if($agent->isMobile())
         <x-institucional.nav-footer></x-institucional.nav-footer>
     @endif
-
+    
     @if(session()->get("cliente"))
         @livewire('institucional.barra-lateral-carrinho')
     @endif
@@ -84,58 +83,17 @@
         </div>
     </div>
 
-    
-    <!-- Modal -->
-    <div class="modal fade" id="modalPesquisa" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    @livewire('site.pesquisa-lotes')
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    @if (session()->get('ver_popup'))
-        <div class="modal fade" id="modal_popup" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="px-3 pt-2 pb-4 text-center modal-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <img src="{{ asset(session()->get('ver_popup')) }}" style="max-width: 100%;" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
+    @livewire("institucional.popup-mensagem")
 
     <script src="{{ asset('js/jquery.js') }}">
     </script>
-    <script src="{{ asset('js/aos.js') }}"></script>
-    <script src="{{ asset('js/floating-wpp.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.lazy.min.js') }}"></script>
     <script type="text/javascript" async
         src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js">
     </script>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     @toastr_js
     @toastr_render
@@ -177,23 +135,6 @@
     @endif
     <script type="text/javascript" async
         src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js">
-    </script>
-    <script>
-        $(document).ready(function(){
-            $('#div-whatsapp').floatingWhatsApp({
-                phone: telefone,
-                popupMessage: 'Olá! Como podemos ajudar?',
-                message: "",
-                showPopup: true,
-                showOnIE: false,
-                headerTitle: 'Seja Bem-Vindo!',
-                headerColor: '#00ba38',
-                backgroundColor: '',
-                buttonImage: '<img src="/imagens/whatsapp-button.png"/>',
-                size: "60px",
-                zIndex: 999999
-            });
-        });
     </script>
 </body>
 

@@ -21,7 +21,7 @@
                         </thead>
                         <tbody style="vertical-align: middle;">
                             @foreach($lotes as $lote)
-                                <tr>
+                                <tr @if($lote->reservado) style="background-color: rgba(0,255,0,0.15)" @endif>
                                     <td>
                                         <div class="mt-4 dropdown mt-sm-0">
                                             <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
@@ -35,11 +35,20 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td><img src="{{ ($lote->preview) ? asset($lote->preview) :  asset('admin/images/thumb-padrao.png')}}" alt="" width="80"></td>
+                                    <td class="text-center cell-foto-lote" style="position: relative;">
+                                        <img src="{{ ($lote->preview) ? asset($lote->preview) :  asset('admin/images/thumb-padrao.png')}}" alt="" width="80">
+                                        <label for="input_preview_{{ $lote->id }}">
+                                            <i class="fas fa-edit text-white cpointer" style="font-size: 14px; position: absolute; top: calc(50% - 7px); left: calc(50% - 7px);"></i>
+                                        </label>
+                                        <input id="input_preview_{{ $lote->id }}" style="display: none;" type="file" wire:model="arquivos.{{ $lote->id }}" accept="image/*">
+                                    </td>
                                     <td>{{ $lote->numero }}</td>
                                     <td>{{ $lote->nome }}</td>
                                     <td>{{ $lote->registro}}</td>
-                                    <td>R$ {{ number_format($lote->preco, 2, ",", ".") }}</td>
+                                    <td>
+                                        {{-- R$ {{ number_format($lote->preco, 2, ",", ".") }} --}}
+                                        <input type="text" class="form-control" style="width: 100px;" onfocusout="Livewire.emit('atualizaValor', {{ $lote->id }}, 'preco', this.value)" value="{{ $lote->preco }}">
+                                    </td>
                                     <td>{{ $lote->visitas }}</td>
                                     <td>
                                         <select class="form-control" onchange="Livewire.emit('atualizaValor', {{ $lote->id }}, 'reservado', this.value)">

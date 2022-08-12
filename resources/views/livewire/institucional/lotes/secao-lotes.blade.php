@@ -63,20 +63,7 @@
                         </div>
                     </div>
                     <div class="mt-3 relative">
-                        <div class="absolute top-[-25px] right-0">
-                            <svg class="fill-pink-500" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gender-female" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5z"/>
-                            </svg>
-                            {{-- <svg class="fill-blue-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gender-male" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2H9.5zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
-                            </svg> --}}
-                        </div>
                         <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
-                            {{-- @if($lote->gpta)
-                                <div class="">
-                                    <b>GPTA:.</b> <span class="ml-2 font-medium">{{ $lote->gpta }}</span>
-                                </div>
-                            @endif --}}
                             @if($lote->nascimento)
                             <div class="">
                                 <b>NASC:.</b> <span class="ml-2 font-medium">{{ date("d/m/Y", strtotime($lote->nascimento)) }}</span>
@@ -92,7 +79,7 @@
                     </div>
                     <div class=" px-3 pt-3 pb-4 mais-info hidden shadow-md transition duration-800 group-hover:flex flex-col justify-content-center align-items-center h-[100px] absolute bottom-[-90px] left-0 w-full bg-white">
                         <div class="z-20 w-full text-center">
-                            <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">R${{ number_format($lote->preco, 2, ",", ".") }} em até {{ $lote->parcelas }}x</span>
+                            <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">R${{ number_format($lote->produto->preco, 2, ",", ".") }} em até {{ $lote->reserva->max_parcelas }}x</span>
                         </div>
                         <div class="grid w-full grid-cols-2 gap-3 mt-3">
                             <button onclick="window.location.href = '{{ route('fazenda.lote', ['fazenda' => $lote->fazenda, 'reserva' => $lote->reserva, 'lote' => $lote]) }}'" class="border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba Mais</button>

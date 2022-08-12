@@ -9,8 +9,12 @@ class Carrinho extends Model
 {
     use HasFactory;
 
-    public function produtos(){
+    public function carrinho_produtos(){
         return $this->hasMany(CarrinhoProduto::class);
+    }
+
+    public function produtos(){
+        return $this->belongsToMany(Produto::class, 'carrinho_produtos');
     }
 
     public function cliente(){

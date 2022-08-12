@@ -63,6 +63,11 @@ class FormPreCadastro extends Component
         $this->emit("showConfirmacaoPreCadastro");
     }
 
+    public function voltar(){
+        $this->show = false;
+        $this->emit("showListaEtapas");
+    }
+
     public function render()
     {
         $json = file_get_contents("json/mascaras_telefone.json");

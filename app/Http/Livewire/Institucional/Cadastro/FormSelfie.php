@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 use App\Classes\Util;
+use App\Models\Cliente;
 
 class FormSelfie extends Component
 {
@@ -37,9 +38,20 @@ class FormSelfie extends Component
             $cliente->documento = $this->arquivo->store("site/clientes/", 'local');
             Util::limparLivewireTemp();
         }
+        $cliente->finalizado = true;
         $cliente->save();
+        session()->forget("cliente");
+        session()->put(["cliente" => $cliente->toArray()]);
+
+        $this->show = false;
+        $this->emit("showConfirmacaoCadastroCompleto");
     }
     
+    public function voltar(){
+        $this->show = false;
+        $this->emit("showListaEtapas");
+    }
+
     public function render()
     {
         return view('livewire.institucional.cadastro.form-selfie');

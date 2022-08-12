@@ -10,17 +10,13 @@
                 <div class="order-2 w-full mt-5 mt-md-0 md:order-1 md:w-3/5 md:mt-0">
                     <div class="hidden w-full md:block">
                         <div class="w-full">
-                            <img src="{{ asset($lote->preview) }}" class="w-full transition duration-150 rounded-md hover:scale-105" alt="">
+                            {!! \App\Classes\Util::convertYoutube($lote->video) !!}
                         </div>
                         <div class="grid w-full grid-cols-1 mt-4 md:gap-5 md:grid-cols-3">
                             <div>
-                                <img src="{{ asset($lote->preview) }}" class="w-full transition duration-150 rounded-md hover:scale-105" alt="">
-                            </div>
-                            <div>
-                                <img src="{{ asset($lote->preview) }}" class="w-full transition duration-150 rounded-md hover:scale-105" alt="">
-                            </div>
-                            <div>
-                                <img src="{{ asset($lote->preview) }}" class="w-full transition duration-150 rounded-md hover:scale-105" alt="">
+                                <a class="popup_preview" href="{{ asset($lote->preview) }}">
+                                    <img src="{{ asset($lote->preview) }}" class="w-full transition duration-150 rounded-md hover:scale-105" alt="">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -77,8 +73,8 @@
                         <span>Sem juros no boleto de titularidade Faz. e comprador.</span>
                     </div>
                     <div class="w-full mt-[20px]">
-                        <a href=""
-                            class="bg-[#14C656] text-white font-montserrat text-[18px] font-medium py-[12px] px-[60px] rounded-[15px]">Comprar</a>
+                        <a onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})"
+                            class="cpointer bg-[#14C656] text-white font-montserrat text-[18px] font-medium py-[12px] px-[60px] rounded-[15px]">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -577,6 +573,8 @@
                 $("#ligacao_pai_linha_central").css("height", "1");
                 $("#linha_central").css("height", "1");
             })
+
+            $('.popup_preview').magnificPopup({type:'image'});
         })
     </script>
 

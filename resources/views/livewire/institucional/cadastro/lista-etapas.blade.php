@@ -4,11 +4,8 @@
         x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100"
         x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-0" class="w-full font-montserrat absolute -top-[15vh] pb-5">
-        <div class="w-full">
-            <i class="fas fa-chevron-left fa-md text-[#D7D8E4] mr-2"></i> <span class="text-[#D7D8E4]">Voltar</span>
-        </div>
         <div class="w-full px-4 py-5 mt-3 bg-white rounded-t-lg shadow-[6px_6px_20px_rgba(36,62,111,0.11)]">
-            <div class="w-full max-w-[450px] mx-auto">
+            <div class="w-full max-w-[450px] mx-auto text-center text-md-left md:text-left">
                 <h1 class="text-black text-[25px] font-medium">Situação dos seus dados</h1>
                 <h2 class="text-black text-[19px] font-light mt-2">Valide seus dados para que ninguém possa
                     Acessar ou criar uma conta no seu nome.</h2>
@@ -17,7 +14,7 @@
                 {{-- ETAPA 1 --}}
                 <div class="flex items-center w-full px-4 rounded-lg @if(!$cliente) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif py-4">
                     <div class="relative">
-                        <svg class="duration-300 animation hover:scale-105" xmlns="http://www.w3.org/2000/svg"
+                        <svg class="duration-300 animation w-[40px] md:w-auto hover:scale-105" xmlns="http://www.w3.org/2000/svg"
                             width="74.524" height="74.524" viewBox="0 0 74.524 74.524">
                             <g id="Grupo_9439" data-name="Grupo 9439" transform="translate(-674.498 -437.499)">
                                 <g id="Grupo_9429" data-name="Grupo 9429" transform="translate(313.35 -405.267)">
@@ -43,22 +40,22 @@
                             </g>
                         </svg>
                         @if($cliente)
-                            <i class="fas fa-check-circle text-success fa-lg absolute bottom-[5px] right-[5px]"></i>
+                            <i class="fas fa-check-circle text-success text-[10px] md:text-[20px] absolute bottom-[18px] right-[0px] md:bottom-[0px] md:right-[3px]"></i>
                         @endif
                     </div>
                     <div class="px-4">
-                        <h3 class="text-black text-[23px] font-medium">Pré Cadastro</h3>
-                        <h4 class="text-black text-[17px] font-light mt-2">Ele será usuado para login e validação da sua
+                        <h3 class="text-black text-[16px] md:text-[23px] font-medium">Pré Cadastro</h3>
+                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Ele será usuado para login e validação da sua
                             conta</h4>
                     </div>
                     <div>
-                        <a class="text-white btn btn-warning hover:btn-success @if(!$cliente) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormPreCadastro')">Validar</a>
+                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if(!$cliente) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormPreCadastro')">Validar</a>
                     </div>
                 </div>
                 {{-- ETAPA 2 --}}
                 <div class="flex items-center w-full px-4 py-4 mt-4 rounded-lg @if($cliente && $cliente->etapa_cadastro == 2) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif">
                     <div class="relative">
-                        <svg class="duration-300 animation hover:scale-105" xmlns="http://www.w3.org/2000/svg"
+                        <svg class="duration-300 animation w-[40px] md:w-auto hover:scale-105" xmlns="http://www.w3.org/2000/svg"
                             width="74.524" height="74.524" viewBox="0 0 74.524 74.524">
                             <g id="Grupo_9441" data-name="Grupo 9441" transform="translate(-465.379 -842.765)">
                                 <g id="Grupo_9440" data-name="Grupo 9440">
@@ -93,23 +90,23 @@
                             </g>
                         </svg>
                         @if($cliente && $cliente->etapa_cadastro > 2)
-                            <i class="fas fa-check-circle text-success fa-lg absolute bottom-[5px] right-[5px]"></i>
+                            <i class="fas fa-check-circle text-success text-[10px] md:text-[20px] absolute bottom-[18px] right-[0px] md:bottom-[0px] md:right-[3px]"></i>
                         @endif
                     </div>
                     <div class="px-4">
-                        <h3 class="text-black text-[23px] font-medium">Dados pessoais</h3>
-                        <h4 class="text-black text-[17px] font-light mt-2">Ninguém poderá criar uma conta no seu
+                        <h3 class="text-black text-[16px] md:text-[23px] font-medium">Dados pessoais</h3>
+                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Ninguém poderá criar uma conta no seu
                             nome.</h4>
                     </div>
                     <div>
-                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 2) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showSelecaoCategoria')">Validar</a>
-                        <a class="text-white btn btn-default hover:btn-primary @if($cliente && $cliente->etapa_cadastro > 2) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showSelecaoCategoria')">Editar</a>
+                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 2) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showSelecaoCategoria')">Validar</a>
+                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-primary @if($cliente && $cliente->etapa_cadastro > 2) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showSelecaoCategoria')">Editar</a>
                     </div>
                 </div>
                 {{-- ETAPA 3 --}}
                 <div class="flex items-center w-full px-4 mt-4 rounded-lg @if($cliente && $cliente->etapa_cadastro == 3) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif py-4">
                     <div class="relative">
-                        <svg class="duration-300 animation hover:scale-105" xmlns="http://www.w3.org/2000/svg"
+                        <svg class="duration-300 animation w-[40px] md:w-auto hover:scale-105" xmlns="http://www.w3.org/2000/svg"
                             width="74.338" height="74.338" viewBox="0 0 74.338 74.338">
                             <path id="Caminho_2995" data-name="Caminho 2995"
                                 d="M36.669,0A36.675,36.675,0,1,1,0,36.669,36.669,36.669,0,0,1,36.669,0Z"
@@ -137,23 +134,23 @@
                                 transform="translate(36.296 38.805)" fill="#efab1e" />
                         </svg>
                         @if($cliente && $cliente->etapa_cadastro > 3)
-                            <i class="fas fa-check-circle text-success fa-lg absolute bottom-[5px] right-[5px]"></i>
+                            <i class="fas fa-check-circle text-success text-[10px] md:text-[20px] absolute bottom-[18px] right-[0px] md:bottom-[0px] md:right-[3px]"></i>
                         @endif
                     </div>
                     <div class="px-4">
-                        <h3 class="text-black text-[23px] font-medium">Dados da propriedade</h3>
-                        <h4 class="text-black text-[17px] font-light mt-2">Registro legais para complemento da sua
+                        <h3 class="text-black text-[16px] md:text-[23px] font-medium">Dados da propriedade</h3>
+                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Registro legais para complemento da sua
                             conta.</h4>
                     </div>
                     <div>
-                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 3) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormDadosPropriedade')">Validar</a>
-                        <a class="text-white btn btn-default hover:btn-primary @if($cliente && $cliente->etapa_cadastro > 3) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormDadosPropriedade')">Editar</a>
+                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 3) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormDadosPropriedade')">Validar</a>
+                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-primary @if($cliente && $cliente->etapa_cadastro > 3) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormDadosPropriedade')">Editar</a>
                     </div>
                 </div>
                 {{-- ETAPA 4 --}}
                 <div class="flex items-center w-full px-4 mt-4 rounded-lg @if($cliente && $cliente->etapa_cadastro == 4) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif py-4">
                     <div class="relative">
-                        <svg class="duration-300 animation hover:scale-105" xmlns="http://www.w3.org/2000/svg"
+                        <svg class="duration-300 animation w-[40px] md:w-auto hover:scale-105" xmlns="http://www.w3.org/2000/svg"
                             width="74.516" height="74.516" viewBox="0 0 74.516 74.516">
                             <g id="Grupo_9444" data-name="Grupo 9444" transform="translate(-673.999 -842.785)">
                                 <circle id="Elipse_333" data-name="Elipse 333" cx="36.669" cy="36.669"
@@ -174,23 +171,23 @@
                             </g>
                         </svg>
                         @if($cliente && $cliente->etapa_cadastro > 4)
-                            <i class="fas fa-check-circle text-success fa-lg absolute bottom-[5px] right-[5px]"></i>
+                            <i class="fas fa-check-circle text-success text-[10px] md:text-[20px] absolute bottom-[18px] right-[0px] md:bottom-[0px] md:right-[3px]"></i>
                         @endif
                     </div>
                     <div class="px-4">
-                        <h3 class="text-black text-[23px] font-medium">Informações complementares</h3>
-                        <h4 class="text-black text-[17px] font-light mt-2">Lorem Ipsum is simply dummy text of the
+                        <h3 class="text-black text-[16px] md:text-[23px] font-medium">Informações complementares</h3>
+                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Lorem Ipsum is simply dummy text of the
                             printing and typesetting industry.</h4>
                     </div>
                     <div>
-                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 4) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormInformacoesComplementares')">Validar</a>
-                        <a class="text-white btn btn-default hover:btn-primary @if($cliente && $cliente->etapa_cadastro > 4) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormInformacoesComplementares')">Editar</a>
+                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 4) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormInformacoesComplementares')">Validar</a>
+                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-primary @if($cliente && $cliente->etapa_cadastro > 4) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormInformacoesComplementares')">Editar</a>
                     </div>
                 </div>
                 {{-- ETAPA 5 --}}
                 <div class="flex items-center w-full px-4 mt-4 rounded-lg @if($cliente && $cliente->etapa_cadastro == 5) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif py-4">
                     <div class="relative">
-                        <svg class="duration-300 animation hover:scale-105" xmlns="http://www.w3.org/2000/svg"
+                        <svg class="duration-300 animation w-[40px] md:w-auto hover:scale-105" xmlns="http://www.w3.org/2000/svg"
                             width="74.516" height="74.516" viewBox="0 0 74.516 74.516">
                             <g id="Grupo_9444" data-name="Grupo 9444" transform="translate(-673.999 -842.785)">
                                 <circle id="Elipse_333" data-name="Elipse 333" cx="36.669" cy="36.669"
@@ -211,16 +208,16 @@
                             </g>
                         </svg>
                         @if($cliente && $cliente->etapa_cadastro > 5)
-                            <i class="fas fa-check-circle text-success fa-lg absolute bottom-[5px] right-[5px]"></i>
+                            <i class="fas fa-check-circle text-success text-[10px] md:text-[20px] absolute bottom-[18px] right-[0px] md:bottom-[0px] md:right-[3px]"></i>
                         @endif
                     </div>
                     <div class="px-4">
-                        <h3 class="text-black text-[23px] font-medium">Verificação de Documento</h3>
-                        <h4 class="text-black text-[17px] font-light mt-2">Lorem Ipsum is simply dummy text of the
+                        <h3 class="text-black text-[16px] md:text-[23px] font-medium">Verificação de Documento</h3>
+                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Lorem Ipsum is simply dummy text of the
                             printing and typesetting industry.</h4>
                     </div>
                     <div>
-                        <a class="text-white btn btn-warning hover:btn-success @if($cliente && $cliente->etapa_cadastro == 5) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormSelfie')">Validar</a>
+                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 5) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormSelfie')">Validar</a>
                     </div>
                 </div>
             </div>

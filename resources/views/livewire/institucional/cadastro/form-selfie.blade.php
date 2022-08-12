@@ -4,7 +4,7 @@
         x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-0" class="w-full font-montserrat absolute -top-[15vh] pb-5">
         <div class="w-full">
-            <i class="fas fa-chevron-left fa-md text-[#D7D8E4] mr-2"></i> <span class="text-[#D7D8E4]">Voltar</span>
+            <span wire:click="voltar" class="cursor-pointer transition duration-300 text-[14px] text-[#D7D8E4] hover:scale-105 hover:text-white"><i class="fas fa-chevron-left mr-2"></i> <span>Voltar</span></span>
         </div>
         <div class="w-full px-6 py-6 md:px-20 md:py-24 mt-3 bg-white rounded-t-lg shadow-[6px_6px_20px_rgba(36,62,111,0.11)]">
             <x-institucional.cadastro.step-bar step="5"></x-institucional.cadastro.step-bar>
@@ -25,7 +25,7 @@
                     <img src="{{ asset('imagens/gif_relogio.gif') }}" class="my-5" width="50" alt="">
                 </div>
             </div>
-            <form class="grid w-full grid-cols-1 mt-5 text-center md:grid-cols-2 gap-y-10 md:gap-y-0" enctype="multipart/form-data">
+            <form wire:submit.prevent='salvar' class="grid w-full grid-cols-1 mt-5 text-center md:grid-cols-2 gap-y-10 md:gap-y-0" enctype="multipart/form-data">
                 <div class="flex items-center justify-center">
                     <label class="cpointer text-[18px] text-[#8F8F8F] font-regular font-montserrat  flex justify-center items-center" for="input_selfie">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30.184" height="24.46" viewBox="0 0 30.184 24.46">

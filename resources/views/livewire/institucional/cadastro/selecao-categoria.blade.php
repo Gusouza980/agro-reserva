@@ -4,7 +4,7 @@
         x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-0" class="w-full font-montserrat absolute -top-[15vh] pb-5">
         <div class="w-full">
-            <i class="fas fa-chevron-left fa-md text-[#D7D8E4] mr-2"></i> <span class="text-[#D7D8E4]">Voltar</span>
+            <span wire:click="voltar" class="cursor-pointer transition duration-300 text-[14px] text-[#D7D8E4] hover:scale-105 hover:text-white"><i class="fas fa-chevron-left mr-2"></i> <span>Voltar</span></span>
         </div>
         <div class="w-full px-5 py-24 mt-3 bg-white rounded-t-lg shadow-[6px_6px_20px_rgba(36,62,111,0.11)]">
             <div class="w-full text-center">
@@ -12,9 +12,9 @@
                 <h2 class="text-[#4A5860] font-montserrat text-[20px] font-medium mt-4">Selecione uma das opções para
                     seguir com o cadastro</h2>
             </div>
-            <div class="grid w-full grid-cols-2 mt-20 gap-x-20">
+            <div class="grid w-full grid-cols-1 md:grid-cols-2 mt-20 gap-x-20">
                 <div class="text-center">
-                    <svg class="h-64 mx-auto" id="Mobile_UX-bro" data-name="Mobile UX-bro" xmlns="http://www.w3.org/2000/svg"
+                    <svg class="max-w-[250px] md:w-auto md:h-64 mx-auto" id="Mobile_UX-bro" data-name="Mobile UX-bro" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" width="318.289" height="270.857"
                         viewBox="0 0 318.289 270.857">
                         <defs>
@@ -567,10 +567,11 @@
                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75" />
                         </g>
                     </svg>
-                    <button class="rounded-[15px] border-2 border-[#80828B] hover:bg-gray-500 hover:text-white text-[#15171E] px-5 py-3 font-montserrat text-[20px] font-medium mt-5" @click="showSelecaoCategoria = false; $wire.emit('showFormDadosPessoais', 0)">Pessoa Física</button>
+                    <button class="rounded-[15px] border-2 border-[#80828B] hover:bg-gray-500 hover:text-white text-[#15171E] px-5 py-3 font-montserrat text-[20px] font-medium md:mt-5" @click="showSelecaoCategoria = false; $wire.emit('showFormDadosPessoais', 0)">Pessoa Física</button>
                 </div>
-                <div class="text-center">
-                    <svg class="h-64 mx-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                <hr class="mt-[55px] md:hidden">
+                <div class="text-center mt-6 md:mt-0">
+                    <svg class="max-w-[250px] md:w-auto md:h-64 mx-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         width="346.04" height="280.884" viewBox="0 0 346.04 280.884">
                         <defs>
                             <clipPath id="clip-path">
@@ -1114,7 +1115,7 @@
                             </g>
                         </g>
                     </svg>
-                    <button class="rounded-[15px] border-2 border-[#80828B] hover:bg-gray-500 hover:text-white text-[#15171E] px-5 py-3 font-montserrat text-[20px] font-medium mt-5" @click="showSelecaoCategoria = false; $wire.emit('showFormDadosPessoais', 1)">Pessoa Jurídica</button>
+                    <button class="rounded-[15px] border-2 border-[#80828B] hover:bg-gray-500 hover:text-white text-[#15171E] px-5 py-3 font-montserrat text-[20px] font-medium md:mt-5" @click="showSelecaoCategoria = false; $wire.emit('showFormDadosPessoais', 1)">Pessoa Jurídica</button>
                 </div>
             </div>
         </div>

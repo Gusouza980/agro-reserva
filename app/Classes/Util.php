@@ -9,7 +9,7 @@ class Util{
     public static function convertYoutube($string){
         return preg_replace(
             "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-            "<iframe class='aspect-video w-full' style='aspect-ratio: 16 / 9;' src=\"https://www.youtube.com/embed/$2?&autoplay=1\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+            "<iframe class='aspect-video w-full' style='aspect-ratio: 16 / 9;' src=\"https://www.youtube.com/embed/$2?&autoplay=1\" frameborder=\"0\" allow=\"accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
             $string
         );
     }

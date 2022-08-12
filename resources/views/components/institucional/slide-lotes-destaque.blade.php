@@ -16,7 +16,7 @@
         <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-lotes-destaque" x-show="show" x-transition.opacity.duration.3000ms>
             <div class="flex flex-nowrap space-x-[6px]">
                 @foreach ($lotes as $lote)
-                    <div class="inline-block slide-item py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
+                    <div class="inline-block slide-item py-2 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
                         <div class="caixa-lote-home-imagem"
                             style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 350px; height: 250px; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464;">
                             <div class="text-center justify-content-center align-items-center lote-home-hover">

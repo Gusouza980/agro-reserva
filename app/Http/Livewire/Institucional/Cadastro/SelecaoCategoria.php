@@ -18,6 +18,11 @@ class SelecaoCategoria extends Component
         $this->show = $show;
     }
 
+    public function voltar(){
+        $this->show = false;
+        $this->emit("showListaEtapas");
+    }
+
     public function render()
     {
         return view('livewire.institucional.cadastro.selecao-categoria');

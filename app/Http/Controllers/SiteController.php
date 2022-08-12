@@ -13,6 +13,7 @@ use App\Models\Visita;
 use App\Models\Carrinho;
 use App\Models\Lance;
 use App\Models\HomeBanner;
+use App\Models\CarrinhoProduto;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use App\Models\Configuracao;
@@ -29,7 +30,21 @@ class SiteController extends Controller
 {
 
     public function testes(){
-        Excel::import(new LotesImport, 'imagens/planilha.ods');
+        foreach(Lote::all() as $lote){
+            if(!$lote->produto){
+                $lote->produto()->create([
+                    "nome" => $lote->nome,
+                    "preco" => $lote->preco
+                ]);
+            }
+        }
+        foreach(CarrinhoProduto::all() as $carrinho_produto){
+            $lote = Lote::find($carrinho_produto->lote_id);
+            if($lote){
+                $carrinho_produto->produto_id = $lote->produto->id;
+                $carrinho_produto->save();
+            }
+        }
     }
 
     public function index(){

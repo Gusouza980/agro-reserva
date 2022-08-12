@@ -54,6 +54,11 @@ class FormDadosPropriedade extends Component
         $this->emit("showListaEtapas");
     }
 
+    public function voltar(){
+        $this->show = false;
+        $this->emit("showListaEtapas");
+    }
+
     public function render()
     {
         return view('livewire.institucional.cadastro.form-dados-propriedade');

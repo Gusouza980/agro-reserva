@@ -49,6 +49,11 @@ class FormInformacoesComplementares extends Component
         $this->emit("showAvisoUltimaEtapa");
     }
 
+    public function voltar(){
+        $this->show = false;
+        $this->emit("showListaEtapas");
+    }
+
     public function render()
     {
         return view('livewire.institucional.cadastro.form-informacoes-complementares');

@@ -69,6 +69,11 @@ class FormDadosPessoais extends Component
         $this->emit("showListaEtapas");
     }
 
+    public function voltar(){
+        $this->show = false;
+        $this->emit("showSelecaoCategoria");
+    }
+
     public function render()
     {
         return view('livewire.institucional.cadastro.form-dados-pessoais');

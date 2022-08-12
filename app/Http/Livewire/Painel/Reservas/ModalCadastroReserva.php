@@ -150,7 +150,7 @@ class ModalCadastroReserva extends Component
             return;
         }
 
-        if($op = 'cadastro'){
+        if($this->op == 'cadastro'){
             $this->reserva->fazenda_id = $this->fazenda_selecionada;
             $this->reserva->aberto = false;
             $this->reserva->preco_disponivel = false;

@@ -4,12 +4,12 @@
         x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-0" class="w-full font-montserrat absolute -top-[15vh] pb-5">
         <div class="w-full">
-            <i class="fas fa-chevron-left fa-md text-[#D7D8E4] mr-2"></i> <span class="text-[#D7D8E4]">Voltar</span>
+            <span wire:click="voltar" class="cursor-pointer transition duration-300 text-[14px] text-[#D7D8E4] hover:scale-105 hover:text-white"><i class="fas fa-chevron-left mr-2"></i> <span>Voltar</span></span>
         </div>
-        <div class="w-full px-20 py-24 mt-3 bg-white rounded-t-lg shadow-[6px_6px_20px_rgba(36,62,111,0.11)]">
+        <div class="w-full px-8 md:px-20 py-24 mt-3 bg-white rounded-t-lg shadow-[6px_6px_20px_rgba(36,62,111,0.11)]">
             <x-institucional.cadastro.step-bar step="2"></x-institucional.cadastro.step-bar>
             <div class="flex w-full mt-5">
-                <div class="w-5/12">
+                <div class="hidden md:block md:w-5/12">
                     @if ($categoria === 0)
                         <svg class="max-w-full" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" width="459.108" height="449"
@@ -1154,71 +1154,71 @@
                         </svg>
                     @endif
                 </div>
-                <div class="w-7/12 pl-4">
+                <div class="w-full md:w-7/12 md:pl-6">
                     <form class="flex flex-wrap items-center w-full" wire:submit.prevent='salvar'>
                         @if ($categoria === 0)
-                            <div class="w-1/3 mb-3">
+                            <div class="w-full md:w-1/3 mb-3">
                                 <label class="form-label" for="">RG</label>
                                 <input type="text" class="w-full form-input-text" wire:model.defer="rg"
                                     maxlength="20" required>
                             </div>
-                            <div class="w-1/3 pl-3 mb-3">
+                            <div class="w-full md:w-1/3 md:pl-5 mb-3">
                                 <label class="form-label" for="">CPF</label>
                                 <input type="text" class="w-full form-input-text cpf" wire:model.defer="cpf"
                                     maxlength="14" minlength="14" required>
                             </div>
-                            <div class="w-1/3 pl-3 mb-3">
+                            <div class="w-full md:w-1/3 md:pl-5 mb-3">
                                 <label class="form-label" for="">Nascimento</label>
                                 <input type="date" class="w-full form-input-text" wire:model.defer="nascimento" required>
                             </div>
                         @else
-                            <div class="w-1/3 mb-3">
+                            <div class="w-full md:w-1/3 mb-3">
                                 <label class="form-label" for="">CNPJ</label>
                                 <input type="text" class="w-full form-input-text cnpj" wire:model.defer="cnpj"
                                     maxlength="18" minlength="18" required>
                             </div>
-                            <div class="w-2/3 pl-3 mb-3">
+                            <div class="w-full md:w-2/3 md:pl-5 mb-3">
                                 <label class="form-label" for="">Nome Fantasia</label>
                                 <input type="text" class="w-full form-input-text"
                                     wire:model.defer="nome_fantasia" maxlength="100" required>
                             </div>
                         @endif
-                        <div class="w-1/3 mb-3">
+                        <div class="w-full md:w-1/3 mb-3">
                             <label class="form-label" for="">CEP</label>
                             <input type="text" class="w-full form-input-text cep" wire:model.defer="cep"
                                 maxlength="9" minlength="9" required>
                         </div>
-                        <div class="w-2/3 pl-3 mb-3">
-                            <label class="form-label" for="">Endereço Residencial</label>
+                        <div class="w-full md:w-2/3 md:pl-5 mb-3">
+                            <label class="form-label" for="">@if($categoria === 0) Endereço Residencial @else Endereço Comercial @endif</label>
                             <input type="text" class="w-full form-input-text" wire:model.defer="rua"
                                 maxlength="50" required>
                         </div>
-                        <div class="w-3/12 mb-3">
+                        <div class="w-full md:w-3/12 mb-3">
                             <label class="form-label" for="">Número</label>
                             <input type="text" class="w-full form-input-text" wire:model.defer="numero"
                                 maxlength="10" required>
                         </div>
-                        <div class="w-4/12 pl-3 mb-3">
+                        <div class="w-full md:w-4/12 md:pl-5 mb-3">
                             <label class="form-label" for="">Bairro</label>
                             <input type="text" class="w-full form-input-text" wire:model.defer="bairro"
                                 maxlength="50" required>
                         </div>
-                        <div class="w-5/12 pl-3 mb-3">
+                        <div class="w-full md:w-5/12 md:pl-5 mb-3">
                             <label class="form-label" for="">Cidade</label>
                             <input type="text" class="w-full form-input-text" wire:model.defer="cidade"
                                 maxlength="50" required>
                         </div>
-                        <div class="w-2/12 mb-3">
+                        <div class="w-full md:w-2/12 mb-3">
                             <label class="form-label" for="">Estado</label>
                             <input type="text" class="w-full form-input-text" wire:model.defer="estado"
                                 maxlength="2" required>
                         </div>
-                        <div class="w-4/12 pl-3 mb-3">
+                        <div class="w-full md:w-4/12 md:pl-5 mb-3">
                             <label class="form-label" for="">País</label>
                             <input type="text" class="w-full form-input-text" wire:model.defer="pais"
                                 maxlength="50" required>
                         </div>
-                        <div class="w-6/12 pl-3 mb-3">
+                        <div class="w-full md:w-6/12 md:pl-5 mb-3">
                             <label class="form-label" for="">Complemento (Opcional)</label>
                             <input type="text" class="w-full form-input-text"
                                 wire:model.defer="complemento" maxlength="100">
