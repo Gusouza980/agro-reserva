@@ -38,7 +38,7 @@
     <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
 </head>
 
-<body x-data="{start: true}">
+<body x-data="{start: true}" class="bg-[#F5F5F5]">
     <x-institucional.barra-topo></x-institucional.barra-topo>
     <x-institucional.navbar></x-institucional.navbar>
 

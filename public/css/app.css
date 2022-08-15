@@ -4546,6 +4546,10 @@ body[dir="rtl"] .checkbox:checked,
     padding-top: 10px;
     padding-bottom: 10px
 }
+.px-\[30px\] {
+    padding-left: 30px;
+    padding-right: 30px
+}
 .pl-0 {
     padding-left: 0px
 }
@@ -4902,6 +4906,10 @@ body[dir="rtl"] .checkbox:checked,
     --tw-text-opacity: 1;
     color: rgb(155 156 163 / var(--tw-text-opacity))
 }
+.text-\[\#FFFFFF\] {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
 .underline {
     -webkit-text-decoration-line: underline;
             text-decoration-line: underline
@@ -5125,6 +5133,10 @@ body[dir="rtl"] .checkbox:checked,
 .hover\:bg-\[\#1e9b48\]:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(30 155 72 / var(--tw-bg-opacity))
+}
+.hover\:bg-\[\#b83f13\]:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(184 63 19 / var(--tw-bg-opacity))
 }
 .hover\:fill-\[\#5b5d63\]:hover {
     fill: #5b5d63

@@ -14,7 +14,7 @@
                                 <h3 class="font-montserrat text-white text-[26px] font-bold">{{ date("d/m/Y", strtotime($reserva->inicio)) }}</h3>
                             </div>
                             <div>
-                                <a name="" id="" class="px-4 py-1 btn-laranja font-montserrat" href="#" role="button">Ver Reserva</a>
+                                <a name="" id="" class="px-[30px] py-[10px] bg-[#E8521B] text-[#FFFFFF] rounded-[6px] transition duration-300 font-montserrat text-[17px] font-bold hover:text-white hover:bg-[#b83f13]" href="#" role="button">Ver Reserva</a>
                             </div>
                         </div>
                     </div>
