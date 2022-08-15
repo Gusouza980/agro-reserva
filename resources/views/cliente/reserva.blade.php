@@ -37,7 +37,7 @@
                     <span class="font-bold">Parcelas</span>
                 </div>
                 @foreach($venda->getRelationValue("parcelas") as $parcela)
-                    <div class="w-full">
+                    <div class="w-full table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
