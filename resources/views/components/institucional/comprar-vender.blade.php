@@ -1,4 +1,4 @@
-<div class="px-0 pb-5 bg-white container-fluid">
+<div class="px-0 pb-5 container-fluid">
     <div class="px-3 mx-auto w1200 px-lg-0">
         <div class="row">
             <div 

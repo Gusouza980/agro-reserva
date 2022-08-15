@@ -1,4 +1,4 @@
-<div class="bg-white py-5">
+<div class="py-5">
     <div class="w1200 mx-auto flex flex-wrap px-3 px-lg-0 justify-content-between align-items-center">
         <div class="flex align-items-center mb-4 mb-lg-0 animate-in fade-in delay-300 duration-1000">
             <div class="mr-3">

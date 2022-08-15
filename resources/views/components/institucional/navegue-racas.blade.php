@@ -17,8 +17,8 @@
                 @endforeach
             </div>
         </div>
-        <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-navegue-racas-left" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); left: -50px;" alt="">
-        <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-navegue-racas-right" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); right: -50px;" alt="">
+        <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-navegue-racas-left" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 12.5px); left: -50px;" alt="">
+        <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-navegue-racas-right" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 12.5px); right: -50px;" alt="">
     </div>
     
 </div>
