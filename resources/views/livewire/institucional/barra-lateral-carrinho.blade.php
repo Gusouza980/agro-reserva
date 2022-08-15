@@ -17,7 +17,7 @@
                                     <h4>RESERVA: {{ mb_strtoupper($carrinho->reserva->fazenda->nome_fazenda) }}</h4>
                                 </div>
                                 @foreach($carrinho->produtos as $produto)
-                                    <div class="flex py-3 flex-collumn space-x-6">
+                                    <div class="flex py-3 flex-collumn space-x-6 items-center">
                                         <div class="">
                                             <img class="w-[190px] rounded-[6px] shadow-md" src="{{ asset($produto->produtable->preview) }}" alt="">
                                         </div>
