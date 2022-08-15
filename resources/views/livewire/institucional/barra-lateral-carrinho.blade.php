@@ -29,7 +29,7 @@
                                                 <span class="text-[12px] text-[#626262] font-montserrat font-medium">RGD: {{ $produto->produtable->registro }}</span>
                                             </div>
                                             <div class="mt-[22px]">
-                                                <span class="text-[15px] md:text-[22px] text-[#15171E] font-montserrat font-bold">R${{ number_format($produto->produtable->preco, 2, ",", ".") }}</span>
+                                                <span class="text-[15px] md:text-[22px] text-[#15171E] font-montserrat font-bold">R${{ number_format($produto->produtable->preco - (($produto->produtable->preco * $produto->produtable->reserva->desconto) / 100) , 2, ",", ".") }}</span>
                                                 <span class="font-montserrat font-medum text-[13px] md:text-[17px] text-[#15171E]">à vista</span>
                                             </div>
                                             <div class="mt-[-5px]">
