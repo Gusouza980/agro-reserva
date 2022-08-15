@@ -3458,6 +3458,9 @@ body[dir="rtl"] .checkbox:checked,
 .top-2 {
     top: 0.5rem
 }
+.top-\[calc\(50\%-10px\)\] {
+    top: calc(50% - 10px)
+}
 .z-50 {
     z-index: 50
 }

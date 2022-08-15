@@ -9,7 +9,7 @@
                     <img src="{{ asset('imagens/icone_erro.png') }}" width="120" alt="">
                 @endif
             </div>
-            <div class="w-full flex justify-center font-montserrat text-[16px] font-medium text-center">
+            <div class="w-full font-montserrat text-[16px] font-medium text-center">
                 {!! $msg !!}
             </div>
             <div class="w-full flex justify-center font-montserrat text-[14px] font-medium mt-4" @click="mostrarPopup = false">

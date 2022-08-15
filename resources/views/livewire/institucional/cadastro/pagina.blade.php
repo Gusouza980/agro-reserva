@@ -12,6 +12,6 @@
         @livewire("institucional.cadastro.form-informacoes-complementares", ["show" => $showFormInformacoesComplementares])
         @livewire("institucional.cadastro.aviso-ultima-etapa", ["show" => $showAvisoUltimaEtapa])
         @livewire("institucional.cadastro.form-selfie", ["show" => $showFormSelfie])
-        @livewire("institucional.cadastro.confirmacao-cadastro-completo", ["show" => $confirmacaoCadastroCompleto])
+        @livewire("institucional.cadastro.confirmacao-cadastro-completo", ["show" => $showConfirmacaoCadastroCompleto])
     </div>
 </div>
