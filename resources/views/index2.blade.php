@@ -20,7 +20,9 @@
 
 <x-institucional.navegue-racas></x-institucional.navegue-racas>
 
-<x-institucional.depoimentos></x-institucional.depoimentos>
+@livewire("institucional.depoimentos")
+
+{{-- <x-institucional.depoimentos></x-institucional.depoimentos> --}}
 
 <x-institucional.experiencias></x-institucional.experiencias>
 
