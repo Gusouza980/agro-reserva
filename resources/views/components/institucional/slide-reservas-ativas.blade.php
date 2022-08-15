@@ -8,13 +8,13 @@
                     <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
                         <div class="text-center">
                             <div>
-                                <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
+                                <b class="font-montserrat text-[16px] text-white">Inicia em</b>
                             </div>
                             <div class="mt-2 mb-3">
-                                <h3 style="color: white; font-size: 30px; font-weight: bold;">{{ date("d/m/Y", strtotime($reserva->inicio)) }}</h3>
+                                <h3 class="font-montserrat text-white text-[26px] font-bold">{{ date("d/m/Y", strtotime($reserva->inicio)) }}</h3>
                             </div>
                             <div>
-                                <a name="" id="" class="px-4 py-1 btn-laranja" href="#" role="button">Ver Reserva</a>
+                                <a name="" id="" class="px-4 py-1 btn-laranja font-montserrat" href="#" role="button">Ver Reserva</a>
                             </div>
                         </div>
                     </div>
