@@ -50,7 +50,7 @@
                             <tbody>
                                 <tr>
                                     <td scope="row">{{ $parcela->numero }}</td>
-                                    <td>{{ number_format($parcela->valor, 2, ",", ".") }}</td>
+                                    <td>R${{ number_format($parcela->valor, 2, ",", ".") }}</td>
                                     <td>{{ date("d/m/Y", strtotime($parcela->vencimento)) }}</td>
                                     <td>
                                         @if($parcela->recebido)

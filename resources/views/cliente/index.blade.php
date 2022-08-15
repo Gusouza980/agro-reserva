@@ -66,7 +66,7 @@
                                     @foreach($cliente->compras as $venda)
                                         <table class="table" style="vertical-align: middle; padding: 0px; box-shadow: 2px 2px 5px rgba(0,0,0, 0.2);">
                                             <thead class="text-center" style="background-color: #E8521B; border: 0px; line-height: 15px; height: 40px;">
-                                                <th style="color: white; font-size: 15px;"><b>{{date("d/m/Y H:i:s", strtotime($venda->created_at))}}</b></th>
+                                                <th style="color: black; font-size: 15px;"><b>{{date("d/m/Y H:i:s", strtotime($venda->created_at))}}</b></th>
                                             </thead>
                                             <tbody>
                                                 <tr class="text-center">
