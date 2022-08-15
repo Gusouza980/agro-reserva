@@ -3467,6 +3467,12 @@ body[dir="rtl"] .checkbox:checked,
 .-right-\[35px\] {
     right: -35px
 }
+.-right-\[25px\] {
+    right: -25px
+}
+.-right-\[20px\] {
+    right: -20px
+}
 .z-50 {
     z-index: 50
 }
@@ -5302,6 +5308,9 @@ body[dir="rtl"] .checkbox:checked,
     }
     .md\:left-0 {
         left: 0px
+    }
+    .md\:-right-\[35px\] {
+        right: -35px
     }
     .md\:order-2 {
         order: 2
