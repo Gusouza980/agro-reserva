@@ -227,17 +227,7 @@ class CarrinhoController extends Controller
         $carrinho->aberto = false;
         $carrinho->save();
 
-        $carrinhos = session()->get("carrinho");
-        foreach($carrinhos as $key => $car){
-            if($car["id"] == $carrinho->id){
-                unset($carrinhos[$key]);
-            }
-        }
-
         session()->forget("carrinho");
-        if(count($carrinhos) > 0){
-            session()->put("carrinho", $carrinhos);
-        }
         // $data = ["venda" => $venda];
         // $pdf = PDF::loadView('cliente.comprovante2', $data);
         // $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
