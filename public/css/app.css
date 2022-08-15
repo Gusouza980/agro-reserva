@@ -3473,6 +3473,9 @@ body[dir="rtl"] .checkbox:checked,
 .-right-\[20px\] {
     right: -20px
 }
+.-right-\[18px\] {
+    right: -18px
+}
 .z-50 {
     z-index: 50
 }
