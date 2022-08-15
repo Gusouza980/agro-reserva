@@ -3,7 +3,7 @@
 @endphp
 
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="light">
 <head>
     <title>Agroreserva</title>
     <!-- Required meta tags -->

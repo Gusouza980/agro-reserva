@@ -1,4 +1,4 @@
-@extends('template.main')
+@extends('template.main2')
 
 @section('styles')
 
@@ -6,80 +6,94 @@
 
 @section('conteudo')
 
-    <div class="container py-5" style="min-height: 40vh;">
-        <div class="row">
-            <div class="col-12 col-lg-8 py-3 text-left" style="border: 1px solid #F2f2f2;">
-                <h4>Lotes</h4>
-                <hr>
-                @foreach($carrinho->produtos as $produto)
-                    <div class="row">
-                        <div class="col-12 col-lg-4">
-                            <img src="{{asset($produto->lote->preview)}}" alt="" style="max-width: 350px;" class="w-100">
+    <div class="w-full bg-[#F5F5F5] py-20">
+        <div class="w1200 mx-auto pb-6">
+            <span onclick="window.location.href='{{ route('carrinho') }}'" class="cursor-pointer font-medium transition font-montserrat duration-300 text-[18px] text-[#283646] hover:scale-105 hover:text-[#EE682A]"><i class="fas fa-chevron-left mr-2"></i> <span>Voltar</span></span>
+        </div>
+        <div class="w1200 mx-auto rounded-[27px] flex flex-wrap bg-white px-[40px]">
+            <div class="w-full">
+                <div class="w-full flex flex-wrap items-center md:flex-nowrap py-[40px] border-b-2 border-solid border-gray-400">
+                    <div class="text-left grow">
+                        <h3 class="font-montserrat text-[20px] font-medium text-gray-400">RESUMO DA COMPRA</h3>
+                        <div class="mt-[15px] font-montserrat text-[15px] font-bold text-[#5C6384]">
+                            @php
+                                $lotes_numeros = $carrinho->produtos()->with("produtable")->get()->pluck("produtable")->flatten()->pluck("numero")->toArray();
+                                array_walk($lotes_numeros, function(&$value, $key){
+                                    $value = str_pad(strval($value), 2, "0", STR_PAD_LEFT);
+                                });
+                            @endphp
+                            <p>Reserva: {{ $carrinho->reserva->fazenda->nome_fazenda }}</p>
+                            <p>Resumo dos Lotes: L {{ implode("- L ", $lotes_numeros) }}</p>
                         </div>
-                        <div class="col-12 col-lg-8">
-                            <p><b>LOTE {{$produto->lote->numero}}: {{$produto->lote->nome}}</b></p>
-                            <p class="mt-n1"><b>Registro:</b> {{$produto->lote->registro}}</p>
-                            <p class="mt-n1"><b>Raça:</b> {{$produto->lote->raca->nome}}</p>
-                            <p class="mt-n1"><b>Valor:</b> R${{number_format($produto->lote->preco, 2, ",", ".")}}</p>
-                            {{--  <div class="form-group">
-                              <select class="form-control" style="max-width: 200px;" name="parcelamento" lid="{{$produto->lote_id}}" id="">
-                                @for($i = 1; $i <= $produto->lote->parcelas; $i++)
-                                    <option value="{{$i}}">{{$i}}x de {{number_format(round($produto->lote->preco / $i, 2), 2, ",", ".")}}</option>
-                                @endfor
-                              </select>
-                            </div>  --}}
-                        </div>
-                    </div>
-                    <hr>
-                @endforeach
-            </div>
-
-            <div class="col-12 col-lg-4 text-left py-3" style="border: 1px solid #F2f2f2;">
-                <h4>Resumo</h4>
-                <hr>
-                <div class="container-fluid px-0">
-                    <div class="row">
-                        <div class="col-12">
-                            <b>Total:</b> R${{number_format($carrinho->total, 2, ",", ".")}}
+                        <div class="font-montserrat text-[13px] text-[#15171E] mt-[15px]">
+                            <p>Sem juros no boleto de titularidade Faz. e comprador</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <b>Frete:</b> Por conta do comprador
+                    <div class="text-left text-md-right md:text-right grow mt-[15px] md:mt-none">
+                        <div class="">
+                            <span class="text-[22px] text-[#15171E] font-montserrat font-bold">R${{ number_format($carrinho->produtos->sum("preco"), 2, ",", ".") }}</span>
+                            <span class="font-montserrat font-medum text-[17px] text-[#15171E]">à vista</span>
+                        </div>
+                        <div class="mt-[-5px]">
+                            <span class="text-[14px] text-[#626262] font-montserrat font-medium">ou <b class="text-[#15171E]">{{ $carrinho->reserva->max_parcelas }}x</b> de <b class="text-[#15171E]">R${{ number_format($carrinho->produtos->sum("preco")/$carrinho->reserva->max_parcelas, 2, ",", ".") }}</b></span>
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid px-0 mt-4">
-                    <div class="row">
-                        <div class="col-12">
-                            <b>CONDIÇÕES:</b>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <b>À VISTA: {{$carrinho->reserva->desconto}}% de desconto</b><br>
-                        </div>
-                    </div>
-                    @if($carrinho->reserva->desconto_live_ativo && $carrinho->reserva->desconto_live_valor)
-                        <div class="row mt-2">
-                            <div class="col-12">
-                                <b>DESCONTO DE LIVE: {{number_format($carrinho->reserva->desconto_live_valor, 0)}}%</b><br>
-                                <small>Aplicado caso a compra seja finalizada durante a live</small>
+            </div>
+            <div class="w-full md:w-3/5 pr-[20px]">
+                <div class="w-full py-[20px]">
+                    @foreach($carrinho->produtos as $produto)
+                        <div class="w-full pb-[20px] border-b-2 border-solid border-gray-400">
+                            <div class="flex flex-collumn space-x-6 w-full">
+                                <div class="">
+                                    <img class="w-[190px] rounded-[6px] shadow-md" src="{{ asset($produto->produtable->preview) }}" alt="">
+                                </div>
+                                <div class="relative grow">
+                                    <div>
+                                        <span class="text-[12px] font-montserrat text-[#283646] font-medium">LOTE {{ str_pad(strval($produto->produtable->numero), 2, "0", STR_PAD_LEFT) }}</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-[15px] font-montserrat text-[#283646] font-bold">{{ $produto->produtable->nome }}</span>
+                                    </div>
+                                    <div class="mt-[-5px]">
+                                        <span class="text-[12px] text-[#626262] font-montserrat font-medium">RGD: {{ $produto->produtable->registro }}</span>
+                                    </div>
+                                    <div class="mt-[22px]">
+                                        <span class="text-[15px] md:text-[22px] text-[#15171E] font-montserrat font-bold">R${{ number_format($produto->produtable->preco, 2, ",", ".") }}</span>
+                                        <span class="font-montserrat font-medum text-[13px] md:text-[17px] text-[#15171E]">à vista</span>
+                                    </div>
+                                    <div class="mt-[-5px]">
+                                        <span class="text-[12px] text-[#626262] font-montserrat font-medium">ou <b class="text-[#15171E]">{{ $produto->produtable->reserva->max_parcelas }}x</b> de <b class="text-[#15171E]">R${{ number_format($produto->produtable->preco/$produto->produtable->reserva->max_parcelas, 2, ",", ".") }}</b></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    @endif
-                    <hr>
-                    <div class="row">
-                        <div class="col-12">
-                            <b>DEMAIS PARCELAS: Negociação durante a venda</b><br>
-                            {{--  <small>*3% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.</small>  --}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <b style="color: red;">As parcelas serão pagas em triplas e duplas.</b><br>
-                            {{--  <small>*3% de desconto pela fazenda e 2% de desconto da comissão Agro Reserva.</small>  --}}
-                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="w-full md:w-2/5 py-[20px] pl-[20px]">
+                <div class="w-full">
+                    <h3 class="font-montserrat text-[15px] font-bold text-[#5C6384]">Condições de Pagamento</h3>
+                    <div class="font-montserrat text-[14px] font-medium text-[#626262]">
+                        @foreach($carrinho->reserva->formas_pagamento as $forma_pagamento)
+                            <p class="mt-[10px]">
+                                @if($forma_pagamento->minimo != $forma_pagamento->maximo)
+                                    De <b>{{ $forma_pagamento->minimo }} à {{ $forma_pagamento->maximo }} parcelas</b>, 
+                                    @if($forma_pagamento->desconto > 0)
+                                        <b>{{ $forma_pagamento->desconto }}% de desconto</b> e
+                                    @endif
+                                    pagamento feito em 
+                                    @if($forma_pagamento->regras->count() > 0)
+                                        @foreach($forma_pagamento->regras->sortBy("posicao") as $regra)
+                                            <b>{{ $regra->meses }} {{ config("globals.nome_parcelas")[$regra->parcelas] }}</b>,
+                                        @endforeach
+                                        com o restante das parcelas sendo únicas.
+                                    @else
+                                        <b>parcelas únicas</b>
+                                    @endif
+                                @endif
+                            </p>
+                        @endforeach
                     </div>
                 </div>
                 <div class="container-fluid px-0 mt-4">
@@ -91,146 +105,58 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                              <select class="form-control" name="parcelamento" id="parcelamento">
-                                    <option value="">Selecione as parcelas</option>
-                                    @for($i = 1; $i <= 12; $i++)
-                                        @if($i == 1)
-                                            <option value="{{$i}}">{{$i}}x de R${{number_format(($carrinho->total - ($carrinho->total * $carrinho->reserva->desconto / 100)), 2, ",", ".")}} ({{$carrinho->reserva->desconto}}% de desconto)</option>
-                                            {{--  <option value="{{$i * 2}}">{{$i}}x (1 dupla) de R${{number_format(($carrinho->total - ($carrinho->total * 8 / 100)) / 2, 2, ",", ".")}}</option>  --}}
-                                        {{--  @elseif($i < 5)  --}}
-                                            {{--  <option value="{{$i * 2}}">{{$i}}x ({{$i}} duplas) de R${{number_format(round(($carrinho->total - ($carrinho->total * 0 / 100)) / ($i * 2), 2),2 , ",", ".")}}</option>  --}}
-                                        @else
-                                            <option value="{{$i}}">{{$i}}x de R${{number_format(round(($carrinho->total / ($i)), 2), 2, ",", ".")}}</option>
-                                        @endif
-                                    @endfor
-                              </select>
+                                @php
+                                    $total = $carrinho->produtos->sum("preco");
+                                @endphp
+                                <select class="form-control" name="parcelamento" id="parcelamento">
+                                        <option value="-1">Selecione as parcelas</option>
+                                        @foreach($carrinho->reserva->formas_pagamento as $forma_pagamento)
+                                            @for($i = $forma_pagamento->minimo; $i <= $forma_pagamento->maximo; $i++)
+                                                <option value="{{$i}}">{{$i}}x de R${{number_format(($total - ($total * $forma_pagamento->desconto) / 100) / $i, 2, ",", ".")}} @if($forma_pagamento->desconto > 0) ({{$forma_pagamento->desconto}}% de desconto) @endif</option>
+                                            @endfor
+                                        @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid px-0 mt-4" id="resumo" style="display: none;">
-                    <div class="row">
-                        <div class="col-12">
-                            <b>VALOR DO PEDIDO:</b> R${{number_format($carrinho->total, 2, ",", ".")}}
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-12">
-                            <b>DESCONTOS:</b> <span id="valor-desconto"></span>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-12" style="font-size: 14px;">
-                            <b>COMISSÃO AGRO RESERVA (À VISTA):</b> <span id="valor-comissao"></span>
-                        </div>
-                    </div>
-                    <hr>         
-                    <div class="row">
-                        <div class="col-12">
-                            <b>VALOR FINAL:</b> <span id="valor-final"></span>
-                        </div>
-                    </div>
-                    
-                    <hr>
-                </div>
-
-                
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group mt-3">
-                            <label for="" style="color: black;">Foi assessorado por alguém ?</label>
-                            <select class="form-control" name="assessor" id="assessor-i">
-                                <option value="0">Não</option>
-                                @foreach(App\Models\Assessor::all() as $assessor)   
-                                    <option value="{{$assessor->id}}">{{$assessor->nome}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                <div class="w-full">
+                    <div class="form-group mt-3">
+                        <label class="font-montserrat text-[15px] font-bold text-[#5C6384]">Foi assessorado por alguém ?</label>
+                        <select class="form-control" name="assessor" id="assessor-i">
+                            <option value="0">Não</option>
+                            @foreach(App\Models\Assessor::all() as $assessor)   
+                                <option value="{{$assessor->id}}">{{$assessor->nome}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
-                
-                <div class="row mt-3">
-                    <div class="col-12 text-center">
-                        <form id="form-checkout" action="{{route('carrinho.concluir')}}" method="post">
-                            @csrf
-                            <input type="hidden" name="parcelas" id="parcelas-h">
-                            <input type="hidden" name="assessor" id="assessor-h">
-                            <input type="hidden" name="carrinho_id" value="{{$carrinho->id}}">
-                        </form>
-                        <button class="btn btn-vermelho px-4" id="btn-finalizar">Finalizar Reserva</button>
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <img id="ajax-loading" src="{{asset('imagens/gif_relogio.gif')}}" style="width: 50px; display:none;" alt="">
-                            </div>
-                        </div>
-                    </div>
+                <div class="w-full mt-[20px] text-right">
+                    <img id="ajax-loading" style="display: none;" src="{{ asset('imagens/gif_relogio.gif') }}" class="mx-auto" width="50" alt="">
+                    <button id="btn-finalizar" class="border border-[#27C45B] bg-[#27C45B] hover:bg-[#1e9b48] text-[18px] text-white py-2 px-8 font-montserrat font-medium rounded-[10px]">Finalizar</button>
                 </div>
+                <form id="form-checkout" class="hidden" action="{{ route('carrinho.concluir') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="carrinho_id" value="{{ $carrinho->id }}">
+                    <input type="hidden" id="#assessor-h" name="assessor_id" value="">
+                    <input type="hidden" name="parcelas" id="parcelas-h" value="">
+                </form>
             </div>
         </div>
-        
     </div>
 @endsection
 
 @section('scripts')
     <script>
         $(document).ready(function(){
-
-            $("select[name='parcelamento']").change(function(){
-                $("#resumo").slideUp(500, function(){
-                    if(parseInt($("select[name='parcelamento']").val()) == 1){
-                        var comissao = 0;
-                        var desconto = {!! $carrinho->reserva->desconto !!};
-                    }else if(parseInt($("select[name='parcelamento']").val()) < 5 ){
-                        var comissao = 0;
-                        var desconto = 0;
-                    }else{
-                        var comissao = 0;
-                        var desconto = 0;
-                    }
-
-                    var parcelas = parseInt($("select[name='parcelamento']").val());
-                    var total_carrinho = parseFloat({!! $carrinho->total !!});
-                    var valor_desconto = total_carrinho * desconto / 100;
-                    var valor_comissao = total_carrinho * comissao / 100;
-    
-                    var total_compra = total_carrinho - valor_desconto + valor_comissao;
-
-                    $("#valor-desconto").html("R$" + parseFloat(valor_desconto.toFixed(2)).toLocaleString('pt-BR', {
-                        currency: 'BRL',
-                        minimumFractionDigits: 2
-                    }) + " ("+desconto+"%)");
-                    $("#valor-comissao").html("R$" + parseFloat(valor_comissao.toFixed(2)).toLocaleString('pt-BR', {
-                        currency: 'BRL',
-                        minimumFractionDigits: 2
-                    }) + " ("+comissao+"%)");
-                    $("#valor-final").html("R$" + parseFloat(total_compra.toFixed(2)).toLocaleString('pt-BR', {
-                        currency: 'BRL',
-                        minimumFractionDigits: 2
-                    }));
-    
-                    $("#resumo").slideDown(500);
-                });
-                
-            });
-
-            $("select[name='assessor']").change(function(){
-                if($(this).val() != "0"){
-                    $("#row-avaliacao").slideDown(400);
-                    $("#row-observacao").slideDown(400);
-                }
-                else{
-                    $("#row-avaliacao").slideUp(400);
-                    $("#row-observacao").slideUp(400);
-                }
-            });
-
             $("#btn-finalizar").click(function(){
                 //Pegando parcelas
                 $("#btn-finalizar").hide();
                 $("#ajax-loading").show();
                 var parcelas = $("select[name='parcelamento']").val();
+                if(parcelas == -1){
+                    return;
+                }
                 $("#parcelas-h").val(parcelas);
 
                 //Pegando assessor
@@ -239,7 +165,6 @@
 
                 $("#form-checkout").submit();
             })
-
         })
     </script>
 @endsection

@@ -1,4 +1,4 @@
-@extends('template.main')
+@extends('template.main2')
 
 @section('conteudo')
 <div class="container-fluid py-5" style="background-color: #f5f5f5;">

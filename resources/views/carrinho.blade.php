@@ -1,4 +1,4 @@
-@extends('template.main')
+@extends('template.main2')
 
 @section('styles')
 
@@ -6,143 +6,78 @@
 
 @section('conteudo')
 
-    <div class="container py-5" style="min-height: 40vh;">
-        @if(session()->get("erro"))
-            <div class="row">
-                <div class="col-12">
-                    <div class="alert alert-danger" role="alert">
-                        {{session()->get("erro")}}
+    <div class="w-full bg-[#F5F5F5] py-20">
+        <div class="w1000 mx-auto pb-6">
+            <span onclick="window.location.href='{{ route('index') }}'" class="cursor-pointer font-medium transition font-montserrat duration-300 text-[18px] text-[#283646] hover:scale-105 hover:text-white"><i class="fas fa-chevron-left mr-2"></i> <span>Voltar</span></span>
+        </div>
+        @foreach($carrinhos as $carrinho)
+            <div class="w1000 bg-white mx-auto rounded-[27px]">
+                <div class="w-full flex flex-wrap md:flex-nowrap py-[40px] px-[40px] border-b-2 border-solid border-gray-400">
+                    <div class="text-left grow">
+                        <h3 class="font-montserrat text-[20px] font-medium text-gray-400">RESUMO DA COMPRA</h3>
+                        <div class="mt-[15px] font-montserrat text-[15px] font-bold text-[#5C6384]">
+                            @php
+                                $lotes_numeros = $carrinho->produtos()->with("produtable")->get()->pluck("produtable")->flatten()->pluck("numero")->toArray();
+                                array_walk($lotes_numeros, function(&$value, $key){
+                                    $value = str_pad(strval($value), 2, "0", STR_PAD_LEFT);
+                                });
+                            @endphp
+                            <p>Reserva: {{ $carrinho->reserva->fazenda->nome_fazenda }}</p>
+                            <p>Resumo dos Lotes: L {{ implode("- L ", $lotes_numeros) }}</p>
+                        </div>
+                        <div class="font-montserrat text-[13px] text-[#15171E] mt-[15px]">
+                            <p>Sem juros no boleto de titularidade Faz. e comprador</p>
+                        </div>
+                    </div>
+                    <div class="text-left text-md-left md:text-right grow mt-[15px] md:mt-none">
+                        <div class="">
+                            <span class="text-[22px] text-[#15171E] font-montserrat font-bold">R${{ number_format($carrinho->produtos->sum("preco"), 2, ",", ".") }}</span>
+                            <span class="font-montserrat font-medum text-[17px] text-[#15171E]">à vista</span>
+                        </div>
+                        <div class="mt-[-5px]">
+                            <span class="text-[14px] text-[#626262] font-montserrat font-medium">ou <b class="text-[#15171E]">{{ $carrinho->reserva->max_parcelas }}x</b> de <b class="text-[#15171E]">R${{ number_format($carrinho->produtos->sum("preco")/$carrinho->reserva->max_parcelas, 2, ",", ".") }}</b></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endif
-        @foreach(\App\Models\Carrinho::whereIn("id", $carrinhos)->get() as $carrinho)
-            <div class="row d-none d-lg-block mt-5">
-                <div class="col-12">
-                    <h4>Reserva da {{$carrinho->reserva->fazenda->nome_fazenda}}</h4>
-                </div>
-                <div class="col-12 text-center">
-                    @if($carrinho->produtos->count() > 0)
-                        <table class="table" style="vertical-align: middle; padding: 0px; box-shadow: 2px 2px 5px rgba(0,0,0, 0.2);">
-                            <thead class="" style="background-color: #E8521B; border: 0px; color: white; font-size: 15px; line-height: 15px; height: 40px;">
-                                <tr>
-                                    <th class="text-center" scope="col">Produto</th>
-                                    <th class="text-center" scope="col"></th>
-                                    <th class="text-center" scope="col">Valor</th>
-                                    <th class="text-center" scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($carrinho->produtos as $produto)
-                                    <tr>
-                                        <th class="px-0 py-0" scope="row" style="width: 20%;">
-                                            <img src="{{asset($produto->lote->preview)}}" alt="" class="w-100">
-                                        </th>
-                                        <td style="vertical-align: middle; width: 50%;">
-                                            <p><b>LOTE {{$produto->lote->numero}}: {{$produto->lote->nome}}</b></p>
-                                            <p class="mt-n3"><b>Registro:</b> {{$produto->lote->registro}}</p>
-                                            <p class="mt-n3"><b>Raça:</b> {{$produto->lote->raca->nome}}</p>
-                                        </td>
-                                        <td class="text-center" style="vertical-align: middle;">
-                                            <b>${{number_format($produto->total, 2, ",", ".")}}</b>
-                                        </td>
-                                        <td class="text-center" style="vertical-align: middle;"><a href="{{route('carrinho.deletar', ['produto' => $produto])}}"><i class="fa fa-times" style="color: #E65454" aria-hidden="true"></i></a></td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <div class="row">
-                            <div class="col-12 text-right">
-                                <a href="{{route('carrinho.checkout', ['carrinho' => $carrinho])}}"><button class="btn btn-vermelho btn-hover-preto px-3">Continuar</button></a>
+                <div class="w-full py-[20px] px-[20px] md:px-[40px]">
+                    @foreach($carrinho->produtos as $produto)
+                        <div class="w-full md:px-[40px] pb-[20px] border-b-2 border-solid border-gray-400">
+                            <div class="flex py-3 flex-collumn space-x-6 w-full">
+                                <div class="">
+                                    <img class="w-[190px] rounded-[6px] shadow-md" src="{{ asset($produto->produtable->preview) }}" alt="">
+                                </div>
+                                <div class="relative grow">
+                                    <div>
+                                        <span class="text-[12px] font-montserrat text-[#283646] font-medium">LOTE {{ str_pad(strval($produto->produtable->numero), 2, "0", STR_PAD_LEFT) }}</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-[15px] font-montserrat text-[#283646] font-bold">{{ $produto->produtable->nome }}</span>
+                                    </div>
+                                    <div class="mt-[-5px]">
+                                        <span class="text-[12px] text-[#626262] font-montserrat font-medium">RGD: {{ $produto->produtable->registro }}</span>
+                                    </div>
+                                    <div class="mt-[22px]">
+                                        <span class="text-[15px] md:text-[22px] text-[#15171E] font-montserrat font-bold">R${{ number_format($produto->produtable->preco, 2, ",", ".") }}</span>
+                                        <span class="font-montserrat font-medum text-[13px] md:text-[17px] text-[#15171E]">à vista</span>
+                                    </div>
+                                    <div class="mt-[-5px]">
+                                        <span class="text-[12px] text-[#626262] font-montserrat font-medium">ou <b class="text-[#15171E]">{{ $produto->produtable->reserva->max_parcelas }}x</b> de <b class="text-[#15171E]">R${{ number_format($produto->produtable->preco/$produto->produtable->reserva->max_parcelas, 2, ",", ".") }}</b></span>
+                                    </div>
+                                    <i class="absolute right-0 duration-300 text-[#5C6384] hover:text-[#15171E] top-2 fa-solid fa-trash-can text-[20px] hover:scale-110 cpointer" wire:click="removerProduto({{ $carrinho->id }}, {{ $produto->id }})"></i>
+                                </div>
                             </div>
                         </div>
-                    @else
-                        <h4>Seu carrinho está vazio</h4>
-                    @endif
+                    @endforeach
+                    <div class="w-full mt-[20px] text-right">
+                        <button onclick="window.location.href='{{ route('carrinho.checkout', ['carrinho' => $carrinho->id]) }}'" class="border border-[#27C45B] bg-[#27C45B] hover:bg-[#1e9b48] text-[22px] text-white py-2 px-8 font-montserrat font-medium rounded-[10px]">Finalizar</button>
+                    </div>
                 </div>
             </div>
         @endforeach
-        <div class="row d-lg-none">
-            <div class="col-12">
-                @foreach(\App\Models\Carrinho::whereIn("id", $carrinhos)->get() as $carrinho)
-                    <div class="row mt-5">
-                        <div class="col-12">
-                            <h5><b>Reserva da {{$carrinho->reserva->fazenda->nome_fazenda}}</b></h5>
-                        </div>
-                    </div>
-                    @if($carrinho->produtos->count() > 0)
-                        @foreach($carrinho->produtos as $produto)
-                        <table class="table" style="vertical-align: middle; padding: 0px; box-shadow: 2px 2px 5px rgba(0,0,0, 0.2);">
-                            <thead class="" style="background-color: #E8521B; border: 0px; color: white; font-size: 15px; line-height: 15px; height: 40px;">
-                                <tr>
-                                    <th class="text-center" scope="col">LOTE {{$produto->lote->numero}}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    <tr class="text-center">
-                                        <td>{{$produto->lote->nome}}</td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <th class="px-0 py-0" scope="row" style="width: 20%;">
-                                            <img src="{{asset($produto->lote->preview)}}" alt="" class="w-100">
-                                        </th>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td style="vertical-align: middle; width: 50%;">
-                                            <p><b>LOTE {{$produto->lote->numero}}: {{$produto->lote->nome}}</b></p>
-                                            <p class="mt-n3"><b>Registro:</b> {{$produto->lote->registro}}</p>
-                                            <p class="mt-n3"><b>Raça:</b> {{$produto->lote->raca->nome}}</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td class="text-center" style="vertical-align: middle;">
-                                            <b>${{number_format($produto->total, 2, ",", ".")}}</b>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td class="text-center" style="vertical-align: middle;"><a href="{{route('carrinho.deletar', ['produto' => $produto])}}" style="color: #E65454 !important;">Remover</a></td>
-                                    </tr>
-                            </tbody>
-                        </table>
-                        @endforeach
-                        <div class="row">
-                            <div class="col-12 text-right">
-                                <a href="{{route('carrinho.checkout', ['carrinho' => $carrinho])}}"><button class="btn btn-block btn-vermelho btn-hover-preto px-3">Continuar</button></a>
-                            </div>
-                        </div>
-                    @else
-                        <h4>Seu carrinho está vazio</h4>
-                    @endif
-                    <hr>
-                @endforeach
-            </div>
-        </div>
-        {{-- @if($carrinho->produtos->count() > 0)
-            <div class="row">
-                <div class="col-12 text-right">
-                    <a href="{{route('carrinho.checkout')}}"><button class="btn btn-vermelho btn-hover-preto px-3">Continuar</button></a>
-                </div>
-            </div>
-        @endif --}}
-        <hr>
     </div>
+    
 @endsection
 
 @section('scripts')
-    <script>
-        $(document).ready(function(){
 
-            $("#link-boleto").click(function(){
-                $("#div-whats").slideUp(300, function(){
-                    $("#div-boleto").slideDown(300);
-                });
-            });
-
-            $("#link-whats").click(function(){
-                $("#div-boleto").slideUp(300, function(){
-                    $("#div-whats").slideDown(300);
-                });
-            });
-        })
-    </script>
 @endsection

@@ -7,6 +7,7 @@ use App\Models\Lote;
 use App\Models\Cliente;
 use App\Models\Carrinho;
 use App\Models\CarrinhoProduto;
+use App\Models\VendaParcela;
 use App\Models\Venda;
 use App\Classes\Email;
 use Illuminate\Support\Str;
@@ -23,10 +24,7 @@ class CarrinhoController extends Controller
             return redirect()->route("index");
         }
 
-        $carrinhos = [];
-        foreach(session()->get("carrinho") as $car){
-            $carrinhos[] = $car["id"];    
-        }
+        $carrinhos = Carrinho::where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
 
         return view("carrinho", ["carrinhos" => $carrinhos]);
     }
@@ -82,30 +80,8 @@ class CarrinhoController extends Controller
     }
 
     public function deletar(CarrinhoProduto $produto){
-        $carrinho = Carrinho::find($produto->carrinho_id);
-        $carrinho->total -= $produto->lote->preco;
-        $carrinho->save();
         $produto->delete();
         toastr()->success("Produto removido do carrinho.");
-        return redirect()->back();
-    }
-
-    public function limpa(){
-        include_once(app_path() . '/Apis/_functions.php');
-
-        /* link especifico */
-        $url = 'https://api.bscommerce.com.br/carrinho/';
-
-        /* array de dados - insere item no carrinho */
-        $data =  array(
-            "token" => $tokenapi,
-            "ope"   => "delCarrinho",
-            "user"  => session()->get('userid'),
-            "uuid"  => session()->get('useruuid')
-        );
-
-        /* envia dados e recebe retorno */
-        $retorno = callAPI($url, $data);
         return redirect()->back();
     }
 
@@ -122,15 +98,18 @@ class CarrinhoController extends Controller
 
     public function concluir(Request $request){
         $cliente = Cliente::find(session()->get("cliente")["id"]);
+
+        // VERIFICANDO SE É UM CLIENTE APROVADO
         if(!$cliente->aprovado){
             return redirect()->route("index");
         }
         $carrinho = Carrinho::find($request->carrinho_id);
         $reservados = false;
-        foreach($carrinho->produtos as $produto){
-            if($produto->lote->reservado){
-                $carrinho->total -= $produto->lote->preco;
-                $produto->delete();
+
+        // VERIFICANDO SE ALGUM PRODUTO DO CARRINHO FOI RESERVADO DURANTE O PROCESSO DE COMPRA
+        foreach($carrinho->carrinho_produtos as $carrinho_produto){
+            if($carrinho_produto->produto->produtable->reservado){
+                $carrinho_produto->delete();
                 $carrinho->save();
                 $reservados = true;
             }
@@ -140,51 +119,78 @@ class CarrinhoController extends Controller
             session()->flash("erro", "Não foi possível finalizar sua compra porque um ou mais lotes que estavam no seu carrinho já foram reservados.");
             return redirect()->route("carrinho");
         }else{
-            $carrinho->lotes()->update(['reservado' => true]);
+            // RESERVADO TODOS OS LOTES DO CARRINHO
+            Lote::whereIn("id", $carrinho->produtos()->with("produtable")->get()->pluck("produtable")->flatten()->pluck("id"))->update(["reservado" => true]);
         }
 
+        // GERANDO A VENDA
         $venda = new Venda;
         $venda->carrinho_id = $carrinho->id;
         $venda->cliente_id = session()->get("cliente")["id"];
         $venda->assessor_id = ($request->assessor != 0) ? $request->assessor : null ;
         $venda->parcelas = $request->parcelas;
-        
+
         $parcelas = $request->parcelas;
 
-        if($parcelas == 1){
-            $comissao = 0;
-            $desconto = $carrinho->reserva->desconto;
-        }else if($parcelas < 5){
-            $comissao = 0;
-            $desconto = 0;
-        }else{
-            $comissao = 0;
-            $desconto = 0;
-        }
+        $forma_pagamento = $carrinho->reserva->formas_pagamento->where("minimo", "<=", $parcelas)->where("maximo", ">=", $parcelas)->first();
+
+        $desconto = $forma_pagamento->desconto;
 
         if($carrinho->reserva->desconto_live_ativo && $carrinho->reserva->desconto_live_valor){
             $desconto += $carrinho->reserva->desconto_live_valor;
         }
 
-        $valor_desconto = $carrinho->total * $desconto / 100;
-        $valor_comissao = $carrinho->total * $comissao / 100;
-        $total_compra = $carrinho->total - $valor_desconto + $valor_comissao;
+        $total = $carrinho->produtos->sum("preco");
+
+        $valor_desconto = ($total * $desconto) / 100;
+        $total_compra = $total - $valor_desconto;
 
         $venda->total = $total_compra;
         $venda->desconto = $valor_desconto;
-        $venda->comissao = $valor_comissao;
-        $venda->porcentagem_comissao = $comissao;
         $venda->porcentagem_desconto = $desconto;
         $venda->porcentagem_venda = 100;
-        $venda->dias_entre_parcelas = 15;
-        $venda->parcelas_mes = 2;
-        $venda->valor_parcela = ($carrinho->total - $valor_desconto) / $parcelas;
+        $venda->dias_entre_parcelas = 30;
+        $venda->parcelas_mes = 1;
+        $venda->valor_parcela = $total_compra / $parcelas;
         $venda->tipo = 1;
         $venda->save();
 
         $venda->codigo = str_pad($venda->id, 11, "0", STR_PAD_LEFT);
 
         $venda->save();
+
+        $cont_parcelas = 0;
+        $data_parcela = date("Y-m-d");
+        if($forma_pagamento->regras->count() > 0){
+            foreach($forma_pagamento->regras as $regra){
+                for($i = 0; $i < $regra->meses; $i++){
+                    for($j = 0; $j < $regra->parcelas; $j++){
+                        $dias_mes = date("t", strtotime($data_parcela . " +" . $i . " Months"));
+                        $intervalo_parcelas_mes = intval($dias_mes / $regra->parcelas); 
+                        $data_parcela = date("Y-m-d", strtotime($data_parcela . " +" . $intervalo_parcelas_mes . " Days"));
+                        $nova_parcela = new VendaParcela;
+                        $nova_parcela->venda_id = $venda->id;
+                        $nova_parcela->numero = $cont_parcelas + 1;
+                        $nova_parcela->valor = $venda->valor_parcela;
+                        $nova_parcela->vencimento = date("Y-m-d", strtotime($data_parcela));
+                        $nova_parcela->save();
+                        $cont_parcelas++;
+                    }
+                }
+            }
+        }
+
+        if($cont_parcelas < $parcelas){
+            for($i = $cont_parcelas; $i < $parcelas; $i++){
+                $data_parcela = date("Y-m-d", strtotime($data_parcela . " +1 Month"));
+                $nova_parcela = new VendaParcela;
+                $nova_parcela->venda_id = $venda->id;
+                $nova_parcela->numero = $i + 1;
+                $nova_parcela->valor = $venda->valor_parcela;
+                $nova_parcela->vencimento = date("Y-m-d", strtotime($data_parcela));
+                $nova_parcela->save();
+            }
+        }
 
         // foreach($produtos as $produto){
         //     foreach($produto as $lid => $parcelas){
@@ -227,6 +233,7 @@ class CarrinhoController extends Controller
                 unset($carrinhos[$key]);
             }
         }
+
         session()->forget("carrinho");
         if(count($carrinhos) > 0){
             session()->put("carrinho", $carrinhos);

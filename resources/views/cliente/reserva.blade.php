@@ -19,26 +19,58 @@
                 <div class="w-full bg-slate-200 px-3 py-2 border-b-2 border-[#E8521B]" style="font-family: 'Montserrat', sans-serif;">
                     <span class="font-bold">Lotes</span>
                 </div>
-                @foreach($venda->carrinho->produtos as $produto)
+                @foreach($venda->carrinho->carrinho_produtos as $carrinho_produto)
                     <div class="w-full flex flex-row py-3">
                         <div class="w-full md:w-1/5">
-                            <img src="{{asset($produto->lote->preview)}}" alt="" style="max-width: 350px;" class="w-100">
+                            <img src="{{asset($carrinho_produto->produto->produtable->preview)}}" alt="" style="max-width: 350px;" class="w-100">
                         </div>
                         <div class="w-full md:w-3/5 my-auto px-3 flex content-center flex-column justify-start">
-                            <p><b>LOTE {{$produto->lote->numero}}: {{$produto->lote->nome}}</b></p>
-                            <p class="mt-n1"><b>Registro:</b> {{$produto->lote->registro}}</p>
-                            <p class="mt-n1"><b>Raça:</b> {{$produto->lote->raca->nome}}</p>
-                            <p class="mt-n1"><b>Valor:</b> R${{number_format($produto->lote->preco, 2, ",", ".")}}</p>
-                            {{--  <div class="form-group">
-                              <select class="form-control" style="max-width: 200px;" name="parcelamento" lid="{{$produto->lote_id}}" id="">
-                                @for($i = 1; $i <= $produto->lote->parcelas; $i++)
-                                    <option value="{{$i}}">{{$i}}x de {{number_format(round($produto->lote->preco / $i, 2), 2, ",", ".")}}</option>
-                                @endfor
-                              </select>
-                            </div>  --}}
+                            <p><b>LOTE {{$carrinho_produto->produto->produtable->numero}}: {{$carrinho_produto->produto->produtable->nome}}</b></p>
+                            <p class="mt-n1"><b>Registro:</b> {{$carrinho_produto->produto->produtable->registro}}</p>
+                            <p class="mt-n1"><b>Raça:</b> {{$carrinho_produto->produto->produtable->raca->nome}}</p>
+                            <p class="mt-n1"><b>Valor:</b> R${{number_format($carrinho_produto->produto->produtable->preco, 2, ",", ".")}}</p>
                         </div>
                     </div>
                     <hr>
+                @endforeach
+                <div class="w-full mt-6 bg-slate-200 px-3 py-2 border-b-2 border-[#E8521B]" style="font-family: 'Montserrat', sans-serif;">
+                    <span class="font-bold">Parcelas</span>
+                </div>
+                @foreach($venda->getRelationValue("parcelas") as $parcela)
+                    <div class="w-full">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Parcela</th>
+                                    <th>Valor</th>
+                                    <th>Vencimento</th>
+                                    <th>Situação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">{{ $parcela->numero }}</td>
+                                    <td>{{ number_format($parcela->valor, 2, ",", ".") }}</td>
+                                    <td>{{ date("d/m/Y", strtotime($parcela->vencimento)) }}</td>
+                                    <td>
+                                        @if($parcela->recebido)
+                                            <div class="badge badge-success">
+                                                Recebido
+                                            </div>
+                                        @elseif(!$parcela->recebido && $parcela->vencimento < date("Y-m-d"))
+                                            <div class="badge badge-error">
+                                                Vencida
+                                            </div>
+                                        @else
+                                            <div class="badge">
+                                                Aguardando Pagamento
+                                            </div>
+                                        @endif
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 @endforeach
             </div>
             <div class="w-full md:w-2/5 text-left py-3 pl-md-3">
@@ -50,7 +82,7 @@
                         <b>Situação:</b> {{config("globals.situacoes")[$venda->situacao]}}
                     </div>
                     <div class="w-full py-1">
-                        <b>Total:</b> R${{number_format($venda->carrinho->total, 2, ",", ".")}}
+                        <b>Total:</b> R${{number_format($venda->carrinho->produtos->sum("preco"), 2, ",", ".")}}
                     </div>
                     <div class="w-full py-1">
                         <b>Frete:</b> Retirada na fazenda
@@ -60,9 +92,6 @@
                     </div>
                     <div class="w-full py-1">
                         <b>Descontos:</b> R${{number_format($venda->desconto, 2, ",", ".")}}
-                    </div>
-                    <div class="w-full py-1">
-                        <b>Comissão (À vista):</b> R${{number_format($venda->comissao, 2, ",", ".")}}
                     </div>
                     <div class="w-full py-1" style="backgorund-color: #F3F3F3">
                         <b>Valor Final:</b> R${{number_format($venda->total, 2, ",", ".")}}

@@ -11,6 +11,7 @@ use App\Models\CarrinhoProduto;
 class BarraLateralCarrinho extends Component
 {
     public $mostrarCarrinho = false;
+    public $iniciar = false;
     public $cliente;
     public $carrinhos;
 
@@ -22,8 +23,20 @@ class BarraLateralCarrinho extends Component
 
     public function adicionarProduto(Produto $produto){
         
+        if($produto->produtable->reserva->encerrada){
+            $msg = "A reserva " . $produto->produtable->reserva->fazenda->nome_fazenda . " já foi encerrada !";
+            $this->emit("mostrarPopup", "erro", $msg);
+            return;
+        }
+
         if(!$this->cliente->aprovado){
             $msg = "Para comprar na Agroreserva seu cadastro precisa estar <b>finalizado</b> e <b>aprovado</b>. Bora que ainda da tempo ! Entre em contato com nosso comercial para regularizar seu cadastro.";
+            $this->emit("mostrarPopup", "erro", $msg);
+            return;
+        }
+
+        if($produto->produtable->reservado){
+            $msg = "Este lote já foi vendido, mas não fique triste ! Temos muito mais pra te oferecer !";
             $this->emit("mostrarPopup", "erro", $msg);
             return;
         }
@@ -74,15 +87,10 @@ class BarraLateralCarrinho extends Component
         $this->emit("atualizaNumeroProdutos", $lotes);
     }
 
-    public function mount(){
+    public function init(){
         $this->cliente = Cliente::find(session()->get("cliente")["id"]);
         $this->carrinhos = Carrinho::where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
-        
-        $lotes = 0;
-        foreach($this->carrinhos as $carrinho){
-            $lotes += $carrinho->produtos->count();
-        }
-        $this->emit("atualizaNumeroProdutos", $lotes);
+        $this->iniciar = true;
     }
 
     public function render()

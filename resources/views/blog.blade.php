@@ -1,4 +1,4 @@
-@extends('template.main')
+@extends('template.main2')
 
 @section('conteudo')
 <div class="container-fluid">
@@ -45,13 +45,13 @@
                     <div class="col-10 bg-white nav-blog-lateral mt-3 py-3 px-4">
                         <h5>POSTS RECENTES</h5>
                         @foreach($noticias->take(3) as $noticia)
-                            <a href="{{route('noticia', ['slug' => $noticia->slug])}}">{{$noticia->titulo}}</a>
-                            <hr>
+                            <a class="hover:text-[#283646]" href="{{route('noticia', ['slug' => $noticia->slug])}}">{{$noticia->titulo}}</a>
+                            <hr class="my-2">
                         @endforeach
-                        <h5>Categorias</h5>
+                        <h5 class="mt-6">Categorias</h5>
                         @foreach(\App\Models\Categoria::all() as $categoria)
-                            <a href="{{route('blog.categoria', ['slug' => $categoria->slug])}}">{{$categoria->nome}}</a>
-                            <hr>
+                            <a class="hover:text-[#283646]" href="{{route('blog.categoria', ['slug' => $categoria->slug])}}">{{$categoria->nome}}</a>
+                            <hr class="my-2">
                         @endforeach
                     </div>
                 </div>

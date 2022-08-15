@@ -77,13 +77,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class=" px-3 pt-3 pb-4 mais-info hidden shadow-md transition duration-800 group-hover:flex flex-col justify-content-center align-items-center h-[100px] absolute bottom-[-90px] left-0 w-full bg-white">
+                    <div class="rounded-b-[15px] px-3 pt-3 pb-4 mais-info md:hidden md:shadow-md transition duration-800 md:group-hover:flex flex-col justify-content-center align-items-center md:h-[100px] md:absolute md:bottom-[-90px] md:left-0 w-full bg-white">
                         <div class="z-20 w-full text-center">
                             <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">R${{ number_format($lote->produto->preco, 2, ",", ".") }} em até {{ $lote->reserva->max_parcelas }}x</span>
                         </div>
                         <div class="grid w-full grid-cols-2 gap-3 mt-3">
                             <button onclick="window.location.href = '{{ route('fazenda.lote', ['fazenda' => $lote->fazenda, 'reserva' => $lote->reserva, 'lote' => $lote]) }}'" class="border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba Mais</button>
-                            <button class="border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Comprar</button>
+                            <button onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})" class="border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Comprar</button>
                         </div>
                     </div>
                 </div>

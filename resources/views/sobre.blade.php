@@ -1,4 +1,4 @@
-@extends('template.main')
+@extends('template.main2')
 
 @section('conteudo')
 <div class="container-fluid">
@@ -71,11 +71,46 @@
             <div class="row">
                 <div class="col-12 text-sobre-caixa">
                     <h1 class="mb-4">Por que comprar ?</h1>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Inovador, conectado, seguro.</p>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">As reservas mais cobiçadas do mercado estão aqui.</p>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Animais de alta qualidade e potencial genético.</p>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Você tem a possibilidade de não pagar comissão.</p>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">A gente valoriza sua experiência e acompanha todo o processo de compra com você.</p>
+                    <div class="w-full flex items-center text-[#8E8E8E] font-montserrat text-[17px]">
+                        <div>
+                            <img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">
+                        </div>
+                        <div>
+                            Inovador, conectado, seguro.
+                        </div>
+                    </div>
+                    <div class="w-full flex items-center text-[#8E8E8E] font-montserrat text-[17px]">
+                        <div>
+                            <img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">
+                        </div>
+                        <div>
+                            As reservas mais cobiçadas do mercado estão aqui.
+                        </div>
+                    </div>
+                    <div class="w-full flex items-center text-[#8E8E8E] font-montserrat text-[17px]">
+                        <div>
+                            <img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">
+                        </div>
+                        <div>
+                            Animais de alta qualidade e potencial genético.
+                        </div>
+                    </div>
+                    <div class="w-full flex items-center text-[#8E8E8E] font-montserrat text-[17px]">
+                        <div>
+                            <img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">
+                        </div>
+                        <div>
+                            Você tem a possibilidade de não pagar comissão.
+                        </div>
+                    </div>
+                    <div class="w-full flex items-center text-[#8E8E8E] font-montserrat text-[17px]">
+                        <div>
+                            <img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">
+                        </div>
+                        <div>
+                            A gente valoriza sua experiência e acompanha todo o processo de compra com você.
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row mt-4">
@@ -93,17 +128,59 @@
             <div class="row">
                 <div class="col-12 text-sobre-caixa">
                     <h1 class="mb-4">Por que vender ?</h1>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">É um ambiente seguro e transparente.</p>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">A gente produz todo o material promocional da sua reserva e da sua fazenda.</p>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Baixo risco. A gente configura a venda, aprova o crédito e vende pra você.</p>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Ampliação da capacidade de venda.</p>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Seus animais mais tempo em evidencia.</p>
-                    <p><img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">Inovador, disruptivo e justo.</p>
+                    <div class="w-full flex items-center text-[#8E8E8E] font-montserrat text-[17px]">
+                        <div>
+                            <img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">
+                        </div>
+                        <div>
+                            É um ambiente seguro e transparente.
+                        </div>
+                    </div>
+                    <div class="w-full flex items-center text-[#8E8E8E] font-montserrat text-[17px]">
+                        <div>
+                            <img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">
+                        </div>
+                        <div>
+                            A gente produz todo o material promocional da sua reserva e da sua fazenda.
+                        </div>
+                    </div>
+                    <div class="w-full flex items-center text-[#8E8E8E] font-montserrat text-[17px]">
+                        <div>
+                            <img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">
+                        </div>
+                        <div>
+                            Baixo risco. A gente configura a venda, aprova o crédito e vende pra você.
+                        </div>
+                    </div>
+                    <div class="w-full flex items-center text-[#8E8E8E] font-montserrat text-[17px]">
+                        <div>
+                            <img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">
+                        </div>
+                        <div>
+                            Ampliação da capacidade de venda.
+                        </div>
+                    </div>
+                    <div class="w-full flex items-center text-[#8E8E8E] font-montserrat text-[17px]">
+                        <div>
+                            <img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">
+                        </div>
+                        <div>
+                            Seus animais mais tempo em evidencia.
+                        </div>
+                    </div>
+                    <div class="w-full flex items-center text-[#8E8E8E] font-montserrat text-[17px]">
+                        <div>
+                            <img class="mr-3" src="{{asset('imagens/icone_check.png')}}" width="15">
+                        </div>
+                        <div>
+                            Inovador, disruptivo e justo.
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-12 text-center text-sobre-caixa">
-                    <a href="{{route('cadastro.vendedor')}}" class="btn btn-sobre px-5 py-2">Quero Vender</a>
+                    <a href="https://api.whatsapp.com/send?phone=5514981809051&text={{ urlencode('Olá. Gostaria de vender na Agroreserva!') }}" target="_blank" class="btn btn-sobre px-5 py-2">Quero Vender</a>
                 </div>
             </div>
         </div>

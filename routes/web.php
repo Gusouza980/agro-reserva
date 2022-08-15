@@ -15,7 +15,7 @@ use Symfony\Component\BrowserKit\HttpBrowser;
 */
 
 
-Route::middleware(['popup', 'cookie'])->group(function () {
+Route::middleware(['cookie'])->group(function () {
     Route::get('/cadastro', function () {
         return view('cadastro.index');
     })->name("cadastro");

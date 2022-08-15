@@ -18,7 +18,7 @@
                     </svg>
                     Precisa de Ajuda
                 </div> --}}
-                <div class="d-none d-md-block mr-5 mt-2 text-center transition duration-500 cpointer hover:scale-105"
+                <div onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')"  class="d-none d-md-block mr-5 mt-2 text-center transition duration-500 cpointer hover:scale-105"
                     style="font-size: 10px;">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150"
                         xmlns="http://www.w3.org/2000/svg" width="37.018" height="37" viewBox="0 0 24 24">
@@ -121,7 +121,7 @@
             </div>
         @else
             <div class="flex items-center md:order-2">
-                <div class="d-none d-md-block mr-5 text-center transition duration-500 cpointer hover:scale-105"
+                <div onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="d-none d-md-block mr-5 text-center transition duration-500 cpointer hover:scale-105"
                     style="font-size: 10px;">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150" id="Grupo_3728"
                         data-name="Grupo 3728" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
@@ -240,12 +240,12 @@
                         por Raças</a>
                 </li>
                 <li class="text-center">
-                    <a href="#"
+                    <a href="{{ route('blog') }}"
                         class="pointer block py-2 pl-3 pr-4 text-gray-400 transition duration-300 ease-in-out md:p-0">Blog</a>
                 </li>
 
                 <li class="text-center">
-                    <a href="#"
+                    <a href="{{ route('sobre') }}"
                         class="pointer block py-2 pl-3 pr-4 text-gray-400 transition duration-300 ease-in-out md:p-0">Quem Somos</a>
                 </li>
                 
@@ -281,11 +281,11 @@
                 class="hidden z-10 w-44 font-normal bg-dark rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                     <li>
-                        <a href="#"
+                        <a href="{{ route('blog') }}"
                             class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Blog</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('sobre') }}"
                             class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Quem Somos</a>
                     </li>
                 </ul>

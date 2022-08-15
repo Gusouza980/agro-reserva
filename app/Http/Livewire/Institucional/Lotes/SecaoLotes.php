@@ -23,7 +23,7 @@ class SecaoLotes extends Component
         $this->reserva = $reserva;
         $this->pesquisa_lote = $pesquisa;
         $this->filtro_raca = ($raca) ? $raca : -1;
-        if($this->filtro_raca){
+        if($this->filtro_raca != -1){
             $this->pagina_raca = true;
         }
     }

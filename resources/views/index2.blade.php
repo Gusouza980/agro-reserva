@@ -14,32 +14,16 @@
 
 <x-institucional.slide-lotes-destaque></x-institucional.slide-lotes-destaque>
 
-{{-- @livewire('slide-lotes-destaque') --}}
-
-@livewire('institucional.slide-reservas-ativas')
+<x-institucional.slide-reservas-ativas :reservas="$reservas"></x-institucional.slide-reservas>
 
 <x-institucional.comprar_vender></x-institucional.comprar_vender>
 
 <x-institucional.navegue-racas></x-institucional.navegue-racas>
 
-{{-- <x-institucional.slide_lotes_visitados></x-institucional.slide_lotes_visitados> --}}
-
 <x-institucional.depoimentos></x-institucional.depoimentos>
 
 <x-institucional.experiencias></x-institucional.experiencias>
 
-{{-- <x-institucional.newsletter></x-institucional.newsletter> --}}
-
-<div vw class="enabled">
-    <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-        <div class="vw-plugin-top-wrapper"></div>
-    </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
 @endsection
 
 @section("scripts")

@@ -19,6 +19,11 @@ return [
         0 => "Em análise",
         1 => "Aprovado",
         2 => "Reprovado"
+    ],
+    'nome_parcelas' => [
+        2 => "Duplas",
+        3 => "Triplas",
+        4 => "Quadruplas"
     ]
 ];
 
