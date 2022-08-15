@@ -1,4 +1,4 @@
-<div class="w-full bg-white pt-[200px] md:pt-[150px]">
+<div class="w-full bg-[#F5F5F5] pt-[200px] md:pt-[150px]">
     <div class="w-full bg-[#2E313C] pt-[200px] md:pt-[150px]">
         <x-institucional.newsletter></x-institucional.newsletter>
         <div class="w1500 mx-auto flex flex-wrap items-start justify-between py-20 border-b border-[#B3D5FF]">

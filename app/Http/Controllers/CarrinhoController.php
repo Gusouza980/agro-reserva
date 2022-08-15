@@ -103,6 +103,7 @@ class CarrinhoController extends Controller
         if(!$cliente->aprovado){
             return redirect()->route("index");
         }
+        
         $carrinho = Carrinho::find($request->carrinho_id);
         $reservados = false;
 
@@ -191,38 +192,6 @@ class CarrinhoController extends Controller
                 $nova_parcela->save();
             }
         }
-
-        // foreach($produtos as $produto){
-        //     foreach($produto as $lid => $parcelas){
-        //         $lote = $carrinho->lotes->where("id", $lid)->first();
-        //         $parcelas = $parcelas;
-        //     }
-        //     if($lote->reservado){
-        //         session()->flash("Um ou mais lotes que estavam no seu carrinho já foram reservados.");
-        //         $produto_carrinho = CarrinhoProduto::where([["lote_id", $lote->id], ["carrinho_id", $carrinho->id]])->first();
-        //         $produto_carrinho->delete();
-        //         $carrinho->total -= $lote->preco;
-        //         $carrinho->save();
-        //     }else{
-        //         $lote->reservado = true;
-        //         $lote->fechado_por = 0;
-        //         $lote->save();
-        //         $venda = new Venda;
-        //         $venda->carrinho_id = $carrinho->id;
-        //         $venda->lote_id = $lote->id;
-        //         $venda->assessor_id = ($request->assessor != 0) ? $request->assessor : null ;
-        //         $venda->fazenda_id = $lote->fazenda_id;
-        //         $venda->cliente_id = $carrinho->cliente_id;
-        //         $venda->parcelas = $parcelas;
-        //         $valor_parcela = round($lote->preco / $venda->parcelas, 2);
-        //         $venda->total = $valor_parcela * $venda->parcelas;
-        //         $venda->valor_parcela = $valor_parcela;
-        //         $venda->tipo = 1;
-        //         $venda->save();
-        //         $venda->codigo = str_pad($venda->id, 11, "0", STR_PAD_LEFT);
-        //         $venda->save();
-        //     }
-        // }
         
         $carrinho->aberto = false;
         $carrinho->save();

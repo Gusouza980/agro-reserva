@@ -9,19 +9,19 @@
         </div>
         @if($this->iniciar)
             <div class="flex w-full mt-5 flex-col relative h-full">
-                @if($carrinhos->count() > 0)
+                @if($carrinhos && $carrinhos->count() > 0)
                     <div class="w-full h-[500px] overflow-y-scroll">
                         @foreach($carrinhos as $carrinho)
-                            <div class="w-full px-6">
+                            <div class="w-full px-[20px]">
                                 <div class="w-full font-montserrat text-[14px] text-[#283646] font-medium">
                                     <h4>RESERVA: {{ mb_strtoupper($carrinho->reserva->fazenda->nome_fazenda) }}</h4>
                                 </div>
                                 @foreach($carrinho->produtos as $produto)
-                                    <div class="flex py-3 flex-collumn space-x-6 items-center">
+                                    <div class="flex w-full py-3 flex-collumn space-x-6 items-center">
                                         <div class="">
-                                            <img class="w-[190px] rounded-[6px] shadow-md" src="{{ asset($produto->produtable->preview) }}" alt="">
+                                            <img class="w-[150px] rounded-[6px] shadow-md" src="{{ asset($produto->produtable->preview) }}" alt="">
                                         </div>
-                                        <div class="relative">
+                                        <div class="relative grow">
                                             <div>
                                                 <span class="text-[15px] font-montserrat text-[#283646] font-bold">{{ $produto->produtable->nome }}</span>
                                             </div>
@@ -35,12 +35,12 @@
                                             <div class="mt-[-5px]">
                                                 <span class="text-[12px] text-[#626262] font-montserrat font-medium">ou <b class="text-[#15171E]">{{ $produto->produtable->reserva->max_parcelas }}x</b> de <b class="text-[#15171E]">R${{ number_format($produto->produtable->preco/$produto->produtable->reserva->max_parcelas, 2, ",", ".") }}</b></span>
                                             </div>
-                                            <i class="absolute -right-[18px] md:-right-[35px] duration-300 text-[#5C6384] hover:text-[#15171E] top-2 fa-solid fa-trash-can text-[20px] hover:scale-110 cpointer" wire:click="removerProduto({{ $carrinho->id }}, {{ $produto->id }})"></i>
+                                            <i class="absolute -right-[18px] md:-right-[10px] duration-300 text-[#5C6384] hover:text-[#15171E] top-2 fa-solid fa-trash-can text-[20px] hover:scale-110 cpointer" wire:click="removerProduto({{ $carrinho->id }}, {{ $produto->id }})"></i>
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
-                            <hr>
+                            <hr class="mb-4">
                         @endforeach
                     </div>
                     <div class="px-6 md:px-0 fixed md:absolute bottom-0 left-0 py-6 grid grid-cols-2 mt-4 gap-x-3 border-t border-[#707070] border-solid w-full">

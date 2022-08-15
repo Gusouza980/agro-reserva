@@ -1,4 +1,4 @@
-<div class="w-full relative" onclick="Livewire.emit('abreCarrinhoLateral')">
+<div class="w-full relative @if(!session()->get("carrinho")) hidden @endif" onclick="Livewire.emit('abreCarrinhoLateral')">
     {{-- @if(session()->get("carrinho")) --}}
         <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150" id="Grupo_3723"
             data-name="Grupo 3723" xmlns="http://www.w3.org/2000/svg"

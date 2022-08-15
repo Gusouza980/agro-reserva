@@ -11,7 +11,7 @@
             <span onclick="window.location.href='{{ route('index') }}'" class="cursor-pointer font-medium transition font-montserrat duration-300 text-[18px] text-[#283646] hover:scale-105 hover:text-white"><i class="fas fa-chevron-left mr-2"></i> <span>Voltar</span></span>
         </div>
         @foreach($carrinhos as $carrinho)
-            <div class="w1000 bg-white mx-auto rounded-[27px]">
+            <div class="w1000 bg-white mx-auto rounded-[27px] mb-5">
                 <div class="w-full flex flex-wrap md:flex-nowrap py-[40px] px-[40px] border-b-2 border-solid border-gray-400">
                     <div class="text-left grow">
                         <h3 class="font-montserrat text-[20px] font-medium text-gray-400">RESUMO DA COMPRA</h3>
@@ -23,7 +23,7 @@
                                 });
                             @endphp
                             <p>Reserva: {{ $carrinho->reserva->fazenda->nome_fazenda }}</p>
-                            <p>Resumo dos Lotes: L {{ implode("- L ", $lotes_numeros) }}</p>
+                            <p>Resumo dos Lotes: L {{ implode(" - L ", $lotes_numeros) }}</p>
                         </div>
                         <div class="font-montserrat text-[13px] text-[#15171E] mt-[15px]">
                             <p>Sem juros no boleto de titularidade Faz. e comprador</p>

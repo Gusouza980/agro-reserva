@@ -8,7 +8,7 @@ class IconeCarrinho extends Component
 {
     public $numProdutos = 0;
 
-    protected $listeners = ["atualizaNumeroProdutos"];
+    protected $listeners = ["atualizaNumeroProdutos", "atualizaIconeCarrinho" => '$refresh'];
 
     public function atualizaNumeroProdutos($numProdutos){
         $this->numProdutos = $numProdutos;

@@ -362,19 +362,9 @@ class SiteController extends Controller
                 // dd(cookie("cliente"));
                 session(["cliente" => $usuario->toArray()]);
                 
-                $carrinhos = Carrinho::where([["cliente_id", $usuario->id], ["aberto", true]])->get();
-                $carrinho_ids = [];
-                
-                foreach($carrinhos as $carrinho){
-                    if($carrinho->reserva_id == null || $carrinho->reserva->encerrada){
-                        $carrinho->delete();
-                    }else{
-                        if(!session()->get("carrinho")){
-                            session()->put("carrinho", []);
-                        }
-                        
-                        session()->push("carrinho", ["id" => $carrinho->id, "reserva" => $carrinho->reserva_id]);
-                    }
+                $carrinho = Carrinho::where([["cliente_id", $usuario->id], ["aberto", true]])->first();
+                if($carrinho){
+                    session()->put(["carrinho" => true]);
                 }
 
                 if(session()->get("pagina_retorno") && session()->get("pagina_retorno") != route("login")){
