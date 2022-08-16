@@ -9,6 +9,9 @@
                             <div class="text-center justify-content-center align-items-center lote-home-hover">
                                 <p style="margin-top: 12px;">{{ __('messages.botoes.compre_agora') }}</p>
                             </div>
+                            <div class="@if(!$lote->reservado) hidden @endif font-montserrat text-[29px] text-[#FFB02A] font-bold absolute top-0 left-0 z-[10] w-full h-full rounded-t-[15px] flex items-center justify-center" style="background-color: rgba(0,0,0,0.45)">
+                                VENDIDO
+                            </div>
                         </div>
                         <div class="px-4 mt-3 row align-items-center justify-content-start">
                             <div class="caixa-lote-home-logo d-flex align-items-center justify-content-center">

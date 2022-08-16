@@ -152,6 +152,10 @@ class SiteController extends Controller
         return view("raca", ["raca" => $raca]);
     }
 
+    public function reservas_abertas(){
+        return view("reservas_abertas");
+    }
+
     public function lotes2($slug, Reserva $reserva){
         if($reserva->lotes->count() == 0){
             return redirect()->route('fazenda.embrioes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva]);

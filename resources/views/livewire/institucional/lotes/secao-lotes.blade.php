@@ -36,72 +36,88 @@
             </div>
         </div>
     </div>
-    <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[80px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
-        @if($reserva && $lotes->count() > 0)
-            <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white">
-                <div class="flex items-center justify-center w-full h-full bg-black">
-                    <img src="{{ asset("imagens/card_reserva_lotes.png") }}" class="w-full" alt="">
-                </div>
-            </div>
-        @endif
-        @foreach($lotes as $lote)
-            <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 px-3 py-3 rounded-[15px] bg-white @if($lote->reservado) border-2 border-solid border-[#FFB02A] @endif">
-                <div>
-                    <div class="relative">
-                        <div class="absolute flex justify-content-center h-[45px] top-[-30px] px-2 pt-1 z-0 rounded-t-[12px] bg-slate-500 text-white" style="font-family: 'Montserrat', sans-serif;">
-                            <small class="font-medium text-[15px]">LOTE: {{ str_pad($lote->numero, 3, "0", STR_PAD_LEFT) }}</small>
-                        </div>
-                        <div class="relative w-full overflow-hidden bg-no-repeat bg-cover">
-                            <img src="{{ asset($lote->preview) }}" class="relative z-[8] w-full transition duration-300 hover:scale-110" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" alt="">
-                            <div class="@if(!$lote->reservado) hidden @endif font-montserrat text-[29px] text-[#FFB02A] font-bold absolute top-0 left-0 z-[10] w-full h-full rounded-t-[15px] flex items-center justify-center" style="background-color: rgba(0,0,0,0.45)">
-                                VENDIDO
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="py-2 text-center">
-                        <h4 class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">{{ $lote->nome }}</h4>
-                        <div class="px-2 mx-auto rounded-md w-fit">
-                            <span class="ml-3 text-[#626262] font-medium text-[15px]">RGD: {{ $lote->registro }}</span>
-                        </div>
-                    </div>
-                    <div class="relative mt-3">
-                        <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
-                            @if($lote->nascimento)
-                            <div class="">
-                                <b>NASC:.</b> <span class="ml-2 font-medium">{{ date("d/m/Y", strtotime($lote->nascimento)) }}</span>
-                            </div>
-                            @endif
-                            <div class="">
-                                <b>RAÇA:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->raca->nome, 'UTF-8') }}</span>
-                            </div>
-                            <div class="">
-                                <b>SEXO:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->sexo, 'UTF-8') }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="@if($lote->reservado) md:border-l-2 md:border-b-2 md:border-r-2 border-[#FFB02A] md:left-[-2px] md:w-[calc(100%+4px)] @else md:left-0 w-full @endif rounded-b-[15px] px-3 pt-3 pb-4 mais-info md:hidden md:shadow-md transition duration-800 md:group-hover:flex flex-col justify-content-center align-items-center md:h-[100px] md:absolute md:bottom-[-90px]  bg-white ">
-                        <div class="z-[11] w-full text-center">
-                            <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">R${{ number_format($lote->produto->preco, 2, ",", ".") }} em até {{ $lote->reserva->max_parcelas }}x</span>
-                        </div>
-                        <div class="grid w-full @if($lote->reservado) grid-cols-1 @else grid-cols-2 @endif gap-3 mt-3">
-                            <button onclick="window.location.href = '{{ route('fazenda.lote', ['fazenda' => $lote->fazenda, 'reserva' => $lote->reserva, 'lote' => $lote]) }}'" class="border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba Mais</button>
-                            @if(!$lote->reservado)
-                                <button onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})" class="border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Comprar</button>
-                            @endif
-                        </div>
+    @if(!$pagina_reservas_abertas)
+        <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[80px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
+            @if($reserva && $lotes->count() > 0)
+                <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white">
+                    <div class="flex items-center justify-center w-full h-full bg-black">
+                        <img src="{{ asset("imagens/card_reserva_lotes.png") }}" class="w-full" alt="">
                     </div>
                 </div>
-            </div>
+            @endif
+            @foreach($lotes as $lote)
+                <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 px-3 py-3 rounded-[15px] bg-white @if($lote->reservado) border-2 border-solid border-[#FFB02A] @endif">
+                    <div>
+                        <div class="relative">
+                            <div class="absolute flex justify-content-center h-[45px] top-[-30px] px-2 pt-1 z-0 rounded-t-[12px] bg-slate-500 text-white" style="font-family: 'Montserrat', sans-serif;">
+                                <small class="font-medium text-[15px]">LOTE: {{ str_pad($lote->numero, 3, "0", STR_PAD_LEFT) }}</small>
+                            </div>
+                            <div class="relative w-full overflow-hidden bg-no-repeat bg-cover">
+                                <img src="{{ asset($lote->preview) }}" class="relative z-[8] w-full transition duration-300 hover:scale-110" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" alt="">
+                                <div class="@if(!$lote->reservado) hidden @endif font-montserrat text-[29px] text-[#FFB02A] font-bold absolute top-0 left-0 z-[10] w-full h-full rounded-t-[15px] flex items-center justify-center" style="background-color: rgba(0,0,0,0.45)">
+                                    VENDIDO
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="py-2 text-center">
+                            <h4 class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">{{ $lote->nome }}</h4>
+                            <div class="px-2 mx-auto rounded-md w-fit">
+                                <span class="ml-3 text-[#626262] font-medium text-[15px]">RGD: {{ $lote->registro }}</span>
+                            </div>
+                        </div>
+                        <div class="relative mt-3">
+                            <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
+                                @if($lote->nascimento)
+                                <div class="">
+                                    <b>NASC:.</b> <span class="ml-2 font-medium">{{ date("d/m/Y", strtotime($lote->nascimento)) }}</span>
+                                </div>
+                                @endif
+                                <div class="">
+                                    <b>RAÇA:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->raca->nome, 'UTF-8') }}</span>
+                                </div>
+                                <div class="">
+                                    <b>SEXO:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->sexo, 'UTF-8') }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="@if($lote->reservado) md:border-l-2 md:border-b-2 md:border-r-2 border-[#FFB02A] md:left-[-2px] md:w-[calc(100%+4px)] @else md:left-0 w-full @endif rounded-b-[15px] px-3 pt-3 pb-4 mais-info md:hidden md:shadow-md transition duration-800 md:group-hover:flex flex-col justify-content-center align-items-center md:h-[100px] md:absolute md:bottom-[-90px]  bg-white ">
+                            <div class="z-[11] w-full text-center">
+                                <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">R${{ number_format($lote->produto->preco, 2, ",", ".") }} em até {{ $lote->reserva->max_parcelas }}x</span>
+                            </div>
+                            <div class="grid w-full @if($lote->reservado) grid-cols-1 @else grid-cols-2 @endif gap-3 mt-3">
+                                <button onclick="window.location.href = '{{ route('fazenda.lote', ['fazenda' => $lote->fazenda, 'reserva' => $lote->reserva, 'lote' => $lote]) }}'" class="border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba Mais</button>
+                                @if(!$lote->reservado)
+                                    <button onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})" class="border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Comprar</button>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @else
+        @foreach($reservas as $reserva)
+            @php
+                $lotes_reserva = $lotes->where('reserva_id', $reserva->id);
+            @endphp
+            @if($lotes_reserva->count() > 0)
+                <div class="w-full" wire:key="reserva-{{ $reserva->id }}">
+                    <x-institucional.header-reserva-lotes :reserva="$reserva"></x-institucional.header-reserva-lotes>
+                </div>
+                <div class="w-full" wire:key="lotes-{{ $reserva->id }}">
+                    <x-institucional.slide-lotes-destaque :lotes="$lotes_reserva"></x-institucional.slide-lotes-destaque>
+                </div>
+            @endif
         @endforeach
-    </div>    
+    @endif
     @if($lotes->count() == 0)
-        <div class="mx-auto mb-5 w1200">
+        <div class="px-6 mx-auto my-5 w1200 md:px-0">
             <div class="flex flex-wrap items-center w-full md:flex-nowrap">
-                <div class="w-full md:w-1/2">
+                <div class="flex justify-end w-full md:w-1/2 md:pr-6">
                     <img src="{{ asset('imagens/icone_fale_assessor.svg') }}" class="w-full md:w-[80%]" alt="">
                 </div>
-                <div class="w-full md:w-1/2">
+                <div class="w-full mt-6 md:w-1/2 md:pl-6 md:mt-0">
                     <h3 class="text-[#283646] font-bold font-montserrat text-[30px]">Fala meu amigo!</h3>
                     <div class="w-full md:w-[285px]">
                         <p class="mt-[10px] font-montserrat text-[14px] font-medium text-[#80828B]">
@@ -109,41 +125,40 @@
                         </p>
                     </div>
                     <div class="flex w-full md:space-x-4 mt-[40px]">
-                        <button class="border border-[#27C45B] bg-[#27C45B] hover:bg-[#1e9b48] text-[11px] text-white py-[10px] px-[17px] font-montserrat font-semibold rounded-[10px]">FALAR COM ASSESSOR</button>
-                        <button class="border-2 border-[#707070] text-[#1E2027] text-[11px] py-[10px] px-[17px] transition duration-300 font-montserrat font-semibold rounded-[10px] hover:bg-[#15171E] hover:text-white">ASSINAR NEWSLETTER</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-full mt-[80px]">
-                <div class="mx-auto w1200">
-                    <div class="flex flex-wrap items-center justify-start w-full md:flex-nowrap md:space-x-16">
-                        <div class="w-full max-w-[400px] flex justify-end mb-4 duration-1000 delay-300 animate-in slide-in-from-left">
-                            <div class="max-w-[300px]">
-                                <h3 class="font-montserrat text-[30px] font-bold text-[#283646]">
-                                    Titulo provocante
-                                    Para ação de venda
-                                </h3>
-                                <div class="mt-[16px] font-montserrat text-[14px] font-medium text-[#80828B]">
-                                    Lorem Ipsum é simplesmente um texto fictício da indústria tipográfica e de impressão.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full mb-4 duration-1000 delay-300 md:max-w-[550px] animate-in slide-in-from-right">
-                            <div onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer">
-                                <div class="">
-                                    <img src="{{ asset('imagens/banner-vender.jpg') }}" style="max-width: 100%;" alt="">
-                                </div>
-                                <div class="py-2 text-center bg-inherit cpointer text-inherit" style="width: 100%; font-family: Montserrat; font-size: 18px;">
-                                    Quero Vender
-                                </div>
-                            </div>
-                        </div>
+                        <button onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="border border-[#27C45B] bg-[#27C45B] hover:bg-[#1e9b48] text-[11px] text-white py-[10px] px-[17px] font-montserrat font-semibold rounded-[10px]">FALAR COM ASSESSOR</button>
+                        <a href="#newsletter" class="cursor-pointer border-2 border-[#707070] text-[#1E2027] text-[11px] py-[10px] px-[17px] transition duration-300 font-montserrat font-semibold rounded-[10px] hover:bg-[#15171E] hover:!text-white">ASSINAR NEWSLETTER</a>
                     </div>
                 </div>
             </div>
         </div>
     @endif
+    <div class="w-full mt-[80px]">
+        <div class="px-6 mx-auto w1200 md:px-0">
+            <div class="flex flex-wrap items-center justify-center w-full md:flex-nowrap md:space-x-16">
+                <div class="w-full max-w-[400px] flex justify-start md:justify-end mb-4 duration-1000 delay-300 animate-in slide-in-from-left">
+                    <div class="max-w-[300px]">
+                        <h3 class="font-montserrat text-[30px] font-bold text-[#283646]">
+                            Titulo provocante
+                            Para ação de venda
+                        </h3>
+                        <div class="mt-[16px] font-montserrat text-[14px] font-medium text-[#80828B]">
+                            Lorem Ipsum é simplesmente um texto fictício da indústria tipográfica e de impressão.
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full mb-4 duration-1000 delay-300 md:max-w-[550px] animate-in slide-in-from-right">
+                    <div onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer">
+                        <div class="">
+                            <img src="{{ asset('imagens/banner-vender.jpg') }}" style="max-width: 100%;" alt="">
+                        </div>
+                        <div class="py-2 text-center bg-inherit cpointer text-inherit" style="width: 100%; font-family: Montserrat; font-size: 18px;">
+                            Quero Vender
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <hr class="mt-3">
 </div>
 

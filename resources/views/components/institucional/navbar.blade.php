@@ -8,7 +8,7 @@
             <div class="flex items-end md:order-2" style="font-family: 'Montserrat', sans-serif;">
 
                 {{-- BOTÃO PRECISA DE AJUDA --}}
-                {{-- <div class="d-none d-md-block mr-5 text-center transition duration-500 cpointer hover:scale-105" style="font-size: 10px;">
+                {{-- <div class="mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105" style="font-size: 10px;">
                     <svg class="mx-auto" id="Grupo_3728" data-name="Grupo 3728" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
                         <g id="Elipse_309" data-name="Elipse 309" fill="#fcfcfc" stroke="#80828b" stroke-width="1.5">
                             <circle cx="18" cy="18" r="18" stroke="none"/>
@@ -18,7 +18,7 @@
                     </svg>
                     Precisa de Ajuda
                 </div> --}}
-                <div onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')"  class="d-none d-md-block mr-5 mt-2 text-center transition duration-500 cpointer hover:scale-105"
+                <div onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')"  class="mt-2 mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105"
                     style="font-size: 10px;">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150"
                         xmlns="http://www.w3.org/2000/svg" width="37.018" height="37" viewBox="0 0 24 24">
@@ -29,7 +29,7 @@
                 </div>
 
                 {{-- BOTÃO MINHA CONTA --}}
-                <div class="d-none d-md-block mr-5 text-center transition duration-500 cpointer hover:scale-105"
+                <div class="mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105"
                     style="font-size: 10px;" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150" id="Grupo_3722"
                         data-name="Grupo 3722" xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@
                     id="dropdown">
                     <div class="px-4 py-3">
                         <span
-                            class="block text-sm text-gray-900 font-semibold">{{ session()->get('cliente')['nome_dono'] }}</span>
+                            class="block text-sm font-semibold text-gray-900">{{ session()->get('cliente')['nome_dono'] }}</span>
                         <span
                             class="block text-sm font-medium text-gray-500 truncate ">{{ session()->get('cliente')['email'] }}</span>
                     </div>
@@ -96,7 +96,7 @@
 
 
                 {{-- BOTÃO MEU CARRINHO --}}
-                <div class="ml-md-0 text-center transition duration-500 cpointer hover:scale-105"
+                <div class="text-center transition duration-500 ml-md-0 cpointer hover:scale-105"
                     style="font-size: 10px;" @click="mostrarCarrinho = true">
                     @livewire('institucional.icone-carrinho')
                 </div>
@@ -121,7 +121,7 @@
             </div>
         @else
             <div class="flex items-center md:order-2">
-                <div onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="d-none d-md-block mr-5 text-center transition duration-500 cpointer hover:scale-105"
+                <div onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105"
                     style="font-size: 10px;">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150" id="Grupo_3728"
                         data-name="Grupo 3728" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
@@ -139,7 +139,7 @@
                     Precisa de Ajuda
                 </div>
 
-                <div class="d-none d-md-block mr-5 text-center transition duration-500 cpointer hover:scale-105"
+                <div class="mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105"
                     style="font-size: 10px;" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150" id="Grupo_3722"
                         data-name="Grupo 3722" xmlns="http://www.w3.org/2000/svg"
@@ -215,7 +215,7 @@
         <div class="items-center justify-center flex-auto hidden w-full ml-4 md:justify-start md:flex md:w-auto md:order-1"
             id="mobile-menu-2">
             <div class="flex w-full mt-4 mr-3 text-gray-400 align-items-center mt-md-0">
-                <div class="w-3/5 mx-auto relative">
+                <div class="relative w-3/5 mx-auto">
                     <form class="w-full" action="{{ route('pesquisa') }}" method="GET">
                         <input
                             class="w-full pl-10 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400"
@@ -226,7 +226,7 @@
             </div>
             <ul class="flex flex-col md:hidden md:flex-row md:space-x-3 md:mt-0 md:text-sm md:font-medium">
                 <li class="text-center">
-                    <a href="#"
+                    <a href="{{ route('reservas_abertas') }}"
                         class="block py-2 pl-3 pr-4 text-gray-400 transition duration-300 ease-in-out rounded md:p-0"
                         aria-current="page">Reservas Abertas</a>
                 </li>
@@ -241,12 +241,12 @@
                 </li>
                 <li class="text-center">
                     <a href="{{ route('blog') }}"
-                        class="pointer block py-2 pl-3 pr-4 text-gray-400 transition duration-300 ease-in-out md:p-0">Blog</a>
+                        class="block py-2 pl-3 pr-4 text-gray-400 transition duration-300 ease-in-out pointer md:p-0">Blog</a>
                 </li>
 
                 <li class="text-center">
                     <a href="{{ route('sobre') }}"
-                        class="pointer block py-2 pl-3 pr-4 text-gray-400 transition duration-300 ease-in-out md:p-0">Quem Somos</a>
+                        class="block py-2 pl-3 pr-4 text-gray-400 transition duration-300 ease-in-out pointer md:p-0">Quem Somos</a>
                 </li>
                 
             </ul>
@@ -257,9 +257,9 @@
 <div class="hidden md:block w-full bg-[#80828B] py-2 border-b-2 border-[#F5B01F] justify-content-center align-items-center text-white"
     style="font-size: 13px; font-weight: 500; font-family: 'Montserrat', sans-serif, sans-serif;">
     <ul
-        class="w1200 mx-auto flex flex-row mt-0 justify-center">
+        class="flex flex-row justify-center mx-auto mt-0 w1200">
         <li>
-            <a href="#"
+            <a href="{{ route('reservas_abertas') }}"
                 class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Reservas Abertas</a>
         </li>
         <li>
@@ -269,7 +269,7 @@
         <li class="">
             <button id="dropdownOutrosLink" data-dropdown-toggle="dropdownOutros"
                 class="py-2 pr-4 pl-3 flex justify-between items-center font-montserrat text-[13px] font-medium focus:outline-none">Outros
-                <svg class="ml-1 w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -278,15 +278,15 @@
             </button>
             <!-- Dropdown menu -->
             <div id="dropdownOutros"
-                class="hidden z-10 w-44 font-normal bg-dark rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                class="z-10 hidden font-normal divide-y divide-gray-100 rounded shadow w-44 bg-dark dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                     <li>
                         <a href="{{ route('blog') }}"
-                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Blog</a>
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Blog</a>
                     </li>
                     <li>
                         <a href="{{ route('sobre') }}"
-                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Quem Somos</a>
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Quem Somos</a>
                     </li>
                 </ul>
             </div>

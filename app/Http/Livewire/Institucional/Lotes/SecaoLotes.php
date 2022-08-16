@@ -17,12 +17,19 @@ class SecaoLotes extends Component
     public $filtro_sexo = -1;
 
     public $pagina_raca = false;
+    public $pagina_multi_racas = false;
+    public $pagina_reservas_abertas = false;
 
-    public function mount($fazenda = null, $reserva = null, $pesquisa = null, $raca = null){
+    public function updatedPesquisaLote(){
+        $this->emit('$refresh');
+    }
+
+    public function mount($fazenda = null, $reserva = null, $pesquisa = null, $raca = null, $pagina_reservas_abertas = false){
         $this->fazenda = $fazenda;
         $this->reserva = $reserva;
         $this->pesquisa_lote = $pesquisa;
         $this->filtro_raca = ($raca) ? $raca : -1;
+        $this->pagina_reservas_abertas = $pagina_reservas_abertas;
         if($this->filtro_raca != -1){
             $this->pagina_raca = true;
         }
@@ -39,11 +46,9 @@ class SecaoLotes extends Component
 
         if($this->pesquisa_lote){
             $pesquisa_lote = $this->pesquisa_lote;
-            $lotes = $lotes->where(function($query) use ($pesquisa_lote){
-                $query->where("nome", "LIKE", "%" . $this->pesquisa_lote . "%")
+            $lotes = $lotes->where("nome", "LIKE", "%" . $this->pesquisa_lote . "%")
                 ->orWhere("registro", $this->pesquisa_lote)
                 ->orWhere("numero", "=", $this->pesquisa_lote);
-            });
         }
 
         if($this->filtro_disponibilidade != -1){
@@ -60,6 +65,6 @@ class SecaoLotes extends Component
 
         $lotes = $lotes->orderByRaw("reservado ASC, numero ASC")->get();
         // $reservados = $this->reserva->lotes->where('ativo', true)->where('membro_pacote', false)->where("reservado", true);
-        return view('livewire.institucional.lotes.secao-lotes', ['lotes' => $lotes]);
+        return view('livewire.institucional.lotes.secao-lotes', ['reservas' => $reservas, 'lotes' => $lotes]);
     }
 }

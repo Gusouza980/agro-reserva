@@ -5153,6 +5153,10 @@ body[dir="rtl"] .checkbox:checked,
     --tw-text-opacity: 1;
     color: rgb(40 54 70 / var(--tw-text-opacity))
 }
+.hover\:\!text-white:hover {
+    --tw-text-opacity: 1 !important;
+    color: rgb(255 255 255 / var(--tw-text-opacity)) !important
+}
 .hover\:no-underline:hover {
     -webkit-text-decoration-line: none;
             text-decoration-line: none
@@ -5459,6 +5463,9 @@ body[dir="rtl"] .checkbox:checked,
     .md\:justify-start {
         justify-content: flex-start
     }
+    .md\:justify-end {
+        justify-content: flex-end
+    }
     .md\:gap-5 {
         gap: 1.25rem
     }
@@ -5555,6 +5562,15 @@ body[dir="rtl"] .checkbox:checked,
     }
     .md\:pt-\[150px\] {
         padding-top: 150px
+    }
+    .md\:pr-4 {
+        padding-right: 1rem
+    }
+    .md\:pl-4 {
+        padding-left: 1rem
+    }
+    .md\:pr-6 {
+        padding-right: 1.5rem
     }
     .md\:text-left {
         text-align: left
