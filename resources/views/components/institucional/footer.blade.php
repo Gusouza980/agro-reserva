@@ -46,11 +46,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="w-full mt-[40px]">
-                    <div class="mx-auto sm:mx-0 mx-sm-0 text-center sm:text-left text-sm-left font-montserrat text-[16px] text-[#D7D8E4]">
+                <div class="w-full mt-[20px]">
+                    <div class="mx-auto sm:mx-0 mx-sm-0 text-center sm:text-left text-sm-left font-montserrat text-[14px] text-[#D7D8E4]">
                         <ul>
-                            <li>AGRO RESERVA PECUARIA DIGITAL LTDA</li>
-                            <li>CNPJ: 41.893.302/0001-13</li>
+                            <li>Agro Reserva Pecuária Digital LTDA</li>
+                            <li class="mt-[20px]">Cnpj: 41.893.302/0001-13</li>
                         </ul>
                     </div>
                 </div>

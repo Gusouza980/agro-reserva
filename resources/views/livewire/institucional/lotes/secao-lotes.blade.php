@@ -39,7 +39,7 @@
     <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[80px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
         @if($reserva && $lotes->count() > 0)
             <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white">
-                <div class="flex items-center justify-center w-full h-full px-3 bg-black">
+                <div class="flex items-center justify-center w-full h-full bg-black">
                     <img src="{{ asset("imagens/card_reserva_lotes.png") }}" class="w-full" alt="">
                 </div>
             </div>
