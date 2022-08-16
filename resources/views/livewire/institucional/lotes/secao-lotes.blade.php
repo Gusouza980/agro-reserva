@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-    <div class="w-full text-center">
+    <div class="w-full mt-5 text-center">
         <h3 class="font-montserrat font-medium text-[20px] text-[#757887]">
             @if($pagina_reservas_abertas)
                 RESERVAS ABERTAS
