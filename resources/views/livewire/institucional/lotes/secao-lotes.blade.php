@@ -119,7 +119,7 @@
             <div class="w-full text-center">
                 <h3 class="font-montserrat font-medium text-[16px] text-[#42444d]">{{ $raca->nome }}</h3>
             </div>
-            <div class="w-full" wire:key="lotes-{{ $reserva->id }}">
+            <div class="w-full" wire:key="lotes-{{ $raca->id }}">
                 <x-institucional.slide-lotes-destaque :lotes="$lotes_racas"></x-institucional.slide-lotes-destaque>
             </div>
         @endif
