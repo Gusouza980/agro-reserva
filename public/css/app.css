@@ -3702,6 +3702,9 @@ body[dir="rtl"] .checkbox:checked,
 .mt-\[36px\] {
     margin-top: 36px
 }
+.mt-\[60px\] {
+    margin-top: 60px
+}
 .block {
     display: block
 }

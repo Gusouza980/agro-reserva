@@ -12,14 +12,13 @@ class SlideLotesDestaque extends Component
      *
      * @return void
      */
-    public $reservas;
-    public $lotes;
+    
+     public $lotes;
 
-    public function __construct()
+    public function __construct($lotes)
     {
         //
-        $this->reservas = Reserva::where("aberto", true)->where("encerrada", false)->get();
-        $this->lotes = $this->reservas->last()->lotes;
+        $this->lotes = $lotes;
     }
 
     /**
