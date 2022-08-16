@@ -2,10 +2,10 @@
     <div class="w-full bg-[#2E313C] pt-[200px] md:pt-[150px]">
         <x-institucional.newsletter></x-institucional.newsletter>
         <div class="w1500 mx-auto flex flex-wrap items-start justify-between py-20 border-b border-[#B3D5FF]">
-            <div class="w-full md:w-1/3 px-5 self-center">
+            <div class="self-center w-full px-5 md:w-1/3">
                 <img src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" class="w-full max-w-[250px] mx-auto" alt="">
             </div>
-            <div class="w-full md:w-1/3 mt-4 md:mt-0 px-5">
+            <div class="w-full px-5 mt-4 md:w-1/3 md:mt-0">
                 <div class="w-full">
                     <h3 class="font-montserrat font-bold text-[25px] text-[#D7D8E4] text-center sm:text-left text-md-left">Mapa do Site</h3>
                 </div>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full md:w-1/3 mt-4 md:mt-0 px-5">
+            <div class="w-full px-5 mt-4 md:w-1/3 md:mt-0">
                 <div class="w-full">
                     <h3 class="font-montserrat font-bold text-[25px] text-[#D7D8E4] text-center sm:text-left text-sm-left">Informações Legais</h3>
                 </div>
@@ -46,30 +46,40 @@
                         </ul>
                     </div>
                 </div>
+                <div class="w-full mt-[40px]">
+                    <div class="mx-auto sm:mx-0 mx-sm-0 text-center sm:text-left text-sm-left font-montserrat text-[16px] text-[#D7D8E4]">
+                        <ul>
+                            <li>AGRO RESERVA PECUARIA DIGITAL LTDA</li>
+                            <li>CNPJ: 41.893.302/0001-13</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="w1000 mx-auto flex flex-wrap py-8 items-center justify-between">
-            <div class="w-full md:w-auto text-center text-md-left">
+        <div class="flex flex-wrap items-center justify-between py-8 mx-auto w1000">
+            <div class="w-full text-center md:w-auto text-md-left">
                 <i class="fab fa-facebook-square text-[#FFB02A] text-[36px]"></i>
                 <i class="fab fa-youtube text-[#FFB02A] text-[36px] mx-8"></i>
                 <i class="fab fa-instagram text-[#FFB02A] text-[36px]"></i>
             </div>
             <div class="w-full md:w-auto mt-[20px] md:mt-0">
-                <div class="w-full hidden md:block">
+                <div class="hidden w-full md:block">
                     <span class="font-roboto font-bold text-[16px] text-white">E-mail</span>
                 </div>
-                <div class="w-full flex items-center justify-center md:justify-start mt-2">
+                <div class="flex items-center justify-center w-full mt-2 md:justify-start">
                     <i class="fas fa-envelope text-[#FFB02A] text-[20px] mr-3"></i>
-                    <span class="font-roboto text-[16px] text-[#A2A9B0]">gustavo@berrantecomunicacao.com.br</span>
+                    <span class="font-roboto text-[16px] text-[#A2A9B0]">contato@agroreserva.com.br</span>
                 </div>
             </div>
             <div class="w-full md:w-auto mt-[20px] md:mt-0">
-                <div class="w-full hidden md:block">
+                <div class="hidden w-full md:block">
                     <span class="font-roboto font-bold text-[16px] text-white">Telefone</span>
                 </div>
-                <div class="w-full flex items-center justify-center md:justify-start mt-2">
-                    <i class="fas fa-phone-alt text-[#FFB02A] text-[20px] mr-3"></i>
-                    <span class="font-roboto text-[16px] text-[#A2A9B0]">+55 (34) 90000-0000</span>
+                <div class="flex flex-wrap items-center justify-center w-full mt-2 md:justify-start">
+                    <div>
+                        <i class="fas fa-phone-alt text-[#FFB02A] text-[20px] mr-3"></i>
+                        <span class="font-roboto text-[16px] text-[#A2A9B0]">(14) 98180-9051 <span class="mx-2 text-[#FFB02A]">|</span> (34) 99172-0996</span>
+                    </div>
                 </div>
             </div>
         </div>
