@@ -19,17 +19,20 @@ class SecaoLotes extends Component
     public $pagina_raca = false;
     public $pagina_multi_racas = false;
     public $pagina_reservas_abertas = false;
+    public $pagina_navegue_por_racas = false;
 
     public function updatedPesquisaLote(){
         $this->emit('$refresh');
     }
 
-    public function mount($fazenda = null, $reserva = null, $pesquisa = null, $raca = null, $pagina_reservas_abertas = false){
+    public function mount($fazenda = null, $reserva = null, $pesquisa = null, $raca = null, $pagina_reservas_abertas = false, $pagina_navegue_por_racas = false){
         $this->fazenda = $fazenda;
         $this->reserva = $reserva;
         $this->pesquisa_lote = $pesquisa;
         $this->filtro_raca = ($raca) ? $raca : -1;
         $this->pagina_reservas_abertas = $pagina_reservas_abertas;
+        $this->pagina_navegue_por_racas = $pagina_navegue_por_racas;
+        
         if($this->filtro_raca != -1){
             $this->pagina_raca = true;
         }

@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-    @if(!$pagina_reservas_abertas)
+    @if(!$pagina_reservas_abertas && !$pagina_navegue_por_racas)
         <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[80px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
             @if($reserva && $lotes->count() > 0)
                 <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white">
@@ -96,7 +96,7 @@
                 </div>
             @endforeach
         </div>
-    @else
+    @elseif($pagina_reservas_abertas)
         @foreach($reservas as $reserva)
             @php
                 $lotes_reserva = $lotes->where('reserva_id', $reserva->id);
@@ -110,6 +110,20 @@
                 </div>
             @endif
         @endforeach
+    @else
+    @foreach(\App\Models\Raca::all() as $raca)
+        @php
+            $lotes_racas = $lotes->where('raca_id', $raca->id);
+        @endphp
+        @if($lotes_raca->count() > 0)
+            <div class="w-full text-center">
+                <h3 class="font-montserrat font-medium text-[16px] text-[#42444d]">{{ $raca->nome }}</h3>
+            </div>
+            <div class="w-full" wire:key="lotes-{{ $reserva->id }}">
+                <x-institucional.slide-lotes-destaque :lotes="$lotes_raca"></x-institucional.slide-lotes-destaque>
+            </div>
+        @endif
+    @endforeach
     @endif
     @if($lotes->count() == 0)
         <div class="px-6 mx-auto my-5 w1200 md:px-0">

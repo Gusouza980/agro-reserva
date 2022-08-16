@@ -101,6 +101,7 @@ Route::middleware(['cookie'])->group(function () {
     Route::get('/pesquisa', [\App\Http\Controllers\SiteController::class, 'pesquisa'])->name("pesquisa");
     Route::get('/raca/{slug}', [\App\Http\Controllers\SiteController::class, 'raca'])->name("raca");
     Route::get('/reservas-abertas', [\App\Http\Controllers\SiteController::class, 'reservas_abertas'])->name("reservas_abertas");
+    Route::get('/navegue-por-racas', [\App\Http\Controllers\SiteController::class, 'navegue_por_racas'])->name("navegue_por_racas");
     Route::get('/fazenda/{fazenda}/conheca/{reserva}/', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca");
     Route::get('/fazenda/{fazenda}/conheca/', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.conheca.antigo");
     Route::get('/fazenda/{fazenda}/conheca/lotes', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.conheca.lotes.antigo");

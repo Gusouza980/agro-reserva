@@ -4886,6 +4886,14 @@ body[dir="rtl"] .checkbox:checked,
     --tw-text-opacity: 1;
     color: rgb(30 32 39 / var(--tw-text-opacity))
 }
+.text-\[\#757887\] {
+    --tw-text-opacity: 1;
+    color: rgb(117 120 135 / var(--tw-text-opacity))
+}
+.text-\[\#42444d\] {
+    --tw-text-opacity: 1;
+    color: rgb(66 68 77 / var(--tw-text-opacity))
+}
 .underline {
     -webkit-text-decoration-line: underline;
             text-decoration-line: underline

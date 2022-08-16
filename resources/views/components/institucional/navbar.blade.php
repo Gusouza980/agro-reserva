@@ -263,7 +263,7 @@
                 class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Reservas Abertas</a>
         </li>
         <li>
-            <a href="#"
+            <a href="{{ route('navegue_por_racas') }}"
                 class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Navegue por Raças</a>
         </li>
         <li class="">
