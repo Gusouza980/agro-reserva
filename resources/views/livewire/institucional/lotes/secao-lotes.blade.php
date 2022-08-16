@@ -36,6 +36,15 @@
             </div>
         </div>
     </div>
+    <div class="w-full text-center">
+        <h3 class="font-montserrat font-medium text-[20px] text-[#757887]">
+            @if($pagina_reservas_abertas)
+                RESERVAS ABERTAS
+            @elseif($pagina_navegue_por_racas)
+                NAVEGUE POR RAÇAS
+            @endif
+        </h3>
+    </div>
     @if(!$pagina_reservas_abertas && !$pagina_navegue_por_racas)
         <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[80px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
             @if($reserva && $lotes->count() > 0)
@@ -116,7 +125,7 @@
             $lotes_racas = $lotes->where('raca_id', $raca->id);
         @endphp
         @if($lotes_racas->count() > 0)
-            <div class="w-full text-center">
+            <div class="w-full mt-5 text-center">
                 <h3 class="font-montserrat font-medium text-[16px] text-[#42444d]">{{ $raca->nome }}</h3>
             </div>
             <div class="w-full" wire:key="lotes-{{ $raca->id }}">
