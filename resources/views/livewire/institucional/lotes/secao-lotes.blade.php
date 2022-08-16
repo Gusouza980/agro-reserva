@@ -115,12 +115,12 @@
         @php
             $lotes_racas = $lotes->where('raca_id', $raca->id);
         @endphp
-        @if($lotes_raca->count() > 0)
+        @if($lotes_racas->count() > 0)
             <div class="w-full text-center">
                 <h3 class="font-montserrat font-medium text-[16px] text-[#42444d]">{{ $raca->nome }}</h3>
             </div>
             <div class="w-full" wire:key="lotes-{{ $reserva->id }}">
-                <x-institucional.slide-lotes-destaque :lotes="$lotes_raca"></x-institucional.slide-lotes-destaque>
+                <x-institucional.slide-lotes-destaque :lotes="$lotes_racas"></x-institucional.slide-lotes-destaque>
             </div>
         @endif
     @endforeach
