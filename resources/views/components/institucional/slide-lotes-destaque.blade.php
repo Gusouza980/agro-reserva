@@ -15,7 +15,7 @@
                         </div>
                         <div class="px-4 mt-3 row align-items-center justify-content-start">
                             <div class="caixa-lote-home-logo d-flex align-items-center justify-content-center">
-                                <img src="{{ asset($lote->fazenda->logo) }}" alt="">
+                                <img src="{{ asset($lote->fazenda->logo) }}" class="grayscale invert" alt="">
                             </div>
                             <div class="ml-4">
                                 <div class="d-flex justify-content-start align-items-center">
