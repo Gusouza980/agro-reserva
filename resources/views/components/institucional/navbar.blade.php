@@ -278,15 +278,15 @@
             </button>
             <!-- Dropdown menu -->
             <div id="dropdownOutros"
-                class="z-10 hidden font-normal divide-y divide-gray-100 rounded shadow w-44 bg-dark dark:bg-gray-700 dark:divide-gray-600">
-                <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                class="z-10 hidden font-normal divide-y rounded shadow w-44 bg-[#F2F2F2] divide-gray-600">
+                <ul class="py-1 text-sm" aria-labelledby="dropdownLargeButton">
                     <li>
                         <a href="{{ route('blog') }}"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Blog</a>
+                            class="block px-4 py-2 text-gray-900">Blog</a>
                     </li>
                     <li>
                         <a href="{{ route('sobre') }}"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Quem Somos</a>
+                            class="block px-4 py-2 text-gray-900">Quem Somos</a>
                     </li>
                 </ul>
             </div>
