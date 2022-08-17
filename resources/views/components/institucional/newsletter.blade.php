@@ -5,7 +5,7 @@
                 <img src="{{ asset('imagens/icone_newsletter.svg') }}" class="w-40 lg:w-full" style="max-width: 447px; max-height: 250px;" alt="">
             </div>
             <div class="mt-8 text-center duration-1000 delay-300 md:mt-0 animate-in slide-in-from-right">
-                <h5 class="text-[26px] md:text-[55px] text-[#FFB02A] font-montserrat">RECEBA EM PRIMEIRA MÃO</h5>
+                <h5 class="text-[26px] md:text-[55px] text-[#FFB02A] font-gobold-hollow font-bold">RECEBA EM PRIMEIRA MÃO</h5>
                 <p class="text-[16px] md:text-[23px] text-[#D7D8E4] font-montserrat">Informe seu e-mail e fique atualizado</p>
                 <div class="flex w-full mt-4 align-items-center justify-content-center">
                     <div class="relative flex-1 mb-3">

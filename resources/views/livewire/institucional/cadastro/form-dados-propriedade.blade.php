@@ -49,7 +49,7 @@
                             maxlength="50" required>
                     </div>
                     <div class="w-full mb-3 md:w-2/12">
-                        <label class="form-label" for="">Estado (Sigla)</label>
+                        <label class="form-label" for="">Estado (UF)</label>
                         <input type="text" class="w-full form-input-text" wire:model.defer="estado_propriedade"
                             maxlength="2" minlength="2" required>
                     </div>

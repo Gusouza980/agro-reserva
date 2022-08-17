@@ -8,6 +8,23 @@
     src: url("/fontes/gobold/Gobold Regular.otf");
 }
 
+/* @font-face {
+    font-family: Gobold Hollow;
+	font-display: swap;
+    src: url("/fontes/gobold hollow/Gobold Regular.otf");
+} */
+
+@font-face {
+    font-family:"Gobold Hollow";
+    src:url("/fontes/gobold hollow/Gobold_Hollow.eot?") format("eot"),
+        url("/fontes/gobold hollow/Gobold_Hollow.woff") format("woff"),
+        url("/fontes/gobold hollow/Gobold_Hollow.ttf") format("truetype"),
+        url("/fontes/gobold hollow/Gobold_Hollow.svg#GoboldHollow") format("svg");
+        font-weight:normal;
+        font-style:normal;
+}
+
+
 :root {
     --vermelho: #F5B01F;
     --laranja: #E8521B;
@@ -2551,6 +2568,10 @@ label {
 
 .font-gobold {
     font-family: 'Gobold Regular';
+}
+
+.font-gobold-hollow {
+    font-family: 'Gobold Hollow';
 }
 
 .text-cinza-escuro{
