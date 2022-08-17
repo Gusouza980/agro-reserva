@@ -94,6 +94,10 @@
                                                 min="1" step="1"
                                                 wire:model.debounce.500ms="reserva.max_parcelas" required>
                                         </div>
+                                        <div class="mb-3 form-group col-12">
+                                              <label for="" class="form-label">Imagem do Card</label>
+                                              <input type="file" class="form-control" wire:model="arquivo">
+                                        </div>
                                     </div>
                                     @if ($reserva && $reserva->max_parcelas)
                                         <hr>

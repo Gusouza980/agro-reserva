@@ -24,6 +24,7 @@
                 <div wire:loading>
                     <img src="{{ asset('imagens/gif_relogio.gif') }}" class="my-5" width="50" alt="">
                 </div>
+                @error('arquivo') <span class="error">{{ $message }}</span> @enderror
             </div>
             <form wire:submit.prevent='salvar' class="grid w-full grid-cols-1 mt-5 text-center md:grid-cols-2 gap-y-10 md:gap-y-0" enctype="multipart/form-data">
                 <div class="flex items-center justify-center">

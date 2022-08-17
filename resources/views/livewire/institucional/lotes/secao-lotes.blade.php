@@ -50,7 +50,7 @@
             @if($reserva && $lotes->count() > 0)
                 <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white">
                     <div class="flex items-center justify-center w-full h-full bg-black">
-                        <img src="{{ asset("imagens/card_reserva_lotes.png") }}" class="w-full" alt="">
+                        <img src="{{ asset($reserva->imagem_card) }}" class="w-full" alt="">
                     </div>
                 </div>
             @endif
@@ -161,11 +161,13 @@
                 <div class="w-full max-w-[400px] flex justify-start md:justify-end mb-4 duration-1000 delay-300 animate-in slide-in-from-left">
                     <div class="max-w-[300px]">
                         <h3 class="font-montserrat text-[30px] font-bold text-[#283646]">
-                            Titulo provocante
-                            Para ação de venda
+                            E você ? Vai ficar de fora ?
                         </h3>
                         <div class="mt-[16px] font-montserrat text-[14px] font-medium text-[#80828B]">
-                            Lorem Ipsum é simplesmente um texto fictício da indústria tipográfica e de impressão.
+                            Te convidamos pra fazer parte deste movimento das grandes marcas que evoluem a pecuária do nosso Brasil!
+                        </div>
+                        <div class="mt-[16px] font-montserrat text-[11px] font-medium text-[#80828B]">
+                            Clique ao lado e fale com o nosso diretor comercial!
                         </div>
                     </div>
                 </div>

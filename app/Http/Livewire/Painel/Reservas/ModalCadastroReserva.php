@@ -8,9 +8,14 @@ use App\Models\Reserva;
 use App\Models\ReservaFormasPagamento;
 use App\Models\ReservaFormasPagamentoRegra;
 use App\Classes\FuncoesPagamento;
+use Illuminate\Support\Facades\Storage;
+use Livewire\WithFileUploads;
+use App\Classes\Util;
 
 class ModalCadastroReserva extends Component
 {
+    use WithFileUploads;
+    
     public $op = "cadastro";
     public $reserva;
     public $fazenda;
@@ -18,6 +23,7 @@ class ModalCadastroReserva extends Component
     public $formas_pagamento;
     public $atualizacoes_intervalos;
     public $novo_intervalo;
+    public $arquivo;
     public $regras;
 
     protected $listeners = ["carregaModalCadastroReservas", "carregaModalEdicaoReservas", "resetaModalReservas"];
@@ -157,6 +163,12 @@ class ModalCadastroReserva extends Component
             $this->reserva->compra_disponivel = false;
         }
         
+        if($this->arquivo){
+            Storage::delete($this->reserva->imagem_card);
+            $this->reserva->imagem_card = $this->arquivo->store("site/fazendas/", 'local');
+            Util::limparLivewireTemp();
+        }
+
         $this->reserva->save();
 
         ReservaFormasPagamento::where("reserva_id", $this->reserva->id)->delete();

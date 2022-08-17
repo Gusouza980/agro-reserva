@@ -138,14 +138,14 @@
         </div>
     </div>
     <div class="w-full bg-[#F5F5F5]">
-        <div id="canva-genealogia" class="w1200 mx-auto py-5" style="background: url(/imagens/fundo_genealogia.png) no-repeat; background-position: center center; background-size: contain;">
-            <div class="w-full flex justify-center">
+        <div id="canva-genealogia" class="py-5 mx-auto w1200" style="background: url(/imagens/fundo_genealogia.png) no-repeat; background-position: center center; background-size: contain;">
+            <div class="flex justify-center w-full">
                 <div class="w-[450px] px-4 py-3 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative" id="lote">
                     <div class="w-full">{{ $lote->nome }}</div>
                     <div class="text-[13px] font-normal w-full mt-1">{{ $lote->registro }}</div>
                 </div>
             </div>
-            <div class="w-full flex justify-center space-x-32 mt-4">
+            <div class="flex justify-center w-full mt-4 space-x-32">
                 <div class="genealogia_esquerda w-[300px] px-4 py-3 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative" id="avo-paterno">
                     <div class="w-full">{{ $lote->nome }}</div>
                     <div class="text-[13px] font-normal w-full mt-1">{{ $lote->registro }}</div>
@@ -161,7 +161,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full flex justify-center space-x-10 mt-4">
+            <div class="flex justify-center w-full mt-4 space-x-10">
                 <div class="w-[300px] px-4 py-3 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative" id="pai">
                     <div class="w-full">{{ $lote->nome }}</div>
                     <div class="text-[13px] font-normal w-full mt-1">{{ $lote->registro }}</div>
@@ -177,7 +177,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full flex justify-center space-x-32 mt-4">
+            <div class="flex justify-center w-full mt-4 space-x-32">
                 <div class="genealogia_esquerda w-[300px] px-4 py-3 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative" id="avo-paterna">
                     <div class="w-full">{{ $lote->nome }}</div>
                     <div class="text-[13px] font-normal w-full mt-1">{{ $lote->registro }}</div>
@@ -279,7 +279,7 @@
             <div class="w-full mb-3 text-center">
                 <h3 class="font-montserrat font-medium text-[25px] text-[#15171E]">Animais da Reserva</h3>
             </div>
-            <x-institucional.slide-lotes-destaque :reserva="$lote->reserva"></x-institucional.slide-lotes-destaque>
+            <x-institucional.slide-lotes-destaque :lotes="$lote->reserva->lotes"></x-institucional.slide-lotes-destaque>
         </div>
     </div>
 </div>

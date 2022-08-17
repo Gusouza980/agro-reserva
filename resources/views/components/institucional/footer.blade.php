@@ -1,6 +1,6 @@
 <div class="w-full bg-[#F5F5F5] pt-[200px] md:pt-[150px]">
     <div class="w-full bg-[#2E313C] pt-[200px] md:pt-[150px]">
-        <x-institucional.newsletter></x-institucional.newsletter>
+        @livewire("institucional.newsletter")
         <div class="w1500 mx-auto flex flex-wrap items-start justify-between py-20 border-b border-[#B3D5FF]">
             <div class="self-center w-full px-5 md:w-1/3">
                 <img src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" class="w-full max-w-[250px] mx-auto" alt="">

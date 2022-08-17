@@ -32,6 +32,10 @@ class FormSelfie extends Component
     }
 
     public function salvar(){
+        $validacao = $this->validate([
+            'arquivo' => 'max:5000', // 10MB Max
+        ]);
+
         $cliente = Cliente::find(session()->get("cliente")["id"]);
         if($this->arquivo){
             Storage::delete(str_replace(url("/"), "", $cliente->documento));
