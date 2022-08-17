@@ -42,7 +42,7 @@
                 <div class="order-1 w-full md:order-2 md:w-2/5 md:pl-10">
                     <div class="flex items-center justify-between w-full">
                         <div>
-                            <img src="{{ asset($lote->fazenda->logo) }}" class="w-full max-w-[150px] md:max-w-[200px] grayscale invert" alt="">
+                            <img src="{{ asset($lote->fazenda->logo) }}" class="w-full max-w-[150px] md:max-w-[200px] " alt="">
                         </div>
                         <div class="md:hidden">
                             <a href="" class="text-[#283646] text-[18px] font-montserrat font-medium hover:text-[#E8521D] transition "><i class="mr-2 fas fa-chevron-left"></i> Voltar</a>
