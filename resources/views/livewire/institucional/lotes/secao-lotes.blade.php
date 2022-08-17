@@ -63,9 +63,15 @@
                             </div>
                             <div class="relative w-full overflow-hidden bg-no-repeat bg-cover">
                                 <img src="{{ asset($lote->preview) }}" class="relative z-[8] w-full transition duration-300 hover:scale-110" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" alt="">
-                                <div class="@if(!$lote->reservado) hidden @endif font-montserrat text-[29px] text-[#FFB02A] font-bold absolute top-0 left-0 z-[10] w-full h-full rounded-t-[15px] flex items-center justify-center" style="background-color: rgba(0,0,0,0.45)">
-                                    VENDIDO
-                                </div>
+                                @if($lote->reservado || $lote->reserva->encerrada)
+                                    <div class="font-montserrat text-[29px] text-[#FFB02A] font-bold absolute top-0 left-0 z-[10] w-full h-full rounded-t-[15px] flex items-center justify-center" style="background-color: rgba(0,0,0,0.45)">
+                                        @if($lote->reservado)
+                                            VENDIDO
+                                        @else
+                                            ENCERRADO
+                                        @endif
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         
