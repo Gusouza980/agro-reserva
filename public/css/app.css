@@ -3950,6 +3950,9 @@ body[dir="rtl"] .checkbox:checked,
 .cursor-pointer {
     cursor: pointer
 }
+.resize {
+    resize: both
+}
 .list-none {
     list-style-type: none
 }

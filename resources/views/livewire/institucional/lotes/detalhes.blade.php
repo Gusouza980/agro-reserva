@@ -475,6 +475,10 @@
 
         $(document).ready(function(){
 
+            $(window).resize(function(){
+                connect();
+            });
+
             // EFEITOS DE HOVER DO LADO ESQUERDO
             $(".genealogia_esquerda").mouseover(function(){
                 $("#ligacao_avos_paternos").css("background", "#E8521D");
