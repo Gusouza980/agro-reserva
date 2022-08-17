@@ -436,6 +436,8 @@ class ClienteController extends Controller
             "logon" => "3385293",
             "senha" => "@Agro2020"
         ]);
+		
+		\Log::debug("AUTENTICAÇÃO DE ANÁLISE DE CRÉDITO: CODE " . $response->status());
 
         if($response->status() == 200){
             $token = $response->object()->token;
@@ -455,8 +457,11 @@ class ClienteController extends Controller
             "adicionais" => [19, 36]
         ]);
         
+		\Log::debug("TENTATIVA DE ANÁLISE DE CRÉDITO: CODE " . $response->status());
+		
         if($response->status() == 200){
 
+			\Log::debug("SUCESSO NA ANÁLISE DE CRÉDITO!<br><br>RESPOSTA:<br>" . $response->object());
             $res = $response->object();
             
             $analise = new CreditoAnalise;
@@ -627,6 +632,7 @@ class ClienteController extends Controller
             toastr()->success("Análise feita com sucesso!", "Sucesso");
             return redirect()->back();
         }else{
+			\Log::debug("ERRO NA ANÁLISE DE CRÉDITO: " . json_encode($response->object()));
             toastr()->error($response->body(), "Erro");
             return redirect()->back();
         }

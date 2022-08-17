@@ -11,22 +11,30 @@
         @endif
         <span><b>{{ __('messages.lote.raca') }}:</b> {{ $lote->raca->nome }}</span><br>
         <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
+		@if ($lote->lact_atual)
+            <span><b>LACT. ATUAL:</b> {{ $lote->lact_atual }}Kg</span><br>
+            <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
+        @endif
     </div>
     <div class="px-4 px-lg-0 ml-lg-4 flex-grow-1 text-white text-lote-info text-center text-lg-left">
         @if ($lote->previsao_parto)
-            <span><b>Prev. Parto:</b> {{ date('m/Y', strtotime($lote->previsao_parto)) }}</span><br>
+            <span><b>PREV. PARTO:</b> {{ date('m/Y', strtotime($lote->previsao_parto)) }}</span><br>
+            <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
+        @endif
+		@if ($lote->parto)
+            <span><b>ULT. PARTO:</b> {{ date('d/m/Y', strtotime($lote->parto)) }}</span><br>
             <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
         @endif
         @if($lote->nascimento)
-            <span><b>{{ __('messages.lote.nascimento') }}:</b> {{ date('m/Y', strtotime($lote->nascimento)) }} </span><br>
+            <span><b>{{ __('messages.lote.nascimento') }}:</b> {{ date('d/m/Y', strtotime($lote->nascimento)) }} </span><br>
             <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
         @endif
         @if ($lote->sexo)
-            <span><b>Sexo:</b> {{ $lote->sexo }}</span><br>
+            <span><b>SEXO:</b> {{ $lote->sexo }}</span><br>
             <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
         @endif
         @if ($lote->botton)
-            <span><b>Botton:</b> {{ $lote->botton }}</span><br>
+            <span><b>BOTTON:</b> {{ $lote->botton }}</span><br>
             <hr class="d-md-none" style="border-top: 1px solid rgba(255,255,255,0.4);">
         @endif
     </div>

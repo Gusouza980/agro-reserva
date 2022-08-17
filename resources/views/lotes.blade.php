@@ -16,7 +16,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="text-center col-12 col-md-3">
-                            <img src="{{ asset($fazenda->logo) }}" style="width: 100%; max-width: 300px;" alt="">
+                            <img src="{{ asset($fazenda->logo) }}" style="max-width: 100px;" alt="">
                         </div>
                         <div class="text-white col-12 col-md-9 d-none d-lg-flex align-items-center text-nav-fazenda">
                             @if($reserva->institucional)

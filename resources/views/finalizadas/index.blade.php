@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="row pb-5 justify-content-center" >
-                    @foreach($reservas->sortBy([['fim', 'desc']]) as $reserva)
+                    @foreach($reservas->sortBy([['inicio', 'desc']]) as $reserva)
                         <div data-aos="fade-in" data-aos-duration="500" class="lazy px-0 py-2 mt-4 mt-lg-0 mx-0 mx-lg-2">
                             <div style="background: url(/{{$reserva->fazenda->fundo_destaque}}); background-size: cover; width: 330px; height: 250px; border-radius: 15px;">
                                 <div class="d-flex align-items-center card-reserva @if($reserva->aberto) reserva-aberta @else reserva-fechada @endif @if($reserva->aberto && !$reserva->encerrada) reserva-nao-encerrada @endif  @if($reserva->aberto && $reserva->encerrada) reserva-encerrada @endif">
@@ -46,11 +46,21 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="row mt-3" style="">
-                                                <div class="col-12 text-center">
-                                                    <a name="" id="" class="btn @if($reserva->encerrada) btn-vermelho-outline @else btn-vermelho @endif py-2 px-4" href="{{route('fazenda.conheca', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva])}}" role="button">Mostrar a Reserva</a>
-                                                </div>
-                                            </div>
+                                            @if(!$reserva->encerrada)
+												<div class="mt-3 row" style="">
+													<div class="text-center col-12">
+														<a name="" id="" class="btn @if ($reserva->encerrada) btn-vermelho-outline @else btn-vermelho @endif py-2 px-4"
+														   href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva]) }}"
+														   role="button">Mostrar a Reserva</a>
+													</div>
+												</div>
+											@else
+												<div class="mt-2 row" style="">
+													<div class="text-center col-12">
+														<span style="font-family: 'Montserrat', sans-serif; font-size: 20px; color: white; font-weight: semibold;">{{date("m/Y", strtotime($reserva->inicio))}}</span>
+													</div>
+												</div>
+											@endif
                                             @if($reserva->tarja_vendas)
                                                 <div class="tarja-diagonal text-center" style="background-color: #15bd3d; width: 100%; height: 50px; position: absolute; top: 0px; left: -110px; transform: rotate(-45deg);">
                                                     <h5 style="color: white; position: absolute; top: 22px; left: 28.5%; font-size: 10px; font-weight: bold; font-family: Gobold Regular; letter-spacing: 3px;">{{number_format($reserva->tarja_vendas, 0, ",", ".")}}% VENDIDO</h5>

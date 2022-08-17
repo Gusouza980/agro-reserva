@@ -16,12 +16,12 @@
                         <img src="{{asset('imagens/selo-50.png')}}" style="width: 50px; height: 50px;" alt="">
                     </div>
                 @endif
+                <div class="numero-lote">
+                    <h4>LOTE</h4>
+                    <h5 class="mb-2">{{str_pad($lote->numero, 3, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</h5>
+                </div>
             </div>
         </a>
-        <div class="numero-lote">
-            <h4>LOTE</h4>
-            <h5 class="mb-2">{{str_pad($lote->numero, 3, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</h5>
-        </div>
         @if($lote->reserva->multi_fazendas)
             <div class="logo-fazenda">
                 <img src="{{asset($lote->fazenda->logo)}}" style="width: 100%;" alt="">
@@ -36,9 +36,9 @@
                 <h5 class="card-title card-lote-nome text-black"><b>@if($lote->prenhez) PRENHEZ @endif @if($lote->sexada) SEXADA @endif</b></h5>
             </div>
             <div class="container-fluid px-3">
-                <div class="row py-1" style="border-bottom: 1px solid black;">
+                <div class="row pb-4" style="border-bottom: 1px solid black;">
                     <div class="text-center mx-auto">
-                        {!! $lote->observacoes !!}
+                        {!! str_replace("\n", "<br>", $lote->observacoes) !!}
                     </div>
                 </div>
             </div>
