@@ -211,7 +211,7 @@
                 <div class="w-full">
                     <div x-show="open" x-cloak class="w-full border-t border-[#D7D7D7] mt-[35px] pt-3 font-montserrat" x-transition:enter="duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                     x-transition:leave="duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                        {{ $reserva->texto_local_retirada }}
+                        {{ $lote->reserva->texto_local_retirada }}
                     </div>
                 </div>
                 <div class="w-full mt-[35px] text-center font-montserrat text-[#80828B] font-medium text-[18px]">
@@ -231,7 +231,7 @@
                 <div class="w-full">
                     <div x-show="open" x-cloak class="w-full border-t border-[#D7D7D7] mt-[35px] pt-3 font-montserrat" x-transition:enter="duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                     x-transition:leave="duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                        {{ $reserva->texto_forma_pagamento }}
+                        {{ $lote->reserva->texto_forma_pagamento }}
                     </div>
                 </div>
                 <div class="w-full mt-[35px] text-center font-montserrat text-[#80828B] font-medium text-[18px]">
