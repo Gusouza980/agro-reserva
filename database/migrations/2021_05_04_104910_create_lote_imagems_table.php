@@ -16,11 +16,8 @@ class CreateLoteImagemsTable extends Migration
         Schema::create('lote_imagems', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("lote_id")->nullable();
-            $table->string("caminho")->nullable();
-            //0 -> Upload de Imagem
-            //1 -> Link de Imagem
-            //2 -> Vídeo
-            $table->tinyInteger("tipo")->default(0);
+            $table->string("low")->nullable();
+            $table->string("high")->nullable();
             $table->timestamps();
             $table->foreign('lote_id')->references('id')->on('lotes')->onDelete('cascade');
         });

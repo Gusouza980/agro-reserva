@@ -11,20 +11,39 @@
 <x-institucional.carrosel :banners="$banners"></x-institucional.carrosel>
 
 <x-institucional.highlights></x-institucional.highlights>
+<hr>
 
-@livewire('slide-lotes-destaque')
+<div class="w-full mt-5 text-center">
+    <h3 class="font-montserrat font-medium text-[25px] text-[#757887]">
+        VITRINE DE ANIMAIS
+    </h3>
+</div>
+@foreach($reservas as $reserva)
+    @if($reserva->lotes->count() > 0)
+        <div class="w-full">
+            <x-institucional.header-reserva-lotes :reserva="$reserva"></x-institucional.header-reserva-lotes>
+            <x-institucional.slide-lotes-destaque :lotes="$reserva->lotes"></x-institucional.slide-lotes-destaque>
+        </div>
+        <hr>
+    @endif
+@endforeach
 
-@livewire('institucional.slide-reservas-ativas')
+<div class="w-full mt-5 text-center">
+    <h3 class="font-montserrat font-medium text-[25px] text-[#757887]">
+        VITRINE DE RESERVAS
+    </h3>
+</div>
+<x-institucional.slide-reservas-ativas :reservas="$reservas"></x-institucional.slide-reservas>
 
 <x-institucional.comprar_vender></x-institucional.comprar_vender>
 
 <x-institucional.navegue-racas></x-institucional.navegue-racas>
 
-<x-institucional.slide_lotes_visitados></x-institucional.slide_lotes_visitados>
+@livewire("institucional.depoimentos")
+
+{{-- <x-institucional.depoimentos></x-institucional.depoimentos> --}}
 
 <x-institucional.experiencias></x-institucional.experiencias>
-
-<x-institucional.newsletter></x-institucional.newsletter>
 
 @endsection
 

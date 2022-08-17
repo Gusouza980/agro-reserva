@@ -15,7 +15,7 @@ use Symfony\Component\BrowserKit\HttpBrowser;
 */
 
 
-Route::middleware(['popup', 'cookie'])->group(function () {
+Route::middleware(['cookie'])->group(function () {
     Route::get('/cadastro', function () {
         return view('cadastro.index');
     })->name("cadastro");
@@ -86,7 +86,7 @@ Route::middleware(['popup', 'cookie'])->group(function () {
 
     // ROTAS DO INSTITUCIONAL
 
-    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name("index");
+    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index2'])->name("index");
     Route::get('/login', [\App\Http\Controllers\SiteController::class, 'login'])->name("login");
     Route::post('/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
     Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");
@@ -98,6 +98,10 @@ Route::middleware(['popup', 'cookie'])->group(function () {
     Route::post('/cadastro/login', [\App\Http\Controllers\ClienteController::class, 'login_cadastro'])->name("cadastro.login");
     Route::get('/cadastro/fazenda', [\App\Http\Controllers\SiteController::class, 'cadastro_fazenda'])->name("cadastro.fazenda");
     Route::get('/cadastro/passos', [\App\Http\Controllers\SiteController::class, 'cadastro_passos'])->name("cadastro.passos");
+    Route::get('/pesquisa', [\App\Http\Controllers\SiteController::class, 'pesquisa'])->name("pesquisa");
+    Route::get('/raca/{slug}', [\App\Http\Controllers\SiteController::class, 'raca'])->name("raca");
+    Route::get('/reservas-abertas', [\App\Http\Controllers\SiteController::class, 'reservas_abertas'])->name("reservas_abertas");
+    Route::get('/navegue-por-racas', [\App\Http\Controllers\SiteController::class, 'navegue_por_racas'])->name("navegue_por_racas");
     Route::get('/fazenda/{fazenda}/conheca/{reserva}/', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca");
     Route::get('/fazenda/{fazenda}/conheca/', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.conheca.antigo");
     Route::get('/fazenda/{fazenda}/conheca/lotes', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.conheca.lotes.antigo");
@@ -105,7 +109,7 @@ Route::middleware(['popup', 'cookie'])->group(function () {
     Route::get('/fazenda/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.conheca.avaliacoes.antigo");
     Route::get('/fazenda/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.lotes.antigo");
     Route::get('/fazenda/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.lote.antigo");
-    Route::get('/fazenda/{fazenda}/{reserva}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes'])->name("fazenda.lotes");
+    Route::get('/fazenda/{fazenda}/{reserva}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes2'])->name("fazenda.lotes");
     Route::get('/fazenda/{fazenda}/{reserva}/embrioes', [\App\Http\Controllers\SiteController::class, 'embrioes'])->name("fazenda.embrioes");
     Route::get('/fazenda/{fazenda}/{reserva}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote'])->name("fazenda.lote");
     Route::get('/fazenda/{fazenda}/{reserva}/embriao/{embriao}',  [\App\Http\Controllers\SiteController::class, 'embriao'])->name("fazenda.embriao");
@@ -240,6 +244,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/fazenda/reserva/{reserva}/lote/cadastrar', [\App\Http\Controllers\LotesController::class, 'cadastrar'])->name("painel.fazenda.reserva.lote.cadastrar");        
     Route::get('/painel/fazenda/reserva/lote/editar/{lote}', [\App\Http\Controllers\LotesController::class, 'editar'])->name("painel.fazenda.reserva.lote.editar");        
     Route::post('/painel/fazenda/reserva/lote/salvar/{lote}', [\App\Http\Controllers\LotesController::class, 'salvar'])->name("painel.fazenda.reserva.lote.salvar");        
+    Route::post('/painel/fazenda/reserva/lotes/importar', [\App\Http\Controllers\LotesController::class, 'importar'])->name("painel.fazenda.reserva.lotes.importar");        
     Route::get('/painel/fazenda/reserva/lote/reservar/{lote}', [\App\Http\Controllers\LotesController::class, 'reservar'])->name("painel.fazenda.reserva.lote.reservar");        
     Route::get('/painel/fazenda/reserva/lote/ativo/{lote}', [\App\Http\Controllers\LotesController::class, 'ativo'])->name("painel.fazenda.reserva.lote.ativo");
     Route::get('/painel/fazenda/reserva/lote/prioridade/{lote}', [\App\Http\Controllers\LotesController::class, 'prioridade'])->name("painel.fazenda.reserva.lote.prioridade");
@@ -253,6 +258,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/fazenda/reserva/embriao/editar/{embriao}', [\App\Http\Controllers\EmbrioesController::class, 'editar'])->name("painel.fazenda.reserva.embriao.editar");        
 
     //ROTAS RELACIONADAS AS RESERVAS
+    Route::get('/painel/reservas', [\App\Http\Controllers\ReservasController::class, 'index'])->name("painel.reservas");        
     Route::get('/painel/fazenda/{fazenda}/reservas', [\App\Http\Controllers\ReservasController::class, 'index'])->name("painel.fazenda.reservas");        
     Route::post('/painel/fazenda/{fazenda}/reserva/cadastrar', [\App\Http\Controllers\ReservasController::class, 'cadastrar'])->name("painel.fazenda.reserva.cadastrar");        
     Route::post('/painel/fazenda/reserva/editar/{reserva}', [\App\Http\Controllers\ReservasController::class, 'editar'])->name("painel.fazenda.reserva.editar");        

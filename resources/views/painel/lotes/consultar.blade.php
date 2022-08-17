@@ -18,117 +18,12 @@
         <div class="col-12">
             <a href="{{ route('painel.fazenda.reserva.lote.cadastro', ['reserva' => $reserva]) }}" class="btn btn-primary"
                 role="button">Novo Lote</a>
+            <a data-bs-toggle="modal" data-bs-target="#modalImport" class="btn btn-primary"
+                role="button">Importar Excel</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body" style="overflow-x: scroll;">
-
-                    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
-                        <thead class="text-center">
-                            <tr>
-                                <th></th>
-                                <th>Nº</th>
-                                <th>Nome</th>
-                                <th>Registro</th>
-                                <th>Preço</th>
-                                <th>Visitas</th>
-                                <th>Pré R.</th>
-                                <th>Reservado</th>
-                                <th><i class="fas fa-money-bill-wave"></i></th>
-                                <th><i class="fas fa-cash-register"></i></th>
-                                <th>Ativo</th>
-                                <th>Prioridade</th>
-                                {{-- <th></th> --}}
-                            </tr>
-                        </thead>
-
-
-                        <tbody class="text-center">
-                            @foreach ($reserva->lotes as $lote)
-                                <tr>
-                                    <td>
-                                        <div class="dropdown mt-4 mt-sm-0">
-                                            <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
-                                                aria-expanded="false">
-                                                <i class="fas fa-bars" aria-hidden="true"></i>
-                                            </a>
-                                            <div class="dropdown-menu" style="margin: 0px;">
-                                                <a name="" id="" class="dropdown-item py-2"
-                                                    href="{{ route('painel.fazenda.reserva.lote.editar', ['lote' => $lote]) }}"
-                                                    role="button">Editar</a>
-                                                @if (!$lote->reservado)
-                                                    <a class="dropdown-item py-2"
-                                                        href="{{ route('painel.fazenda.reserva.lote.reservar', ['lote' => $lote]) }}">Reservar</a>
-                                                @endif
-                                                <a class="dropdown-item py-2"
-                                                    href="{{ route('painel.fazenda.reserva.lote.ativo', ['lote' => $lote]) }}">@if ($lote->ativo) Desativar @else Ativar @endif</a>
-                                                <a class="dropdown-item py-2"
-                                                    href="{{ route('painel.fazenda.reserva.lote.preco', ['lote' => $lote]) }}">@if ($lote->liberar_preco) Preço: Usar padrão @else Preço: Liberar @endif</a>
-                                                <a class="dropdown-item py-2"
-                                                    href="{{ route('painel.fazenda.reserva.lote.comprar', ['lote' => $lote]) }}">@if ($lote->liberar_compra) Botão de Compra: Usar padrão @else Botão de Compra: Liberar @endif</a>
-
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>{{ $lote->numero . $lote->letra }}</td>
-                                    <td>{{ $lote->nome }}</td>
-                                    <td>{{ $lote->registro }}</td>
-                                    <td>R${{ number_format($lote->preco, 2, ',', '.') }}</td>
-                                    <td>{{ $lote->visitas }}</td>
-                                    <td>
-                                        @if ($lote->pre_reserva)
-                                            <i class="fas fa-handshake cpointer" style="color: orangered;"  lid="{{$lote->id}}"></i>
-                                        @else
-                                            <i class="fas fa-handshake cpointer"  lid="{{$lote->id}}"></i>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($lote->reservado)
-                                            <i class="fas fa-handshake cpointer icone-reservado ativo"  lid="{{$lote->id}}"></i>
-                                        @else
-                                            <i class="fas fa-handshake cpointer icone-reservado"  lid="{{$lote->id}}"></i>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($lote->liberar_preco)
-                                            <i class="fas fa-eye cpointer icone-preco ativo" lid="{{$lote->id}}" aria-hidden="true"></i>
-                                        @else
-                                            <i class="fas fa-eye cpointer icone-preco" lid="{{$lote->id}}" aria-hidden="true"></i>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($lote->liberar_compra)
-                                            <i class="fas fa-eye cpointer icone-compra ativo" lid="{{$lote->id}}" aria-hidden="true"></i>
-                                        @else
-                                            <i class="fas fa-eye cpointer icone-compra" lid="{{$lote->id}}" aria-hidden="true"></i>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($lote->ativo)
-                                            <i class="fa fa-star cpointer icone-ativo ativo" lid="{{$lote->id}}" aria-hidden="true"></i>
-                                        @else
-                                            <i class="fa fa-star cpointer icone-ativo" lid="{{$lote->id}}" aria-hidden="true"></i>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($lote->prioridade)
-                                            <i class="fa fa-check cpointer icone-prioridade ativo" lid="{{$lote->id}}" aria-hidden="true"></i>
-                                        @else
-                                            <i class="fa fa-check cpointer icone-prioridade" lid="{{$lote->id}}" aria-hidden="true"></i>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div> <!-- end col -->
-    </div> <!-- end row -->
-    <div class="modal fade" id="modalReservar" tabindex="-1" role="dialog" aria-labelledby="modalReservarLabel"
+    @livewire('painel.lotes.datatable', ["reserva" => $reserva])
+    <div class="modal fade" id="modalImport" tabindex="-1" role="dialog" aria-labelledby="modalReservarLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -137,32 +32,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('painel.raca.cadastrar') }}" method="post">
+                    <form action="{{ route('painel.fazenda.reserva.lotes.importar') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="lote_id" value="">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" name="cliente">
-                                @foreach (\App\Models\Cliente::orderBy('nome_dono', 'DESC')->get() as $cliente)
-                                    <option value="{{ $cliente->id }}">{{ $cliente->nome_dono }}</option>
-                                @endforeach
-                            </select>
-                            <label for="select-situacao">Cliente</label>
+                        <input type="hidden" name="reserva_id" value="{{ $reserva->id }}">
+                        <input type="hidden" name="fazenda_id" value="{{ $reserva->fazenda->id }}">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Selecione a Planilha de Excel</label>
+                            <input type="file" class="form-control" name="planilha" id="" placeholder="" aria-describedby="fileHelpId">
                         </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" name="assessor">
-                                <option value="0">Nenhum</option>
-                                @foreach (\App\Models\Assessor::orderBy('nome', 'DESC')->get() as $assessor)
-                                    <option value="{{ $assessor->id }}">{{ $assessor->nome }}</option>
-                                @endforeach
-                            </select>
-                            <label for="select-situacao">Assessor</label>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Parcelas</label>
-                            <input type="number" class="form-control" name="parcelas" min="0" step="1">
-                        </div>
-                        <div class="form-group text-end">
-                            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                        <div class="mb-3">
+                            <div class="d-grid gap-2">
+                                <button type="submit" name="" id="" class="btn btn-primary">Importar</button>
+                            </div>
                         </div>
                     </form>
                 </div>

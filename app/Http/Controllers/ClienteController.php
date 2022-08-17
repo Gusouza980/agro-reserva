@@ -79,7 +79,7 @@ class ClienteController extends Controller
         session()->flash("nome_pagina", "Pré Cadastro");
         $json = file_get_contents("json/mascaras_telefone.json");
         $paises = json_decode($json);
-        return view('cadastro.index', ["anterior" => $anterior, "paises" => $paises]);
+        return view('cadastro.index2', ["anterior" => $anterior, "paises" => $paises]);
     }
 
     public function cadastro_vendedor(){
@@ -127,7 +127,7 @@ class ClienteController extends Controller
 
     public function finalizar_cadastro(){
         if(session()->get("cliente") && session()->get("cliente")["finalizado"]){
-            return redirect()->route("index");
+            // return redirect()->route("index");
         }
         $anterior = redirect()->back()->getTargetUrl();
         $finalizar = true;

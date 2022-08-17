@@ -20,4 +20,8 @@ class Reserva extends Model
     public function fazenda(){
         return $this->belongsTo(Fazenda::class);
     }
+
+    public function formas_pagamento(){
+        return $this->hasMany(ReservaFormasPagamento::class);
+    }
 }

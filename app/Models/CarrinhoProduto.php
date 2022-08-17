@@ -13,6 +13,10 @@ class CarrinhoProduto extends Model
         return $this->belongsTo(Lote::class);
     }
 
+    public function produto(){
+        return $this->belongsTo(Produto::class);
+    }
+
     public function carrinho(){
         return $this->belongsTo(Carrinho::class);
     }

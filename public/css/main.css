@@ -1,15 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;500;600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap');
 @font-face {
     font-family: Gobold Regular;
 	font-display: swap;
     src: url("/fontes/gobold/Gobold Regular.otf");
 }
 
+/* @font-face {
+    font-family: Gobold Hollow;
+	font-display: swap;
+    src: url("/fontes/gobold hollow/Gobold Regular.otf");
+} */
+
+@font-face {
+    font-family:"Gobold Hollow";
+    src:url("/fontes/gobold hollow/Gobold_Hollow.eot?") format("eot"),
+        url("/fontes/gobold hollow/Gobold_Hollow.woff") format("woff"),
+        url("/fontes/gobold hollow/Gobold_Hollow.ttf") format("truetype"),
+        url("/fontes/gobold hollow/Gobold_Hollow.svg#GoboldHollow") format("svg");
+        font-weight:normal;
+        font-style:normal;
+}
+
+
 :root {
     --vermelho: #F5B01F;
     --laranja: #E8521B;
+    --chkbg: #14C656;
+    --chkfg: white;
 }
 
 html{
@@ -96,20 +116,29 @@ body{
     max-width: 400px;
 }
 
+.w600{
+    width: 100%;
+    max-width: 600px;
+}
+
 .w800{
     width: 100%;
     max-width: 800px;
 }
 
+.w1000{
+    width: 100%;
+    max-width: 1000px;
+}
+
 .w1200{
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto !important;
 }
 
-.w1400{
+.w1500{
     width: 100%;
-    max-width: 1400px;
+    max-width: 1500px;
 }
 
 /* BUTTONS */
@@ -1002,13 +1031,6 @@ label {
 
 .form-cadastro0>.form-group>.btn {
     width: 270px;
-}
-
-.form-cadastro0>span {
-    font: normal normal 600 15px 'Titillium Web', sans-serif;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    opacity: 1;
 }
 
 .circulo-passo {
@@ -2237,6 +2259,10 @@ label {
     color: white;
 }
 
+.slide-item:hover .slide-lote-destaque-botao{
+    visibility: visible !important;
+}
+
 .lote-home-texto-destaque > span{
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
@@ -2424,6 +2450,10 @@ label {
     content: url('/imagens/slide-lotes-arrow-right.png');
 }
 
+#slide-reservas-ativas .slide-item{
+    width: 300px;
+}
+
 #slide-reservas-ativas .slick-prev:before{
     content: ' ';
     display: inline-block;
@@ -2514,4 +2544,101 @@ label {
 #slide-reservas-ativas .slick-slide img{
     height: 603px !important;
     width: 330px !important;
+}
+
+/* @media (max-width: 500px){
+    #slide-reservas-ativas .slick-slide img{
+        height: 530px !important;
+        width: 290px !important;
+    }
+} */
+
+
+.font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.font-montserrat-serif {
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.font-gobold {
+    font-family: 'Gobold Regular';
+}
+
+.font-gobold-hollow {
+    font-family: 'Gobold Hollow';
+}
+
+.text-cinza-escuro{
+    color: #626262;
+}
+
+.form-label{
+    margin-left: 25px;
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: medium;
+    color: black;
+}
+
+.form-input-text{
+    padding: 8px 20px;
+    border-radius: 10px;
+    border: 1px solid #C7C9D3;
+}
+
+.form-input-text:focus{
+    border: 1px solid #686A72;
+    outline: none;
+}
+
+.form-input-select{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #C7C9D3;
+}
+
+.form-input-select:focus{
+    border: 1px solid #686A72;
+    outline: none;
+}
+
+.form-input-select:hover{
+    border: 1px solid #686A72;
+    outline: none;
+}
+
+.checkbox{
+    border: 1px solid #14C656 !important; 
+}
+
+.checked\:bg-\[\#e0a800\]:checked{
+    background-color: white !important;
+}
+
+.checkbox:checked{
+    background-image: linear-gradient(-45deg, transparent 65%, #14C656 65.99%), linear-gradient(45deg, transparent 75%, #14C656 75.99%), linear-gradient(-45deg, #14C656 40%, transparent 40.99%), linear-gradient(45deg, #14C656 30%, white 30.99%, white 40%, transparent 40.99%), linear-gradient(-45deg, white 50%, #14C656 50.99%) !important;
+}
+
+@keyframes successImageAnimation {
+    0% { transform: rotate(0.0deg) scale(0.0, 0.0) }
+    /* 10% { transform: rotate(72.0deg) }
+    20% { transform: rotate(144.0deg) }
+    30% { transform: rotate(216.0deg) }
+    40% { transform: rotate(288.0deg) } */
+    50% { transform: rotate(360.0deg) scale(1.3, 1.3) }
+    /* 60% { transform: scale(1.1, 1.1) }
+    70% { transform: scale(1.15, 1.15) }
+    80% { transform: scale(1.2, 1.2) }
+    90% { transform: scale(1.1, 1.1) } */
+    100% { transform: rotate(0.0deg) scale(1.0, 1.0) }
+}
+
+#icone-sucesso-precadastro{
+    animation: successImageAnimation 2s linear;
 }

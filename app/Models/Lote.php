@@ -48,4 +48,8 @@ class Lote extends Model
     public function lances(){
         return $this->hasMany(Lance::class);
     }
+
+    public function produto(){
+        return $this->morphOne(Produto::class, "produtable");
+    }
 }

@@ -171,6 +171,7 @@ return [
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
         Weidner\Goutte\GoutteServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -236,6 +237,7 @@ return [
         "Util" => App\Classes\Util::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Goutte' => Weidner\Goutte\GoutteFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
