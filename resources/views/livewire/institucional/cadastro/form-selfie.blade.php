@@ -42,7 +42,7 @@
                 
                 <div>
                     <button
-                    class="shadow-md rounded-[15px] bg-[#FDAF3C] hover:bg-[#de8a10] border-2 border-[##FDAF3C] text-white px-5 py-3 font-montserrat text-[20px] font-medium" @if(!$arquivo) disabled @endif>Avançar</button>
+                    class="shadow-md rounded-[15px] bg-[#FDAF3C] hover:bg-[#de8a10] border-2 border-[##FDAF3C] text-white px-5 py-3 font-montserrat text-[20px] font-medium" @if(!$arquivo) disabled @endif wire:loading.attr='disabled'>Avançar</button>
                 </div>
                 
             </form>
