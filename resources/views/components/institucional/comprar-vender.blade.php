@@ -2,12 +2,12 @@
     <div class="px-3 mx-auto w1200 px-lg-0">
         <div class="row">
             <div 
-                @if(session()->get("cliente") && isset(session()->get("cliente")["finalizado"]) && session()->get("cliente")["finalizado"]) 
-                    @if(!session()->get("cliente")["aprovado"] || !session()->get("cliente")["aprovado"]) 
-                        onclick="Livewire.emit('mostrarPopup', 'sucesso', 'Seu cadastro já está completo. Falta pouco para poder comprar. Apenas sente e aguarde a aprovação do seu cadastro para poder começar a equipar seu plantel com o que há de melhor no gado brasileiro!')" 
-                    @else 
-                        onclick="Livewire.emit('mostrarPopup', 'sucesso', 'Você já está apto para comprar! Visite uma reserva e procure o lote que mais encaixa no seu plantel!')" 
-                    @endif 
+                @if(session()->get("cliente")) 
+                    @if(isset(session()->get("cliente")["finalizado"]) && session()->get("cliente")["finalizado"])
+                        onclick="window.open('{{ route('reservas_abertas') }}')"
+                    @else
+                        onclick="window.open('{{ route('cadastro') }}')"
+                    @endif
                 @else 
                     onclick="window.open('{{ route('cadastro') }}')"  
                 @endif 
