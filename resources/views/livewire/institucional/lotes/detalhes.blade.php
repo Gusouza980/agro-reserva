@@ -50,7 +50,7 @@
 
                     </div>
                     <div class="w-full my-[20px]">
-                        <p class="font-montserrat text-[14px]">LOTE: <b>{{ $lote->numero }}</b</p>
+                        <p class="font-montserrat text-[14px]">LOTE: <b>{{ str_pad($lote->numero, 3, '0', STR_PAD_LEFT) }}</b></p>
                         <h1 class="font-montserrat font-bold text-[28px] text-[#E8521D]">{{ $lote->nome }}</h1>
                     </div>
                     <div class="w-full">
