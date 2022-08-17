@@ -28,6 +28,11 @@
     @endif
 @endforeach
 
+<div class="w-full mt-5 text-center">
+    <h3 class="font-montserrat font-medium text-[25px] text-[#757887]">
+        VITRINE DE RESERVAS
+    </h3>
+</div>
 <x-institucional.slide-reservas-ativas :reservas="$reservas"></x-institucional.slide-reservas>
 
 <x-institucional.comprar_vender></x-institucional.comprar_vender>
