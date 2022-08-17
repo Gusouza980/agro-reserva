@@ -37,11 +37,14 @@ class FormSelfie extends Component
         ]);
 
         $cliente = Cliente::find(session()->get("cliente")["id"]);
-        if($this->arquivo){
-            Storage::delete(str_replace(url("/"), "", $cliente->documento));
+
+        if($this->arquivo && file_exists($this->arquivo)){
+            Storage::delete($cliente->documento);
             $cliente->documento = $this->arquivo->store("site/clientes/", 'local');
-            Util::limparLivewireTemp();
         }
+
+        $this->resetExcept("show");
+
         $cliente->finalizado = true;
         $cliente->save();
         session()->forget("cliente");
