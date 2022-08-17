@@ -19,10 +19,13 @@
     </h3>
 </div>
 @foreach($reservas->where("encerrada", false) as $reserva)
-    @if($reserva->lotes->where("reservado", false)->count() > 0)
+    @php
+        $lotes_destaque = $reserva->lotes->where("reservado", false);
+    @endphp
+    @if($lotes_destaque->count() > 0)
         <div class="w-full">
             <x-institucional.header-reserva-lotes :reserva="$reserva"></x-institucional.header-reserva-lotes>
-            <x-institucional.slide-lotes-destaque :lotes="$reserva->lotes->where("reservado", false)"></x-institucional.slide-lotes-destaque>
+            <x-institucional.slide-lotes-destaque :lotes="$lotes_destaque"></x-institucional.slide-lotes-destaque>
         </div>
         <hr>
     @endif
