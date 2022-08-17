@@ -19,7 +19,7 @@ class Datatable extends Component
 
     public function mount($fazenda = null){
         if($fazenda){
-            $this->fazenda = Fazenda::find($fazenda);
+            $this->fazenda = $fazenda;
         }else{
             $this->fazenda = null;
         }
