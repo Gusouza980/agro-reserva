@@ -278,296 +278,296 @@
 @push("scripts")
 
     <script>
-        function getOffset(el){
-            var rect = el.getBoundingClientRect();
-            return {
-                left: rect.left + window.pageXOffset,
-                top: rect.top + window.pageYOffset,
-                bottom: rect.top + window.pageYOffset + (rect.height || el.offsetHeight),
-                width: rect.width || el.offsetWidth,
-                height: rect.height || el.offsetHeight
-            };
-        }
+        // function getOffset(el){
+        //     var rect = el.getBoundingClientRect();
+        //     return {
+        //         left: rect.left + window.pageXOffset,
+        //         top: rect.top + window.pageYOffset,
+        //         bottom: rect.top + window.pageYOffset + (rect.height || el.offsetHeight),
+        //         width: rect.width || el.offsetWidth,
+        //         height: rect.height || el.offsetHeight
+        //     };
+        // }
 
-        function connect(){
-            var color = "#80828B";
-            var thickness = 1;
-            var espacamento_linha = 15; //ESPAÇAMENTO ENTRE A LINHA E O CANTO DO QUADRADO
+        // function connect(){
+        //     var color = "#80828B";
+        //     var thickness = 1;
+        //     var espacamento_linha = 15; //ESPAÇAMENTO ENTRE A LINHA E O CANTO DO QUADRADO
 
-            var lote = document.getElementById('lote')
-            var pai = document.getElementById('pai')
-            var mae = document.getElementById('mae')
-            var avo_paterno = document.getElementById('avo-paterno')
-            var avo_materno = document.getElementById('avo-materno')
-            var avo_paterna = document.getElementById('avo-paterna')
-            var avo_materna = document.getElementById('avo-materna')
+        //     var lote = document.getElementById('lote')
+        //     var pai = document.getElementById('pai')
+        //     var mae = document.getElementById('mae')
+        //     var avo_paterno = document.getElementById('avo-paterno')
+        //     var avo_materno = document.getElementById('avo-materno')
+        //     var avo_paterna = document.getElementById('avo-paterna')
+        //     var avo_materna = document.getElementById('avo-materna')
 
-            var htmlLine = "";
-            var off1, off2, x1, x2, y1, y2, lenght, cx, cy, angle = null;
+        //     var htmlLine = "";
+        //     var off1, off2, x1, x2, y1, y2, lenght, cx, cy, angle = null;
 
-            pai = getOffset(pai);
-            mae = getOffset(mae);
-            avo_paterno = getOffset(avo_paterno);
-            avo_materno = getOffset(avo_materno);
-            avo_paterna = getOffset(avo_paterna);
-            avo_materna = getOffset(avo_materna);
-            lote = getOffset(lote);
+        //     pai = getOffset(pai);
+        //     mae = getOffset(mae);
+        //     avo_paterno = getOffset(avo_paterno);
+        //     avo_materno = getOffset(avo_materno);
+        //     avo_paterna = getOffset(avo_paterna);
+        //     avo_materna = getOffset(avo_materna);
+        //     lote = getOffset(lote);
             
-            // AVÔ PATERNO E AVÓ PATERNA ----------------------------------------------------------
+        //     // AVÔ PATERNO E AVÓ PATERNA ----------------------------------------------------------
             
-            x1 = avo_paterna.left + espacamento_linha;
-            y1 = avo_paterna.top;
+        //     x1 = avo_paterna.left + espacamento_linha;
+        //     y1 = avo_paterna.top;
 
-            x2 = avo_paterno.left + espacamento_linha;
-            y2 = avo_paterno.bottom;
+        //     x2 = avo_paterno.left + espacamento_linha;
+        //     y2 = avo_paterno.bottom;
 
-            length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
+        //     length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
 
-            cx = ((x1 + x2) / 2) - (length / 2);
-            cy = ((y1 + y2) / 2) - (thickness / 2);
+        //     cx = ((x1 + x2) / 2) - (length / 2);
+        //     cy = ((y1 + y2) / 2) - (thickness / 2);
 
-            angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
+        //     angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
 
-            htmlLine = "<div id='ligacao_avos_paternos' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
+        //     htmlLine = "<div id='ligacao_avos_paternos' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
 
-            document.body.innerHTML += htmlLine;
+        //     document.body.innerHTML += htmlLine;
 
-            // --------------------------------------------------
+        //     // --------------------------------------------------
 
-            // AVÓS PATERNOS E O PAI
+        //     // AVÓS PATERNOS E O PAI
 
-            var ligacao_avos_paternos = document.getElementById("ligacao_avos_paternos");
+        //     var ligacao_avos_paternos = document.getElementById("ligacao_avos_paternos");
 
-            ligacao_avos_paternos = getOffset(ligacao_avos_paternos);
+        //     ligacao_avos_paternos = getOffset(ligacao_avos_paternos);
 
-            x1 = ligacao_avos_paternos.left;
-            y1 = ligacao_avos_paternos.top + ligacao_avos_paternos.height/2;
+        //     x1 = ligacao_avos_paternos.left;
+        //     y1 = ligacao_avos_paternos.top + ligacao_avos_paternos.height/2;
 
-            x2 = pai.left;
-            y2 = pai.top + pai.height/2;
+        //     x2 = pai.left;
+        //     y2 = pai.top + pai.height/2;
 
-            length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
+        //     length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
 
-            cx = ((x1 + x2) / 2) - (length / 2);
-            cy = ((y1 + y2) / 2) - (thickness / 2);
+        //     cx = ((x1 + x2) / 2) - (length / 2);
+        //     cy = ((y1 + y2) / 2) - (thickness / 2);
 
-            angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
+        //     angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
 
-            htmlLine = "<div id='ligacao_pai_avos' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
+        //     htmlLine = "<div id='ligacao_pai_avos' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
 
-            document.body.innerHTML += htmlLine;
+        //     document.body.innerHTML += htmlLine;
 
-            // ------------------------------------------------------------
+        //     // ------------------------------------------------------------
 
-            // AVÔ MATERNO E AVÓ MATERNA ----------------------------------------------------------
+        //     // AVÔ MATERNO E AVÓ MATERNA ----------------------------------------------------------
             
-            x1 = avo_materna.left + avo_materna.width - espacamento_linha;
-            y1 = avo_materna.top;
+        //     x1 = avo_materna.left + avo_materna.width - espacamento_linha;
+        //     y1 = avo_materna.top;
 
-            x2 = avo_materno.left + avo_materno.width - espacamento_linha;
-            y2 = avo_materno.bottom;
+        //     x2 = avo_materno.left + avo_materno.width - espacamento_linha;
+        //     y2 = avo_materno.bottom;
 
-            length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
+        //     length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
 
-            cx = ((x1 + x2) / 2) - (length / 2);
-            cy = ((y1 + y2) / 2) - (thickness / 2);
+        //     cx = ((x1 + x2) / 2) - (length / 2);
+        //     cy = ((y1 + y2) / 2) - (thickness / 2);
 
-            angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
+        //     angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
 
-            htmlLine = "<div id='ligacao_avos_maternos' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
+        //     htmlLine = "<div id='ligacao_avos_maternos' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
 
-            document.body.innerHTML += htmlLine;
+        //     document.body.innerHTML += htmlLine;
 
-            // --------------------------------------------------
+        //     // --------------------------------------------------
 
-            // AVÓS MATERNOS E O PAI
+        //     // AVÓS MATERNOS E O PAI
 
-            var ligacao_avos_maternos = document.getElementById("ligacao_avos_maternos");
+        //     var ligacao_avos_maternos = document.getElementById("ligacao_avos_maternos");
 
-            ligacao_avos_maternos = getOffset(ligacao_avos_maternos);
+        //     ligacao_avos_maternos = getOffset(ligacao_avos_maternos);
 
-            x1 = ligacao_avos_maternos.left;
-            y1 = ligacao_avos_maternos.top + ligacao_avos_maternos.height/2;
+        //     x1 = ligacao_avos_maternos.left;
+        //     y1 = ligacao_avos_maternos.top + ligacao_avos_maternos.height/2;
 
-            x2 = mae.left + mae.width;
-            y2 = mae.top + mae.height/2;
+        //     x2 = mae.left + mae.width;
+        //     y2 = mae.top + mae.height/2;
 
-            length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
+        //     length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
 
-            cx = ((x1 + x2) / 2) - (length / 2);
-            cy = ((y1 + y2) / 2) - (thickness / 2);
+        //     cx = ((x1 + x2) / 2) - (length / 2);
+        //     cy = ((y1 + y2) / 2) - (thickness / 2);
 
-            angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
+        //     angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
 
-            htmlLine = "<div id='ligacao_mae_avos' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
+        //     htmlLine = "<div id='ligacao_mae_avos' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
 
-            document.body.innerHTML += htmlLine;
+        //     document.body.innerHTML += htmlLine;
 
-            // ------------------------------------------------------------
+        //     // ------------------------------------------------------------
 
-            // LINHA CENTRAL
+        //     // LINHA CENTRAL
 
-            x1 = lote.left + lote.width/2;
-            y1 = lote.top + lote.height;
+        //     x1 = lote.left + lote.width/2;
+        //     y1 = lote.top + lote.height;
 
-            x2 = x1;
-            y2 = pai.top + pai.height/2;
+        //     x2 = x1;
+        //     y2 = pai.top + pai.height/2;
 
-            length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
+        //     length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
 
-            cx = ((x1 + x2) / 2) - (length / 2);
-            cy = ((y1 + y2) / 2) - (thickness / 2);
+        //     cx = ((x1 + x2) / 2) - (length / 2);
+        //     cy = ((y1 + y2) / 2) - (thickness / 2);
 
-            angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
+        //     angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
 
-            htmlLine = "<div id='linha_central' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
+        //     htmlLine = "<div id='linha_central' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
 
-            document.body.innerHTML += htmlLine;
+        //     document.body.innerHTML += htmlLine;
 
-            // ----------------------------------------------------------
+        //     // ----------------------------------------------------------
 
-            // LIGAÇÃO PAI E LINHA CENTRAL
+        //     // LIGAÇÃO PAI E LINHA CENTRAL
 
-            x1 = pai.left + pai.width;
-            y1 = pai.top + pai.height/2;
+        //     x1 = pai.left + pai.width;
+        //     y1 = pai.top + pai.height/2;
 
-            x2 = lote.left + lote.width/2;
-            y2 = y1;
+        //     x2 = lote.left + lote.width/2;
+        //     y2 = y1;
 
-            length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
+        //     length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
 
-            cx = ((x1 + x2) / 2) - (length / 2);
-            cy = ((y1 + y2) / 2) - (thickness / 2);
+        //     cx = ((x1 + x2) / 2) - (length / 2);
+        //     cy = ((y1 + y2) / 2) - (thickness / 2);
 
-            angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
+        //     angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
 
-            htmlLine = "<div id='ligacao_pai_linha_central' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
+        //     htmlLine = "<div id='ligacao_pai_linha_central' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
 
-            document.body.innerHTML += htmlLine;
+        //     document.body.innerHTML += htmlLine;
 
-            // ----------------------------------------------------
+        //     // ----------------------------------------------------
 
-            // LIGAÇÃO PAI E LINHA CENTRAL
+        //     // LIGAÇÃO PAI E LINHA CENTRAL
 
-            x1 = mae.left;
-            y1 = mae.top + mae.height/2;
+        //     x1 = mae.left;
+        //     y1 = mae.top + mae.height/2;
 
-            x2 = lote.left + lote.width/2;
-            y2 = y1;
+        //     x2 = lote.left + lote.width/2;
+        //     y2 = y1;
 
-            length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
+        //     length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
 
-            cx = ((x1 + x2) / 2) - (length / 2);
-            cy = ((y1 + y2) / 2) - (thickness / 2);
+        //     cx = ((x1 + x2) / 2) - (length / 2);
+        //     cy = ((y1 + y2) / 2) - (thickness / 2);
 
-            angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
+        //     angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
 
-            htmlLine = "<div id='ligacao_mae_linha_central' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
+        //     htmlLine = "<div id='ligacao_mae_linha_central' class='transition duration-150' style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
 
-            document.body.innerHTML += htmlLine;
+        //     document.body.innerHTML += htmlLine;
 
-            // ----------------------------------------------------
+        //     // ----------------------------------------------------
 
-            // document.body.innerHTML += htmlLine;
-        }
+        //     // document.body.innerHTML += htmlLine;
+        // }
 
-        connect()
+        // connect()
 
         $(document).ready(function(){
 
-            $(window).resize(function(){
-                connect();
-            });
+            // $(window).resize(function(){
+            //     connect();
+            // });
 
             // EFEITOS DE HOVER DO LADO ESQUERDO
-            $(".genealogia_esquerda").mouseover(function(){
-                $("#ligacao_avos_paternos").css("background", "#E8521D");
-                $("#ligacao_pai_avos").css("background", "#E8521D");
-                $("#ligacao_avos_paternos").css("height", "2");
-                $("#ligacao_pai_avos").css("height", "2");
-            })
-            $(".genealogia_esquerda").mouseout(function(){
-                $("#ligacao_avos_paternos").css("background", "#80828B");
-                $("#ligacao_pai_avos").css("background", "#80828B");
-                $("#ligacao_avos_paternos").css("height", "1");
-                $("#ligacao_pai_avos").css("height", "1");
-            })
+            // $(".genealogia_esquerda").mouseover(function(){
+            //     $("#ligacao_avos_paternos").css("background", "#E8521D");
+            //     $("#ligacao_pai_avos").css("background", "#E8521D");
+            //     $("#ligacao_avos_paternos").css("height", "2");
+            //     $("#ligacao_pai_avos").css("height", "2");
+            // })
+            // $(".genealogia_esquerda").mouseout(function(){
+            //     $("#ligacao_avos_paternos").css("background", "#80828B");
+            //     $("#ligacao_pai_avos").css("background", "#80828B");
+            //     $("#ligacao_avos_paternos").css("height", "1");
+            //     $("#ligacao_pai_avos").css("height", "1");
+            // })
 
-            $("#pai").mouseover(function(){
-                $("#ligacao_avos_paternos").css("background", "#E8521D");
-                $("#ligacao_pai_avos").css("background", "#E8521D");
-                $("#ligacao_pai_linha_central").css("background", "#E8521D");
-                $("#linha_central").css("background", "#E8521D");
-                $("#ligacao_avos_paternos").css("height", "2");
-                $("#ligacao_pai_avos").css("height", "2");
-                $("#ligacao_pai_linha_central").css("height", "2");
-                $("#linha_central").css("height", "2");
-            })
-            $("#pai").mouseout(function(){
-                $("#ligacao_avos_paternos").css("background", "#80828B");
-                $("#ligacao_pai_avos").css("background", "#80828B");
-                $("#ligacao_pai_linha_central").css("background", "#80828B");
-                $("#linha_central").css("background", "#80828B");
-                $("#ligacao_avos_paternos").css("height", "1");
-                $("#ligacao_pai_avos").css("height", "1");
-                $("#ligacao_pai_linha_central").css("height", "1");
-                $("#linha_central").css("height", "1");
-            })
+            // $("#pai").mouseover(function(){
+            //     $("#ligacao_avos_paternos").css("background", "#E8521D");
+            //     $("#ligacao_pai_avos").css("background", "#E8521D");
+            //     $("#ligacao_pai_linha_central").css("background", "#E8521D");
+            //     $("#linha_central").css("background", "#E8521D");
+            //     $("#ligacao_avos_paternos").css("height", "2");
+            //     $("#ligacao_pai_avos").css("height", "2");
+            //     $("#ligacao_pai_linha_central").css("height", "2");
+            //     $("#linha_central").css("height", "2");
+            // })
+            // $("#pai").mouseout(function(){
+            //     $("#ligacao_avos_paternos").css("background", "#80828B");
+            //     $("#ligacao_pai_avos").css("background", "#80828B");
+            //     $("#ligacao_pai_linha_central").css("background", "#80828B");
+            //     $("#linha_central").css("background", "#80828B");
+            //     $("#ligacao_avos_paternos").css("height", "1");
+            //     $("#ligacao_pai_avos").css("height", "1");
+            //     $("#ligacao_pai_linha_central").css("height", "1");
+            //     $("#linha_central").css("height", "1");
+            // })
 
             // EFEITOS DE HOVER DO LADO DIREITO
-            $(".genealogia_direita").mouseover(function(){
-                $("#ligacao_avos_maternos").css("background", "#E8521D");
-                $("#ligacao_mae_avos").css("background", "#E8521D");
-                $("#ligacao_avos_maternos").css("height", "2");
-                $("#ligacao_mae_avos").css("height", "2");
-            })
-            $(".genealogia_direita").mouseout(function(){
-                $("#ligacao_avos_maternos").css("background", "#80828B");
-                $("#ligacao_mae_avos").css("background", "#80828B");
-                $("#ligacao_avos_maternos").css("height", "1");
-                $("#ligacao_mae_avos").css("height", "1");
-            })
+            // $(".genealogia_direita").mouseover(function(){
+            //     $("#ligacao_avos_maternos").css("background", "#E8521D");
+            //     $("#ligacao_mae_avos").css("background", "#E8521D");
+            //     $("#ligacao_avos_maternos").css("height", "2");
+            //     $("#ligacao_mae_avos").css("height", "2");
+            // })
+            // $(".genealogia_direita").mouseout(function(){
+            //     $("#ligacao_avos_maternos").css("background", "#80828B");
+            //     $("#ligacao_mae_avos").css("background", "#80828B");
+            //     $("#ligacao_avos_maternos").css("height", "1");
+            //     $("#ligacao_mae_avos").css("height", "1");
+            // })
 
-            $("#mae").mouseover(function(){
-                $("#ligacao_avos_maternos").css("background", "#E8521D");
-                $("#ligacao_mae_avos").css("background", "#E8521D");
-                $("#ligacao_mae_linha_central").css("background", "#E8521D");
-                $("#linha_central").css("background", "#E8521D");
-                $("#ligacao_avos_maternos").css("height", "2");
-                $("#ligacao_mae_avos").css("height", "2");
-                $("#ligacao_mae_linha_central").css("height", "2");
-                $("#linha_central").css("height", "2");
-            })
+            // $("#mae").mouseover(function(){
+            //     $("#ligacao_avos_maternos").css("background", "#E8521D");
+            //     $("#ligacao_mae_avos").css("background", "#E8521D");
+            //     $("#ligacao_mae_linha_central").css("background", "#E8521D");
+            //     $("#linha_central").css("background", "#E8521D");
+            //     $("#ligacao_avos_maternos").css("height", "2");
+            //     $("#ligacao_mae_avos").css("height", "2");
+            //     $("#ligacao_mae_linha_central").css("height", "2");
+            //     $("#linha_central").css("height", "2");
+            // })
 
-            $("#mae").mouseout(function(){
-                $("#ligacao_avos_maternos").css("background", "#80828B");
-                $("#ligacao_mae_avos").css("background", "#80828B");
-                $("#ligacao_mae_linha_central").css("background", "#80828B");
-                $("#linha_central").css("background", "#80828B");
-                $("#ligacao_avos_maternos").css("height", "1");
-                $("#ligacao_mae_avos").css("height", "1");
-                $("#ligacao_mae_linha_central").css("height", "1");
-                $("#linha_central").css("height", "1");
-            })
+            // $("#mae").mouseout(function(){
+            //     $("#ligacao_avos_maternos").css("background", "#80828B");
+            //     $("#ligacao_mae_avos").css("background", "#80828B");
+            //     $("#ligacao_mae_linha_central").css("background", "#80828B");
+            //     $("#linha_central").css("background", "#80828B");
+            //     $("#ligacao_avos_maternos").css("height", "1");
+            //     $("#ligacao_mae_avos").css("height", "1");
+            //     $("#ligacao_mae_linha_central").css("height", "1");
+            //     $("#linha_central").css("height", "1");
+            // })
 
             // EFEITOS DEHOVER NO LOTE
-            $("#lote").mouseover(function(){
-                $("#ligacao_mae_linha_central").css("background", "#E8521D");
-                $("#ligacao_pai_linha_central").css("background", "#E8521D");
-                $("#linha_central").css("background", "#E8521D");
-                $("#ligacao_mae_linha_central").css("height", "2");
-                $("#ligacao_pai_linha_central").css("height", "2");
-                $("#linha_central").css("height", "2");
-            })
+            // $("#lote").mouseover(function(){
+            //     $("#ligacao_mae_linha_central").css("background", "#E8521D");
+            //     $("#ligacao_pai_linha_central").css("background", "#E8521D");
+            //     $("#linha_central").css("background", "#E8521D");
+            //     $("#ligacao_mae_linha_central").css("height", "2");
+            //     $("#ligacao_pai_linha_central").css("height", "2");
+            //     $("#linha_central").css("height", "2");
+            // })
             
-            $("#lote").mouseout(function(){
-                $("#ligacao_mae_linha_central").css("background", "#80828B");
-                $("#ligacao_pai_linha_central").css("background", "#80828B");
-                $("#linha_central").css("background", "#80828B");
-                $("#ligacao_mae_linha_central").css("height", "1");
-                $("#ligacao_pai_linha_central").css("height", "1");
-                $("#linha_central").css("height", "1");
-            })
+            // $("#lote").mouseout(function(){
+            //     $("#ligacao_mae_linha_central").css("background", "#80828B");
+            //     $("#ligacao_pai_linha_central").css("background", "#80828B");
+            //     $("#linha_central").css("background", "#80828B");
+            //     $("#ligacao_mae_linha_central").css("height", "1");
+            //     $("#ligacao_pai_linha_central").css("height", "1");
+            //     $("#linha_central").css("height", "1");
+            // })
 
             $('.popup_preview').magnificPopup({type:'image'});
         })
