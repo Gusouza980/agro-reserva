@@ -30,6 +30,8 @@ class Newsletter extends Component
         $newsletter->email = $this->email;
         $newsletter->save();
 
+        $this->resetExcept();
+        
         $msg = "Parabéns ! Você foi cadastrado na nossa newsletter e ficará por dentro de todas as novidades da Agroreserva.";
         $this->emit("mostrarPopup", "sucesso", $msg);
     }
