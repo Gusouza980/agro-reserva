@@ -29,16 +29,17 @@ class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
     {
         $lote = new Lote;
 
+        $lote->reserva_id = $this->reserva_id;
+        $lote->fazenda_id = $this->fazenda_id;
+
         foreach($row as $coluna => $value){
+            \Log::debug($coluna . " - " . $value);
             $lote->$coluna = $value;
         }
 
         if($lote->nascimento){
             $lote->nascimento = Util::convertDateToString($lote->nascimento);
         }
-
-        $lote->reserva_id = $this->reserva_id;
-        $lote->fazenda_id = $this->fazenda_id;
 
         return $lote;
     }
