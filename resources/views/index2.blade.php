@@ -18,7 +18,7 @@
         VITRINE DE ANIMAIS
     </h3>
 </div>
-@foreach($reservas as $reserva)
+@foreach($reservas->where("encerrada", false) as $reserva)
     @if($reserva->lotes->count() > 0)
         <div class="w-full">
             <x-institucional.header-reserva-lotes :reserva="$reserva"></x-institucional.header-reserva-lotes>
