@@ -1,16 +1,16 @@
-<div class="w-full px-0 py-5 bg-white" style="background: url('/imagens/bg-racas.png')" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative;">
+<div class="w-full px-0 py-5 bg-[#F5F5F5]" style="background: url('/imagens/bg-racas.webp')" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative;">
     <div class="relative mx-auto w1200">
-        <div class="w-full mb-3 mt-4">
+        <div class="w-full mt-4 mb-3">
             <div class="w-full text-center text-[#D7D8E4] font-montserrat text-[25px] font-medium">
                 NAVEGUE POR RAÇAS
             </div>
         </div>
-        <div class="flex mx-auto overflow-x-scroll py-4 w1200 hide-scroll-bar" id="slide-navegue-racas" x-show="show" x-transition.opacity.duration.3000ms>
+        <div class="flex py-4 mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-navegue-racas" x-show="show" x-transition.opacity.duration.3000ms>
             <div class="flex flex-nowrap space-x-[6px]">
                 @foreach(\App\Models\Raca::where('ativo', true)->orderBy("nome")->get() as $raca)
-                    <div class="mx-2 slide-item cpointer transition duration-500 hover:scale-105" style="width: 250px; height: 250px;" onclick="window.location.href = '{{ route('raca', ['slug' => $raca->slug]) }}'">
+                    <div class="mx-2 transition duration-500 slide-item cpointer hover:scale-105" style="width: 250px; height: 250px;" onclick="window.location.href = '{{ route('raca', ['slug' => $raca->slug]) }}'">
                         <img src="{{ asset($raca->imagem) }}" class="w-100" alt="">
-                        <div class="bg-white text-black text-center w-full py-2" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        <div class="w-full py-2 text-center text-black bg-white" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                             {{ mb_strtoupper($raca->nome) }}
                         </div>
                     </div>
