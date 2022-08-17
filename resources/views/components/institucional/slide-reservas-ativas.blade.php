@@ -11,15 +11,15 @@
                                 <div>
                                     <b class="font-montserrat text-[16px] text-white">@if(!$reserva->compra_disponivel) Inicia em @else Termina em @endif</b>
                                 </div>
-                                <div class="mt-2 mb-3">
+                                <div class="mt-2">
                                     <h3 class="font-montserrat text-white text-[26px] font-bold">@if(!$reserva->compra_disponivel) {{ date("d/m/Y", strtotime($reserva->inicio)) }} @else {{ date("d/m/Y", strtotime($reserva->fim)) }} @endif</h3>
                                 </div>
                             @else
-                                <div>
+                                <div class="mt-2">
                                     <b class="font-montserrat text-[16px] text-white">Encerrada</b>
                                 </div>
                             @endif
-                            <div>
+                            <div class="mt-3">
                                 <a href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva->id]) }}" name="" id="" class="px-[30px] py-[10px] bg-[#E8521B] text-[#FFFFFF] rounded-[6px] transition duration-300 font-montserrat text-[17px] font-bold hover:text-white hover:bg-[#b83f13]" href="#" role="button">Ver Reserva</a>
                             </div>
                         </div>
