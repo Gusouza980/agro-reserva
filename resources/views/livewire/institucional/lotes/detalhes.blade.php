@@ -211,12 +211,7 @@
                 <div class="w-full">
                     <div x-show="open" x-cloak class="w-full border-t border-[#D7D7D7] mt-[35px] pt-3 font-montserrat" x-transition:enter="duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                     x-transition:leave="duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                        <p>
-                            <b>FRETE</b>
-                        </p>
-                        <p>
-                            FRETE POR CONTA DO COMPRADOR
-                        </p>
+                        {{ $reserva->texto_local_retirada }}
                     </div>
                 </div>
                 <div class="w-full mt-[35px] text-center font-montserrat text-[#80828B] font-medium text-[18px]">
@@ -236,12 +231,7 @@
                 <div class="w-full">
                     <div x-show="open" x-cloak class="w-full border-t border-[#D7D7D7] mt-[35px] pt-3 font-montserrat" x-transition:enter="duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                     x-transition:leave="duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                        <p>
-                            <b>FRETE</b>
-                        </p>
-                        <p>
-                            FRETE POR CONTA DO COMPRADOR
-                        </p>
+                        {{ $reserva->texto_forma_pagamento }}
                     </div>
                 </div>
                 <div class="w-full mt-[35px] text-center font-montserrat text-[#80828B] font-medium text-[18px]">
@@ -261,12 +251,10 @@
                 <div class="w-full">
                     <div x-show="open" x-cloak class="w-full border-t border-[#D7D7D7] mt-[35px] pt-3 font-montserrat" x-transition:enter="duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                     x-transition:leave="duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                        <p>
-                            <b>FRETE</b>
-                        </p>
-                        <p>
-                            FRETE POR CONTA DO COMPRADOR
-                        </p>
+                        <p>A Agro Reserva toma todas as medidas cabíveis para garantir o cumprimento dos padrões de
+                            confidencialidade e segurança, firmando acordos ou contratos com o objetivo de proteger a
+                            privacidade dos dados pessoais de nossos usuários e cumprir a legislação aplicável.</p>
+                        <p>Para mais informações, fale com a gente nos canais de atendimento disponíveis no site.</p>
                     </div>
                 </div>
                 <div class="w-full mt-[35px] text-center font-montserrat text-[#80828B] font-medium text-[18px]">

@@ -1169,7 +1169,7 @@
                             </div>
                             <div class="w-full mb-3 md:w-1/3 md:pl-5">
                                 <label class="form-label" for="">Nascimento</label>
-                                <input type="date" class="w-full form-input-text" wire:model.defer="nascimento" required>
+                                <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="w-full form-input-text data" wire:model.defer="nascimento" required>
                             </div>
                         @else
                             <div class="w-full mb-3 md:w-1/3">

@@ -8,10 +8,10 @@ use App\Models\Cliente;
 class Pagina extends Component
 {
 
-    public $showListaEtapas = true;
+    public $showListaEtapas = false;
     public $showFormPreCadastro = false;
     public $showConfirmacaoPreCadastro = false;
-    public $showSelecaoCategoria = false;
+    public $showSelecaoCategoria = true;
     public $showFormDadosPessoais = false;
     public $showFormDadosPropriedade = false;
     public $showFormInformacoesComplementares = false;

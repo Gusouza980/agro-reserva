@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Institucional\Cadastro;
 
 use Livewire\Component;
 use App\Models\Cliente;
+use App\Classes\Util;
 
 class FormDadosPessoais extends Component
 {
@@ -43,7 +44,7 @@ class FormDadosPessoais extends Component
         if($cliente->pessoa_fisica){
             $cliente->rg = $this->rg;
             $cliente->cpf = $this->cpf;
-            $cliente->nascimento = $this->nascimento;
+            $cliente->nascimento = Util::convertDateToString($this->nascimento);
         }else{
             $cliente->cnpj = $this->cnpj;
             $cliente->nome_fantasia = $this->nome_fantasia;
