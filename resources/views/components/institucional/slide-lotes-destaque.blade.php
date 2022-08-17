@@ -6,9 +6,9 @@
                     <div class="inline-block py-2 slide-item caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
                         <div class="caixa-lote-home-imagem"
                             style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 350px; height: 250px; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464;">
-                            <div class="text-center justify-content-center align-items-center lote-home-hover">
+                            {{-- <div class="text-center justify-content-center align-items-center lote-home-hover">
                                 <p style="margin-top: 12px;">{{ __('messages.botoes.compre_agora') }}</p>
-                            </div>
+                            </div> --}}
                             @if($lote->reservado || $lote->reserva->encerrada)
                                 <div class="font-montserrat text-[29px] text-[#FFB02A] font-bold absolute top-0 left-0 z-[10] w-full h-full rounded-t-[15px] flex items-center justify-center" style="background-color: rgba(0,0,0,0.45)">
                                     @if($lote->reserva->encerrada)
