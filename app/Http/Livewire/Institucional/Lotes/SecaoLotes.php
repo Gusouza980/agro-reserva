@@ -67,7 +67,7 @@ class SecaoLotes extends Component
             $lotes = $lotes->where("sexo", $this->filtro_sexo);
         }
 
-        $lotes = $lotes->orderByRaw("reservado ASC, numero ASC")->get();
+        $lotes = $lotes->where("ativo", true)->orderByRaw("reservado ASC, numero ASC")->get();
         // $reservados = $this->reserva->lotes->where('ativo', true)->where('membro_pacote', false)->where("reservado", true);
         return view('livewire.institucional.lotes.secao-lotes', ['reservas' => $reservas, 'lotes' => $lotes]);
     }
