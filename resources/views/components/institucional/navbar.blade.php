@@ -1,7 +1,7 @@
 <nav class="bg-[#FCFCFC] border-gray-200 px-2 sm:px-4 py-3 sticky top-0 z-30">
     <div class="flex flex-wrap items-center justify-between mx-auto w1200 align-items-center">
         <a href="{{ route('index') }}" class="flex items-center">
-            <img src="{{ asset('imagens/logo_agroreserva_leite_escura.svg') }}" class="h-10 mr-3 sm:h-14"
+            <img src="{{ asset('imagens/logo_fundo_branco.svg') }}" class="h-10 mr-3 sm:h-14"
                 alt="Flowbite Logo" />
         </a>
         @if (session()->get('cliente'))
