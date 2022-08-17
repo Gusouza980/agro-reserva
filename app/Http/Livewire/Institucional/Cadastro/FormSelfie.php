@@ -33,7 +33,7 @@ class FormSelfie extends Component
 
     public function salvar(){
         $validacao = $this->validate([
-            'arquivo' => 'max:5000', // 10MB Max
+            'arquivo' => 'max:15000', // 10MB Max
         ]);
 
         $cliente = Cliente::find(session()->get("cliente")["id"]);
