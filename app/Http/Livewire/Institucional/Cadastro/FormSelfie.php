@@ -42,8 +42,9 @@ class FormSelfie extends Component
             Storage::delete($cliente->documento);
             $cliente->documento = $this->arquivo->store("site/clientes/", 'local');
         }
-
+        
         $this->resetExcept("show");
+        Util::limparLivewireTemp();
 
         $cliente->finalizado = true;
         $cliente->save();
