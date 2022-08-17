@@ -106,7 +106,7 @@
                             </div>
                             <div class="@if($lote->reservado) md:border-l-2 md:border-b-2 md:border-r-2 border-[#FFB02A] md:left-[-2px] md:w-[calc(100%+4px)] @else md:left-0 w-full @endif rounded-b-[15px] px-3 pt-3 pb-4 mais-info md:hidden md:shadow-md transition duration-800 md:group-hover:flex flex-col justify-content-center align-items-center md:h-[100px] md:absolute md:bottom-[-90px]  bg-white ">
                                 <div class="z-[11] w-full text-center">
-                                    <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">R${{ number_format($lote->produto->preco, 2, ",", ".") }} em até {{ $lote->reserva->max_parcelas }}x</span>
+                                    <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">Em até {{ $lote->reserva->max_parcelas }}x de R${{ number_format($lote->produto->preco / $lote->reserva->max_parcelas, 2, ",", ".") }}</span>
                                 </div>
                                 <div class="grid w-full @if($lote->reservado || $lote->reserva->encerrada) grid-cols-1 @else grid-cols-2 @endif gap-3 mt-3">
                                     <button onclick="window.location.href = '{{ route('fazenda.lote', ['fazenda' => $lote->fazenda, 'reserva' => $lote->reserva, 'lote' => $lote]) }}'" class="border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba Mais</button>
