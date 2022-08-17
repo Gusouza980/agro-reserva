@@ -4,7 +4,7 @@
             DEPOIMENTOS
         </h3>
     </div>
-    <div class="relative mx-auto w1200">
+    <div class="relative mx-auto mt-5 w1200">
         <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-depoimentos" x-show="show" x-transition.opacity.duration.3000ms>
             <div class="flex flex-nowrap">
                 @for($i = 1; $i <= count($videos); $i++)
