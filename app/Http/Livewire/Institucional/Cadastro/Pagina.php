@@ -8,7 +8,7 @@ use App\Models\Cliente;
 class Pagina extends Component
 {
 
-    public $showListaEtapas = false;
+    public $showListaEtapas = true;
     public $showFormPreCadastro = false;
     public $showConfirmacaoPreCadastro = false;
     public $showSelecaoCategoria = false;
@@ -16,7 +16,7 @@ class Pagina extends Component
     public $showFormDadosPropriedade = false;
     public $showFormInformacoesComplementares = false;
     public $showAvisoUltimaEtapa = false;
-    public $showFormSelfie = true;
+    public $showFormSelfie = false;
     public $showConfirmacaoCadastroCompleto = false;
 
     public function mount(){
