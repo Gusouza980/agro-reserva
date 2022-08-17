@@ -2,17 +2,23 @@
     <div class="relative mx-auto w1200">
         <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-reservas-ativas" x-show="show" x-transition.opacity.duration.3000ms>
             <div class="flex flex-nowrap">
-                @foreach($reservas as $reserva)
+                @foreach($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'asc']]) as $reserva)
                 <div class="inline-block mx-[6px] slide-item" style="border-radius: 15px; overflow: hidden; position: relative;">
                     <img src="{{ asset($reserva->fazenda->fundo_destaque) }}" class="w-100" alt="">
                     <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
                         <div class="text-center">
-                            <div>
-                                <b class="font-montserrat text-[16px] text-white">Inicia em</b>
-                            </div>
-                            <div class="mt-2 mb-3">
-                                <h3 class="font-montserrat text-white text-[26px] font-bold">{{ date("d/m/Y", strtotime($reserva->inicio)) }}</h3>
-                            </div>
+                            @if(!$reserva->encerrada)
+                                <div>
+                                    <b class="font-montserrat text-[16px] text-white">@if(!$reserva->compra_disponivel) Inicia em @else Termina em @endif</b>
+                                </div>
+                                <div class="mt-2 mb-3">
+                                    <h3 class="font-montserrat text-white text-[26px] font-bold">@if(!$reserva->compra_disponivel) {{ date("d/m/Y", strtotime($reserva->inicio)) }} @else {{ date("d/m/Y", strtotime($reserva->fim)) }} @endif</h3>
+                                </div>
+                            @else
+                                <div>
+                                    <b class="font-montserrat text-[16px] text-white">Encerrada</b>
+                                </div>
+                            @endif
                             <div>
                                 <a href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva->id]) }}" name="" id="" class="px-[30px] py-[10px] bg-[#E8521B] text-[#FFFFFF] rounded-[6px] transition duration-300 font-montserrat text-[17px] font-bold hover:text-white hover:bg-[#b83f13]" href="#" role="button">Ver Reserva</a>
                             </div>
