@@ -44,6 +44,7 @@ class SecaoLotes extends Component
             $reservas = Reserva::where("aberto", true)->where("encerrada", false)->get();
             $lotes = Lote::whereIn("reserva_id", $reservas->pluck("id"));
         }else{
+            $reservas = null;
             $lotes = Lote::where("reserva_id", $this->reserva->id)->where("reserva_id", $this->reserva->id)->where("ativo", true)->where("membro_pacote", false);
         }
 
