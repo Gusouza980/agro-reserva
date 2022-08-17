@@ -3,16 +3,16 @@
 @section('conteudo')
 <div class="container-fluid">
     <div class="row align-items-center" id="row-header-sobre" style="background: url({{asset('imagens/banner-sobre.jpg')}}); background-size: cover; background-position: center;">
-        <div class="col-12 text-center text-header-blog">
+        <div class="text-center col-12 text-header-blog">
         </div>
     </div>
 </div>
-<div class="container-fluid py-5" style="background-color: #F5F5F5;">
-    <div class="w800 mx-auto">
+<div class="py-5 container-fluid" style="background-color: #F5F5F5;">
+    <div class="mx-auto w800">
         <div class="container-fluid">
-            <div class="row py-4">
-                <div class="col-12 px-0">
-                    <a href="{{route('index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+            <div class="py-4 row">
+                <div class="px-0 col-12">
+                    <a href="{{route('index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="mr-2 fas fa-arrow-left"></i> Voltar</span></a>
                 </div>
             </div>
             <div class="row text-sobre">
@@ -24,9 +24,9 @@
                 <h2 class="mt-3">Nossos valores:</h2>
                 <p>Valorizar o trabalho do produtor, ressignificando o formato da comercialização de animais no Brasil, de forma a torná-la mais fácil, justa, segura e rentável para quem compra e para quem vende.</p>  --}}
             </div>
-            <div class="row justify-content-center my-3 py-5">
+            <div class="py-5 my-3 row justify-content-center">
                 <div
-                    class="lazy col-12 d-flex justify-content-center text-section1-index video-container text-center">
+                    class="text-center lazy col-12 d-flex justify-content-center text-section1-index video-container">
                     <iframe loading="lazy" width="1863" height="770" src="https://www.youtube.com/embed/JZaf0PGdYiI"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -34,40 +34,42 @@
                 </div>
             </div>
             <div class="row">
-                <div class="d-flex align-items-center mx-auto mx-lg-0 text-sobre">
+                <div class="mx-auto d-flex align-items-center mx-lg-0 text-sobre">
                     <div class="px-2 py-2 bg-white" style="border-radius: 15px;">
                         <img src="{{asset('imagens/icone_missao.png')}}" style="width: 80px;" alt="">
                     </div>
                 </div>
-                <div class="text-sobre ml-lg-4 text-center text-lg-left">
+                <div class="text-center text-sobre ml-lg-4 text-lg-left">
                     <h2 class="mt-3 mb-3"><span style="border-bottom: 2px solid #E8521B;">Nos</span>sa missão</h2>
-                    <p>Valorizar o trabalho do produtor, ressignificando o formato da <br class="d-none d-lg-block">comercialização de animais no Brasil, de forma a torná-la <br class="d-none d-lg-block">mais fácil, justa, segura e rentável para quem compra e para quem vende.</p>
+                    <p>
+                        Somos uma empresa de tecnologia que tem como objetivo democratizar a<br class="d-none d-lg-block"> comercialização de animais de alto valor genético e produtos voltados<br class="d-none d-lg-block"> para o produtor rural, através de uma plataforma digital com serviços<br class="d-none d-lg-block"> humanizados, de maneira justa, segura e rentável para quem compra,<br class="d-none d-lg-block"> vende e anuncia.
+                    </p>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="d-flex align-items-center mx-auto mx-lg-0 text-sobre">
+            <div class="mt-3 row">
+                <div class="mx-auto d-flex align-items-center mx-lg-0 text-sobre">
                     <div class="px-2 py-2 bg-white" style="border-radius: 15px;">
                         <img src="{{asset('imagens/icone_visao.png')}}" style="width: 80px;" alt="">
                     </div>
                 </div>
-                <div class="text-sobre ml-lg-4 text-center text-lg-left">
+                <div class="text-center text-sobre ml-lg-4 text-lg-left">
                     <h2 class="mt-3 mb-3"><span style="border-bottom: 2px solid #E8521B;">Nos</span>sa visão</h2>
-                    <p>Evoluir sempre para nos consolidarmos como referências na <br class="d-none d-lg-block">comercialização de animais no Brasil e no mundo. </p>
+                    <p>Ser a melhor empresa de comercialização de animais de alto valor genético<br class="d-none d-lg-block"> do mundo, tendo como princípio o respeito pelos nossos clientes. </p>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="d-flex align-items-center mx-auto mx-lg-0 text-sobre">
+            <div class="mt-3 row">
+                <div class="mx-auto d-flex align-items-center mx-lg-0 text-sobre">
                     <div class="px-2 py-2 bg-white" style="border-radius: 15px;">
                         <img src="{{asset('imagens/icone_valores.png')}}" style="width: 80px;" alt="">
                     </div>
                 </div>
-                <div class="text-sobre ml-lg-4 text-center text-lg-left">
+                <div class="text-center text-sobre ml-lg-4 text-lg-left">
                     <h2 class="mt-3 mb-3"><span style="border-bottom: 2px solid #E8521B;">Nos</span>sos valores</h2>
-                    <p>Transparência nas relações. Paixão pela pecuária. Precursores <br class="d-none d-lg-block">da evolução.</p>
+                    <p>Transparência nas relações. Paixão pela pecuária. Respeito <br class="d-none d-lg-block">pelos clientes.</p>
                 </div>
             </div>
         </div>
-        <div class="container-fluid caixa-sobre mt-5">
+        <div class="mt-5 container-fluid caixa-sobre">
             <div class="row">
                 <div class="col-12 text-sobre-caixa">
                     <h1 class="mb-4">Por que comprar ?</h1>
@@ -113,18 +115,18 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="col-12 text-center text-sobre-caixa">
+            <div class="mt-4 row">
+                <div class="text-center col-12 text-sobre-caixa">
                     @if(session()->get("cliente"))
-                        <a href="{{route('index')}}" class="btn btn-sobre px-5 py-2">Quero Comprar</a>
+                        <a href="{{route('index')}}" class="px-5 py-2 btn btn-sobre">Quero Comprar</a>
                     @else
-                        <a href="{{route('cadastro')}}" class="btn btn-sobre px-5 py-2">Quero Comprar</a>
+                        <a href="{{route('cadastro')}}" class="px-5 py-2 btn btn-sobre">Quero Comprar</a>
                     @endif
                 </div>
             </div>
         </div>
 
-        <div class="container-fluid caixa-sobre mt-5">
+        <div class="mt-5 container-fluid caixa-sobre">
             <div class="row">
                 <div class="col-12 text-sobre-caixa">
                     <h1 class="mb-4">Por que vender ?</h1>
@@ -178,16 +180,16 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="col-12 text-center text-sobre-caixa">
-                    <a href="https://api.whatsapp.com/send?phone=5514981809051&text={{ urlencode('Olá. Gostaria de vender na Agroreserva!') }}" target="_blank" class="btn btn-sobre px-5 py-2">Quero Vender</a>
+            <div class="mt-4 row">
+                <div class="text-center col-12 text-sobre-caixa">
+                    <a href="https://api.whatsapp.com/send?phone=5514981809051&text={{ urlencode('Olá. Gostaria de vender na Agroreserva!') }}" target="_blank" class="px-5 py-2 btn btn-sobre">Quero Vender</a>
                 </div>
             </div>
         </div>
 
-        <div class="container-fluid mt-5">
+        <div class="mt-5 container-fluid">
             <div class="row">
-                <div class="col-12 text-center">
+                <div class="text-center col-12">
                     <h1 class="sobre-text-ganha">
                         GANHA QUEM COMPRA<br>
                         GANHA QUEM VENDE
@@ -195,9 +197,9 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
+        <div class="mt-4 row">
             <div class="col-12">
-                <a href="{{route('blog')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                <a href="{{route('blog')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="mr-2 fas fa-arrow-left"></i> Voltar</span></a>
             </div>
         </div>
     </div>

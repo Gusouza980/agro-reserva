@@ -3859,6 +3859,15 @@ body[dir="rtl"] .checkbox:checked,
 .w-\[275px\] {
     width: 275px
 }
+.w-\[100px\] {
+    width: 100px
+}
+.w-\[200px\] {
+    width: 200px
+}
+.w-\[400px\] {
+    width: 400px
+}
 .max-w-\[750px\] {
     max-width: 750px
 }
