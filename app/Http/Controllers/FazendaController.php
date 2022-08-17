@@ -117,6 +117,15 @@ class FazendaController extends Controller
             toastr()->success("Conteúdo salvo com sucesso!");
         }
 
+        if($request->file("imagem_card")){
+            Storage::delete($fazenda->imagem_card);
+            $fazenda->imagem_card = $request->file('imagem_card')->store(
+                'imagens/fazendas/' . Str::slug($fazenda->nome_fazenda) . "/destaque", 'local'
+            );
+            $fazenda->save();
+            toastr()->success("Conteúdo salvo com sucesso!");
+        }
+
         return redirect()->back();
 
     }

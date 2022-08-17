@@ -11,7 +11,7 @@
 @endsection
 
 @section('conteudo')
-{{--  <div class="row my-3">
+{{--  <div class="my-3 row">
     <div class="col-12">
         @if($fazenda->ativo)
             <a name="" id="" class="btn btn-primary" href="{{route('painel.fazenda.desativar', ['fazenda' => $fazenda])}}" role="button">Desativar fazenda</a>
@@ -33,11 +33,11 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12 text-left my-3" style="color:red;">
+                    <div class="my-3 text-left col-12" style="color:red;">
                         * Campos obrigatórios
                     </div>
                 </div>
-                <h4 class="card-title mb-4">Informações Básicas</h4>
+                <h4 class="mb-4 card-title">Informações Básicas</h4>
 
                 <form action="{{route('painel.fazenda.salvar.informacoes', ['fazenda' => $fazenda])}}" method="POST">
                     @csrf
@@ -119,7 +119,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Logo</h4>
+                <h4 class="mb-4 card-title">Logo</h4>
 
                 <form action="{{route('painel.fazenda.salvar.logo', ['fazenda' => $fazenda])}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -153,7 +153,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Catálogo</h4>
+                <h4 class="mb-4 card-title">Catálogo</h4>
 
                 <form action="{{route('painel.fazenda.salvar.catalogo', ['fazenda' => $fazenda])}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -191,7 +191,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Usuário do Sistema</h4>
+                <h4 class="mb-4 card-title">Usuário do Sistema</h4>
 
                 <form action="{{route('painel.fazenda.editar.usuario.salvar', ['usuario' => $admin])}}" method="POST">
                     @csrf
@@ -247,7 +247,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Destaque</h4>
+                <h4 class="mb-4 card-title">Destaque e Card</h4>
 
                 <form action="{{route('painel.fazenda.salvar.destaque', ['fazenda' => $fazenda])}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -257,13 +257,29 @@
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label for="">Imagem de destaque</label>
-                                <input type="file" class="form-control-file" name="fundo_destaque" id="" placeholder="" aria-describedby="fileHelpId" required>
+                                <input type="file" class="form-control-file" name="fundo_destaque" id="" placeholder="" aria-describedby="fileHelpId">
                                 <small id="fileHelpId" class="form-text text-muted">Escolha a imagem que aparecerá como destaque na página principal</small>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             @if($fazenda->fundo_destaque)
                                 <img src="{{asset($fazenda->fundo_destaque)}}" style="max-height: 100px;" alt="">
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mt-4 row">
+                        
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="">Imagem de Card</label>
+                                <input type="file" class="form-control-file" name="imagem_card" id="" placeholder="" aria-describedby="fileHelpId">
+                                <small id="fileHelpId" class="form-text text-muted">Escolha a imagem que aparecerá no card antes dos lotes</small>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            @if($fazenda->imagem_card)
+                                <img src="{{asset($fazenda->imagem_card)}}" style="max-height: 100px;" alt="">
                             @endif
                         </div>
                     </div>
@@ -283,7 +299,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Conheça a fazenda</h4>
+                <h4 class="mb-4 card-title">Conheça a fazenda</h4>
 
                 <form action="{{route('painel.fazenda.salvar.conheca', ['fazenda' => $fazenda])}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -306,7 +322,7 @@
 
                     </div>
 
-                    <div class="row mt-3">
+                    <div class="mt-3 row">
                         
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
@@ -377,7 +393,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Conheça a fazenda - Lotes a Venda</h4>
+                <h4 class="mb-4 card-title">Conheça a fazenda - Lotes a Venda</h4>
 
                 <form action="{{route('painel.fazenda.salvar.conheca.lotes', ['fazenda' => $fazenda])}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -400,7 +416,7 @@
 
                     </div>
 
-                    <div class="row mt-3">
+                    <div class="mt-3 row">
                         
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
@@ -447,7 +463,7 @@
 
                     <hr class="my-3">
 
-                    <div class="row mb-3">
+                    <div class="mb-3 row">
 
                         <div class="col-12">
                             <button type="button" name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovoNumero">Nova Informação</button>
@@ -457,7 +473,7 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <table id="datatableNumeros" class="table table-bordered dt-responsive  nowrap w-100">
+                            <table id="datatableNumeros" class="table table-bordered dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
                                         <th>Título</th>
@@ -497,7 +513,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Conheça a fazenda - Avaliação - Imagens e Textos</h4>
+                <h4 class="mb-4 card-title">Conheça a fazenda - Avaliação - Imagens e Textos</h4>
 
                 <form action="{{route('painel.fazenda.salvar.conheca.avaliacoes', ['fazenda' => $fazenda])}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -520,7 +536,7 @@
 
                     </div>
 
-                    <div class="row mt-3">
+                    <div class="mt-3 row">
                         
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
@@ -565,7 +581,7 @@
 
                     <hr class="my-3">
 
-                    <div class="row mb-3">
+                    <div class="mb-3 row">
 
                         <div class="col-12">
                             <button type="button" name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovaAvaliacao">Nova Avaliação</button>
@@ -575,7 +591,7 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <table id="datatableAvaliacoes" class="table table-bordered dt-responsive  nowrap w-100">
+                            <table id="datatableAvaliacoes" class="table table-bordered dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
                                         <th>Imagem</th>
@@ -610,7 +626,7 @@
 </div>
 <!-- end row -->
 <hr>
-<div class="row mt-5 mb-3">
+<div class="mt-5 mb-3 row">
     <div class="col-12">
         <a name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovaProducao" role="button">Nova Produção</a>
     </div>
@@ -619,9 +635,9 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Conheça a fazenda - Avaliação - Produção</h4>
+                <h4 class="mb-4 card-title">Conheça a fazenda - Avaliação - Produção</h4>
                 <hr>
-                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
                     <thead>
                         <tr>
                             <th>Texto Maior</th>
@@ -652,7 +668,7 @@
     <!-- end col -->
 </div>
 <hr>
-<div class="row mt-5 mb-3">
+<div class="mt-5 mb-3 row">
     <div class="col-12">
         <a name="" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovoDepoimento" role="button">Novo depoimento</a>
     </div>
@@ -662,7 +678,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Depoimentos</h4>
+                <h4 class="mb-4 card-title">Depoimentos</h4>
 
                 <form action="{{route('painel.fazenda.salvar.conheca.depoimentos', ['fazenda' => $fazenda])}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -682,7 +698,7 @@
                         </div>
                     </div>
 
-                    <div class="row mt-3">
+                    <div class="mt-3 row">
                         
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
@@ -700,7 +716,7 @@
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
                 <hr>
-                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
                     <thead>
                         <tr>
                             <th>Título</th>
@@ -761,7 +777,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-3">
+                    <div class="mt-3 row">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="data_fim_reserva">Data de Finalização</label>
@@ -779,7 +795,7 @@
                     </div>
                     
                     <div class="form-group text-end">
-                        <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                        <button type="submit" class="mt-3 btn btn-primary">Salvar</button>
                     </div>
                 </form>
             </div>
