@@ -50,7 +50,7 @@
 
                     </div>
                     <div class="w-full my-[20px]">
-                        <p class="font-montserrat text-[14px]">RGD: <b>{{ $lote->registro }}</b</p>
+                        <p class="font-montserrat text-[14px]">LOTE: <b>{{ $lote->numero }}</b</p>
                         <h1 class="font-montserrat font-bold text-[28px] text-[#E8521D]">{{ $lote->nome }}</h1>
                     </div>
                     <div class="w-full">
