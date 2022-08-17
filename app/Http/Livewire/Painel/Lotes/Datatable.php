@@ -26,7 +26,7 @@ class Datatable extends Component
     }
 
     public function updatedPrecos($value, $key){
-        dd($value);
+        // dd($value);
     }
 
     public function updatedArquivos($value, $key){
@@ -44,6 +44,10 @@ class Datatable extends Component
 
     public function atualizaValor(Lote $lote, $campo, $valor){
         $lote->$campo = $valor;
+        if($campo = "preco"){
+            $lote->produto->preco = $valor;
+            $lote->produto->save();
+        }
         $lote->save();
         $this->reserva->refresh();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Dado atualizado com sucesso!']);
