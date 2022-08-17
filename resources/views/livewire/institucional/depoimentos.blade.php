@@ -7,7 +7,7 @@
     <div class="relative mx-auto mt-5 w1200">
         <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-depoimentos" x-show="show" x-transition.opacity.duration.3000ms>
             <div class="flex flex-nowrap">
-                @for($i = 1; $i <= count($videos); $i++)
+                @for($i = 0; $i <= count($videos); $i++)
                     {{-- <div class="inline-block mx-[12px] slide-item w-[276px] bg-[#2c2c2c]" style="border-radius: 15px; overflow: hidden; position: relative;"> --}}
                     <div class="inline-block mx-[12px] slide-item w-[276px]" style="background: url({{ $videos[$i]["snippet"]["thumbnails"]["high"]["url"] }}); background-repeat: no-repeat; background-size: cover; background-position: center; backdrop-filter: grayscale(100%); border-radius: 15px; overflow: hidden; position: relative;">
                         @if($video_atual !== $i)
