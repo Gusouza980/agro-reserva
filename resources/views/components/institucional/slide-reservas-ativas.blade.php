@@ -19,9 +19,11 @@
                                     <b class="font-montserrat text-[16px] text-white">Encerrada</b>
                                 </div>
                             @endif
-                            <div class="mt-3">
-                                <a href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva->id]) }}" name="" id="" class="px-[30px] py-[10px] bg-[#E8521B] text-[#FFFFFF] rounded-[6px] transition duration-300 font-montserrat text-[17px] font-bold hover:text-white hover:bg-[#b83f13]" href="#" role="button">Ver Reserva</a>
-                            </div>
+                            @if($reserva->aberto)
+                                <div class="mt-3">
+                                    <a href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva->id]) }}" name="" id="" class="px-[30px] py-[10px] bg-[#E8521B] text-[#FFFFFF] rounded-[6px] transition duration-300 font-montserrat text-[17px] font-bold hover:text-white hover:bg-[#b83f13]" href="#" role="button">Ver Reserva</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
