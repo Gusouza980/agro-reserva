@@ -72,10 +72,12 @@
                     <div class="w-full font-montserrat text-[14px]">
                         <span>Sem juros no boleto de titularidade Faz. e comprador.</span>
                     </div>
-                    <div class="w-full mt-[20px]">
-                        <a onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})"
-                            class="cpointer bg-[#14C656] text-white font-montserrat text-[18px] font-medium py-[12px] px-[60px] rounded-[15px]">Comprar</a>
-                    </div>
+                    @if(!$lote->reservado && $lote->reserva->encerrada)
+                        <div class="w-full mt-[20px]">
+                            <a onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})"
+                                class="cpointer bg-[#14C656] text-white font-montserrat text-[18px] font-medium py-[12px] px-[60px] rounded-[15px]">Comprar</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
