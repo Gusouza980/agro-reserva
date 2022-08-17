@@ -9,12 +9,12 @@
             <div class="flex flex-nowrap">
                 @for($i = 1; $i <= count($videos); $i++)
                     {{-- <div class="inline-block mx-[12px] slide-item w-[276px] bg-[#2c2c2c]" style="border-radius: 15px; overflow: hidden; position: relative;"> --}}
-                    <div class="inline-block mx-[12px] slide-item w-[276px]" style="background: url({{ $videos[(count($videos) - $i)]["snippet"]["thumbnails"]["high"]["url"] }}); background-repeat: no-repeat; background-size: cover; background-position: center; backdrop-filter: grayscale(100%); border-radius: 15px; overflow: hidden; position: relative;">
-                        @if($video_atual !== (count($videos) - $i))
-                            <img src="{{ asset('imagens/capa_depoimento_2.png') }}" class="w-full shadow-lg cpointer" style="" alt="" wire:click="mostrar({{ (count($videos) - $i) }})">
-                            <img class="cpointer" src="{{ asset('imagens/play-button2.jpg') }}" width="60" style="position: absolute; top: calc(50% - 30px); left: calc(50% - 30px);" wire:click="mostrar({{ (count($videos) - $i) }})">
+                    <div class="inline-block mx-[12px] slide-item w-[276px]" style="background: url({{ $videos[$i]["snippet"]["thumbnails"]["high"]["url"] }}); background-repeat: no-repeat; background-size: cover; background-position: center; backdrop-filter: grayscale(100%); border-radius: 15px; overflow: hidden; position: relative;">
+                        @if($video_atual !== $i)
+                            <img src="{{ asset('imagens/capa_depoimento_2.png') }}" class="w-full shadow-lg cpointer" style="" alt="" wire:click="mostrar({{ $i }})">
+                            <img class="cpointer" src="{{ asset('imagens/play-button2.jpg') }}" width="60" style="position: absolute; top: calc(50% - 30px); left: calc(50% - 30px);" wire:click="mostrar({{ $i }})">
                         @else
-                            {!! App\Classes\Util::convertYoutube("https://www.youtube.com/watch?v=" . $videos[(count($videos) - $i)]["contentDetails"]["videoId"], '9/16') !!}
+                            {!! App\Classes\Util::convertYoutube("https://www.youtube.com/watch?v=" . $videos[$i]["contentDetails"]["videoId"], '9/16') !!}
                         @endif
                     </div>
                 @endfor
