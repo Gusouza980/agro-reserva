@@ -1,7 +1,9 @@
 <div class="w-full bg-[#EFEFEF]">
     <div class="flex py-1 mx-auto w1200">
         <div class="flex-grow hidden text-start md:block">
-            <span class="font-montserrat font-medium text-[12px]">Olá, seja bem vindo(a)!</span>
+            <span class="font-montserrat font-medium text-[12px]">
+                Olá, seja bem vindo(a) @if(session()->get("cliente")) {{ explode(" ", session()->get("cliente")["nome_dono"])[0] }} @endif!
+            </span>
         </div>
         <div class="flex justify-center flex-grow">
             <div class="px-4 border-r border-black">
