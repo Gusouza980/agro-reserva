@@ -13,14 +13,14 @@
 <x-institucional.highlights></x-institucional.highlights>
 <hr>
 
-@if($reservas->where("encerrada", false)->count() > 0)
+@if($reservas->where("aberto", true)->where("encerrada", false)->count() > 0)
     <div class="w-full mt-5 text-center">
         <h3 class="font-montserrat font-medium text-[25px] text-[#757887]">
             VITRINE DE ANIMAIS
         </h3>
     </div>
 @endif
-@foreach($reservas->where("encerrada", false) as $reserva)
+@foreach($reservas->where("aberto", true)->where("encerrada", false) as $reserva)
     @php
         $lotes_destaque = $reserva->lotes->where("reservado", false);
     @endphp
