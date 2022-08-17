@@ -11,13 +11,20 @@
 <x-institucional.carrosel :banners="$banners"></x-institucional.carrosel>
 
 <x-institucional.highlights></x-institucional.highlights>
+<hr>
 
+<div class="w-full mt-5 text-center">
+    <h3 class="font-montserrat font-medium text-[25px] text-[#757887]">
+        VITRINE DE ANIMAIS
+    </h3>
+</div>
 @foreach($reservas as $reserva)
     @if($reserva->lotes->count() > 0)
         <div class="w-full">
             <x-institucional.header-reserva-lotes :reserva="$reserva"></x-institucional.header-reserva-lotes>
             <x-institucional.slide-lotes-destaque :lotes="$reserva->lotes"></x-institucional.slide-lotes-destaque>
         </div>
+        <hr>
     @endif
 @endforeach
 

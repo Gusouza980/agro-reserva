@@ -45,8 +45,7 @@
                     </div>
                     <div class="px-4">
                         <h3 class="text-black text-[16px] md:text-[23px] font-medium">Pré Cadastro</h3>
-                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Ele será usuado para login e validação da sua
-                            conta</h4>
+                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Ele será usado para login e validação da sua conta.</h4>
                     </div>
                     <div>
                         <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if(!$cliente) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormPreCadastro')">Validar</a>
@@ -95,8 +94,7 @@
                     </div>
                     <div class="px-4">
                         <h3 class="text-black text-[16px] md:text-[23px] font-medium">Dados pessoais</h3>
-                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Ninguém poderá criar uma conta no seu
-                            nome.</h4>
+                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Ninguém poderá criar uma conta em seu nome.</h4>
                     </div>
                     <div>
                         <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 2) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showSelecaoCategoria')">Validar</a>
@@ -139,8 +137,7 @@
                     </div>
                     <div class="px-4">
                         <h3 class="text-black text-[16px] md:text-[23px] font-medium">Dados da propriedade</h3>
-                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Registro legais para complemento da sua
-                            conta.</h4>
+                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Informações da propriedade para emissão da documentação fiscal e de transporte dos animais.</h4>
                     </div>
                     <div>
                         <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 3) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormDadosPropriedade')">Validar</a>
@@ -176,8 +173,7 @@
                     </div>
                     <div class="px-4">
                         <h3 class="text-black text-[16px] md:text-[23px] font-medium">Informações complementares</h3>
-                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Lorem Ipsum is simply dummy text of the
-                            printing and typesetting industry.</h4>
+                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Informações de referência para agilizar o processo de análise do seu cadastro.</h4>
                     </div>
                     <div>
                         <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 4) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormInformacoesComplementares')">Validar</a>
@@ -213,8 +209,7 @@
                     </div>
                     <div class="px-4">
                         <h3 class="text-black text-[16px] md:text-[23px] font-medium">Verificação de Documento</h3>
-                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Lorem Ipsum is simply dummy text of the
-                            printing and typesetting industry.</h4>
+                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Verificação de segurança para garantir a autenticidade das informações.</h4>
                     </div>
                     <div>
                         <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 5) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormSelfie')">Validar</a>

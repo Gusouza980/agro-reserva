@@ -73,7 +73,7 @@
                         <span
                             class="block text-sm font-semibold text-gray-900">{{ session()->get('cliente')['nome_dono'] }}</span>
                         <span
-                            class="block text-sm font-medium text-gray-500 truncate ">{{ session()->get('cliente')['email'] }}</span>
+                            class="block text-sm font-medium text-gray-500 truncate">{{ session()->get('cliente')['email'] }}</span>
                     </div>
                     <ul class="py-1" aria-labelledby="dropdown">
                         @if (session()->get('cliente') && !session()->get('cliente')['finalizado'])
@@ -179,16 +179,16 @@
                 </div>
 
                 <!-- Dropdown menu -->
-                <div class="z-50 hidden my-4 text-base list-none divide-y divide-gray-100 rounded shadow bg-preto dark:divide-gray-600"
+                <div class="z-50 hidden my-4 text-base list-none divide-y rounded shadow bg-[#F2F2F2] divide-gray-600"
                     id="dropdown">
                     <ul class="py-1" aria-labelledby="dropdown">
                         <li>
                             <a href="{{ route('login') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Entrar</a>
+                                class="block px-4 py-2 text-sm text-gray-900">Entrar</a>
                         </li>
                         <li>
                             <a href="{{ route('cadastro') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Cadastrar</a>
+                                class="block px-4 py-2 text-sm text-gray-900">Cadastrar</a>
                         </li>
                     </ul>
                 </div>

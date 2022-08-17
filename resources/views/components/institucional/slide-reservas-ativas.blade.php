@@ -1,4 +1,4 @@
-<div class="w-full px-0 mt-[40px] py-5" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative; min-height: 800px;">
+<div class="w-full px-0 mt-[40px] py-5" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative; min-height: 600px;">
     <div class="relative mx-auto w1200">
         <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-reservas-ativas" x-show="show" x-transition.opacity.duration.3000ms>
             <div class="flex flex-nowrap">
