@@ -1,6 +1,6 @@
 <div class="w-full px-0 py-2 pb-5" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative;">
     <div class="relative mx-auto w1200">
-        <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar @if($lotes->count < 4) justify-center @endif" id="slide-lotes-destaque" x-show="show" x-transition.opacity.duration.3000ms>
+        <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar @if($lotes->count() < 4) justify-center @endif" id="slide-lotes-destaque" x-show="show" x-transition.opacity.duration.3000ms>
             <div class="flex flex-nowrap space-x-[6px]">
                 @foreach ($lotes as $lote)
                     <div class="inline-block py-2 slide-item caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
