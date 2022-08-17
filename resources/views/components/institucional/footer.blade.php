@@ -12,18 +12,18 @@
                 <div class="w-full grid grid-cols-1 sm:grid-cols-2 mt-[25px]">
                     <div class="mx-auto md:mx-0 mx-md-0 text-center sm:text-left text-sm-left font-montserrat text-[16px] text-[#D7D8E4]">
                         <ul>
-                            <li>Início</li>
-                            <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Cadastre-se</li>
-                            <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Minha Conta</li>
-                            <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Reservas Abertas</li>
+                            <li onclick="window.open('{{ route('index') }}')" class="hover:!text-[#F5B01F] cpointer">Início</li>
+                            <li onclick="window.open('{{ route('cadastro') }}')" class="mt-[20px] hover:!text-[#F5B01F] cpointer">Cadastre-se</li>
+                            <li @if(Session()->get("usuario")) onclick="window.open('{{ route('conta.index') }}')" @else onclick="window.open('{{ route('login') }}')" @endif class="mt-[20px] hover:!text-[#F5B01F] cpointer">Minha Conta</li>
+                            <li onclick="window.open('{{ route('reservas_abertas') }}')" class="mt-[20px] hover:!text-[#F5B01F] cpointer">Reservas Abertas</li>
                         </ul>
                     </div>
                     <div class="mx-auto text-center sm:text-left text-sm-left mt-4 sm:mt-0 mt-sm-0 font-montserrat text-[16px] text-[#D7D8E4]">
                         <ul>
-                            <li>Navegue por raças</li>
-                            <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Novidades (Blog)</li>
-                            <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Quem Somos</li>
-                            <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Reservas Finalizadas</li>
+                            <li onclick="window.open('{{ route('navegue_por_racas') }}')" class="hover:!text-[#F5B01F] cpointer">Navegue por raças</li>
+                            <li onclick="window.open('{{ route('blog') }}')" class="mt-[20px] hover:!text-[#F5B01F] cpointer">Novidades (Blog)</li>
+                            <li onclick="window.open('{{ route('sobre') }}')" class="mt-[20px] hover:!text-[#F5B01F] cpointer">Quem Somos</li>
+                            {{-- <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Reservas Finalizadas</li> --}}
                         </ul>
                     </div>
                 </div>
@@ -35,14 +35,14 @@
                 <div class="w-full grid grid-cols-1 sm:grid-cols-2 mt-[25px]">
                     <div class="mx-auto sm:mx-0 mx-sm-0 text-center sm:text-left text-sm-left font-montserrat text-[16px] text-[#D7D8E4]">
                         <ul>
-                            <li class="hover:!text-[#F5B01F] cpointer">Termos e Condições</li>
-                            <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Política e Privacidade</li>
+                            <li onclick="window.open('{{ route('termos') }}')" class="hover:!text-[#F5B01F] cpointer">Termos e Condições</li>
+                            <li onclick="window.open('{{ route('politicas') }}')" class="mt-[20px] hover:!text-[#F5B01F] cpointer">Política e Privacidade</li>
                         </ul>
                     </div>
                     <div class="mx-auto mx-sm-0 text-center sm:text-left text-sm-left font-montserrat text-[16px] text-[#D7D8E4]">
                         <ul>
-                            <li class="mt-[20px] sm:mt-0 hover:!text-[#F5B01F] cpointer">Precisa de Ajuda</li>
-                            <li class="mt-[20px] hover:!text-[#F5B01F] cpointer">Falar com os assessores</li>
+                            <li onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="mt-[20px] sm:mt-0 hover:!text-[#F5B01F] cpointer">Precisa de Ajuda</li>
+                            <li onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="mt-[20px] hover:!text-[#F5B01F] cpointer">Falar com os assessores</li>
                         </ul>
                     </div>
                 </div>
@@ -58,9 +58,9 @@
         </div>
         <div class="flex flex-wrap items-center justify-between py-8 mx-auto w1000">
             <div class="w-full text-center md:w-auto text-md-left">
-                <i class="fab fa-facebook-square text-[#FFB02A] text-[36px]"></i>
-                <i class="fab fa-youtube text-[#FFB02A] text-[36px] mx-8"></i>
-                <i class="fab fa-instagram text-[#FFB02A] text-[36px]"></i>
+                <i onclick="window.open('https://www.facebook.com/agroreserva1', '_blank')" class="cursor-pointer hover:scale-105 transition duration-150 fab fa-facebook-square text-[#FFB02A] text-[36px]"></i>
+                <i onclick="window.open('https://www.youtube.com/c/BerranteComunicação', '_blank')" class="cursor-pointer hover:scale-105 transition duration-150 fab fa-youtube text-[#FFB02A] text-[36px] mx-8"></i>
+                <i onclick="window.open('https://www.instagram.com/agro_reserva/', '_blank')" class="cursor-pointer hover:scale-105 transition duration-150 fab fa-instagram text-[#FFB02A] text-[36px]"></i>
             </div>
             <div class="w-full md:w-auto mt-[20px] md:mt-0">
                 <div class="hidden w-full md:block">

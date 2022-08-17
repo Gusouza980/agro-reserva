@@ -16,13 +16,13 @@
         </div>
         <div class="items-center justify-end flex-grow hidden md:flex">
             <div class="px-3">
-                <i class="fab fa-facebook-square text-[#80828B] fa-lg"></i>
+                <i onclick="window.open('https://www.facebook.com/agroreserva1', '_blank')" class="cursor-pointer hover:scale-105 transition duration-150 fab fa-facebook-square text-[#80828B] fa-lg"></i>
             </div>
             <div class="px-3">
-                <i class="fab fa-youtube text-[#80828B] fa-lg"></i>
+                <i onclick="window.open('https://www.youtube.com/c/BerranteComunicação', '_blank')" class="cursor-pointer hover:scale-105 transition duration-150 fab fa-youtube text-[#80828B] fa-lg"></i>
             </div>
             <div class="pl-3">
-                <i class="fab fa-instagram text-[#80828B] fa-lg"></i>
+                <i onclick="window.open('https://www.instagram.com/agro_reserva/', '_blank')" class="cursor-pointer hover:scale-105 transition duration-150 fab fa-instagram text-[#80828B] fa-lg"></i>
             </div>
         </div>
     </div>
