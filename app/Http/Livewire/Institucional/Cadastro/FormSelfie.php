@@ -38,7 +38,7 @@ class FormSelfie extends Component
 
         $cliente = Cliente::find(session()->get("cliente")["id"]);
 
-        if($this->arquivo && file_exists($this->arquivo)){
+        if($this->arquivo){
             Storage::delete($cliente->documento);
             $cliente->documento = $this->arquivo->store("site/clientes/", 'local');
         }
