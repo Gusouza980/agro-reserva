@@ -12,7 +12,7 @@
 
 @section('conteudo')
 <div class="row">
-    <div class="col-12 text-end mb-3">
+    <div class="mb-3 col-12 text-end">
         <a name="" id="" class="btn btn-primary" href="{{route('painel.vendas.comprovante', ['venda' => $venda])}}" role="button">Comprovante</a>
     </div>
 </div>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-3 d-flex align-items-center">
                         @if($venda->situacao != 3)
-                            <div class="form-floating mb-3" style="width: 250px;">
+                            <div class="mb-3 form-floating" style="width: 250px;">
                                 <select class="form-select" id="select-situacao">
                                     @foreach(config("globals.situacoes") as $chave => $situacao)
                                         <option value="{{$chave}}" @if($chave == $venda->situacao) selected @endif>{{$situacao}}</option>
@@ -66,7 +66,7 @@
                 <table class="table table-bordered dt-responsive nowrap w-100">
                     <thead>
                         <tr>
-                            <th>Imagem</th>
+                            <th>Fazenda</th>
                             <th>Lote</th>
                             <th>Raça</th>
                             <th>Registro</th>
@@ -76,13 +76,13 @@
 
 
                     <tbody>
-                        @foreach($venda->carrinho->lotes as $lote)
+                        @foreach($venda->carrinho->produtos as $produto)
                             <tr>
-                                <td style="vertical-align: middle; text-align: center;"><img src="{{asset($lote->fazenda->logo)}}" style="max-width: 100px;" alt=""></td>
-                                <td style="vertical-align: middle; text-align: center;"><b>{{$lote->nome}}</b></td>
-                                <td style="vertical-align: middle; text-align: center;"><b>Raça:</b> {{$lote->raca->nome}}</td>
-                                <td style="vertical-align: middle; text-align: center;"><b>Registro:</b> {{$lote->registro}}</td>
-                                <td style="vertical-align: middle; text-align: center;"><b>Valor:</b> R${{number_format($lote->preco, 2, ",", ".")}}</td>
+                                <td style="vertical-align: middle; text-align: center;"><img src="{{asset($produto->produtable->fazenda->logo)}}" style="max-width: 100px;" alt=""></td>
+                                <td style="vertical-align: middle; text-align: center;"><b>LOTE {{str_pad($produto->produtable->numero,3,'0', STR_PAD_LEFT)}} - {{$produto->produtable->nome}}</b></td>
+                                <td style="vertical-align: middle; text-align: center;"><b>Raça:</b> {{$produto->produtable->raca->nome}}</td>
+                                <td style="vertical-align: middle; text-align: center;"><b>Registro:</b> {{$produto->produtable->registro}}</td>
+                                <td style="vertical-align: middle; text-align: center;"><b>Valor:</b> R${{number_format($produto->produtable->preco, 2, ",", ".")}}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -93,44 +93,50 @@
     </div> <!-- end col -->
 </div> <!-- end row -->
 
-<div class="row mt-5 mb-3">
-    <div class="col-12">
-        <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovoBoleto">Adicionar Boleto</a>
-    </div>
-</div>
 <div class="row justify-content-center">
     <div class="col-12">
-        <h5>Boletos</h5>
         <div class="card">
             
             <div class="card-body">
-
-                <table id="datatable2" class="table table-bordered dt-responsive  nowrap w-100">
+                <h4 class="mb-4 card-title">Parcelas</h4>
+                <table class="table table-bordered dt-responsive nowrap w-100">
                     <thead>
                         <tr>
-                            <th>Descrição</th>
-                            <th>Status</th>
-                            <th>Validade</th>
-                            <th>Adicionado Por</th>
+                            <th>Parcela</th>
+                            <th>Valor</th>
+                            <th>Vencimento</th>
+                            <th>Situação</th>
                             <th></th>
                         </tr>
                     </thead>
 
 
                     <tbody>
-                        @foreach($venda->boletos as $boleto)
+                        @foreach($venda->getRelationValue("parcelas") as $parcela)
                             <tr>
-                                <td>{{$boleto->descricao}}</td>
-                                <td>{{config("globals.situacoes")[$boleto->status]}}</td>
-                                <td>{{date("d/m/Y", strtotime($boleto->validade))}}</td>
+                                <td scope="row">{{ $parcela->numero }}</td>
+                                <td>R${{ number_format($parcela->valor, 2, ",", ".") }}</td>
+                                <td>{{ date("d/m/Y", strtotime($parcela->vencimento)) }}</td>
                                 <td>
-                                    @if($boleto->admin)
-                                        Agroreserva
+                                    @if($parcela->recebido)
+                                        <div class="">
+                                            Recebido
+                                        </div>
+                                    @elseif(!$parcela->recebido && $parcela->vencimento < date("Y-m-d"))
+                                        <div class="">
+                                            Vencida
+                                        </div>
                                     @else
-                                        {{$boleto->fazendeiro->nome}}
+                                        <div class="">
+                                            Aguardando Pagamento
+                                        </div>
                                     @endif
                                 </td>
-                                <td></td>
+                                <td>
+                                    @if(!$parcela->recebido)
+                                        <a name="" id="" class="btn btn-primary" href="{{ route('painel.vendas.parcela.receber', ['parcela' => $parcela]) }}" role="button">Recebido</a>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -139,113 +145,6 @@
             </div>
         </div>
     </div> <!-- end col -->
-</div> <!-- end row -->
-
-<div class="row mb-3">
-    <div class="col-12">
-        <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovaNota">Adicionar Nota</a>
-    </div>
-</div>
-<div class="row justify-content-center">
-    <div class="col-12">
-        <h5>Notas Fiscais</h5>
-        <div class="card">
-            
-            <div class="card-body">
-
-                <table id="datatable2" class="table table-bordered dt-responsive  nowrap w-100">
-                    <thead>
-                        <tr>
-                            <th>Descrição</th>
-                            <th>Adicionado Por</th>
-                            <th>Data</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-
-
-                    <tbody>
-                        @foreach($venda->notas as $nota)
-                            <tr>
-                                <td>{{$nota->descricao}}</td>
-                                <td>
-                                    @if($nota->admin)
-                                        Agroreserva
-                                    @else
-                                        {{$nota->fazendeiro->nome}}
-                                    @endif
-                                </td>
-                                <td>{{date("d/m/Y", strtotime($nota->created_at))}}</td>
-                                <td></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-
-            </div>
-        </div>
-    </div> <!-- end col -->
-</div> <!-- end row -->
-
-<div class="modal fade" id="modalNovoBoleto" tabindex="-1" role="dialog" aria-labelledby="modalNovoBoletoLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalCadastraRacaLabel">Adicionar Boleto</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{route('painel.vendas.boleto.adicionar', ['venda' => $venda])}}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group mb-3">
-                        <label for="descricao">Descrição</label>
-                        <input type="text"
-                            class="form-control" name="descricao" placeholder="Digite uma descrição para o boleto" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="validade">Validade</label>
-                        <input type="date"
-                            class="form-control" name="validade">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="caminho">Boleto</label>
-                        <input class="form-control" type="file" name="caminho">                    
-                    </div>
-                    <div class="form-group text-end">
-                        <button type="submit" class="btn btn-primary mt-3">Salvar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modalNovaNota" tabindex="-1" role="dialog" aria-labelledby="modalNovaNotaLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalCadastraRacaLabel">Adicionar Nota Fiscal</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{route('painel.vendas.nota.adicionar', ['venda' => $venda])}}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group mb-3">
-                        <label for="descricao">Descrição</label>
-                        <input type="text"
-                            class="form-control" name="descricao" placeholder="Digite uma descrição para o boleto" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="caminho">Nota</label>
-                        <input class="form-control" type="file" name="caminho">                    
-                    </div>
-                    <div class="form-group text-end">
-                        <button type="submit" class="btn btn-primary mt-3">Salvar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
 @endsection
 

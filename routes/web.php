@@ -184,7 +184,7 @@ Route::middleware(['fazendeiro'])->group(function () {
     // ROTAS DE VENDAS DA FAZENDA
     Route::get('/fazenda/painel/vendas', [\App\Http\Controllers\FazendeiroController::class, 'vendas'])->name("painel.fazenda.vendas");
     Route::get('/fazenda/painel/venda/{venda}', [\App\Http\Controllers\FazendeiroController::class, 'visualizar_venda'])->name("painel.fazenda.vendas.visualizar");
-    Route::post('/fazenda/painel/venda/boleto/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_boleto'])->name("painel.fazenda.vendas.boleto.adicionar");
+    Route::post('/fazenda/painel/venda/parcela/receber', [\App\Http\Controllers\VendasController::class, 'receber_parcela'])->name("painel.fazenda.vendas.boleto.adicionar");
     Route::post('/fazenda/painel/venda/nota/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_nota'])->name("painel.fazenda.vendas.nota.adicionar");
 
 });
@@ -318,8 +318,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/vendas/lotes', [\App\Http\Controllers\VendasController::class, 'lotes'])->name("painel.vendas.lotes");
     Route::post('/painel/vendas/nova', [\App\Http\Controllers\VendasController::class, 'venda_manual'])->name("painel.vendas.nova");
     Route::get('/painel/venda/{venda}', [\App\Http\Controllers\VendasController::class, 'visualizar'])->name("painel.vendas.visualizar");
-    Route::post('/painel/venda/boleto/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_boleto'])->name("painel.vendas.boleto.adicionar");
-    Route::post('/painel/venda/nota/adicionar/{venda}', [\App\Http\Controllers\VendasController::class, 'adicionar_nota'])->name("painel.vendas.nota.adicionar");
+    Route::get('/painel/venda/parcela/{parcela}/receber', [\App\Http\Controllers\VendasController::class, 'receber_parcela'])->name("painel.vendas.parcela.receber");
     Route::get('/painel/venda/comprovante/{venda}', [\App\Http\Controllers\ContaController::class, 'comprovante_reserva'])->name("painel.vendas.comprovante");
     Route::get('/painel/venda/comprovante/{venda}/enviar', [\App\Http\Controllers\VendasController::class, 'envia_comprovante'])->name("painel.vendas.comprovante.enviar");
     Route::get('/api/trocaStatusVenda/{venda}/{status}', [\App\Http\Controllers\ApiController::class, 'trocaStatusVenda']);

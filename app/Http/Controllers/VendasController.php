@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 use PDF;
 use App\Classes\Util;
 use Illuminate\Support\Facades\Log;
+use App\Models\VendaParcela;
 
 class VendasController extends Controller
 {
@@ -55,47 +56,9 @@ class VendasController extends Controller
         return view("painel.vendas.visualizar", ["venda" => $venda]);
     }
 
-    public function adicionar_boleto(Request $request, Venda $venda){
-        $boleto = new Boleto;
-        $boleto->venda_id = $venda->id;
-        if($request->file("caminho")){
-            $boleto->caminho = $request->file('caminho')->store(
-                'imagens/vendas/' . $venda->codigo . "/boletos", 'local'
-            );
-        }
-        $boleto->descricao = $request->descricao;
-        $boleto->validade = $request->validade;
-        $boleto->status = 0;
-        if(url()->current() == route('painel.fazenda.vendas.boleto.adicionar', ['venda' => $venda])){
-            $boleto->admin = false;
-            $boleto->fazendeiro_id = session()->get("fazendeiro")["id"];
-        }else{
-            $boleto->admin = true;
-            $boleto->usuario_id = session()->get("admin")["id"];
-        }
-        $boleto->save();
-        toastr()->success("Boleto adicionado!");
-        return redirect()->back();
-    }
-
-    public function adicionar_nota(Request $request, Venda $venda){
-        $nota = new Nota;
-        $nota->venda_id = $venda->id;
-        if($request->file("caminho")){
-            $nota->caminho = $request->file('caminho')->store(
-                'imagens/vendas/' . $venda->codigo . "/notas", 'local'
-            );
-        }
-        $nota->descricao = $request->descricao;
-        if(url()->current() == route('painel.fazenda.vendas.nota.adicionar', ['venda' => $venda])){
-            $nota->admin = false;
-            $nota->fazendeiro_id = session()->get("fazendeiro")["id"];
-        }else{
-            $nota->admin = true;
-            $nota->usuario_id = session()->get("admin")["id"];
-        }
-        $nota->save();
-        toastr()->success("Nota adicionada!");
+    public function receber_parcela(VendaParcela $parcela){
+        $parcela->recebido = true;
+        $parcela->save();
         return redirect()->back();
     }
 

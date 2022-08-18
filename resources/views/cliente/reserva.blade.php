@@ -2,29 +2,29 @@
 
 @section('conteudo')
 <div class="w-full bg-[#F2F2F2] py-5 px-md-0" style="min-height: 40vh;">
-    <div class="w1200 mx-auto bg-white px-3 py-3 rounded-lg">
+    <div class="px-3 py-3 mx-auto bg-white rounded-lg w1200">
         <div class="w-full py-3">
-            <a href="{{route('conta.index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+            <a href="{{route('conta.index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="mr-2 fas fa-arrow-left"></i> Voltar</span></a>
         </div>
         <div class="w-full d-flex justify-content-between">
             <div class="reserva-resumo-titulo">
                 <h1>Resumo da reserva: #{{$venda->codigo}}</h1>
             </div>
             <div>
-                <a href="{{route('conta.reserva.comprovante', ['venda' => $venda])}}" target="_blank" class="link-download-catalogo"><i class="fas fa-file-download mr-3"></i>Baixar Comprovante</a>
+                <a href="{{route('conta.reserva.comprovante', ['venda' => $venda])}}" target="_blank" class="link-download-catalogo"><i class="mr-3 fas fa-file-download"></i>Baixar Comprovante</a>
             </div>
         </div>
-        <div class="w-full flex flex-column md:flex-row flex-lg-row mt-3">
-            <div class="w-full md:w-3/5 py-3 text-left pr-md-3">
+        <div class="flex w-full mt-3 flex-column md:flex-row flex-lg-row">
+            <div class="w-full py-3 text-left md:w-3/5 pr-md-3">
                 <div class="w-full bg-slate-200 px-3 py-2 border-b-2 border-[#E8521B]" style="font-family: 'Montserrat', sans-serif;">
                     <span class="font-bold">Lotes</span>
                 </div>
                 @foreach($venda->carrinho->carrinho_produtos as $carrinho_produto)
-                    <div class="w-full flex flex-row py-3">
+                    <div class="flex flex-row w-full py-3">
                         <div class="w-full md:w-1/5">
                             <img src="{{asset($carrinho_produto->produto->produtable->preview)}}" alt="" style="max-width: 350px;" class="w-100">
                         </div>
-                        <div class="w-full md:w-3/5 my-auto px-3 flex content-center flex-column justify-start">
+                        <div class="flex content-center justify-start w-full px-3 my-auto md:w-3/5 flex-column">
                             <p><b>LOTE {{$carrinho_produto->produto->produtable->numero}}: {{$carrinho_produto->produto->produtable->nome}}</b></p>
                             <p class="mt-n1"><b>Registro:</b> {{$carrinho_produto->produto->produtable->registro}}</p>
                             <p class="mt-n1"><b>Raça:</b> {{$carrinho_produto->produto->produtable->raca->nome}}</p>
@@ -73,11 +73,11 @@
                     </div>
                 @endforeach
             </div>
-            <div class="w-full md:w-2/5 text-left py-3 pl-md-3">
+            <div class="w-full py-3 text-left md:w-2/5 pl-md-3">
                 <div class="w-full bg-slate-200 px-3 py-2 border-b-2 border-[#E8521B]" style="font-family: 'Montserrat', sans-serif;">
                     <span class="font-bold">Resumo</span>
                 </div>
-                <div class="flex flex-column py-3">
+                <div class="flex py-3 flex-column">
                     <div class="w-full py-1">
                         <b>Situação:</b> {{config("globals.situacoes")[$venda->situacao]}}
                     </div>
@@ -101,7 +101,7 @@
                             <b>Assessorado por:</b> {{$venda->assessor->nome}}
                         </div>
                     @endif
-                    <div class="w-full py-1 mt-4 flex justify-center">
+                    <div class="flex justify-center w-full py-1 mt-4">
                         <a href="" class="bg-[#E8521B] text-white hover:bg-orange-700 rounded-full px-4 py-2">Falar com consultor</a>
                     </div>
                 </div>

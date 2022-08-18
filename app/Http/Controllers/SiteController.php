@@ -251,7 +251,7 @@ class SiteController extends Controller
         if(!session()->get("cliente")){
             session()->flash("erro", "Para acessar os lotes, faça seu login.");
             session()->put(["pagina_retorno" => url()->full()]);
-            session()->put(["lote_origem" => $lote->id]);
+            session()->put(["lote_origem" => $embriao->id]);
             return redirect()->route("login");
         }
         $visita = new Visita;
@@ -510,6 +510,9 @@ class SiteController extends Controller
 
     public function redirect_fazenda($slug, Lote $lote = null){
         $fazenda = Fazenda::where("slug", $slug)->first();
+        if(!$fazenda){
+            return redirect()->route('index');
+        }
         $reserva = $fazenda->reservas->where("ativo", 1)->first();
         if(url()->current() == route('fazenda.conheca.antigo', ['fazenda' => $slug]) || url()->current() == route('fazenda.conheca.lotes.antigo', ['fazenda' => $slug]) || url()->current() == route('fazenda.conheca.depoimentos.antigo', ['fazenda' => $slug]) || url()->current() == route('fazenda.conheca.avaliacoes.antigo', ['fazenda' => $slug])){
             return redirect()->route("fazenda.conheca", ["fazenda" => $slug, "reserva" => $reserva]);
