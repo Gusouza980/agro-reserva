@@ -35,7 +35,7 @@
                                     @endif
                                 </div>
                                 <div class="mt-2 text-left caixa-lote-home-text">
-                                    <span>@if($lote->preco > 0) {{ $lote->parcelas . "x de R$" . number_format($lote->preco / $lote->parcelas, 2, ",", ".")  }}  @else {{ $lote->reserva->desconto }}% de desconto no<br>pagamento à vista @endif</span>
+                                    <span>@if($lote->preco > 0) {{ $lote->reserva->max_parcelas . "x de R$" . number_format($lote->preco / $lote->reserva->max_parcelas, 2, ",", ".")  }}  @else {{ $lote->reserva->desconto }}% de desconto no<br>pagamento à vista @endif</span>
                                 </div>
                             </div>
                             
