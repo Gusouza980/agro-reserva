@@ -1689,6 +1689,19 @@ html {
     visibility: visible;
     opacity: 1
 }
+.modal-action {
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: flex-end
+}
+.modal-toggle {
+    position: fixed;
+    height: 0px;
+    width: 0px;
+    -webkit-appearance: none;
+            appearance: none;
+    opacity: 0
+}
 .navbar {
     display: flex;
     align-items: center;
@@ -2659,6 +2672,11 @@ body[dir="rtl"] .checkbox:checked,
     --tw-scale-y: 1;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
+.modal-action > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))
+}
 @keyframes progress-loading {
     50% {
         left: 107%
@@ -3161,6 +3179,12 @@ body[dir="rtl"] .checkbox:checked,
     background-color: hsl(var(--wa) / var(--tw-bg-opacity));
     --tw-text-opacity: 1;
     color: hsl(var(--wac, var(--nc)) / var(--tw-text-opacity))
+}
+.alert-error {
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--er) / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: hsl(var(--erc, var(--nc)) / var(--tw-text-opacity))
 }
 .avatar.online:before {
     content: "";
@@ -5180,6 +5204,10 @@ body[dir="rtl"] .checkbox:checked,
 .hover\:\!text-white:hover {
     --tw-text-opacity: 1 !important;
     color: rgb(255 255 255 / var(--tw-text-opacity)) !important
+}
+.hover\:\!text-\[\#E8521D\]:hover {
+    --tw-text-opacity: 1 !important;
+    color: rgb(232 82 29 / var(--tw-text-opacity)) !important
 }
 .hover\:no-underline:hover {
     -webkit-text-decoration-line: none;
