@@ -111,7 +111,7 @@ Route::middleware(['cookie'])->group(function () {
     Route::get('/fazenda/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.lote.antigo");
     Route::get('/fazenda/{fazenda}/{reserva}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes2'])->name("fazenda.lotes");
     Route::get('/fazenda/{fazenda}/{reserva}/embrioes', [\App\Http\Controllers\SiteController::class, 'embrioes'])->name("fazenda.embrioes");
-    Route::get('/fazenda/{fazenda}/{reserva}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote'])->name("fazenda.lote");
+    Route::get('/fazenda/{fazenda}/{reserva?}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote'])->name("fazenda.lote");
     Route::get('/fazenda/{fazenda}/{reserva}/embriao/{embriao}',  [\App\Http\Controllers\SiteController::class, 'embriao'])->name("fazenda.embriao");
     Route::post('/fazenda/lote/{lote}/lance',  [\App\Http\Controllers\SiteController::class, 'lance'])->name("fazenda.lote.lance");
     Route::get('/fazenda/lote/{lote}/lance/maior',  [\App\Http\Controllers\SiteController::class, 'maior_lance'])->name("fazenda.lote.lance.maior");

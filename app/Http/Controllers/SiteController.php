@@ -180,12 +180,16 @@ class SiteController extends Controller
         return view("lotes2", ["fazenda" => $fazenda, "reserva" => $reserva, "popup_institucional" => $popup_institucional, "lotes" => $lotes, "nome_pagina" => "Lotes"]);
     }
 
-    public function lote($slug, Reserva $reserva, Lote $lote){
+    public function lote($slug, Reserva $reserva = null, Lote $lote){
         if(!session()->get("cliente")){
             session()->flash("erro", "Para acessar os lotes, faça seu login.");
             session()->put(["pagina_retorno" => url()->full()]);
             session()->put(["lote_origem" => $lote->id]);
             return redirect()->route("login");
+        }
+
+        if(!$reserva){
+            $reserva = $lote->reserva;
         }
 
         $visita = new Visita;
