@@ -64,6 +64,7 @@ class ModalCadastroReserva extends Component
 
     public function carregaModalEdicaoReservas(Reserva $reserva){
         $this->reserva = $reserva;
+        $this->fazenda_selecionada = $reserva->fazenda_id;
         $this->op = 'edicao';
         foreach($reserva->formas_pagamento->sortBy("minimo") as $forma_pagamento){
             $regras = [];

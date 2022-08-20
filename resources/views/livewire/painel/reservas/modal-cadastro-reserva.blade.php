@@ -17,7 +17,7 @@
                                         <div class="row">
                                             <div class="mb-3 col-12 form-group">
                                                 <label for="" class="form-label">Fazenda</label>
-                                                <select class="form-control" wire:model="reserva.fazenda_id">
+                                                <select class="form-control" wire:model="fazenda_selecionada">
                                                     <option>Selecione uma Fazenda</option>
                                                     @foreach(\App\Models\Fazenda::orderBy("nome_fazenda", "ASC")->get() as $faz)
                                                         <option value="{{ $faz->id }}">{{ $faz->nome_fazenda }}</option>
@@ -29,12 +29,12 @@
                                     <div class="row">
                                         <div class="mb-3 col-12 col-md-4 form-group">
                                             <label for="inicio">Início</label>
-                                            <input type="date" class="form-control"
+                                            <input type="date" class="form-control" name="inicio"
                                                 wire:model="reserva.inicio" required>
                                         </div>
                                         <div class="mb-3 col-12 col-md-4 form-group">
                                             <label for="fim">Fim</label>
-                                            <input type="date" class="form-control"
+                                            <input type="date" class="form-control" name="fim"
                                                 wire:model="reserva.fim" required>
                                         </div>
                                         <div class="mb-3 col-12 col-md-4 form-group">
