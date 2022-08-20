@@ -19,7 +19,7 @@ class Datatable extends Component
 
     public $reservas;
 
-    protected $listeners = ["atualizaValor"];
+    protected $listeners = ["atualizaValor", "atualizaDatatableVendas" => '$refresh'];
 
     protected $paginationTheme = 'bootstrap';
 

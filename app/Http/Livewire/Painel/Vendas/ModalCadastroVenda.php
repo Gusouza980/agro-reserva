@@ -120,7 +120,7 @@ class ModalCadastroVenda extends Component
         $valor_parcela = ($total - $entrada) / $qtd_parcelas;
 
         $venda = new Venda;
-        
+
         // CRIANDO A VENDA
         $venda->cliente_id = $this->cliente_selecionado->id;
         $venda->assessor_id = null;
@@ -187,6 +187,7 @@ class ModalCadastroVenda extends Component
             $this->recomecarCadastro();
         }
 
+        $this->emit('atualizaDatatableVendas');
     }
 
     public function recomecarCadastro(){
