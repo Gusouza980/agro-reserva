@@ -16,6 +16,7 @@ use PDF;
 use App\Classes\Util;
 use Illuminate\Support\Facades\Log;
 use App\Models\VendaParcela;
+use App\Classes\FuncoesVenda;
 
 class VendasController extends Controller
 {
@@ -101,8 +102,8 @@ class VendasController extends Controller
         $desconto_extra = $request->desconto_extra;
         $comissao = 0;
 
-        $valor_desconto = $carrinho->total * $desconto / 100;
-        $valor_comissao = $carrinho->total * $comissao / 100;
+        $valor_desconto = $carrinho->produtos->sum("preco") * $desconto / 100;
+        $valor_comissao = $comissao;
         $total_compra = $carrinho->total - $valor_desconto - $desconto_extra + $valor_comissao;
 
         $venda->carrinho_id = $carrinho->id;

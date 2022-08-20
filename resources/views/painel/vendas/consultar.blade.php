@@ -12,87 +12,13 @@
 @endsection
 
 @section('conteudo')
-<div class="row my-3">
+<div class="my-3 row">
     <div class="col-12">
          <a name="" id="" class="btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalNovaVenda" role="button">Nova Venda</a> 
-         <a name="" id="" class="btn btn-primary cpointer ml-3" data-bs-toggle="modal" data-bs-target="#modalNovoCliente" role="button">Novo Cliente</a> 
+         <a name="" id="" class="ml-3 btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalNovoCliente" role="button">Novo Cliente</a> 
     </div>
 </div>
-<form action="" class="row row-cols-lg-auto g-3 align-items-center mb-3" method="POST">
-    @csrf
-    <div class="form-group">
-        <label for="">Início</label>
-        <input type="date" name="inicio" id="" class="form-control" placeholder="" value="{{$inicio}}">
-    </div>
-    <div class="form-group">
-        <label for="">Fim</label>
-        <input type="date" name="fim" id="" class="form-control" placeholder="" value="{{$fim}}">
-    </div>
-    <div class="form-group">
-        <label for="">Reserva</label>
-        <select name="reserva" id="" class="form-control">
-            <option value="-1">Todas</option>
-            @foreach(\App\Models\Reserva::all() as $reserva)
-                <option value="{{$reserva->id}}" @if(isset($filtro_reserva) && $filtro_reserva == $reserva->id) selected @endif>{{$reserva->fazenda->nome_fazenda}} - {{date("d/m/y", strtotime($reserva->inicio))}}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary mt-4">Filtrar</button>
-    </div>
-</form>
-<div class="row justify-content-center">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body" style="overflow-x: scroll;">
-
-                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Código</th>
-                            <th>Cliente</th>
-                            <th>Total</th>
-                            <th>Tipo</th>
-                            <th>Status</th>
-                            <th>Data</th>
-                        </tr>
-                    </thead>
-
-
-                    <tbody>
-                        @foreach($vendas as $venda)
-                            <tr>
-                                <td class="text-center">
-                                    <div class="dropdown mt-4 mt-sm-0">
-                                        <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="fas fa-bars" aria-hidden="true"></i>
-                                        </a>
-                                        <div class="dropdown-menu" style="margin: 0px;">
-                                            <a href="{{route('painel.vendas.visualizar', ['venda' => $venda])}}" class="dropdown-item py-3">Detalhes</a>
-                                            <a href="{{route('painel.vendas.comprovante', ['venda' => $venda])}}" target="_blank" class="dropdown-item py-3" role="button">Visualizar Comprovante</a>
-                                            <a href="{{route('painel.vendas.comprovante.enviar', ['venda' => $venda])}}" class="dropdown-item py-3" role="button">Enviar Comprovante</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td style="vertical-align: middle; text-align:center;">{{$venda->codigo}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{$venda->cliente->nome_dono}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{number_format($venda->total, 2, ",", ".")}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{config("globals.tipos_pagamento")[$venda->tipo]}}</td>
-                                <td style="vertical-align: middle; text-align:center;">
-                                    {{config("globals.situacoes")[$venda->situacao]}}
-                                </td>
-                                <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($venda->created_at))}}</td>
-                                <td></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-
-            </div>
-        </div>
-    </div> <!-- end col -->
-</div> <!-- end row -->
+@livewire('painel.vendas.datatable')
 @include('painel.includes.clientes.modal-cadastro')
 <div class="modal fade" id="modalNovaVenda" tabindex="-1" role="dialog" aria-labelledby="modalNovaVendaLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
@@ -105,7 +31,7 @@
                 <form action="{{route('painel.vendas.nova')}}" method="post">
                     @csrf
                     <div class="row">
-                        <div class="form-group col-12 mb-3">
+                        <div class="mb-3 form-group col-12">
                             <label for="">Cliente</label><br>
                             <select class="form-select select2" style="width: 100%;" name="cliente" required>
                                 @foreach(\App\Models\Cliente::all() as $cliente)
@@ -115,7 +41,7 @@
                         </div>
                     </div>
                     <div class="row align-items-center">
-                        <div class="form-group col-8 mb-3">
+                        <div class="mb-3 form-group col-8">
                             <label for="tags">Lotes</label>
                             <br>
                             <select class="js-example-basic-multiple js-states form-control" style="width: 100%;" multiple="multiple" name="lotes[]" id="select_lotes" multiple required>
@@ -144,42 +70,42 @@
                     <div class="row">
                         <div class="col-12 col-lg-6">
                             <div class="row">
-                                <div class="form-group mb-3 col-12">
+                                <div class="mb-3 form-group col-12">
                                     <label for="">Número de Parcelas</label>
                                     <input type="number"
                                         class="form-control" name="parcelas" min="1" value="1" required>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group mb-3 col-12">
+                                <div class="mb-3 form-group col-12">
                                     <label for="">Parcelas por mês</label>
                                     <input type="number"
                                         class="form-control" name="parcelas_mes" min="1" value="1" required>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group mb-3 col-12">
+                                <div class="mb-3 form-group col-12">
                                     <label for="">Desconto (%)</label>
                                     <input type="number"
                                         class="form-control" name="desconto" min="0" max="100" step="0.01" value="0" required>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group mb-3 col-12">
+                                <div class="mb-3 form-group col-12">
                                     <label for="">Desconto Extra(R$)</label>
                                     <input type="number"
                                         class="form-control" name="desconto_extra" min="0" step="0.01" value="0" required>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group mb-3 col-12">
+                                <div class="mb-3 form-group col-12">
                                     <label for="">Data da Primeira Parcela</label>
                                     <input type="date"
                                         class="form-control" name="primeira_parcela" required>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12 mb-3">
+                                <div class="mb-3 col-12">
                                     <div>
                                         <label class="form-label">Assessor</label><br>
                                         <select class="form-control select2" style="width: 100%;" name="assessor">
@@ -192,12 +118,12 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12 text-center">
+                                <div class="text-center col-12">
                                     <button type="button" id="btn-calcula" class="btn btn-primary">Calcular Valores</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-6 mt-3">
+                        <div class="mt-3 col-12 col-lg-6">
                             <div class="row" id="caixa-valores" style="display:none;">
                                 <div class="col-12">
                                     <p><b>Total:</b><span id="valor-total"></span></p>
@@ -212,7 +138,7 @@
                     
                     
                     <div class="form-group text-end">
-                        <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                        <button type="submit" class="mt-3 btn btn-primary">Salvar</button>
                     </div>
                 </form>
             </div>
