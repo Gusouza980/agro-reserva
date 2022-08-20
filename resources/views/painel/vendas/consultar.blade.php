@@ -14,11 +14,12 @@
 @section('conteudo')
 <div class="my-3 row">
     <div class="col-12">
-         <a name="" id="" class="btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalNovaVenda" role="button">Nova Venda</a> 
+         <a name="" id="" class="btn btn-primary cpointer" onclick="Livewire.emit('carregaModalCadastroVenda')" role="button">Nova Venda</a> 
          <a name="" id="" class="ml-3 btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalNovoCliente" role="button">Novo Cliente</a> 
     </div>
 </div>
 @livewire('painel.vendas.datatable')
+@livewire('painel.vendas.modal-cadastro-venda')
 @include('painel.includes.clientes.modal-cadastro')
 <div class="modal fade" id="modalNovaVenda" tabindex="-1" role="dialog" aria-labelledby="modalNovaVendaLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">

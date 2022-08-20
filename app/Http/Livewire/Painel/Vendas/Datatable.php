@@ -41,11 +41,11 @@ class Datatable extends Component
         $vendas = Venda::where(null);
         
         if($this->filtro_inicio){
-            $vendas = $vendas->where("created_at", ">=", $this->filtro_inicio);
+            $vendas = $vendas->where("created_at", ">=", $this->filtro_inicio . " 00:00:00");
         }
 
         if($this->filtro_fim){
-            $vendas = $vendas->where("created_at", "<=", $this->filtro_fim);
+            $vendas = $vendas->where("created_at", "<=", $this->filtro_fim . " 23:59:59");
         }
 
         if($this->filtro_reserva){
