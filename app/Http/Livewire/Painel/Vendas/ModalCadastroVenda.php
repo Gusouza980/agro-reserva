@@ -210,14 +210,14 @@ class ModalCadastroVenda extends Component
         if($this->op == "listagem_clientes"){
             $clientes = Cliente::where(null);
             if($this->filtro_clientes){
-                $clientes = Cliente::where("nome_dono", "LIKE", "%" . $this->filtro_clientes . "%");
+                $clientes = Cliente::where("nome_dono", "LIKE", "%" . $this->filtro_clientes . "%")->orWhere("email", "LIKE", "%" . $this->filtro_clientes . "%");
             }
             $clientes = $clientes->orderBy("nome_dono", "ASC")->paginate(10);
             return view('livewire.painel.vendas.modal-cadastro-venda', ["clientes" => $clientes]);
         }elseif($this->op == "informacoes_venda"){
             $lotes = Lote::where(null);
             if($this->filtro_lotes){
-                $lotes = $lotes->where("numero", $this->filtro_lotes)->orWhere("nome", "LIKE", $this->filtro_lotes);
+                $lotes = $lotes->where("numero", $this->filtro_lotes)->orWhere("nome", "LIKE", "%" . $this->filtro_lotes . "%");
             }
             $lotes = $lotes->whereNotIn("id", $this->lotes_selecionados->keys())->orderBy("created_at", "DESC")->limit(100)->get();
             return view('livewire.painel.vendas.modal-cadastro-venda', ['lotes' => $lotes]);
