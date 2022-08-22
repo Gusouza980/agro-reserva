@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" style="vertical-align: middle;">
                         <thead>
                             <tr>
                                 <th></th>
@@ -55,7 +55,7 @@
                                     </td>
                                     <td>#{{ $reserva->id }}</td>
                                     <td>
-                                        <img src="{{ asset($reserva->imagem_card) }}" width="100" alt="">
+                                        <img src="{{ asset($reserva->imagem_card) }}" width="50" alt="">
                                     </td>
                                     <td>{{ $reserva->fazenda->nome_fazenda }}</td>
                                     <td>{{ date("d/m/Y", strtotime($reserva->inicio)) }}</td>
