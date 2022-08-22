@@ -231,6 +231,11 @@
                         aria-current="page">Reservas Abertas</a>
                 </li>
                 {{-- <li class="text-center">
+                    <a href="{{ route('reservas.finalizadas') }}"
+                        class="block py-2 pl-3 pr-4 text-gray-400 transition duration-300 ease-in-out rounded md:p-0"
+                        aria-current="page">Reservas Finalizadas</a>
+                </li> --}}
+                {{-- <li class="text-center">
                     <a href="#"
                         class="block py-2 pl-3 pr-4 text-gray-400 transition duration-300 ease-in-out md:p-0">Embriões e Sêmen</a>
                 </li> --}}
@@ -262,6 +267,10 @@
             <a href="{{ route('reservas_abertas') }}"
                 class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Reservas Abertas</a>
         </li>
+        {{-- <li>
+            <a href="{{ route('reservas.finalizadas') }}"
+                class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Reservas Finalizadas</a>
+        </li> --}}
         <li>
             <a href="{{ route('navegue_por_racas') }}"
                 class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Navegue por Raças</a>

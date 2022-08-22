@@ -406,7 +406,7 @@ class SiteController extends Controller
 
     public function reservas_finalizadas(){
         $reservas = Reserva::where("encerrada", true)->get();
-        return view("finalizadas.index", ["reservas" => $reservas]);
+        return view("finalizadas", ["reservas" => $reservas]);
     }
 
     public function conheca_finalizadas(Reserva $reserva, $slug){
