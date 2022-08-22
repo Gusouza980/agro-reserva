@@ -8,6 +8,7 @@
                             <tr>
                                 <th></th>
                                 <th>ID</th>
+                                <th></th>
                                 @if(!$fazenda)
                                     <th>Fazenda</th>
                                 @endif
@@ -53,6 +54,9 @@
                                         </div>
                                     </td>
                                     <td>#{{ $reserva->id }}</td>
+                                    <td>
+                                        <img src="{{ asset($reserva->imagem_card) }}" width="100" alt="">
+                                    </td>
                                     <td>{{ $reserva->fazenda->nome_fazenda }}</td>
                                     <td>{{ date("d/m/Y", strtotime($reserva->inicio)) }}</td>
                                     <td>{{ date("d/m/Y", strtotime($reserva->fim)) }}</td>
