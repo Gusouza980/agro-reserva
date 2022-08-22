@@ -170,6 +170,10 @@ class ModalCadastroReserva extends Component
             Util::limparLivewireTemp();
         }
 
+        if($this->reserva->raca_id == -1){
+            $this->reserva->raca_id = null;
+        }
+
         $this->reserva->save();
 
         ReservaFormasPagamento::where("reserva_id", $this->reserva->id)->delete();
