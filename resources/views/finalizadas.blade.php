@@ -6,7 +6,7 @@
     <div class="grid grid-cols-4 mx-auto w1200 hide-scroll-bar gap-x-5 gap-y-10 my-20">
         @foreach($reservas->sortByDesc("fim") as $reserva)
             <div class="w-full" style="border-radius: 15px; position: relative; height: auto;">
-                <img src="{{ asset($reserva->fazenda->fundo_destaque) }}" class="w-full" alt="">
+                <img src="{{ asset($reserva->imagem_card) }}" class="w-full" alt="">
                 <div class="d-flex align-items-center justify-content-center w-full" style="position: absolute; bottom: 0px; left: 0px;">
                     <div class="text-center">
                         <div class="">
