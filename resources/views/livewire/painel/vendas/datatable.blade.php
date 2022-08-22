@@ -27,6 +27,7 @@
                                 <th></th>
                                 <th>Cód.</th>
                                 <th>Cliente</th>
+                                <th>Entrada (R$)</th>
                                 <th>Desconto(%)</th>
                                 <th>Desconto Extra (R$)</th>
                                 <th>Total</th>
@@ -52,6 +53,9 @@
                                     </td>
                                     <td style="vertical-align: middle; text-align:center;">{{$venda->codigo}}</td>
                                     <td style="vertical-align: middle; text-align:center;"><a href="{{ route('painel.cliente.visualizar', ['cliente' => $venda->cliente_id]) }}">{{ $venda->cliente->nome_dono }}</a></td>
+                                    <td style="vertical-align: middle; text-align:center;">
+                                        <input type="number" class="form-control" value="{{ $venda->entrada }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'entrada', this.value)">
+                                    </td>
                                     <td style="vertical-align: middle; text-align:center;">
                                         <input type="number" class="form-control" value="{{ $venda->porcentagem_desconto }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'porcentagem_desconto', this.value)">
                                     </td>
