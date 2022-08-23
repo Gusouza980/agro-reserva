@@ -5,7 +5,7 @@
 <div class="w-full">
     <div class="grid grid-cols-4 mx-auto w1200 hide-scroll-bar gap-x-5 gap-y-10 my-20">
         @foreach($reservas->sortByDesc("inicio") as $reserva)
-            <div class="w-full" style="border-radius: 15px; position: relative; height: auto; background: black;">
+            <div class="w-full" style="border-radius: 15px; position: relative; height: auto; background: black; overflow: hidden;">
                 <img src="{{ asset($reserva->imagem_card) }}" class="w-full" alt="">
                 <div class="d-flex align-items-center justify-content-center w-full" style="background: linear-gradient(0deg, rgba(0,0,0,1) 76%, rgba(0,0,0,0.36878501400560226) 100%); position: absolute; bottom: 0px; width: 100%; height: 80px; left: 0px;">
                     <div class="text-center">
