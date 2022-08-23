@@ -7,7 +7,7 @@
         @foreach($reservas->sortByDesc("fim") as $reserva)
             <div class="w-full" style="border-radius: 15px; position: relative; height: auto; background: black;">
                 <img src="{{ asset($reserva->imagem_card) }}" class="w-full" alt="">
-                <div class="d-flex align-items-center justify-content-center w-full" style="position: absolute; bottom: 0px; width: 100%; height: 80px; left: 0px;">
+                <div class="d-flex align-items-center justify-content-center w-full" style="background: linear-gradient(0deg, rgba(0,0,0,1) 76%, rgba(0,0,0,0.36878501400560226) 100%); position: absolute; bottom: 0px; width: 100%; height: 80px; left: 0px;">
                     <div class="text-center">
                         {{-- <div class="">
                             <h3 class="font-montserrat text-white text-[26px] font-bold">{{ date("m/Y", strtotime($reserva->inicio)) }}</h3>
