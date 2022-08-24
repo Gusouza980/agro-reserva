@@ -269,7 +269,7 @@
             </div>
         </div>
     </div>
-    @if(!$reserva->encerrada)
+    @if(!$lote->reserva->encerrada)
         <div class="w-full bg-[#F5F5F5] py-5">
             <div class="mx-auto w1200">
                 <div class="w-full mb-3 text-center">
