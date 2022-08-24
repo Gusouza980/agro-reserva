@@ -2,7 +2,7 @@
     <div class="w-full bg-[#F5F5F5]">
         <div class="py-5 mx-auto w1200">
             <div class="hidden w-full md:block">
-                <a href="{{ route('fazenda.lotes2', ['fazenda' => $lote->fazenda->slug, 'reserva' => $lote->reserva->id]) }}"
+                <a href="{{ route('fazenda.lotes', ['fazenda' => $lote->fazenda->slug, 'reserva' => $lote->reserva->id]) }}"
                     class="text-[#283646] text-[18px] font-montserrat font-medium hover:text-[#E8521D] transition "><i
                         class="mr-2 fas fa-chevron-left"></i> Voltar</a>
             </div>
