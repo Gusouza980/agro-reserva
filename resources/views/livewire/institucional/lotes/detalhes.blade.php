@@ -61,15 +61,17 @@
                             <li>SEXO: <b class="ml-2">{{ $lote->sexo }}</b></li>
                         </ul>
                     </div>
-                    <div class="w-full mt-[35px] font-montserrat flex items-center">
-                        <span class="font-bold text-[33px]">R$
-                            {{ number_format($lote->preco - ($lote->preco * $lote->reserva->desconto) / 100, 2, ',', '.') }}</span>
-                        <span class="font-medium text-[25px] ml-2">à vista</span>
-                    </div>
-                    <div class="w-full font-montserrat text-[19px] font-medium">
-                        <span>Ou <b>{{ $lote->reserva->max_parcelas }}x</b> de <b>R$
-                                {{ number_format($lote->preco / $lote->reserva->max_parcelas, 2, ',', '.') }}</b></span>
-                    </div>
+                    @if(!$lote->reserva->encerrada)
+                        <div class="w-full mt-[35px] font-montserrat flex items-center">
+                            <span class="font-bold text-[33px]">R$
+                                {{ number_format($lote->preco - ($lote->preco * $lote->reserva->desconto) / 100, 2, ',', '.') }}</span>
+                            <span class="font-medium text-[25px] ml-2">à vista</span>
+                        </div>
+                        <div class="w-full font-montserrat text-[19px] font-medium">
+                            <span>Ou <b>{{ $lote->reserva->max_parcelas }}x</b> de <b>R$
+                                    {{ number_format($lote->preco / $lote->reserva->max_parcelas, 2, ',', '.') }}</b></span>
+                        </div>
+                    @endif
                     <div class="w-full font-montserrat text-[14px]">
                         <span>Sem juros no boleto de titularidade Faz. e comprador.</span>
                     </div>
