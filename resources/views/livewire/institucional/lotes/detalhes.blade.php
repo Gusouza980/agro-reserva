@@ -71,10 +71,10 @@
                             <span>Ou <b>{{ $lote->reserva->max_parcelas }}x</b> de <b>R$
                                     {{ number_format($lote->preco / $lote->reserva->max_parcelas, 2, ',', '.') }}</b></span>
                         </div>
+                        <div class="w-full font-montserrat text-[14px]">
+                            <span>Sem juros no boleto de titularidade Faz. e comprador.</span>
+                        </div>
                     @endif
-                    <div class="w-full font-montserrat text-[14px]">
-                        <span>Sem juros no boleto de titularidade Faz. e comprador.</span>
-                    </div>
                     @if(!($lote->reservado || $lote->reserva->encerrada || !$lote->reserva->compra_disponivel))
                         <div class="w-full mt-[20px]">
                             <a onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})"
