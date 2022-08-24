@@ -269,14 +269,16 @@
             </div>
         </div>
     </div>
-    <div class="w-full bg-[#F5F5F5] py-5">
-        <div class="mx-auto w1200">
-            <div class="w-full mb-3 text-center">
-                <h3 class="font-montserrat font-medium text-[25px] text-[#15171E]">Animais da Reserva</h3>
+    @if(!$reserva->encerrada)
+        <div class="w-full bg-[#F5F5F5] py-5">
+            <div class="mx-auto w1200">
+                <div class="w-full mb-3 text-center">
+                    <h3 class="font-montserrat font-medium text-[25px] text-[#15171E]">Animais da Reserva</h3>
+                </div>
+                <x-institucional.slide-lotes-destaque :lotes="$lote->reserva->lotes"></x-institucional.slide-lotes-destaque>
             </div>
-            <x-institucional.slide-lotes-destaque :lotes="$lote->reserva->lotes"></x-institucional.slide-lotes-destaque>
         </div>
-    </div>
+    @endif
 </div>
 
 @push("scripts")
