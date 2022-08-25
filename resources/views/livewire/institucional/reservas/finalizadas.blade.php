@@ -6,9 +6,9 @@
               type="text" name="search" placeholder="Pesquise por nome, número do lote ou registro" wire:model.debounc.500ms="filtro_fazenda"></input>
             <i class="fas fa-search text-grey-400 absolute bottom-[10px] right-[10px]"></i>
         </div>
-        <div class="flex flex-wrap justify-start mx-auto md:mx-0 w-full max-w-[200px] md:justify-start">
+        <div class="flex flex-wrap justify-start w-full max-w-[200px] md:justify-start">
             <label for="" class="font-montserrat text-[12px] text-gray-400">Data</label>
-            <input class="w-full pl-3 pr-10 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400"
+            <input class="w-full pl-3 pr-10 mx-auto text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400"
             type="month" name="search" placeholder="Pesquise por nome, número do lote ou registro" wire:model.debounc.500ms="filtro_data"></input>
         </div>
     </div>
