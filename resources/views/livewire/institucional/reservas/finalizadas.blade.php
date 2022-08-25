@@ -28,4 +28,5 @@
             </div>
         @endforeach
     </div>
+    <x-loading></x-loading>
 </div>
