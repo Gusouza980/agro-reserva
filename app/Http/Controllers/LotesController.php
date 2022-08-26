@@ -282,6 +282,7 @@ class LotesController extends Controller
         $lotes = Lote::where("reserva_id", $request->reserva_id)->get();
         foreach($lotes as $lote){
             $lote->produto()->create([
+                "nome" => $lote->nome,
                 "preco" => $lote->preco
             ]);
         }
