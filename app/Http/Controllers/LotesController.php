@@ -279,7 +279,7 @@ class LotesController extends Controller
 
         Storage::delete($caminho);
 
-        $lotes = Lotes::where("reserva_id", $request->reserva_id)->get();
+        $lotes = Lote::where("reserva_id", $request->reserva_id)->get();
         foreach($lotes as $lote){
             $lote->produto()->create([
                 "preco" => $lote->preco
