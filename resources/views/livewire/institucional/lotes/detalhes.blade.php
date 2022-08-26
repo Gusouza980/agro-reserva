@@ -55,7 +55,9 @@
                     </div>
                     <div class="w-full">
                         <ul class="font-montserrat text-[14px]">
-                            <li>RGD: <b class="ml-2">{{ $lote->registro }}</b></li>
+                            @if($lote->registro)
+                                <li>RGD: <b class="ml-2">{{ $lote->registro }}</b></li>
+                            @endif
                             <li>NASCIMENTO: <b class="ml-2">{{ date('d/m/Y', strtotime($lote->nascimento)) }}</b></li>
                             <li>RAÇA: <b class="ml-2">{{ $lote->raca->nome }}</b></li>
                             <li>SEXO: <b class="ml-2">{{ $lote->sexo }}</b></li>
