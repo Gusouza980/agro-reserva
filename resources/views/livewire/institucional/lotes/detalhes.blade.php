@@ -77,7 +77,7 @@
                             <span>Sem juros no boleto de titularidade Faz. e comprador.</span>
                         </div>
                     @endif
-                    @if(!($lote->reservado || $lote->reserva->encerrada || !$lote->reserva->compra_disponivel))
+                    @if(!$lote->reservado && !$lote->reserva->encerrada && $lote->liberar_compra)
                         <div class="w-full mt-[20px]">
                             <a onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})"
                                 class="cpointer bg-[#14C656] text-white font-montserrat text-[18px] font-medium py-[12px] px-[60px] rounded-[15px]">Comprar</a>
