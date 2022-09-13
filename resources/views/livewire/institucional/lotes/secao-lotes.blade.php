@@ -1,4 +1,7 @@
 <div class="px-0 bg-[#F5F5F5] py-5">
+    <div class="w1200 mx-auto mb-7">
+        <x-botoes.voltar :rota="route('index')"></x-botoes.voltar>
+    </div>
     <div class="grid grid-cols-1 gap-4 px-3 mx-auto md:grid-cols-2 align-items-center w1200 md:px-0">
         <div class="relative flex flex-col w-full mr-3 text-gray-400 mt-md-0">
             <label for="" class="font-montserrat text-[12px] text-gray-400">Pesquisar</label>

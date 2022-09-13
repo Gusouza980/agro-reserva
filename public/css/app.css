@@ -3624,6 +3624,9 @@ body[dir="rtl"] .checkbox:checked,
 .mt-\[22px\] {
     margin-top: 22px
 }
+.mb-7 {
+    margin-bottom: 1.75rem
+}
 .mt-\[80px\] {
     margin-top: 80px
 }

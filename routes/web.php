@@ -351,6 +351,8 @@ Route::middleware(['admin'])->group(function () {
 
 
     // ROTAS DE MARKETPLACE
+    
+    // ROTAS DE VENDEDORES E SEUS PRODUTOS
     Route::get('/painel/marketplace/vendedores', [\App\Http\Controllers\MarketplaceVendedoresController::class, 'consultar'])->name("painel.marketplace.vendedores");
     Route::get('/painel/marketplace/vendedores/cadastrar', [\App\Http\Controllers\MarketplaceVendedoresController::class, 'cadastrar'])->name("painel.marketplace.vendedores.cadastrar");
     Route::post('/painel/marketplace/vendedores/salvar', [\App\Http\Controllers\MarketplaceVendedoresController::class, 'salvar'])->name("painel.marketplace.vendedores.salvar");
@@ -360,6 +362,12 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/marketplace/vendedores/{vendedor}/produtos/{produto}/editar', [\App\Http\Controllers\MarketplaceProdutosController::class, 'editar'])->name("painel.marketplace.vendedores.produtos.editar");
     Route::post('/painel/marketplace/vendedores/{vendedor}/produtos/salvar', [\App\Http\Controllers\MarketplaceProdutosController::class, 'salvar'])->name("painel.marketplace.vendedores.produtos.salvar");
 
+    // ROTAS DECATEGORIAS
+    Route::get('/painel/marketplace/categorias', [\App\Http\Controllers\MarketplaceCategoriasController::class, 'consultar'])->name("painel.marketplace.categorias");
+
+
+
+    // ==========================================================================================================================
 
     // ROTAS DE CONFIGURACOES
 

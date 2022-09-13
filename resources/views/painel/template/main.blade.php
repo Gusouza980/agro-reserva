@@ -153,7 +153,7 @@
                                     </a>
                                     <ul class="sub-menu" aria-expanded="false">
                                         <li><a href="{{ route('painel.marketplace.vendedores') }}" key="t-saas">Vendedores</a></li>
-                                        {{-- <li><a href="{{ route('painel.vendedores') }}" key="t-saas">Vendedores</a></li> --}}
+                                        <li><a href="{{ route('painel.marketplace.categorias') }}" key="t-saas">Categorias</a></li>
                                     </ul>
                                 </li>
                             @endif
