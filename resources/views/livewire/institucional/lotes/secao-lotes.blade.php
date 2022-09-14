@@ -60,8 +60,7 @@
                 @endphp
                 @if($lotes->where("fazenda_id", $fazenda_id)->count() > 0)
                     <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white">
-                        <div class="flex items-center justify-center w-full h-full bg-black">
-                            <img src="{{ ($fazenda->imagem_card) ? asset($fazenda->imagem_card) : asset($fazenda->logo) }}" class="w-full" alt="">
+                        <div class="flex items-center justify-center w-full h-full bg-black" style="background-image: url({{ ($fazenda->imagem_card) ? asset($fazenda->imagem_card) : asset($fazenda->logo) }}); background-size: cover; background-position: center;">
                         </div>
                     </div>
                 @endif
