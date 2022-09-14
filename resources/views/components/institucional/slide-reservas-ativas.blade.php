@@ -7,13 +7,15 @@
                     <img src="{{ asset($reserva->fazenda->fundo_destaque) }}" class="w-100 @if($reserva->encerrada) brightness-[0.30]" @endif alt="">
                     <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
                         <div class="text-center">
-                            @if(!$reserva->encerrada && $reserva->mostrar_datas)
-                                <div>
-                                    <b class="font-montserrat text-[16px] text-white">@if(!$reserva->compra_disponivel) Inicia em @else Termina em @endif</b>
-                                </div>
-                                <div class="mt-2">
-                                    <h3 class="font-montserrat text-white text-[26px] font-bold">@if(!$reserva->compra_disponivel) {{ date("d/m/Y", strtotime($reserva->inicio)) }} @else {{ date("d/m/Y", strtotime($reserva->fim)) }} @endif</h3>
-                                </div>
+                            @if(!$reserva->encerrada)
+                                @if($reserva->mostrar_datas)
+                                    <div>
+                                        <b class="font-montserrat text-[16px] text-white">@if(!$reserva->compra_disponivel) Inicia em @else Termina em @endif</b>
+                                    </div>
+                                    <div class="mt-2">
+                                        <h3 class="font-montserrat text-white text-[26px] font-bold">@if(!$reserva->compra_disponivel) {{ date("d/m/Y", strtotime($reserva->inicio)) }} @else {{ date("d/m/Y", strtotime($reserva->fim)) }} @endif</h3>
+                                    </div>
+                                @endif
                             @else
                                 <div class="mt-2 mb-3">
                                     <b class="font-montserrat text-[16px] text-white">Encerrada</b>
