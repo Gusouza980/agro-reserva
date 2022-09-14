@@ -7,7 +7,7 @@
                     <img src="{{ asset($reserva->fazenda->fundo_destaque) }}" class="w-100 @if($reserva->encerrada) brightness-[0.30]" @endif alt="">
                     <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
                         <div class="text-center">
-                            @if(!$reserva->encerrada)
+                            @if(!$reserva->encerrada && $reserva->mostrar_datas)
                                 <div>
                                     <b class="font-montserrat text-[16px] text-white">@if(!$reserva->compra_disponivel) Inicia em @else Termina em @endif</b>
                                 </div>
