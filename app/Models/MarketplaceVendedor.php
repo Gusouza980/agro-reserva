@@ -12,4 +12,8 @@ class MarketplaceVendedor extends Model
     public function produtos(){
         return $this->hasMany(MarketplaceProduto::class);
     }
+
+    // public function getBySlug($slug){
+    //     return $this->where("")
+    // }
 }
