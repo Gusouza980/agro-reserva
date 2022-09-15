@@ -24,7 +24,7 @@
                         <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar">
                             <div class="flex flex-nowrap">
                                 <div class="inline-block mx-[6px] slide-item w-[340px]">
-                                    {!! \App\Classes\Util::convertYoutube($lote->video, "16/9", true) !!}
+                                    {!! \App\Classes\Util::convertYoutube($lote->video, "16/9", "h-full") !!}
                                 </div>
                                 <div class="inline-block mx-[6px] slide-item w-[340px]">
                                     <img src="{{ asset($lote->preview) }}" class="w-full transition duration-150 rounded-md hover:scale-105" alt="">

@@ -6,10 +6,11 @@ use Image;
 
 class Util{
     
-    public static function convertYoutube($string, $aspect = '16/9', $full_height = false){
+    public static function convertYoutube($string, $aspect = '16/9', $height = ""){
+        $iframe = "<iframe class='w-full aspect-video " . $height . "' style='aspect-ratio: " . $aspect . ";' src=\"https://www.youtube.com/embed/$2?&autoplay=1\" frameborder=\"0\" allow=\"accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
         return preg_replace(
             "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-            "<iframe class='w-full aspect-video' style='aspect-ratio: " . $aspect . ";' src=\"https://www.youtube.com/embed/$2?&autoplay=1\" frameborder=\"0\" allow=\"accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+            $iframe,
             $string
         );
     }
