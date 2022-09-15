@@ -36,10 +36,10 @@
     </style>
     <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
-    @include("includes.tags.google-ads")
 </head>
 
 <body x-data="{start: true}" class="bg-[#F5F5F5]">
+    @include("includes.tags.google-ads")
     <x-institucional.barra-topo></x-institucional.barra-topo>
     <x-institucional.navbar></x-institucional.navbar>
 
