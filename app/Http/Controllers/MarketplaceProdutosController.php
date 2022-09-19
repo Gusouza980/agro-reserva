@@ -43,6 +43,8 @@ class MarketplaceProdutosController extends Controller
         $produto->estoque = 0;
         $produto->valor = $request->valor;
         $produto->parcelas = $request->parcelas;
+        $produto->segmento = 0;
+        $produto->ativo = true;
 
         if($request->boleto){
             $produto->boleto = 1;

@@ -14,7 +14,7 @@
 @endsection
 
 @section('conteudo')
-    <div class="row my-3">
+    <div class="my-3 row">
         <div class="col-12">
             <a href="{{ route('painel.marketplace.vendedores.produtos.cadastrar', ['vendedor' => $vendedor]) }}" class="btn btn-primary" role="button">Novo Produto</a>
         </div>
@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body" style="overflow-x: scroll;">
 
-                    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
                         <thead class="text-center">
                             <tr>
                                 <th></th>
@@ -40,20 +40,20 @@
                             @foreach ($vendedor->produtos as $produto)
                                 <tr>
                                     <td>
-                                        <div class="dropdown mt-4 mt-sm-0">
+                                        <div class="mt-4 dropdown mt-sm-0">
                                             <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
                                                 aria-expanded="false">
                                                 <i class="fas fa-bars" aria-hidden="true"></i>
                                             </a>
                                             <div class="dropdown-menu" style="margin: 0px;">
-                                                <a name="" id="" class="dropdown-item py-2"
+                                                <a name="" id="" class="py-2 dropdown-item"
                                                     href="{{ route('painel.marketplace.vendedores.produtos.editar', ['vendedor' => $vendedor, "produto" => $produto]) }}"
                                                     role="button">Editar</a>
                                             </div>
                                         </div>
                                     </td>
                                     <td style="vertical-align: middle;">{{ $produto->nome }}</td>
-                                    <td style="vertical-align: middle;">{{ number_format($produto->valor, 2, ",", ">") }}</td>
+                                    <td style="vertical-align: middle;">{{ number_format($produto->valor, 2, ",", ".") }}</td>
                                     <td style="vertical-align: middle;">{{ $produto->estoque }}</td>
                                     <td style="vertical-align: middle;">
                                         {{ $produto->ativo ? 'Sim' : 'Não' }}

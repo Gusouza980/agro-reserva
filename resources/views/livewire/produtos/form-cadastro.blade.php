@@ -1,6 +1,9 @@
 <div>
     <form action="{{ route('painel.marketplace.vendedores.produtos.salvar', ['vendedor' => $vendedor]) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @if($produto)
+            <input type="hidden" name="marketplace_produto_id" value="{{ $produto->id }}">
+        @endif
         <div class="row">
             <div class="col-12">
                 <div class="mb-3">
@@ -36,13 +39,13 @@
             </div>
             <div class="col-6 col-md-2">
                 <label for="parcelas" class="form-label">Formas de Pagamento</label><br>
-                <div class="form-check form-check-inline mt-2">
+                <div class="mt-2 form-check form-check-inline">
                     <input type="checkbox" class="form-check-input" name="boleto" id="" @if($produto && $produto->boleto) checked @endif value="checkedValue">
                     <label class="form-check-label" for="">
                         <i class="fas fa-barcode fa-2x mt-n1"></i>
                     </label>
                 </div>
-                <div class="form-check form-check-inline mt-2">
+                <div class="mt-2 form-check form-check-inline">
                     <input type="checkbox" class="form-check-input" name="cartao" id="" @if($produto && $produto->cartao) checked @endif value="checkedValue">
                     <label class="form-check-label" for="">
                         <i class="fas fa-credit-card fa-2x mt-n1"></i>
@@ -77,7 +80,7 @@
         @endif
         <div class="row">
             <div class="col-12">
-                <div class="d-grid gap-2">
+                <div class="gap-2 d-grid">
                     <button type="submit" name="" id="" class="btn btn-laranja">Salvar</button>
                 </div>
             </div>

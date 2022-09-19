@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\MarketplaceVendedor;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class MarketplaceVendedoresController extends Controller
 {
@@ -31,6 +32,7 @@ class MarketplaceVendedoresController extends Controller
         }
 
         $vendedor->nome = $request->nome;
+        $vendedor->slug = Str::slug($request->nome);
         $vendedor->email = $request->email;
         $vendedor->cnpj = $request->cnpj;
         $vendedor->telefone = $request->telefone;

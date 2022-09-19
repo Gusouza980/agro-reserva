@@ -16,4 +16,8 @@ class MarketplaceProduto extends Model
     public function imagens(){
         return $this->hasMany(MarketplaceProdutoImagem::class);
     }
+
+    public function preview(){
+        return $this->belongsTo(MarketplaceProdutoImagem::class, "marketplace_produto_imagem_id", "id");
+    }
 }
