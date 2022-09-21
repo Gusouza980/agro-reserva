@@ -1,10 +1,10 @@
-<div class="w-[250px] shadow-md border border-solid border-[#626262] pt-4 px-3 cursor-pointer hover:scale-105 transition duration-300">
-    <div class="w-full max-h-[200px] overflow-y-hidden">
+<div class="w-[250px] shadow-md border border-solid border-[#626262] pt-4 px-3 hover:scale-105 transition duration-300">
+    <div class="w-full max-h-[200px] overflow-y-hidden cursor-pointer" onclick="window.location.href = '{{ route('marketplace.produto', ['slug' => $produto->vendedor->slug, 'produto' => $produto->id]) }}'">
         <img src="{{ asset($produto->preview->caminho) }}" class="w-full" alt="">
     </div>
     <div class="w-full">
         <div class="">
-            <h5 class="mt-3 font-medium text-[#626262] font-montserrat">{{ $produto->nome }}</h5>
+            <h5 class="mt-3 font-medium text-[#626262] font-montserrat cursor-pointer hover:text-orange-500" onclick="window.location.href = '{{ route('marketplace.produto', ['slug' => $produto->vendedor->slug, 'produto' => $produto->id]) }}'">{{ $produto->nome }}</h5>
         </div>
         <div class="w-full">
             <span class="font-medium text-slate-400 font-montserrat text-[13px] line-through">R$ {{ number_format($produto->valor, 2, ",", ".") }}</span>

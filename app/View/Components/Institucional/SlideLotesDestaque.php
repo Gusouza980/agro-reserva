@@ -4,6 +4,7 @@ namespace App\View\Components\Institucional;
 
 use Illuminate\View\Component;
 use App\Models\Reserva;
+use Illuminate\Support\Str;
 
 class SlideLotesDestaque extends Component
 {
@@ -13,7 +14,7 @@ class SlideLotesDestaque extends Component
      * @return void
      */
     
-     public $lotes;
+    public $lotes;
 
     public function __construct($lotes)
     {
@@ -28,6 +29,7 @@ class SlideLotesDestaque extends Component
      */
     public function render()
     {
-        return view('components.institucional.slide-lotes-destaque');
+        $identificador = Str::random(5);
+        return view('components.institucional.slide-lotes-destaque', ["identificador" => $identificador]);
     }
 }

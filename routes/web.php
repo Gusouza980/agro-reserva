@@ -387,7 +387,7 @@ Route::middleware(['admin'])->group(function () {
 // ROTAS DO MARKETPLACE
 Route::get('/loja', [\App\Http\Controllers\MarketplaceController::class, 'index'])->name("marketplace.index");
 Route::get('/loja/produtos', [\App\Http\Controllers\MarketplaceController::class, 'produtos'])->name("marketplace.produtos");
-Route::get('/loja/produto', [\App\Http\Controllers\MarketplaceController::class, 'produto'])->name("marketplace.produto");
+Route::get('/loja/vendedor/{slug}/{produto}', [\App\Http\Controllers\MarketplaceController::class, 'produto'])->name("marketplace.produto");
 Route::get('/loja/vendedor/{slug}', [\App\Http\Controllers\MarketplaceController::class, 'vendedor'])->name("marketplace.vendedor");
 
 Route::get('/teste', [\App\Http\Controllers\SiteController::class, 'testes']);

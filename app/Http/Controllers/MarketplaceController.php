@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\MarketplaceVendedor;
+use App\Models\MarketplaceProduto;
 
 class MarketplaceController extends Controller
 {
@@ -17,8 +18,8 @@ class MarketplaceController extends Controller
         return view("marketplace.produtos");
     }
 
-    public function produto(){
-        return view("marketplace.produto");
+    public function produto($slug, MarketplaceProduto $produto){
+        return view("marketplace.produto", ["produto" => $produto]);
     }
 
     public function vendedor($slug){

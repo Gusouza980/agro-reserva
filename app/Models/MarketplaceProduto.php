@@ -20,4 +20,8 @@ class MarketplaceProduto extends Model
     public function preview(){
         return $this->belongsTo(MarketplaceProdutoImagem::class, "marketplace_produto_imagem_id", "id");
     }
+
+    public function vendedor(){
+        return $this->belongsTo(MarketplaceVendedor::class, "marketplace_vendedor_id", "id");
+    }
 }

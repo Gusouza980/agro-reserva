@@ -1,6 +1,6 @@
 <div class="w-full px-0 py-2 pb-5" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative;">
     <div class="relative mx-auto w1200">
-        <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar @if($lotes->count() < 4) justify-center @endif" id="slide-lotes-destaque" x-show="show" x-transition.opacity.duration.3000ms>
+        <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar @if($lotes->count() < 4) justify-center @endif" id="slide-lotes-destaque-{!! $identificador !!}" x-show="show" x-transition.opacity.duration.3000ms>
             <div class="flex flex-nowrap space-x-[6px]">
                 @foreach ($lotes->where("ativo", true) as $lote)
                     <div class="inline-block py-2 slide-item caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
@@ -60,8 +60,8 @@
                 </div> --}}
             </div>
         </div>
-        <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-lotes-destaque-left" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); left: -50px;" alt="">
-        <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-lotes-destaque-right" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); right: -50px;" alt="">
+        <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-lotes-destaque-{!! $identificador !!}-left" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); left: -50px;" alt="">
+        <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-lotes-destaque-{!! $identificador !!}-right" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); right: -50px;" alt="">
     </div>
     
 </div>
@@ -84,35 +84,35 @@
 
         function updateButtons(){
             var min = 0;
-            var max = $("#slide-lotes-destaque")[0].scrollWidth - $("#slide-lotes-destaque")[0].clientWidth;
-            if($("#slide-lotes-destaque").scrollLeft() == min){
-                $("#slide-lotes-destaque-left").attr("disabled", "disabled");
-                $("#slide-lotes-destaque-left").css("opacity", "0.4")
-                $("#slide-lotes-destaque-right").removeAttr("disabled"); 
-                $("#slide-lotes-destaque-right").css("opacity", "1")       
-            }else if($("#slide-lotes-destaque").scrollLeft() >= (max - 1)){
-                $("#slide-lotes-destaque-right").attr("disabled", "disabled");
-                $("#slide-lotes-destaque-right").css("opacity", "0.4")
-                $("#slide-lotes-destaque-left").removeAttr("disabled");
-                $("#slide-lotes-destaque-left").css("opacity", "1")
+            var max = $("#slide-lotes-destaque-{!! $identificador !!}")[0].scrollWidth - $("#slide-lotes-destaque-{!! $identificador !!}")[0].clientWidth;
+            if($("#slide-lotes-destaque-{!! $identificador !!}").scrollLeft() == min){
+                $("#slide-lotes-destaque-{!! $identificador !!}-left").attr("disabled", "disabled");
+                $("#slide-lotes-destaque-{!! $identificador !!}-left").css("opacity", "0.4")
+                $("#slide-lotes-destaque-{!! $identificador !!}-right").removeAttr("disabled"); 
+                $("#slide-lotes-destaque-{!! $identificador !!}-right").css("opacity", "1")       
+            }else if($("#slide-lotes-destaque-{!! $identificador !!}").scrollLeft() >= (max - 1)){
+                $("#slide-lotes-destaque-{!! $identificador !!}-right").attr("disabled", "disabled");
+                $("#slide-lotes-destaque-{!! $identificador !!}-right").css("opacity", "0.4")
+                $("#slide-lotes-destaque-{!! $identificador !!}-left").removeAttr("disabled");
+                $("#slide-lotes-destaque-{!! $identificador !!}-left").css("opacity", "1")
             }else{
-                $("#slide-lotes-destaque-left").removeAttr("disabled");
-                $("#slide-lotes-destaque-left").css("opacity", "1")
-                $("#slide-lotes-destaque-right").removeAttr("disabled");
-                $("#slide-lotes-destaque-right").css("opacity", "1")
+                $("#slide-lotes-destaque-{!! $identificador !!}-left").removeAttr("disabled");
+                $("#slide-lotes-destaque-{!! $identificador !!}-left").css("opacity", "1")
+                $("#slide-lotes-destaque-{!! $identificador !!}-right").removeAttr("disabled");
+                $("#slide-lotes-destaque-{!! $identificador !!}-right").css("opacity", "1")
             }
         }
 
         updateButtons();
 
-        $("#slide-lotes-destaque-left").click(function(){
-            $("#slide-lotes-destaque").animate({scrollLeft: $("#slide-lotes-destaque").scrollLeft() - item_width}, function(){
+        $("#slide-lotes-destaque-{!! $identificador !!}-left").click(function(){
+            $("#slide-lotes-destaque-{!! $identificador !!}").animate({scrollLeft: $("#slide-lotes-destaque-{!! $identificador !!}").scrollLeft() - item_width}, function(){
                 updateButtons();
             });
         });
 
-        $("#slide-lotes-destaque-right").click(function(){
-            $("#slide-lotes-destaque").animate({scrollLeft: $("#slide-lotes-destaque").scrollLeft() + item_width}, function(){
+        $("#slide-lotes-destaque-{!! $identificador !!}-right").click(function(){
+            $("#slide-lotes-destaque-{!! $identificador !!}").animate({scrollLeft: $("#slide-lotes-destaque-{!! $identificador !!}").scrollLeft() + item_width}, function(){
                 updateButtons();
             });
         });
