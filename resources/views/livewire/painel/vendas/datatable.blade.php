@@ -38,6 +38,7 @@
                                 @if(session()->get("admin")["acesso"] === 0)
                                     <th></th>
                                 @endif
+                                <th><i class="fas fa-file fa-lg"></i></th>
                                 <th>Cód.</th>
                                 <th>Cliente, Assessor</th>
                                 <th style="width: 140px;">Entrada (R$)</th>
@@ -67,6 +68,13 @@
                                                     <a href="{{route('painel.vendas.comprovante.enviar', ['venda' => $venda])}}" class="py-3 dropdown-item" role="button">Enviar Comprovante</a>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td style="vertical-align: middle; text-align:center;">
+                                            @if($venda->comprovante)
+                                                <a href="{{ asset($venda->comprovante) }}" target="_blank"><i class="fas fa-download fa-lg cpointer text-soft"></i></a>
+                                            @else
+                                                -
+                                            @endif
                                         </td>
                                         <td style="vertical-align: middle; text-align:center;">{{$venda->codigo}}</td>
                                         <td style="vertical-align: middle; text-align:center;">
