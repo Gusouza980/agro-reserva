@@ -39,6 +39,9 @@ class Datatable extends Component
     public function render()
     {
         $vendas = Venda::where(null);
+        if(session()->get('admin')['acesso'] === 1){
+            $vendas = Venda::where("assessor_id", session()->get('admin')['assessor_id']);
+        }
         
         if($this->filtro_inicio){
             $vendas = $vendas->where("created_at", ">=", $this->filtro_inicio . " 00:00:00");

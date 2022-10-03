@@ -110,7 +110,7 @@
                                     </td>
                                     <td style="vertical-align: middle; text-align:center;">
                                         @if($cliente->finalizado == 0)
-                                            Pré
+                                            Etapa: {{ config("clientes.etapa_cadastro")[$cliente->etapa_cadastro] }}
                                         @else
                                             Finalizado
                                         @endif
@@ -175,6 +175,7 @@
                     <table id="datatable" class="table table-bordered nowrap w-100">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>Data de Cad.</th>
                                 <th>Nome</th>
                                 <th>Cnpj/Cpf</th>
@@ -185,8 +186,21 @@
                             </tr>
                         </thead>
                         <tbody id="body-pesquisa">
-                            @foreach(\App\Models\Cliente::where("finalizado", false)->where("created_at", ">=", date("Y-m-d", strtotime("-15 Days")))->orderBy("created_at", "DESC")->get() as $cliente)
+                            @foreach(\App\Models\Cliente::where("assessor_id", null)->orWhere("assessor_id", session()->get("admin")["assessor_id"])->orderBy("created_at", "DESC")->get() as $cliente)
                                 <tr>
+                                    <td>
+                                        <div class="mt-4 dropdown mt-sm-0">
+                                            <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                <i class="fas fa-bars" aria-hidden="true"></i>
+                                            </a>
+                                            <div class="dropdown-menu" style="margin: 0px;">
+                                                <a name="" id="" class="py-2 dropdown-item"
+                                                    href="{{route('painel.comercial.cliente.visualizar', ['cliente' => $cliente])}}"
+                                                    role="button">Visualizar</a>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>{{ date("d/m/Y H:i:s", strtotime($cliente->created_at)) }}</td>
                                     <td>{{ $cliente->nome_dono }}</td>
                                     <td style="vertical-align: middle; text-align:center;">
@@ -234,7 +248,7 @@
                 </div>
             </div>
         </div> <!-- end col -->
-    </div> <!-- end row -->
+    </div>
 
 @endif
 

@@ -10,6 +10,7 @@ return [
         "cadastro" => [0, 4],
         "consulta_completa" => [0,4],
         "visualizar" => [0, 4],
+        "visualizar_comercial" => [0, 1],
     ],
     'marketplaces' => [
         "consulta" => [0],

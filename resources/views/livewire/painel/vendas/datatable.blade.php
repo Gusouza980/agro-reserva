@@ -24,54 +24,68 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th></th>
+                                @if(session()->get("admin") === 0)
+                                    <th></th>
+                                @endif
                                 <th>Cód.</th>
                                 <th>Cliente</th>
                                 <th>Entrada (R$)</th>
                                 <th>Desconto(%)</th>
                                 <th>Desconto Extra (R$)</th>
                                 <th>Total</th>
-                                <th>Status</th>
+                                @if(session()->get("admin") === 0)
+                                    <th>Status</th>
+                                @endif
                                 <th>Data</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($vendas as $venda)
-                                <tr>
-                                    <td>
-                                        <div class="mt-4 dropdown mt-sm-0">
-                                            <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
-                                                aria-expanded="false">
-                                                <i class="fas fa-bars" aria-hidden="true"></i>
-                                            </a>
-                                            <div class="dropdown-menu" style="margin: 0px;">
-                                                <a href="{{route('painel.vendas.visualizar', ['venda' => $venda])}}" class="py-3 dropdown-item">Detalhes</a>
-                                                <a href="{{route('painel.vendas.comprovante', ['venda' => $venda])}}" target="_blank" class="py-3 dropdown-item" role="button">Visualizar Comprovante</a>
-                                                <a href="{{route('painel.vendas.comprovante.enviar', ['venda' => $venda])}}" class="py-3 dropdown-item" role="button">Enviar Comprovante</a>
+                                @if(session()->get('admin')['acesso'] === 0)
+                                    <tr>
+                                        <td>
+                                            <div class="mt-4 dropdown mt-sm-0">
+                                                <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    <i class="fas fa-bars" aria-hidden="true"></i>
+                                                </a>
+                                                <div class="dropdown-menu" style="margin: 0px;">
+                                                    <a href="{{route('painel.vendas.visualizar', ['venda' => $venda])}}" class="py-3 dropdown-item">Detalhes</a>
+                                                    <a href="{{route('painel.vendas.comprovante', ['venda' => $venda])}}" target="_blank" class="py-3 dropdown-item" role="button">Visualizar Comprovante</a>
+                                                    <a href="{{route('painel.vendas.comprovante.enviar', ['venda' => $venda])}}" class="py-3 dropdown-item" role="button">Enviar Comprovante</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
+                                        <td style="vertical-align: middle; text-align:center;">{{$venda->codigo}}</td>
+                                        <td style="vertical-align: middle; text-align:center;"><a href="{{ route('painel.cliente.visualizar', ['cliente' => $venda->cliente_id]) }}">{{ $venda->cliente->nome_dono }}</a></td>
+                                        <td style="vertical-align: middle; text-align:center;">
+                                            <input type="number" class="form-control" value="{{ $venda->entrada }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'entrada', this.value)">
+                                        </td>
+                                        <td style="vertical-align: middle; text-align:center;">
+                                            <input type="number" class="form-control" value="{{ $venda->porcentagem_desconto }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'porcentagem_desconto', this.value)">
+                                        </td>
+                                        <td style="vertical-align: middle; text-align:center;">
+                                            <input type="number" class="form-control" value="{{ $venda->desconto_extra }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'desconto_extra', this.value)">
+                                        </td>
+                                        <td style="vertical-align: middle; text-align:center;">R${{number_format($venda->total, 2, ",", ".")}}</td>
+                                        <td style="vertical-align: middle; text-align:center;">
+                                            <select class="form-control" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'situacao', this.value)">
+                                                @foreach(config("globals.situacoes") as $key => $value)
+                                                    <option value="{{ $key }}" @if($venda->situacao == $key) selected @endif>{{ $value }}</option>
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                        <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($venda->created_at))}}</td>
+                                    </tr>
+                                @else
                                     <td style="vertical-align: middle; text-align:center;">{{$venda->codigo}}</td>
                                     <td style="vertical-align: middle; text-align:center;"><a href="{{ route('painel.cliente.visualizar', ['cliente' => $venda->cliente_id]) }}">{{ $venda->cliente->nome_dono }}</a></td>
-                                    <td style="vertical-align: middle; text-align:center;">
-                                        <input type="number" class="form-control" value="{{ $venda->entrada }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'entrada', this.value)">
-                                    </td>
-                                    <td style="vertical-align: middle; text-align:center;">
-                                        <input type="number" class="form-control" value="{{ $venda->porcentagem_desconto }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'porcentagem_desconto', this.value)">
-                                    </td>
-                                    <td style="vertical-align: middle; text-align:center;">
-                                        <input type="number" class="form-control" value="{{ $venda->desconto_extra }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'desconto_extra', this.value)">
-                                    </td>
-                                    <td style="vertical-align: middle; text-align:center;">R${{number_format($venda->total, 2, ",", ".")}}</td>
-                                    <td style="vertical-align: middle; text-align:center;">
-                                        <select class="form-control" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'situacao', this.value)">
-                                            @foreach(config("globals.situacoes") as $key => $value)
-                                                <option value="{{ $key }}" @if($venda->situacao == $key) selected @endif>{{ $value }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
+                                    <td style="vertical-align: middle; text-align:center;">R${{ number_format($venda->entrada, 2, ",", ".") }}</td>
+                                    <td style="vertical-align: middle; text-align:center;">{{ number_format($venda->porcentagem_desconto, 2, ",", ".") }}%</td>
+                                    <td style="vertical-align: middle; text-align:center;">R${{ number_format($venda->desconto_extra, 2, ",", ".") }}</td>
+                                    <td style="vertical-align: middle; text-align:center;">R${{ number_format($venda->total, 2, ",", ".") }}</td>
                                     <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($venda->created_at))}}</td>
-                                </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>

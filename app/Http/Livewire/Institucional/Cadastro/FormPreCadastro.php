@@ -18,6 +18,7 @@ class FormPreCadastro extends Component
     public $confirmacao_senha;
     public $assinante_newsletter;
     public $termos_aceitos;
+    public $assessor_id = -1;
 
     protected $listeners = ["showFormPreCadastro"];
     protected $rules = [
@@ -55,6 +56,10 @@ class FormPreCadastro extends Component
         $cliente->termos_aceitos = true;
         $cliente->finalizado = false;
         $cliente->etapa_cadastro = 2;
+        if($this->assessor_id != -1){
+            $cliente->assessor_id = $this->assessor_id;
+        }
+        
         $cliente->save();
 
         session()->put(["cliente" => $cliente->toArray()]);

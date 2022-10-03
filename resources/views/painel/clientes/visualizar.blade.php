@@ -80,6 +80,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#checklist" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                <span class="d-none d-sm-block">Checklist</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#documento" role="tab">
                                 <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
                                 <span class="d-none d-sm-block">Documento</span>
@@ -398,6 +404,9 @@
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                        <div class="tab-pane" id="checklist" role="tabpanel">
+                            @livewire('painel.clientes.checklist', ['cliente' => $cliente])
                         </div>
                         <div class="tab-pane" id="documento" role="tabpanel">
                             @if($cliente->documento)

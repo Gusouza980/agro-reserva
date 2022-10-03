@@ -71,6 +71,14 @@ class ClienteController extends Controller
         return view("painel.clientes.visualizar", ['cliente' => $cliente]);
     }
 
+    public function visualizar_comercial(Cliente $cliente){
+        if(!Util::acesso("clientes", "visualizar_comercial")){
+            toastr()->error("Você não tem permissão para acessar essa página");
+            return redirect()->back();
+        }
+        return view("painel.clientes.visualizar_comercial", ['cliente' => $cliente]);
+    }
+
     public function cadastro(){
         if(session()->get("cliente") && session()->get("cliente")["finalizado"]){
             return redirect()->route("index");
@@ -674,7 +682,9 @@ class ClienteController extends Controller
     }
 
     public function pesquisar(Request $request){
-        $clientes = Cliente::where("nome_dono", "LIKE", "%" . $request->nome . "%")->get();
+        $clientes = Cliente::where("nome_dono", "LIKE", "%" . $request->nome . "%")->where(function($q){
+            $q->where("assessor_id", session()->get("admin")["assessor_id"])->orWhere("assessor_id", null);
+        })->get();
         return response()->json($clientes);
     }
 }

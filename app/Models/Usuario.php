@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Usuario extends Model
 {
     use HasFactory;
+
+    public function assessor(){
+        return $this->belongsTo(Assessor::class);
+    }
 }

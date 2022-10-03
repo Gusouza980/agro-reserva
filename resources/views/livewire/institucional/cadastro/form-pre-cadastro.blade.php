@@ -4,7 +4,7 @@
         x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-0" class="w-full font-montserrat absolute -top-[15vh] pb-5">
         <div class="w-full">
-            <span wire:click="voltar" class="cursor-pointer transition duration-300 text-[14px] text-[#D7D8E4] hover:scale-105 hover:text-white"><i class="fas fa-chevron-left mr-2"></i> <span>Voltar</span></span>
+            <span wire:click="voltar" class="cursor-pointer transition duration-300 text-[14px] text-[#D7D8E4] hover:scale-105 hover:text-white"><i class="mr-2 fas fa-chevron-left"></i> <span>Voltar</span></span>
         </div>
         <div class="w-full px-6 md:px-20 py-5 mt-3 bg-white rounded-lg shadow-[6px_6px_20px_rgba(36,62,111,0.11)]">
             <x-institucional.cadastro.step-bar step="1"></x-institucional.cadastro.step-bar>
@@ -18,7 +18,7 @@
                     <input type="email" class="w-full form-input-text" wire:model.defer="email" maxlength="100" required>
                     @error('email') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
-                <div class="w-full md:w-1/2 md:pr-1 mb-3">
+                <div class="w-full mb-3 md:w-1/2 md:pr-1">
                     <label for="ddi" class="form-label">DDI</label>
                     <select class="w-full form-input-select" name="ddi" id="ddi" required>
                         @foreach ($paises as $pais)
@@ -28,18 +28,27 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="w-full md:w-1/2 md:pl-1 mb-3">
+                <div class="w-full mb-3 md:w-1/2 md:pl-1">
                     <label for="telefone" class="form-label">{{ __('messages.cadastro.telefone') }}</label>
                     <input type="text" class="w-full form-input-text" name="telefone" id="telefone" placeholder="(35)99999-9999" wire:model.defer="telefone" required>
                 </div>
-                <div class="w-full md:w-1/2 pr-1 mb-3">
+                <div class="w-full pr-1 mb-3 md:w-1/2">
                     <label class="form-label" for="">Crie a senha de acesso</label>
                     <input type="password" class="w-full form-input-text" wire:model.defer="senha" required>
                 </div>
-                <div class="w-full md:w-1/2 pl-1 mb-3">
+                <div class="w-full pl-1 mb-3 md:w-1/2">
                     <label class="form-label" for="">Confirmar senha</label>
                     <input type="password" class="w-full form-input-text" wire:model.defer="confirmacao_senha" required>
                     @error('confirmacao_senha') <small class="text-danger">{{ $message }}</small> @enderror
+                </div>
+                <div class="w-full mb-3">
+                    <label for="assessor" class="form-label">Foi assessorado por agluém ?</label>
+                    <select class="w-full form-input-select" name="assessor" id="assessor" wire:model.defer="assessor_id" required>
+                        <option value="-1">Não</option>
+                        @foreach(\App\Models\Assessor::orderBy("nome", "ASC")->get() as $assessor)
+                            <option value="{{ $assessor->id }}">{{ $assessor->nome }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="flex items-center w-full mt-2">
                     <input type="checkbox" class="mr-2 checkbox" wire:model.defer="assinante_newsletter"/>
