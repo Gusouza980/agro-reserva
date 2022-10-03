@@ -59,6 +59,7 @@ class ModalCadastroReserva extends Component
     public function carregaModalCadastroReservas(){
         $this->reserva = new Reserva;
         $this->op = 'cadastro';
+        $this->arquivo = null;
         $this->dispatchBrowserEvent("abreModalCadastroReserva");
     }
 
@@ -66,6 +67,7 @@ class ModalCadastroReserva extends Component
         $this->reserva = $reserva;
         $this->fazenda_selecionada = $reserva->fazenda_id;
         $this->op = 'edicao';
+        $this->arquivo = null;
         foreach($reserva->formas_pagamento->sortBy("minimo") as $forma_pagamento){
             $regras = [];
             foreach($forma_pagamento->regras->sortBy("posicao") as $regra){
