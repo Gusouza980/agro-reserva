@@ -16,6 +16,7 @@ class Datatable extends Component
     public $filtro_fim;
     public $filtro_reserva;
     public $filtro_cliente;
+    public $filtro_assessor;
 
     public $reservas;
 
@@ -36,6 +37,18 @@ class Datatable extends Component
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Dado atualizado com sucesso!']);
     }
 
+    public function aprovar(Venda $venda){
+        $venda->aprovada = true;
+        $venda->save();
+        $this->emit('$refresh');
+    }
+
+    public function reprovar(Venda $venda){
+        $venda->aprovada = false;
+        $venda->save();
+        $this->emit('$refresh');
+    }
+
     public function render()
     {
         $vendas = Venda::where(null);
@@ -53,6 +66,10 @@ class Datatable extends Component
 
         if($this->filtro_reserva){
             $vendas = $vendas->where("reserva_id", $this->filtro_reserva);
+        }
+
+        if($this->filtro_assessor){
+            $vendas = $vendas->where("assessor_id", $this->filtro_assessor);
         }
 
         if($this->filtro_cliente){

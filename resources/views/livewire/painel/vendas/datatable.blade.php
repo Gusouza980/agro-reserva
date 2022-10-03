@@ -15,6 +15,17 @@
                       class="w-auto form-control" name="" id="" wire:model="filtro_fim">
                 </div>
             </div>
+            <div class="w-auto">
+                <div class="mb-3">
+                    <label for="" class="form-label">Assessor</label>
+                    <select class="form-select" wire:model="filtro_assessor">
+                        <option value="" selected>Todos</option>
+                        @foreach(\App\Models\Assessor::orderBy("nome", "ASC")->get() as $assessor)
+                            <option value="{{ $assessor->id }}">{{ $assessor->nome }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-12">
@@ -24,25 +35,26 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                @if(session()->get("admin") === 0)
+                                @if(session()->get("admin")["acesso"] === 0)
                                     <th></th>
                                 @endif
                                 <th>Cód.</th>
-                                <th>Cliente</th>
-                                <th>Entrada (R$)</th>
-                                <th>Desconto(%)</th>
-                                <th>Desconto Extra (R$)</th>
-                                <th>Total</th>
-                                @if(session()->get("admin") === 0)
-                                    <th>Status</th>
+                                <th>Cliente, Assessor</th>
+                                <th style="width: 140px;">Entrada (R$)</th>
+                                <th style="width: 100px;">Desc. (%)</th>
+                                <th style="width: 140px;">Desc. Extra (R$)</th>
+                                <th style="width: 120px;">Total</th>
+                                @if(session()->get("admin")["acesso"] === 0)
+                                    <th style="width: 180px;">Status</th>
                                 @endif
                                 <th>Data</th>
+                                <th>Aprov.</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($vendas as $venda)
                                 @if(session()->get('admin')['acesso'] === 0)
-                                    <tr>
+                                    <tr @if(!$venda->aprovada) style="background-color: rgba(255,0,0,0.2)" @else style="background-color: rgba(0,255,0,0.2);" @endif>
                                         <td>
                                             <div class="mt-4 dropdown mt-sm-0">
                                                 <a href="#" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
@@ -57,7 +69,12 @@
                                             </div>
                                         </td>
                                         <td style="vertical-align: middle; text-align:center;">{{$venda->codigo}}</td>
-                                        <td style="vertical-align: middle; text-align:center;"><a href="{{ route('painel.cliente.visualizar', ['cliente' => $venda->cliente_id]) }}">{{ $venda->cliente->nome_dono }}</a></td>
+                                        <td style="vertical-align: middle; text-align:center;">
+                                            <a href="{{ route('painel.cliente.visualizar', ['cliente' => $venda->cliente_id]) }}">{{ $venda->cliente->nome_dono }}</a>
+                                            @if($venda->assessor_id)
+                                                <p style="font-size: 11px;">{{ $venda->assessor->nome }}</p>
+                                            @endif
+                                        </td>
                                         <td style="vertical-align: middle; text-align:center;">
                                             <input type="number" class="form-control" value="{{ $venda->entrada }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'entrada', this.value)">
                                         </td>
@@ -76,6 +93,17 @@
                                             </select>
                                         </td>
                                         <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($venda->created_at))}}</td>
+                                        <td style="vertical-align: middle; text-align:center;">
+                                            @if(!$venda->aprovada)
+                                                <a name="" id="" class="btn btn-success" wire:click="aprovar({{ $venda->id }})" role="button">
+                                                    <i class="fas fa-thumbs-up fa-sm text-white"></i>
+                                                </a>
+                                            @else
+                                                <a name="" id="" class="btn btn-danger" wire:click="reprovar({{ $venda->id }})" role="button">
+                                                    <i class="fas fa-thumbs-down fa-sm text-white"></i>
+                                                </a>
+                                            @endif
+                                        </td>
                                     </tr>
                                 @else
                                     <td style="vertical-align: middle; text-align:center;">{{$venda->codigo}}</td>

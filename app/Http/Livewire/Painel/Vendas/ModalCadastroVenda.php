@@ -10,10 +10,13 @@ use App\Models\Lote;
 use Livewire\WithPagination;
 use App\Models\Carrinho;
 use App\Models\CarrinhoProduto;
+use Livewire\WithFileUploads;
+use App\Classes\Util;
 
 class ModalCadastroVenda extends Component
 {
     use WithPagination;
+    use WithFileUploads;
 
     public $filtro_clientes;
     public $cliente_selecionado;
@@ -24,6 +27,8 @@ class ModalCadastroVenda extends Component
     public $parcelas;
 
     public $venda;
+    public $arquivo;
+
     public $op = "listagem_clientes";
     public $tarjar = 0;
 
@@ -37,6 +42,7 @@ class ModalCadastroVenda extends Component
         "venda.entrada" => "",
         "venda.parcelas" => "",
         "venda.primeira_parcela" => "",
+        "venda.comprovante" => "",
         "cliente_selecionado.nome_dono" => "",
     ];
 
@@ -136,6 +142,18 @@ class ModalCadastroVenda extends Component
         $venda->parcelas_mes = 1;
         $venda->valor_parcela = $valor_parcela;
         $venda->primeira_parcela = $primeira_parcela;
+
+        if(session()->get("admin")["acesso"] == 1){
+            if($this->arquivo){
+                $venda->comprovante = $this->arquivo->store("admin/images/comprovantes/", 'local');
+            }else{
+                session()->flash("erro_arquivo", "Por favor, escolha um comprovante da decisão de compra do cliente.");
+                return;
+            }
+            $venda->aprovada = false;
+            $venda->assessor_id = session()->get("admin")["assessor_id"];
+        }
+
         $venda->tipo = 1;
 
         // CRIANDO O CARRINHO E INSERINDO OS PRODUTOS
@@ -178,6 +196,8 @@ class ModalCadastroVenda extends Component
             $nova_parcela->vencimento = $parcela["vencimento"];
             $nova_parcela->save();
         }
+
+        Util::limparLivewireTemp();
 
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Venda gerada com sucesso!']);
 

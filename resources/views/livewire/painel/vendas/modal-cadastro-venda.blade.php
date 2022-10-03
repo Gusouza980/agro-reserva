@@ -174,6 +174,23 @@
                                                         </div>
                                                     </div>
                                                     <hr class="mt-2">
+                                                    @if(session()->get("admin")["acesso"] == 1)
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                {{-- @if(session()->get("erro_arquivo"))
+                                                                    <div class="alert alert-danger" role="alert">
+                                                                        <strong>Erro:</strong> {{ session()->get("erro_arquivo") }}
+                                                                    </div>
+                                                                @endif --}}
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">Print de Comprovação</label>
+                                                                    <input type="file" class="form-control" wire:model="arquivo" required>
+                                                                    <div id="fileHelpId" class="form-text">Anexe aqui um print ou comprovante do cliente confirmando a compra</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <hr class="mt-2">
+                                                    @endif
                                                     <div class="row">
                                                         <div class="col-12 text-end">
                                                             <button type="button" wire:click="salvar" class="w-auto btn btn-primary">Salvar</button>
