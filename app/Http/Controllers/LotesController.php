@@ -283,7 +283,7 @@ class LotesController extends Controller
         foreach($lotes as $lote){
             $lote->produto()->create([
                 "nome" => $lote->nome,
-                "preco" => $lote->preco
+                "preco" => ($lote->preco) ? $lote->preco : 0
             ]);
         }
 
