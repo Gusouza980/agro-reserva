@@ -20,7 +20,7 @@
         </h3>
     </div>
 @endif --}}
-@foreach($reservas->where("aberto", true)->where("encerrada", false) as $reserva)
+@foreach($reservas->where("aberto", true)->where("encerrada", false)->sortByDesc("inicio") as $reserva)
     @php
         $lotes_destaque = $reserva->lotes->where("reservado", false);
     @endphp
