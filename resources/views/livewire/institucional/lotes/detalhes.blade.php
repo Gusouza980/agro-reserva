@@ -68,6 +68,25 @@
                                     {{ number_format($lote->preco / $lote->reserva->max_parcelas, 2, ',', '.') }}</b></span>
                         </div>
                         <div class="w-full font-montserrat text-[14px]">
+                            <p>
+                                @php
+                                    $forma_pagamento = $lote->reserva->formas_pagamento->where("maximo", $lote->reserva->max_parcelas)->first();
+                                    $cont_parcelas = 0;
+                                @endphp
+                                @if($forma_pagamento->regras->count() > 0)
+                                    @foreach($forma_pagamento->regras->sortBy("posicao") as $regra)
+                                        <b>{{ $regra->meses }} {{ config("globals.nome_parcelas")[$regra->parcelas] }}</b>,
+                                        @php
+                                            $cont_parcelas += $regra->meses * $regra->parcelas;
+                                        @endphp
+                                    @endforeach
+                                    @if($cont_parcelas < $lote->reserva->max_parcelas)
+                                        com o restante das parcelas sendo únicas.
+                                    @endif
+                                @else
+                                    <b>Pagamento em parcelas únicas</b>
+                                @endif
+                            </p>
                             <span>Sem juros no boleto de titularidade Faz. e comprador.</span>
                         </div>
                     @endif
