@@ -45,6 +45,13 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
+                                    <label for="nome" class="form-label">Nome do Pacote</label>
+                                    <input type="text" class="form-control" name="nome_pacote" id="nome_pacote" maxlength="255"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
                                     <label for="nome" class="form-label">Nome do Pai</label>
                                     <input type="text" class="form-control" name="nome_pai" id="nome" maxlength="100"
                                         required>
@@ -57,24 +64,42 @@
                                         required>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="mb-3">
                                     <label for="nome" class="form-label">Info. de Lactação</label>
                                     <input type="text" class="form-control" name="info_lactacao_mae" id="nome" maxlength="100"
                                         required>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="mb-3">
                                     <label for="nome" class="form-label">Grau de Sangue</label>
                                     <input type="text" class="form-control" name="grau_sangue" id="nome" maxlength="50"
                                         required>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label">Link do Vídeo</label>
+                                    <input type="text" class="form-control" name="video" id="video" maxlength="300">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label">Observações</label>
+                                    <textarea class="form-control" name="observacoes" id="observacoes" maxlength="400"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-6">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Página do Catálogo</label>
                                     <input type="file" class="form-control" name="catalogo" id="" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Preview</label>
+                                    <input type="file" class="form-control" name="preview" id="" placeholder="">
                                 </div>
                             </div>
                             {{-- <div class="col-md-2">
@@ -180,6 +205,17 @@
                                     <input type="number" class="form-control" name="sanidade_casco" step="1">
                                 </div>
                             </div> --}}
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <label for="preco" class="form-label">Preço (R$)</label>
+                                        <input type="number" class="form-control" name="preco" step="0.01">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <hr>
                         <div class="row">

@@ -1,4 +1,4 @@
-<div class="w-ful">
+<div class="w-full">
     <div class="w-full bg-[#F5F5F5]">
         <div class="py-5 mx-auto w1200">
             <div class="hidden w-full md:block">

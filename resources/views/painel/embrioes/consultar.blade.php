@@ -30,10 +30,11 @@
                             <tr>
                                 <th></th>
                                 <th>Nº</th>
+                                <th>Nome do Pacote</th>
                                 <th>Nome do Pai</th>
                                 <th>Nome da Mãe</th>
                                 <th>Info. de Lactação</th>
-                                <th>Categoria</th>
+                                <th>Tipo</th>
                                 <th>Visitas</th>
                             </tr>
                         </thead>
@@ -56,10 +57,11 @@
                                         </div>
                                     </td>
                                     <td>{{ $embriao->prefixo_numero . $embriao->numero . $embriao->sufixo_numero }}</td>
+                                    <td>{{ $embriao->nome_pacote }}</td>
                                     <td>{{ $embriao->nome_pai }}</td>
                                     <td>{{ $embriao->nome_mae }}</td>
                                     <td>{{ $embriao->info_lactacao_mae }}</td>
-                                    <td>{{ config("embrioes.categorias")[$embriao->categoria] }}</td>
+                                    <td>{{ config("embrioes.tipos")[$embriao->tipo] }}</td>
                                     <td>{{ $embriao->visitas }}</td>
                                 </tr>
                             @endforeach

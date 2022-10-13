@@ -2,8 +2,8 @@
 
 return [
     "tipos" => [
-        0 => "Americano",
-        1 => "Holandês"
+        0 => "Embrião",
+        1 => "Sêmen"
     ],
     "categorias" => [
         0 => "Standard",

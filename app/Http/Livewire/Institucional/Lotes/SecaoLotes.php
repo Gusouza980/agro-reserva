@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Institucional\Lotes;
 use Livewire\Component;
 use App\Models\Lote;
 use App\Models\Reserva;
+use App\Models\Embriao;
 
 class SecaoLotes extends Component
 {
@@ -43,9 +44,11 @@ class SecaoLotes extends Component
         if(!$this->fazenda && !$this->reserva){
             $reservas = Reserva::where("aberto", true)->where("encerrada", false)->get();
             $lotes = Lote::whereIn("reserva_id", $reservas->pluck("id"));
+            $embrioes = Embriao::whereIn("reserva_id", $reservas->pluck("id"));
         }else{
             $reservas = null;
             $lotes = Lote::where("reserva_id", $this->reserva->id)->where("reserva_id", $this->reserva->id)->where("ativo", true)->where("membro_pacote", false);
+            $embrioes = Embriao::where("reserva_id", $this->reserva->id)->where("reserva_id", $this->reserva->id);
         }
 
         if($this->pesquisa_lote){
@@ -68,7 +71,8 @@ class SecaoLotes extends Component
         }
 
         $lotes = $lotes->where("ativo", true)->orderByRaw("reservado ASC, numero ASC")->get();
+        $embrioes = $embrioes->get();
         // $reservados = $this->reserva->lotes->where('ativo', true)->where('membro_pacote', false)->where("reservado", true);
-        return view('livewire.institucional.lotes.secao-lotes', ['reservas' => $reservas, 'lotes' => $lotes]);
+        return view('livewire.institucional.lotes.secao-lotes', ['reservas' => $reservas, 'lotes' => $lotes, 'embrioes' => $embrioes]);
     }
 }

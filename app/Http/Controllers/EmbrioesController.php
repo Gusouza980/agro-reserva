@@ -10,6 +10,7 @@ use App\Classes\Util;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Models\EmbriaoPreco;
 
 class EmbrioesController extends Controller
 {
@@ -47,10 +48,14 @@ class EmbrioesController extends Controller
 
         $embriao->reserva_id = $reserva->id;
         $embriao->fazenda_id = $request->fazenda_id;
+        $embriao->raca_id = $request->raca_id;
         $embriao->categoria = $request->categoria;
         $embriao->tipo = $request->tipo;
+        $embriao->nome_pacote = $request->nome_pacote;
         $embriao->nome_pai = $request->nome_pai;
         $embriao->nome_mae = $request->nome_mae;
+        $embriao->video = $request->video;
+        $embriao->observacoes = $request->observacoes;
         $embriao->info_lactacao_mae = $request->info_lactacao_mae;
         $embriao->grau_sangue = $request->grau_sangue;
         $embriao->prefixo_numero = $request->prefixo_numero;
@@ -64,7 +69,26 @@ class EmbrioesController extends Controller
             );
         }
 
+        if($request->file("preview")){
+            Storage::delete($embriao->preview);
+            $embriao->preview = $request->file('preview')->store(
+                'imagens/fazendas/' . Str::slug($reserva->fazenda->nome_fazenda) . "/embrioes", 'local'
+            );
+        }
+
         $embriao->save();
+
+        if($request->preco){
+            $preco = $embriao->precos->first();
+            if(!$preco){
+                $preco = new EmbriaoPreco;
+                $preco->embriao_id = $embriao->id;
+                $preco->unidades = 1;
+                $preco->desconto = 0;
+            }
+            $preco->preco = $request->preco;
+            $preco->save();
+        }
 
         return redirect()->route("painel.fazenda.reserva.embrioes", ["reserva" => $reserva]);
     }
