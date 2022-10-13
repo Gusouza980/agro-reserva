@@ -2,7 +2,7 @@
     <div class="relative mx-auto w1200">
         <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-reservas-ativas" x-show="show" x-transition.opacity.duration.3000ms>
             <div class="flex flex-nowrap">
-                @foreach($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'asc']]) as $reserva)
+                @foreach($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'desc']]) as $reserva)
                 <div class="inline-block mx-[6px] slide-item" style="border-radius: 15px; overflow: hidden; position: relative;">
                     <img src="{{ asset($reserva->imagem_card) }}" class="w-100 @if($reserva->encerrada) brightness-[0.30]" @endif alt="">
                     <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
