@@ -15,7 +15,7 @@ class BarraLateralCarrinho extends Component
     public $cliente;
     public $carrinhos;
 
-    protected $listeners = ["abreCarrinhoLateral", "adicionarProduto", "atualizaContagemLotes"];
+    protected $listeners = ["abreCarrinhoLateral", "adicionarProduto", "removerProduto", "atualizaContagemLotes"];
 
     public function abreCarrinhoLateral(){
         $this->mostrarCarrinho = !$this->mostrarCarrinho;
@@ -29,7 +29,7 @@ class BarraLateralCarrinho extends Component
             return;
         }
 
-        if(!$this->cliente->aprovado){
+        if($this->cliente->aprovado != 1){
             $msg = "Para comprar na Agroreserva seu cadastro precisa estar <b>finalizado</b> e <b>aprovado</b>. Bora que ainda da tempo ! Entre em contato com nosso comercial para regularizar seu cadastro.";
             $this->emit("mostrarPopup", "erro", $msg);
             return;

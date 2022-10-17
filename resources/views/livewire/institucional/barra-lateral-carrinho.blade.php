@@ -8,7 +8,7 @@
             </div>
         </div>
         @if($this->iniciar)
-            <div class="flex w-full mt-5 flex-col relative h-full">
+            <div class="relative flex flex-col w-full h-full mt-5">
                 @if($carrinhos && $carrinhos->count() > 0)
                     <div class="w-full h-[500px] overflow-y-scroll">
                         @foreach($carrinhos as $carrinho)
@@ -17,7 +17,7 @@
                                     <h4>RESERVA: {{ mb_strtoupper($carrinho->reserva->fazenda->nome_fazenda) }}</h4>
                                 </div>
                                 @foreach($carrinho->produtos as $produto)
-                                    <div class="flex w-full py-3 flex-collumn space-x-6 items-center">
+                                    <div class="flex items-center w-full py-3 space-x-6 flex-collumn">
                                         <div class="">
                                             <img class="w-[150px] rounded-[6px] shadow-md" src="{{ asset($produto->produtable->preview) }}" alt="">
                                         </div>
@@ -35,7 +35,7 @@
                                             <div class="mt-[-5px]">
                                                 <span class="text-[12px] text-[#626262] font-montserrat font-medium">ou <b class="text-[#15171E]">{{ $produto->produtable->reserva->max_parcelas }}x</b> de <b class="text-[#15171E]">R${{ number_format($produto->produtable->preco/$produto->produtable->reserva->max_parcelas, 2, ",", ".") }}</b></span>
                                             </div>
-                                            <i class="absolute -right-[18px] md:-right-[10px] duration-300 text-[#5C6384] hover:text-[#15171E] top-2 fa-solid fa-trash-can text-[20px] hover:scale-110 cpointer" wire:click="removerProduto({{ $carrinho->id }}, {{ $produto->id }})"></i>
+                                            <i class="absolute -right-[18px] md:-right-[10px] duration-300 text-[#5C6384] hover:text-[#15171E] top-2 fa-solid fa-trash-can text-[20px] hover:scale-110 cpointer" onclick="Livewire.emit('removerProduto', {{ $carrinho->id }}, {{ $produto->id }})" wire:click="removerProduto({{ $carrinho->id }}, {{ $produto->id }})"></i>
                                         </div>
                                     </div>
                                 @endforeach
