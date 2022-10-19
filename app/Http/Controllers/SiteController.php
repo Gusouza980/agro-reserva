@@ -410,7 +410,7 @@ class SiteController extends Controller
 
     public function conheca_finalizadas(Reserva $reserva, $slug){
         if(!$reserva->institucional){
-            return redirect()->route("fazenda.lotes", ["fazenda" => $fazenda]);
+            return redirect()->route("fazenda.lotes", ["fazenda" => $reserva->fazenda]);
         }
         $fazenda = Fazenda::where("slug", $slug)->first();
         $fazenda->video_conheca = $this->convertYoutube($fazenda->video_conheca);

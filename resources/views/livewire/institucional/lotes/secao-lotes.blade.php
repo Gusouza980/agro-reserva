@@ -96,9 +96,14 @@
                             <div class="relative mt-3">
                                 <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
                                     @if($lote->nascimento)
-                                    <div class="">
-                                        <b>NASC:.</b> <span class="ml-2 font-medium">{{ date("d/m/Y", strtotime($lote->nascimento)) }}</span>
-                                    </div>
+                                        <div class="">
+                                            <b>NASC:.</b> <span class="ml-2 font-medium">{{ date("d/m/Y", strtotime($lote->nascimento)) }}</span>
+                                        </div>
+                                    @endif
+                                    @if($lote->gpta)
+                                        <div>
+                                            <b>GPTA:.</b> <span class="ml-2 font-medium">{{ $lote->gpta }} Kg</span>
+                                        </div>
                                     @endif
                                     <div class="">
                                         <b>RAÇA:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->raca->nome, 'UTF-8') }}</span>
