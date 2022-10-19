@@ -69,12 +69,12 @@
                         </div>
                         <div class="w-full font-montserrat text-[14px]">
                             <p>
-                                Pagamento em
                                 @php
                                     $forma_pagamento = $lote->reserva->formas_pagamento->where("maximo", $lote->reserva->max_parcelas)->first();
                                     $cont_parcelas = 0;
                                 @endphp
                                 @if($forma_pagamento->regras->count() > 0)
+                                    Pagamento em
                                     @foreach($forma_pagamento->regras->sortBy("posicao") as $regra)
                                         <b>{{ $regra->meses }} {{ config("globals.nome_parcelas")[$regra->parcelas] }}</b> 
                                         @php
