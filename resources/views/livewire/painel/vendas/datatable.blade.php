@@ -54,7 +54,7 @@
                         </thead>
                         <tbody>
                             @foreach($vendas as $venda)
-                                @if(session()->get('admin')['acesso'] === 0)
+                                @if(session()->get('admin')['acesso'] === 0 || session()->get('admin')['acesso'] === 4)
                                     <tr @if(!$venda->aprovada) style="background-color: rgba(255,0,0,0.2)" @else style="background-color: rgba(0,255,0,0.2);" @endif>
                                         <td>
                                             <div class="mt-4 dropdown mt-sm-0">
@@ -114,13 +114,15 @@
                                         </td>
                                     </tr>
                                 @else
-                                    <td style="vertical-align: middle; text-align:center;">{{$venda->codigo}}</td>
-                                    <td style="vertical-align: middle; text-align:center;"><a href="{{ route('painel.cliente.visualizar', ['cliente' => $venda->cliente_id]) }}">{{ $venda->cliente->nome_dono }}</a></td>
-                                    <td style="vertical-align: middle; text-align:center;">R${{ number_format($venda->entrada, 2, ",", ".") }}</td>
-                                    <td style="vertical-align: middle; text-align:center;">{{ number_format($venda->porcentagem_desconto, 2, ",", ".") }}%</td>
-                                    <td style="vertical-align: middle; text-align:center;">R${{ number_format($venda->desconto_extra, 2, ",", ".") }}</td>
-                                    <td style="vertical-align: middle; text-align:center;">R${{ number_format($venda->total, 2, ",", ".") }}</td>
-                                    <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($venda->created_at))}}</td>
+                                    <tr>
+                                        <td style="vertical-align: middle; text-align:center;">{{$venda->codigo}}</td>
+                                        <td style="vertical-align: middle; text-align:center;"><a href="{{ route('painel.cliente.visualizar', ['cliente' => $venda->cliente_id]) }}">{{ $venda->cliente->nome_dono }}</a></td>
+                                        <td style="vertical-align: middle; text-align:center;">R${{ number_format($venda->entrada, 2, ",", ".") }}</td>
+                                        <td style="vertical-align: middle; text-align:center;">{{ number_format($venda->porcentagem_desconto, 2, ",", ".") }}%</td>
+                                        <td style="vertical-align: middle; text-align:center;">R${{ number_format($venda->desconto_extra, 2, ",", ".") }}</td>
+                                        <td style="vertical-align: middle; text-align:center;">R${{ number_format($venda->total, 2, ",", ".") }}</td>
+                                        <td style="vertical-align: middle; text-align:center;">{{date("d/m/Y H:i:s", strtotime($venda->created_at))}}</td>
+                                    </tr>
                                 @endif
                             @endforeach
                         </tbody>

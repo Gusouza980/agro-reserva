@@ -12,142 +12,15 @@
 @endsection
 
 @section('conteudo')
-<div class="my-3 row">
-    <div class="col-12">
-         <a name="" id="" class="btn btn-primary cpointer" onclick="Livewire.emit('carregaModalCadastroVenda')" role="button">Nova Venda</a> 
-         <a name="" id="" class="ml-3 btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalNovoCliente" role="button">Novo Cliente</a> 
-    </div>
-</div>
-@livewire('painel.vendas.datatable')
-@livewire('painel.vendas.modal-cadastro-venda')
-@include('painel.includes.clientes.modal-cadastro')
-<div class="modal fade" id="modalNovaVenda" tabindex="-1" role="dialog" aria-labelledby="modalNovaVendaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalNovaVendaLabel">Venda manual</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{route('painel.vendas.nova')}}" method="post">
-                    @csrf
-                    <div class="row">
-                        <div class="mb-3 form-group col-12">
-                            <label for="">Cliente</label><br>
-                            <select class="form-select select2" style="width: 100%;" name="cliente" required>
-                                @foreach(\App\Models\Cliente::all() as $cliente)
-                                    <option value="{{$cliente->id}}">{{$cliente->nome_dono}}</option>
-                                @endforeach 
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="mb-3 form-group col-8">
-                            <label for="tags">Lotes</label>
-                            <br>
-                            <select class="js-example-basic-multiple js-states form-control" style="width: 100%;" multiple="multiple" name="lotes[]" id="select_lotes" multiple required>
-                                <option value="" label="default"></option>
-                                @foreach(\App\Models\Reserva::where([["compra_disponivel", true],["aberto", true]])->orWhere([["ativo", true], ["encerrada", false]])->get() as $reserva)
-                                    @foreach($reserva->lotes->sortBy("numero") as $lote)
-                                        <option value="{{$lote->id}}" data-preco="{{$lote->preco}}">{{$lote->fazenda->nome_fazenda}}: Lote {{$lote->numero}}{{$lote->letra}} @if($lote->reservado) (Reservado) @endif</option>
-                                    @endforeach
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="tarjar" id="" value="1" checked> Tarjar
-                                </label>
-    
-                                <label class="form-check-label ms-5">
-                                    <input class="form-check-input" type="radio" name="tarjar" id="" value="0"> Não Tarjar
-                                </label>
-                            
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-12 col-lg-6">
-                            <div class="row">
-                                <div class="mb-3 form-group col-12">
-                                    <label for="">Número de Parcelas</label>
-                                    <input type="number"
-                                        class="form-control" name="parcelas" min="1" value="1" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="mb-3 form-group col-12">
-                                    <label for="">Parcelas por mês</label>
-                                    <input type="number"
-                                        class="form-control" name="parcelas_mes" min="1" value="1" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="mb-3 form-group col-12">
-                                    <label for="">Desconto (%)</label>
-                                    <input type="number"
-                                        class="form-control" name="desconto" min="0" max="100" step="0.01" value="0" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="mb-3 form-group col-12">
-                                    <label for="">Desconto Extra(R$)</label>
-                                    <input type="number"
-                                        class="form-control" name="desconto_extra" min="0" step="0.01" value="0" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="mb-3 form-group col-12">
-                                    <label for="">Data da Primeira Parcela</label>
-                                    <input type="date"
-                                        class="form-control" name="primeira_parcela" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="mb-3 col-12">
-                                    <div>
-                                        <label class="form-label">Assessor</label><br>
-                                        <select class="form-control select2" style="width: 100%;" name="assessor">
-                                            <option value="0">Nenhum</option>
-                                            @foreach(\App\Models\Assessor::all() as $assessor)
-                                                <option value="{{$assessor->id}}">{{$assessor->nome}}</option>
-                                            @endforeach 
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="text-center col-12">
-                                    <button type="button" id="btn-calcula" class="btn btn-primary">Calcular Valores</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-3 col-12 col-lg-6">
-                            <div class="row" id="caixa-valores" style="display:none;">
-                                <div class="col-12">
-                                    <p><b>Total:</b><span id="valor-total"></span></p>
-                                    <p><b>Desconto:</b><span id="valor-desconto"></span></p>
-                                    <p><b>Parcelas:</b><span id="valor-parcelas"></span></p>
-                                    <p><b>Comissão:</b><span id="valor-comissao"></span></p>
-                                    <p><b>Total Final:</b><span id="valor-total-final"></span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="form-group text-end">
-                        <button type="submit" class="mt-3 btn btn-primary">Salvar</button>
-                    </div>
-                </form>
-            </div>
+    <div class="my-3 row">
+        <div class="col-12">
+            <a name="" id="" class="btn btn-primary cpointer" onclick="Livewire.emit('carregaModalCadastroVenda')" role="button">Nova Venda</a> 
+            <a name="" id="" class="ml-3 btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalNovoCliente" role="button">Novo Cliente</a> 
         </div>
     </div>
-</div>
-
-
+    @livewire('painel.vendas.datatable')
+    @livewire('painel.vendas.modal-cadastro-venda')
+    @include('painel.includes.clientes.modal-cadastro')
 @endsection
 
 @section('scripts')
