@@ -96,7 +96,7 @@
                             <div class="relative mt-3">
                                 <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
                                     @if($lote->beta_caseina)
-                                        <div class="w-full font-bold text-center">
+                                        <div class="w-full mb-2 font-bold text-center">
                                             {{ $lote->beta_caseina }}
                                         </div>
                                     @endif
