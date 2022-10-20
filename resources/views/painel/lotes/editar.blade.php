@@ -14,11 +14,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 text-left my-3" style="color:red;">
+                        <div class="my-3 text-left col-12" style="color:red;">
                             * Campos obrigatórios
                         </div>
                     </div>
-                    <h4 class="card-title mb-4">Informações Básicas</h4>
+                    <h4 class="mb-4 card-title">Informações Básicas</h4>
 
                     <form action="{{ route('painel.fazenda.reserva.lote.salvar', ['lote' => $lote]) }}" method="POST"
                         enctype="multipart/form-data">
@@ -155,6 +155,12 @@
                                     <input type="number" class="form-control" name="lact_atual" id="lact_atual" step="0.01" value="{{$lote->lact_atual}}">
                                 </div>
                             </div>
+                            <div class="col-6 col-md-3">
+                                <div class="mb-3">
+                                    <label for="beta_caseina" class="form-label">Beta Caseina</label>
+                                    <input type="text" class="form-control" name="beta_caseina" id="beta_caseina" maxlength="20" value="{{$lote->beta_caseina}}">
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
@@ -173,7 +179,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-12 mb-3">
+                            <div class="mb-3 form-group col-12">
                                 <label for="tags">Palavras Chaves</label>
                                 <select class="js-example-basic-multiple js-states form-control" multiple="multiple" name="chaves[]" id="select_tag" multiple>
                                     <option value="" label="default"></option>
@@ -185,7 +191,7 @@
                         </div>
                         <div class="row">
                             @if ($lote->reserva->multi_fazendas)
-                                <div class="col-12 col-lg-8 mb-3">
+                                <div class="mb-3 col-12 col-lg-8">
                                     <label for="tags">Fazenda</label>
                                     <br>
                                     <select class="form-control select2" style="width: 100%;" name="fazenda">
@@ -208,8 +214,8 @@
                             </div>
                         </div>
                         <hr>
-                        <h4 class="card-title my-4">Informações de Pagamento</h4>
-                        <div class="row mb-3">
+                        <h4 class="my-4 card-title">Informações de Pagamento</h4>
+                        <div class="mb-3 row">
                             <div class="col-6 col-md-4">
                                 <div class="mb-3">
                                     <label for="preco" class="form-label">Preço (R$) *</label>
@@ -226,8 +232,8 @@
                             </div>
                         </div>
                         <hr>
-                        <h4 class="card-title my-4">Sistema de Pacote</h4>
-                        <div class="row mb-3">
+                        <h4 class="my-4 card-title">Sistema de Pacote</h4>
+                        <div class="mb-3 row">
                             <div class="col-6 col-md-4">
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
@@ -256,7 +262,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mb-3" id="row-seleciona-pacote" @if (!$lote->membro_pacote) style="display:none;" @endif>
+                        <div class="mb-3 row" id="row-seleciona-pacote" @if (!$lote->membro_pacote) style="display:none;" @endif>
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="lote_pacote" class="form-label">Pacote</label>
@@ -270,23 +276,23 @@
                             </div>
                         </div>
                         <hr>
-                        <h4 class="card-title my-4">Vídeo</h4>
-                        <div class="row mb-3">
+                        <h4 class="my-4 card-title">Vídeo</h4>
+                        <div class="mb-3 row">
                             <div class="col-12">
                                 <label for="">Cole o <b>link de incorporação</b> do vídeo</label>
                                 <input type="text" name="video" value="{{ $lote->video }}" class="form-control">
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-12 text-center iframe-lote">
+                        <div class="mb-3 row">
+                            <div class="text-center col-12 iframe-lote">
                                 @if ($lote->video)
                                     {!! $lote->video !!}
                                 @endif
                             </div>
                         </div>
                         <hr>
-                        <h4 class="card-title my-4">Preview</h4>
-                        <div class="row mb-3">
+                        <h4 class="my-4 card-title">Preview</h4>
+                        <div class="mb-3 row">
                             <div class="col-6">
                                 <input type="file" name="preview" id="preview">
                             </div>
@@ -298,8 +304,8 @@
                             </div>
                         </div>
                         <hr>
-                        <h4 class="card-title my-4">Genealogia</h4>
-                        <div class="row mb-3">
+                        <h4 class="my-4 card-title">Genealogia</h4>
+                        <div class="mb-3 row">
                             <div class="col-6">
                                 <input type="file" name="genealogia" id="genealogia">
                             </div>
@@ -311,8 +317,8 @@
                             </div>
                         </div>
                         <hr>
-                        <h4 class="card-title my-4">Catálogo</h4>
-                        <div class="row mb-3">
+                        <h4 class="my-4 card-title">Catálogo</h4>
+                        <div class="mb-3 row">
                             <div class="col-6">
                                 <input type="file" name="catalogo" id="catalogo">
                             </div>

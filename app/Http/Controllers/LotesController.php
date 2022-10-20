@@ -131,6 +131,7 @@ class LotesController extends Controller
         $lote->texto_destaque = $request->texto_destaque;
         $lote->gpta = $request->gpta;
         $lote->ccg = $request->ccg;
+        $lote->beta_caseina = $request->beta_caseina;
         $lote->parto = $request->parto;
         $lote->numero = $request->numero;
         $lote->sexo = $request->sexo;
