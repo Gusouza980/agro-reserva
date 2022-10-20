@@ -1,5 +1,5 @@
 <div class="px-0 bg-[#F5F5F5] py-5">
-    <div class="w1200 mx-auto mb-7">
+    <div class="mx-auto w1200 mb-7">
         <x-botoes.voltar :rota="route('index')"></x-botoes.voltar>
     </div>
     <div class="grid grid-cols-1 gap-4 px-3 mx-auto md:grid-cols-2 align-items-center w1200 md:px-0">
@@ -95,6 +95,11 @@
                             </div>
                             <div class="relative mt-3">
                                 <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
+                                    @if($lote->beta_caseina)
+                                        <div class="w-full font-bold text-center">
+                                            {{ $lote->beta_caseina }}
+                                        </div>
+                                    @endif
                                     @if($lote->nascimento)
                                         <div class="">
                                             <b>NASC:.</b> <span class="ml-2 font-medium">{{ date("d/m/Y", strtotime($lote->nascimento)) }}</span>

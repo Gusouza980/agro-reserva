@@ -49,6 +49,9 @@
                     </div>
                     <div class="w-full">
                         <ul class="font-montserrat text-[14px]">
+                            @if($lote->beta_caseina)
+                                <li>BETA-CASEINA: <b class="ml-2">{{ $lote->beta_caseina }}</b></li>
+                            @endif
                             @if($lote->registro)
                                 <li>RGD: <b class="ml-2">{{ $lote->registro }}</b></li>
                             @endif
