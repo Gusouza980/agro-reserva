@@ -46,7 +46,7 @@
 
 @livewire("institucional.depoimentos")
 
-<x-institucional.destaques :banners="$banners"></x-institucional.destaques>
+{{-- <x-institucional.destaques :banners="$banners"></x-institucional.destaques> --}}
 
 {{-- <x-institucional.depoimentos></x-institucional.depoimentos> --}}
 
