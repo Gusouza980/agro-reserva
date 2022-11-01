@@ -17,7 +17,7 @@
                                     </div>
                                 @else
                                     <div>
-                                        <b class="font-montserrat text-[16px] text-white">Em breve</b>
+                                        <b class="font-montserrat text-[26px] text-white">Em breve</b>
                                     </div>
                                 @endif
                             @else
