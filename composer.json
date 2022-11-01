@@ -28,7 +28,7 @@
         "rap2hpoutre/laravel-log-viewer": "^2.0",
         "spatie/laravel-analytics": "^3.11",
         "spatie/pdf-to-text": "^1.4",
-        "weidner/goutte": "^2.1",
+        "weidner/goutte": "^2.2",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
