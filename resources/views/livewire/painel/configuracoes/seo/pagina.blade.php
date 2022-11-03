@@ -51,19 +51,19 @@
                             <td>
                                 <div class="">
                                   <input type="text"
-                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="" wire:model="seo.nome">
+                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="" wire:model.defer="seo.nome">
                                 </div>
                             </td>
                             <td>
                                 <div class="">
                                   <input type="text"
-                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="" wire:model="seo.titulo">
+                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="" wire:model.defer="seo.titulo">
                                 </div>
                             </td>
                             <td>
                                 <div class="">
                                     <input type="text"
-                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="" wire:model="seo.tags">
+                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="" wire:model.defer="seo.tags">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -76,4 +76,5 @@
             
         </div>
     </div>
+    <x-loading></x-loading>
 </div>
