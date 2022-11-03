@@ -58,6 +58,10 @@ return [
         "consulta" => [0, 2, 3],
         "cadastro" => [0, 2, 3]
     ],
+    'seo' => [
+        "consulta" => [0, 2],
+        "cadastro" => [0, 2]
+    ],
     'niveis' => [
         0 => "Admin",
         1 => "Comercial",
