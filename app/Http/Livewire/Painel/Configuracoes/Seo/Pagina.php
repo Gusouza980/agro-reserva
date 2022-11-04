@@ -8,6 +8,7 @@ use Livewire\WithPagination;
 use Spatie\Sitemap\SitemapGenerator;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Reserva;
 
 class Pagina extends Component
 {
