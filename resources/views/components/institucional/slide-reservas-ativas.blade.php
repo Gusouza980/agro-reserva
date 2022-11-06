@@ -1,6 +1,6 @@
 <div class="w-full px-0 mt-[40px] py-5" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative; min-height: 600px;">
     <div class="relative mx-auto w1200">
-        <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-reservas-ativas" x-show="show" x-transition.opacity.duration.3000ms>
+        <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-reservas-ativas" x-show="show" x-transition.opacity.duration.1500ms>
             <div class="flex flex-nowrap">
                 @foreach($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'desc']]) as $reserva)
                 <div class="inline-block mx-[6px] slide-item" style="border-radius: 15px; overflow: hidden; position: relative;">

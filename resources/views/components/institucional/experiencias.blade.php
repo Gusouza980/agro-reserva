@@ -1,5 +1,5 @@
 <div class="px-0 py-5 py-5container-fluid" x-data="{ show: false }" x-intersect.enter="show = true">
-    <div class="px-3 mx-auto w1200 px-lg-0" x-show="show" x-transition.opacity.duration.3000ms>
+    <div class="px-3 mx-auto w1200 px-lg-0" x-show="show" x-transition.opacity.duration.1500ms>
         <div class="mb-5 row">
             <div class="text-center col-12" style="font-family: Montserrat; font-size: 25px; font-weight: medium;">
                 O GRUPO AGRO EXPERIENCE

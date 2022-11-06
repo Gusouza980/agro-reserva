@@ -5,7 +5,7 @@
                 NAVEGUE POR RAÇAS
             </div>
         </div>
-        <div class="flex py-4 mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-navegue-racas" x-show="show" x-transition.opacity.duration.3000ms>
+        <div class="flex py-4 mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-navegue-racas" x-show="show" x-transition.opacity.duration.1500ms>
             <div class="flex flex-nowrap space-x-[6px]">
                 @foreach(\App\Models\Raca::where('ativo', true)->orderBy("nome")->get() as $raca)
                     <div class="mx-2 transition duration-500 slide-item cpointer hover:scale-105" style="width: 250px; height: 250px;" onclick="window.location.href = '{{ route('raca', ['slug' => $raca->slug]) }}'">
