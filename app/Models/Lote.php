@@ -9,6 +9,22 @@ class Lote extends Model
 {
     use HasFactory;
 
+    protected static function boot(){
+        parent::boot();
+
+        static::deleting(function($lote){
+            cache()->forget("reservas_ativas");
+        });
+
+        static::updating(function($lote){
+            cache()->forget("reservas_ativas");
+        });
+
+        static::creating(function($lote){
+            cache()->forget("reservas_ativas");
+        });
+    }
+
     public function raca(){
         return $this->belongsTo(Raca::class);
     }

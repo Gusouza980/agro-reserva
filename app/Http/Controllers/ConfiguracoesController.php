@@ -7,6 +7,7 @@ use App\Models\HomeBanner;
 use Illuminate\Support\Facades\Storage;
 use App\Classes\Util;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
 
 class ConfiguracoesController extends Controller
 {
@@ -38,6 +39,9 @@ class ConfiguracoesController extends Controller
             );
         }
         $banner->save();
+
+        cache()->forget("banners");
+
         return redirect()->back();
     }
 

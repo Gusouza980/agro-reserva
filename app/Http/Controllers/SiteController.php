@@ -25,6 +25,8 @@ use Jenssegers\Agent\Agent;
 use Illuminate\Support\Facades\Log;
 use Alaouy\Youtube\Facades\Youtube;
 use Goutte;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
@@ -37,13 +39,11 @@ class SiteController extends Controller
 
     public function index(){
         $configuracao = Configuracao::first();
-        $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
-        $banners = HomeBanner::orderBy("prioridade", "ASC")->get();
-        
+        dd("FOI");
+        dd(DB::getQueryLog());
         $agent = new Agent();
         if($agent->isMobile()){
             $view = "mobile.index";
-            // $view = "index";
         }else{
             $view = "index";
         }
@@ -51,9 +51,28 @@ class SiteController extends Controller
     }
 
     public function index2(){
+        DB::connection()->enableQueryLog();
+        
         $configuracao = Configuracao::first();
-        $reservas = Reserva::where("ativo", true)->orderBy("inicio", "ASC")->get();
-        $banners = HomeBanner::orderBy("prioridade", "ASC")->get();
+        
+        // RESERVAS QUE ESTÃO ATIVAS
+        if(cache()->has('reservas_ativas')){
+            $reservas = cache()->get('reservas_ativas');
+        }else{
+            $reservas = cache()->remember('reservas_ativas', 60 * 60 * 24 * 7, function(){
+                return Reserva::where("ativo", true)->with("lotes")->with("lotes.fazenda")->with("fazenda")->with("lotes.reserva")->with("lotes.fazenda")->orderBy("inicio", "ASC")->get();
+            });
+        }
+
+        // BANNERS EXIBIDOS NA HOME
+        if(cache()->has('banners')){
+            $banners = cache()->get("banners");
+        }else{
+            $banners = cache()->remember('banners', 60 * 60 * 24 * 7, function(){
+                return HomeBanner::orderBy("prioridade", "ASC")->get();
+            });
+        }
+
         return view("index2", ["reservas" => $reservas, "configuracao" => $configuracao, "banners" => $banners]);
     }
 

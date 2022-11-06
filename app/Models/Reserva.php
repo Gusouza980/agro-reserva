@@ -9,6 +9,22 @@ class Reserva extends Model
 {
     use HasFactory;
 
+    protected static function boot(){
+        parent::boot();
+
+        static::deleting(function($reserva){
+            cache()->forget("reservas_ativas");
+        });
+
+        static::updating(function($reserva){
+            cache()->forget("reservas_ativas");
+        });
+
+        static::creating(function($reserva){
+            cache()->forget("reservas_ativas");
+        });
+    }
+
     public function lotes(){
         return $this->hasMany(Lote::class);
     }
