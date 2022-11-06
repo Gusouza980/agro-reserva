@@ -24,27 +24,29 @@ use Spatie\Analytics\Period;
 use Jenssegers\Agent\Agent;
 use Illuminate\Support\Facades\Log;
 use Alaouy\Youtube\Facades\Youtube;
-
+use Goutte;
 
 class SiteController extends Controller
 {
 
     public function testes(){
-        foreach(Lote::all() as $lote){
-            if(!$lote->produto){
-                $lote->produto()->create([
-                    "nome" => $lote->nome,
-                    "preco" => $lote->preco
-                ]);
-            }
-        }
-        foreach(CarrinhoProduto::all() as $carrinho_produto){
-            $lote = Lote::find($carrinho_produto->lote_id);
-            if($lote){
-                $carrinho_produto->produto_id = $lote->produto->id;
-                $carrinho_produto->save();
-            }
-        }
+        $crawler = Goutte::request('GET', 'https://www.scotconsultoria.com.br/cotacoes/vaca-gorda/?ref=smnb');
+        // $crawler->filter('.conteudo_centro')->each(function ($node) {
+        //     dump($node->html());
+        // });
+        $res = $crawler->filter('table')->first()->html();
+        // dd($res);
+        // while(strpos($res, "<script") !== false){
+        //     $inicio = strpos($res, "<script");
+        //     $fim = strpos($res, "</script>");
+        //     if ($inicio === false || $fim === false) {
+        //         return $res;
+        //     }
+        //     $textoDeletar = substr($res, $inicio, ($fim + strlen("</script>")) - $inicio);
+        //     $res = str_replace($textoDeletar, '', $res);
+        // }
+        // dd($res);
+        return view("teste", ["html" => $res]);
     }
 
     public function index(){

@@ -15,6 +15,12 @@
                                     <div class="mt-2">
                                         <h3 class="font-montserrat text-white text-[26px] font-bold">@if(!$reserva->compra_disponivel) {{ date("d/m/Y", strtotime($reserva->inicio)) }} @else {{ date("d/m/Y", strtotime($reserva->fim)) }} @endif</h3>
                                     </div>
+                                @else
+                                    @if(!$reserva->compra_disponivel)
+                                        <div>
+                                            <b class="font-montserrat text-[26px] text-white">Em breve</b>
+                                        </div>
+                                    @endif
                                 @endif
                             @else
                                 <div class="mt-2 mb-3">
