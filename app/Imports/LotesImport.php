@@ -42,6 +42,10 @@ class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
             $lote->nascimento = Util::convertDateToString($lote->nascimento);
         }
 
+        if($lote->parto){
+            $lote->parto = Util::convertDateToString($lote->parto);
+        }
+
         return $lote;
     }
 }
