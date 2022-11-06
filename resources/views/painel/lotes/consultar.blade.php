@@ -14,7 +14,7 @@
 @endsection
 
 @section('conteudo')
-    <div class="row my-3">
+    <div class="my-3 row">
         <div class="col-12">
             <a href="{{ route('painel.fazenda.reserva.lote.cadastro', ['reserva' => $reserva]) }}" class="btn btn-primary"
                 role="button">Novo Lote</a>
@@ -22,7 +22,7 @@
                 role="button">Importar Excel</a>
         </div>
     </div>
-    @livewire('painel.lotes.datatable', ["reserva" => $reserva])
+    @livewire('painel.lotes.datatable', ["reserva_id" => $reserva->id])
     <div class="modal fade" id="modalImport" tabindex="-1" role="dialog" aria-labelledby="modalReservarLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -41,7 +41,7 @@
                             <input type="file" class="form-control" name="planilha" id="" placeholder="" aria-describedby="fileHelpId">
                         </div>
                         <div class="mb-3">
-                            <div class="d-grid gap-2">
+                            <div class="gap-2 d-grid">
                                 <button type="submit" name="" id="" class="btn btn-primary">Importar</button>
                             </div>
                         </div>

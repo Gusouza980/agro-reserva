@@ -21,8 +21,8 @@ class Datatable extends Component
     protected $listeners = ["atualizaValor", "atualizaDatatableLotes" => '$refresh'];
     protected $paginationTheme = 'bootstrap';
     
-    public function mount(Reserva $reserva){
-        $this->reserva = $reserva;
+    public function mount($reserva_id){
+        $this->reserva = Reserva::with("lotes")->find($reserva_id);
     }
 
     public function updatedPrecos($value, $key){
@@ -38,7 +38,7 @@ class Datatable extends Component
         }
         $lote->save();
         $this->arquivos = [];
-        $this->reserva->refresh();
+        $this->reserva->lotes->where("id", $lote->id)->first()->refresh();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Imagem atualizada com sucesso!']);
     }
 
@@ -54,7 +54,7 @@ class Datatable extends Component
             $lote->produto->save();
         }
         $lote->save();
-        $this->reserva->refresh();
+        $this->reserva->lotes->where("id", $lote->id)->first()->refresh();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Dado atualizado com sucesso!']);
     }
     
