@@ -66,7 +66,7 @@ class PainelController extends Controller
             $inicio_time = $request->inicio . " 00:00:00";
             $fim_time = $request->fim . " 23:59:59";
             if($request->reserva != -1){
-                $visitas = Visita::whereBetween("created_at", [$inicio_time, $fim_time])->whereHas("lote", function($q) use ($request){
+                $visitas = Visita::with("lote")->with("embriao")->with("cliente")->whereBetween("created_at", [$inicio_time, $fim_time])->whereHas("lote", function($q) use ($request){
                     $q->where("reserva_id", $request->reserva);
                 })->orWhereHas("embriao", function($q) use ($request){
                     $q->where("reserva_id", $request->reserva);
@@ -79,7 +79,7 @@ class PainelController extends Controller
             $inicio_time = date('Y-m-d', strtotime('-14 days')) . " 00:00:00";
             $fim_time = date('Y-m-d') . " 23:59:59";
         }
-        $visitas = Visita::whereBetween("created_at", [$inicio_time, $fim_time])->orderBy("created_at", "ASC")->get();
+        $visitas = Visita::with("lote")->with("embriao")->with("cliente")->whereBetween("created_at", [$inicio_time, $fim_time])->orderBy("created_at", "ASC")->get();
         return view("painel.visitas.consultar", ["visitas" => $visitas, "inicio" => $inicio, "fim" => $fim]);
     }
 
