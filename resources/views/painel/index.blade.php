@@ -27,12 +27,12 @@
                             <span class="d-none d-sm-block">Reservas Ativas</span> 
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#analytics" role="tab">
                             <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                             <span class="d-none d-sm-block">Analytics</span> 
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
 
                 <!-- Tab panes -->
@@ -156,9 +156,9 @@
                             </div> <!-- end row -->
                         </div>
                     </div>
-                    <div class="tab-pane" id="analytics" role="tabpanel">
+                    {{-- <div class="tab-pane" id="analytics" role="tabpanel">
                         @livewire('analytics-estatisticas')
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
