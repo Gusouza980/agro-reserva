@@ -27,7 +27,7 @@
         <label for="">Reserva</label>
         <select name="reserva" id="" class="form-control">
             <option value="-1">Todas</option>
-            @foreach(\App\Models\Reserva::with("fazenda")->all() as $reserva)
+            @foreach(\App\Models\Reserva::with("fazenda")->get() as $reserva)
                 <option value="{{$reserva->id}}" @if(isset($filtro_reserva) && $filtro_reserva == $reserva->id) selected @endif>{{$reserva->fazenda->nome_fazenda}} - {{date("d/m/y", strtotime($reserva->inicio))}}</option>
             @endforeach
         </select>
