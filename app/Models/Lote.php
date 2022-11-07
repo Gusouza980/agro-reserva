@@ -45,6 +45,10 @@ class Lote extends Model
         return $this->hasMany(CurtidaLote::class);
     }
 
+    public function interesses(){
+        return $this->hasMany(InteresseLote::class, "lote_id", "id");
+    }
+
     public function visitas(){
         return $this->hasMany(Visita::class);
     }
