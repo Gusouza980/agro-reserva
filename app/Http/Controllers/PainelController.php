@@ -83,4 +83,10 @@ class PainelController extends Controller
         return view("painel.visitas.consultar", ["visitas" => $visitas, "inicio" => $inicio, "fim" => $fim]);
     }
 
+    public function limparCache(){
+        cache()->forget("reservas_ativas");
+        cache()->forget("banners");
+        return redirect()->back();
+    }
+
 }

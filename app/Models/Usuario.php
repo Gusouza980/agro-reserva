@@ -12,4 +12,8 @@ class Usuario extends Model
     public function assessor(){
         return $this->belongsTo(Assessor::class);
     }
+
+    public function noticias(){
+        return $this->hasMany(Noticia::class);
+    }
 }

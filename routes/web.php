@@ -200,6 +200,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/usuarios', [\App\Http\Controllers\UsuarioController::class, 'index'])->name("painel.usuarios");        
     Route::post('/painel/usuarios/salvar', [\App\Http\Controllers\UsuarioController::class, 'salvar'])->name("painel.usuarios.salvar");        
     Route::post('/painel/usuarios/senha/alterar', [\App\Http\Controllers\UsuarioController::class, 'alterar_senha'])->name("painel.usuarios.senha.alterar");        
+    Route::get('/painel/usuarios/{usuario}/excluir', [\App\Http\Controllers\UsuarioController::class, 'excluir'])->name("painel.usuarios.excluir");        
 
     //ROTAS RELACIONADAS A FAZENDAS
     Route::get('/painel/fazendas', [\App\Http\Controllers\FazendaController::class, 'index'])->name("painel.fazendas");        
@@ -387,6 +388,10 @@ Route::middleware(['admin'])->group(function () {
 
     // ROTA DE LOG
     Route::get('/painel/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+    // LIMPAR CACHE
+    Route::get('/painel/limpar-cache', [\App\Http\Controllers\PainelController::class, 'limparCache'])->name("painel.cache.limpar");
+
 });
 
 // ROTAS DO MARKETPLACE

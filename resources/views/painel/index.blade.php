@@ -15,6 +15,7 @@
         <div class="mb-3 row">
             <div class="col-12">
                 <a href="{{route('painel.rotinas.recomendacoes.calcular')}}" class="btn btn-laranja">Caclular Recomendações</a>
+                <a href="{{route('painel.cache.limpar')}}" class="btn btn-laranja">Limpar Cache</a>
             </div>
         </div>
         <div class="card">

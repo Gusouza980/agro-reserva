@@ -43,7 +43,9 @@
                                             <i class="fas fa-bars" aria-hidden="true"></i>
                                         </a>
                                         <div class="dropdown-menu" style="margin: 0px;">
-                                            <a class="dropdown-item py-3 cpointer" data-bs-toggle="modal" data-bs-target="#modalEditaUsuario{{$usuario->id}}">Editar</a>
+                                            <a class="dropdown-item py-2 cpointer" data-bs-toggle="modal" data-bs-target="#modalEditaUsuario{{$usuario->id}}">Editar</a>
+                                            <hr>
+                                            <a class="dropdown-item py-2 cpointer text-danger" href="{{route('painel.usuarios.excluir', ['usuario' => $usuario])}}">Excluir</a>
                                         </div>
                                     </div>
                                 </td>

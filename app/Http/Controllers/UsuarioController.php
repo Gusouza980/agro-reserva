@@ -48,4 +48,20 @@ class UsuarioController extends Controller
         toastr()->success("Senha alterada com sucesso!");
         return redirect()->back();
     }
+
+    public function excluir(Usuario $usuario){
+        if(session()->get("admin")["acesso"] != 0){
+            toastr()->error("Você não possui acesso para realizar essa operação");
+            return redirect()->back();
+        }else{
+            if($usuario->noticias->count() > 0){
+                toastr()->error("Esse usuário não pode ser removido, pois possui noticias ligadas a ele.");
+                return redirect()->back();
+            }else{
+                $usuario->delete();
+                toastr()->success("Usuário removido com sucesso.");
+                return redirect()->back();
+            }
+        }
+    }
 }

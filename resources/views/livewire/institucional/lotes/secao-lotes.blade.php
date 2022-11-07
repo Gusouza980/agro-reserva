@@ -62,6 +62,7 @@
             <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[80px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
                 @php
                     $fazenda = \App\Models\Fazenda::find($fazenda_id);
+                    // dd($fazendas);
                 @endphp
                 @if($lotes->where("fazenda_id", $fazenda_id)->count() > 0)
                     <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white">
