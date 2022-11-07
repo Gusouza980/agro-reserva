@@ -62,7 +62,6 @@
             <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[80px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
                 @php
                     $fazenda = \App\Models\Fazenda::find($fazenda_id);
-                    // dd($fazendas);
                 @endphp
                 @if($lotes->where("fazenda_id", $fazenda_id)->count() > 0)
                     <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white">
@@ -78,9 +77,11 @@
                                 <div class="absolute flex justify-content-center h-[45px] top-[-30px] px-2 pt-1 z-0 rounded-t-[12px] bg-slate-500 text-white" style="font-family: 'Montserrat', sans-serif;">
                                     <small class="font-medium text-[15px]">LOTE: {{ str_pad($lote->numero, 3, "0", STR_PAD_LEFT) }}</small>
                                 </div>
-                                <div wire:click="declararInteresse({{$lote->id}})" class="@if(session()->get("cliente") && $lote->interesses->where("cliente_id", session()->get("cliente")["id"])->first()) bg-green-500 @endif cursor-pointer absolute top-[-40px] right-[-25px] bg-slate-500 flex items-center justify-center w-[40px] h-[40px] rounded-full" title="Declarar Interesse">
-                                    <i class="text-white fas fa-hand"></i>
-                                </div>
+                                @if(!$lote->reservado && !$lote->reserva->encerrada)
+                                    <div wire:click="declararInteresse({{$lote->id}})" class="@if(session()->get("cliente") && $lote->interesses->where("cliente_id", session()->get("cliente")["id"])->first()) bg-green-500 @endif cursor-pointer absolute top-[-40px] right-[-25px] bg-slate-500 flex items-center justify-center w-[40px] h-[40px] rounded-full" title="Declarar Interesse">
+                                        <i class="text-white fas fa-hand"></i>
+                                    </div>
+                                @endif
                                 <div class="relative w-full overflow-hidden bg-no-repeat bg-cover">
                                     <img src="{{ asset($lote->preview) }}" class="relative z-[8] w-full transition duration-300 hover:scale-110" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" alt="">
                                     @if($lote->reservado || $lote->reserva->encerrada)
