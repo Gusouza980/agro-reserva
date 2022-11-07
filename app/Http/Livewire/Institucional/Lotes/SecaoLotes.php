@@ -7,6 +7,7 @@ use App\Models\Lote;
 use App\Models\Reserva;
 use App\Models\Embriao;
 use App\Models\InteresseLote;
+use App\Jobs\ProcessEmails;
 
 class SecaoLotes extends Component
 {
@@ -53,6 +54,7 @@ class SecaoLotes extends Component
                 "cliente_id" => session()->get("cliente")["id"],
                 "lote_id" => $lote_id
             ]);
+            ProcessEmails::dispatch(session()->get("cliente")["id"], $lote_id);
         }
         $this->emit('$refresh');
     }

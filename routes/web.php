@@ -401,6 +401,9 @@ Route::middleware(['admin'])->group(function () {
 // Route::get('/loja/vendedor/{slug}', [\App\Http\Controllers\MarketplaceController::class, 'vendedor'])->name("marketplace.vendedor");
 
 Route::get('/teste', [\App\Http\Controllers\SiteController::class, 'testes']);
+Route::get('/email', function(){
+    return view("emails.declaracao-interesse");
+});
 Route::get('/api/getCidadesByUf/{uf}', [\App\Http\Controllers\ApiController::class, 'getCidadesByUf']);
 Route::post('/api/calcDistanciaCep', [\App\Http\Controllers\ApiController::class, 'calcDistanciaCep']);
 Route::get('/api/declararInteresseLote/{lote}', [\App\Http\Controllers\ApiController::class, 'declararInteresseLote']);
