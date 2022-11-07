@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Lote;
 use App\Models\Reserva;
 use App\Models\Embriao;
+use App\Models\InteresseLote;
 
 class SecaoLotes extends Component
 {
@@ -37,6 +38,19 @@ class SecaoLotes extends Component
         if($this->filtro_raca != -1){
             $this->pagina_raca = true;
         }
+    }
+
+    public function declararInteresse($lote_id){
+        $interesse = InteresseLote::where("cliente_id", session()->get("cliente")["id"])->where("lote_id", $lote_id)->first();
+        if($interesse){
+            $interesse->delete();
+        }else{
+            InteresseLote::create([
+                "cliente_id" => session()->get("cliente")["id"],
+                "lote_id" => $lote_id
+            ]);
+        }
+        $this->emit('$refresh');
     }
 
     public function render()
