@@ -37,6 +37,6 @@ class ProcessEmails implements ShouldQueue
     public function handle()
     {
         //
-        Mail::to(["gusouza980@gmail.com", "ti@agroreserva.com.br", "marcelo@agroreserva.com.br", "fausto@agroreserva.com.br", "josevictor@agroreserva.com.br"])->send(new DeclaracaoInteresse($this->lote_id, $this->cliente_id));
+        Mail::to(["gusouza980@gmail.com", "ti@agroreserva.com.br", "marcelo@agroreserva.com.br", "fernando@agroreserva.com.br", "josevictor@agroreserva.com.br"])->send(new DeclaracaoInteresse($this->lote_id, $this->cliente_id));
     }
 }
