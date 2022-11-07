@@ -1,8 +1,8 @@
 <div x-data="{mostrarPopup: @entangle('mostrarPopup')}">
-    <div x-show="mostrarPopup" x-cloak class="flex items-center justify-center fixed w-screen h-screen z-50 top-0 left-0" style="background-color: rgba(0,0,0,0.45)">
+    <div x-show="mostrarPopup" x-cloak class="fixed top-0 left-0 z-50 flex items-center justify-center w-screen h-screen" style="background-color: rgba(0,0,0,0.45)">
         <div @click.outside="mostrarPopup = false" class="w-full relative px-5 md:max-w-[600px] bg-white py-5">
             <i class="fas fa-times text-[#80828b] fa-lg absolute top-5 right-5 hover:scale-110 duration-300 cpointer" @click="mostrarPopup = false"></i>
-            <div class="w-full flex justify-center mt-4">
+            <div class="flex justify-center w-full mt-4">
                 @if($icone == "sucesso")
                     <img src="{{ asset('imagens/icone_cadastro.png') }}" width="120" alt="">
                 @elseif($icone == "erro")

@@ -41,6 +41,10 @@ class SecaoLotes extends Component
     }
 
     public function declararInteresse($lote_id){
+        if(!session()->get("cliente")){
+            $this->emit('mostrarPopup', 'erro', 'Para declarar interesse em um lote você precisa estar logado.');
+            return;
+        }
         $interesse = InteresseLote::where("cliente_id", session()->get("cliente")["id"])->where("lote_id", $lote_id)->first();
         if($interesse){
             $interesse->delete();
@@ -56,12 +60,12 @@ class SecaoLotes extends Component
     public function render()
     {
         if(!$this->fazenda && !$this->reserva){
-            $reservas = Reserva::where("aberto", true)->where("encerrada", false)->get();
-            $lotes = Lote::whereIn("reserva_id", $reservas->pluck("id"));
+            $reservas = Reserva::with("fazenda")->where("aberto", true)->where("encerrada", false)->get();
+            $lotes = Lote::with("reserva")->with("interesses")->whereIn("reserva_id", $reservas->pluck("id"));
             $embrioes = Embriao::whereIn("reserva_id", $reservas->pluck("id"));
         }else{
             $reservas = null;
-            $lotes = Lote::where("reserva_id", $this->reserva->id)->where("reserva_id", $this->reserva->id)->where("ativo", true)->where("membro_pacote", false);
+            $lotes = Lote::with("reserva")->with("interesses")->where("reserva_id", $this->reserva->id)->where("reserva_id", $this->reserva->id)->where("ativo", true)->where("membro_pacote", false);
             $embrioes = Embriao::where("reserva_id", $this->reserva->id)->where("reserva_id", $this->reserva->id);
         }
 

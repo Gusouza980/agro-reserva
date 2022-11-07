@@ -39,7 +39,12 @@
             </div>
         </div>
     </div>
-    <div class="w-full mt-5 text-center">
+    <div class="px-3 mx-auto mt-5 w1200 sm:px-0">
+        <div class="w-full px-3 py-2 font-medium text-green-900 bg-green-300 border border-green-900 rounded-lg font-montserrat">
+            <strong>Tem novidade na área !</strong> Agora você pode, direto da plataforma, declarar seu interesse em um determinado lote. Basta clicar no ícone <i class="mx-1 text-green-900 fas fa-hand"></i> e logo logo nossa equipe entrará em contato.
+        </div>
+    </div>
+    <div class="w-full mt-3 text-center">
         <h3 class="font-montserrat font-medium text-[20px] text-[#757887]">
             @if($pagina_reservas_abertas)
                 RESERVAS ABERTAS
@@ -60,8 +65,9 @@
                 @endphp
                 @if($lotes->where("fazenda_id", $fazenda_id)->count() > 0)
                     <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white">
-                        <div class="flex items-center justify-center w-full h-full bg-black" style="background-image: url({{ ($fazenda->imagem_card) ? asset($fazenda->imagem_card) : asset($fazenda->logo) }}); background-size: cover; background-position: center;">
-                        </div>
+                        <img class="w-full h-full" src="{{ ($fazenda->imagem_card) ? asset($fazenda->imagem_card) : asset($fazenda->logo) }}" alt="">
+                        {{-- <div class="flex items-center justify-center w-full h-full bg-black" style="background-image: url(); background-size: cover; background-position: center;">
+                        </div> --}}
                     </div>
                 @endif
                 @foreach($lotes->where("fazenda_id", $fazenda_id) as $lote)
@@ -71,8 +77,8 @@
                                 <div class="absolute flex justify-content-center h-[45px] top-[-30px] px-2 pt-1 z-0 rounded-t-[12px] bg-slate-500 text-white" style="font-family: 'Montserrat', sans-serif;">
                                     <small class="font-medium text-[15px]">LOTE: {{ str_pad($lote->numero, 3, "0", STR_PAD_LEFT) }}</small>
                                 </div>
-                                <div wire:click="declararInteresse({{$lote->id}})" class="@if($lote->interesses->where("cliente_id", session()->get("cliente")["id"])->first()) bg-green-500 @endif cursor-pointer absolute top-[-40px] right-[-25px] bg-slate-500 flex items-center justify-center w-[40px] h-[40px] rounded-full" title="Declarar Interesse">
-                                    <i class="fas fa-hand text-white"></i>
+                                <div wire:click="declararInteresse({{$lote->id}})" class="@if(session()->get("cliente") && $lote->interesses->where("cliente_id", session()->get("cliente")["id"])->first()) bg-green-500 @endif cursor-pointer absolute top-[-40px] right-[-25px] bg-slate-500 flex items-center justify-center w-[40px] h-[40px] rounded-full" title="Declarar Interesse">
+                                    <i class="text-white fas fa-hand"></i>
                                 </div>
                                 <div class="relative w-full overflow-hidden bg-no-repeat bg-cover">
                                     <img src="{{ asset($lote->preview) }}" class="relative z-[8] w-full transition duration-300 hover:scale-110" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" alt="">
