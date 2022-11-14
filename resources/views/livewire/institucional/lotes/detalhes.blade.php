@@ -91,7 +91,7 @@
                                     <b>Pagamento em parcelas únicas</b>
                                 @endif
                             </p>
-                            <span>Sem juros no boleto de titularidade entre a Fazenda e o comprador.</span>
+                            <span>Sem juros no boleto de titularidade entre a <b>Fazenda</b> e o <b>Comprador</b>.</span>
                         </div>
                     @endif
                     @if(!$lote->reservado && !$lote->reserva->encerrada && $lote->liberar_compra)
