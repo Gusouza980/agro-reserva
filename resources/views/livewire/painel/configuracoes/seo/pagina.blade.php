@@ -14,6 +14,7 @@
                     <thead>
                         <tr>
                             <th scope="col" style="width: 15%;">Nome da Rota</th>
+                            <th scope="col">URL</th>
                             <th scope="col">Título</th>
                             <th scope="col">Tags</th>
                             <th scope="col" style="width: 5%;"></th>
@@ -26,6 +27,12 @@
                                     <div class="">
                                         <input type="text"
                                           class="form-control" name="" id="" aria-describedby="helpId" placeholder="" value="{{$seo->nome}}" onchange="Livewire.emit('atualizaValoresSeo', {{$seo->id}}, 'nome', this.value)">
+                                    </div>
+                                </td>
+                                <td scope="row">
+                                    <div class="">
+                                        <input type="text"
+                                            class="form-control" name="" id="" aria-describedby="helpId" placeholder="" value="{{$seo->url}}" onchange="Livewire.emit('atualizaValoresSeo', {{$seo->id}}, 'url', this.value)">
                                     </div>
                                 </td>
                                 <td scope="row">
@@ -52,6 +59,12 @@
                                 <div class="">
                                   <input type="text"
                                     class="form-control" name="" id="" aria-describedby="helpId" placeholder="" wire:model.defer="seo.nome">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="">
+                                  <input type="text"
+                                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="" wire:model.defer="seo.url">
                                 </div>
                             </td>
                             <td>

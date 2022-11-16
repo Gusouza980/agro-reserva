@@ -1,16 +1,20 @@
 @php
     $agent = new Jenssegers\Agent\Agent;
+    $seo = new \App\Classes\Seo;
 @endphp
 
 <!doctype html>
 <html lang="pt-br" data-theme="light">
 <head>
-    <title>Agroreserva</title>
+    <title>{{ ($seo->titulo)}}</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-
+    <meta name="description" content="Acesse o site da Agro Reserva e leve os melhores animais, dos principais criatórios do Brasil para a sua fazenda. Experiência humanizada, 100% online e 0% de comissão.">
+    <meta name="keywords" content="{{$seo->tags}}">
+    <meta name="author" content="Luis Gustavo de Souza Carvalho">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @include('includes.tags.og')
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw==" crossorigin="anonymous" referrerpolicy="no-referrer" />{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"> --}}
