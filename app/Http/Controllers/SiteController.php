@@ -90,6 +90,7 @@ class SiteController extends Controller
 
         // BANNERS EXIBIDOS NA HOME
         if(cache()->has('banners')){
+            dd($banners);
             $banners = cache()->get("banners");
         }else{
             $banners = cache()->remember('banners', 60 * 60 * 24 * 7, function(){
