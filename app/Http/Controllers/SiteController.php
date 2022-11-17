@@ -95,6 +95,7 @@ class SiteController extends Controller
             $banners = cache()->remember('banners', 60 * 60 * 24 * 7, function(){
                 return HomeBanner::orderBy("prioridade", "ASC")->get();
             });
+            dd($banners);
         }
 
         return view("index2", ["reservas" => $reservas, "configuracao" => $configuracao, "banners" => $banners]);
