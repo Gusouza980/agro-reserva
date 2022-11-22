@@ -66,6 +66,7 @@
                                                     <a href="{{route('painel.vendas.visualizar', ['venda' => $venda])}}" class="py-3 dropdown-item">Detalhes</a>
                                                     <a href="{{route('painel.vendas.comprovante', ['venda' => $venda])}}" target="_blank" class="py-3 dropdown-item" role="button">Visualizar Comprovante</a>
                                                     <a href="{{route('painel.vendas.comprovante.enviar', ['venda' => $venda])}}" class="py-3 dropdown-item" role="button">Enviar Comprovante</a>
+                                                    <a wire:click="excluirVenda({{ $venda->id }})" class="py-3 dropdown-item text-danger cpointer" role="button">Excluir Venda</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -104,11 +105,11 @@
                                         <td style="vertical-align: middle; text-align:center;">
                                             @if(!$venda->aprovada)
                                                 <a name="" id="" class="btn btn-success" wire:click="aprovar({{ $venda->id }})" role="button">
-                                                    <i class="fas fa-thumbs-up fa-sm text-white"></i>
+                                                    <i class="text-white fas fa-thumbs-up fa-sm"></i>
                                                 </a>
                                             @else
                                                 <a name="" id="" class="btn btn-danger" wire:click="reprovar({{ $venda->id }})" role="button">
-                                                    <i class="fas fa-thumbs-down fa-sm text-white"></i>
+                                                    <i class="text-white fas fa-thumbs-down fa-sm"></i>
                                                 </a>
                                             @endif
                                         </td>
