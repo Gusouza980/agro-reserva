@@ -49,6 +49,11 @@ class Datatable extends Component
         $this->emit('$refresh');
     }
 
+    public function excluirVenda(Venda $venda){
+        $venda->delete();
+        $this->emit('$refresh');
+    }
+
     public function render()
     {
         $vendas = Venda::where(null);
