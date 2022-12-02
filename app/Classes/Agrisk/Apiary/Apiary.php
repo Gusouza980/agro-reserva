@@ -6,10 +6,13 @@ use App\Classes\Agrisk\Apiary\ApiaryError;
 
 abstract class Apiary
 {
-    public $url;
-    public $url_terms;
-    public $credential;
-    public $password;
+    public $url = "https://api.agrisk.digital/";
+    public $url_terms = "https://scr-auth-v2.agrisk.digital/";
+    public $credential = "11102165646";
+    public $password = "Lgserrania22@";
+    public $companyName = "Agro Reserva Pecuaria Digital LTDA";
+    public $companyId = "0676c982-bdad-4f53-93af-ef829bb22148";
+    public $companyTaxId = "41893302000113";
     private $authenticated = false;
     private $lastError;
 
@@ -24,16 +27,10 @@ abstract class Apiary
     ];
 
     public function __construct(){
-        $this->credential = env("AGRISK_APIARY_CREDENTIAL");
-        $this->password = env("AGRISK_APIARY_PASSWORD");
         
-        if(env("AGRISK_ENV") == 'producao'){
-            $this->url = env("AGRISK_URL");
-        }else{
+        if(env("AGRISK_ENV") == 'homologacao'){
             $this->url = env("AGRISK_URL_HOMOLOGACAO");
         }
-
-        $this->url_terms = env("AGRISK_URL_TERMS");
 
         $response = Http::post($this->url . $this->routes["login"], [
             'credential' => $this->credential,
@@ -58,7 +55,7 @@ abstract class Apiary
     }
 
     public function checkError($response){
-        if(isset($response->statusCode)){
+        if(isset($response->statusCode) || (isset($response->status) && $response->status == 'error')){
             return true;
         }else{
             return false;

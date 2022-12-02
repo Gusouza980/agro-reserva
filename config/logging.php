@@ -53,6 +53,12 @@ return [
             'level' => env('LOG_LEVEL', 'info'),
         ],
 
+        'agrisk' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/agrisk.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+        ],
+
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),

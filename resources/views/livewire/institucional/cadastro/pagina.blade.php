@@ -8,6 +8,7 @@
         @livewire("institucional.cadastro.confirmacao-pre-cadastro", ["show" => $showConfirmacaoPreCadastro])
         @livewire("institucional.cadastro.selecao-categoria", ["show" => $showSelecaoCategoria])
         @livewire("institucional.cadastro.form-dados-pessoais", ["show" => $showFormDadosPessoais])
+        @livewire("institucional.cadastro.termos-agrisk", ["show" => $showTermosAgrisk])
         @livewire("institucional.cadastro.form-dados-propriedade", ["show" => $showFormDadosPropriedade])
         @livewire("institucional.cadastro.form-informacoes-complementares", ["show" => $showFormInformacoesComplementares])
         @livewire("institucional.cadastro.aviso-ultima-etapa", ["show" => $showAvisoUltimaEtapa])

@@ -8,6 +8,13 @@
         </div>
         <div class="w-full px-8 md:px-20 py-24 mt-3 bg-white rounded-t-lg shadow-[6px_6px_20px_rgba(36,62,111,0.11)]">
             <x-institucional.cadastro.step-bar step="2"></x-institucional.cadastro.step-bar>
+            <div class="w-full">
+                @if(session()->get("erro"))
+                    <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                        <span class="font-medium">Erro:</span> {{ session()->get("erro") }}
+                    </div>
+                @endif
+            </div>
             <div class="flex w-full mt-5">
                 <div class="hidden md:block md:w-5/12">
                     @if ($categoria === 0)
@@ -1232,6 +1239,7 @@
             </div>
         </div>
     </div>
+    <x-loading></x-loading>
 </div>
 
 @push("scripts")

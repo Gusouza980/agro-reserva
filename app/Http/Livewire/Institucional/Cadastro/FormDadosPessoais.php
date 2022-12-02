@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Institucional\Cadastro;
 use Livewire\Component;
 use App\Models\Cliente;
 use App\Classes\Util;
+use App\Classes\Agrisk\Apiary\ApiaryClientes;
+use Illuminate\Support\Facades\Log;
 
 class FormDadosPessoais extends Component
 {
@@ -45,6 +47,28 @@ class FormDadosPessoais extends Component
             $cliente->rg = $this->rg;
             $cliente->cpf = $this->cpf;
             $cliente->nascimento = Util::convertDateToString($this->nascimento);
+            $api = new ApiaryClientes;
+            if($api->isAuthenticated()){
+                $response = $api->createClient($cliente->cpf, $this->nascimento);
+                if($response){
+                    // CASO O CLIENTE JÁ TENHA SIDO CADASTRADO NO AGRISK É RETORNADO UM ERRO, PORÉM ESSE ERRO CONTÉM O CLIENTID NAS SUAS INSFORMAÇÕES
+                    // AQUI É TESTADO ISSO
+                    if(isset($response->clientId)){
+                        $cliente->agriskId = $response->clientId;
+                    }else{
+                        $cliente->agriskId = $response->id;
+                    }
+                    $cliente->agriskTaxId = $cliente->cpf;
+                }else{
+                    $erro = $api->lastError;
+                    session()->flash("erro", $erro->message[0]);
+                    return false;
+                }
+            }else{
+                Log::channel('agrisk')->emergency('Erro de autenticação a API Agrisk durante o cadastro do cliente <b>' . $cliente->nome_dono . "</b>");
+                session()->flash("erro", "Desculpe, estamos com um problema em nosso sistema. Tente novamente mais tarde, ou entre em contato com nosso time comercial.");
+                return false;
+            }
         }else{
             $cliente->cnpj = $this->cnpj;
             $cliente->nome_fantasia = $this->nome_fantasia;

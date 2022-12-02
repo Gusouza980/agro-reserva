@@ -13,6 +13,7 @@ class Pagina extends Component
     public $showConfirmacaoPreCadastro = false;
     public $showSelecaoCategoria = false;
     public $showFormDadosPessoais = false;
+    public $showTermosAgrisk = false;
     public $showFormDadosPropriedade = false;
     public $showFormInformacoesComplementares = false;
     public $showAvisoUltimaEtapa = false;
