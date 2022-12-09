@@ -148,7 +148,7 @@
                     </div>
                     <div>
                         <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 3 && !$cliente->agriskTermosFinalizado) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showTermosAgrisk')">Validar</a>
-                        {{-- <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-primary @if($cliente && $cliente->etapa_cadastro > 2) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showSelecaoCategoria')">Editar</a> --}}
+                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-primary @if($cliente && $cliente->etapa_cadastro >= 3 && $cliente->agriskTermosFinalizado) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showTermosAgrisk')">Editar</a>
                     </div>
                 </div>
                 {{-- ETAPA 3 --}}

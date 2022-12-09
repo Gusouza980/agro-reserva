@@ -34,6 +34,7 @@
         VITRINE DE RESERVAS
     </h3>
 </div>
+
 <x-institucional.slide-reservas-ativas :reservas="$reservas"></x-institucional.slide-reservas>
 
 <x-institucional.comprar_vender></x-institucional.comprar_vender>

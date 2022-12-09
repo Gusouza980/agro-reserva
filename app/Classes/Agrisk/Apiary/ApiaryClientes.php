@@ -4,6 +4,7 @@ namespace App\Classes\Agrisk\Apiary;
 
 use App\Classes\Agrisk\Apiary\Apiary;
 use Illuminate\Support\Facades\Http;
+use App\Classes\Util;
 
 class ApiaryClientes extends Apiary
 {
@@ -84,6 +85,42 @@ class ApiaryClientes extends Apiary
         ]);
 
         return $response->object();
+    }
+
+    public function sendTermsToken($cliente){
+        $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"] . "/" . $cliente->agriskTermosToken . "/token", [
+            "method" => "WhatsApp",
+            "phone" => Util::limparString($cliente->telefone)
+        ]);
+        if(!$response->object()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function verificarCodigo($cliente, $otpToken, $deviceCode){
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $ip = '143.255.112.19';
+        $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+        $geolocalizacao = explode(",", $details->loc);
+        $latitude = $geolocalizacao[0];
+        $longitude = $geolocalizacao[1];
+        $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"] . "/" . $cliente->agriskTermosToken . "/sign", [
+            "termId" => $cliente->agriskTermosToken,
+            "otpToken" => $otpToken,
+            "clientIp" => $ip,
+            "geolocation" => [
+                "latitude" => $latitude,
+                "longitude" => $longitude
+            ],
+            "deviceCode" => $deviceCode
+        ]);
+        if($response->object() == "Term signed"){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     private function getTermsAuthorizationToken($response){
