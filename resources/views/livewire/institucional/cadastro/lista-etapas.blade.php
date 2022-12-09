@@ -102,57 +102,59 @@
                     </div>
                 </div>
                 {{-- ETAPA TERMOS --}}
-                <div class="flex items-center w-full px-4 py-4 mt-4 rounded-lg @if($cliente && $cliente->etapa_cadastro == 3 && !$cliente->agriskTermosFinalizado) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif">
-                    <div class="relative">
-                        <svg class="duration-300 animation w-[40px] md:w-auto hover:scale-105" xmlns="http://www.w3.org/2000/svg"
-                            width="74.524" height="74.524" viewBox="0 0 74.524 74.524">
-                            <g id="Grupo_9441" data-name="Grupo 9441" transform="translate(-465.379 -842.765)">
-                                <g id="Grupo_9440" data-name="Grupo 9440">
-                                    <circle id="Elipse_331" data-name="Elipse 331" cx="36.669" cy="36.669"
-                                        r="36.669" transform="translate(465.88 843.451) rotate(-0.144)"
-                                        fill="none" stroke="#efeef2" stroke-miterlimit="10" stroke-width="1" />
+                @if($cliente && $cliente->pessoa_fisica)
+                    <div class="flex items-center w-full px-4 py-4 mt-4 rounded-lg @if($cliente && $cliente->etapa_cadastro == 3 && !$cliente->agriskTermosFinalizado) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif">
+                        <div class="relative">
+                            <svg class="duration-300 animation w-[40px] md:w-auto hover:scale-105" xmlns="http://www.w3.org/2000/svg"
+                                width="74.524" height="74.524" viewBox="0 0 74.524 74.524">
+                                <g id="Grupo_9441" data-name="Grupo 9441" transform="translate(-465.379 -842.765)">
+                                    <g id="Grupo_9440" data-name="Grupo 9440">
+                                        <circle id="Elipse_331" data-name="Elipse 331" cx="36.669" cy="36.669"
+                                            r="36.669" transform="translate(465.88 843.451) rotate(-0.144)"
+                                            fill="none" stroke="#efeef2" stroke-miterlimit="10" stroke-width="1" />
+                                    </g>
+                                    <path id="Caminho_2979" data-name="Caminho 2979"
+                                        d="M466.572,81.435q0-2.234,0-4.468c0-.748.24-.988.974-.989H475.4c.706,0,.958.255.958.971q0,4.487,0,8.973c0,.694-.253.95-.94.95q-3.946,0-7.893,0c-.712,0-.953-.245-.954-.97q0-2.234,0-4.468m2.76.63a2.523,2.523,0,0,1,3.5-3.466,2.49,2.49,0,0,1,1,1.263,2.55,2.55,0,0,1-.235,2.2l1.25.668v-5.24H468.1v5.233l1.233-.66m5.443,3.3a2.245,2.245,0,0,0-1.3-1.686,4.59,4.59,0,0,0-3.683-.158,2.431,2.431,0,0,0-1.53,1.422,3.488,3.488,0,0,0-.106.422Zm-3.294-5.671a1.014,1.014,0,1,0-.032,2.028,1.014,1.014,0,1,0,.032-2.028"
+                                        transform="translate(25.421 788.474)" fill="#efab1e" />
+                                    <path id="Caminho_2980" data-name="Caminho 2980"
+                                        d="M476.765,127.331q-4.319,0-8.639,0c-.833,0-1.066-.232-1.066-1.057,0-1.055,0-2.11,0-3.165,0-.672.277-.946.955-.946q8.732,0,17.464,0c.689,0,.942.258.944.947q0,1.62,0,3.24c0,.74-.238.981-.982.981q-4.338,0-8.676,0m-8.191-1.517h16.333v-2.142H468.574Z"
+                                        transform="translate(25.07 755.198)" fill="#efab1e" />
+                                    <path id="Caminho_2981" data-name="Caminho 2981"
+                                        d="M473.89,148.473c1.713,0,3.426,0,5.139,0a.739.739,0,0,1,.772.736.763.763,0,0,1-.736.746c-.1.009-.2,0-.3,0h-2.346q-3.687,0-7.374,0a1.817,1.817,0,0,1-.478-.046.732.732,0,0,1,.144-1.434c.185-.015.372-.008.558-.008h4.618Z"
+                                        transform="translate(24.363 736.241)" fill="#efab1e" />
+                                    <path id="Caminho_2982" data-name="Caminho 2982"
+                                        d="M515,81.285c.856,0,1.712,0,2.567,0,.556,0,.871.277.869.744s-.327.743-.877.744q-2.623,0-5.247,0a.765.765,0,0,1-.809-.622.732.732,0,0,1,.488-.822,1.4,1.4,0,0,1,.4-.042c.868,0,1.736,0,2.6,0"
+                                        transform="translate(-6.948 784.651)" fill="#efab1e" />
+                                    <path id="Caminho_2983" data-name="Caminho 2983"
+                                        d="M515.007,93.016c.868,0,1.736,0,2.6,0,.508,0,.815.269.831.7a.737.737,0,0,1-.8.78q-2.66.014-5.321,0a.75.75,0,0,1-.816-.772.733.733,0,0,1,.826-.712c.893,0,1.786,0,2.679,0"
+                                        transform="translate(-6.953 776.198)" fill="#efab1e" />
+                                    <path id="Caminho_2984" data-name="Caminho 2984"
+                                        d="M515,104.732c.868,0,1.736,0,2.6,0,.526,0,.838.281.839.734a.744.744,0,0,1-.834.751q-2.623.011-5.246,0a.764.764,0,0,1-.861-.767c.009-.446.325-.718.856-.72.881,0,1.761,0,2.642,0"
+                                        transform="translate(-6.953 767.756)" fill="#efab1e" />
+                                    <path id="Caminho_2985" data-name="Caminho 2985"
+                                        d="M471.165,161.146c-.77,0-1.539.009-2.309,0a.751.751,0,0,1-.792-.979.737.737,0,0,1,.779-.509c1.564,0,3.128,0,4.692,0a.746.746,0,0,1,.817.729.76.76,0,0,1-.8.754c-.794.013-1.589,0-2.383,0"
+                                        transform="translate(24.376 728.182)" fill="#efab1e" />
+                                    <path id="Caminho_2986" data-name="Caminho 2986"
+                                        d="M486.906,75.253a2.741,2.741,0,0,0-2.358-2.14,2.674,2.674,0,0,0-2.779,1.273c-1.3,1.993-2.581,4-3.87,6.008-.077.12-.161.236-.3.446v-.5q0-7.935.008-15.87a1.027,1.027,0,0,0-.527-1.016H449.356a1.016,1.016,0,0,0-.529,1.013q.016,13.207.008,26.413c0,.087,0,.174,0,.261a.86.86,0,0,0,.011.095v6.409a1.441,1.441,0,0,0-.013.192q0,1.4,0,2.794c0,.732.246.973.992.973h26.785c.735,0,.982-.248.982-.984,0-2.968,0-5.936.008-8.9a1.282,1.282,0,0,1,.184-.653c2.728-4.265,5.475-8.517,8.2-12.785.388-.609.669-1.287,1-1.933v-.894a2.134,2.134,0,0,1-.078-.2m-10.822,24.839h-25.76c0-.307,0-.61,0-.911h.017V87.634h-.017V64.972H476.1v.281q0,8.829-.007,17.658a1.084,1.084,0,0,1-.174.546c-1.381,2.166-2.775,4.323-4.155,6.489a2.345,2.345,0,0,0-.311.744c-.192.882-.352,1.771-.531,2.69a2.928,2.928,0,0,0-2.442.609c-.023-.235-.044-.414-.058-.594-.153-1.9-1.583-2.718-3.245-1.786a11.694,11.694,0,0,0-1.934,1.438,9.941,9.941,0,0,0-2.093,2.692.734.734,0,0,0,.27,1.033.746.746,0,0,0,1-.273c.083-.123.152-.256.231-.382a8.923,8.923,0,0,1,3.274-3.233c.634-.348.9-.192,1,.528a1.478,1.478,0,0,1,.012.186c0,.805,0,1.611,0,2.416a.767.767,0,0,0,.507.817.744.744,0,0,0,.924-.427,3.351,3.351,0,0,1,1.271-1.376,4.849,4.849,0,0,1,.792-.281c0,.454.02.8-.006,1.144a.8.8,0,0,0,.361.867.825.825,0,0,0,.962-.138c1.308-.945,2.624-1.877,3.939-2.814.117-.084.239-.16.395-.264Zm-3.337-8.272,1.664,1.066-1.918,1.37c-.057.041-.119.075-.245.155l.5-2.592m2.77,0-2.261-1.453,8.75-13.613,2.26,1.454-8.749,13.611m9.54-14.878-2.229-1.43a1.371,1.371,0,1,1,2.229,1.43"
+                                        transform="translate(38.206 797.496)" fill="#efab1e" />
                                 </g>
-                                <path id="Caminho_2979" data-name="Caminho 2979"
-                                    d="M466.572,81.435q0-2.234,0-4.468c0-.748.24-.988.974-.989H475.4c.706,0,.958.255.958.971q0,4.487,0,8.973c0,.694-.253.95-.94.95q-3.946,0-7.893,0c-.712,0-.953-.245-.954-.97q0-2.234,0-4.468m2.76.63a2.523,2.523,0,0,1,3.5-3.466,2.49,2.49,0,0,1,1,1.263,2.55,2.55,0,0,1-.235,2.2l1.25.668v-5.24H468.1v5.233l1.233-.66m5.443,3.3a2.245,2.245,0,0,0-1.3-1.686,4.59,4.59,0,0,0-3.683-.158,2.431,2.431,0,0,0-1.53,1.422,3.488,3.488,0,0,0-.106.422Zm-3.294-5.671a1.014,1.014,0,1,0-.032,2.028,1.014,1.014,0,1,0,.032-2.028"
-                                    transform="translate(25.421 788.474)" fill="#efab1e" />
-                                <path id="Caminho_2980" data-name="Caminho 2980"
-                                    d="M476.765,127.331q-4.319,0-8.639,0c-.833,0-1.066-.232-1.066-1.057,0-1.055,0-2.11,0-3.165,0-.672.277-.946.955-.946q8.732,0,17.464,0c.689,0,.942.258.944.947q0,1.62,0,3.24c0,.74-.238.981-.982.981q-4.338,0-8.676,0m-8.191-1.517h16.333v-2.142H468.574Z"
-                                    transform="translate(25.07 755.198)" fill="#efab1e" />
-                                <path id="Caminho_2981" data-name="Caminho 2981"
-                                    d="M473.89,148.473c1.713,0,3.426,0,5.139,0a.739.739,0,0,1,.772.736.763.763,0,0,1-.736.746c-.1.009-.2,0-.3,0h-2.346q-3.687,0-7.374,0a1.817,1.817,0,0,1-.478-.046.732.732,0,0,1,.144-1.434c.185-.015.372-.008.558-.008h4.618Z"
-                                    transform="translate(24.363 736.241)" fill="#efab1e" />
-                                <path id="Caminho_2982" data-name="Caminho 2982"
-                                    d="M515,81.285c.856,0,1.712,0,2.567,0,.556,0,.871.277.869.744s-.327.743-.877.744q-2.623,0-5.247,0a.765.765,0,0,1-.809-.622.732.732,0,0,1,.488-.822,1.4,1.4,0,0,1,.4-.042c.868,0,1.736,0,2.6,0"
-                                    transform="translate(-6.948 784.651)" fill="#efab1e" />
-                                <path id="Caminho_2983" data-name="Caminho 2983"
-                                    d="M515.007,93.016c.868,0,1.736,0,2.6,0,.508,0,.815.269.831.7a.737.737,0,0,1-.8.78q-2.66.014-5.321,0a.75.75,0,0,1-.816-.772.733.733,0,0,1,.826-.712c.893,0,1.786,0,2.679,0"
-                                    transform="translate(-6.953 776.198)" fill="#efab1e" />
-                                <path id="Caminho_2984" data-name="Caminho 2984"
-                                    d="M515,104.732c.868,0,1.736,0,2.6,0,.526,0,.838.281.839.734a.744.744,0,0,1-.834.751q-2.623.011-5.246,0a.764.764,0,0,1-.861-.767c.009-.446.325-.718.856-.72.881,0,1.761,0,2.642,0"
-                                    transform="translate(-6.953 767.756)" fill="#efab1e" />
-                                <path id="Caminho_2985" data-name="Caminho 2985"
-                                    d="M471.165,161.146c-.77,0-1.539.009-2.309,0a.751.751,0,0,1-.792-.979.737.737,0,0,1,.779-.509c1.564,0,3.128,0,4.692,0a.746.746,0,0,1,.817.729.76.76,0,0,1-.8.754c-.794.013-1.589,0-2.383,0"
-                                    transform="translate(24.376 728.182)" fill="#efab1e" />
-                                <path id="Caminho_2986" data-name="Caminho 2986"
-                                    d="M486.906,75.253a2.741,2.741,0,0,0-2.358-2.14,2.674,2.674,0,0,0-2.779,1.273c-1.3,1.993-2.581,4-3.87,6.008-.077.12-.161.236-.3.446v-.5q0-7.935.008-15.87a1.027,1.027,0,0,0-.527-1.016H449.356a1.016,1.016,0,0,0-.529,1.013q.016,13.207.008,26.413c0,.087,0,.174,0,.261a.86.86,0,0,0,.011.095v6.409a1.441,1.441,0,0,0-.013.192q0,1.4,0,2.794c0,.732.246.973.992.973h26.785c.735,0,.982-.248.982-.984,0-2.968,0-5.936.008-8.9a1.282,1.282,0,0,1,.184-.653c2.728-4.265,5.475-8.517,8.2-12.785.388-.609.669-1.287,1-1.933v-.894a2.134,2.134,0,0,1-.078-.2m-10.822,24.839h-25.76c0-.307,0-.61,0-.911h.017V87.634h-.017V64.972H476.1v.281q0,8.829-.007,17.658a1.084,1.084,0,0,1-.174.546c-1.381,2.166-2.775,4.323-4.155,6.489a2.345,2.345,0,0,0-.311.744c-.192.882-.352,1.771-.531,2.69a2.928,2.928,0,0,0-2.442.609c-.023-.235-.044-.414-.058-.594-.153-1.9-1.583-2.718-3.245-1.786a11.694,11.694,0,0,0-1.934,1.438,9.941,9.941,0,0,0-2.093,2.692.734.734,0,0,0,.27,1.033.746.746,0,0,0,1-.273c.083-.123.152-.256.231-.382a8.923,8.923,0,0,1,3.274-3.233c.634-.348.9-.192,1,.528a1.478,1.478,0,0,1,.012.186c0,.805,0,1.611,0,2.416a.767.767,0,0,0,.507.817.744.744,0,0,0,.924-.427,3.351,3.351,0,0,1,1.271-1.376,4.849,4.849,0,0,1,.792-.281c0,.454.02.8-.006,1.144a.8.8,0,0,0,.361.867.825.825,0,0,0,.962-.138c1.308-.945,2.624-1.877,3.939-2.814.117-.084.239-.16.395-.264Zm-3.337-8.272,1.664,1.066-1.918,1.37c-.057.041-.119.075-.245.155l.5-2.592m2.77,0-2.261-1.453,8.75-13.613,2.26,1.454-8.749,13.611m9.54-14.878-2.229-1.43a1.371,1.371,0,1,1,2.229,1.43"
-                                    transform="translate(38.206 797.496)" fill="#efab1e" />
-                            </g>
-                        </svg>
-                        @if($cliente && $cliente->etapa_cadastro > 2 && $cliente->agriskTermosFinalizado)
-                            <i class="fas fa-check-circle text-success text-[10px] md:text-[20px] absolute bottom-[18px] right-[0px] md:bottom-[0px] md:right-[3px]"></i>
-                        @endif
+                            </svg>
+                            @if($cliente && $cliente->etapa_cadastro > 2 && $cliente->agriskTermosFinalizado)
+                                <i class="fas fa-check-circle text-success text-[10px] md:text-[20px] absolute bottom-[18px] right-[0px] md:bottom-[0px] md:right-[3px]"></i>
+                            @endif
+                        </div>
+                        <div class="px-4">
+                            <h3 class="text-black text-[16px] md:text-[23px] font-medium">Termos para Análise</h3>
+                            <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Nessa etapa você passará por um processo para permitir que façamos sua análise de crédito.</h4>
+                        </div>
+                        <div>
+                            <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 3 && !$cliente->agriskTermosFinalizado) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showTermosAgrisk')">Validar</a>
+                            <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-primary @if($cliente && $cliente->etapa_cadastro >= 3 && $cliente->agriskTermosFinalizado) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showTermosAgrisk')">Editar</a>
+                        </div>
                     </div>
-                    <div class="px-4">
-                        <h3 class="text-black text-[16px] md:text-[23px] font-medium">Termos para Análise</h3>
-                        <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Nessa etapa você passará por um processo para permitir que façamos sua análise de crédito.</h4>
-                    </div>
-                    <div>
-                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 3 && !$cliente->agriskTermosFinalizado) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showTermosAgrisk')">Validar</a>
-                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-primary @if($cliente && $cliente->etapa_cadastro >= 3 && $cliente->agriskTermosFinalizado) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showTermosAgrisk')">Editar</a>
-                    </div>
-                </div>
+                @endif
                 {{-- ETAPA 3 --}}
-                <div class="flex items-center w-full px-4 mt-4 rounded-lg @if($cliente && $cliente->etapa_cadastro == 3 && $cliente->agriskTermosFinalizado) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif py-4">
+                <div class="flex items-center w-full px-4 mt-4 rounded-lg @if($cliente && $cliente->etapa_cadastro == 3 && ($cliente->agriskTermosFinalizado || !$cliente->pessoa_fisica)) shadow-[2px_5px_10px_rgba(18,97,177,0.1)] @endif py-4">
                     <div class="relative">
                         <svg class="duration-300 animation w-[40px] md:w-auto hover:scale-105" xmlns="http://www.w3.org/2000/svg"
                             width="74.338" height="74.338" viewBox="0 0 74.338 74.338">
@@ -190,7 +192,7 @@
                         <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Informações da propriedade para emissão da documentação fiscal e de transporte dos animais.</h4>
                     </div>
                     <div>
-                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 3 && $cliente->agriskTermosFinalizado) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormDadosPropriedade')">Validar</a>
+                        <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-success @if($cliente && $cliente->etapa_cadastro == 3 && ($cliente->agriskTermosFinalizado || !$cliente->pessoa_fisica)) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormDadosPropriedade')">Validar</a>
                         <a class="text-[14px] md:text-[18px] text-white cpointer py-[6px] px-[10px] rounded-lg bg-[#F5B029] hover:btn-primary @if($cliente && $cliente->etapa_cadastro > 3) visible @else hidden @endif" @click="showListaEtapas = false; $wire.emit('showFormDadosPropriedade')">Editar</a>
                     </div>
                 </div>
