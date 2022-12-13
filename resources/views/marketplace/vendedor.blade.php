@@ -2,7 +2,7 @@
 
 @section('conteudo')
 
-<x-marketplace.vendedor.banner></x-marketplace.vendedor.banner>
+<x-marketplace.vendedor.banner :banner="$vendedor->banner"></x-marketplace.vendedor.banner>
 <x-marketplace.vendedor.navbar></x-marketplace.vendedor.navbar>
 <div class="w-full px-5 py-5">
     <div class="relative w-full text-center">
