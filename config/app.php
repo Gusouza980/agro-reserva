@@ -238,6 +238,7 @@ return [
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Goutte' => Weidner\Goutte\GoutteFacade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        "Clientes" => App\Classes\Funcoes\Clientes::class,
     ],
 
 ];

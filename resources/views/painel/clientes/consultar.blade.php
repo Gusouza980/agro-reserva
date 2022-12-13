@@ -61,6 +61,7 @@
                                 <th>Nome</th>
                                 <th>Cnpj/Cpf</th>
                                 <th>Aprovação</th>
+                                <th>Termos Agrisk</th>
                                 <th>Cadastro</th>
                                 <th>Email</th>
                                 <th>País</th>
@@ -107,6 +108,9 @@
                                         @else
                                             <span style="color: green;">Aprovado</span>
                                         @endif
+                                    </td>
+                                    <td style="vertical-align: middle; text-align:center;">
+                                        {{ \Clientes::getAgriskStatus($cliente) }}
                                     </td>
                                     <td style="vertical-align: middle; text-align:center;">
                                         @if($cliente->finalizado == 0)
