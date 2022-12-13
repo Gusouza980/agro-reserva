@@ -66,7 +66,7 @@ class TermosAgrisk extends Component
                     session()->flash("erro", "Desculpe. Ainda não conseguimos gerar os termos de compromisso para a sua análise de crédito. Por favor, tente novamente em alguns minutos.");
                 }
             }else{
-                Log::channel('agrisk')->emergency('Erro de autenticação a API Agrisk durante o cadastro do cliente <b>' . $this->cliente->nome_dono . "</b>");
+                Log::channel('agrisk')->emergency('Erro de autenticação a API Agrisk durante a apresentação dos termos do cliente <b>' . $this->cliente->nome_dono . "</b>", ["response" => $api->lastError]);
                 session()->flash("erro", "Desculpe, estamos com um problema em nosso sistema. Tente novamente mais tarde, ou entre em contato com nosso time comercial.");
             }
         }
@@ -103,7 +103,7 @@ class TermosAgrisk extends Component
                 $this->reprovado = true;
             }
         }else{
-            Log::channel('agrisk')->emergency('Erro de autenticação a API Agrisk durante o cadastro do cliente <b>' . $this->cliente->nome_dono . "</b>");
+            Log::channel('agrisk')->emergency('Erro de autenticação a API Agrisk durante o envio de respostas do cliente <b>' . $this->cliente->nome_dono . "</b>", ["response" => $api->lastError]);
             session()->flash("erro", "Desculpe, estamos com um problema em nosso sistema. Tente novamente mais tarde, ou entre em contato com nosso time comercial.");
         }
     }
@@ -123,12 +123,12 @@ class TermosAgrisk extends Component
                     $this->show = false;
                     $this->emit("showListaEtapas");
                 }else{
-                    Log::channel('agrisk')->emergency('Erro na validação do código Agrisk do cliente <b>' . $this->cliente->nome_dono . "</b>");
+                    Log::channel('agrisk')->emergency('Erro na validação do código Agrisk do cliente <b>' . $this->cliente->nome_dono . "</b>", ["response" => $api->lastError]);
                     session()->flash("erro", "Ocorreu um erro ao validar seu código de ativação. Por favor, verifique se o código está correto.");
                     $this->codigo_ativacao = null;
                 }
             }else{
-                Log::channel('agrisk')->emergency('Erro de autenticação a API Agrisk durante o cadastro do cliente <b>' . $this->cliente->nome_dono . "</b>");
+                Log::channel('agrisk')->emergency('Erro de autenticação a API Agrisk durante a verificação de código do cliente <b>' . $this->cliente->nome_dono . "</b>", ["response" => $api->lastError]);
                 session()->flash("erro", "Desculpe, estamos com um problema em nosso sistema. Tente novamente mais tarde, ou entre em contato com nosso time comercial.");
             }
         }
@@ -141,11 +141,11 @@ class TermosAgrisk extends Component
             if($response){
                 session()->flash("sucesso", "Enviamos um novo código para seu número cadastrado. Caso ainda não receba você pode entrar em contato com nosso time comercial.");
             }else{
-                Log::channel('agrisk')->emergency('Erro no envio do código de verificação Agrisk para o cliente <b>' . $this->cliente->nome_dono . "</b>");
+                Log::channel('agrisk')->emergency('Erro no envio do código de verificação Agrisk para o cliente <b>' . $this->cliente->nome_dono . "</b>", ["response" => $api->lastError]);
                 $this->erro_codigo = true;
             }
         }else{
-            Log::channel('agrisk')->emergency('Erro de autenticação a API Agrisk durante o cadastro do cliente <b>' . $this->cliente->nome_dono . "</b>");
+            Log::channel('agrisk')->emergency('Erro de autenticação a API Agrisk durante o reenvio do código do cliente <b>' . $this->cliente->nome_dono . "</b>", ["response" => $api->lastError]);
             session()->flash("erro", "Desculpe, estamos com um problema em nosso sistema. Tente novamente mais tarde, ou entre em contato com nosso time comercial.");
         }
     }
