@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="w-full mt-4">
-            <button class="w-full hover:bg-green-500 hover:text-white transition duration-200 border-2 font-bold font-montserrat rounded-[10px] py-2 border-green-500 text-green-500 text-[14px]">Saiba mais</button>
+            <button onclick="window.location.href = '{{ route('marketplace.produto', ['slug' => $produto->vendedor->slug, 'produto' => $produto->id]) }}'" class="w-full hover:bg-green-500 hover:text-white transition duration-200 border-2 font-bold font-montserrat rounded-[10px] py-2 border-green-500 text-green-500 text-[14px]">Saiba mais</button>
         </div>
         {{-- <hr class="my-1">
         <div class="flex items-center justify-between w-full mt-2 text-[#626262]">
