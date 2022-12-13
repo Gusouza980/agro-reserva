@@ -43,6 +43,7 @@ abstract class Apiary
         }else{
             $this->authenticated = false;
             $this->lastError = $response->object();
+            \Log::emergency('Erro na autenticação da API', ["oject" => $response->object()]);
         }
     }
 
@@ -51,7 +52,11 @@ abstract class Apiary
     }
 
     public function getLastError(){
-        return $this->lastError;
+        if($this->lastError){
+            return $this->lastError;
+        }else{
+            return "Sem informações";
+        }
     }
 
     public function checkError($response){
