@@ -132,6 +132,22 @@
                                 <img src="{{ asset($vendedor->logo) }}" width="200" alt="">
                             </div>
                         </div>
+                        <hr>
+                        <div class="d-flex flex-row">
+                            <div class="mb-3">
+                                <h4 class="card-title mb-4">Banner</h4>
+                                <label class="custom-file">
+                                    <input type="file" name="banner" id="banner" placeholder="Escolha o banner"
+                                        class="custom-file-input" aria-describedby="fileHelpId">
+                                    <span class="custom-file-control"></span>
+                                </label>
+                                <small id="fileHelpId" class="form-text text-muted">Dê preferência para imagens
+                                    retângulares</small>
+                            </div>
+                            <div class="mb-3 ms-5">
+                                <img src="{{ asset($vendedor->banner) }}" width="300" alt="">
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="d-grid gap-2">

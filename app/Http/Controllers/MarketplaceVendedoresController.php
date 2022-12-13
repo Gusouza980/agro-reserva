@@ -49,6 +49,12 @@ class MarketplaceVendedoresController extends Controller
                 'imagens/vendedores/', 'local'
             );
         }
+        if($request->file("banner")){
+            Storage::delete($vendedor->banner);
+            $vendedor->banner = $request->file('banner')->store(
+                'imagens/vendedores/', 'local'
+            );
+        }
         $vendedor->save();
         return redirect()->route("painel.marketplace.vendedores");
     }

@@ -3,7 +3,7 @@
 return [
     'segmentos' => [
         0 => "Sêmen",
-        1 => "Ferramentas",
+        1 => "Roupas",
     ],
 ];
 

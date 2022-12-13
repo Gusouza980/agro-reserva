@@ -30,7 +30,6 @@ class FormGaleria extends Component
     }
 
     public function save(){
-        Log::info("foi");
         $nova_imagem = new MarketplaceProdutoImagem;
         $nova_imagem->marketplace_produto_id = $this->produto->id;
         $nova_imagem->caminho = $this->imagem->store('site/imagens/produtos/' . $this->produto->id . "/", 'local');
