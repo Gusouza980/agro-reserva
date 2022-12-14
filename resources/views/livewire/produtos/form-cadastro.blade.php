@@ -5,10 +5,24 @@
             <input type="hidden" name="marketplace_produto_id" value="{{ $produto->id }}">
         @endif
         <div class="row">
-            <div class="col-12">
+            <div class="col-9">
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome do Produto (*)</label>
                     <input type="text" class="form-control" name="nome" id="nome" @if($produto) value="{{ $produto->nome }}" @endif maxlength="255" required>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    <label for="marketplace_categoria_id" class="form-label">Categoria do Produto (*)</label>
+                    <select type="select" class="form-control" name="marketplace_categoria_id" id="marketplace_categoria_id" required>
+                        @foreach($categorias as $categoria)
+                            <optgroup label="{{ $categoria->nome }}">
+                                @foreach($categoria->subcategorias as $subcategoria)
+                                    <option value="{{ $subcategoria->id }}">{{ $subcategoria->nome }}</option>
+                                @endforeach
+                            </optgroup>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-12">
@@ -67,7 +81,7 @@
             @endif
         </div>
         <hr>
-        @if($segmento !== null)
+        {{-- @if($segmento !== null)
             @switch($segmento)
                 @case(0)
                     @livewire("produtos.form-semen", ["semen" => (isset($produto->produtable) ? $produto->produtable : null)])
@@ -77,7 +91,7 @@
                     @break
                 @default
             @endswitch
-        @endif
+        @endif --}}
         <div class="row">
             <div class="col-12">
                 <div class="gap-2 d-grid">

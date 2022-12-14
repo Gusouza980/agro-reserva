@@ -39,6 +39,7 @@ class MarketplaceProdutosController extends Controller
         $produto->resumo = $request->resumo;
         $produto->segmento = $request->segmento;
         $produto->descricao = $request->descricao;
+        $produto->marketplace_categoria_id = $request->marketplace_categoria_id;
         // $produto->estoque = $request->estoque;
         $produto->estoque = 0;
         $produto->valor = $request->valor;
@@ -60,13 +61,13 @@ class MarketplaceProdutosController extends Controller
 
         $produto->save();
 
-        switch($request->segmento){
-            case(0):
-                $this->semen($produto, $request, $novo);
-                break;
-            default:
-                break;
-        }
+        // switch($request->segmento){
+        //     case(0):
+        //         $this->semen($produto, $request, $novo);
+        //         break;
+        //     default:
+        //         break;
+        // }
 
         return redirect()->route("painel.marketplace.vendedores.produtos", ['vendedor' => $vendedor]);
     }

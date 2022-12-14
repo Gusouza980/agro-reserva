@@ -1,5 +1,5 @@
 <div class="flex items-center justify-center w-full py-2 space-x-10 bg-[#2E313C]">
-    <a class="text-white text-[16px] font-montserrat font-medium" href="">Nome da loja</a>
-    <a class="text-white text-[16px] font-montserrat font-medium" href="">Sobre Nós</a>
-    <a class="text-white text-[16px] font-montserrat font-medium" href="">Localização da Loja</a>
+    <a class="text-[14px] md:text-[16px] font-montserrat font-medium cursor-pointer @if($exibicao == 'produtos') !text-[#F5B01F] @else text-white @endif hover:!text-[#F5B01F]" onclick="@this.set('exibicao', 'produtos');">{{ $vendedor->nome }}</a>
+    <a class="text-[14px] md:text-[16px] font-montserrat font-medium cursor-pointer @if($exibicao == 'sobre') !text-[#F5B01F] @else text-white @endif hover:!text-[#F5B01F]" onclick="@this.set('exibicao', 'sobre');">Sobre Nós</a>
+    <a class="text-[14px] md:text-[16px] font-montserrat font-medium cursor-pointer @if($exibicao == 'localizacao') !text-[#F5B01F] @else text-white @endif hover:!text-[#F5B01F]" onclick="@this.set('exibicao', 'localizacao');">Localização da Loja</a>
 </div>

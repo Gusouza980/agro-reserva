@@ -16,4 +16,8 @@ class MarketplaceCategoria extends Model
     public function categoria(){
         return $this->belongsTo(MarketplaceCategoria::class, "marketplace_categoria_id", "id");
     }
+
+    public function subcategorias(){
+        return $this->hasMany(MarketplaceCategoria::class);
+    }
 }

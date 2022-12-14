@@ -3,21 +3,18 @@
 namespace App\View\Components\Marketplace\Vendedor;
 
 use Illuminate\View\Component;
-use App\Models\MarketplaceVendedor;
 
-class Navbar extends Component
+class Produtos extends Component
 {
-    public $vendedor;
-    public $exibicao;
+    public $produtos;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($vendedor, $exibicao)
+    public function __construct($produtos)
     {
-        $this->vendedor = MarketplaceVendedor::find($vendedor);
-        $this->exibicao = $exibicao;
+        $this->produtos = $produtos;
     }
 
     /**
@@ -27,6 +24,6 @@ class Navbar extends Component
      */
     public function render()
     {
-        return view('components.marketplace.vendedor.navbar');
+        return view('components.marketplace.vendedor.produtos');
     }
 }

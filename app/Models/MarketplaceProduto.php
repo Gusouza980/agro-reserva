@@ -13,6 +13,10 @@ class MarketplaceProduto extends Model
         return $this->morphTo();
     }
 
+    public function categoria(){
+        return $this->belongsTo(MarketplaceCategoria::class, "marketplace_categoria_id", "id");
+    }
+
     public function imagens(){
         return $this->hasMany(MarketplaceProdutoImagem::class);
     }
