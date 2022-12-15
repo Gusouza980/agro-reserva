@@ -5,6 +5,7 @@ namespace App\View\Components\Marketplace\Vendedor;
 use Illuminate\View\Component;
 use App\Models\MarketplaceVendedor;
 use App\Models\MarketplaceCategoria;
+use Jenssegers\Agent\Agent;
 
 class MenuLateral extends Component
 {
@@ -13,6 +14,8 @@ class MenuLateral extends Component
     public $subcategorias;
     public $exibicao;
     public $filtro;
+
+    public $agent;
     /**
      * Create a new component instance.
      *
@@ -28,6 +31,7 @@ class MenuLateral extends Component
         $this->subcategorias = $subcategorias;
         $this->exibicao = $exibicao;
         $this->filtro = $filtro;
+        $this->agent = new Agent;
     }
 
     /**

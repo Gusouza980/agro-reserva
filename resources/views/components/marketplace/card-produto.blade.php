@@ -1,4 +1,4 @@
-<div class="w-full max-w-[300px] shadow-md border border-solid border-[#626262] p-2 rounded-xl hover:scale-105 transition duration-300">
+<div class="w-full mx-auto max-w-[300px] shadow-md border border-solid border-[#626262] p-2 rounded-xl hover:scale-105 transition duration-300">
     <div class="w-full max-h-[200px] overflow-y-hidden cursor-pointer" onclick="window.location.href = '{{ route('marketplace.produto', ['slug' => $produto->vendedor->slug, 'produto' => $produto->id]) }}'">
         <img class="rounded-t-xl" src="{{ asset($produto->preview->caminho) }}" class="w-full" alt="">
     </div>

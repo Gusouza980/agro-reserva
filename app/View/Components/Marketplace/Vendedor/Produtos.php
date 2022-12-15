@@ -3,10 +3,12 @@
 namespace App\View\Components\Marketplace\Vendedor;
 
 use Illuminate\View\Component;
+use Jenssegers\Agent\Agent;
 
 class Produtos extends Component
 {
     public $produtos;
+    public $agent;
     /**
      * Create a new component instance.
      *
@@ -15,6 +17,7 @@ class Produtos extends Component
     public function __construct($produtos)
     {
         $this->produtos = $produtos;
+        $this->agent = new Agent();
     }
 
     /**

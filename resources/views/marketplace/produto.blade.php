@@ -26,9 +26,9 @@
                 </div>
             </div>
             <div class="flex flex-wrap w-full px-4 mt-4 md:px-0 px-md-0">
-                <div class="order-2 w-full mt-5 mt-md-0 md:order-1 md:w-3/5 md:mt-0">
-                    <div class="hidden w-full md:flex space-x-4">
-                        <div class="w-[170px] flex flex-col space-y-2">
+                <div class="order-1 w-full mt-5 mt-md-0 md:w-3/5 md:mt-0">
+                    <div class="w-full flex md:space-x-4">
+                        <div class="hidden w-[170px] md:flex flex-col space-y-2">
                             @foreach($produto->imagens->where("id", "<>", $produto->marketplace_produto_imagem_id) as $imagem)
                                 <div>
                                     <a class="popup_preview" href="{{ asset($imagem->caminho) }}">
@@ -37,32 +37,29 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="grow h-[500px] overflow-y-hidden">
-                            <img src="{{ asset($produto->preview->caminho) }}" class="h-[500px]" alt="">
+                        <div class="grow w-full md:h-[500px]">
+                            <img src="{{ asset($produto->preview->caminho) }}" class="w-full md:h-[500px]" alt="">
                         </div>
                     </div>
-                    <div class="w-full md:hidden">
+                    <div class="w-full md:hidden mt-3">
                         <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar">
-                            <div class="flex flex-nowrap">
-                                <div class="inline-block mx-[6px] slide-item w-[340px]">
-                                    <img src="{{ asset($produto->preview->caminho) }}" class="w-full" alt="">
-                                </div>
+                            <div class="flex space-x-2 flex-nowrap">
                                 @foreach($produto->imagens as $imagem)
-                                    <div class="inline-block mx-[6px] slide-item w-[340px]">
-                                        <img src="{{ asset($imagem->caminho) }}" class="w-full transition duration-150 rounded-md hover:scale-105" alt="">
+                                    <div class="inline-block slide-item w-[120px]">
+                                        <img src="{{ asset($imagem->caminho) }}" class="max-w-full h-[120px] md:h-full transition duration-150 rounded-lg hover:scale-105" alt="">
                                     </div>
                                 @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="order-1 w-full md:order-2 md:w-2/5 md:pl-10">
+                <div class="order-2 w-full md:w-2/5 md:pl-10 mt-4 md:mt-0">
                     <div class="flex items-center justify-between w-full">
                         <div>
                             <img src="{{ asset($produto->vendedor->logo) }}" class="w-full max-w-[150px] md:max-w-[200px] " alt="">
                         </div>
                         <div class="md:hidden">
-                            <a href="" class="text-[#283646] text-[18px] font-montserrat font-medium hover:text-[#E8521D] transition "><i class="mr-2 fas fa-chevron-left"></i> Voltar</a>
+                            <a href="{{ route('marketplace.vendedor', ['slug' => $produto->vendedor->slug]) }}" class="text-[#283646] text-[18px] font-montserrat font-medium hover:text-[#E8521D] transition "><i class="mr-2 fas fa-chevron-left"></i> Voltar</a>
                         </div>
 
                     </div>
@@ -96,7 +93,7 @@
                             </div>
                             <div class="w-full flex space-x-4 mt-3">
                                 <div class="grow">
-                                    <button onclick="window.location.href = '{{ route('marketplace.produto', ['slug' => $produto->vendedor->slug, 'produto' => $produto->id]) }}'" class="w-full bg-green-500 text-white hover:bg-green-800 transition duration-200 border-2 font-bold font-montserrat rounded-[10px] py-2 text-[14px]">Enviar Interesse</button>
+                                    <button onclick="window.location.href = '{{ route('marketplace.produto', ['slug' => $produto->vendedor->slug, 'produto' => $produto->id]) }}'" class="w-full bg-green-500 border-green-500 text-white hover:bg-green-800 transition duration-200 border-2 font-bold font-montserrat rounded-[10px] py-2 text-[14px]">Enviar Interesse</button>
                                 </div>
                                 <div class="grow">
                                     <button onclick="window.location.href = '{{ route('marketplace.produto', ['slug' => $produto->vendedor->slug, 'produto' => $produto->id]) }}'" class="w-full hover:bg-green-500 hover:text-white transition duration-200 border-2 font-bold font-montserrat rounded-[10px] py-2 border-green-500 text-green-500 text-[14px]"> <i class="fab fa-whatsapp mr-2 fa-xl"></i> Whatsapp</button>

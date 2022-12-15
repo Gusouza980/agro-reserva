@@ -1,6 +1,6 @@
 <div class="w-full">
     <x-marketplace.vendedor.navbar :vendedor="$vendedor->id" :exibicao="$exibicao"></x-marketplace.vendedor.navbar>
-    <div class="w-full px-5 py-5">
+    <div class="w-full px-2 px-md-5 md:px-5 py-5">
         <div class="relative w-full text-center">
             <div class="text-[28px] text-gray-600 font-medium font-montserrat">
                 @switch($exibicao)
@@ -29,11 +29,11 @@
                         DEFAULT
                 @endswitch
             </div>
-            <div class="absolute left-0 top-2">
+            <div class="hidden md:block md:absolute left-0 top-2">
                 <x-botoes.voltar :rota="route('index')"></x-botoes.voltar>
             </div>
         </div>
-        <div class="flex justify-start w-full space-x-10">
+        <div class="flex justify-start relative w-full md:space-x-10 min-h-[60vh]">
             <x-marketplace.vendedor.menu-lateral :vendedor="$vendedor->id" :exibicao="$exibicao" :filtro="$filtro_produtos"></x-marketplace.vendedor.menu-lateral>
             @switch($exibicao)
                 @case('produtos')
