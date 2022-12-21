@@ -18,15 +18,17 @@
     </div>
 </div>
 <div class="row justify-content-start">
-    <div class="col-12 col-lg-6">
+    <div class="col-12">
         <div class="card">
             <div class="card-body">
 
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
+                            <th style="width: 120px;"></th>
                             <th>Nome</th>
                             <th>Telefone</th>
+                            <th>E-mail</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -34,9 +36,11 @@
 
                     <tbody>
                         @foreach($assessores as $assessor)
-                            <tr>
+                            <tr @if(!$assessor->ativo) style="background-color: rgba(255, 0, 0, 0.2)" @endif>
+                                <td class="text-center"><img @if($assessor->foto) src="{{ asset($assessor->foto) }}" @else src="{{ asset('admin/images/thumb-padrao.png') }}" @endif class="foto-rounded-100" alt=""></td>
                                 <td style="vertical-align: middle; text-align:center;">{{$assessor->nome}}</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$assessor->telefone}}</td>
+                                <td style="vertical-align: middle; text-align:center;">{{$assessor->email}}</td>
                                 <td style="vertical-align: middle; text-align:center;">
                                     <a name="" id="" class="btn btn-warning cpointer" data-bs-toggle="modal" data-bs-target="#modalEditaAssessor{{$assessor->id}}" role="button">Editar</a>
                                     <a name="" id="" class="btn btn-danger" href="{{route('painel.assessor.excluir', ['assessor' => $assessor])}}" role="button">Excluir</a>
@@ -45,16 +49,6 @@
                         @endforeach
                     </tbody>
                 </table>
-
-            </div>
-        </div>
-    </div> <!-- end col -->
-    <div class="col-12 col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Ranking de Vendas</h4>
-                            
-                <div id="ranking_vendas" class="apex-charts" dir="ltr"></div>
 
             </div>
         </div>
@@ -71,7 +65,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('painel.assessor.editar', ['assessor' => $assessor])}}" method="post">
+                    <form action="{{route('painel.assessor.editar', ['assessor' => $assessor])}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                           <label for="nome">Nome</label>
@@ -79,9 +73,32 @@
                             class="form-control" name="nome" value="{{$assessor->nome}}" maxlength="100" required>
                         </div>
                         <div class="form-group mt-3">
+                            <label for="email">E-mail</label>
+                            <input type="text"
+                              class="form-control" name="email" value="{{$assessor->email}}" maxlength="100" required>
+                          </div>
+                        <div class="form-group mt-3">
                             <label for="telefone">Telefone</label>
                             <input type="text"
                               class="form-control" name="telefone" value="{{$assessor->telefone}}" maxlength="16">
+                        </div>
+                        <div class="mt-3">
+                            <label for="" class="form-label">Ativo</label>
+                            <select class="form-select form-select-lg" name="ativo" id="">
+                                <option value="1" @if($assessor->ativo) selected @endif>Sim</option>
+                                <option value="0" @if(!$assessor->ativo) selected @endif>Não</option>
+                            </select>
+                        </div>
+                        <div class="mt-3">
+                            <label for="" class="form-label">Vende no Marketplace</label>
+                            <select class="form-select form-select-lg" name="marketplace" id="">
+                                <option value="1" @if($assessor->marketplace) selected @endif>Sim</option>
+                                <option value="0" @if(!$assessor->marketplace) selected @endif>Não</option>
+                            </select>
+                        </div>
+                        <div class="mt-3">
+                            <label for="" class="form-label">Foto</label>
+                            <input type="file" class="form-control" name="foto">
                         </div>
                         <div class="form-group mt-3 text-end">
                             <button type="submit" class="btn btn-primary mt-3">Salvar</button>
@@ -101,7 +118,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('painel.assessor.cadastrar')}}" method="post">
+                <form action="{{route('painel.assessor.cadastrar')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                       <label for="nome">Nome</label>
@@ -109,9 +126,32 @@
                         class="form-control" name="nome" placeholder="Digite o nome da assessor" maxlength="100" required>
                     </div>
                     <div class="form-group mt-3">
+                        <label for="email">E-mail</label>
+                        <input type="text"
+                          class="form-control" name="email" maxlength="100" required>
+                      </div>
+                    <div class="form-group mt-3">
                         <label for="telefone">Telefone</label>
                         <input type="text"
                           class="form-control" name="telefone" placeholder="(00) 0 0000-0000" maxlength="16">
+                    </div>
+                    <div class="mt-3">
+                        <label for="" class="form-label">Ativo</label>
+                        <select class="form-select form-select-lg" name="ativo" id="">
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
+                        </select>
+                    </div>
+                    <div class="mt-3">
+                        <label for="" class="form-label">Vende no Marketplace</label>
+                        <select class="form-select form-select-lg" name="marketplace" id="">
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
+                        </select>
+                    </div>
+                    <div class="mt-3">
+                        <label for="" class="form-label">Foto</label>
+                        <input type="file" class="form-control" name="foto">
                     </div>
                     <div class="form-group mt-3 text-end">
                         <button type="submit" class="btn btn-primary mt-3">Salvar</button>

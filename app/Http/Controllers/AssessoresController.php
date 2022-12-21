@@ -7,6 +7,7 @@ use App\Models\Assessor;
 use App\Models\Venda;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class AssessoresController extends Controller
 {
@@ -23,6 +24,14 @@ class AssessoresController extends Controller
         $assessor = new Assessor;
         $assessor->nome = $request->nome;
         $assessor->telefone = $request->telefone;
+        $assessor->email = $request->email;
+        $assessor->ativo = $request->ativo;
+        $assessor->marketplace = $request->marketplace;
+        if($request->file("foto")){
+            $assessor->foto = $request->file('foto')->store(
+                'imagens/', 'local'
+            );
+        }
         $assessor->save();
         toastr()->success("Assessor cadastrado com sucesso!");
         return redirect()->back();
@@ -31,6 +40,15 @@ class AssessoresController extends Controller
     public function editar(Request $request, Assessor $assessor){
         $assessor->nome = $request->nome;
         $assessor->telefone = $request->telefone;
+        $assessor->email = $request->email;
+        $assessor->ativo = $request->ativo;
+        $assessor->marketplace = $request->marketplace;
+        if($request->file("foto")){
+            Storage::delete($assessor->foto);
+            $assessor->foto = $request->file('foto')->store(
+                'imagens/', 'local'
+            );
+        }
         $assessor->save();
         toastr()->success("Alterações salvas com sucesso!");
         return redirect()->back();

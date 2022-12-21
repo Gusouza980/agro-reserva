@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\MarketplaceVendedor;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Image;
 
 class MarketplaceVendedoresController extends Controller
 {
@@ -42,6 +43,7 @@ class MarketplaceVendedoresController extends Controller
         $vendedor->bairro = $request->bairro;
         $vendedor->cidade = $request->cidade;
         $vendedor->estado = $request->estado;
+        $vendedor->localizacao = $request->localizacao;
         $vendedor->cep = $request->cep;
         if($request->file("logo")){
             Storage::delete($vendedor->logo);
@@ -55,6 +57,40 @@ class MarketplaceVendedoresController extends Controller
                 'imagens/vendedores/', 'local'
             );
         }
+
+        $dom = new \DOMDocument();
+        $dom->loadHTML(
+            mb_convert_encoding($request->sobre, 'HTML-ENTITIES', 'UTF-8'),
+            LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD
+        );
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $count => $image) {
+            $src = $image->getAttribute('src');
+
+            if (preg_match('/data:image/', $src)) {
+                preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                $mimeType = $groups['mime'];
+                if(!is_dir('imagens/')){
+                    mkdir('imagens/');
+                }
+                if(!is_dir('imagens/')){
+                    mkdir('imagens/');
+                }
+                $path = 'imagens/' . uniqid('', true) . '.' . $mimeType;
+
+                Image::make($src)
+                    ->encode($mimeType, 80)
+                    ->save(public_path($path));
+
+                $image->removeAttribute('src');
+                $image->setAttribute('src', asset($path));
+            }
+        }
+
+        $vendedor->sobre = $dom->saveHTML();
+
         $vendedor->save();
         return redirect()->route("painel.marketplace.vendedores");
     }

@@ -96,7 +96,7 @@
                                     <button onclick="window.location.href = '{{ route('marketplace.produto', ['slug' => $produto->vendedor->slug, 'produto' => $produto->id]) }}'" class="w-full bg-green-500 border-green-500 text-white hover:bg-green-800 transition duration-200 border-2 font-bold font-montserrat rounded-[10px] py-2 text-[14px]">Enviar Interesse</button>
                                 </div>
                                 <div class="grow">
-                                    <button onclick="window.location.href = '{{ route('marketplace.produto', ['slug' => $produto->vendedor->slug, 'produto' => $produto->id]) }}'" class="w-full hover:bg-green-500 hover:text-white transition duration-200 border-2 font-bold font-montserrat rounded-[10px] py-2 border-green-500 text-green-500 text-[14px]"> <i class="fab fa-whatsapp mr-2 fa-xl"></i> Whatsapp</button>
+                                    <button type="button" onclick="Livewire.emit('carregaModalSelecaoAsssessor', {{ $produto->id }})" class="w-full hover:bg-green-500 hover:text-white transition duration-200 border-2 font-bold font-montserrat rounded-[10px] py-2 border-green-500 text-green-500 text-[14px]"> <i class="fab fa-whatsapp mr-2 fa-xl"></i> Whatsapp</button>
                                 </div>
                             </div>
                         </form>
@@ -208,6 +208,7 @@
         </div>
     </div> --}}
 </div>
+@livewire('marketplace.produto.modal-selecao-assessor')
 
 @endsection
 
