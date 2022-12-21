@@ -3361,6 +3361,12 @@ body[dir="rtl"] .checkbox:checked,
 .sticky {
     position: sticky
 }
+.inset-0 {
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px
+}
 .top-0 {
     top: 0px
 }
@@ -3415,6 +3421,12 @@ body[dir="rtl"] .checkbox:checked,
 .top-2 {
     top: 0.5rem
 }
+.top-\[calc\(50\%-150px\)\] {
+    top: calc(50% - 150px)
+}
+.top-\[50\%\] {
+    top: 50%
+}
 .bottom-\[5px\] {
     bottom: 5px
 }
@@ -3429,12 +3441,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 .right-\[-25px\] {
     right: -25px
-}
-.top-\[50\%\] {
-    top: 50%
-}
-.top-\[calc\(50\%-150px\)\] {
-    top: calc(50% - 150px)
 }
 .z-30 {
     z-index: 30
@@ -3457,11 +3463,14 @@ body[dir="rtl"] .checkbox:checked,
 .z-\[11\] {
     z-index: 11
 }
-.order-2 {
-    order: 2
+.z-\[100\] {
+    z-index: 100
 }
 .order-1 {
     order: 1
+}
+.order-2 {
+    order: 2
 }
 .col-auto {
     grid-column: auto
@@ -3487,10 +3496,6 @@ body[dir="rtl"] .checkbox:checked,
     margin-top: 0.75rem;
     margin-bottom: 0.75rem
 }
-.mx-\[6px\] {
-    margin-left: 6px;
-    margin-right: 6px
-}
 .my-6 {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem
@@ -3498,6 +3503,10 @@ body[dir="rtl"] .checkbox:checked,
 .my-5 {
     margin-top: 1.25rem;
     margin-bottom: 1.25rem
+}
+.mx-3 {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem
 }
 .my-auto {
     margin-top: auto;
@@ -3518,6 +3527,10 @@ body[dir="rtl"] .checkbox:checked,
 .mx-\[12px\] {
     margin-left: 12px;
     margin-right: 12px
+}
+.mx-\[6px\] {
+    margin-left: 6px;
+    margin-right: 6px
 }
 .my-\[20px\] {
     margin-top: 20px;
@@ -3542,10 +3555,6 @@ body[dir="rtl"] .checkbox:checked,
 .mx-5 {
     margin-left: 1.25rem;
     margin-right: 1.25rem
-}
-.mx-3 {
-    margin-left: 0.75rem;
-    margin-right: 0.75rem
 }
 .my-\[15px\] {
     margin-top: 15px;
@@ -3708,6 +3717,9 @@ body[dir="rtl"] .checkbox:checked,
 .mt-\[70px\] {
     margin-top: 70px
 }
+.mb-6 {
+    margin-bottom: 1.5rem
+}
 .block {
     display: block
 }
@@ -3756,8 +3768,8 @@ body[dir="rtl"] .checkbox:checked,
 .h-\[160px\] {
     height: 160px
 }
-.h-\[500px\] {
-    height: 500px
+.h-\[120px\] {
+    height: 120px
 }
 .h-\[400px\] {
     height: 400px
@@ -3771,14 +3783,17 @@ body[dir="rtl"] .checkbox:checked,
 .h-full {
     height: 100%
 }
+.h-\[500px\] {
+    height: 500px
+}
 .h-screen {
     height: 100vh
 }
-.h-\[45px\] {
-    height: 45px
-}
 .h-\[40px\] {
     height: 40px
+}
+.h-\[45px\] {
+    height: 45px
 }
 .h-8 {
     height: 2rem
@@ -3798,32 +3813,23 @@ body[dir="rtl"] .checkbox:checked,
 .h-\[30px\] {
     height: 30px
 }
-.h-\[80px\] {
-    height: 80px
-}
-.h-\[120px\] {
-    height: 120px
-}
 .max-h-\[200px\] {
     max-height: 200px
 }
 .max-h-\[300px\] {
     max-height: 300px
 }
+.max-h-\[100vh\] {
+    max-height: 100vh
+}
 .min-h-\[35vh\] {
     min-height: 35vh
 }
-.min-h-\[300px\] {
-    min-height: 300px
+.min-h-\[60vh\] {
+    min-height: 60vh
 }
 .min-h-screen {
     min-height: 100vh
-}
-.min-h-\[350px\] {
-    min-height: 350px
-}
-.min-h-\[60vh\] {
-    min-height: 60vh
 }
 .w-6 {
     width: 1.5rem
@@ -3846,8 +3852,8 @@ body[dir="rtl"] .checkbox:checked,
 .w-\[170px\] {
     width: 170px
 }
-.w-\[340px\] {
-    width: 340px
+.w-\[120px\] {
+    width: 120px
 }
 .w-40 {
     width: 10rem
@@ -3873,14 +3879,17 @@ body[dir="rtl"] .checkbox:checked,
 .w-\[150px\] {
     width: 150px
 }
+.w-\[340px\] {
+    width: 340px
+}
 .w-screen {
     width: 100vw
 }
-.w-\[300px\] {
-    width: 300px
-}
 .w-\[450px\] {
     width: 450px
+}
+.w-\[300px\] {
+    width: 300px
 }
 .w-auto {
     width: auto
@@ -3910,12 +3919,6 @@ body[dir="rtl"] .checkbox:checked,
 .w-\[100px\] {
     width: 100px
 }
-.w-\[30px\] {
-    width: 30px
-}
-.w-\[120px\] {
-    width: 120px
-}
 .max-w-\[800px\] {
     max-width: 800px
 }
@@ -3931,11 +3934,11 @@ body[dir="rtl"] .checkbox:checked,
 .max-w-\[350px\] {
     max-width: 350px
 }
-.max-w-\[150px\] {
-    max-width: 150px
-}
 .max-w-full {
     max-width: 100%
+}
+.max-w-\[150px\] {
+    max-width: 150px
 }
 .max-w-\[900px\] {
     max-width: 900px
@@ -3984,6 +3987,10 @@ body[dir="rtl"] .checkbox:checked,
 }
 .border-collapse {
     border-collapse: collapse
+}
+.translate-y-1\/2 {
+    --tw-translate-y: 50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 .scale-0 {
     --tw-scale-x: 0;
@@ -4112,6 +4119,11 @@ body[dir="rtl"] .checkbox:checked,
     margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
 }
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))
+}
 .space-x-\[6px\] > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(6px * var(--tw-space-x-reverse));
@@ -4136,11 +4148,6 @@ body[dir="rtl"] .checkbox:checked,
     --tw-space-x-reverse: 0;
     margin-right: calc(6rem * var(--tw-space-x-reverse));
     margin-left: calc(6rem * calc(1 - var(--tw-space-x-reverse)))
-}
-.space-x-2 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-x-reverse: 0;
-    margin-right: calc(0.5rem * var(--tw-space-x-reverse));
-    margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))
 }
 .divide-y > :not([hidden]) ~ :not([hidden]) {
     --tw-divide-y-reverse: 0;
@@ -4409,6 +4416,10 @@ body[dir="rtl"] .checkbox:checked,
     --tw-bg-opacity: 1;
     background-color: rgb(34 197 94 / var(--tw-bg-opacity))
 }
+.bg-\[\#F7F7F7\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(247 247 247 / var(--tw-bg-opacity))
+}
 .bg-\[\#41434E\] {
     --tw-bg-opacity: 1;
     background-color: rgb(65 67 78 / var(--tw-bg-opacity))
@@ -4508,10 +4519,6 @@ body[dir="rtl"] .checkbox:checked,
     --tw-bg-opacity: 1;
     background-color: rgb(243 178 72 / var(--tw-bg-opacity))
 }
-.bg-\[\#F7F7F7\] {
-    --tw-bg-opacity: 1;
-    background-color: rgb(247 247 247 / var(--tw-bg-opacity))
-}
 .bg-\[\#2c2c2c\] {
     --tw-bg-opacity: 1;
     background-color: rgb(44 44 44 / var(--tw-bg-opacity))
@@ -4524,17 +4531,12 @@ body[dir="rtl"] .checkbox:checked,
     --tw-bg-opacity: 1;
     background-color: hsl(var(--su) / var(--tw-bg-opacity))
 }
-.bg-gray-800 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(31 41 55 / var(--tw-bg-opacity))
+.bg-slate-900\/60 {
+    background-color: rgb(15 23 42 / 0.6)
 }
-.bg-\[\#c7c1c1\] {
+.bg-slate-900 {
     --tw-bg-opacity: 1;
-    background-color: rgb(199 193 193 / var(--tw-bg-opacity))
-}
-.bg-\[\#dfdbdb\] {
-    --tw-bg-opacity: 1;
-    background-color: rgb(223 219 219 / var(--tw-bg-opacity))
+    background-color: rgb(15 23 42 / var(--tw-bg-opacity))
 }
 .bg-cover {
     background-size: cover
@@ -5001,6 +5003,10 @@ body[dir="rtl"] .checkbox:checked,
     --tw-text-opacity: 1;
     color: rgb(143 143 143 / var(--tw-text-opacity))
 }
+.text-gray-700 {
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81 / var(--tw-text-opacity))
+}
 .text-\[\#FFB02A\] {
     --tw-text-opacity: 1;
     color: rgb(255 176 42 / var(--tw-text-opacity))
@@ -5023,6 +5029,10 @@ body[dir="rtl"] .checkbox:checked,
 .text-success {
     --tw-text-opacity: 1;
     color: hsl(var(--su) / var(--tw-text-opacity))
+}
+.\!text-\[\#F5B01F\] {
+    --tw-text-opacity: 1 !important;
+    color: rgb(245 176 31 / var(--tw-text-opacity)) !important
 }
 .text-\[\#5C6384\] {
     --tw-text-opacity: 1;
@@ -5048,9 +5058,9 @@ body[dir="rtl"] .checkbox:checked,
     --tw-text-opacity: 1;
     color: rgb(128 130 139 / var(--tw-text-opacity))
 }
-.text-gray-700 {
+.text-\[\#F5B01F\] {
     --tw-text-opacity: 1;
-    color: rgb(55 65 81 / var(--tw-text-opacity))
+    color: rgb(245 176 31 / var(--tw-text-opacity))
 }
 .text-red-600 {
     --tw-text-opacity: 1;
@@ -5119,18 +5129,6 @@ body[dir="rtl"] .checkbox:checked,
 .text-slate-500 {
     --tw-text-opacity: 1;
     color: rgb(100 116 139 / var(--tw-text-opacity))
-}
-.text-\[\#F5B01F\] {
-    --tw-text-opacity: 1;
-    color: rgb(245 176 31 / var(--tw-text-opacity))
-}
-.text-\[\#f5B01F\] {
-    --tw-text-opacity: 1;
-    color: rgb(245 176 31 / var(--tw-text-opacity))
-}
-.\!text-\[\#F5B01F\] {
-    --tw-text-opacity: 1 !important;
-    color: rgb(245 176 31 / var(--tw-text-opacity)) !important
 }
 .underline {
     -webkit-text-decoration-line: underline;
@@ -5206,6 +5204,11 @@ body[dir="rtl"] .checkbox:checked,
 }
 .filter {
     filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+.backdrop-blur {
+    --tw-backdrop-blur: blur(8px);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+            backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
 }
 .backdrop-filter {
     -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
@@ -5394,6 +5397,10 @@ body[dir="rtl"] .checkbox:checked,
     --tw-bg-opacity: 1;
     background-color: rgb(194 65 12 / var(--tw-bg-opacity))
 }
+.hover\:bg-gray-800:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(31 41 55 / var(--tw-bg-opacity))
+}
 .hover\:fill-\[\#5b5d63\]:hover {
     fill: #5b5d63
 }
@@ -5420,10 +5427,6 @@ body[dir="rtl"] .checkbox:checked,
 .hover\:text-\[\#E8521D\]:hover {
     --tw-text-opacity: 1;
     color: rgb(232 82 29 / var(--tw-text-opacity))
-}
-.hover\:text-\[\#F5B01F\]:hover {
-    --tw-text-opacity: 1;
-    color: rgb(245 176 31 / var(--tw-text-opacity))
 }
 .hover\:text-\[\#15171E\]:hover {
     --tw-text-opacity: 1;
@@ -5544,13 +5547,17 @@ body[dir="rtl"] .checkbox:checked,
         --tw-text-opacity: 1;
         color: rgb(22 101 52 / var(--tw-text-opacity))
     }
+    .dark\:text-gray-200 {
+        --tw-text-opacity: 1;
+        color: rgb(229 231 235 / var(--tw-text-opacity))
+    }
     .dark\:text-white {
         --tw-text-opacity: 1;
         color: rgb(255 255 255 / var(--tw-text-opacity))
     }
-    .dark\:text-gray-200 {
+    .dark\:text-gray-700 {
         --tw-text-opacity: 1;
-        color: rgb(229 231 235 / var(--tw-text-opacity))
+        color: rgb(55 65 81 / var(--tw-text-opacity))
     }
     .dark\:ring-offset-gray-800 {
         --tw-ring-offset-color: #1f2937
@@ -5577,6 +5584,9 @@ body[dir="rtl"] .checkbox:checked,
     }
 }
 @media (min-width: 640px) {
+    .sm\:m-4 {
+        margin: 1rem
+    }
     .sm\:mx-0 {
         margin-left: 0px;
         margin-right: 0px
@@ -5596,6 +5606,9 @@ body[dir="rtl"] .checkbox:checked,
     .sm\:h-20 {
         height: 5rem
     }
+    .sm\:max-w-3xl {
+        max-width: 48rem
+    }
     .sm\:grid-cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr))
     }
@@ -5604,6 +5617,9 @@ body[dir="rtl"] .checkbox:checked,
     }
     .sm\:justify-start {
         justify-content: flex-start
+    }
+    .sm\:justify-center {
+        justify-content: center
     }
     .sm\:justify-between {
         justify-content: space-between
@@ -5696,6 +5712,12 @@ body[dir="rtl"] .checkbox:checked,
     .md\:hidden {
         display: none
     }
+    .md\:h-\[500px\] {
+        height: 500px
+    }
+    .md\:h-full {
+        height: 100%
+    }
     .md\:h-\[300px\] {
         height: 300px
     }
@@ -5704,18 +5726,6 @@ body[dir="rtl"] .checkbox:checked,
     }
     .md\:h-\[100px\] {
         height: 100px
-    }
-    .md\:h-\[500px\] {
-        height: 500px
-    }
-    .md\:h-\[80px\] {
-        height: 80px
-    }
-    .md\:h-\[160px\] {
-        height: 160px
-    }
-    .md\:h-full {
-        height: 100%
     }
     .md\:max-h-full {
         max-height: 100%
@@ -5759,6 +5769,9 @@ body[dir="rtl"] .checkbox:checked,
     .md\:w-6\/12 {
         width: 50%
     }
+    .md\:w-\[300px\] {
+        width: 300px
+    }
     .md\:w-\[calc\(100\%\+4px\)\] {
         width: calc(100% + 4px)
     }
@@ -5773,9 +5786,6 @@ body[dir="rtl"] .checkbox:checked,
     }
     .md\:w-1\/4 {
         width: 25%
-    }
-    .md\:w-\[300px\] {
-        width: 300px
     }
     .md\:max-w-\[390px\] {
         max-width: 390px
@@ -5824,15 +5834,15 @@ body[dir="rtl"] .checkbox:checked,
         margin-right: calc(0.75rem * var(--tw-space-x-reverse));
         margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))
     }
-    .md\:space-x-10 > :not([hidden]) ~ :not([hidden]) {
-        --tw-space-x-reverse: 0;
-        margin-right: calc(2.5rem * var(--tw-space-x-reverse));
-        margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)))
-    }
     .md\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
         --tw-space-x-reverse: 0;
         margin-right: calc(1rem * var(--tw-space-x-reverse));
         margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)))
+    }
+    .md\:space-x-10 > :not([hidden]) ~ :not([hidden]) {
+        --tw-space-x-reverse: 0;
+        margin-right: calc(2.5rem * var(--tw-space-x-reverse));
+        margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)))
     }
     .md\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
         --tw-space-y-reverse: 0;
@@ -5848,11 +5858,6 @@ body[dir="rtl"] .checkbox:checked,
         --tw-space-x-reverse: 0;
         margin-right: calc(4rem * var(--tw-space-x-reverse));
         margin-left: calc(4rem * calc(1 - var(--tw-space-x-reverse)))
-    }
-    .md\:space-x-0 > :not([hidden]) ~ :not([hidden]) {
-        --tw-space-x-reverse: 0;
-        margin-right: calc(0px * var(--tw-space-x-reverse));
-        margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)))
     }
     .md\:overflow-auto {
         overflow: auto
@@ -5891,13 +5896,13 @@ body[dir="rtl"] .checkbox:checked,
         padding-left: 100px;
         padding-right: 100px
     }
-    .md\:px-\[40px\] {
-        padding-left: 40px;
-        padding-right: 40px
-    }
     .md\:px-5 {
         padding-left: 1.25rem;
         padding-right: 1.25rem
+    }
+    .md\:px-\[40px\] {
+        padding-left: 40px;
+        padding-right: 40px
     }
     .md\:pl-10 {
         padding-left: 2.5rem
@@ -5945,6 +5950,9 @@ body[dir="rtl"] .checkbox:checked,
     .md\:text-\[18px\] {
         font-size: 18px
     }
+    .md\:text-\[16px\] {
+        font-size: 16px
+    }
     .md\:text-\[22px\] {
         font-size: 22px
     }
@@ -5954,20 +5962,17 @@ body[dir="rtl"] .checkbox:checked,
     .md\:text-\[15px\] {
         font-size: 15px
     }
-    .md\:text-\[16px\] {
-        font-size: 16px
-    }
     .md\:font-medium {
         font-weight: 500
-    }
-    .md\:shadow-md {
-        --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
-        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
     }
     .md\:shadow-none {
         --tw-shadow: 0 0 #0000;
         --tw-shadow-colored: 0 0 #0000;
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+    }
+    .md\:shadow-md {
+        --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
         box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
     }
     .group:hover .md\:group-hover\:flex {
@@ -5997,4 +6002,17 @@ body[dir="rtl"] .checkbox:checked,
     }
 }
 
+.foto-rounded-100{
+    width: 100px;
+    border-radius: 50%;
+}
 
+.foto-rounded-80{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.localizacao-empresa iframe{
+    width: 100% !important;
+}

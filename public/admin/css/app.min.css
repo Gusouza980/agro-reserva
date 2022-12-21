@@ -5155,3 +5155,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
 .cell-foto-lote:hover i{
     display: block;
 }
+
+.foto-rounded-100{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}

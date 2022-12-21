@@ -33,20 +33,23 @@
                 <x-botoes.voltar :rota="route('index')"></x-botoes.voltar>
             </div>
         </div>
-        <div class="flex justify-start relative w-full md:space-x-10 min-h-[60vh]">
-            <x-marketplace.vendedor.menu-lateral :vendedor="$vendedor->id" :exibicao="$exibicao" :filtro="$filtro_produtos"></x-marketplace.vendedor.menu-lateral>
-            @switch($exibicao)
-                @case('produtos')
+        @switch($exibicao)
+            @case('produtos')
+                <div class="flex justify-start relative w-full md:space-x-10 min-h-[60vh]">
+                    <x-marketplace.vendedor.menu-lateral :vendedor="$vendedor->id" :exibicao="$exibicao" :filtro="$filtro_produtos"></x-marketplace.vendedor.menu-lateral>
                     <x-marketplace.vendedor.produtos :produtos="$vendedor->produtos" :exibicao="$exibicao"></x-marketplace.vendedor.produtos>
-                    @break
-                @case('sobre')
-                    SOBRE
-                    @break
-                @case('localizacao')
-                    LOCALIZACAO
-                    @break
-            @endswitch
-        </div>
+                </div>
+                @break
+            @case('sobre')
+                {!! $vendedor->sobre !!}
+                @break
+            @case('localizacao')
+                <div class="w-full localizacao-empresa">
+                    {!! $vendedor->localizacao !!}}
+                </div>
+                @break
+        @endswitch
+        
     </div>
     <x-loading></x-loading>
 </div>

@@ -1,7 +1,7 @@
 @extends('painel.template.main')
 
 @section('styles')
-    <link href="{{ asset('admin/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 @endsection
 
 @section('titulo')
@@ -115,6 +115,19 @@
                                     <small class="float-end mt-1"></small>
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <div>
+                                    <label for="localizacao">Localização (Google)</label>
+                                    <input id="localizacao" name="localizacao" type="text" class="form-control contador" maxlength="350" value="{{ $vendedor->localizacao }}">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row mt-3">
+                            <div class="form-group col-12">
+                                <label for="">Sobre</label>
+                                <textarea class="form-control" name="sobre" id="summernote" rows="10">{{ $vendedor->sobre }}</textarea>
+                            </div>
                         </div>
                         <hr>
                         <div class="d-flex flex-row">
@@ -167,12 +180,17 @@
 @endsection
 
 @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src="{{ asset('js/jquery.mask.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('input[name="cnpj"]').mask('00.000.000/0000-00', );
             $('input[name="telefone"]').mask('(00) 00000-0000', );
-
+            $('#summernote').summernote({
+                height: 600,
+                fontSizeUnits: ['px', 'pt'],
+                fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36', '48' , '64', '82', '150'],
+            });
         });
     </script>
 @endsection
