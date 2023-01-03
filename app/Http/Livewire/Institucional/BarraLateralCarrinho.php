@@ -46,7 +46,6 @@ class BarraLateralCarrinho extends Component
             $carrinho->cliente_id = session()->get("cliente")["id"];
             $carrinho->reserva_id = $produto->produtable->reserva_id;
             $carrinho->save();
-            $this->carrinhos->push(collect($carrinho));
             session()->put(["carrinho" => true]);
         }else{
             $carrinho = $this->carrinhos->where("reserva_id", $produto->produtable->reserva_id)->first();
@@ -68,7 +67,7 @@ class BarraLateralCarrinho extends Component
         $msg = "O lote foi adicionado ao seu caminhão! Você pode ver todos os detalhes clicando no ícone de caminhão no topo direito da sua tela.";
         $this->emit("mostrarPopup", "sucesso", $msg);
 
-        $this->carrinhos->where("id", $carrinho->id)->first()->refresh();
+        $this->carrinhos = Carrinho::where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
         $this->atualizaContagemLotes();
     }
 
@@ -88,7 +87,7 @@ class BarraLateralCarrinho extends Component
                 $this->emit("atualizaIconeCarrinho");
             }
         }else{
-            $this->carrinhos->where("id", $carrinho->id)->first()->refresh();
+            $this->carrinhos = Carrinho::where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
         }
         $this->atualizaContagemLotes();
     }

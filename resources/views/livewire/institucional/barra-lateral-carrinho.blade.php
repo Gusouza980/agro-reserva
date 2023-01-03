@@ -10,6 +10,7 @@
         @if($this->iniciar)
             <div class="relative flex flex-col w-full h-full mt-5">
                 @if($carrinhos && $carrinhos->count() > 0)
+                    {{-- @dd($carrinhos) --}}
                     <div class="w-full h-[500px] overflow-y-scroll">
                         @foreach($carrinhos as $carrinho)
                             <div class="w-full px-[20px]">
