@@ -46,7 +46,7 @@ class BarraLateralCarrinho extends Component
             $carrinho->cliente_id = session()->get("cliente")["id"];
             $carrinho->reserva_id = $produto->produtable->reserva_id;
             $carrinho->save();
-            $this->carrinhos->push($carrinho);
+            $this->carrinhos->push(collect($carrinho));
             session()->put(["carrinho" => true]);
         }else{
             $carrinho = $this->carrinhos->where("reserva_id", $produto->produtable->reserva_id)->first();
