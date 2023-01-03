@@ -12,7 +12,7 @@
                 @if($carrinhos && $carrinhos->count() > 0)
                     <div class="w-full h-[500px] overflow-y-scroll">
                         @foreach($carrinhos as $carrinho)
-                            @dd($carrinho)
+                            @dd($carrinhos)
                             <div class="w-full px-[20px]">
                                 <div class="w-full font-montserrat text-[14px] text-[#283646] font-medium">
                                     <h4>RESERVA: {{ mb_strtoupper($carrinho->reserva->fazenda->nome_fazenda) }}</h4>
