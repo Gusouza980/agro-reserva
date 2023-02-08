@@ -38,7 +38,9 @@
                             @endforeach
                         </div>
                         <div class="grow w-full md:h-[500px]">
-                            <img src="{{ asset($produto->preview->caminho) }}" class="w-full md:h-[500px]" alt="">
+                            <a class="popup_preview" href="{{ asset($produto->preview->caminho) }}">
+                                <img src="{{ asset($produto->preview->caminho) }}" class="w-full md:h-[500px]" alt="">
+                            </a>
                         </div>
                     </div>
                     <div class="w-full md:hidden mt-3">

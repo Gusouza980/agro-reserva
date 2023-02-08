@@ -37,6 +37,8 @@
 
 <x-institucional.slide-reservas-ativas :reservas="$reservas"></x-institucional.slide-reservas>
 
+{{-- <x-institucional.lojas-destaque></x-institucional.lojas-destaque> --}}
+
 <x-institucional.comprar_vender></x-institucional.comprar_vender>
 
 <x-institucional.navegue-racas></x-institucional.navegue-racas>

@@ -40,16 +40,16 @@ class SiteController extends Controller
     }
 
     public function index(){
-        $configuracao = Configuracao::first();
-        dd("FOI");
-        dd(DB::getQueryLog());
-        $agent = new Agent();
-        if($agent->isMobile()){
-            $view = "mobile.index";
-        }else{
-            $view = "index";
-        }
-        return view($view, ["reservas" => $reservas, "configuracao" => $configuracao, "banners" => $banners]);
+        // $configuracao = Configuracao::first();
+        // dd("FOI");
+        // dd(DB::getQueryLog());
+        // $agent = new Agent();
+        // if($agent->isMobile()){
+        //     $view = "mobile.index";
+        // }else{
+        //     $view = "index";
+        // }
+        // return view($view, ["reservas" => $reservas, "configuracao" => $configuracao, "banners" => $banners]);
     }
 
     public function index2(){
