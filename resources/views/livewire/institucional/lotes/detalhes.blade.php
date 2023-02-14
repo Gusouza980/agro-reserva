@@ -91,7 +91,7 @@
                                     <b>Pagamento em parcelas únicas</b>
                                 @endif
                             </p>
-                            <span>Sem juros no boleto de titularidade entre a <b>Fazenda</b> e o <b>Comprador</b>.</span>
+                            <span>Mais informações relacionadas a forma de pagamento e frete, consulte <a href="#condicoes" class="font-bold text-black underline">FRETE E RETIRADA</a> e <a href="#condicoes" class="font-bold text-black underline">PAGAMENTOS E CONDIÇÕES</a> abaixo.</span>
                         </div>
                     @endif
                     @if(!$lote->reservado && !$lote->reserva->encerrada && $lote->liberar_compra)
@@ -221,7 +221,7 @@
             </div>
         </div>
     @endif
-    <div class="w-full bg-[#F5F5F5] py-5">
+    <div id="condicoes" class="w-full bg-[#F5F5F5] py-5">
         <div class="flex flex-wrap items-start px-4 mx-auto space-y-5 md:px-0 px-md-0 md:space-y-0 md:space-x-5 w1200">
             <div class="flex-1 px-[25px] py-[25px] border-2 border-[#D7D7D7] rounded-[15px]" x-data="{ open: false }">
                 <div class="flex items-center justify-center w-full space-x-6">
