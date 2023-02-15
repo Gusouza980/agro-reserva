@@ -88,7 +88,7 @@
                                         com o restante das parcelas sendo únicas.
                                     @endif
                                 @else
-                                    <b>Pagamento em parcelas únicas</b>
+                                    {{-- <b>Pagamento em parcelas únicas</b> --}}
                                 @endif
                             </p>
                             <span>Mais informações relacionadas a forma de pagamento e frete, consulte <a href="#condicoes" class="font-bold text-black underline">FRETE E RETIRADA</a> e <a href="#condicoes" class="font-bold text-black underline">PAGAMENTOS E CONDIÇÕES</a> abaixo.</span>
