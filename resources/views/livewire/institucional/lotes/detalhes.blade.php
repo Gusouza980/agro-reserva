@@ -67,7 +67,7 @@
                             <span class="font-medium text-[25px] ml-2">à vista</span>
                         </div>
                         <div class="w-full font-montserrat text-[19px] font-medium">
-                            <span>Ou <b>{{ $lote->reserva->max_parcelas }}x</b> de <b>R$
+                            <span>Fator multiplicador: <b>{{ $lote->reserva->max_parcelas }}x</b> de <b>R$
                                     {{ number_format($lote->preco / $lote->reserva->max_parcelas, 2, ',', '.') }}</b></span>
                         </div>
                         <div class="w-full font-montserrat text-[14px]">
