@@ -1,6 +1,6 @@
 <div class="px-0 container-fluid bg-preto">
     <div id="carouselBannersHome" class="relative carousel carousel-fade slide" data-bs-ride="carousel">
-        <div class="relative w-full overflow-hidden carousel-inner" style="">
+        <div class="relative w-full overflow-hidden" style="">
             @php
                 $cont = 0;
             @endphp
@@ -8,29 +8,62 @@
                 <img src="{{ asset('imagens/banner1.jpg') }}" class="block w-full" alt="..." />
             </div> --}}
             @foreach ($banners as $banner)
-                <div class="carousel-item @if($cont == 0) active @endif relative float-left w-full">
                     @if($agent->isMobile())
-                        <img class="cursor-pointer" onclick="window.location.href='{{ $banner->link }}'" src="{{ asset($banner->caminho_mobile) }}" class="block w-full" alt="..." />
+                        <img num="{{ $cont }}" class="banner-item cursor-pointer @if($cont != 0) hidden @endif" onclick="window.location.href='{{ $banner->link }}'" src="{{ asset($banner->caminho_mobile) }}" class="block w-full" alt="..." />
                     @else
-                        <img class="cursor-pointer" onclick="window.location.href='{{ $banner->link }}'" src="{{ asset($banner->caminho) }}" class="block w-full" alt="..." />
+                        <img num="{{ $cont }}" class="banner-item cursor-pointer @if($cont != 0) hidden @endif" onclick="window.location.href='{{ $banner->link }}'" src="{{ asset($banner->caminho) }}" class="block w-full" alt="..." />
                     @endif
-                </div>
-                @php
-                    $cont++;
-                @endphp
+                    @php
+                        $cont++;
+                    @endphp
             @endforeach
         </div>
         <button
             class="absolute top-0 bottom-0 left-0 flex items-center justify-center p-0 text-center border-0 carousel-control-prev hover:outline-none hover:no-underline focus:outline-none focus:no-underline"
-            type="button" data-bs-target="#carouselBannersHome" data-bs-slide="prev">
-            <span class="inline-block bg-no-repeat carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
+            type="button">
+            <span id="banner-ant" class="inline-block bg-no-repeat carousel-control-prev-icon" aria-hidden="true"></span>
+            {{-- <span class="visually-hidden">Anterior</span> --}}
         </button>
         <button
             class="absolute top-0 bottom-0 right-0 flex items-center justify-center p-0 text-center border-0 carousel-control-next hover:outline-none hover:no-underline focus:outline-none focus:no-underline"
             type="button" data-bs-target="#carouselBannersHome" data-bs-slide="next">
-            <span class="inline-block bg-no-repeat carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Próximo</span>
+            <span id="banner-prox" class="inline-block bg-no-repeat carousel-control-next-icon" aria-hidden="true"></span>
+            {{-- <span class="visually-hidden">Próximo</span> --}}
         </button>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        var num = 0;
+        var max = $(".banner-item").length - 1;
+        
+        $("#banner-ant").click(function(){
+            if(num > 0){
+                num--;
+            }else{
+                num = max;
+            }
+            atualizaBanner();
+        })
+
+        $("#banner-prox").click(function(){
+            if(num < max){
+                num++;
+            }else{
+                num = 0;
+            }
+            atualizaBanner();
+        })
+
+        function atualizaBanner(){
+            $(".banner-item").each(function(item, element){
+                if($(element).attr("num") != num){
+                    $(element).addClass("hidden");
+                }else{
+                    $(element).removeClass("hidden");
+                }
+            })
+        }
+    })
+</script>
