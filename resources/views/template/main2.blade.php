@@ -37,6 +37,7 @@
         }
         [x-cloak] { display: none !important; }
     </style>
+    <script src="{{ asset('js/jquery.js') }}"></script>
     <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
 </head>
@@ -89,8 +90,6 @@
 
     @livewire("institucional.popup-mensagem")
 
-    <script src="{{ asset('js/jquery.js') }}">
-    </script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" async
