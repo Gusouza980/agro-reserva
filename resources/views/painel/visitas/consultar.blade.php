@@ -48,8 +48,8 @@
                             <th>Cliente</th>
                             <th>Fazenda</th>
                             <th>Lote</th>
-                            <th>Cidade</th>
-                            <th>Estado</th>
+                            <th>Localização</th>
+                            <th>Assessor</th>
                             <th>Whatsapp</th>
                         </tr>
                     </thead>
@@ -68,8 +68,8 @@
                                 </td>
                                 <td style="vertical-align: middle; text-align:center;">@if($visita->lote) {{$visita->lote->fazenda->nome_fazenda}} @else {{$visita->embriao->fazenda->nome_fazenda}} @endif</td>
                                 <td style="vertical-align: middle; text-align:center;">@if($visita->lote) LOTE {{$visita->lote->numero . ": " . $visita->lote->nome}} @else LOTE {{$visita->embriao->numero . ": " . $visita->embriao->nome_pai}} @endif</td>
-                                <td style="vertical-align: middle; text-align:center;">{{$visita->cidade}}</td>
-                                <td style="vertical-align: middle; text-align:center;">{{$visita->estado}}</td>
+                                <td style="vertical-align: middle; text-align:center;">{{$visita->cidade}}/{{ $visita->estado }}</td>
+                                <td style="vertical-align: middle; text-align:center;">{{$visita->cliente->assessor->nome}}</td>
                                 @if($visita->logado)
                                     <td style="vertical-align: middle; text-align:center;">@if($visita->cliente->whatsapp) {{$visita->cliente->whatsapp}} @else {{$visita->cliente->telefone}} @endif</td>
                                 @else

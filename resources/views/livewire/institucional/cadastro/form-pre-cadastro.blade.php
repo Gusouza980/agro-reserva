@@ -42,7 +42,7 @@
                     @error('confirmacao_senha') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
                 <div class="w-full mb-3">
-                    <label for="assessor" class="form-label">Foi assessorado por agluém ?</label>
+                    <label for="assessor" class="form-label">Foi assessorado por alguém ?</label>
                     <select class="w-full form-input-select" name="assessor" id="assessor" wire:model.defer="assessor_id" required>
                         <option value="-1">Não</option>
                         @foreach(\App\Models\Assessor::orderBy("nome", "ASC")->get() as $assessor)

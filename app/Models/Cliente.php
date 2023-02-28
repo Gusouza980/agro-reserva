@@ -46,4 +46,8 @@ class Cliente extends Model
     public function fazendas(){
         return $this->belongsToMany(Fazenda::class, "fazenda_clientes");
     }
+
+    public function assessor(){
+        return $this->belongsTo(Assessor::class);
+    }
 }
