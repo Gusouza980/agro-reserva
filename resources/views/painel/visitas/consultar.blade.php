@@ -70,7 +70,7 @@
                                 <td style="vertical-align: middle; text-align:center;">@if($visita->lote) LOTE {{$visita->lote->numero . ": " . $visita->lote->nome}} @else LOTE {{$visita->embriao->numero . ": " . $visita->embriao->nome_pai}} @endif</td>
                                 <td style="vertical-align: middle; text-align:center;">{{$visita->cidade}}/{{ $visita->estado }}</td>
                                 <td style="vertical-align: middle; text-align:center;">
-                                    @if($cliente->assessor)
+                                    @if($visita->cliente->assessor)
                                         {{$visita->cliente->assessor->nome}}
                                     @else
                                         SEM ASSESSOR
