@@ -409,3 +409,16 @@ Route::post('/api/calcDistanciaCep', [\App\Http\Controllers\ApiController::class
 Route::get('/api/declararInteresseLote/{lote}', [\App\Http\Controllers\ApiController::class, 'declararInteresseLote']);
 Route::get('/api/curtirLote/{lote}', [\App\Http\Controllers\ApiController::class, 'curtirLote']);
 Route::get('/api/descurtirLote/{lote}', [\App\Http\Controllers\ApiController::class, 'descurtirLote']);
+
+
+Route::get('/girolando-bx/catalogo', function(){
+    // header('Content-Type: application/pdf');
+    $data = file_get_contents(asset('catalogos/Girolando_BX.pdf'));
+    header('Content-Type: application/pdf');
+    echo $data;
+    // $file = asset('catalogos/Girolando_BX.pdf');
+    // response()->make(null , 200, [
+    //     'Content-Type' => 'application/pdf',
+    //     'Content-Disposition' => 'inline; filename="'.$file.'"'
+    // ]);
+});
