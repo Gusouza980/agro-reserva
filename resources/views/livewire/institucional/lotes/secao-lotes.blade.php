@@ -121,6 +121,11 @@
                                             <b>GPTA:.</b> <span class="ml-2 font-medium">{{ $lote->gpta }} Kg</span>
                                         </div>
                                     @endif
+                                    @if($lote->ccg)
+                                        <div>
+                                            <b>CCG:.</b> <span class="ml-2 font-medium">{{ $lote->ccg }} Kg</span>
+                                        </div>
+                                    @endif
                                     <div class="">
                                         <b>RAÇA:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->raca->nome, 'UTF-8') }}</span>
                                     </div>
