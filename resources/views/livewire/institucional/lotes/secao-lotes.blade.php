@@ -123,7 +123,7 @@
                                     @endif
                                     @if($lote->ccg)
                                         <div>
-                                            <b>CCG:.</b> <span class="ml-2 font-medium">{{ $lote->ccg }} Kg</span>
+                                            <b>CCG:.</b> <span class="ml-2 font-medium">{{ $lote->ccg }}</span>
                                         </div>
                                     @endif
                                     <div class="">
