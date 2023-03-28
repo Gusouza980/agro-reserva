@@ -100,10 +100,14 @@ class ClienteController extends Controller
     }
 
     public function cadastro_painel(Request $request){
-        $cliente = Cliente::where("email", $request->email)->orWhere("cpf", $request->documento)->orWhere("documento", $request->documento)->first();
-        \Log::debug("Erro ao cadastrar cliente pelo painel. Um cliente com o email ou documento informado já está cadastrado. <br>", ["cliente" => $cliente]);
+        $cliente = Cliente::where("email", $request->email);
+        if($request->documento){
+            $cliente = $cliente->orWhere("cpf", $request->documento)->orWhere("documento", $request->documento);
+        }
+        $cliente = $cliente->first();
         if($cliente){
-            toastr()->error("E-mail já utilizado");
+            \Log::debug("Erro ao cadastrar cliente pelo painel. Um cliente com o email ou documento informado já está cadastrado. <br>", ["cliente" => $cliente]);
+            toastr()->error("E-mail ou documento já utilizado");
             return redirect()->back();
         }
 
