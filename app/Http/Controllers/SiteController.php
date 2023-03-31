@@ -30,10 +30,10 @@ class SiteController extends Controller
         foreach($clientes_backup as $cliente_backup){
             $cliente = Cliente::find($cliente_backup->id);
             $atributos = Arr::except((array) $cliente_backup, ['id']);
-            dd($atributos);
             $cliente->fill($atributos);
             $cliente->save();
         }
+        echo "FOI";
     }
 
     public function index(){
