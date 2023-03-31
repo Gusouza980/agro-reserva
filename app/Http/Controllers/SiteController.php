@@ -20,13 +20,20 @@ use Jenssegers\Agent\Agent;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use App\Classes\Agrisk\Apiary\ApiaryClientes;
+use Illuminate\Support\Arr;
 
 class SiteController extends Controller
 {
 
     public function testes(){
         $clientes_backup = DB::table('clientes_backup')->get();
-        dd($clientes_backup);
+        foreach($clientes_backup as $cliente_backup){
+            $cliente = Cliente::find($cliente_backup->id);
+            $atributos = Arr::except($cliente_backup->toArray(), ['id']);
+            dd($atributos);
+            $cliente->fill($atributos);
+            $cliente->save();
+        }
     }
 
     public function index(){
