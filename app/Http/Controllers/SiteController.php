@@ -25,18 +25,8 @@ class SiteController extends Controller
 {
 
     public function testes(){
-        $idTeste = 'b85e8ffc-24c5-4dcb-903f-4da57fbb201b';
-        $api = new ApiaryClientes;
-        if($api->isAuthenticated()){
-            $client = $api->clientDetail('b85e8ffc-24c5-4dcb-903f-4da57fbb201b');
-            $token = $api->createTerms($client->id, $client->name, $client->taxId, null);
-            echo "Token retornado: " . $token . "<br>";
-            // $token = "R520kmk62BxAxreYgmM1xJLYjXpdZplWBrdAbWL69eQJjmeR7zZAmR";
-            $response = $api->termsDetail($token);
-        }else{
-            $erro = $api->getLastError();
-            dd($erro);
-        }
+        $clientes_backup = DB::table('clientes_backup')->get();
+        dd($clientes_backup);
     }
 
     public function index(){
