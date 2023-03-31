@@ -29,7 +29,7 @@ class SiteController extends Controller
         $clientes_backup = DB::table('clientes_backup')->get();
         foreach($clientes_backup as $cliente_backup){
             $cliente = Cliente::find($cliente_backup->id);
-            $atributos = Arr::except($cliente_backup->toArray(), ['id']);
+            $atributos = Arr::except((array) $cliente_backup, ['id']);
             dd($atributos);
             $cliente->fill($atributos);
             $cliente->save();
