@@ -20,23 +20,20 @@ use Jenssegers\Agent\Agent;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use App\Classes\Agrisk\Apiary\ApiaryClientes;
+use Illuminate\Support\Arr;
 
 class SiteController extends Controller
 {
 
     public function testes(){
-        $idTeste = 'b85e8ffc-24c5-4dcb-903f-4da57fbb201b';
-        $api = new ApiaryClientes;
-        if($api->isAuthenticated()){
-            $client = $api->clientDetail('b85e8ffc-24c5-4dcb-903f-4da57fbb201b');
-            $token = $api->createTerms($client->id, $client->name, $client->taxId, null);
-            echo "Token retornado: " . $token . "<br>";
-            // $token = "R520kmk62BxAxreYgmM1xJLYjXpdZplWBrdAbWL69eQJjmeR7zZAmR";
-            $response = $api->termsDetail($token);
-        }else{
-            $erro = $api->getLastError();
-            dd($erro);
+        $clientes_backup = DB::table('clientes_backup')->get();
+        foreach($clientes_backup as $cliente_backup){
+            $cliente = Cliente::find($cliente_backup->id);
+            $atributos = Arr::except((array) $cliente_backup, ['id']);
+            $cliente->fill($atributos);
+            $cliente->save();
         }
+        echo "FOI";
     }
 
     public function index(){
