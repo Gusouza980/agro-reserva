@@ -107,7 +107,7 @@ class BarraLateralCarrinho extends Component
         if(session()->get("carrinho")){
             $this->carrinhos = Carrinho::where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
             foreach($this->carrinhos as $carrinho){
-                if($carrinho->reserva->encerrada || $carrinho->produtos->count() == 0){
+                if(!$carrinho->reserva || $carrinho->reserva->encerrada || $carrinho->produtos->count() == 0){
                     $carrinho->delete();
                 }
             }
