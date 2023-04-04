@@ -111,7 +111,7 @@ class BarraLateralCarrinho extends Component
                     $carrinho->delete();
                 }
             }
-            $this->carrinhos->fresh();
+            $this->carrinhos = Carrinho::where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
         }else{
             $this->carrinhos = collect();
         }
