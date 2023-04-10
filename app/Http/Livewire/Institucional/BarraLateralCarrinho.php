@@ -57,12 +57,27 @@ class BarraLateralCarrinho extends Component
             return;
         }
 
+        if($produto->lote->membro_pacote){
+            $membros = Lote::where("reserva_id", $produto->lote->reserva_id)->where("id", "<>", $produto->lote->id)->where("numero", $produto->lote->numero)->get();
+        }
+
         $carrinho_produto = new CarrinhoProduto;
         $carrinho_produto->carrinho_id = $carrinho->id;
         $carrinho_produto->produto_id = $produto->id;
         $carrinho_produto->quantidade = 1;
         $carrinho_produto->total = $produto->preco * $carrinho_produto->quantidade;
         $carrinho_produto->save();
+
+        if($membros){
+            foreach($membros as $membro){
+                $carrinho_produto = new CarrinhoProduto;
+                $carrinho_produto->carrinho_id = $carrinho->id;
+                $carrinho_produto->produto_id = $membro->produto->id;
+                $carrinho_produto->quantidade = 1;
+                $carrinho_produto->total = $membro->produto->preco * $carrinho_produto->quantidade;
+                $carrinho_produto->save();
+            }
+        }
 
         $msg = "O lote foi adicionado ao seu caminhão! Você pode ver todos os detalhes clicando no ícone de caminhão no topo direito da sua tela.";
         $this->emit("mostrarPopup", "sucesso", $msg);

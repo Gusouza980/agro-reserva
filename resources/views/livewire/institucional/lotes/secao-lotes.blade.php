@@ -107,9 +107,9 @@
                             <div class="relative mt-3">
                                 @if($lote->membro_pacote)
                                     @php
-                                        $membros = $lotes->where("numero", $lote->numero)->pluck("nome")->toArray();
+                                        $membros = $lotes->where("numero", $lote->numero)->where("id", "!=", $lote->id)->pluck("nome")->toArray();
                                     @endphp
-                                    <div title="Esse lote faz parte de um pacote junto com {{ implode(",", $membros) }}" style="top: -12px; right: -7px;" class="cursor-pointer absolute bg-slate-500 flex items-center justify-center w-[32px] h-[32px] rounded-full">
+                                    <div title="Esse lote faz parte de um pacote junto com {{ implode(", ", $membros) }}" style="top: -12px; right: -7px;" class="cursor-pointer absolute bg-slate-500 flex items-center justify-center w-[32px] h-[32px] rounded-full">
                                         <i class="fas fa-box-open text-white font-medium text-[15px]"></i>
                                     </div>
                                 @endif
