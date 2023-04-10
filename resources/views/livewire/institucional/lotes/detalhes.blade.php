@@ -121,13 +121,13 @@
                                 <p style="margin-top: 12px;">{{ __('messages.botoes.compre_agora') }}</p>
                             </div>
                         </div>
-                        <div class="px-4 mt-3 flex align-items-center justify-content-between">
-                            <div class="d-flex justify-content-start align-items-center">
+                        <div class="px-4 mt-3 flex align-items-center w-full justify-content-between">
+                            <div class="grow d-flex justify-content-start align-items-center">
                                 <div class="ml-3 lote-home-rgd">
                                     {{$membro->nome}}
                                 </div>
                             </div>
-                            <div class="mt-2 text-left caixa-lote-home-text">
+                            <div class="grow mt-2 text-left caixa-lote-home-text">
                                 <span>@if($membro->preco > 0) {{ $membro->parcelas . "x de R$" . number_format($membro->preco / $membro->parcelas, 2, ",", ".")  }}  @else {{ $membro->reserva->desconto }}% de desconto no<br>pagamento à vista @endif</span>
                             </div>
                         </div>
