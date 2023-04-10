@@ -103,6 +103,11 @@
                                         <span class="text-[#626262] font-medium text-[15px]">RGD: {{ $lote->registro }}</span>
                                     </div>
                                 @endif
+                                @if($lote->membro_pacote)
+                                    <div class="px-2 mx-auto rounded-md w-fit">
+                                        <i class="fas fa-box-open text-[#626262] font-medium text-[15px]"></i>
+                                    </div>
+                                @endif
                             </div>
                             <div class="relative mt-3">
                                 <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
