@@ -106,7 +106,7 @@
     </div>
     @if($lote->membro_pacote)
         @php
-            $membros = \App\Models\Lote::where("numero", $lote->numero)->where("id", "!=", $lote->id)->get();
+            $membros = \App\Models\Lote::where("reserva_id", $lote->reserva_id)->where("numero", $lote->numero)->where("id", "!=", $lote->id)->get();
         @endphp
         <div class="w-full bg-[#F5F5F5]">
             <div class="px-4 py-5 mx-auto text-center md:px-0 px-md-0 w1200">
