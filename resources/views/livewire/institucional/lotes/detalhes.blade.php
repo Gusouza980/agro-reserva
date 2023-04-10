@@ -104,6 +104,40 @@
             </div>
         </div>
     </div>
+    @if($lote->membro_pacote)
+        @php
+            $membros = $lotes->where("numero", $lote->numero)->where("id", "!=", $lote->id)->pluck("nome")->toArray();
+        @endphp
+        <div class="w-full bg-[#F5F5F5]">
+            <div class="px-4 py-5 mx-auto text-center md:px-0 px-md-0 w1200">
+                <h3 class="font-montserrat text-[25px] font-medium">Pacote</h3>
+            </div>
+            <div class="grid grid-cols-1 gap-5 px-4 pb-5 mx-auto md:px-0 px-md-0 md:grid-cols-4 w1200">
+                @foreach($membros as $membro)
+                    <div class="py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $membro->reserva->fazenda->slug, 'lote' => $membro, 'reserva' => $membro->reserva])}}'">
+                        <div class="caixa-lote-home-imagem"
+                            style="background: url(/{{ $membro->preview }}); background-size: cover; background-position: center; width: 350px; height: 250px; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464;">
+                            <div class="text-center justify-content-center align-items-center lote-home-hover">
+                                <p style="margin-top: 12px;">{{ __('messages.botoes.compre_agora') }}</p>
+                            </div>
+                        </div>
+                        <div class="px-4 mt-3 row align-items-center justify-content-start">
+                            <div class="">
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <div class="ml-3 lote-home-rgd">
+                                        {{$membro->nome}}
+                                    </div>
+                                </div>
+                                <div class="mt-2 text-left caixa-lote-home-text">
+                                    <span>@if($membro->preco > 0) {{ $membro->parcelas . "x de R$" . number_format($membro->preco / $membro->parcelas, 2, ",", ".")  }}  @else {{ $membro->reserva->desconto }}% de desconto no<br>pagamento à vista @endif</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endif
     <div class="w-full bg-[#F5F5F5]">
         <div class="px-4 py-5 mx-auto text-center md:px-0 px-md-0 w1200">
             <h3 class="font-montserrat text-[25px] font-medium">Informações Complementares</h3>
