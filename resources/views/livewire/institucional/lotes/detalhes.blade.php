@@ -145,6 +145,9 @@
                     @if ($lote->ccg)
                         <p><b class="mr-2">CCG:</b> {{ $lote->ccg }}</p>
                     @endif
+                    @if ($lote->rgn)
+                        <p><b class="mr-2">RGN:</b> {{ $lote->rgn }}</p>
+                    @endif
                     @if ($lote->gpta)
                         <p><b class="mr-2">GPTA:</b> {{ $lote->gpta }}</p>
                     @endif
