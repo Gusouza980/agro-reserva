@@ -106,7 +106,7 @@
                             </div>
                             <div class="relative mt-3">
                                 @if($lote->membro_pacote)
-                                    <div class="cursor-pointer absolute top-[-12px] right-[-7px] bg-slate-500 flex items-center justify-center w-[40px] h-[40px] rounded-full">
+                                    <div style="top: -12px; right: -7px;" class="cursor-pointer absolute bg-slate-500 flex items-center justify-center w-[32px] h-[32px] rounded-full">
                                         <i class="fas fa-box-open text-white font-medium text-[15px]"></i>
                                     </div>
                                 @endif
