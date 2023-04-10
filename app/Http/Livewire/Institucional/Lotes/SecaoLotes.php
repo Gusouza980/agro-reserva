@@ -67,7 +67,7 @@ class SecaoLotes extends Component
             $embrioes = Embriao::whereIn("reserva_id", $reservas->pluck("id"));
         }else{
             $reservas = null;
-            $lotes = Lote::with("reserva")->with("interesses")->where("reserva_id", $this->reserva->id)->where("reserva_id", $this->reserva->id)->where("ativo", true)->where("membro_pacote", false);
+            $lotes = Lote::with("reserva")->with("interesses")->where("reserva_id", $this->reserva->id)->where("reserva_id", $this->reserva->id)->where("ativo", true);
             $embrioes = Embriao::where("reserva_id", $this->reserva->id)->where("reserva_id", $this->reserva->id);
         }
 
