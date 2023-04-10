@@ -103,13 +103,13 @@
                                         <span class="text-[#626262] font-medium text-[15px]">RGD: {{ $lote->registro }}</span>
                                     </div>
                                 @endif
+                            </div>
+                            <div class="relative mt-3">
                                 @if($lote->membro_pacote)
-                                    <div class="px-2 mx-auto rounded-md w-fit">
+                                    <div class="cursor-pointer absolute top-[-40px] right-[-25px] bg-slate-500 flex items-center justify-center w-[40px] h-[40px] rounded-full">
                                         <i class="fas fa-box-open text-[#626262] font-medium text-[15px]"></i>
                                     </div>
                                 @endif
-                            </div>
-                            <div class="relative mt-3">
                                 <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
                                     @if($lote->beta_caseina)
                                         <div class="w-full mb-2 font-bold text-center">
