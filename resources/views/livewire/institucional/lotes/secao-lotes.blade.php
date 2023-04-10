@@ -99,15 +99,15 @@
                             <div class="py-2 text-center">
                                 <h4 class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">{{ $lote->nome }}</h4>
                                 @if($lote->registro)
-                                    <div class="px-2 mx-auto rounded-md w-fit">
+                                    <div class="px-2 mx-auto rounded-md w-fit h-[23px]">
                                         <span class="text-[#626262] font-medium text-[15px]">RGD: {{ $lote->registro }}</span>
                                     </div>
                                 @endif
                             </div>
                             <div class="relative mt-3">
                                 @if($lote->membro_pacote)
-                                    <div class="cursor-pointer absolute top-[-40px] right-[-25px] bg-slate-500 flex items-center justify-center w-[40px] h-[40px] rounded-full">
-                                        <i class="fas fa-box-open text-[#626262] font-medium text-[15px]"></i>
+                                    <div class="cursor-pointer absolute top-[-12px] right-[-7px] bg-slate-500 flex items-center justify-center w-[40px] h-[40px] rounded-full">
+                                        <i class="fas fa-box-open text-white font-medium text-[15px]"></i>
                                     </div>
                                 @endif
                                 <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
