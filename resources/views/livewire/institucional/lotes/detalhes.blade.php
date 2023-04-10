@@ -116,7 +116,7 @@
                 @foreach($membros as $membro)
                     <div class="py-2 mt-4 caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $membro->reserva->fazenda->slug, 'lote' => $membro, 'reserva' => $membro->reserva])}}'">
                         <div class="caixa-lote-home-imagem"
-                            style="background: url(/{{ $membro->preview }}); background-size: cover; background-position: center; width: 100%; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464;">
+                            style="background: url(/{{ $membro->preview }}); background-size: cover; background-position: center; width: 350px; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464;">
                             <div class="text-center justify-content-center align-items-center lote-home-hover">
                                 <p style="margin-top: 12px;">{{ __('messages.botoes.compre_agora') }}</p>
                             </div>
