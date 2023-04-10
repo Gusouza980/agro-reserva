@@ -106,7 +106,7 @@
     </div>
     @if($lote->membro_pacote)
         @php
-            $membros = \App\Models\Lote::where("reserva_id", $lote->reserva_id)->where("numero", $lote->numero)->where("id", "!=", $lote->id)->get();
+            $membros = \App\Models\Lote::where("reserva_id", $lote->reserva_id)->where("numero", $lote->numero)->get();
         @endphp
         <div class="w-full bg-[#F5F5F5]">
             <div class="px-4 py-5 mx-auto text-center md:px-0 px-md-0 w1200">
@@ -122,13 +122,8 @@
                             </div>
                         </div>
                         <div class="px-4 mt-3 flex align-items-center w-full justify-content-between">
-                            <div class="grow d-flex justify-content-start align-items-center">
-                                <div class="ml-3 lote-home-rgd">
-                                    {{$membro->nome}}
-                                </div>
-                            </div>
                             <div class="grow mt-2 text-left caixa-lote-home-text">
-                                <span>@if($membro->preco > 0) {{ $membro->parcelas . "x de R$" . number_format($membro->preco / $membro->parcelas, 2, ",", ".")  }}  @else {{ $membro->reserva->desconto }}% de desconto no<br>pagamento à vista @endif</span>
+                                <span>{{ $membro->nome }}</span>
                             </div>
                         </div>
                     </div>
