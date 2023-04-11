@@ -45,9 +45,19 @@
                     <label for="assessor" class="form-label">Foi assessorado por alguém ?</label>
                     <select class="w-full form-input-select" name="assessor" id="assessor" wire:model.defer="assessor_id" required>
                         <option value="-1">Não</option>
-                        @foreach(\App\Models\Assessor::orderBy("nome", "ASC")->get() as $assessor)
-                            <option value="{{ $assessor->id }}">{{ $assessor->nome }}</option>
-                        @endforeach
+                        @php
+                            $assessores = \App\Models\Assessor::orderBy("nome", "ASC")->get()
+                        @endphp
+                        <optgroup label="Agroreserva">
+                            @foreach($assessores->where("interno", true) as $assessor)
+                                <option value="{{ $assessor->id }}">{{ $assessor->nome }}</option>
+                            @endforeach
+                        </optgroup>
+                        <optgroup label="Parceiros">
+                            @foreach($assessores->where("interno", false) as $assessor)
+                                <option value="{{ $assessor->id }}">{{ $assessor->nome }}</option>
+                            @endforeach
+                        </optgroup>
                     </select>
                 </div>
                 <div class="flex items-center w-full mt-2">

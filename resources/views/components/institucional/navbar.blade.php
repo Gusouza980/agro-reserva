@@ -259,7 +259,7 @@
     </div>
 </nav>
 
-<div class="hidden md:block w-full bg-[#80828B] py-2 border-b-2 border-[#F5B01F] justify-content-center align-items-center text-white"
+<div class="hidden md:block w-full bg-[#80828B] border-b-2 border-[#F5B01F] justify-content-center align-items-center text-white"
     style="font-size: 13px; font-weight: 500; font-family: 'Montserrat', sans-serif, sans-serif;">
     <ul
         class="flex flex-row justify-center mx-auto mt-0 w1200">
@@ -275,7 +275,26 @@
             <a href="{{ route('navegue_por_racas') }}"
                 class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Navegue por Raças</a>
         </li>
-        <li class="">
+        <li>
+            <a href="{{ route('reservas.finalizadas') }}"
+                class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Blog</a>
+        </li>
+        <li>
+            <a href="{{ route('navegue_por_racas') }}"
+                class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Quem Somos</a>
+        </li>
+        @if(!session()->get('cliente'))
+            <li>
+                <a href="{{ route('cadastro') }}"
+                    class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Fazer Cadastro</a>
+            </li>
+        @elseif(session()->get('cliente') && !session()->get('cliente')['finalizado'])
+            <li>
+                <a href="{{ route('cadastro') }}"
+                    class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Finalizar Cadastro</a>
+            </li>
+        @endif
+        {{-- <li class="">
             <button id="dropdownOutrosLink" data-dropdown-toggle="dropdownOutros"
                 class="py-2 pr-4 pl-3 flex justify-between items-center font-montserrat text-[13px] font-medium focus:outline-none">Outros
                 <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
@@ -299,10 +318,6 @@
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> --}}
     </ul>
-    {{-- <a class="mx-5 hover:!text-[#F5B01F]" href="">Reservas Abertas</a>
-    <a class="mx-5 hover:!text-[#F5B01F]" href="">Embriões e Sêmen</a>
-    <a class="mx-5 hover:!text-[#F5B01F]" href="">Navegue por Raças</a>
-    <a class="mx-5 hover:!text-[#F5B01F]">Outros</a> --}}
 </div>

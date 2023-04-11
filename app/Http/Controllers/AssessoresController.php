@@ -27,6 +27,7 @@ class AssessoresController extends Controller
         $assessor->email = $request->email;
         $assessor->ativo = $request->ativo;
         $assessor->marketplace = $request->marketplace;
+        $assessor->interno = $request->interno;
         if($request->file("foto")){
             $assessor->foto = $request->file('foto')->store(
                 'imagens/', 'local'
@@ -43,6 +44,7 @@ class AssessoresController extends Controller
         $assessor->email = $request->email;
         $assessor->ativo = $request->ativo;
         $assessor->marketplace = $request->marketplace;
+        $assessor->interno = $request->interno;
         if($request->file("foto")){
             Storage::delete($assessor->foto);
             $assessor->foto = $request->file('foto')->store(

@@ -12,7 +12,7 @@
 
 @section('conteudo')
 
-<div class="row my-3">
+<div class="my-3 row">
     <div class="col-12">
         <a name="" id="" class="btn btn-primary cpointer" data-bs-toggle="modal" data-bs-target="#modalCadastraAssessor" role="button">Novo Assessor</a>
     </div>
@@ -22,7 +22,7 @@
         <div class="card">
             <div class="card-body">
 
-                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
                     <thead>
                         <tr>
                             <th style="width: 120px;"></th>
@@ -72,12 +72,12 @@
                           <input type="text"
                             class="form-control" name="nome" value="{{$assessor->nome}}" maxlength="100" required>
                         </div>
-                        <div class="form-group mt-3">
+                        <div class="mt-3 form-group">
                             <label for="email">E-mail</label>
                             <input type="text"
                               class="form-control" name="email" value="{{$assessor->email}}" maxlength="100" required>
                           </div>
-                        <div class="form-group mt-3">
+                        <div class="mt-3 form-group">
                             <label for="telefone">Telefone</label>
                             <input type="text"
                               class="form-control" name="telefone" value="{{$assessor->telefone}}" maxlength="16">
@@ -87,6 +87,13 @@
                             <select class="form-select form-select-lg" name="ativo" id="">
                                 <option value="1" @if($assessor->ativo) selected @endif>Sim</option>
                                 <option value="0" @if(!$assessor->ativo) selected @endif>Não</option>
+                            </select>
+                        </div>
+                        <div class="mt-3">
+                            <label for="" class="form-label">É um assessor interno ?</label>
+                            <select class="form-select form-select-lg" name="interno" id="">
+                                <option value="1" @if($assessor->interno) selected @endif>Sim</option>
+                                <option value="0" @if(!$assessor->interno) selected @endif>Não</option>
                             </select>
                         </div>
                         <div class="mt-3">
@@ -100,8 +107,8 @@
                             <label for="" class="form-label">Foto</label>
                             <input type="file" class="form-control" name="foto">
                         </div>
-                        <div class="form-group mt-3 text-end">
-                            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                        <div class="mt-3 form-group text-end">
+                            <button type="submit" class="mt-3 btn btn-primary">Salvar</button>
                         </div>                    
                     </form>
                 </div>
@@ -125,12 +132,12 @@
                       <input type="text"
                         class="form-control" name="nome" placeholder="Digite o nome da assessor" maxlength="100" required>
                     </div>
-                    <div class="form-group mt-3">
+                    <div class="mt-3 form-group">
                         <label for="email">E-mail</label>
                         <input type="text"
                           class="form-control" name="email" maxlength="100" required>
                       </div>
-                    <div class="form-group mt-3">
+                    <div class="mt-3 form-group">
                         <label for="telefone">Telefone</label>
                         <input type="text"
                           class="form-control" name="telefone" placeholder="(00) 0 0000-0000" maxlength="16">
@@ -138,6 +145,13 @@
                     <div class="mt-3">
                         <label for="" class="form-label">Ativo</label>
                         <select class="form-select form-select-lg" name="ativo" id="">
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
+                        </select>
+                    </div>
+                    <div class="mt-3">
+                        <label for="" class="form-label">É um assessor interno ?</label>
+                        <select class="form-select form-select-lg" name="interno" id="">
                             <option value="1">Sim</option>
                             <option value="0">Não</option>
                         </select>
@@ -153,8 +167,8 @@
                         <label for="" class="form-label">Foto</label>
                         <input type="file" class="form-control" name="foto">
                     </div>
-                    <div class="form-group mt-3 text-end">
-                        <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                    <div class="mt-3 form-group text-end">
+                        <button type="submit" class="mt-3 btn btn-primary">Salvar</button>
                     </div>
                 </form>
             </div>
