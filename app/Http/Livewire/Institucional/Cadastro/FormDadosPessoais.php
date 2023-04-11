@@ -60,7 +60,7 @@ class FormDadosPessoais extends Component
                     }
                     $cliente->agriskTaxId = $cliente->cpf;
                 }else{
-                    $erro = $api->lastError;
+                    $erro = $api->getLastError();
                     session()->flash("erro", $erro->message[0]);
                     return false;
                 }
