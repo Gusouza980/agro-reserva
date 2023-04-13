@@ -1,4 +1,4 @@
-@extends('template.main')
+@extends('template.main2')
 
 @section("styles")
 
@@ -6,11 +6,11 @@
 @endsection
 
 @section('conteudo')
-    <div class="w1200 mx-auto py-5">
+    <div class="py-5 mx-auto w1200">
         <div class="container-fluid">
-            <div class="row py-4">
+            <div class="py-4 row">
                 <div class="col-12">
-                    <a href="{{route('index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                    <a href="{{route('index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="mr-2 fas fa-arrow-left"></i> Voltar</span></a>
                 </div>
             </div>
             <div class="row">
@@ -994,12 +994,12 @@
                 </div>
             </div>
             {{--  <div class="row">
-                <div class="col-12 text-center">
+                <div class="text-center col-12">
                     <h5><b>TERMOS E CONDIÇÕES GERAIS DE USO DO SITE</b></h5>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 text-left">
+                <div class="text-left col-12">
                     <p>
                         Caro Usuário Agro Reserva,	
                     </p>
@@ -1011,8 +1011,8 @@
                     </p>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="col-12 text-left">
+            <div class="mt-4 row">
+                <div class="text-left col-12">
                     <h5><b>TERMO RESUMIDO</b></h5>
                     <p>
                         1.&nbsp&nbsp O Agro Reserva não é fornecedor de quaisquer produtos veiculados no site, sendo que o serviço por ele prestado se limita à disponibilização de plataforma na internet que fornece espaço dinâmico e organizado para que Usuários-vendedores exponham e ofereçam para venda, reservas diferenciadas de seu plantel de animais, de forma que eventuais Usuários-compradores, interessados na compra destes itens, emitam declaração livre de vontade e, mediante aprovação de cadastro e condições, efetive o pagamento do valor mediante as condições previamente definidas pelo Usuário vendedor;	
@@ -1037,8 +1037,8 @@
                     </p>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="col-12 text-left">
+            <div class="mt-4 row">
+                <div class="text-left col-12">
                     <h5><b>Dos Termos e condições gerais de uso do site:</b></h5>
                     <p>
                         Estes Termos e condições gerais aplicam-se ao uso dos serviços oferecidos por AGRO RESERVA PECUARIA DIGITAL LTDA, CNPJ nº 41.893.302/0001-13, situada na Rua Joaquim Saraiva, nº 40, Sala 2, Centro, Uberlândia/MG, CEP: 38.400-210, operadora do site www.agroreserva.com.br<br><br>
@@ -1049,8 +1049,8 @@
                     </p>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="col-12 text-left">
+            <div class="mt-4 row">
+                <div class="text-left col-12">
                     <h5><b>01 – Objeto:</b></h5>
                     <p>
                         Os serviços objeto do presente Termo e condições gerais consistem em:<br>
@@ -1058,7 +1058,7 @@
                     <div class="ml-5">
                         <span>(i)&nbsp&nbsp&nbsp ofertar e hospedar espaços no Site para que os Usuários anunciem à venda produtos e/ou bens próprios, anúncios estes que serão feitos pela plataforma, no formato padrão por ela escolhido, não havendo interferência do vendedor na produção do anúncio, participando, contudo, na fixação das regras (preço fixo ou leilão), preços e condições, mediante aprovação da plataforma.</span>
                     </div>
-                    <div class="ml-5 mt-3">
+                    <div class="mt-3 ml-5">
                         <span>(ii)&nbsp&nbsp&nbsp viabilizar o encontro de Usuários-vendedores e Usuários-compradores interessados em adquirir os animais disponibilizados por meio da divulgação dos planteis/reservas cadastrados no site, intermediando, assim, a negociação, atuando como direcionador das informações cruciais para realização da venda, não havendo intervenção direta do site nas bases da negociação ou concretização dos negócios. Desta forma, ressalta-se que o Agro Reserva não fornece quaisquer produtos ou bens anunciados pelos Usuários no Site, sendo que o anunciante se responsabiliza pela qualidade, existência, informações e procedência destes bens, que apenas são ofertados segundo política do site.</span>                    </div>
                     <br>
                     <p>    

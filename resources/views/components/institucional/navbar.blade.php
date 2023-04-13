@@ -276,7 +276,7 @@
                 class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Navegue por Raças</a>
         </li>
         <li>
-            <a href="{{ route('reservas.finalizadas') }}"
+            <a href="{{ route('blog') }}"
                 class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Blog</a>
         </li>
         <li>
