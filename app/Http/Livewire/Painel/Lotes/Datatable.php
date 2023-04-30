@@ -45,6 +45,12 @@ class Datatable extends Component
     public function atualizaValor(Lote $lote, $campo, $valor){
         $lote->$campo = $valor;
         if($campo == "preco"){
+            if(!$lote->produto){
+                $lote->produto()->create([
+                    "nome" => $lote->nome,
+                    "preco" => ($lote->preco) ? $lote->preco : 0
+                ]);
+            }
             if(!empty($valor)){
                 $lote->produto->preco = $valor;
             }else{

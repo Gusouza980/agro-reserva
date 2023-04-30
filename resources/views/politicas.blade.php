@@ -1,4 +1,4 @@
-@extends('template.main')
+@extends('template.main2')
 
 @section("styles")
 
@@ -6,11 +6,11 @@
 @endsection
 
 @section('conteudo')
-    <div class="w1200 mx-auto py-5">
+    <div class="py-5 mx-auto w1200">
         <div class="container-fluid">
-            <div class="row py-4">
+            <div class="py-4 row">
                 <div class="col-12">
-                    <a href="{{route('index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="fas fa-arrow-left mr-2"></i> Voltar</span></a>
+                    <a href="{{route('index')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="mr-2 fas fa-arrow-left"></i> Voltar</span></a>
                 </div>
             </div>
             <div class="row">
