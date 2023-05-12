@@ -394,6 +394,34 @@ Route::middleware(['admin'])->group(function () {
 
 });
 
+// ROTAS DO NOVO PAINEL
+
+Route::prefix('sistema')->name("sistema")->group(function () {
+
+    // LOGIN CONTROLLER
+    Route::controller(\App\Http\Controllers\Sistema\LoginController::class)->group(function () {
+            
+        Route::get('/login', 'login')->name("sistema.login");
+        Route::get('/logar', 'index')->name("sistema.index");
+    
+    });
+
+    Route::middleware(['admin'])->group(function () {
+
+        // INDEX CONTROLLER
+        Route::controller(\App\Http\Controllers\Sistema\IndexController::class)->group(function () {
+            
+            Route::get('/sair', 'sair')->name("sistema.sair");
+            Route::get('/', 'index')->name("sistema.index");
+        
+        });
+
+    });
+
+});
+
+
+
 // ROTAS DO MARKETPLACE
 Route::get('/loja', [\App\Http\Controllers\MarketplaceController::class, 'index'])->name("marketplace.index");
 Route::get('/loja/produtos', [\App\Http\Controllers\MarketplaceController::class, 'produtos'])->name("marketplace.produtos");
