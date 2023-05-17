@@ -3,31 +3,33 @@
     @if(\Acessos::getPermissao('usuarios'))
         <!-- Usuários -->
         <a
-        href="{{ route('painel.usuarios.consultar') }}"
+        href="{{ route('sistema.usuarios.consultar') }}"
         class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
         x-tooltip.placement.right="'Usuários'"
         >
             <img class="h-7 w-7" src="{{ asset('painel/images/icones/menu/usuarios.svg') }}" />
         </a>
     @endif
-    @if(\Acessos::getPermissao('congressos'))
-        <!-- Congressos -->
+
+    @if(\Acessos::getPermissao('banners'))
+        <!-- Usuários -->
         <a
-        href="{{ route('painel.congressos.consultar') }}"
+        href="{{ route('sistema.banners.consultar') }}"
         class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-        x-tooltip.placement.right="'Congressos'"
+        x-tooltip.placement.right="'Banners'"
         >
-            <img class="h-7 w-7" src="{{ asset('painel/images/icones/menu/congressos.svg') }}" />
+            <img class="h-7 w-7" src="{{ asset('painel/images/icones/menu/banners.svg') }}" />
         </a>
     @endif
-    @if(\Acessos::getPermissao('alunos'))
-        <!-- Alunos -->
+
+    @if(\Acessos::getPermissao('banners'))
+        <!-- Usuários -->
         <a
-        href="{{ route('painel.alunos.consultar') }}"
+        href="{{ route('sistema.vendas.consultar') }}"
         class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-        x-tooltip.placement.right="'Alunos'"
+        x-tooltip.placement.right="'Vendas'"
         >
-            <img class="h-7 w-7" src="{{ asset('painel/images/icones/menu/congressos.svg') }}" />
+            <img class="h-7 w-7" src="{{ asset('painel/images/icones/menu/vendas.svg') }}" />
         </a>
     @endif
 </div>
@@ -58,7 +60,7 @@
                             {{ $usuario->nome }}
                         </a>
                         <p class="text-xs text-slate-400 dark:text-navy-300">
-                            {{ \Acessos::$niveis[$usuario->nivel] }}
+                            {{ \Acessos::$niveis[$usuario->acesso] }}
                         </p>
                     </div>
                 </div>
@@ -81,7 +83,7 @@
                         </div>
                     </a>
                     <div class="px-4 mt-3">
-                        <a href="{{ route('painel.sair') }}"
+                        <a href="{{ route('sistema.sair') }}"
                             class="w-full space-x-2 text-white btn h-9 bg-primary hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
                                 fill="none" viewbox="0 0 24 24" stroke="currentColor">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Sistema;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use App\Classes\Funcoes\Usuarios as FuncoesUsuarios;
 
 class LoginController extends Controller
@@ -25,8 +27,8 @@ class LoginController extends Controller
                 return redirect()->back();
             }
             Log::channel('acessos_painel')->warning('LOGIN: O usuário <b>' . $usuario->nome . '</b> entrou no sistema.');
-            session()->put(["admin" => $usuario->toArray()]);
-            return redirect()->route("painel.index");
+            session()->put(["admin" => $usuario->id]);
+            return redirect()->route("sistema.index");
         }else{
             toastr()->error("Dados de login incorretos. Tente novamente");
             return redirect()->back();

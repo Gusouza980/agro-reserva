@@ -28,6 +28,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
         rel="stylesheet" />
+    @toastr_css()
 </head>
 
 <body x-data class="is-header-blur" x-bind="$store.global.documentBody">
@@ -47,7 +48,7 @@
                         </h2>
                     </div>
                 </div>
-                <form class="p-5 mt-5 rounded-lg card lg:p-7" action="{{ route('painel.logar') }}" method="POST">
+                <form class="p-5 mt-5 rounded-lg card lg:p-7" action="{{ route('sistema.logar') }}" method="POST">
                     @csrf
                     {{-- @if (session()->get('erro'))
                         <div class="flex px-4 py-4 space-x-2 border rounded-lg alert border-error text-error">
@@ -61,11 +62,11 @@
                         </div>
                     @endif --}}
                     <label class="block">
-                        <span>E-mail:</span>
+                        <span>Usuário:</span>
                         <span class="relative mt-1.5 flex">
                             <input
                                 class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 pl-9 placeholder:text-slate-400/70 hover:z-10 hover:border-slate-400 focus:z-10 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                placeholder="" type="e-mail" name="email" maxlength="60" />
+                                placeholder="" type="e-mail" name="usuario" maxlength="60" />
                             <span
                                 class="absolute flex items-center justify-center w-10 h-full pointer-events-none text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-colors duration-200"
@@ -101,6 +102,9 @@
         </main>
     </div>
     <div id="x-teleport-target"></div>
+    @jquery
+    @toastr_js()
+    @toastr_render
     <script>
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
     </script>

@@ -36,8 +36,7 @@
             display: none !important; 
         }
     </style>
-    @toastr_js
-    @toastr_render
+    @toastr_css
     @yield("styles")
     @stack("styles")
     @livewireStyles()
@@ -59,13 +58,13 @@
                     class="flex flex-col items-center w-full h-full bg-white border-r border-slate-150 dark:border-navy-700 dark:bg-navy-800">
                     <!-- Application Logo -->
                     <div class="flex pt-4">
-                        <a href="{{ route('painel.index') }}">
+                        <a href="{{ route('sistema.index') }}">
                             <img class="h-11 w-11 transition-transform duration-500 ease-in-out hover:rotate-[360deg]"
-                                src="{{ asset('painel/images/app-logo.svg') }}" alt="logo" />
+                                src="{{ asset('imagens/gif_relogio.gif') }}" alt="logo" />
                         </a>
                     </div>
 
-                    @include("painel.includes.template.menu")
+                    @include("sistema.includes.template.menu")
                 </div>
             </div>
 
@@ -251,7 +250,7 @@
                 <ul class="flex flex-wrap items-center space-x-2">
                     <li class="flex items-center space-x-2">
                         <a class="rounded-lg border border-slate-200 px-1.5 py-1 leading-none text-primary transition-colors hover:text-primary-focus dark:border-navy-500 dark:text-accent-light dark:hover:text-accent"
-                            href="{{ route('painel.index') }}">
+                            href="{{ route('sistema.index') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -269,12 +268,15 @@
             @yield("conteudo")
         </main>
     </div>
-    @livewire('painel.senha.modal-alterar')
+    @livewire('sistema.senha.modal-alterar')
     <!--
         This is a place for Alpine.js Teleport feature
         @see https://alpinejs.dev/directives/teleport
       -->
     <div id="x-teleport-target"></div>
+    @jquery
+    @toastr_js
+    @toastr_render
     <script>
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
         window.addEventListener("notificaToastr", (event) => {

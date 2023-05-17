@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Sistema;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class IndexController extends BaseController
+class UsuariosController extends BaseController
 {
     //
-    public function index(){
-        return view("sistema.index");
+    public function consultar(){
+        return view("sistema.usuarios.consultar");
     }
 }

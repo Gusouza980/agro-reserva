@@ -396,13 +396,13 @@ Route::middleware(['admin'])->group(function () {
 
 // ROTAS DO NOVO PAINEL
 
-Route::prefix('sistema')->name("sistema")->group(function () {
+Route::prefix('sistema')->name("sistema.")->group(function () {
 
     // LOGIN CONTROLLER
     Route::controller(\App\Http\Controllers\Sistema\LoginController::class)->group(function () {
             
-        Route::get('/login', 'login')->name("sistema.login");
-        Route::get('/logar', 'index')->name("sistema.index");
+        Route::get('/login', 'login')->name("login");
+        Route::post('/logar', 'logar')->name("logar");
     
     });
 
@@ -411,9 +411,30 @@ Route::prefix('sistema')->name("sistema")->group(function () {
         // INDEX CONTROLLER
         Route::controller(\App\Http\Controllers\Sistema\IndexController::class)->group(function () {
             
-            Route::get('/sair', 'sair')->name("sistema.sair");
-            Route::get('/', 'index')->name("sistema.index");
+            Route::get('/sair', 'sair')->name("sair");
+            Route::get('/', 'index')->name("index");
         
+        });
+
+        // ROTAS DE USUÁRIOS
+        Route::prefix('usuarios')->name('usuarios.')->controller(\App\Http\Controllers\Sistema\UsuariosController::class)->group(function(){
+            // LISTAGEM DE USUÁRIOS
+            Route::get('consultar', 'consultar')->name('consultar');
+        });
+
+        // ROTAS DE BANNERS
+        Route::prefix('banners')->name('banners.')->controller(\App\Http\Controllers\Sistema\BannersController::class)->group(function(){
+            // LISTAGEM DE BANNERS
+            Route::get('consultar', 'consultar')->name('consultar');
+        });
+
+        // ROTAS DE VENDAS
+        Route::prefix('vendas')->name('vendas.')->controller(\App\Http\Controllers\Sistema\VendasController::class)->group(function(){
+            // LISTAGEM DE VENDAS
+            Route::get('consultar', 'consultar')->name('consultar');
+
+            // DETALHES DE VENDA
+            Route::get('detalhes/{venda}', 'detalhes')->name('detalhes');
         });
 
     });

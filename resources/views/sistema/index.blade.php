@@ -1,4 +1,4 @@
-@extends('painel.templates.main')
+@extends('sistema.templates.main')
 
 @section('breadcrumb')
     <li>
