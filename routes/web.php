@@ -423,6 +423,12 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
         });
 
         // ROTAS DE BANNERS
+        Route::prefix('reservas')->name('reservas.')->controller(\App\Http\Controllers\Sistema\ReservasController::class)->group(function(){
+            // LISTAGEM DE BANNERS
+            Route::get('consultar', 'consultar')->name('consultar');
+        });
+
+        // ROTAS DE BANNERS
         Route::prefix('banners')->name('banners.')->controller(\App\Http\Controllers\Sistema\BannersController::class)->group(function(){
             // LISTAGEM DE BANNERS
             Route::get('consultar', 'consultar')->name('consultar');
