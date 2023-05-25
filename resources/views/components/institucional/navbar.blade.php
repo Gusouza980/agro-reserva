@@ -280,7 +280,7 @@
                 class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Blog</a>
         </li>
         <li>
-            <a href="{{ route('navegue_por_racas') }}"
+            <a href="{{ route('sobre') }}"
                 class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Quem Somos</a>
         </li>
         @if(!session()->get('cliente'))

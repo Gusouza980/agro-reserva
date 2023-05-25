@@ -24,25 +24,19 @@ class ModalCadastro extends Component
     public $arquivo;
     public $regras;
 
-    protected $listeners = ["carregaModalCadastroReserva", "carregaModalEdicaoReservas"];
+    protected $listeners = ["carregaModalCadastroReservas", "carregaModalEdicaoReservas", "resetaModalReservas"];
 
-    public function updatedShow(){
-        if($this->show == false){
-            $this->resetExcept("");
-        }
-    }
-
-    public function carregaModalEdicaoReserva(Reserva $reserva){
-        $this->reserva = $reserva;
-        $this->show = true;
-        $this->op = "edicao";
-    }
-
-    public function carregaModalCadastroReserva(){
-        $this->reserva = new Reserva;
-        $this->show = true;
-        $this->op = "cadastro";
-    }
+    protected $rules = [
+        "reserva.inicio" => "",
+        "reserva.fim" => "",
+        "reserva.desconto" => "",
+        "reserva.desconto_live_valor" => "",
+        "reserva.multi_fazendas" => "",
+        "reserva.ativo" => "",
+        "reserva.mostrar_datas" => "",
+        "reserva.raca_id" => "",
+        "reserva.max_parcelas" => "",
+    ];
 
     public function updatedReservaMaxParcelas(){
         $this->formas_pagamento[0] = [
@@ -64,7 +58,7 @@ class ModalCadastro extends Component
         $this->reserva = new Reserva;
         $this->op = 'cadastro';
         $this->arquivo = null;
-        $this->show = true;
+        $this->dispatchBrowserEvent("abreModalCadastroReserva");
     }
 
     public function carregaModalEdicaoReservas(Reserva $reserva){
@@ -142,6 +136,69 @@ class ModalCadastro extends Component
     public function remover_regra($key, $posicao){
         unset($this->formas_pagamento[$key]["parcelas"][$posicao]);
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Regra removida com sucesso!']);
+    }
+
+    public function resetaModalReservas(){
+        $this->resetExcept();
+    }
+
+    public function mount($fazenda = null){
+        if($fazenda){
+            $this->fazenda = $fazenda;
+            $this->fazenda_selecionada = $fazenda;
+        }else{
+            $this->fazenda = null;
+        }
+    }
+
+    public function salvar(){
+        if(!FuncoesPagamento::verificaFormasPagamento($this->formas_pagamento, $this->reserva->max_parcelas)){
+            $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'error', 'mensagem' => 'A soma das parcelas das regras não pode ultrapassar o número mínimo de parcelas do intervalo.']);
+            return;
+        }
+
+        if($this->op == 'cadastro'){
+            $this->reserva->fazenda_id = $this->fazenda_selecionada;
+            $this->reserva->aberto = false;
+            $this->reserva->preco_disponivel = false;
+            $this->reserva->compra_disponivel = false;
+        }
+        
+        if($this->arquivo){
+            Storage::delete($this->reserva->imagem_card);
+            $this->reserva->imagem_card = $this->arquivo->store("site/fazendas/", 'local');
+            Util::limparLivewireTemp();
+        }
+
+        if($this->reserva->raca_id == -1){
+            $this->reserva->raca_id = null;
+        }
+
+        $this->reserva->save();
+
+        ReservaFormasPagamento::where("reserva_id", $this->reserva->id)->delete();
+
+        foreach($this->formas_pagamento as $forma_pagamento){
+            $nova_forma = new ReservaFormasPagamento;
+            $nova_forma->reserva_id = $this->reserva->id;
+            $nova_forma->minimo = $forma_pagamento["minimo"];
+            $nova_forma->maximo = $forma_pagamento["maximo"];
+            $nova_forma->desconto = $forma_pagamento["desconto"];
+            $nova_forma->save();
+
+            foreach($forma_pagamento["parcelas"] as $key => $regra){
+                $nova_regra = new ReservaFormasPagamentoRegra;
+                $nova_regra->reserva_formas_pagamento_id = $nova_forma->id;
+                $nova_regra->meses = $regra["meses"];
+                $nova_regra->parcelas = $regra["parcelas"];
+                $nova_regra->posicao = $key;
+                $nova_regra->save();
+            }
+        }
+
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Reserva salva com sucesso!']);
+        $this->emit("atualizaDatatableReservas");
+        $this->dispatchBrowserEvent('fechaModalCadastroReserva');
     }
 
     public function render()

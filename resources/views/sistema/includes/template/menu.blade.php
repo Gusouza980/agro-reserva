@@ -7,7 +7,7 @@
         class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
         x-tooltip.placement.right="'Usuários'"
         >
-            <img class="h-7 w-7" src="{{ asset('sistema/images/icones/menu/usuarios.svg') }}" />
+            <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/usuarios.svg') }}" />
         </a>
     @endif
 
@@ -18,7 +18,7 @@
         class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
         x-tooltip.placement.right="'Reservas'"
         >
-            <img class="h-7 w-7" src="{{ asset('sistema/images/icones/menu/reservas.svg') }}" />
+            <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/reservas.svg') }}" />
         </a>
     @endif
 
@@ -29,7 +29,7 @@
         class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
         x-tooltip.placement.right="'Banners'"
         >
-            <img class="h-7 w-7" src="{{ asset('sistema/images/icones/menu/banners.svg') }}" />
+            <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/banners.svg') }}" />
         </a>
     @endif
 
@@ -40,7 +40,7 @@
         class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
         x-tooltip.placement.right="'Vendas'"
         >
-            <img class="h-7 w-7" src="{{ asset('sistema/images/icones/menu/vendas.svg') }}" />
+            <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/vendas.svg') }}" />
         </a>
     @endif
 </div>

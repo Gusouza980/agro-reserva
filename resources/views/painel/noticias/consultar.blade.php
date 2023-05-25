@@ -234,7 +234,7 @@
                     }
                 });  
                 $.ajax({
-                    url: '/sistema/noticias/destacar/' + id,
+                    url: '/system/noticias/destacar/' + id,
                     type: 'GET',
                     dataType: 'JSON',
                     success: function(data) {
