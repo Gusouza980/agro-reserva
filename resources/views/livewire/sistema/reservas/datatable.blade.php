@@ -23,7 +23,10 @@
                         <tr class="border-transparent border-y border-b-slate-200 dark:border-b-navy-500">
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">#{{ $reserva->id }}</td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
-                                <img src="{{ \Util::getImagemOuPadrao($reserva->imagem_card) }}" width="50" alt="">
+                                <label for="input_preview_{{ $reserva->id }}" class="cursor-pointer">
+                                    <img src="{{ \Util::getImagemOuPadrao($reserva->imagem_card) }}" alt="" width="80">
+                                </label>
+                                <input id="input_preview_{{ $reserva->id }}" style="display: none;" type="file" wire:model="arquivos.{{ $reserva->id }}" accept="image/*">
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">{{ $reserva->fazenda->nome_fazenda }}</td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">{{ date("d/m/Y", strtotime($reserva->inicio)) }}</td>
@@ -72,7 +75,7 @@
                                             class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700">
                                             <ul>
                                                 <li @click="isShowPopper = false">
-                                                    <a onclick="Livewire.emit('carregaModalEdicaoUsuario', {{ $reserva->id }})"
+                                                    <a onclick="Livewire.emit('carregaModalEdicaoReserva', {{ $reserva->id }})"
                                                         class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Editar Reserva</a>
                                                 </li>
                                             </ul>

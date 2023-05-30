@@ -422,10 +422,16 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
             Route::get('consultar', 'consultar')->name('consultar');
         });
 
-        // ROTAS DE BANNERS
+        // ROTAS DE RESERVAS
         Route::prefix('reservas')->name('reservas.')->controller(\App\Http\Controllers\Sistema\ReservasController::class)->group(function(){
-            // LISTAGEM DE BANNERS
+            // LISTAGEM DE RESERVAS
             Route::get('consultar', 'consultar')->name('consultar');
+        });
+
+        // ROTAS DE LOTES
+        Route::prefix('lotes')->name('lotes.')->controller(\App\Http\Controllers\Sistema\LotesController::class)->group(function(){
+            // LISTAGEM DE LOTES
+            Route::get('{reserva}/consultar', 'consultar')->name('consultar');
         });
 
         // ROTAS DE BANNERS

@@ -7,8 +7,6 @@ use App\Models\Reserva;
 use App\Models\ReservaFormasPagamento;
 use App\Models\ReservaFormasPagamentoRegra;
 use App\Classes\FuncoesPagamento;
-use Illuminate\Support\Facades\Storage;
-use Livewire\WithFileUploads;
 use App\Classes\Util;
 
 class ModalCadastro extends Component
@@ -21,10 +19,9 @@ class ModalCadastro extends Component
     public $formas_pagamento;
     public $atualizacoes_intervalos;
     public $novo_intervalo;
-    public $arquivo;
     public $regras;
 
-    protected $listeners = ["carregaModalCadastroReservas", "carregaModalEdicaoReservas", "resetaModalReservas"];
+    protected $listeners = ["carregaModalCadastroReserva", "carregaModalEdicaoReserva", "resetaModalReservas"];
 
     protected $rules = [
         "reserva.inicio" => "",
@@ -39,33 +36,50 @@ class ModalCadastro extends Component
     ];
 
     public function updatedReservaMaxParcelas(){
-        $this->formas_pagamento[0] = [
-            "minimo" => 1,
-            "maximo" => $this->reserva->max_parcelas,
-            "desconto" => 0,
-            "parcelas" => []
-        ];
+        if($this->reserva->desconto){
+            $this->formas_pagamento[0] = [
+                "minimo" => 1,
+                "maximo" => 1,
+                "desconto" => $this->reserva->desconto,
+                "parcelas" => []
+            ];
 
-        $this->atualizacoes_intervalos[0] = [
-            "minimo" => 1,
-            "maximo" => $this->reserva->max_parcelas,
-            "desconto" => 0,
-            "parcelas" => []
-        ];
+            $this->formas_pagamento[1] = [
+                "minimo" => 2,
+                "maximo" => $this->reserva->max_parcelas,
+                "desconto" => 0,
+                "parcelas" => []
+            ];
+    
+            $this->atualizacoes_intervalos = $this->formas_pagamento;
+        }else{
+            $this->formas_pagamento[0] = [
+                "minimo" => 1,
+                "maximo" => $this->reserva->max_parcelas,
+                "desconto" => 0,
+                "parcelas" => []
+            ];
+    
+            $this->atualizacoes_intervalos[0] = [
+                "minimo" => 1,
+                "maximo" => $this->reserva->max_parcelas,
+                "desconto" => 0,
+                "parcelas" => []
+            ];
+        }
+        
     }
 
-    public function carregaModalCadastroReservas(){
+    public function carregaModalCadastroReserva(){
         $this->reserva = new Reserva;
         $this->op = 'cadastro';
-        $this->arquivo = null;
-        $this->dispatchBrowserEvent("abreModalCadastroReserva");
+        $this->show = true;
     }
 
-    public function carregaModalEdicaoReservas(Reserva $reserva){
+    public function carregaModalEdicaoReserva(Reserva $reserva){
         $this->reserva = $reserva;
         $this->fazenda_selecionada = $reserva->fazenda_id;
         $this->op = 'edicao';
-        $this->arquivo = null;
         foreach($reserva->formas_pagamento->sortBy("minimo") as $forma_pagamento){
             $regras = [];
             foreach($forma_pagamento->regras->sortBy("posicao") as $regra){
@@ -163,12 +177,6 @@ class ModalCadastro extends Component
             $this->reserva->preco_disponivel = false;
             $this->reserva->compra_disponivel = false;
         }
-        
-        if($this->arquivo){
-            Storage::delete($this->reserva->imagem_card);
-            $this->reserva->imagem_card = $this->arquivo->store("site/fazendas/", 'local');
-            Util::limparLivewireTemp();
-        }
 
         if($this->reserva->raca_id == -1){
             $this->reserva->raca_id = null;
@@ -198,7 +206,7 @@ class ModalCadastro extends Component
 
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Reserva salva com sucesso!']);
         $this->emit("atualizaDatatableReservas");
-        $this->dispatchBrowserEvent('fechaModalCadastroReserva');
+        $this->show = false;
     }
 
     public function render()

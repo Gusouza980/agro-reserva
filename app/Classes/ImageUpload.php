@@ -16,6 +16,7 @@ class ImageUpload
         'banner_desk' => [1920],
         'banner_mobile' => [720],
         'foto_assessor' => [300, 300],
+        'vitrine_reserva' => [700],
     ];
 
     public function __construct($origin){
@@ -27,6 +28,10 @@ class ImageUpload
     public function makeAvatar(){
         $this->resizeWithAspectRatio($this->types["avatar"][0], $this->types["avatar"][1]);
         $this->crop($this->types["avatar"][0], $this->types["avatar"][1]);
+    }
+
+    public function makeVitrineReserva(){
+        $this->resizeWidthWithAspectRatio($this->types["vitrine_reserva"][0]);
     }
 
     public function makeBannerDesk(){
