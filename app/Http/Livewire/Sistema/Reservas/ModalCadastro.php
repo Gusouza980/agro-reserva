@@ -98,7 +98,7 @@ class ModalCadastro extends Component
 
             $this->atualizacoes_intervalos = $this->formas_pagamento;
         }
-        $this->dispatchBrowserEvent("abreModalCadastroReserva");
+        $this->show = true;
     }
 
     public function adicionar_intervalo(){
