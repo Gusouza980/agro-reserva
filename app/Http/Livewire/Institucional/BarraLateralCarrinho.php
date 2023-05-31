@@ -68,7 +68,7 @@ class BarraLateralCarrinho extends Component
         $carrinho_produto->total = $produto->preco * $carrinho_produto->quantidade;
         $carrinho_produto->save();
 
-        if($membros){
+        if(isset($membros)){
             foreach($membros as $membro){
                 $carrinho_produto = new CarrinhoProduto;
                 $carrinho_produto->carrinho_id = $carrinho->id;
