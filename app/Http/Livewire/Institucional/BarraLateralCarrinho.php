@@ -57,8 +57,8 @@ class BarraLateralCarrinho extends Component
             return;
         }
 
-        if($produto->lote->membro_pacote){
-            $membros = Lote::where("reserva_id", $produto->lote->reserva_id)->where("id", "<>", $produto->lote->id)->where("numero", $produto->lote->numero)->get();
+        if($produto->produtable->membro_pacote){
+            $membros = Lote::where("reserva_id", $produto->produtable->reserva_id)->where("id", "<>", $produto->produtable->id)->where("numero", $produto->produtable->numero)->get();
         }
 
         $carrinho_produto = new CarrinhoProduto;
