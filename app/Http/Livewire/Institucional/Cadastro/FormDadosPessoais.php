@@ -61,7 +61,11 @@ class FormDadosPessoais extends Component
                     $cliente->agriskTaxId = $cliente->cpf;
                 }else{
                     $erro = $api->getLastError();
-                    session()->flash("erro", $erro->message[0]);
+                    if(is_object($erro)){
+                        session()->flash("erro", $erro->message[0]);
+                    }elseif($erro){
+                        session()->flash("erro", $erro);
+                    }
                     return false;
                 }
             }else{
