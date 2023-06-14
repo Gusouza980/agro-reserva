@@ -39,22 +39,34 @@
         var max = $(".banner-item").length - 1;
         
         $("#banner-ant").click(function(){
+            antBanner();
+        })
+
+        $("#banner-prox").click(function(){
+            proxBanner();
+        })
+
+        setInterval(function () {
+            proxBanner();
+        }, 3000);
+
+        function antBanner(){
             if(num > 0){
                 num--;
             }else{
                 num = max;
             }
             atualizaBanner();
-        })
+        }
 
-        $("#banner-prox").click(function(){
+        function proxBanner(){
             if(num < max){
                 num++;
             }else{
                 num = 0;
             }
             atualizaBanner();
-        })
+        }
 
         function atualizaBanner(){
             $(".banner-item").each(function(item, element){

@@ -394,6 +394,67 @@ Route::middleware(['admin'])->group(function () {
 
 });
 
+// ROTAS DO NOVO PAINEL
+
+Route::prefix('sistema')->name("sistema.")->group(function () {
+
+    // LOGIN CONTROLLER
+    Route::controller(\App\Http\Controllers\Sistema\LoginController::class)->group(function () {
+            
+        Route::get('/login', 'login')->name("login");
+        Route::post('/logar', 'logar')->name("logar");
+    
+    });
+
+    Route::middleware(['admin'])->group(function () {
+
+        // INDEX CONTROLLER
+        Route::controller(\App\Http\Controllers\Sistema\IndexController::class)->group(function () {
+            
+            Route::get('/sair', 'sair')->name("sair");
+            Route::get('/', 'index')->name("index");
+        
+        });
+
+        // ROTAS DE USUÁRIOS
+        Route::prefix('usuarios')->name('usuarios.')->controller(\App\Http\Controllers\Sistema\UsuariosController::class)->group(function(){
+            // LISTAGEM DE USUÁRIOS
+            Route::get('consultar', 'consultar')->name('consultar');
+        });
+
+        // ROTAS DE RESERVAS
+        Route::prefix('reservas')->name('reservas.')->controller(\App\Http\Controllers\Sistema\ReservasController::class)->group(function(){
+            // LISTAGEM DE RESERVAS
+            Route::get('consultar', 'consultar')->name('consultar');
+        });
+
+        // ROTAS DE LOTES
+        Route::prefix('lotes')->name('lotes.')->controller(\App\Http\Controllers\Sistema\LotesController::class)->group(function(){
+            // LISTAGEM DE LOTES
+            Route::get('{reserva}/consultar', 'consultar')->name('consultar');
+        });
+
+        // ROTAS DE BANNERS
+        Route::prefix('banners')->name('banners.')->controller(\App\Http\Controllers\Sistema\BannersController::class)->group(function(){
+            // LISTAGEM DE BANNERS
+            Route::get('consultar', 'consultar')->name('consultar');
+        });
+
+        // ROTAS DE VENDAS
+        Route::prefix('vendas')->name('vendas.')->controller(\App\Http\Controllers\Sistema\VendasController::class)->group(function(){
+            // LISTAGEM DE VENDAS
+            Route::get('consultar', 'consultar')->name('consultar');
+
+            // DETALHES DE VENDA
+            Route::get('detalhes/{venda}', 'detalhes')->name('detalhes');
+        });
+
+    });
+
+});
+
+
+
 // ROTAS DO MARKETPLACE
 Route::get('/loja', [\App\Http\Controllers\MarketplaceController::class, 'index'])->name("marketplace.index");
 Route::get('/loja/produtos', [\App\Http\Controllers\MarketplaceController::class, 'produtos'])->name("marketplace.produtos");

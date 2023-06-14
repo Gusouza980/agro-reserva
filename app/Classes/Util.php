@@ -56,6 +56,14 @@ class Util{
         return preg_replace('/[^A-Za-z0-9]/', '', $string); // Remove caracteres especiais
     }
 
+    public static function getImagemOuPadrao($caminho){
+        if($caminho){
+            return asset($caminho);
+        }else{
+            return asset('imagens/sem-foto.jpg');
+        }
+    }
+
 }
 
 ?>

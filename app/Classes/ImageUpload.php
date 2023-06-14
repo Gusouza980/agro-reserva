@@ -12,7 +12,11 @@ class ImageUpload
     private $image;
 
     private $types = [
+        'avatar' => [300,300],
+        'banner_desk' => [1920],
+        'banner_mobile' => [720],
         'foto_assessor' => [300, 300],
+        'vitrine_reserva' => [700],
     ];
 
     public function __construct($origin){
@@ -26,9 +30,16 @@ class ImageUpload
         $this->crop($this->types["avatar"][0], $this->types["avatar"][1]);
     }
 
-    public function makeBanner(){
-        $this->resizeWithAspectRatio($this->types["banner"][0], $this->types["banner"][1]);
-        $this->crop($this->types["banner"][0], $this->types["banner"][1]);
+    public function makeVitrineReserva(){
+        $this->resizeWidthWithAspectRatio($this->types["vitrine_reserva"][0]);
+    }
+
+    public function makeBannerDesk(){
+        $this->resizeWidthWithAspectRatio($this->types["banner_desk"][0]);
+    }
+
+    public function makeBannerMobile(){
+        $this->resizeWidthWithAspectRatio($this->types["banner_mobile"][0]);
     }
 
     public function makeThumbnail(){
@@ -61,6 +72,14 @@ class ImageUpload
     public function resize($width, $height) :void{
         if($this->image){
             $this->image->resize($width, $height);
+        }
+    }
+
+    public function resizeWidthWithAspectRatio($width) :void{
+        if($this->image){
+            $this->image->resize($width, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
         }
     }
 
