@@ -292,8 +292,11 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @livewireScripts()
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <x-livewire-alert::scripts />
     @yield("scripts")
     @stack("scripts")
+    @include('sweetalert::alert')
 </body>
 
 <!-- Mirrored from lineone.piniastudio.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Sep 2022 01:23:42 GMT -->

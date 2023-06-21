@@ -172,6 +172,8 @@ return [
         Jenssegers\Agent\AgentServiceProvider::class,
         Weidner\Goutte\GoutteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -237,9 +239,9 @@ return [
         "Util" => App\Classes\Util::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Goutte' => Weidner\Goutte\GoutteFacade::class,
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         "Clientes" => App\Classes\Funcoes\Clientes::class,
         "Acessos" => App\Classes\Acessos::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
     ],
 
 ];

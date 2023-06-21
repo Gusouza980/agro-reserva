@@ -28,5 +28,4 @@
         </div>
     </div>
     @livewire('sistema.reservas.modal-cadastro')
-    @livewire('sistema.reservas.modal-exclusao')
 @endsection

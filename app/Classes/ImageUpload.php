@@ -17,6 +17,7 @@ class ImageUpload
         'banner_mobile' => [720],
         'foto_assessor' => [300, 300],
         'vitrine_reserva' => [700],
+        'lote' => [700],
     ];
 
     public function __construct($origin){
@@ -28,6 +29,10 @@ class ImageUpload
     public function makeAvatar(){
         $this->resizeWithAspectRatio($this->types["avatar"][0], $this->types["avatar"][1]);
         $this->crop($this->types["avatar"][0], $this->types["avatar"][1]);
+    }
+
+    public function makeLote(){
+        $this->resizeWidthWithAspectRatio($this->types["lote"][0]);
     }
 
     public function makeVitrineReserva(){
