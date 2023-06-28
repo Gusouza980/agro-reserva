@@ -22,12 +22,8 @@ class CreateLotesTable extends Migration
             $table->string("preview")->nullable();
             $table->string("registro", 30)->nullable();
             $table->date("nascimento")->nullable();
-            $table->string("genealogia")->nullable();
             $table->double("preco")->nullable();
             $table->tinyInteger("parcelas")->default(4);
-            $table->double("taxa_parcela", 4, 2)->default(0);
-            $table->tinyInteger("parcelas_isencao")->nullable();
-            $table->boolean("promocao")->default(false);
             $table->double('desconto', 4, 2)->nullable()->default(0);
             $table->integer("visitas")->default(0);
             $table->integer("carrinho")->default(0);

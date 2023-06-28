@@ -45,7 +45,6 @@ class LotesController extends Controller
         $lote->deca = $request->deca;
         $lote->botton = $request->botton;
         $lote->lact_atual = $request->lact_atual;
-        $lote->texto_destaque = $request->texto_destaque;
         $lote->gpta = $request->gpta;
         $lote->ccg = $request->ccg;
         $lote->parto = $request->parto;
@@ -128,7 +127,6 @@ class LotesController extends Controller
         $lote->deca = $request->deca;
         $lote->botton = $request->botton;
         $lote->lact_atual = $request->lact_atual;
-        $lote->texto_destaque = $request->texto_destaque;
         $lote->gpta = $request->gpta;
         $lote->ccg = $request->ccg;
         $lote->beta_caseina = $request->beta_caseina;

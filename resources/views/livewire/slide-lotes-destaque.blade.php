@@ -50,13 +50,6 @@
                                                 </div>
                                                 
                                             </div>
-                                            {{-- @if($lote->texto_destaque)
-                                                <div class="pl-5 mt-3 row align-items-center">
-                                                    <div class="lote-home-texto-destaque">
-                                                        <span>{{$lote->texto_destaque}}</span>
-                                                    </div>
-                                                </div>
-                                            @endif --}}
                                         </div>
                                     @endforeach
                                 </div>
@@ -107,13 +100,6 @@
                                             </div>
                                             
                                         </div>
-                                        {{-- @if($lote->texto_destaque)
-                                            <div class="pl-5 mt-3 row align-items-center">
-                                                <div class="lote-home-texto-destaque">
-                                                    <span>{{$lote->texto_destaque}}</span>
-                                                </div>
-                                            </div>
-                                        @endif --}}
                                     </div>
                                 @endforeach
                             </div>
