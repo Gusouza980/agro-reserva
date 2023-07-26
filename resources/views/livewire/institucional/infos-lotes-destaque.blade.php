@@ -75,7 +75,7 @@
         </h3>
     </div>
     
-    <div class="w1200 mx-auto mt-5 md:px-5 flex flex-nowrap overflow-x-scroll snap-mandatory snap-x no-scrollbar" x-swipe:left="proxSlide" x-swipe:right="antSlide" id="slide-info-lotes-destaque">
+    <div class="w1200 mt-3 mt-md-0 md:mt-0 mx-auto md:px-5 flex flex-nowrap overflow-x-scroll snap-mandatory snap-x no-scrollbar" x-swipe:left="proxSlide" x-swipe:right="antSlide" id="slide-info-lotes-destaque">
         @foreach($lotes as $key => $lote)
             <div class="snap-center flex-shrink-0 w-full flex items-center flex-wrap md:flex-nowrap md:py-5 relative px-5"  x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100"
