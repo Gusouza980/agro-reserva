@@ -77,7 +77,7 @@
     
     <div class="w1200 mx-auto mt-5 md:px-5 flex flex-nowrap overflow-x-scroll snap-mandatory snap-x no-scrollbar" x-swipe:left="proxSlide" x-swipe:right="antSlide" id="slide-info-lotes-destaque">
         @foreach($lotes as $key => $lote)
-            <div class="snap-center flex-shrink-0 w-full flex flex-wrap md:flex-nowrap md:py-5 relative px-5"  x-transition:enter="transition ease-out duration-300"
+            <div class="snap-center flex-shrink-0 w-full flex items-center flex-wrap md:flex-nowrap md:py-5 relative px-5"  x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100"
             x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-0">
@@ -85,9 +85,12 @@
                     {!! \Util::convertYoutube($lote["video"]) !!}
                 </div>
                 <div class="md:w-2/5 md:pl-10 text-[#757887]">
-                    <div class="w-full my-[20px]">
+                    <div class="w-full mt-[20px]">
+                        <img src="{{ asset($lote["fazenda"]["logo"]) }}" class="md:mx-0 mx-auto md:w-[200px] md:h-auto h-[100px] mx-md-0" alt="">
+                    </div>
+                    <div class="w-full mt-[20px]">
                         <p class="font-montserrat text-[14px]">LOTE: <b>{{ str_pad($lote["numero"], 3, '0', STR_PAD_LEFT) }}</b></p>
-                        <h1 class="font-montserrat font-bold text-[28px] text-[#E8521D]">{{ $lote["nome"] }}</h1>
+                        <h1 class="font-montserrat font-bold text-[28px] text-[#E8521D] mt-1">{{ $lote["nome"] }}</h1>
                     </div>
                     <div class="w-full relative">
                         <ul class="font-montserrat text-[14px]">
@@ -101,7 +104,7 @@
                             <li>RAÇA: <b class="ml-2">{{ $lote["raca"]["nome"] }}</b></li>
                             <li>SEXO: <b class="ml-2">{{ $lote["sexo"] }}</b></li>
                         </ul>
-                        <img src="{{ asset('imagens/Scroll-Horizontal.svg') }}" width="50" class="absolute top-5 right-0 animate-bounce" alt=""> 
+                        <img src="{{ asset('imagens/Scroll-Horizontal.svg') }}" width="50" class="md:hidden absolute top-5 right-0 animate-bounce" alt=""> 
                     </div>
                     <div class="w-full mt-[35px] font-montserrat flex items-center">
                         <span class="font-bold text-[26px]">R$

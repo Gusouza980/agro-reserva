@@ -3415,9 +3415,6 @@ body[dir="rtl"] .checkbox:checked,
 .visible {
     visibility: visible
 }
-.invisible {
-    visibility: hidden
-}
 .static {
     position: static
 }
@@ -3520,9 +3517,6 @@ body[dir="rtl"] .checkbox:checked,
 .-right-px {
     right: -1px
 }
-.top-10 {
-    top: 2.5rem
-}
 .z-0 {
     z-index: 0
 }
@@ -3593,10 +3587,6 @@ body[dir="rtl"] .checkbox:checked,
     margin-left: 0.75rem;
     margin-right: 0.75rem
 }
-.my-\[20px\] {
-    margin-top: 20px;
-    margin-bottom: 20px
-}
 .my-auto {
     margin-top: auto;
     margin-bottom: auto
@@ -3620,6 +3610,10 @@ body[dir="rtl"] .checkbox:checked,
 .mx-\[6px\] {
     margin-left: 6px;
     margin-right: 6px
+}
+.my-\[20px\] {
+    margin-top: 20px;
+    margin-bottom: 20px
 }
 .my-2 {
     margin-top: 0.5rem;
@@ -3957,9 +3951,6 @@ body[dir="rtl"] .checkbox:checked,
 .max-h-\[calc\(100vh-6rem\)\] {
     max-height: calc(100vh - 6rem)
 }
-.min-h-\[500px\] {
-    min-height: 500px
-}
 .min-h-\[35vh\] {
     min-height: 35vh
 }
@@ -3968,15 +3959,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 .min-h-screen {
     min-height: 100vh
-}
-.min-h-\[400px\] {
-    min-height: 400px
-}
-.min-h-\[700px\] {
-    min-height: 700px
-}
-.min-h-\[900px\] {
-    min-height: 900px
 }
 .w-full {
     width: 100%
@@ -4219,15 +4201,6 @@ body[dir="rtl"] .checkbox:checked,
 .transform {
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
-@keyframes ping {
-    75%, 100% {
-        transform: scale(2);
-        opacity: 0
-    }
-}
-.animate-ping {
-    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite
-}
 @keyframes bounce {
     0%, 100% {
         transform: translateY(-25%);
@@ -4240,6 +4213,15 @@ body[dir="rtl"] .checkbox:checked,
 }
 .animate-bounce {
     animation: bounce 1s infinite
+}
+@keyframes ping {
+    75%, 100% {
+        transform: scale(2);
+        opacity: 0
+    }
+}
+.animate-ping {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite
 }
 .cursor-default {
     cursor: default
@@ -4350,6 +4332,9 @@ body[dir="rtl"] .checkbox:checked,
 .gap-x-4 {
     column-gap: 1rem
 }
+.gap-x-6 {
+    column-gap: 1.5rem
+}
 .gap-x-5 {
     column-gap: 1.25rem
 }
@@ -4367,9 +4352,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 .gap-y-9 {
     row-gap: 2.25rem
-}
-.gap-x-6 {
-    column-gap: 1.5rem
 }
 .space-x-1\.5 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
@@ -6514,6 +6496,9 @@ body[dir="rtl"] .checkbox:checked,
     .md\:h-\[100px\] {
         height: 100px
     }
+    .md\:h-auto {
+        height: auto
+    }
     .md\:max-h-full {
         max-height: 100%
     }
@@ -6577,6 +6562,9 @@ body[dir="rtl"] .checkbox:checked,
     .md\:w-1\/4 {
         width: 25%
     }
+    .md\:w-\[200px\] {
+        width: 200px
+    }
     .md\:max-w-\[390px\] {
         max-width: 390px
     }
@@ -6591,9 +6579,6 @@ body[dir="rtl"] .checkbox:checked,
     }
     .md\:max-w-\[550px\] {
         max-width: 550px
-    }
-    .md\:max-w-full {
-        max-width: 100%
     }
     .md\:grid-cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr))
@@ -6693,13 +6678,13 @@ body[dir="rtl"] .checkbox:checked,
         padding-left: 1.25rem;
         padding-right: 1.25rem
     }
-    .md\:px-\[40px\] {
-        padding-left: 40px;
-        padding-right: 40px
-    }
     .md\:py-5 {
         padding-top: 1.25rem;
         padding-bottom: 1.25rem
+    }
+    .md\:px-\[40px\] {
+        padding-left: 40px;
+        padding-right: 40px
     }
     .md\:pl-10 {
         padding-left: 2.5rem
