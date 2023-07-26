@@ -16,7 +16,7 @@ class InfosLotesDestaque extends Component
         //     $q->where([["encerrada", false], ['aberto', true]]);
         // })->where([["destaque", true], ['reservado', false]])->get()->toArray();
         // if(!count($this->lotes)){
-            $this->lotes = Lote::with("fazenda:id,nome_fazenda,logo")->with("raca:id,nome")->with("produto")->with("reserva:id,desconto,max_parcelas")->select("id", "reserva_id", "fazenda_id", "nome", "numero", "registro", "nascimento", "raca_id", "sexo", "video", "beta_caseina", "liberar_compra")->whereHas("reserva", function($q) {
+            $this->lotes = Lote::with("fazenda:id,nome_fazenda,logo,slug")->with("raca:id,nome")->with("produto")->with("reserva:id,desconto,max_parcelas")->select("id", "reserva_id", "fazenda_id", "nome", "numero", "registro", "nascimento", "raca_id", "sexo", "video", "beta_caseina", "liberar_compra")->whereHas("reserva", function($q) {
                 $q->where([["encerrada", false], ['aberto', true]]);
             })->where('reservado', false)->inRandomOrder()->take(5)->get()->toArray();
         // }
