@@ -21,9 +21,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1.8" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=1.9" />
     {{-- <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" /> --}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1.1"/>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1.2"/>
     {{-- <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" /> --}}
     @toastr_css
     @livewireStyles
