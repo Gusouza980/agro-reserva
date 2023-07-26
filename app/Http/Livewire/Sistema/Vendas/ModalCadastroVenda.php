@@ -79,7 +79,7 @@ class ModalCadastroVenda extends Component
     }
 
     public function geraParcelas(){
-        if(empty($this->venda->parcelas) || empty($this->venda->porcentagem_desconto) || empty($this->venda->desconto_extra) || empty($this->venda->entrada) || empty($this->venda->primeira_parcela)){
+        if(empty($this->venda->parcelas) || $this->venda->porcentagem_desconto === null || $this->venda->desconto_extra === null || $this->venda->entrada === null || empty($this->venda->primeira_parcela)){
             $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'error', 'mensagem' => 'Preencha todos os campos para calcular as parcelas!']);
             return;
         }
@@ -128,6 +128,11 @@ class ModalCadastroVenda extends Component
         $entrada = ($this->venda->entrada) ? $this->venda->entrada : 0;
         $primeira_parcela = $this->venda->primeira_parcela;
         $total = $this->lotes_selecionados->sum("preco");
+        $total_parcelas = 0;
+        foreach($this->parcelas as $parcela){
+            $total_parcelas += $parcela["valor"];
+        }
+        $desconto_extra += $total - $total_parcelas;
         $desconto = $total * $porcentagem_desconto / 100;
         $total = $total - $desconto - $desconto_extra;
         $valor_parcela = ($total - $entrada) / $qtd_parcelas;

@@ -41,6 +41,7 @@
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/alpinejs-swipe"></script>
 </head>
 
 <body x-data="{start: true}" class="bg-[#F5F5F5]">
@@ -106,7 +107,7 @@
 
     @yield("scripts")
     @stack("scripts")
-
+    
     @if (session()->get('cadastro_finalizado'))
         <script>
             function fechaModal() {

@@ -76,7 +76,7 @@ class ModalCadastroVenda extends Component
     }
 
     public function geraParcelas(){
-        if($this->venda->primeira_parcela && $this->venda->parcelas){
+        if($this->venda->primeira_parcela !== null && $this->venda->parcelas){
             $this->parcelas = collect();
             $qtd_parcelas = $this->venda->parcelas;
             $desconto = ($this->venda->porcentagem_desconto) ? $this->venda->porcentagem_desconto : 0;
@@ -122,6 +122,11 @@ class ModalCadastroVenda extends Component
         $primeira_parcela = $this->venda->primeira_parcela;
         $total = $this->lotes_selecionados->sum("preco");
         $desconto = $total * $porcentagem_desconto / 100;
+        $total_parcelas = 0;
+        foreach($this->parcelas as $parcela){
+            $total_parcelas += $parcela["valor"];
+        }
+        $desconto_extra += $total - $total_parcelas;
         $total = $total - $desconto - $desconto_extra;
         $valor_parcela = ($total - $entrada) / $qtd_parcelas;
 

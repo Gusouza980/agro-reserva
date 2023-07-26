@@ -1,7 +1,4 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/css/videojs.css": "/css/videojs.css",
-    "/js/videojs.js": "/js/videojs.js",
-    "/js/videojs-youtube.js": "/js/videojs-youtube.js"
+    "/css/app.css": "/css/app.css"
 }

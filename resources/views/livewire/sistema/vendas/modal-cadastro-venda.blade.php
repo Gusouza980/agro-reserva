@@ -125,7 +125,7 @@
                                             </div>
                                         </div>
                                         <div class="w-full">
-                                            <button class="w-full py-3 text-white bg-green-600 cursor-pointer" wire:click="geraParcelas">Gerar Pareclas</button>
+                                            <button class="w-full py-3 text-white bg-green-600 cursor-pointer" wire:click="geraParcelas">Gerar Parcelas</button>
                                         </div>
                                         @if($parcelas->count() > 0)
                                             <hr class="my-3">
@@ -141,9 +141,11 @@
                                                             @endif
                                                             
                                                             <td class="px-3 py-3 border border-l-0 whitespace-nowrap border-slate-200 dark:border-navy-500 lg:px-5"><b>{{ $key }}/{{ $venda->parcelas }}</b></td>
-                                                            <td class="px-3 py-3 border border-l-0 whitespace-nowrap border-slate-200 dark:border-navy-500 lg:px-5">R${{ number_format($parcela["valor"], 2, ",", ".") }}</td>
                                                             <td class="px-3 py-3 border border-l-0 whitespace-nowrap border-slate-200 dark:border-navy-500 lg:px-5">
-                                                                <input type="date" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" wire:model="parcelas.{{ $key }}.vencimento" required>
+                                                                <input type="number" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" wire:model.debounce.500ms="parcelas.{{ $key }}.valor" required>
+                                                            </td>
+                                                            <td class="px-3 py-3 border border-l-0 whitespace-nowrap border-slate-200 dark:border-navy-500 lg:px-5">
+                                                                <input type="date" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" wire:model.debounce.500ms="parcelas.{{ $key }}.vencimento" required>
                                                             </td>
                                                             @php
                                                                 $cont++;
@@ -172,6 +174,11 @@
                                                                 $total_lotes = $this->lotes_selecionados->sum("preco");
                                                                 $desconto = ($this->venda->porcentagem_desconto) ? $this->venda->porcentagem_desconto : 0;
                                                                 $desconto_extra = ($this->venda->desconto_extra) ? $this->venda->desconto_extra : 0;
+                                                                $total_parcelas = 0;
+                                                                foreach($parcelas as $parcela){
+                                                                    $total_parcelas += $parcela["valor"];
+                                                                }
+                                                                $desconto_parcelas = $total_lotes - $total_parcelas;
                                                                 $entrada = ($this->venda->entrada) ? $this->venda->entrada : 0;
                                                             @endphp
                                                             <tr>
@@ -180,11 +187,11 @@
                                                                 <td class="px-3 py-3 border border-l-0 whitespace-nowrap border-slate-200 dark:border-navy-500 lg:px-5"><b>Desconto (%)</b></td>
                                                                 <td class="px-3 py-3 text-red-600 border border-l-0 whitespace-nowrap border-slate-200 dark:border-navy-500 lg:px-5">{{ number_format($desconto, 2, ",", ".") }}% (R${{ number_format($total_lotes * $desconto / 100, 2, ",", ".") }})</td>
                                                                 <td class="px-3 py-3 border border-l-0 whitespace-nowrap border-slate-200 dark:border-navy-500 lg:px-5"><b>Desconto (R$)</b></td>
-                                                                <td class="px-3 py-3 text-red-600 border border-l-0 whitespace-nowrap border-slate-200 dark:border-navy-500 lg:px-5">R${{ number_format($desconto_extra, 2, ",", ".") }}</td>
+                                                                <td class="px-3 py-3 text-red-600 border border-l-0 whitespace-nowrap border-slate-200 dark:border-navy-500 lg:px-5">R${{ number_format($desconto_extra, 2, ",", ".")}} + R${{ number_format($desconto_parcelas, 2, ",", ".") }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td scope="row" class="px-3 py-3 text-right border border-l-0 whitespace-nowrap border-slate-200 dark:border-navy-500 lg:px-5" colspan="4"><b>TOTAL</b></td>
-                                                                <td class="px-3 py-3 border border-l-0 whitespace-nowrap border-slate-200 dark:border-navy-500 lg:px-5" colspan="2"><b>R${{ number_format($total_lotes - ($total_lotes * $desconto / 100) - $desconto_extra, 2, ",", ".") }}</b> com <b>R${{ number_format($entrada, 2, ",", ".") }}</b> de entrada</td>
+                                                                <td class="px-3 py-3 border border-l-0 whitespace-nowrap border-slate-200 dark:border-navy-500 lg:px-5" colspan="2"><b>R${{ number_format($total_lotes - ($total_lotes * $desconto / 100) - $desconto_extra - $desconto_parcelas, 2, ",", ".") }}</b> com <b>R${{ number_format($entrada, 2, ",", ".") }}</b> de entrada</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
