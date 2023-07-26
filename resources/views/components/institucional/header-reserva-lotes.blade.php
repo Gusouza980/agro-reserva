@@ -8,6 +8,6 @@
             </defs>
             <rect id="Marca-das-Reservas" width="229" height="169" rx="20" fill="url(#pattern)"/>
         </svg>            
-        <img src="{{ asset($reserva->fazenda->logo) }}" class="cursor-pointer max-w-[200px] " title="Visitar Reserva" onclick="window.location.href='{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva]) }}'" alt="">  
+        <img src="{{ asset($reserva->fazenda->logo) }}" class="cursor-pointer max-w-[250px] " title="Visitar Reserva" onclick="window.location.href='{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva]) }}'" alt="">  
     </div>
 </div>
