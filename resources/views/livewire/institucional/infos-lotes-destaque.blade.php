@@ -86,7 +86,7 @@
                 </div>
                 <div class="md:w-2/5 md:pl-10 text-[#757887]">
                     <div class="w-full mt-[20px]">
-                        <img src="{{ asset($lote["fazenda"]["logo"]) }}" class="md:mx-0 mx-auto md:w-[200px] md:h-auto h-[100px] mx-md-0" alt="">
+                        <img src="{{ asset($lote["fazenda"]["logo"]) }}" class="md:mx-0 mx-auto md:w-[150px] md:h-auto h-[100px] mx-md-0" alt="">
                     </div>
                     <div class="w-full mt-[20px]">
                         <p class="font-montserrat text-[14px]">LOTE: <b>{{ str_pad($lote["numero"], 3, '0', STR_PAD_LEFT) }}</b></p>
