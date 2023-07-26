@@ -106,7 +106,7 @@
                         </ul>
                         <img src="{{ asset('imagens/Scroll-Horizontal.svg') }}" width="50" class="md:hidden absolute top-5 right-0 animate-bounce" alt=""> 
                     </div>
-                    <div class="w-full mt-[35px] font-montserrat flex items-center">
+                    <div class="w-full mt-[20px] font-montserrat flex items-center">
                         <span class="font-bold text-[26px]">R$
                             {{ number_format($lote["produto"]["preco"] - ($lote["produto"]["preco"] * $lote["reserva"]["desconto"]) / 100, 2, ',', '.') }}</span>
                         <span class="font-medium text-[20px] ml-2">à vista</span>
@@ -115,7 +115,7 @@
                         <span>Fator multiplicador: <b>{{ $lote["reserva"]["max_parcelas"] }}x</b> de <b>R$
                                 {{ number_format($lote["produto"]["preco"] / $lote["reserva"]["max_parcelas"], 2, ',', '.') }}</b></span>
                     </div>
-                    <div class="w-full mt-[40px] flex gap-x-4">
+                    <div class="w-full mt-[20px] flex gap-x-4">
                         <a onclick="Livewire.emit('adicionarProduto', {{ $lote['produto']['id'] }})"
                             class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Comprar</a>
                         <a onclick="Livewire.emit('adicionarProduto', {{ $lote['produto']['id'] }})"
