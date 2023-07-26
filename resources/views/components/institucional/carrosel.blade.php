@@ -48,7 +48,7 @@
 
         setInterval(function () {
             proxBanner();
-        }, 7000);
+        }, 8000);
 
         function antBanner(){
             if(num > 0){

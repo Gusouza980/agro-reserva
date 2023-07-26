@@ -449,6 +449,12 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
             Route::get('detalhes/{venda}', 'detalhes')->name('detalhes');
         });
 
+        // ROTAS DE DEMANDAS
+        Route::prefix('demandas')->name('demandas.')->controller(\App\Http\Controllers\Sistema\DEMANDASController::class)->group(function(){
+            // LISTAGEM DE DEMANDAS
+            Route::get('consultar', 'consultar')->name('consultar');
+        });
+
     });
 
 });
