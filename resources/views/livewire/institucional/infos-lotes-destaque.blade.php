@@ -1,4 +1,4 @@
-<div class="w-full py-5" x-data="{
+<div class="w-full py-5 bg-[#E3E5EA]" x-data="{
     pos: 0,
     total: @entangle('total'),
     mobile: @entangle('mobile'),
@@ -69,7 +69,7 @@
         
     }
 }">
-    <div class="w-full mt-5 text-center">
+    <div class="w-full text-center">
         <h3 class="font-montserrat font-bold text-[25px] text-[#757887]">
             LOTES EM DESTAQUE
         </h3>
