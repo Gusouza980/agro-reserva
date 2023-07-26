@@ -11,7 +11,7 @@
 <x-institucional.carrosel :banners="$banners"></x-institucional.carrosel>
 
 <x-institucional.highlights></x-institucional.highlights>
-@livewire('institucional.infos-lotes-destaque')
+{{-- @livewire('institucional.infos-lotes-destaque') --}}
 @foreach($reservas->where("aberto", true)->where("encerrada", false)->sortByDesc("inicio") as $reserva)
     
     @php
