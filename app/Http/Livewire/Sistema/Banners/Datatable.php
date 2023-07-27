@@ -9,19 +9,42 @@ use Livewire\WithFileUploads;
 use App\Classes\Util;
 use Illuminate\Support\Facades\Storage;
 use App\Classes\ImageUpload;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Datatable extends Component
 {
     use WithPagination;
     use WithFileUploads;
-
+    use LivewireAlert;
     public $arquivos_desk = [];
     public $arquivos_mobile = [];
-
+    public $toDelete;
     public $quantidade_exibicao;
 
-    protected $listeners = ["atualizaDatatableBanners" => '$refresh'];
+    protected $listeners = ["atualizaDatatableBanners" => '$refresh', 'excluir', 'cancelar'];
 
+    public function solicitarExcluir(HomeBanner $banner){
+        $this->toDelete = $banner;
+        $this->alert('warning', 'Tem certeza de que deseja excluir esse banner ?', [
+            'position' => 'center',
+            'showConfirmButton' => true,
+            'confirmButtonText' => 'Sim',
+            'onConfirmed' => "excluir",
+            'showCancelButton' => true,
+            'cancelButtonText' => 'Não',
+            'onDismissed' => 'cancelar',
+            'timer' => null,
+        ]);
+    }
+    public function excluir(){
+        $this->toDelete->delete();
+        $this->toDelete = null;
+        $this->emit('$refresh');
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Banner removido com sucesso!']);
+    }
+    public function cancelar(){
+        $this->toDelete = null;
+    }
 
     public function updatedArquivosDesk($value, $key){
         $banner = HomeBanner::find($key);

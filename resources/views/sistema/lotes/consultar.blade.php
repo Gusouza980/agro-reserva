@@ -15,7 +15,7 @@
                 Listagem de Lotes
             </h2>
         </div>
-        <div class="mt-3 card">
+        <div class="mt-3">
             @livewire('sistema.lotes.datatable', ['reserva' => $reserva])
         </div>
     </div>

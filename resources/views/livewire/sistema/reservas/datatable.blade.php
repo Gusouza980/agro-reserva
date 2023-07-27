@@ -1,21 +1,22 @@
 <div class="w-full">
-    <div class="w-full card">
+    <div class="w-full card rounded-none">
         <div class="min-w-full overflow-x-auto is-scrollbar-hidden" x-data="pages.tables.initExample1">
             <table class="w-full text-left is-hoverable" style="vertical-align: middle;">
                 <thead>
                     <tr>
-                        <th class="px-4 py-3 font-semibold uppercase rounded-tl-lg whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">ID</th>
-                        <th class="px-4 py-3 font-semibold uppercase rounded-tl-lg whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5"></th>
-                        <th class="px-4 py-3 font-semibold uppercase rounded-tl-lg whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Nome</th>
-                        <th class="px-4 py-3 font-semibold uppercase rounded-tl-lg whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Início</th>
-                        <th class="px-4 py-3 font-semibold uppercase rounded-tl-lg whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Fim</th>
-                        <th class="px-4 py-3 font-semibold uppercase rounded-tl-lg whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Ativa</th>
-                        <th class="px-4 py-3 font-semibold uppercase rounded-tl-lg whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Aberta</th>
-                        <th class="px-4 py-3 font-semibold uppercase rounded-tl-lg whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Preços</th>
-                        <th class="px-4 py-3 font-semibold uppercase rounded-tl-lg whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Compras</th>
-                        <th class="px-4 py-3 font-semibold uppercase rounded-tl-lg whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Encerrada</th>
-                        <th class="px-4 py-3 font-semibold uppercase rounded-tl-lg whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Lotes</th>
-                        <th class="px-4 py-3 font-semibold uppercase rounded-tl-lg whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5"></th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">ID</th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5"></th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Catálogo</th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Nome</th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Início</th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Fim</th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Ativa</th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Aberta</th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Preços</th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Compras</th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Encerrada</th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Lotes</th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,9 +25,16 @@
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">#{{ $reserva->id }}</td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
                                 <label for="input_preview_{{ $reserva->id }}" class="cursor-pointer">
-                                    <img src="{{ \Util::getImagemOuPadrao($reserva->imagem_card) }}" alt="" width="80">
+                                    <img src="{{ \Util::getImagemOuPadrao($reserva->imagem_card) }}" loading="lazy" width="80">
                                 </label>
                                 <input id="input_preview_{{ $reserva->id }}" style="display: none;" type="file" wire:model="arquivos.{{ $reserva->id }}" accept="image/*">
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap sm:px-5 text-center">
+                                @if($reserva->catalogo)
+                                    <a href="{{ asset($reserva->catalogo) }}" target="_blank" class="rounded-lg py-2 px-3 bg-orange-600 text-white">Ver</a>
+                                @else
+                                    Não Cadastrado
+                                @endif
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">{{ $reserva->fazenda->nome_fazenda }}</td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">{{ date("d/m/Y", strtotime($reserva->inicio)) }}</td>

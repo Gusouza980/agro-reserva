@@ -23,7 +23,7 @@
                 </button>
             </div>
         </div>
-        <div class="mt-3 card">
+        <div class="mt-3">
             @livewire('sistema.reservas.datatable')
         </div>
     </div>

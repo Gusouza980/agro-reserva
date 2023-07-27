@@ -86,6 +86,12 @@
                                                 <a onclick="Livewire.emit('carregaModalEdicaoBanner', {{ $banner->id }})"
                                                     class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Editar</a>
                                             </li>
+                                            <ul>
+                                                <li @click="isShowPopper = false">
+                                                    <a wire:click="solicitarExcluir({{ $banner->id }})"
+                                                        class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide text-red-600 transition-all outline-none cursor-pointer hover:bg-red-400 hover:text-white focus:bg-red-600 focus:text-white dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Excluir</a>
+                                                </li>
+                                            </ul>
                                         </ul>
                                     </div>
                                 </div>

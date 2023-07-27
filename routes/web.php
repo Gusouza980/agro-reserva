@@ -450,8 +450,14 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
         });
 
         // ROTAS DE DEMANDAS
-        Route::prefix('demandas')->name('demandas.')->controller(\App\Http\Controllers\Sistema\DEMANDASController::class)->group(function(){
+        Route::prefix('demandas')->name('demandas.')->controller(\App\Http\Controllers\Sistema\DemandasController::class)->group(function(){
             // LISTAGEM DE DEMANDAS
+            Route::get('consultar', 'consultar')->name('consultar');
+        });
+
+        // ROTAS DE GUIAS
+        Route::prefix('guias')->name('guias.')->controller(\App\Http\Controllers\Sistema\GuiasController::class)->group(function(){
+            // LISTAGEM DE GUIAS
             Route::get('consultar', 'consultar')->name('consultar');
         });
 

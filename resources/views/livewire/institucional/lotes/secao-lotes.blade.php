@@ -64,10 +64,15 @@
                     $fazenda = \App\Models\Fazenda::find($fazenda_id);
                 @endphp
                 @if($lotes->where("fazenda_id", $fazenda_id)->count() > 0)
-                    <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white">
+                    <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white relative">
                         <img class="w-full h-full" src="{{ ($fazenda->imagem_card) ? asset($fazenda->imagem_card) : asset($fazenda->logo) }}" alt="">
                         {{-- <div class="flex items-center justify-center w-full h-full bg-black" style="background-image: url(); background-size: cover; background-position: center;">
                         </div> --}}
+                        @if($reserva->catalogo)
+                            <div class="w-full absolute bottom-5 left-0 flex justify-center items-center text-sm">
+                                <a href="{{ asset($reserva->catalogo) }}" target="_blank" title="Catálogo - {{ $reserva->fazenda->nome_fazenda }}" class="py-2 px-3 rounded-lg flex items-center justify-center bg-orange-600 text-white transition duration-200 hover:scale-105"><i class="fas fa-file fa-lg mr-3"></i> Ver Catálogo</a>
+                            </div>
+                        @endif
                     </div>
                 @endif
                 @foreach($lotes->where("fazenda_id", $fazenda_id) as $lote)

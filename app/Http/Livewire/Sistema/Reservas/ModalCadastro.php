@@ -8,12 +8,15 @@ use App\Models\ReservaFormasPagamento;
 use App\Models\ReservaFormasPagamentoRegra;
 use App\Classes\FuncoesPagamento;
 use App\Classes\Util;
+use Livewire\WithFileUploads;
 
 class ModalCadastro extends Component
 {
+    use WithFileUploads;
     public $show = false;
     public $op = "cadastro";
     public $reserva;
+    public $catalogo;
     public $fazenda;
     public $fazenda_selecionada;
     public $formas_pagamento;
@@ -202,6 +205,12 @@ class ModalCadastro extends Component
                 $nova_regra->posicao = $key;
                 $nova_regra->save();
             }
+        }
+
+        if($this->catalogo){
+            $this->reserva->catalogo = $this->catalogo->store('uploads');
+            $this->reserva->save();
+            \Util::limparLivewireTemp();
         }
 
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Reserva salva com sucesso!']);

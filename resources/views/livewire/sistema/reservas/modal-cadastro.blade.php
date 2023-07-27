@@ -120,6 +120,19 @@
                                         wire:model.debounce.500ms="reserva.max_parcelas" required>
                                 </div>
                             </div>
+                            <label
+                                class="font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80">
+                                <input tabindex="-1" type="file"
+                                    class="pointer-events-none absolute inset-0 h-full w-full opacity-0" wire:model="catalogo" />
+                                <div class="cursor-pointer mb-3 rounded-lg py-2 px-4 @if(!$catalogo) bg-slate-300 @else bg-green-500 @endif flex items-center space-x-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                                    </svg>
+                                    <span>@if(!$catalogo) Escolher Arquivo de Catálogo @else Catálogo carregado. Já pode salvar ! @endif</span>
+                                </div>
+                            </label>
                             <hr>
                             @if ($reserva && $reserva->max_parcelas)
                                 @if ($formas_pagamento)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Sistema\Lotes;
 
+use App\Imports\LotesImport;
 use Livewire\Component;
 use App\Models\Reserva;
 use App\Models\Lote;
@@ -10,6 +11,7 @@ use App\Classes\Util;
 use Illuminate\Support\Facades\Storage;
 use App\Classes\ImageUpload;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Datatable extends Component
 {
@@ -18,7 +20,8 @@ class Datatable extends Component
     public $arquivos;
     public $fotos;
     public $reserva;
-
+    public $lotes;
+    public $planilha;
     public $toDelete;
     protected $listeners = ["atualizaValor", "atualizaDatatableLotes" => '$refresh', 'excluir', 'cancelar'];
     public function updatedArquivos($value, $key){
@@ -35,14 +38,36 @@ class Datatable extends Component
         }
         $lote->save();
         $this->arquivos = [];
-        $this->reserva->refresh();
-        $this->emit('$refresh');
+        $this->atualizaLotes();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Imagem atualizada com sucesso!']);
     }
+
+    public function updatedPlanilha(){
+        if($this->planilha){
+            $caminho = $this->planilha->store(
+                'tmp_planilha/', 'local'
+            );
+        }
+
+        Excel::import(new LotesImport($this->reserva['id'], $this->reserva['fazenda_id']), $caminho);
+
+        Storage::delete($caminho);
+
+        $lotes = Lote::where("reserva_id", $this->reserva['id'])->get();
+        foreach($lotes as $lote){
+            $lote->produto()->create([
+                "nome" => $lote->nome,
+                "preco" => ($lote->preco) ? $lote->preco : 0
+            ]);
+        }
+        $this->planilha = null;
+        $this->atualizaLotes();
+        toastr()->success("Lotes importados com sucesso!");
+    }
+
     public function updatedFotos(){
         $cont = 0;
-        $lotes = $this->reserva->lotes;
-        foreach($lotes as $lote){
+        foreach($this->lotes as $lote){
             if($lote->preview){
                 Storage::delete($lote->preview);
             }
@@ -55,8 +80,6 @@ class Datatable extends Component
         }
         Util::limparLivewireTemp();
         $this->fotos = null;
-        $this->reserva->refresh();
-        $this->emit('$refresh');
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Imagens atualizadas com sucesso!']);
     }
     public function atualizaValor(Lote $lote, $campo, $valor){
@@ -92,21 +115,23 @@ class Datatable extends Component
             'timer' => null,
         ]);
     }
-    public function excluir(Lote $lote){
+    public function excluir(){
         $this->toDelete->delete();
-        $this->reserva->refresh();
-        $this->emit('$refresh');
+        $this->atualizaLotes();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Lote removido com sucesso!']);
     }
     public function cancelar(){
         $this->toDelete = null;
     }
+    public function atualizaLotes(){
+        $this->lotes = Lote::where("reserva_id", $this->reserva["id"])->get()->toArray();
+    }
     public function mount(Reserva $reserva){
-        $this->reserva = $reserva;
+        $this->reserva = $reserva->toArray();
+        $this->atualizaLotes();
     }
     public function render()
     {
-        $lotes = $this->reserva->lotes;
-        return view('livewire.sistema.lotes.datatable', ['lotes' => $lotes]);
+        return view('livewire.sistema.lotes.datatable');
     }
 }
