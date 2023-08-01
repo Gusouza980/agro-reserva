@@ -68,6 +68,7 @@ class Datatable extends Component
     public function updatedFotos(){
         $cont = 0;
         foreach($this->lotes as $lote){
+            $lote = Lote::find($lote['id']);
             if($lote->preview){
                 Storage::delete($lote->preview);
             }
