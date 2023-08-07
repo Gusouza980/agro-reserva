@@ -26,14 +26,7 @@ class SiteController extends Controller
 {
 
     public function testes(){
-        $clientes_backup = DB::table('clientes_backup')->get();
-        foreach($clientes_backup as $cliente_backup){
-            $cliente = Cliente::find($cliente_backup->id);
-            $atributos = Arr::except((array) $cliente_backup, ['id']);
-            $cliente->fill($atributos);
-            $cliente->save();
-        }
-        echo "FOI";
+        return view("concluir");
     }
 
     public function index(){

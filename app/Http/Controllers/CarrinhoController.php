@@ -197,13 +197,24 @@ class CarrinhoController extends Controller
         $carrinho->save();
 
         session()->forget("carrinho");
+        session()->flash(["venda" => $venda->id]);
         // $data = ["venda" => $venda];
         // $pdf = PDF::loadView('cliente.comprovante2', $data);
         // $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
         // $file = file_get_contents('templates/emails/confirmar-compra.html');
         // Email::enviar($file, "Confirmação de Compra", session()->get("cliente")["email"], false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
-        session()->flash("reserva_finalizada");
-        return redirect()->route('conta.index');
+        return redirect()->view('conta.index');
+    }
+
+    public function concluido(){
+        // $venda = Venda::orderBy("created_at", "DESC")->first();
+        // dd($venda->carrinho->produtos);
+        return view("concluir", ['venda' => Venda::orderBy("created_at", "DESC")->first()]);
+        // if(session()->get("venda")){
+        //     return view("concluir", ['venda' => Venda::find(session()->get("venda"))]);
+        // }else{
+        //     echo "DEU RUIM";
+        // }
     }
 
     public function abertos(){
