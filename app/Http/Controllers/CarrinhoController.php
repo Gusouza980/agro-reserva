@@ -212,7 +212,7 @@ class CarrinhoController extends Controller
         $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
         $file = file_get_contents('templates/emails/confirmar-compra.html');
         // Email::enviar($file, "Confirmação de Compra", session()->get("cliente")["email"], false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
-        Email::enviar($file, "Confirmação de Compra", "gusouza980@gmail.com", false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
+        Email::enviar($file, "Confirmação de Compra", session()->get("cliente")["email"], false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
         return redirect()->route('carrinho.concluido');
     }
 
