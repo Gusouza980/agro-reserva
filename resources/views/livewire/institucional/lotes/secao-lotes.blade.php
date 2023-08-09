@@ -59,10 +59,14 @@
         @endphp
 
         @foreach($fazendas as $key => $fazenda_id)
+            @php
+                $fazenda = \App\Models\Fazenda::find($fazenda_id);
+            @endphp
+            <div class="w-full text-center">
+                <img src="{{ asset($fazenda->logo) }}" width="200" alt="">
+            </div>
             <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[80px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
-                @php
-                    $fazenda = \App\Models\Fazenda::find($fazenda_id);
-                @endphp
+                
                 @if($lotes->where("fazenda_id", $fazenda_id)->count() > 0)
                     <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white relative">
                         <img class="w-full h-full" src="{{ ($fazenda->imagem_card) ? asset($fazenda->imagem_card) : asset($fazenda->logo) }}" alt="">
