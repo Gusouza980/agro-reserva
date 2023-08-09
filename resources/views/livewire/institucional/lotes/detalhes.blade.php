@@ -233,7 +233,7 @@
                         <div class="absolute bottom-[5px] right-[15px] text-[13px] font-medium">
                             MÃE
                         </div>
-                        <div class="absolute bottom-[5px] left-[15px] text-[13px] font-medium">
+                        <div class="absolute bottom-[5px] mt-3 text-[11px] font-medium">
                             {{ $lote->lactacao_mae }}
                         </div>
                     </div>
@@ -245,7 +245,7 @@
                         <div class="absolute bottom-[5px] right-[15px] text-[13px] font-medium">
                             AVÓ
                         </div>
-                        <div class="absolute bottom-[5px] left-[15px] text-[13px] font-medium">
+                        <div class="absolute bottom-[5px] mt-3 text-[11px] font-medium">
                             {{ $lote->lactacao_avo_paterna }}
                         </div>
                     </div>
@@ -255,7 +255,7 @@
                         <div class="absolute bottom-[5px] right-[15px] text-[13px] font-medium">
                             AVÓ
                         </div>
-                        <div class="absolute bottom-[5px] left-[15px] text-[13px] font-medium">
+                        <div class="absolute bottom-[5px] mt-3 text-[11px] font-medium">
                             {{ $lote->lactacao_avo_materna }}
                         </div>
                     </div>
