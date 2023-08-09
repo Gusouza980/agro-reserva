@@ -63,7 +63,7 @@
                 $fazenda = \App\Models\Fazenda::find($fazenda_id);
             @endphp
             <div class="w-full text-center">
-                <img src="{{ asset($fazenda->logo) }}" width="200" alt="">
+                <img src="{{ asset($fazenda->logo) }}" class="mx-auto" width="200" alt="">
             </div>
             <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[80px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
                 
