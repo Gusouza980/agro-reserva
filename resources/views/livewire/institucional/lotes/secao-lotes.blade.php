@@ -65,7 +65,7 @@
             <div class="w-full text-center mt-[40px]">
                 <img src="{{ asset($fazenda->logo) }}" class="mx-auto" width="200" alt="">
             </div>
-            <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[40px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
+            <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[60px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
                 
                 @if($lotes->where("fazenda_id", $fazenda_id)->count() > 0)
                     <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white relative">
