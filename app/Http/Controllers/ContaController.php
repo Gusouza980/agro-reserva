@@ -82,7 +82,11 @@ class ContaController extends Controller
     }
 
     public function comprovante_reserva(Venda $venda){
-        $data = ["venda" => $venda];
+        $fazendas = [];
+        foreach($venda->carrinho->produtos as $produto){
+            $fazendas[$produto->produtable->fazenda_id][] = $produto;
+        }
+        $data = ["venda" => $venda, "fazendas" => $fazendas];
         // $cliente = $venda->cliente;
         if($venda->getRelationValue("parcelas")->count() == 0){
             $pdf = PDF::loadView('cliente.comprovante2', $data);

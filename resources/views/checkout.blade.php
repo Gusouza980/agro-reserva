@@ -79,18 +79,20 @@
                             <p class="mt-[10px]">
                                 @if($forma_pagamento->minimo != $forma_pagamento->maximo)
                                     De <b>{{ $forma_pagamento->minimo }} à {{ $forma_pagamento->maximo }} parcelas</b>, 
-                                    @if($forma_pagamento->desconto > 0)
-                                        <b>{{ $forma_pagamento->desconto }}% de desconto</b> e
-                                    @endif
-                                    pagamento feito em 
-                                    @if($forma_pagamento->regras->count() > 0)
-                                        @foreach($forma_pagamento->regras->sortBy("posicao") as $regra)
-                                            <b>{{ $regra->meses }} {{ config("globals.nome_parcelas")[$regra->parcelas] }}</b>,
-                                        @endforeach
-                                        com o restante das parcelas sendo únicas.
-                                    @else
-                                        <b>parcelas únicas</b>
-                                    @endif
+                                @else
+                                    Em <b>{{ $forma_pagamento->minimo }} parcela(s)</b>
+                                @endif
+                                @if($forma_pagamento->desconto > 0)
+                                    <b> com {{ $forma_pagamento->desconto }}% de desconto</b> e
+                                @endif
+                                pagamento feito em 
+                                @if($forma_pagamento->regras->count() > 0)
+                                    @foreach($forma_pagamento->regras->sortBy("posicao") as $regra)
+                                        <b>{{ $regra->meses }} {{ config("globals.nome_parcelas")[$regra->parcelas] }}</b>,
+                                    @endforeach
+                                    com o restante das parcelas sendo únicas.
+                                @else
+                                    <b>parcelas únicas</b>
                                 @endif
                             </p>
                         @endforeach
@@ -116,6 +118,7 @@
                                             @endfor
                                         @endforeach
                                 </select>
+                                <small id="erro_parcelas" class="text-red-600"></small>
                             </div>
                         </div>
                     </div>
@@ -155,6 +158,9 @@
                 $("#ajax-loading").show();
                 var parcelas = $("select[name='parcelamento']").val();
                 if(parcelas == -1){
+                    $("#btn-finalizar").show();
+                    $("#ajax-loading").hide();
+                    $("#erro_parcelas").html('Por favor, selecione o número de parcelas');
                     return;
                 }
                 $("#parcelas-h").val(parcelas);

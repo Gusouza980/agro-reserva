@@ -12,13 +12,20 @@ class BarraLateralCarrinho extends Component
 {
     public $mostrarCarrinho = false;
     public $iniciar = false;
-    public $cliente;
-    public $carrinhos;
+    public $num_produtos;
 
     protected $listeners = ["abreCarrinhoLateral", "adicionarProduto", "removerProduto", "atualizaContagemLotes"];
 
     public function abreCarrinhoLateral(){
         $this->mostrarCarrinho = !$this->mostrarCarrinho;
+    }
+
+    public function getClienteProperty(){
+        return Cliente::find(session()->get("cliente")["id"]);
+    }
+
+    public function getCarrinhosProperty(){
+       return Carrinho::with("produtos")->with("produtos.produtable")->with("produtos.produtable.reserva")->with("produtos.produtable.fazenda")->where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
     }
 
     public function adicionarProduto(Produto $produto){
@@ -118,19 +125,19 @@ class BarraLateralCarrinho extends Component
     }
 
     public function init(){
-        $this->cliente = Cliente::find(session()->get("cliente")["id"]);
-        if(session()->get("carrinho")){
-            $this->carrinhos = Carrinho::where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
-            foreach($this->carrinhos as $carrinho){
-                if(!$carrinho->reserva || $carrinho->reserva->encerrada || $carrinho->produtos->count() == 0){
-                    $carrinho->delete();
-                }
-            }
-            $this->carrinhos = Carrinho::where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
-        }else{
-            $this->carrinhos = collect();
-        }
-        $this->iniciar = true;
+        // $this->cliente = Cliente::find(session()->get("cliente")["id"]);
+        // if(session()->get("carrinho")){
+        //     $this->carrinhos = Carrinho::with("produtos")->with("produtos.produtable")->with("produtos.produtable.reserva")->with("produtos.produtable.fazenda")->where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
+        //     foreach($this->carrinhos as $carrinho){
+        //         if(!$carrinho->reserva || $carrinho->reserva->encerrada || $carrinho->produtos->count() == 0){
+        //             $carrinho->delete();
+        //         }
+        //     }
+        //     $this->carrinhos = Carrinho::where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
+        // }else{
+        //     $this->carrinhos = collect();
+        // }
+        // $this->iniciar = true;
     }
 
     public function render()

@@ -108,13 +108,13 @@ class CarrinhoController extends Controller
         $reservados = false;
 
         // VERIFICANDO SE ALGUM PRODUTO DO CARRINHO FOI RESERVADO DURANTE O PROCESSO DE COMPRA
-        foreach($carrinho->carrinho_produtos as $carrinho_produto){
-            if($carrinho_produto->produto->produtable->reservado){
-                $carrinho_produto->delete();
-                $carrinho->save();
-                $reservados = true;
-            }
-        }
+        // foreach($carrinho->carrinho_produtos as $carrinho_produto){
+        //     if($carrinho_produto->produto->produtable->reservado){
+        //         $carrinho_produto->delete();
+        //         $carrinho->save();
+        //         $reservados = true;
+        //     }
+        // }
 
         if($reservados){
             session()->flash("erro", "Não foi possível finalizar sua compra porque um ou mais lotes que estavam no seu carrinho já foram reservados.");
@@ -197,24 +197,33 @@ class CarrinhoController extends Controller
         $carrinho->save();
 
         session()->forget("carrinho");
-        session()->flash(["venda" => $venda->id]);
-        // $data = ["venda" => $venda];
-        // $pdf = PDF::loadView('cliente.comprovante2', $data);
-        // $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
-        // $file = file_get_contents('templates/emails/confirmar-compra.html');
+        session()->flash("venda", $venda->id);
+        $fazendas = [];
+        foreach($venda->carrinho->produtos as $produto){
+            $fazendas[$produto->produtable->fazenda_id][] = $produto;
+        }
+        $data = ["venda" => $venda, "fazendas" => $fazendas];
+        // $cliente = $venda->cliente;
+        if($venda->getRelationValue("parcelas")->count() == 0){
+            $pdf = PDF::loadView('cliente.comprovante2', $data);
+        }else{
+            $pdf = PDF::loadView('cliente.comprovante3', $data);
+        }
+        $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
+        $file = file_get_contents('templates/emails/confirmar-compra.html');
         // Email::enviar($file, "Confirmação de Compra", session()->get("cliente")["email"], false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
-        return redirect()->view('conta.index');
+        Email::enviar($file, "Confirmação de Compra", "gusouza980@gmail.com", false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
+        return redirect()->route('carrinho.concluido');
     }
 
     public function concluido(){
-        // $venda = Venda::orderBy("created_at", "DESC")->first();
-        // dd($venda->carrinho->produtos);
-        return view("concluir", ['venda' => Venda::orderBy("created_at", "DESC")->first()]);
-        // if(session()->get("venda")){
-        //     return view("concluir", ['venda' => Venda::find(session()->get("venda"))]);
-        // }else{
-        //     echo "DEU RUIM";
-        // }
+        if(session()->get("venda")){
+            $venda = Venda::find(session()->get("venda"));
+            $cliente = Cliente::find(session()->get("cliente")['id']);
+            return view("concluir", ['venda' => $venda, 'cliente' => $cliente]);
+        }else{
+            return redirect()->route("conta.index");
+        }
     }
 
     public function abertos(){

@@ -63,107 +63,192 @@
                     </table>
                 </div>
             </div>
-            @php
-                $fazenda = $venda->carrinho->lotes->first()->fazenda;
-            @endphp
-            <div class="row">
-                <div class="col-12">
-                    <table class="table" style="border-spacing: 0; padding: 0px 0px; margin-top: 40px; margin-left: auto; margin-right: auto; border: 1px solid black; width:100%;">
-                        <thead style="background-color: black; color: white; padding: 0px 0px;">
-                            <tr style="padding: 0px 0px;">
-                                <th class="text-center" style="font-size: 12px; font-weight: bold; padding: 3px 0px;">DADOS DO VENDEDOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="">
-                            
-                            <tr class="">
-                                <td class="">
-                                    <table style="border-spacing: 0 1.5px; width: 100%;">
-                                        <tbody>
-                                            <tr class="border: 0px important;">
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
-                                                    NOME:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 250px; font-size: 10px;">
-                                                    {{$fazenda->nome_dono}}
-                                                </td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
-                                                    TEL 01:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
-                                                    {{$fazenda->telefone}}
-                                                </td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
-                                                    TEL 02:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
-                                                    {{$fazenda->whatsapp}}
-                                                </td>
-                                            </tr>
+            @foreach($fazendas as $key => $produtos)
+                @php
+                    $fazenda = \App\Models\Fazenda::find($key);
+                @endphp
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table" style="border-spacing: 0; padding: 0px 0px; margin-top: 40px; margin-left: auto; margin-right: auto; border: 1px solid black; width:100%;">
+                            <thead style="background-color: black; color: white; padding: 0px 0px;">
+                                <tr style="padding: 0px 0px;">
+                                    <th class="text-center" style="font-size: 12px; font-weight: bold; padding: 3px 0px;">DADOS DO VENDEDOR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="">
+                                
+                                <tr class="">
+                                    <td class="">
+                                        <table style="border-spacing: 0 1.5px; width: 100%;">
+                                            <tbody>
+                                                <tr class="border: 0px important;">
+                                                    <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
+                                                        NOME:
+                                                    </td>
+                                                    <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 250px; font-size: 10px;">
+                                                        {{$fazenda->nome_dono}}
+                                                    </td>
+                                                    <td style="width: 10px;"></td>
+                                                    <td style="width: 10px;"></td>
+                                                    <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
+                                                        TEL 01:
+                                                    </td>
+                                                    <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
+                                                        {{$fazenda->telefone}}
+                                                    </td>
+                                                    <td style="width: 10px;"></td>
+                                                    <td style="width: 10px;"></td>
+                                                    <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
+                                                        TEL 02:
+                                                    </td>
+                                                    <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
+                                                        {{$fazenda->whatsapp}}
+                                                    </td>
+                                                </tr>
 
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr class="">
-                                <td class="">
-                                    <table style="border-spacing: 0 1.5px; width: 100%;">
-                                        <tbody>
-                                            <tr class="border: 0px important;">
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
-                                                    ENDEREÇO:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 427px; font-size: 10px;">
-                                                    {{$fazenda->endereco}}
-                                                </td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
-                                                    FAZENDA:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
-                                                    {{$fazenda->nome_fazenda}}
-                                                </td>
-                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <td class="">
+                                        <table style="border-spacing: 0 1.5px; width: 100%;">
+                                            <tbody>
+                                                <tr class="border: 0px important;">
+                                                    <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
+                                                        ENDEREÇO:
+                                                    </td>
+                                                    <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 427px; font-size: 10px;">
+                                                        {{$fazenda->endereco}}
+                                                    </td>
+                                                    <td style="width: 10px;"></td>
+                                                    <td style="width: 10px;"></td>
+                                                    <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
+                                                        FAZENDA:
+                                                    </td>
+                                                    <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
+                                                        {{$fazenda->nome_fazenda}}
+                                                    </td>
+                                                </tr>
 
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr class="">
-                                <td class="">
-                                    <table style="border-spacing: 0 1.5px; width: 100%;">
-                                        <tbody>
-                                            <tr class="border: 0px important;">
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
-                                                    CPF/CNPJ:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 250px; font-size: 10px;">
-                                                    {{$fazenda->cnpj}}
-                                                </td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
-                                                    EMAIL:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 276px; font-size: 10px;">
-                                                    <a href="mailto:{{$fazenda->email}}">{{$fazenda->email}}</a>
-                                                </td>
-                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <td class="">
+                                        <table style="border-spacing: 0 1.5px; width: 100%;">
+                                            <tbody>
+                                                <tr class="border: 0px important;">
+                                                    <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
+                                                        CPF/CNPJ:
+                                                    </td>
+                                                    <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 250px; font-size: 10px;">
+                                                        {{$fazenda->cnpj}}
+                                                    </td>
+                                                    <td style="width: 10px;"></td>
+                                                    <td style="width: 10px;"></td>
+                                                    <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
+                                                        EMAIL:
+                                                    </td>
+                                                    <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 276px; font-size: 10px;">
+                                                        <a href="mailto:{{$fazenda->email}}">{{$fazenda->email}}</a>
+                                                    </td>
+                                                </tr>
 
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>         
-                        </tbody>
-                    </table>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>         
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+                <div class="container-fluid">
+                    @foreach($produtos as $produto)
+                        <div class="container">
+                            <div class="clearfix row" style="margin-top: 30px;">
+                                <div style="width: 250px; padding: 10px 20px; float: left;">
+                                    @if($produto->produtable->preview)
+                                        @php
+                                            $jpg = Image::make(asset($produto->produtable->preview))->encode("jpg")->save('imagens/temp/' . $produto->produtable->id . 'jpg');
+                                        @endphp
+                                        <img src="{{asset($jpg->dirname . "/" . $jpg->filename)}}" style="width: 100%;" alt="">
+                                    @endif
+                                </div>
+                                <div style="width: 422px; height: 150px; padding: 10px 10px; border: 1px solid black; float: left;">
+                                    <div style="margin-top: 5px; width: 55px; height: 60px; border: 1px solid black; float: left;">
+                                        <div style="text-align: center; background: black; color: white; font-size: 10px; font-weight: bold; padding: 5px 0px;">
+                                            LOTE
+                                        </div>
+                                        <div style="text-align: center; color: black; font-size: 12px; font-weight: bold;">
+                                            <div style="margin-top: 11px;">
+                                                {{str_pad($produto->produtable->numero, 3, "0", STR_PAD_LEFT)}}{{$produto->produtable->letra}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 5px; width: 355px; height: 60px; margin-left: 65px; border: 1px solid black; float:left;">
+                                        <div style="text-align: center; color: black; font-size: 12px;">
+                                            <div style="margin-top: 3px; font-size: 9px; font-weight: bold;">
+                                                {{$produto->produtable->nome}}
+                                            </div>
+                                            <div style="margin-top: 5px; font-size: 8px;">
+                                                <b>RGD:</b> {{$produto->produtable->registro}} @if($produto->produtable->rgn) {{$produto->produtable->rgn}} @endif 
+                                                @if($produto->produtable->gpta) - <b>GPTA:</b> {{$produto->produtable->gpta}} @endif 
+                                                @if($produto->produtable->nascimento) - <b>NASC:</b> {{date("d/m/Y", strtotime($produto->produtable->nascimento))}} @endif 
+                                                @if($produto->produtable->ccg) - <b>CCG:</b> {{$produto->produtable->ccg}} @endif 
+                                                @if($produto->produtable->iabcz) - <b>IABCZ:</b> {{$produto->produtable->iabczg}} @endif 
+                                                @if($produto->produtable->peso) - <b>PESO:</b> {{$produto->produtable->peso}}Kg @endif
+                                                @if($produto->produtable->ce) - <b>C.E:</b> {{$produto->produtable->ce}} @endif
+                                                - {{mb_strtoupper($produto->produtable->sexo)}}
+                                            </div>
+                                            <div style="margin-top: 5px; font-size: 9px;">
+                                                @if($produto->produtable->parto) Último parto em {{date("d/m/Y", strtotime($produto->produtable->parto))}} @endif
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <div style="width: 420px; height: 60px; margin-top: 80px; border: 1px solid black;">
+                                        <div style="text-align: center; color: black; font-size: 10px;">
+                                            <table style="width: 100%; margin-top: 15px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Valor do animal:</td>
+                                                        <td><b>R${{number_format($produto->produtable->preco, 2, ",", ".")}}</td>
+                                                        <td>% Venda:</td>
+                                                        <td><b>{{$produto->produtable->porcentagem}}%</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Desconto:</td>
+                                                        <td><b>R${{number_format($produto->produtable->preco * $venda->porcentagem_desconto / 100, 2, ",", ".")}}</b></td>
+                                                        <td>Forma de Pagamento:</td>
+                                                        <td>
+                                                            @if($venda->parcelas_mes == 1)
+                                                                @if($venda->parcelas == 1)
+                                                                    <b>1x</b>
+                                                                @else
+                                                                    <b>{{$venda->parcelas}}x (1+{{$venda->parcelas - 1}})</b>
+                                                                @endif
+                                                            @else
+                                                                @if($venda->parcelas == 1)
+                                                                    <b>1x</b>
+                                                                @else
+                                                                    <b>1 + {{$venda->parcelas - 1}}x ({{($venda->parcelas / 2)}} duplas)</b>
+                                                                @endif
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    @endforeach
+                </div>
+            @endforeach
             @php
                 $cliente = $venda->cliente;
             @endphp
@@ -266,90 +351,7 @@
                     </table>
                 </div>
             </div>
-            <div class="container-fluid">
-                @foreach($venda->carrinho->produtos as $produto)
-                    <div class="container">
-                        <div class="clearfix row" style="margin-top: 30px;">
-                            <div style="width: 250px; padding: 10px 20px; float: left;">
-                                @if($produto->produtable->preview)
-                                    @php
-                                        $jpg = Image::make(asset($produto->produtable->preview))->encode("jpg")->save('imagens/temp/' . $produto->produtable->id . 'jpg');
-                                    @endphp
-                                    <img src="{{asset($jpg->dirname . "/" . $jpg->filename)}}" style="width: 100%;" alt="">
-                                @endif
-                            </div>
-                            <div style="width: 422px; height: 150px; padding: 10px 10px; border: 1px solid black; float: left;">
-                                <div style="margin-top: 5px; width: 55px; height: 60px; border: 1px solid black; float: left;">
-                                    <div style="text-align: center; background: black; color: white; font-size: 10px; font-weight: bold; padding: 5px 0px;">
-                                        LOTE
-                                    </div>
-                                    <div style="text-align: center; color: black; font-size: 12px; font-weight: bold;">
-                                        <div style="margin-top: 11px;">
-                                            {{str_pad($produto->produtable->numero, 3, "0", STR_PAD_LEFT)}}{{$produto->produtable->letra}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style="margin-top: 5px; width: 355px; height: 60px; margin-left: 65px; border: 1px solid black; float:left;">
-                                    <div style="text-align: center; color: black; font-size: 12px;">
-                                        <div style="margin-top: 3px; font-size: 9px; font-weight: bold;">
-                                            {{$produto->produtable->nome}}
-                                        </div>
-                                        <div style="margin-top: 5px; font-size: 8px;">
-                                            <b>RGD:</b> {{$produto->produtable->registro}} @if($produto->produtable->rgn) {{$produto->produtable->rgn}} @endif 
-                                            @if($produto->produtable->gpta) - <b>GPTA:</b> {{$produto->produtable->gpta}} @endif 
-                                            @if($produto->produtable->nascimento) - <b>NASC:</b> {{date("d/m/Y", strtotime($produto->produtable->nascimento))}} @endif 
-                                            @if($produto->produtable->ccg) - <b>CCG:</b> {{$produto->produtable->ccg}} @endif 
-                                            @if($produto->produtable->iabcz) - <b>IABCZ:</b> {{$produto->produtable->iabczg}} @endif 
-                                            @if($produto->produtable->peso) - <b>PESO:</b> {{$produto->produtable->peso}}Kg @endif
-                                            @if($produto->produtable->ce) - <b>C.E:</b> {{$produto->produtable->ce}} @endif
-                                            - {{mb_strtoupper($produto->produtable->sexo)}}
-                                        </div>
-                                        <div style="margin-top: 5px; font-size: 9px;">
-                                            @if($produto->produtable->parto) Último parto em {{date("d/m/Y", strtotime($produto->produtable->parto))}} @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div style="width: 420px; height: 60px; margin-top: 80px; border: 1px solid black;">
-                                    <div style="text-align: center; color: black; font-size: 10px;">
-                                        <table style="width: 100%; margin-top: 15px;">
-                                            <tbody>
-                                                <tr>
-                                                    <td>Valor do animal:</td>
-                                                    <td><b>R${{number_format($produto->produtable->preco, 2, ",", ".")}}</td>
-                                                    <td>% Venda:</td>
-                                                    <td><b>{{$produto->produtable->porcentagem}}%</b></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Desconto:</td>
-                                                    <td><b>R${{number_format($produto->produtable->preco * $venda->porcentagem_desconto / 100, 2, ",", ".")}}</b></td>
-                                                    <td>Forma de Pagamento:</td>
-                                                    <td>
-                                                        @if($venda->parcelas_mes == 1)
-                                                            @if($venda->parcelas == 1)
-                                                                <b>1x</b>
-                                                            @else
-                                                                <b>{{$venda->parcelas}}x (1+{{$venda->parcelas - 1}})</b>
-                                                            @endif
-                                                        @else
-                                                            @if($venda->parcelas == 1)
-                                                                <b>1x</b>
-                                                            @else
-                                                                <b>1 + {{$venda->parcelas - 1}}x ({{($venda->parcelas / 2)}} duplas)</b>
-                                                            @endif
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                @endforeach
-            </div>
+            
             <div style="width: 100%; margin-top: 50px; text-align:center; font-weight:bold; font-size: 14px;">
                 RESUMO DA COMPRA
             </div>
