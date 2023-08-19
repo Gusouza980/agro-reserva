@@ -1,5 +1,5 @@
 <div class="mx-auto mt-4 w-1200">
-    <div class="flex items-center justify-center w-full space-x-4">
+    <div class="flex items-center justify-center w-full space-x-4 cursor-pointer" onclick="window.location.href='{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva]) }}'">
         <svg xmlns="http://www.w3.org/2000/svg" class="max-w-[150px]" xmlns:xlink="http://www.w3.org/1999/xlink" width="229" height="169" viewBox="0 0 229 169">
             <defs>
             <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 544 400">
