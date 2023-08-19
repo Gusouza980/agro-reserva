@@ -2,6 +2,11 @@
     <div class="mx-auto w1200 mb-7">
         <x-botoes.voltar :rota="route('index')"></x-botoes.voltar>
     </div>
+    @if($reserva->catalogo)
+        <div class="fixed bottom-5 right-5">
+            <a href="{{ asset($reserva->catalogo) }}" target="_blank" title="Catálogo - {{ $reserva->fazenda->nome_fazenda }}" class="w-10 h-10 rounded-full flex items-center justify-center bg-orange-600 text-white absolute top-0 right-0 transition duration-200 hover:scale-105"><i class="fas fa-file fa-lg"></i></a>
+        </div>
+    @endif
     <div class="grid grid-cols-1 gap-4 px-3 mx-auto md:grid-cols-2 align-items-center w1200 md:px-0">
         <div class="relative flex flex-col w-full mr-3 text-gray-400 mt-md-0">
             <label for="" class="font-montserrat text-[12px] text-gray-400">Pesquisar</label>
@@ -37,11 +42,6 @@
                     <option value="Macho">Macho</option>
                 </select>
             </div>
-        </div>
-    </div>
-    <div class="px-3 mx-auto mt-5 w1200 sm:px-0">
-        <div class="w-full px-3 py-2 font-medium text-green-900 bg-green-300 border border-green-900 rounded-lg font-montserrat">
-            <strong>Tem novidade na área !</strong> Agora você pode, direto da plataforma, declarar seu interesse em um determinado lote. Basta clicar no ícone <i class="mx-1 text-green-900 fas fa-hand"></i> e logo logo nossa equipe entrará em contato.
         </div>
     </div>
     <div class="w-full mt-3 text-center">
