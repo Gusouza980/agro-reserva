@@ -3,7 +3,7 @@
         <x-botoes.voltar :rota="route('index')"></x-botoes.voltar>
     </div>
     @if($reserva->catalogo)
-        <div class="fixed bottom-[20px] right-5">
+        <div class="fixed bottom-[20px] right-5 z-50">
             <a href="{{ asset($reserva->catalogo) }}" target="_blank" title="Catálogo - {{ $reserva->fazenda->nome_fazenda }}" class="w-10 h-10 rounded-full flex items-center justify-center bg-orange-600 text-white absolute top-0 right-0 transition duration-200 hover:scale-105"><i class="fas fa-file fa-lg"></i></a>
         </div>
     @endif
