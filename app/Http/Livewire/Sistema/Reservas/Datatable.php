@@ -44,7 +44,7 @@ class Datatable extends Component
 
     public function render()
     {
-        $reservas = Reserva::orderBy("inicio", "DESC")->paginate(10);
+        $reservas = Reserva::with("fazenda")->orderBy("inicio", "DESC")->paginate(10);
         return view('livewire.sistema.reservas.datatable', ['reservas' => $reservas]);
     }
 }

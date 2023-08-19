@@ -36,7 +36,7 @@
                                     Não Cadastrado
                                 @endif
                             </td>
-                            <td class="px-4 py-3 whitespace-nowrap sm:px-5">{{ $reserva->fazenda->nome_fazenda }}</td>
+                            <td class="px-4 py-3 whitespace-nowrap sm:px-5">#{{$reserva->fazenda->id}} {{ $reserva->fazenda->nome_fazenda }}</td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">{{ date("d/m/Y", strtotime($reserva->inicio)) }}</td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">{{ date("d/m/Y", strtotime($reserva->fim)) }}</td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
