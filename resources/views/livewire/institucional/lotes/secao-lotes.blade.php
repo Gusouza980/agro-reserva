@@ -67,7 +67,7 @@
             </div>
             <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[60px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
                 
-                @if(!$reserva->multi_fazenda && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
+                @if(!$reserva->multi_fazendas && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
                     <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white relative">
                         <img class="w-full h-full" src="{{ ($fazenda->imagem_card) ? asset($fazenda->imagem_card) : asset($fazenda->logo) }}" alt="">
                         {{-- <div class="flex items-center justify-center w-full h-full bg-black" style="background-image: url(); background-size: cover; background-position: center;">
