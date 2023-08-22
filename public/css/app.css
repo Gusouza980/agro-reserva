@@ -3520,12 +3520,6 @@ body[dir="rtl"] .checkbox:checked,
 .-right-px {
     right: -1px
 }
-.bottom-\[20px\] {
-    bottom: 20px
-}
-.bottom-\[100px\] {
-    bottom: 100px
-}
 .bottom-\[120px\] {
     bottom: 120px
 }
@@ -3962,6 +3956,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .max-h-\[300px\] {
     max-height: 300px
+}
+.max-h-\[120px\] {
+    max-height: 120px
 }
 .max-h-\[calc\(100vh-6rem\)\] {
     max-height: calc(100vh - 6rem)
