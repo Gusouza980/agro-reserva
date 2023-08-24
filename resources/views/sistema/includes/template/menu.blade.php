@@ -11,8 +11,8 @@
         </a>
     @endif
 
-    @if(\Acessos::getPermissao('banners'))
-        <!-- Usuários -->
+    @if(\Acessos::getPermissao('reservas'))
+        <!-- Reservas -->
         <a
         href="{{ route('sistema.reservas.consultar') }}"
         class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
@@ -23,7 +23,7 @@
     @endif
 
     @if(\Acessos::getPermissao('banners'))
-        <!-- Usuários -->
+        <!-- Banners -->
         <a
         href="{{ route('sistema.banners.consultar') }}"
         class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
@@ -33,8 +33,8 @@
         </a>
     @endif
 
-    @if(\Acessos::getPermissao('banners'))
-        <!-- Usuários -->
+    @if(\Acessos::getPermissao('vendas'))
+        <!-- Vendas -->
         <a
         href="{{ route('sistema.vendas.consultar') }}"
         class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
@@ -43,8 +43,8 @@
             <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/vendas.svg') }}" />
         </a>
     @endif
-    @if(\Acessos::getPermissao('banners'))
-        <!-- Usuários -->
+    @if(\Acessos::getPermissao('tasks'))
+        <!-- Tasks -->
         <a
         href="{{ route('sistema.demandas.consultar') }}"
         class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
@@ -53,8 +53,8 @@
             <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/tasks.svg') }}" />
         </a>
     @endif
-    @if(\Acessos::getPermissao('banners'))
-        <!-- Usuários -->
+    @if(\Acessos::getPermissao('guias'))
+        <!-- Guias -->
         <a
         href="{{ route('sistema.guias.consultar') }}"
         class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"

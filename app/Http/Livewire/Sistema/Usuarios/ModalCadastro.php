@@ -19,6 +19,7 @@ class ModalCadastro extends Component
     protected function rules(){
         $rules = [
             "usuario.nome" => "max:60|required",
+            "usuario.usuario" => "max:60|required",
             "usuario.email" => "max:60|required|email|unique:usuarios,email",
             "usuario.acesso" => "required",
             "senha" =>  ["required", Password::min(6)->letters()->mixedCase()->numbers()]
