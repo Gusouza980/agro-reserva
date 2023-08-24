@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Sistema\Usuarios;
 
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use App\Models\Usuario;
 use Illuminate\Validation\Rules\Password;
@@ -58,7 +59,7 @@ class ModalCadastro extends Component
     public function salvar(){
         $this->validate();
         if($this->senha){
-            $this->usuario->senha = $this->senha;
+            $this->usuario->senha = Hash::make($this->senha);
             $this->senha = null;
         }
         $this->usuario->save();
