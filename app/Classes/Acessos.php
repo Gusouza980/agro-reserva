@@ -11,12 +11,17 @@ class Acessos
         1 => "Comercial",
         2 => "Digital",
         3 => "Criação",
-        4 => "Jurídico"
+        4 => "Jurídico",
+        5 => "Financeiro"
     ];
 
     public static $permissoes = [
         "usuarios" => [0],
-        "banners" => [0, 2, 3]
+        "banners" => [0, 2, 3],
+        "reservas" => [0, 5],
+        "vendas" => [0, 4, 5],
+        "tasks" => [0, 1, 2, 3, 4, 5],
+        "guias" => [0, 1, 2, 3, 4, 5],
     ];
 
     public static function getPermissao($modulo){

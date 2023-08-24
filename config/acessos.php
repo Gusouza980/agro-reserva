@@ -20,8 +20,8 @@ return [
         "cadastro" => [0, 3, 4],
     ],
     'reservas' => [
-        "consulta" => [0, 3, 4],
-        "cadastro" => [0, 3, 4],
+        "consulta" => [0, 1, 3, 4],
+        "cadastro" => [0, 1, 3, 4],
     ],
     'noticias' => [
         "consulta" => [0, 2, 3],
@@ -61,6 +61,9 @@ return [
     'seo' => [
         "consulta" => [0, 2],
         "cadastro" => [0, 2]
+    ],
+    'tasks' => [
+        "consulta" => [0, 1, 2, 3, 4],
     ],
     'niveis' => [
         0 => "Admin",
