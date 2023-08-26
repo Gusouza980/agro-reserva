@@ -53,6 +53,12 @@ return [
             'level' => env('LOG_LEVEL', 'info'),
         ],
 
+        'vendas' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/vendas.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+        ],
+
         'agrisk' => [
             'driver' => 'single',
             'path' => storage_path('logs/agrisk.log'),

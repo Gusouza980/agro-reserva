@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProcessaCompra;
 use Illuminate\Http\Request;
 use App\Models\Lote;
 use App\Models\Cliente;
@@ -98,31 +99,15 @@ class CarrinhoController extends Controller
 
     public function concluir(Request $request){
         $cliente = Cliente::find(session()->get("cliente")["id"]);
+        \Log::channel("vendas")->info("O cliente " . $cliente->nome_dono . " iniciou a finalização de sua compra do carrinho #" . $request->carrinho_id);
 
         // VERIFICANDO SE É UM CLIENTE APROVADO
         if(!$cliente->aprovado){
+            \Log::channel("vendas")->info("A compra do cliente " . $cliente->nome_dono . " não foi finalizada, pois o cliente não é aprovado na plataforma");
             return redirect()->route("index");
         }
-        
+
         $carrinho = Carrinho::find($request->carrinho_id);
-        $reservados = false;
-
-        // VERIFICANDO SE ALGUM PRODUTO DO CARRINHO FOI RESERVADO DURANTE O PROCESSO DE COMPRA
-        // foreach($carrinho->carrinho_produtos as $carrinho_produto){
-        //     if($carrinho_produto->produto->produtable->reservado){
-        //         $carrinho_produto->delete();
-        //         $carrinho->save();
-        //         $reservados = true;
-        //     }
-        // }
-
-        if($reservados){
-            session()->flash("erro", "Não foi possível finalizar sua compra porque um ou mais lotes que estavam no seu carrinho já foram reservados.");
-            return redirect()->route("carrinho");
-        }else{
-            // RESERVADO TODOS OS LOTES DO CARRINHO
-            Lote::whereIn("id", $carrinho->produtos()->with("produtable")->get()->pluck("produtable")->flatten()->pluck("id"))->update(["reservado" => true]);
-        }
 
         // GERANDO A VENDA
         $venda = new Venda;
@@ -131,9 +116,7 @@ class CarrinhoController extends Controller
         $venda->assessor_id = ($request->assessor != 0) ? $request->assessor : null ;
         $venda->parcelas = $request->parcelas;
 
-        $parcelas = $request->parcelas;
-
-        $forma_pagamento = $carrinho->reserva->formas_pagamento->where("minimo", "<=", $parcelas)->where("maximo", ">=", $parcelas)->first();
+        $forma_pagamento = $carrinho->reserva->formas_pagamento->where("minimo", "<=", $venda->parcelas)->where("maximo", ">=", $venda->parcelas)->first();
 
         $desconto = $forma_pagamento->desconto;
 
@@ -152,7 +135,7 @@ class CarrinhoController extends Controller
         $venda->porcentagem_venda = 100;
         $venda->dias_entre_parcelas = 30;
         $venda->parcelas_mes = 1;
-        $venda->valor_parcela = $total_compra / $parcelas;
+        $venda->valor_parcela = $total_compra / $venda->parcelas;
         $venda->tipo = 1;
         $venda->save();
 
@@ -160,59 +143,13 @@ class CarrinhoController extends Controller
 
         $venda->save();
 
-        $cont_parcelas = 0;
-        $data_parcela = date("Y-m-d");
-        if($forma_pagamento->regras->count() > 0){
-            foreach($forma_pagamento->regras as $regra){
-                for($i = 0; $i < $regra->meses; $i++){
-                    for($j = 0; $j < $regra->parcelas; $j++){
-                        $dias_mes = date("t", strtotime($data_parcela . " +" . $i . " Months"));
-                        $intervalo_parcelas_mes = intval($dias_mes / $regra->parcelas); 
-                        $data_parcela = date("Y-m-d", strtotime($data_parcela . " +" . $intervalo_parcelas_mes . " Days"));
-                        $nova_parcela = new VendaParcela;
-                        $nova_parcela->venda_id = $venda->id;
-                        $nova_parcela->numero = $cont_parcelas + 1;
-                        $nova_parcela->valor = $venda->valor_parcela;
-                        $nova_parcela->vencimento = date("Y-m-d", strtotime($data_parcela));
-                        $nova_parcela->save();
-                        $cont_parcelas++;
-                    }
-                }
-            }
-        }
+        \Log::channel("vendas")->info("A compra do cliente " . $cliente->nome_dono . " foi finalizada com sucesso, recebendo o código #" . $venda->codigo);
 
-        if($cont_parcelas < $parcelas){
-            for($i = $cont_parcelas; $i < $parcelas; $i++){
-                $data_parcela = date("Y-m-d", strtotime($data_parcela . " +1 Month"));
-                $nova_parcela = new VendaParcela;
-                $nova_parcela->venda_id = $venda->id;
-                $nova_parcela->numero = $i + 1;
-                $nova_parcela->valor = $venda->valor_parcela;
-                $nova_parcela->vencimento = date("Y-m-d", strtotime($data_parcela));
-                $nova_parcela->save();
-            }
-        }
-        
-        $carrinho->aberto = false;
-        $carrinho->save();
+        ProcessaCompra::dispatch($venda, $forma_pagamento);
 
         session()->forget("carrinho");
         session()->flash("venda", $venda->id);
-        $fazendas = [];
-        foreach($venda->carrinho->produtos as $produto){
-            $fazendas[$produto->produtable->fazenda_id][] = $produto;
-        }
-        $data = ["venda" => $venda, "fazendas" => $fazendas];
-        // $cliente = $venda->cliente;
-        if($venda->getRelationValue("parcelas")->count() == 0){
-            $pdf = PDF::loadView('cliente.comprovante2', $data);
-        }else{
-            $pdf = PDF::loadView('cliente.comprovante3', $data);
-        }
-        $pdf->save(public_path() . "/comprovantes/".$venda->id.".pdf");
-        $file = file_get_contents('templates/emails/confirmar-compra.html');
-        // Email::enviar($file, "Confirmação de Compra", session()->get("cliente")["email"], false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
-        Email::enviar($file, "Confirmação de Compra", session()->get("cliente")["email"], false, public_path() . "/comprovantes/" . $venda->id . ".pdf");
+        
         return redirect()->route('carrinho.concluido');
     }
 

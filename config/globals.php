@@ -6,6 +6,8 @@ return [
         1 => "Aguardando Pagamento",
         2 => "Concluído",
         3 => "Cancelado",
+        4 => "Processando",
+        5 => "Erro no processamento",
     ],
     'tipos_pagamento' => [
         0 => 'Boleto',

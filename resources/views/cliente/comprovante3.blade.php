@@ -171,9 +171,19 @@
                                 <div style="width: 250px; padding: 10px 20px; float: left;">
                                     @if($produto->produtable->preview)
                                         @php
-                                            $jpg = Image::make(asset($produto->produtable->preview))->encode("jpg")->save('imagens/temp/' . $produto->produtable->id . 'jpg');
+                                            $jpg = null;
+                                            try{
+                                                $jpg = Image::make(asset($produto->produtable->preview))->encode("jpg")->save('imagens/temp/' . $produto->produtable->id . 'jpg');
+                                            }catch(\Exception $e){
+
+                                            }
+                                            if($jpg){
+                                                echo '<img src="' . asset($jpg->dirname . "/" . $jpg->filename) . '" style="width: 100%;" alt="">';
+                                            }else{
+                                                $jpg = asset('imagens/sem-foto.jpg');
+                                                echo '<img src="' . $jpg . '" style="width: 100%;" alt="">';
+                                            }
                                         @endphp
-                                        <img src="{{asset($jpg->dirname . "/" . $jpg->filename)}}" style="width: 100%;" alt="">
                                     @endif
                                 </div>
                                 <div style="width: 422px; height: 150px; padding: 10px 10px; border: 1px solid black; float: left;">

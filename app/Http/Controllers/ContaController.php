@@ -88,11 +88,11 @@ class ContaController extends Controller
         }
         $data = ["venda" => $venda, "fazendas" => $fazendas];
         // $cliente = $venda->cliente;
-        if($venda->getRelationValue("parcelas")->count() == 0){
-            $pdf = PDF::loadView('cliente.comprovante2', $data);
-        }else{
+        // if($venda->getRelationValue("parcelas")->count() == 0){
+        //     $pdf = PDF::loadView('cliente.comprovante2', $data);
+        // }else{
             $pdf = PDF::loadView('cliente.comprovante3', $data);
-        }
+        // }
         return $pdf->stream();
     }
 
