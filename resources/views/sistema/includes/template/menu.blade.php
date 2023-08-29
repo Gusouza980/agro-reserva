@@ -1,6 +1,6 @@
 <!-- Main Sections Links -->
 <div class="flex flex-col pt-6 space-y-4 overflow-y-auto is-scrollbar-hidden grow">
-    @if(\Acessos::getPermissao('usuarios'))
+    @if(\Acessos::getPermissao('usuarios', $usuario))
         <!-- Usuários -->
         <a
         href="{{ route('sistema.usuarios.consultar') }}"
@@ -11,7 +11,7 @@
         </a>
     @endif
 
-    @if(\Acessos::getPermissao('reservas'))
+    @if(\Acessos::getPermissao('reservas', $usuario))
         <!-- Reservas -->
         <a
         href="{{ route('sistema.reservas.consultar') }}"
@@ -22,7 +22,7 @@
         </a>
     @endif
 
-    @if(\Acessos::getPermissao('banners'))
+    @if(\Acessos::getPermissao('banners', $usuario))
         <!-- Banners -->
         <a
         href="{{ route('sistema.banners.consultar') }}"
@@ -33,7 +33,7 @@
         </a>
     @endif
 
-    @if(\Acessos::getPermissao('vendas'))
+    @if(\Acessos::getPermissao('vendas', $usuario))
         <!-- Vendas -->
         <a
         href="{{ route('sistema.vendas.consultar') }}"
@@ -43,7 +43,7 @@
             <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/vendas.svg') }}" />
         </a>
     @endif
-    @if(\Acessos::getPermissao('tasks'))
+    @if(\Acessos::getPermissao('tasks', $usuario))
         <!-- Tasks -->
         <a
         href="{{ route('sistema.demandas.consultar') }}"
@@ -53,7 +53,7 @@
             <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/tasks.svg') }}" />
         </a>
     @endif
-    @if(\Acessos::getPermissao('guias'))
+    @if(\Acessos::getPermissao('guias', $usuario))
         <!-- Guias -->
         <a
         href="{{ route('sistema.guias.consultar') }}"

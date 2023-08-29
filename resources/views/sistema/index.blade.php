@@ -9,5 +9,7 @@
 @endsection
 
 @section('conteudo')
-    {{-- <livewire:sistema.dashboards.comercial></livewire:sistema.dashboards.comercial> --}}
+    @if($usuario->assessor)
+        <livewire:sistema.dashboards.comercial></livewire:sistema.dashboards.comercial>
+    @endif
 @endsection

@@ -24,12 +24,10 @@ class Acessos
         "guias" => [0, 1, 2, 3, 4, 5],
     ];
 
-    public static function getPermissao($modulo){
-        $usuario = Usuario::find(session()->get("admin"));
+    public static function getPermissao($modulo, $usuario){
         if(in_array($usuario->acesso, self::$permissoes[$modulo])){
             return true;
         }else{
-            dd($modulo);
             return false;
         }
     } 
