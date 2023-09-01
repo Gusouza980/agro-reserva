@@ -8,11 +8,13 @@ use App\Models\Reserva;
 use App\Models\Embriao;
 use App\Models\InteresseLote;
 use App\Jobs\ProcessEmails;
+use Jenssegers\Agent\Agent;
 
 class SecaoLotes extends Component
 {
 
     public $fazenda;
+    public $view;
     public $reserva;
     public $pesquisa_lote;
     public $filtro_disponibilidade = -1;
@@ -38,6 +40,13 @@ class SecaoLotes extends Component
         
         if($this->filtro_raca != -1){
             $this->pagina_raca = true;
+        }
+
+        $agent = new Agent();
+        if($agent->isMobile()){
+            $this->view = "mobile";
+        }else{
+            $this->view = "desktop";
         }
     }
 

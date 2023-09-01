@@ -1,4 +1,55 @@
 <div class="px-0 bg-[#F5F5F5] py-5">
+    @if($view == 'mobile')
+        <div class="fixed top-[30%] left-0 z-50 flex items-center" x-data="{open: false}">
+            <div x-show="open" x-cloak class="max-w-[300px] bg-gray-200 py-3"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="w-0"
+                x-transition:enter-end="w-full"
+            >
+                <div class="grid grid-cols-1 gap-4 px-3 mx-auto md:grid-cols-2 align-items-center w-full md:px-0">
+                    <div class="relative flex flex-col w-full mr-3 text-gray-400 mt-md-0">
+                        <label for="" class="font-montserrat text-[12px] text-gray-400">Pesquisar</label>
+                        <input class="w-full pl-3 pr-10 mx-auto text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400"
+                        type="text" name="search" placeholder="Pesquise por nome, número do lote ou registro" wire:model.debounce.400ms="pesquisa_lote"></input>
+                        <i class="fas fa-search text-grey-400 absolute bottom-[10px] right-[10px]"></i>
+                    </div>
+                    <div class="flex flex-wrap justify-between w-full md:space-x-4 md:justify-start">
+                        <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
+                            <label for="" class="font-montserrat text-[12px] text-gray-400">Disponibilidade</label>
+                            <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_disponibilidade">
+                                <option value="-1"> Todos</option>
+                                <option value="0"> Disponíveis</option>
+                                <option value="1"> Vendidos</option>
+                            </select>
+                        </div>
+                        @if(!$pagina_raca)
+                            <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
+                                <label for="" class="font-montserrat text-[12px] text-gray-400">Raça</label>
+                                <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_raca">
+                                    <option value="-1">Todas</option>
+                                    @foreach(\App\Models\Raca::orderBy("nome", "ASC")->get() as $raca)
+                                        <option value="{{ $raca->id }}">{{ $raca->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
+                        <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
+                            <label for="" class="font-montserrat text-[12px] text-gray-400">Sexo</label>
+                            <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_sexo">
+                                <option value="-1">Todos</option>
+                                <option value="Fêmea">Fêmea</option>
+                                <option value="Macho">Macho</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-500 py-2 pl-2 pr-3 rounded-r-full" @click="open = !open;">
+                <i class="fas fa-bars text-white"></i>
+            </div>
+        </div>
+    @endif
+    
     <div class="mx-auto w1200 mb-7">
         <x-botoes.voltar :rota="route('index')"></x-botoes.voltar>
     </div>
@@ -7,41 +58,54 @@
             <a href="{{ asset($reserva->catalogo) }}" target="_blank" title="Catálogo - {{ $reserva->fazenda->nome_fazenda }}" class="w-10 h-10 rounded-full flex items-center justify-center bg-orange-600 text-white absolute top-0 right-0 transition duration-200 hover:scale-105"><i class="fas fa-file fa-lg"></i></a>
         </div>
     @endif
-    <div class="grid grid-cols-1 gap-4 px-3 mx-auto md:grid-cols-2 align-items-center w1200 md:px-0">
-        <div class="relative flex flex-col w-full mr-3 text-gray-400 mt-md-0">
-            <label for="" class="font-montserrat text-[12px] text-gray-400">Pesquisar</label>
-            <input class="w-full pl-3 pr-10 mx-auto text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400"
-              type="text" name="search" placeholder="Pesquise por nome, número do lote ou registro" wire:model.debounce.400ms="pesquisa_lote"></input>
-            <i class="fas fa-search text-grey-400 absolute bottom-[10px] right-[10px]"></i>
-        </div>
-        <div class="flex flex-wrap justify-between w-full md:space-x-4 md:justify-start">
-            <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
-                <label for="" class="font-montserrat text-[12px] text-gray-400">Disponibilidade</label>
-                <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_disponibilidade">
-                    <option value="-1"> Todos</option>
-                    <option value="0"> Disponíveis</option>
-                    <option value="1"> Vendidos</option>
-                </select>
+
+    @if($view == 'desktop')
+        <div class="grid grid-cols-1 gap-4 px-3 mx-auto md:grid-cols-2 align-items-center w1200 md:px-0">
+            <div class="relative flex flex-col w-full mr-3 text-gray-400 mt-md-0">
+                <label for="" class="font-montserrat text-[12px] text-gray-400">Pesquisar</label>
+                <input class="w-full pl-3 pr-10 mx-auto text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400"
+                type="text" name="search" placeholder="Pesquise por nome, número do lote ou registro" wire:model.debounce.400ms="pesquisa_lote"></input>
+                <i class="fas fa-search text-grey-400 absolute bottom-[10px] right-[10px]"></i>
             </div>
-            @if(!$pagina_raca)
+            <div class="flex flex-wrap justify-between w-full md:space-x-4 md:justify-start">
                 <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
-                    <label for="" class="font-montserrat text-[12px] text-gray-400">Raça</label>
-                    <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_raca">
-                        <option value="-1">Todas</option>
-                        @foreach(\App\Models\Raca::orderBy("nome", "ASC")->get() as $raca)
-                            <option value="{{ $raca->id }}">{{ $raca->nome }}</option>
-                        @endforeach
+                    <label for="" class="font-montserrat text-[12px] text-gray-400">Disponibilidade</label>
+                    <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_disponibilidade">
+                        <option value="-1"> Todos</option>
+                        <option value="0"> Disponíveis</option>
+                        <option value="1"> Vendidos</option>
                     </select>
                 </div>
-            @endif
-            <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
-                <label for="" class="font-montserrat text-[12px] text-gray-400">Sexo</label>
-                <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_sexo">
-                    <option value="-1">Todos</option>
-                    <option value="Fêmea">Fêmea</option>
-                    <option value="Macho">Macho</option>
-                </select>
+                @if(!$pagina_raca)
+                    <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
+                        <label for="" class="font-montserrat text-[12px] text-gray-400">Raça</label>
+                        <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_raca">
+                            <option value="-1">Todas</option>
+                            @foreach(\App\Models\Raca::orderBy("nome", "ASC")->get() as $raca)
+                                <option value="{{ $raca->id }}">{{ $raca->nome }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                @endif
+                <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
+                    <label for="" class="font-montserrat text-[12px] text-gray-400">Sexo</label>
+                    <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_sexo">
+                        <option value="-1">Todos</option>
+                        <option value="Fêmea">Fêmea</option>
+                        <option value="Macho">Macho</option>
+                    </select>
+                </div>
             </div>
+        </div>
+    @endif
+    <div class="mx-auto w1200 mt-3 px-2">
+        <div class="w-full flex items-center space-x-4 bg-green-500 px-2 py-2 rounded-md text-white">
+            <div class="shrink-0 cursor-pointer bg-white flex items-center justify-center w-[30px] h-[30px] rounded-full" title="Declarar Interesse">
+                <i class="text-green-500 fas fa-hand fa-xs"></i>
+            </div>
+            <span>
+                Ao clicar nesse ícone você estará declarando interesse em um lote e nossa equipe comercial irá entrar em contato o mais rápido possível
+            </span>
         </div>
     </div>
     <div class="w-full mt-3 text-center">
