@@ -222,7 +222,7 @@ class ApiController extends Controller
         }else{
             $nova_senha = Str::random(6);
             DB::connection("mysql2")->table("clientes")->where("id", $cliente->id)->update(['senha' => Hash::make($nova_senha)]);
-            $file = "Olá <b>" . $cliente->nome . "</b><br>";
+            $file = "Olá <b>" . $cliente->nome_dono . "</b><br>";
             $file .= "Estamos enviando uma senha para que consiga acessar nosso sistema !<br>";
             $file .= "Caso deseje, você poderá alterá-la facilmente acessando o seu painel de cliente e clicando no botão 'Alterar Senha'. Após isso, basta informar a senha recebida no email no campo 'Senha Antiga' e a senha desejada no campo 'Nova Senha'.<br>";
             $file .= "Se tiver mais dúvidas, nossos consultores estão sempre disponíveis !";
