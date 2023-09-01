@@ -151,7 +151,7 @@
                                     <small class="font-medium text-[15px]">LOTE: {{ str_pad($lote->numero, 3, "0", STR_PAD_LEFT) }}</small>
                                 </div>
                                 @if(!$lote->reservado && !$lote->reserva->encerrada)
-                                    <div wire:click="declararInteresse({{$lote->id}})" class="@if(session()->get("cliente") && $lote->interesses->where("cliente_id", session()->get("cliente")["id"])->first()) bg-green-500 @endif cursor-pointer absolute top-[-40px] right-[-25px] bg-slate-500 flex items-center justify-center w-[40px] h-[40px] rounded-full" title="Declarar Interesse">
+                                    <div wire:click="declararInteresse({{$lote->id}})" class="@if(session()->get("cliente") && $lote->interesses->where("cliente_id", session()->get("cliente")["id"])->first()) bg-green-500 @else bg-slate-500 @endif cursor-pointer absolute top-[-40px] right-[-25px] flex items-center justify-center w-[40px] h-[40px] rounded-full" title="Declarar Interesse">
                                         <i class="text-white fas fa-hand"></i>
                                     </div>
                                 @endif
