@@ -9,6 +9,7 @@ use App\Models\InteresseLote;
 use App\Models\CurtidaLote;
 use App\Models\Venda;
 use App\Models\Cliente;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Classes\Email;
 use Illuminate\Support\Str;
@@ -211,6 +212,21 @@ class ApiController extends Controller
         
         return response()->json(["codigo" => 200]);
 
+    }
+
+    public function logar_test(Request $request){
+        $usuario = DB::connection("mysql2")->table("clientes")->select("*")->where("email", $request->email)->first();
+        if($usuario){
+            if(Hash::check($request->senha, $usuario->senha)){
+                $usuario->ultimo_acesso = date('Y-m-d');
+                $usuario->save();
+                return response()->json(["codigo" => 200]);
+            }else{
+                return response()->json(["codigo" => 0, "mensagem" => "Senha incorreta"]);
+            }
+        }else{
+            return response()->json(["codigo" => 1, "mensagem" => "E-mail incorreto"]);
+        }  
     }
 
     public function logar(Request $request){

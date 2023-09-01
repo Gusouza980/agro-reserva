@@ -26,6 +26,8 @@ class SiteController extends Controller
 {
 
     public function testes(){
+        $clientes = DB::connection('mysql2')->table('clientes')->select('nome_dono')->limit(10)->get();
+        dd($clientes);
         return view("concluir");
     }
 

@@ -126,6 +126,7 @@ Route::middleware(['cookie'])->group(function () {
     // Route::post('/api/cadastrar', [\App\Http\Controllers\ApiController::class, 'cadastrar'])->name("api.cadastro.salvar");
     // Route::post('/api/cadastro/finalizar/salvar', [\App\Http\Controllers\ApiController::class, 'cadastro_final'])->name("api.cadastro.finalizar.salvar");
     Route::post('/api/logar', [\App\Http\Controllers\ApiController::class, 'logar'])->name("api.logar");
+    Route::post('/api2/logar', [\App\Http\Controllers\ApiController::class, 'logar_test'])->name("api.test.logar");
 
     //ROTAS DE RESERVAS ANTIGAS
     Route::get('/reservas/finalizadas', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
