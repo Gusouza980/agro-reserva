@@ -17,6 +17,7 @@ class VerifyCsrfToken extends Middleware
         '/api2/logar',
         '/api/cadastrar',
         '/api/cadastro/finalizar/salvar',
-        '/api/senha/recuperar'
+        '/api/senha/recuperar',
+        '/api2/senha/recuperar'
     ];
 }

@@ -123,6 +123,7 @@ Route::middleware(['cookie'])->group(function () {
 
     // ROTAS DE API
     // Route::post('/api/senha/recuperar', [\App\Http\Controllers\ApiController::class, 'recuperar_senha'])->name("api.conta.senha.recuperar");
+    Route::post('/api2/senha/recuperar', [\App\Http\Controllers\ApiController::class, 'recuperar_senha_test'])->name("api.test.conta.senha.recuperar");
     // Route::post('/api/cadastrar', [\App\Http\Controllers\ApiController::class, 'cadastrar'])->name("api.cadastro.salvar");
     // Route::post('/api/cadastro/finalizar/salvar', [\App\Http\Controllers\ApiController::class, 'cadastro_final'])->name("api.cadastro.finalizar.salvar");
     Route::post('/api/logar', [\App\Http\Controllers\ApiController::class, 'logar'])->name("api.logar");
