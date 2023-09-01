@@ -217,10 +217,8 @@ class ApiController extends Controller
     public function logar_test(Request $request){
         $usuario = DB::connection("mysql2")->table("clientes")->select("*")->where("email", $request->email)->first();
         if($usuario){
-            return response()->json(["usuario" => $usuario]);
             if(Hash::check($request->senha, $usuario->senha)){
-                $usuario->ultimo_acesso = date('Y-m-d');
-                $usuario->save();
+                DB::connection("mysql2")->table("clientes")->where("id", $usuario->id)->update(['ultimo_acesso' => date('Y-m-d')]);
                 return response()->json(["codigo" => 200]);
             }else{
                 return response()->json(["codigo" => 0, "mensagem" => "Senha incorreta"]);
