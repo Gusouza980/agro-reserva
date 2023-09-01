@@ -72,11 +72,11 @@ class SecaoLotes extends Component
     {
         if(!$this->fazenda && !$this->reserva){
             $reservas = Reserva::with("fazenda")->where("aberto", true)->where("encerrada", false)->get();
-            $lotes = Lote::with("reserva")->with("interesses")->whereIn("reserva_id", $reservas->pluck("id"));
+            $lotes = Lote::with("reserva")->with("interesses")->with("raca")->with("produto")->whereIn("reserva_id", $reservas->pluck("id"));
             $embrioes = Embriao::whereIn("reserva_id", $reservas->pluck("id"));
         }else{
             $reservas = null;
-            $lotes = Lote::with("reserva")->with("interesses")->where("reserva_id", $this->reserva->id)->where("reserva_id", $this->reserva->id)->where("ativo", true);
+            $lotes = Lote::with("reserva")->with("interesses")->with("raca")->with("produto")->where("reserva_id", $this->reserva->id)->where("reserva_id", $this->reserva->id)->where("ativo", true);
             $embrioes = Embriao::where("reserva_id", $this->reserva->id)->where("reserva_id", $this->reserva->id);
         }
 

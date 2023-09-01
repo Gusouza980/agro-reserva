@@ -214,6 +214,29 @@ class ApiController extends Controller
 
     }
 
+    public function recuperar_senha_test(Request $request){
+        $cliente = DB::connection("mysql2")->table("clientes")->select("*")->where("email", $request->email)->first();
+        if(!$cliente){
+            session()->flash("erro", "Não existe uma conta com o e-mail informado");
+            return response()->json(["codigo" => 0, "mensagem" => "Não existe uma conta com o e-mail informado"]);
+        }else{
+            $nova_senha = Str::random(6);
+            DB::connection("mysql2")->table("clientes")->where("id", $cliente->id)->update(['senha' => Hash::make($nova_senha)]);
+            $file = "Olá <b>" . $cliente->nome . "</b><br>";
+            $file .= "Estamos enviando uma senha para que consiga acessar nosso sistema !<br>";
+            $file .= "Caso deseje, você poderá alterá-la facilmente acessando o seu painel de cliente e clicando no botão 'Alterar Senha'. Após isso, basta informar a senha recebida no email no campo 'Senha Antiga' e a senha desejada no campo 'Nova Senha'.<br>";
+            $file .= "Se tiver mais dúvidas, nossos consultores estão sempre disponíveis !";
+            $file .= "<br><br>Nova Senha: " . $nova_senha;
+            if(Email::enviar($file, "Nova senha", $cliente->email)){
+                session()->flash("sucesso", "Uma senha temporária foi enviada para o e-mail informado no seu cadastro.");
+                return response()->json(["codigo" => 200]);
+            }else{
+                session()->flash("erro", "Não foi possível enviar um e-mail com sua nova senha temporária no momento. Por favor, tente mais tarde.");
+                return response()->json(["codigo" => 1, "mensagem" => "Não foi possível enviar um e-mail com sua nova senha temporária no momento. Por favor, tente mais tarde."]);
+            } 
+        }
+    }
+
     public function logar_test(Request $request){
         $usuario = DB::connection("mysql2")->table("clientes")->select("*")->where("email", $request->email)->first();
         if($usuario){
