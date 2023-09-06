@@ -10,4 +10,8 @@ class InteresseLote extends Model
     use HasFactory;
 
     protected $guarded = ["id"];
+
+    public function lote(){
+        return $this->belongsTo(Lote::class);
+    }
 }

@@ -418,6 +418,13 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
         
         });
 
+        // ROTAS DE CLIENTES
+        Route::prefix('clientes')->name('clientes.')->controller(\App\Http\Controllers\Sistema\ClientesController::class)->group(function(){
+            // LISTAGEM DE CLIENTES
+            Route::get('consultar', 'consultar')->name('consultar');
+            Route::get('detalhes/{cliente}', 'detalhes')->name('detalhes');
+        });
+
         // ROTAS DE USUÁRIOS
         Route::prefix('usuarios')->name('usuarios.')->controller(\App\Http\Controllers\Sistema\UsuariosController::class)->group(function(){
             // LISTAGEM DE USUÁRIOS
@@ -460,6 +467,12 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
         // ROTAS DE GUIAS
         Route::prefix('guias')->name('guias.')->controller(\App\Http\Controllers\Sistema\GuiasController::class)->group(function(){
             // LISTAGEM DE GUIAS
+            Route::get('consultar', 'consultar')->name('consultar');
+        });
+
+        // ROTAS DE RELATÓRIOS
+        Route::prefix('relatorios')->name('relatorios.')->controller(\App\Http\Controllers\Sistema\RelatoriosController::class)->group(function(){
+            // LISTAGEM DE RELATÓRIOS
             Route::get('consultar', 'consultar')->name('consultar');
         });
 

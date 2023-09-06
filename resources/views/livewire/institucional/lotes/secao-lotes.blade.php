@@ -129,81 +129,100 @@
             <div class="w-full text-center mt-[40px]">
                 <img src="{{ asset($fazenda->logo) }}" class="mx-auto" width="200" alt="">
             </div>
-            <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[60px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
-                
-                @if(!$reserva->multi_fazendas && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
-                    <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white relative">
-                        <img class="w-full h-full" src="{{ ($fazenda->imagem_card) ? asset($fazenda->imagem_card) : asset($fazenda->logo) }}" alt="">
-                        {{-- <div class="flex items-center justify-center w-full h-full bg-black" style="background-image: url(); background-size: cover; background-position: center;">
-                        </div> --}}
-                        @if($reserva->catalogo)
-                            <div class="w-full absolute bottom-5 left-0 flex justify-center items-center text-sm">
-                                <a href="{{ asset($reserva->catalogo) }}" target="_blank" title="Catálogo - {{ $reserva->fazenda->nome_fazenda }}" class="py-2 px-3 rounded-lg flex items-center justify-center bg-orange-600 text-white transition duration-200 hover:scale-105"><i class="fas fa-file fa-lg mr-3"></i> Ver Catálogo</a>
-                            </div>
-                        @endif
-                    </div>
-                @endif
-                @foreach($lotes->where("fazenda_id", $fazenda_id) as $lote)
-                    <x-institucional.lotes.card :lote="$lote"></x-institucional.lotes.card>
-                @endforeach
-                @foreach($embrioes->where("fazenda_id", $fazenda_id) as $embriao)
-                    <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 px-3 py-3 rounded-[15px] bg-white @if($embriao->reservado) border-2 border-solid border-[#FFB02A] @endif">
-                        <div>
-                            <div class="relative">
-                                <div class="absolute flex justify-content-center h-[45px] top-[-30px] px-2 pt-1 z-0 rounded-t-[12px] bg-slate-500 text-white" style="font-family: 'Montserrat', sans-serif;">
-                                    <small class="font-medium text-[15px]">LOTE: {{ str_pad($embriao->numero, 3, "0", STR_PAD_LEFT) }}</small>
+            @if($view == 'desktop')
+                <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[60px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
+                    
+                    @if(!$reserva->multi_fazendas && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
+                        <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white relative">
+                            <img class="w-full" src="{{ ($fazenda->imagem_card) ? asset($fazenda->imagem_card) : asset($fazenda->logo) }}" alt="">
+                            {{-- <div class="flex items-center justify-center w-full h-full bg-black" style="background-image: url(); background-size: cover; background-position: center;">
+                            </div> --}}
+                            @if($reserva->catalogo)
+                                <div class="w-full absolute bottom-5 left-0 flex justify-center items-center text-sm">
+                                    <a href="{{ asset($reserva->catalogo) }}" target="_blank" title="Catálogo - {{ $reserva->fazenda->nome_fazenda }}" class="py-2 px-3 rounded-lg flex items-center justify-center bg-orange-600 text-white transition duration-200 hover:scale-105"><i class="fas fa-file fa-lg mr-3"></i> Ver Catálogo</a>
                                 </div>
-                                <div class="relative w-full overflow-hidden bg-no-repeat bg-cover">
-                                    <img src="{{ asset($embriao->preview) }}" class="relative z-[8] w-full transition duration-300 hover:scale-110" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" alt="">
-                                    @if($embriao->reservado || $embriao->reserva->encerrada)
-                                        <div class="font-montserrat text-[29px] text-[#FFB02A] font-bold absolute top-0 left-0 z-[10] w-full h-full rounded-t-[15px] flex items-center justify-center" style="background-color: rgba(0,0,0,0.45)">
-                                            @if($lote->reserva->encerrada)
-                                                ENCERRADO
-                                            @else
-                                                VENDIDO
-                                            @endif
+                            @endif
+                        </div>
+                    @endif
+                    @foreach($lotes->where("fazenda_id", $fazenda_id) as $lote)
+                        <x-institucional.lotes.card :lote="$lote"></x-institucional.lotes.card>
+                    @endforeach
+                    {{-- @foreach($embrioes->where("fazenda_id", $fazenda_id) as $embriao)
+                        <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 px-3 py-3 rounded-[15px] bg-white @if($embriao->reservado) border-2 border-solid border-[#FFB02A] @endif">
+                            <div>
+                                <div class="relative">
+                                    <div class="absolute flex justify-content-center h-[45px] top-[-30px] px-2 pt-1 z-0 rounded-t-[12px] bg-slate-500 text-white" style="font-family: 'Montserrat', sans-serif;">
+                                        <small class="font-medium text-[15px]">LOTE: {{ str_pad($embriao->numero, 3, "0", STR_PAD_LEFT) }}</small>
+                                    </div>
+                                    <div class="relative w-full overflow-hidden bg-no-repeat bg-cover">
+                                        <img src="{{ asset($embriao->preview) }}" class="relative z-[8] w-full transition duration-300 hover:scale-110" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" alt="">
+                                        @if($embriao->reservado || $embriao->reserva->encerrada)
+                                            <div class="font-montserrat text-[29px] text-[#FFB02A] font-bold absolute top-0 left-0 z-[10] w-full h-full rounded-t-[15px] flex items-center justify-center" style="background-color: rgba(0,0,0,0.45)">
+                                                @if($lote->reserva->encerrada)
+                                                    ENCERRADO
+                                                @else
+                                                    VENDIDO
+                                                @endif
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                
+                                <div class="py-2 text-center">
+                                    <h4 class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">{{ $embriao->nome_pacote }}</h4>
+                                </div>
+                                <div class="relative mt-3">
+                                    <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
+                                        @if($embriao->quantidade_embrioes_pacote)
+                                        <div class="">
+                                            <b>QTD:.</b> <span class="ml-2 font-medium">{{ $embriao->quantidade_embrioes_pacote }} EMBRIÕES</span>
+                                        </div>
+                                        @endif
+                                        <div class="">
+                                            <b>RAÇA:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($embriao->raca->nome, 'UTF-8') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="@if($embriao->reservado) md:border-l-2 md:border-b-2 md:border-r-2 border-[#FFB02A] md:left-[-2px] md:w-[calc(100%+4px)] @else md:left-0 w-full @endif rounded-b-[15px] px-3 pt-3 pb-4 mais-info md:hidden md:shadow-md transition duration-800 md:group-hover:flex flex-col justify-content-center align-items-center md:h-[100px] md:absolute md:bottom-[-90px]  bg-white ">
+                                    @if(!$embriao->reserva->encerrada)
+                                        <div class="z-[11] w-full text-center">
+                                            <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">Em até {{ $embriao->reserva->max_parcelas }}x de R${{ number_format($embriao->precos->first()->preco / $embriao->reserva->max_parcelas, 2, ",", ".") }}</span>
                                         </div>
                                     @endif
-                                </div>
-                            </div>
-                            
-                            <div class="py-2 text-center">
-                                <h4 class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">{{ $embriao->nome_pacote }}</h4>
-                                {{-- @if($embriao->raca_id)
-                                    <div class="px-2 mx-auto rounded-md w-fit">
-                                        <span class="text-[#626262] font-medium text-[15px]">RAÇA: {{ $embriao->raca->nome }}</span>
+                                    <div class="grid w-full grid-cols-1 gap-3 mt-3">
+                                        <button onclick="window.location.href = '{{ route('fazenda.embriao', ['fazenda' => $embriao->reserva->fazenda->slug, 'reserva' => $embriao->reserva, 'embriao' => $embriao]) }}'" class="border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba Mais</button>
                                     </div>
-                                @endif --}}
-                            </div>
-                            <div class="relative mt-3">
-                                <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
-                                    @if($embriao->quantidade_embrioes_pacote)
-                                    <div class="">
-                                        <b>QTD:.</b> <span class="ml-2 font-medium">{{ $embriao->quantidade_embrioes_pacote }} EMBRIÕES</span>
-                                    </div>
-                                    @endif
-                                    <div class="">
-                                        <b>RAÇA:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($embriao->raca->nome, 'UTF-8') }}</span>
-                                    </div>
-                                    {{-- <div class="">
-                                        <b>SEXO:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->sexo, 'UTF-8') }}</span>
-                                    </div> --}}
-                                </div>
-                            </div>
-                            <div class="@if($embriao->reservado) md:border-l-2 md:border-b-2 md:border-r-2 border-[#FFB02A] md:left-[-2px] md:w-[calc(100%+4px)] @else md:left-0 w-full @endif rounded-b-[15px] px-3 pt-3 pb-4 mais-info md:hidden md:shadow-md transition duration-800 md:group-hover:flex flex-col justify-content-center align-items-center md:h-[100px] md:absolute md:bottom-[-90px]  bg-white ">
-                                @if(!$embriao->reserva->encerrada)
-                                    <div class="z-[11] w-full text-center">
-                                        <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">Em até {{ $embriao->reserva->max_parcelas }}x de R${{ number_format($embriao->precos->first()->preco / $embriao->reserva->max_parcelas, 2, ",", ".") }}</span>
-                                    </div>
-                                @endif
-                                <div class="grid w-full grid-cols-1 gap-3 mt-3">
-                                    <button onclick="window.location.href = '{{ route('fazenda.embriao', ['fazenda' => $embriao->reserva->fazenda->slug, 'reserva' => $embriao->reserva, 'embriao' => $embriao]) }}'" class="border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba Mais</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endforeach --}}
+                </div>
+            @else
+                <div class="w1200 slide-lotes mt-10 py-5">
+                    @if(!$reserva->multi_fazendas && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
+                        <div class="w-[350px] shrink-0 flex flex-col items-between justify-between transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] px-6 py-6 bg-white relative">
+                            <div class="w-full">
+                                <img class="w-full" src="{{ asset($fazenda->logo) }}" alt="">
+                            </div>
+                            <div class="w-full mt-6">
+                                <table class="text-lg w-full">
+                                    <tbody>
+                                        <tr class="border border-slate-300">
+                                            <td class="px-3 py-2"><i class="fas fa-file mr-3"></i><b>Catálogo</b></td>
+                                        </tr>
+                                        <tr class="border border-slate-300">
+                                            <td class="px-3 py-2"><i class="fas fa-globe mr-3"></i><b>Site</b></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    @endif
+                    @foreach($lotes->where("fazenda_id", $fazenda_id) as $lote)
+                        <x-institucional.lotes.card class="lote" :lote="$lote"></x-institucional.lotes.card>
+                    @endforeach
+                </div>
+            @endif
         @endforeach
     @elseif($pagina_reservas_abertas)
         @foreach($reservas as $reserva)
@@ -289,7 +308,47 @@
 </div>
 
 @push("styles")
+<style>
+    .slide-lotes{
+        overflow-x: scroll;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 50px;
+        padding: 15px 0;
+    }
 
+    @media(max-width: 700px){
+        .slide-lotes{
+            padding: 15px 15px;
+        }
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 15px;
+        border: 3px solid var(--primary);
+        background: var(--primary);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary);
+    }
+
+
+    .slide-lotes .lote{
+        width: 300px;
+        flex-shrink: 0;
+        box-shadow: 0 0 10px rgba(168, 168, 168, 0.438);
+    }
+</style>
 @endpush
 
 @push("scripts")

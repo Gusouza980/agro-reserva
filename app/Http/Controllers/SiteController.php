@@ -162,9 +162,6 @@ class SiteController extends Controller
     }
 
     public function lotes2($slug, Reserva $reserva){
-        if($reserva->lotes->count() == 0){
-            return redirect()->route('fazenda.embrioes', ['fazenda' => $slug, 'reserva' => $reserva]);
-        }
         $fazenda = $reserva->fazenda;
         return view("lotes2", ["fazenda" => $fazenda, "reserva" => $reserva, "nome_pagina" => "Lotes"]);
     }

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Assessor extends Model
 {
     use HasFactory;
+
+    public function clientes(){
+        return $this->hasMany(Cliente::class);
+    }
 }

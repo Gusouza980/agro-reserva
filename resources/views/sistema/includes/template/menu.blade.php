@@ -11,6 +11,17 @@
         </a>
     @endif
 
+    @if(\Acessos::getPermissao('clientes', $usuario))
+        <!-- Usuários -->
+        <a
+        href="{{ route('sistema.clientes.consultar') }}"
+        class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+        x-tooltip.placement.right="'Clientes'"
+        >
+            <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/clientes.svg') }}" />
+        </a>
+    @endif
+
     @if(\Acessos::getPermissao('reservas', $usuario))
         <!-- Reservas -->
         <a
@@ -61,6 +72,16 @@
         x-tooltip.placement.right="'Guias'"
         >
             <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/guias.svg') }}" />
+        </a>
+    @endif
+    @if(\Acessos::getPermissao('guias', $usuario))
+        <!-- Guias -->
+        <a
+        href="{{ route('sistema.relatorios.consultar') }}"
+        class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+        x-tooltip.placement.right="'Relatórios'"
+        >
+            <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/relatorios.svg') }}" />
         </a>
     @endif
 </div>

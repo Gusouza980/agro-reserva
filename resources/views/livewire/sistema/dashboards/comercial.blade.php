@@ -3,14 +3,14 @@
        <div class="w-full">
             <h2 class="text-lg font-medium">Dashboard Comercial - {{ $assessor["nome"] }}</h2>
        </div>
-       <div class="flex justify-start w-full mt-5">
+       <div class="flex justify-start flex-nowrap overflow-x-scroll md:overflow-x-hidden w-full mt-5">
             @foreach($menus as $key => $nome)
                 <button wire:click="$set('menu', '{{ $key }}')" class="flex-grow @if($menu == $key) bg-orange-600 border text-white @else bg-gray-200 hover:bg-orange-600 hover:text-white border border-slate-300 text-gray-500 @endif px-5 py-3">{{ $nome }}</button>
             @endforeach
         </div>
        <div class="w-full">
-            <div class="w-full px-8 py-8 rounded-none card">
-                <div class="flex items-end justify-between w-full mb-4">
+            <div class="w-full px-2 md:px-8 py-8 rounded-none card">
+                <div class="flex items-start md:items-end md:flex-row flex-col md:justify-between w-full mb-4">
                     <label class="block">
                         <span>Quantidade de Dados</span>
                         <select wire:model="qtd"

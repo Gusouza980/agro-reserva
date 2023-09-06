@@ -1,6 +1,16 @@
-@import '~tailwindcss/base.css';
+/* @import '~tailwindcss/base.css';
 @import '~tailwindcss/components.css';
-@import '~tailwindcss/utilities.css';
+@import '~tailwindcss/utilities.css'; */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    .input-base{
+        @apply w-full px-3 py-2 bg-transparent border rounded-lg border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary;
+    }
+}
 
 .foto-rounded-100{
     width: 100px;

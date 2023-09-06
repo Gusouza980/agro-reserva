@@ -38,14 +38,12 @@
     </div>
 
     <!-- Page Wrapper -->
-    <div id="root" class="flex min-h-100vh grow bg-slate-50 dark:bg-navy-900" x-cloak>
+    <div id="root" class="flex min-h-100vh grow bg-black dark:bg-navy-900" x-cloak>
         <main class="grid w-full grid-cols-1 grow place-items-center">
             <div class="w-full max-w-[26rem] p-4 sm:px-5">
                 <div class="text-center">
                     <div class="mt-4">
-                        <h2 class="text-2xl font-semibold text-slate-600 dark:text-navy-100">
-                            {{ mb_strtoupper(env("SYSTEM_TITLE")) }}
-                        </h2>
+                        <img src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" class="w-[200px] mx-auto" alt="">
                     </div>
                 </div>
                 <form class="p-5 mt-5 rounded-lg card lg:p-7" action="{{ route('sistema.logar') }}" method="POST">
@@ -94,7 +92,7 @@
                         </span>
                     </label>
                     <button
-                        class="w-full mt-5 font-medium text-white btn bg-primary hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+                        class="w-full mt-5 font-medium text-white btn bg-orange-500 hover:bg-orange-700 border-none">
                         Logar
                     </button>
                 </form>

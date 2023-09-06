@@ -69,11 +69,11 @@
             </div>
 
             <!-- Sidebar Panel -->
-            <div class="sidebar-panel">
+            {{-- <div class="sidebar-panel">
                 <div class="flex h-full grow flex-col bg-white pl-[var(--main-sidebar-width)] dark:bg-navy-750">
                     
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!-- App Header Wrapper-->
@@ -83,7 +83,7 @@
                 <!-- Header Items -->
                 <div class="flex items-center justify-end w-full">
                     <!-- Left: Sidebar Toggle Button -->
-                    {{-- <div class="h-7 w-7">
+                    <div class="h-7 w-7">
                         <button
                             class="menu-toggle ml-0.5 flex h-7 w-7 flex-col justify-center space-y-1.5 text-primary outline-none focus:outline-none dark:text-accent-light/80"
                             :class="$store.global.isSidebarExpanded && 'active'"
@@ -92,12 +92,12 @@
                             <span></span>
                             <span></span>
                         </button>
-                    </div> --}}
+                    </div>
 
                     <!-- Right: Header buttons -->
                     <div class="-mr-1.5 flex items-center space-x-2">
                         <!-- Mobile Search Toggle -->
-                        <button @click="$store.global.isSearchbarActive = !$store.global.isSearchbarActive"
+                        {{-- <button @click="$store.global.isSearchbarActive = !$store.global.isSearchbarActive"
                             class="w-8 h-8 p-0 rounded-full btn hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="h-5.5 w-5.5 text-slate-500 dark:text-navy-100" fill="none"
@@ -105,7 +105,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
-                        </button>
+                        </button> --}}
 
                         <!-- Dark Mode Toggle -->
                         {{-- <button @click="$store.global.isDarkModeEnabled = !$store.global.isDarkModeEnabled"

@@ -16,12 +16,13 @@ class Acessos
     ];
 
     public static $permissoes = [
-        "usuarios" => [0, 5],
-        "banners" => [0, 2, 3, 5],
-        "reservas" => [0, 5],
-        "vendas" => [0, 4, 5],
-        "tasks" => [0, 1, 2, 3, 4, 5],
-        "guias" => [0, 1, 2, 3, 4, 5],
+        "usuarios" => [0],
+        "clientes" => [0],
+        "banners" => [0, 2, 3],
+        "reservas" => [0],
+        "vendas" => [0, 4],
+        "tasks" => [0, 1, 2, 3, 4],
+        "guias" => [0, 1, 2, 3, 4],
     ];
 
     public static function getPermissao($modulo, $usuario){
