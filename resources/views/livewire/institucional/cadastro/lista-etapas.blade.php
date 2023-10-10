@@ -44,7 +44,7 @@
                         @endif
                     </div>
                     <div class="px-4">
-                        <h3 class="text-black text-[16px] md:text-[23px] font-medium">Pré Cadastro</h3>
+                        <h3 class="text-black text-[16px] md:text-[23px] font-medium">Informações Iniciais</h3>
                         <h4 class="text-black text-[14px] md:text-[17px] font-light mt-2">Ele será usado para login e validação da sua conta.</h4>
                     </div>
                     <div>

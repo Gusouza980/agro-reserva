@@ -65,7 +65,7 @@ class FormPreCadastro extends Component
         session()->put(["cliente" => $cliente->toArray()]);
 
         $this->show = false;
-        $this->emit("showConfirmacaoPreCadastro");
+        $this->emit("showListaEtapas");
     }
 
     public function voltar(){
