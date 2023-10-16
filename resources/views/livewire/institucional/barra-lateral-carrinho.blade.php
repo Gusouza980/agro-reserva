@@ -15,7 +15,9 @@
                         @foreach($this->carrinhos as $carrinho)
                             <div class="w-full px-[20px]">
                                 <div class="w-full font-montserrat text-[14px] text-[#283646] font-medium">
-                                    <h4>RESERVA: {{ mb_strtoupper($carrinho->reserva->fazenda->nome_fazenda) }}</h4>
+                                    @if($carrinho->reserva)
+                                        <h4>RESERVA: {{ mb_strtoupper($carrinho->reserva->fazenda->nome_fazenda) }}</h4>
+                                    @endif
                                 </div>
                                 @foreach($carrinho->produtos as $produto)
                                     <div class="flex items-center w-full py-3 space-x-6 flex-collumn">
