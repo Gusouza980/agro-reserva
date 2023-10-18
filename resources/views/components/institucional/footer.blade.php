@@ -14,7 +14,7 @@
                         <ul>
                             <li onclick="window.open('{{ route('index') }}')" class="hover:!text-[#F5B01F] cpointer">Início</li>
                             <li onclick="window.open('{{ route('cadastro') }}')" class="mt-[20px] hover:!text-[#F5B01F] cpointer">Cadastre-se</li>
-                            <li @if(session()->get("usuario")) onclick="window.open('{{ route('conta.index') }}')" @else onclick="window.open('{{ route('login') }}')" @endif class="mt-[20px] hover:!text-[#F5B01F] cpointer">Minha Conta</li>
+                            <li @if(session()->get("cliente")) onclick="window.open('{{ route('conta.index') }}')" @else onclick="window.open('{{ route('login') }}')" @endif class="mt-[20px] hover:!text-[#F5B01F] cpointer">Minha Conta</li>
                             <li onclick="window.open('{{ route('reservas_abertas') }}')" class="mt-[20px] hover:!text-[#F5B01F] cpointer">Reservas Abertas</li>
                         </ul>
                     </div>
