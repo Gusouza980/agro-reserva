@@ -23,7 +23,7 @@
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=2" />
     {{-- <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" /> --}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1.3"/>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1.4"/>
     {{-- <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" /> --}}
     @toastr_css
     @livewireStyles
