@@ -331,12 +331,12 @@
 
     ::-webkit-scrollbar-thumb {
         border-radius: 15px;
-        border: 3px solid var(--primary);
-        background: var(--primary);
+        border: 3px solid #FFB02A;
+        background: #FFB02A;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: var(--primary);
+        background: #FFB02A;
     }
 
 
