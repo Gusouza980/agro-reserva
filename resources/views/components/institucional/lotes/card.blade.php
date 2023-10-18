@@ -35,7 +35,7 @@
                 </div>
             </div>
             
-            <div class="relative">
+            {{-- <div class="relative">
                 @if($lote->membro_pacote)
                     @php
                         $membros = $lotes->where("numero", $lote->numero)->where("id", "!=", $lote->id)->pluck("nome")->toArray();
@@ -72,7 +72,7 @@
                         <b>SEXO:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->sexo, 'UTF-8') }}</span>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="md:left-0 w-full rounded-b-[15px] px-3 pt-3 flex flex-col justify-content-center align-items-center md:h-[100px] bg-white ">
                 @if(!$lote->reserva->encerrada && $lote->produto)
                     <div class="z-[11] w-full text-center">
