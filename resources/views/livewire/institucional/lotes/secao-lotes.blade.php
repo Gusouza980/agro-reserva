@@ -208,10 +208,7 @@
                                 <table class="text-lg w-full">
                                     <tbody>
                                         <tr class="border border-slate-300">
-                                            <td class="px-3 py-2"><i class="fas fa-file mr-3"></i><b>Catálogo</b></td>
-                                        </tr>
-                                        <tr class="border border-slate-300">
-                                            <td class="px-3 py-2"><i class="fas fa-globe mr-3"></i><b>Site</b></td>
+                                            <td class="px-3 py-2"><a href="{{ $reserva->catalogo }}"><i class="fas fa-file mr-3"></i><b>Catálogo</b></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
