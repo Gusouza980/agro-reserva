@@ -4,9 +4,9 @@
 <meta property="og:url" content="{{ url()->full() }}" />    
 <meta property="og:site_name" content="Agroreserva @if(session()->get('nome_pagina')) - {{ session()->get('nome_pagina') }}  @endif" >
 <meta property="og:image" itemprop="image"
-    content="https://agroreserva.com.br/imagens/logo_agroreserva_leite_min.jpg">
+    content="https://agroreserva.com.br/imagens/logo_agroreserva_leite.jpg">
 <meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="300">
-<meta property="og:image:height" content="200">
+<meta property="og:image:width" content="799">
+<meta property="og:image:height" content="294">
 <meta property="og:type" content="website" />
 <meta property="og:updated_time" content="1440432930" />
