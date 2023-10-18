@@ -132,7 +132,7 @@
             @if($view == 'desktop')
                 <div class="grid grid-cols-1 gap-x-7 gap-y-14 px-4 mx-auto mt-[60px] md:px-0 lg:px-0 px-md-0 md:grid-cols-3 lg:grid-cols-4 w1200">
                     
-                    @if(!$reserva->multi_fazendas && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
+                    @if($reserva && !$reserva->multi_fazendas && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
                         <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white relative">
                             <img class="w-full" src="{{ ($fazenda->imagem_card) ? asset($fazenda->imagem_card) : asset($fazenda->logo) }}" alt="">
                             {{-- <div class="flex items-center justify-center w-full h-full bg-black" style="background-image: url(); background-size: cover; background-position: center;">
@@ -199,7 +199,7 @@
                 </div>
             @else
                 <div class="w1200 slide-lotes mt-10 py-5">
-                    @if(!$reserva->multi_fazendas && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
+                    @if($reserva && !$reserva->multi_fazendas && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
                         <div class="w-[350px] shrink-0 flex flex-col items-between justify-between transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] px-6 py-6 bg-white relative">
                             <div class="w-full">
                                 <img class="w-full" src="{{ asset($fazenda->logo) }}" alt="">
