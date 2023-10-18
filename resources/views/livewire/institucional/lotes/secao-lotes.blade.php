@@ -134,7 +134,7 @@
                     
                     @if($reserva && !$reserva->multi_fazendas && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
                         <div class="transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] bg-white relative">
-                            <img class="w-full" src="{{ ($fazenda->imagem_card) ? asset($fazenda->imagem_card) : asset($fazenda->logo) }}" alt="">
+                            <img class="w-full h-full" src="{{ ($fazenda->imagem_card) ? asset($fazenda->imagem_card) : asset($fazenda->logo) }}" alt="">
                             {{-- <div class="flex items-center justify-center w-full h-full bg-black" style="background-image: url(); background-size: cover; background-position: center;">
                             </div> --}}
                             @if($reserva->catalogo)
