@@ -1,4 +1,4 @@
-@extends('template.main')
+@extends('template.main2')
 
 @section("styles")
 <!-- Add the slick-theme.css if you want default styling -->

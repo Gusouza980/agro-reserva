@@ -1,4 +1,4 @@
-@extends('template.main')
+@extends('template.main2')
 
 @section('conteudo')
 <div class="container-fluid py-5 min-vh-100" style="background: url({{asset('imagens/background.jpg')}}); background-position: bottom; background-attachment: fixed; background-size: cover;">

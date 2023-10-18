@@ -164,7 +164,7 @@ Route::middleware(['cookie'])->group(function () {
 
     });
     
-    Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("contato");
+    // Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("contato");
     
     // Route::get('/facebook/autenticar', [\App\Http\Controllers\FacebookController::class, 'autenticar'])->name("facebook.autenticar");
     // Route::get('/facebook/callback', [\App\Http\Controllers\FacebookController::class, 'callback'])->name("facebook.callback");

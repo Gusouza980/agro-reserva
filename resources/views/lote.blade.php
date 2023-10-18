@@ -6,7 +6,7 @@ if (session()->get('cliente')) {
 
 @endphp
 
-@extends('template.main')
+@extends('template.main2')
 
 {{-- @section('metas')
     <meta property="og:title" content="{{ $lote->nome }} - {{ $lote->fazenda->nome_fazenda }}" />
