@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('notificacao:clientesReprovados')->everyMinute(); // email diários
+         $schedule->command('relatorios:cadastroSemanal')->weeklyOn(1, '8:00'); // Toda semana, na segunda feira as 8:00
     }
 
     /**
