@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\RelatorioCadastros;
 use Illuminate\Http\Request;
 use App\Models\Fazenda;
 use App\Models\Reserva;
@@ -21,14 +22,13 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use App\Classes\Agrisk\Apiary\ApiaryClientes;
 use Illuminate\Support\Arr;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SiteController extends Controller
 {
 
     public function testes(){
-        $clientes = DB::connection('mysql2')->table('clientes')->select('nome_dono')->limit(10)->get();
-        dd($clientes);
-        return view("concluir");
+        return Excel::download(new RelatorioCadastros(), 'relatorio_cadastros_semanais.xlsx');
     }
 
     public function index(){
@@ -46,9 +46,9 @@ class SiteController extends Controller
 
     public function index2(){
         DB::connection()->enableQueryLog();
-        
+
         $configuracao = Configuracao::first();
-        
+
         // RESERVAS QUE ESTÃO ATIVAS
         if(cache()->has('reservas_ativas')){
             $reservas = cache()->get('reservas_ativas');
@@ -194,13 +194,13 @@ class SiteController extends Controller
         }else{
             $ip = $_SERVER['REMOTE_ADDR'];
         }
-    
+
         $estado = null;
         $cidade = null;
         $cep = null;
-    
+
         $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
-    
+
         if($query && $query["status"] == "success"){
             $estado = $query["region"];
             $cidade = $query["city"];
@@ -229,7 +229,7 @@ class SiteController extends Controller
                 $rdStation->setLeadData('fazenda-lote', $lote->fazenda->nome_fazenda);
                 $rdStation->sendLead();
             }
-            
+
         }
 
         // $lote->video = $this->convertYoutube($lote->video);
@@ -261,13 +261,13 @@ class SiteController extends Controller
         }else{
             $ip = $_SERVER['REMOTE_ADDR'];
         }
-    
+
         $estado = null;
         $cidade = null;
         $cep = null;
-    
+
         $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
-    
+
         if($query && $query["status"] == "success"){
             $estado = $query["region"];
             $cidade = $query["city"];
@@ -296,7 +296,7 @@ class SiteController extends Controller
                 $rdStation->setLeadData('fazenda-lote', $embriao->fazenda->nome_fazenda);
                 $rdStation->sendLead();
             }
-            
+
         }
 
         $fazenda = Fazenda::where("slug", $slug)->first();
@@ -304,7 +304,7 @@ class SiteController extends Controller
     }
 
     public function lance(Request $request, Lote $lote){
-        
+
         $lance = Lance::where([["lote_id", $lote->id], ["valor", ">", $request->valor]])->first();
         if($lance){
             return response()->json("erro");
@@ -322,7 +322,7 @@ class SiteController extends Controller
         $res["valor"] = $request->valor;
 
         return response()->json($res);
-        
+
     }
 
     public function maior_lance(Lote $lote){
@@ -353,7 +353,7 @@ class SiteController extends Controller
                 $usuario->save();
                 Cookie::queue('cliente', $usuario->id, 518400);
                 session(["cliente" => $usuario->toArray()]);
-                
+
                 $carrinho = Carrinho::where([["cliente_id", $usuario->id], ["aberto", true]])->first();
                 if($carrinho){
                     session()->put(["carrinho" => true]);
@@ -373,11 +373,11 @@ class SiteController extends Controller
             }else{
                 session()->flash("erro", "Usuário ou senha incorretos");
                 return redirect()->back()->withInput($request->except('senha'));
-            } 
+            }
         }else{
             session()->flash("erro", "Usuário ou senha incorretos");
             return redirect()->back()->withInput($request->except('senha'));
-        }      
+        }
     }
 
     public function contato(){
@@ -448,13 +448,13 @@ class SiteController extends Controller
         }else{
             $ip = $_SERVER['REMOTE_ADDR'];
         }
-    
+
         $estado = null;
         $cidade = null;
         $cep = null;
-    
+
         $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
-    
+
         if($query && $query["status"] == "success"){
             $estado = $query["region"];
             $cidade = $query["city"];

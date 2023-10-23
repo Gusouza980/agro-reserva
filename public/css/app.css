@@ -11,6 +11,7 @@
 html{
     -webkit-tap-highlight-color: transparent;
 }
+body { cursor: url('/imagens/mouse.png'), auto; }
 
 ::-webkit-scrollbar {
     width: 6px;
