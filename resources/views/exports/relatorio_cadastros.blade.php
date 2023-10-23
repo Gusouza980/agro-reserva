@@ -1,11 +1,11 @@
 <table>
     <tbody>
     <tr>
-        <td colspan="2"><b>Cadastros Não Finalizados Dos Últimos 7 Dias</b></td>
+        <td colspan="2"><b>Cadastros Não Finalizados Dos Últimos 7 Dias (Por Etapa)</b></td>
     </tr>
     @foreach($count_por_etapas as $count_etapa)
         <tr>
-            <td>{{$count_etapa->etapa_cadastro}}</td>
+            <td>Etapa {{$count_etapa->etapa_cadastro}}</td>
             <td>{{$count_etapa->total}}</td>
         </tr>
     @endforeach
