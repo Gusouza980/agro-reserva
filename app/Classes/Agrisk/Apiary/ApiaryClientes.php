@@ -13,6 +13,7 @@ class ApiaryClientes extends Apiary
     // RETORNO: Um Objeto com os campos id, companyId, taxId, kind
     // Caso o cliente já tenha cadastro noa agrisk é retornando um erro normal, porém contendo o campo clientId referente ao cliente 
     public function createClient($taxId, $birthDate){
+        \Log::channel("agrisk_debug")->debug('CREATE CLIENT');
         $response = Http::withToken($this->token)->post($this->url . $this->routes["clients"], [
             'taxId' => $taxId,
             'birthDate' => $birthDate,
@@ -30,6 +31,7 @@ class ApiaryClientes extends Apiary
     }
 
     public function listClients($taxId, $letter){
+        \Log::channel("agrisk_debug")->debug('LIST CLIENTS');
         $response = Http::withToken($this->token)->get($this->url . $this->routes["clients"] . "?" . "text=" . $taxId . "&client=1&groups=1&letter=" . $letter);
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
@@ -41,6 +43,7 @@ class ApiaryClientes extends Apiary
     }
 
     public function clientDetail($id){
+        \Log::channel("agrisk_debug")->debug('CREATE DETAIL');
         $response = Http::withToken($this->token)->get($this->url . $this->routes["client.detail"] . "/" . $id);
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
@@ -54,6 +57,7 @@ class ApiaryClientes extends Apiary
     // RETORNA O TOKEN REFERENTE AOS TERMOS PARA O CLIENTE INFORMADO (STRING)
     // EM CASO DE ERRO RETORNA FALSE
     public function createTerms($id, $name, $taxId, $phone = null){
+        \Log::channel("agrisk_debug")->debug('CREATE TERMS');
         $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"], [
             'clientId' => $id,
             'clientName' => $name,
@@ -72,6 +76,7 @@ class ApiaryClientes extends Apiary
     }
 
     public function termsDetail($termId){
+        \Log::channel("agrisk_debug")->debug('TERMS DETAILS');
         $response = Http::withToken($this->token)->get($this->url_terms . $this->routes["terms"] . "/" . $termId);
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
@@ -84,6 +89,7 @@ class ApiaryClientes extends Apiary
 
     // RETORNA UMA MENSAGEM DE "APPROVED" OU "REPROVED"
     public function sendAnswers($termId, $respostas){
+        \Log::channel("agrisk_debug")->debug('SEND ANSWERS');
         $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"] . "/" . $termId . "/answers", [
             "answers" => $respostas
         ]);
@@ -93,6 +99,7 @@ class ApiaryClientes extends Apiary
     }
 
     public function sendTermsToken($cliente){
+        \Log::channel("agrisk_debug")->debug('SEND TERMS TOKEN');
         $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"] . "/" . $cliente->agriskTermosToken . "/token", [
             "method" => "WhatsApp",
             "phone" => Util::limparString($cliente->telefone)
@@ -106,6 +113,7 @@ class ApiaryClientes extends Apiary
     }
 
     public function verificarCodigo($cliente, $otpToken, $deviceCode){
+        \Log::channel("agrisk_debug")->debug('VERIFY CODE');
         $ip = $_SERVER['REMOTE_ADDR'];
         // $ip = '143.255.112.19';
         $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
