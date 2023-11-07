@@ -17,6 +17,7 @@ class ApiaryClientes extends Apiary
             'taxId' => $taxId,
             'birthDate' => $birthDate,
         ]);
+        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
             $this->lastError = $response->object();
             if(isset($this->lastError->clientId)){
@@ -30,6 +31,7 @@ class ApiaryClientes extends Apiary
 
     public function listClients($taxId, $letter){
         $response = Http::withToken($this->token)->get($this->url . $this->routes["clients"] . "?" . "text=" . $taxId . "&client=1&groups=1&letter=" . $letter);
+        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
             $this->lastError = $response->object();
             return false;
@@ -40,6 +42,7 @@ class ApiaryClientes extends Apiary
 
     public function clientDetail($id){
         $response = Http::withToken($this->token)->get($this->url . $this->routes["client.detail"] . "/" . $id);
+        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
             $this->lastError = $response->object();
             return false;
