@@ -64,6 +64,11 @@ return [
             'path' => storage_path('logs/agrisk.log'),
             'level' => env('LOG_LEVEL', 'info'),
         ],
+        'agrisk_debug' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/agrisk_debug.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+        ],
 
         'single' => [
             'driver' => 'single',

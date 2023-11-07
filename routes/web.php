@@ -138,7 +138,7 @@ Route::middleware(['cookie'])->group(function () {
     // Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.avaliacoes");
     // Route::get('/reservas/finalizadas/{reserva}/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes_finalizadas'])->name("reservas.finalizadas.fazenda.lotes");
     // Route::get('/reservas/finalizadas/{reserva}/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote_finalizadas'])->name("reservas.finalizadas.fazenda.lote");
-    
+
     //Blog
     Route::match(['get','post'], '/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
     // Route::get('/blog2', [\App\Http\Controllers\BlogController::class, 'index2'])->name("blog2");

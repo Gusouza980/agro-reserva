@@ -14,6 +14,7 @@
     <meta name="author" content="Luis Gustavo de Souza Carvalho">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="visit-token" content="{{ md5(rand(1, 10) . microtime()) }}">
     @include('includes.tags.og')
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -45,6 +46,7 @@
 </head>
 
 <body x-data="{start: true}" class="bg-[#F5F5F5]">
+
     @include("includes.tags.google-ads")
     <x-institucional.barra-topo></x-institucional.barra-topo>
     <x-institucional.navbar></x-institucional.navbar>
@@ -141,6 +143,44 @@
     @endif
     <script type="text/javascript" async
         src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js">
+    </script>
+    <script>
+        $(document).ready(function(){
+            var init_time = new Date();
+            $.ajax({ 
+                method: 'post',
+                url: '{!! route("log.paginas.create") !!}',
+                data: {
+                    'cliente_id': '{!! (session()->get("cliente")) ? session()->get("cliente")["id"] : "" !!}',
+                    'visit_token': $("meta[name=visit-token]").attr('content'),
+                    'url': '{!! url()->current() !!}',
+                },
+                async: false
+            })
+            window.addEventListener("beforeunload", function(e){
+                var now = new Date;
+                $.ajax({ 
+                    method: 'post',
+                    url: '{!! route("log.paginas.update") !!}',
+                    data: {
+                        'visit_token': $("meta[name=visit-token]").attr('content'),
+                        'segundos': (now - init_time) / 1000,
+                    },
+                    async: true
+                })
+            });
+            $(window).click(function(e){
+                $.ajax({ 
+                    method: 'post',
+                    url: '{!! route("log.paginas.evento.create") !!}',
+                    data: {
+                        'visit_token': $("meta[name=visit-token]").attr('content'),
+                        'id_elemento': e.target.id,
+                    },
+                    async: false
+                })
+            })
+        })
     </script>
 </body>
 

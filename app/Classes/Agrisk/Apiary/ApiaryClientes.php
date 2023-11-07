@@ -59,7 +59,7 @@ class ApiaryClientes extends Apiary
             'companyName' => $this->companyName,
             'companyTaxId' => $this->companyTaxId,
         ]);
-
+        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
             $this->lastError = $response->object();
             return false;
@@ -70,6 +70,7 @@ class ApiaryClientes extends Apiary
 
     public function termsDetail($termId){
         $response = Http::withToken($this->token)->get($this->url_terms . $this->routes["terms"] . "/" . $termId);
+        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
             $this->lastError = $response->object();
             return false;
@@ -84,6 +85,7 @@ class ApiaryClientes extends Apiary
             "answers" => $respostas
         ]);
 
+        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         return $response->object();
     }
 
@@ -92,6 +94,7 @@ class ApiaryClientes extends Apiary
             "method" => "WhatsApp",
             "phone" => Util::limparString($cliente->telefone)
         ]);
+        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if(!$response->object()){
             return true;
         }else{
@@ -116,6 +119,7 @@ class ApiaryClientes extends Apiary
             ],
             "deviceCode" => $deviceCode
         ]);
+        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($response->object() == "Term signed"){
             return true;
         }else{

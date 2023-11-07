@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// LOG DE PÁGINAS
+Route::post('/log/create', [\App\Http\Controllers\LogPaginasController::class, 'create'])->name("log.paginas.create");
+Route::post('/log/update', [\App\Http\Controllers\LogPaginasController::class, 'update'])->name("log.paginas.update");
+Route::post('/log/evento/create', [\App\Http\Controllers\LogPaginasController::class, 'create_evento'])->name("log.paginas.evento.create");
