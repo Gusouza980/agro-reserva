@@ -99,11 +99,11 @@
                             $numeros = ['5534992754132', '5534996920202'];
                             $sorteado = array_rand($numeros, 1);
                         @endphp
-                        <div class="w-full flex gap-4 mt-[20px]">
+                        <div class="w-full flex md:flex-row flex-col gap-4 mt-[20px]">
                             <a onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})"
                                 class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Adicionar ao Carrinho</a>
                             <a href="https://wa.me/{{ $numeros[$sorteado] }}" target="_blank"
-                                    class="cpointer bg-gray-600 text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Comprar com Assessor</a>
+                                    class="cpointer bg-gray-600 text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Comprar com Consultor</a>
                         </div>
                     @endif
                 </div>
