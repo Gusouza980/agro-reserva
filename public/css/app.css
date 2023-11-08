@@ -7279,6 +7279,10 @@ body[dir="rtl"] .checkbox:checked,
         width: calc(100% + 4px);
     }
 
+    .md\:w-full{
+        width: 100%;
+    }
+
     .md\:max-w-\[390px\]{
         max-width: 390px;
     }
