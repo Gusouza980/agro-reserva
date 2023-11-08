@@ -41,8 +41,8 @@
                     </div>
                     <div class="mx-auto mx-sm-0 text-center sm:text-left text-sm-left font-montserrat text-[16px] text-[#D7D8E4]">
                         <ul>
-                            <li onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="mt-[20px] sm:mt-0 hover:!text-[#F5B01F] cpointer">Precisa de Ajuda</li>
-                            <li onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="mt-[20px] hover:!text-[#F5B01F] cpointer">Falar com os assessores</li>
+                            <li onclick="window.open('https://api.whatsapp.com/send?phone=5511934320654', '_blank')" class="mt-[20px] sm:mt-0 hover:!text-[#F5B01F] cpointer">Precisa de Ajuda</li>
+                            <li onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')" class="mt-[20px] hover:!text-[#F5B01F] cpointer">Falar com os assessores</li>
                         </ul>
                     </div>
                 </div>

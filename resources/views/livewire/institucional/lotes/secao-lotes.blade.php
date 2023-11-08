@@ -264,7 +264,7 @@
                         </p>
                     </div>
                     <div class="flex w-full md:space-x-4 mt-[40px]">
-                        <button onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="border border-[#27C45B] bg-[#27C45B] hover:bg-[#1e9b48] text-[11px] text-white py-[10px] px-[17px] font-montserrat font-semibold rounded-[10px]">FALAR COM ASSESSOR</button>
+                        <button onclick="window.open('https://api.whatsapp.com/send?phone=5534996920202', '_blank')" class="border border-[#27C45B] bg-[#27C45B] hover:bg-[#1e9b48] text-[11px] text-white py-[10px] px-[17px] font-montserrat font-semibold rounded-[10px]">FALAR COM ASSESSOR</button>
                         <a href="#newsletter" class="cursor-pointer border-2 border-[#707070] text-[#1E2027] text-[11px] py-[10px] px-[17px] transition duration-300 font-montserrat font-semibold rounded-[10px] hover:bg-[#15171E] hover:!text-white">ASSINAR NEWSLETTER</a>
                     </div>
                 </div>
@@ -288,7 +288,7 @@
                     </div>
                 </div>
                 <div class="w-full mb-4 duration-1000 delay-300 md:max-w-[550px] animate-in slide-in-from-right">
-                    <div onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer">
+                    <div onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')" class="rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer">
                         <div class="">
                             <img src="{{ asset('imagens/banner-vender.jpg') }}" style="max-width: 100%;" alt="">
                         </div>

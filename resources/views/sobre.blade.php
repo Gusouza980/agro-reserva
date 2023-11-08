@@ -182,7 +182,7 @@
             </div>
             <div class="mt-4 row">
                 <div class="text-center col-12 text-sobre-caixa">
-                    <a href="https://api.whatsapp.com/send?phone=5514981809051&text={{ urlencode('Olá. Gostaria de vender na Agroreserva!') }}" target="_blank" class="px-5 py-2 btn btn-sobre">Quero Vender</a>
+                    <a href="https://api.whatsapp.com/send?phone=5534996920202&text={{ urlencode('Olá. Gostaria de vender na Agroreserva!') }}" target="_blank" class="px-5 py-2 btn btn-sobre">Quero Vender</a>
                 </div>
             </div>
         </div>

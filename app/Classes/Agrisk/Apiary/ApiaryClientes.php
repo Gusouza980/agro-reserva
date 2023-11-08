@@ -43,7 +43,7 @@ class ApiaryClientes extends Apiary
     }
 
     public function clientDetail($id){
-        \Log::channel("agrisk_debug")->debug('CREATE DETAIL');
+        \Log::channel("agrisk_debug")->debug('CLIENT DETAIL');
         $response = Http::withToken($this->token)->get($this->url . $this->routes["client.detail"] . "/" . $id);
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){

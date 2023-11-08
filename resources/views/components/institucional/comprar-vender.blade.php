@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="mb-4 duration-1000 delay-300 col-12 col-lg-6 animate-in slide-in-from-right">
-                <div onclick="window.open('https://api.whatsapp.com/send?phone=5514981809051', '_blank')" class="rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer">
+                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')" class="rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer">
                     <div class="">
                         <img src="{{ asset('imagens/banner-vender.jpg') }}" style="max-width: 100%;" alt="">
                     </div>

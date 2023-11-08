@@ -5,7 +5,7 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Agroreserva</title>
+    <title>Agroreserva - Cadastro</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
 
@@ -73,7 +73,7 @@
     @stack("scripts")
 
     <script>
-        var telefone = '5514981809051';
+        var telefone = '5511934320654';
     </script>
     <script type="text/javascript" async
         src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/5d649ad8-4f69-4811-ab56-9c2bb4d5f5ea-loader.js">

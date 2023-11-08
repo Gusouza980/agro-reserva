@@ -138,7 +138,7 @@
         </script>
     @else
         <script>
-            var telefone = '5514981809051';
+            var telefone = '5511934320654';
         </script>
     @endif
     <script type="text/javascript" async
