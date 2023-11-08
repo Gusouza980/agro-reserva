@@ -100,10 +100,10 @@
                             $sorteado = array_rand($numeros, 1);
                         @endphp
                         <div class="w-full flex md:flex-row flex-col gap-4 mt-[20px] items-center justify-center md:justify-start">
-                            <a class="md:w-full w-fit" onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})"
-                                class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Adicionar ao Carrinho</a>
-                            <a class="md:w-full w-fit" href="https://wa.me/{{ $numeros[$sorteado] }}" target="_blank"
-                                    class="cpointer bg-gray-600 text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Comprar com Consultor</a>
+                            <a onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})"
+                                class="md:w-full w-fit cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Adicionar ao Carrinho</a>
+                            <a href="https://wa.me/{{ $numeros[$sorteado] }}" target="_blank"
+                                    class="md:w-full w-fit cpointer bg-gray-600 text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Comprar com Consultor</a>
                         </div>
                     @endif
                 </div>
