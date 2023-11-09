@@ -78,7 +78,7 @@
                 <div class="flex flex-wrap items-center justify-center w-full mt-2 md:justify-start">
                     <div>
                         <i class="fas fa-phone-alt text-[#FFB02A] text-[20px] mr-3"></i>
-                        <span class="font-roboto text-[16px] text-[#A2A9B0]">(14) 98180-9051 <span class="mx-2 text-[#FFB02A]">
+                        <span class="font-roboto text-[16px] text-[#A2A9B0]">(34) 99692-0202 <span class="mx-2 text-[#FFB02A]">
                     </div>
                 </div>
             </div>
