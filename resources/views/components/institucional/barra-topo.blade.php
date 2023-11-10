@@ -7,13 +7,13 @@
         </div>
         <div class="flex justify-center flex-grow">
             <div class="px-4 border-r border-black">
-                <span class="font-montserrat font-bold text-[10px] md:text-[12px] text-[#3FDB67]">100%</span> <span class="font-montserrat text-[10px] md:text-[12px] font-medium">Digital</span>
+                <span class="font-montserrat font-bold text-[10px] md:text-[12px] text-[#3FDB67]">0%</span> <span class="font-montserrat text-[10px] md:text-[12px] font-medium">Comissão</span>
             </div>
             <div class="px-4 border-r border-black">
-                <span class="font-montserrat font-bold text-[10px] md:text-[12px] text-[#EE682A]">100%</span> <span class="font-montserrat text-[10px] md:text-[12px] font-medium">Pecuária</span>
+                <span class="font-montserrat font-bold text-[10px] md:text-[12px] text-[#EE682A]">100%</span> <span class="font-montserrat text-[10px] md:text-[12px] font-medium">Confiança</span>
             </div>
             <div class="px-4">
-                <span class="font-montserrat font-bold text-[10px] md:text-[12px] text-[#F3B248]">100%</span> <span class="font-montserrat text-[10px] md:text-[12px] font-medium">Com Você</span>
+                <span class="font-montserrat font-bold text-[10px] md:text-[12px] text-[#F3B248]">100%</span> <span class="font-montserrat text-[10px] md:text-[12px] font-medium">Qualidade</span>
             </div>
         </div>
         <div class="items-center justify-end flex-grow hidden md:flex">
