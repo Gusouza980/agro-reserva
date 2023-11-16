@@ -18,7 +18,7 @@
                     </svg>
                     Precisa de Ajuda
                 </div> --}}
-                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534997406445', '_blank')"  class="mt-2 mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105"
+                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')"  class="mt-2 mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105"
                     style="font-size: 10px;">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150"
                         xmlns="http://www.w3.org/2000/svg" width="37.018" height="37" viewBox="0 0 24 24">
@@ -121,7 +121,7 @@
             </div>
         @else
             <div class="flex items-center md:order-2">
-                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534997406445', '_blank')" class="mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105"
+                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')" class="mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105"
                     style="font-size: 10px;">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150" id="Grupo_3728"
                         data-name="Grupo 3728" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
