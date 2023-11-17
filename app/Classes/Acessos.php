@@ -17,7 +17,7 @@ class Acessos
 
     public static $permissoes = [
         "usuarios" => [0],
-        "clientes" => [0, 5],
+        "clientes" => [0, 1, 5],
         "banners" => [0, 2, 3, 5],
         "reservas" => [0, 5],
         "vendas" => [0, 4],
