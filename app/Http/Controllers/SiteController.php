@@ -28,6 +28,7 @@ class SiteController extends Controller
 {
 
     public function testes(){
+        echo $cliente;
         // DiscordAlert::to('cadastro')->message("O cliente Luis Gustavo acabou de realizar seu pré-cadastro na plataforma.");
         // return Excel::download(new RelatorioCadastros(), 'relatorio_cadastros_semanais.xlsx');
     }

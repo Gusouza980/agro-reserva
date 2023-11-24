@@ -25,6 +25,12 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
+    
+    protected function throttle(Throwable $e): string
+    {
+        
+        return $e->getMessage();
+    }
 
     /**
      * Register the exception handling callbacks for the application.
@@ -34,7 +40,13 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+            \DiscordAlert::to('erros')->message('', [
+                [
+                    'title' => "(" . $e->getCode() . ") " . $e->getMessage(),
+                    'description' => "**Arquivo:** " . $e->getFile() . PHP_EOL . PHP_EOL . "**Linha:** " . $e->getLine(),
+                    'color' => '#ff0000',
+                ]
+            ]);
         });
     }
 }
