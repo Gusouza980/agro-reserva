@@ -18,6 +18,7 @@ class ApiaryClientes extends Apiary
             'taxId' => $taxId,
             'birthDate' => $birthDate,
         ]);
+        \DiscordAlert::to('agrisk')->message("Tentativa de criação de cliente na Agrisk, obtendo retorno: " . $response->body());
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
             $this->lastError = $response->object();
@@ -33,6 +34,7 @@ class ApiaryClientes extends Apiary
     public function listClients($taxId, $letter){
         \Log::channel("agrisk_debug")->debug('LIST CLIENTS');
         $response = Http::withToken($this->token)->get($this->url . $this->routes["clients"] . "?" . "text=" . $taxId . "&client=1&groups=1&letter=" . $letter);
+        \DiscordAlert::to('agrisk')->message("Tentativa de retorno de cliente na Agrisk, obtendo retorno: " . $response->body());
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
             $this->lastError = $response->object();
@@ -45,6 +47,7 @@ class ApiaryClientes extends Apiary
     public function clientDetail($id){
         \Log::channel("agrisk_debug")->debug('CLIENT DETAIL');
         $response = Http::withToken($this->token)->get($this->url . $this->routes["client.detail"] . "/" . $id);
+        \DiscordAlert::to('agrisk')->message("Tentativa de detalhes de cliente na Agrisk, obtendo retorno: " . $response->body());
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
             $this->lastError = $response->object();
@@ -66,6 +69,7 @@ class ApiaryClientes extends Apiary
             'companyName' => $this->companyName,
             'companyTaxId' => $this->companyTaxId,
         ]);
+        \DiscordAlert::to('agrisk')->message("Tentativa de criação de termos na Agrisk pro cliente " . $name . " , obtendo retorno: " . $response->body());
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
             $this->lastError = $response->object();
@@ -78,6 +82,7 @@ class ApiaryClientes extends Apiary
     public function termsDetail($termId){
         \Log::channel("agrisk_debug")->debug('TERMS DETAILS');
         $response = Http::withToken($this->token)->get($this->url_terms . $this->routes["terms"] . "/" . $termId);
+        \DiscordAlert::to('agrisk')->message("Tentativa de detalhes de termos na Agrisk , obtendo retorno: " . $response->body());
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
             $this->lastError = $response->object();
@@ -93,7 +98,7 @@ class ApiaryClientes extends Apiary
         $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"] . "/" . $termId . "/answers", [
             "answers" => $respostas
         ]);
-
+        \DiscordAlert::to('agrisk')->message("Tentativa de envio de respostas de termos na Agrisk , obtendo retorno: " . $response->body());
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         return $response->object();
     }
@@ -104,6 +109,7 @@ class ApiaryClientes extends Apiary
             "method" => "WhatsApp",
             "phone" => Util::limparString($cliente->telefone)
         ]);
+        \DiscordAlert::to('agrisk')->message("Tentativa de envio de token pro whatsapp na Agrisk pro cliente " . $cliente->nome ." , obtendo retorno: " . $response->body());
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if(!$response->object()){
             return true;
@@ -130,6 +136,7 @@ class ApiaryClientes extends Apiary
             ],
             "deviceCode" => $deviceCode
         ]);
+        \DiscordAlert::to('agrisk')->message("Tentativa de verificação de código na Agrisk pro cliente " . $cliente->nome ." , obtendo retorno: " . $response->body());
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($response->object() == "Term signed"){
             return true;

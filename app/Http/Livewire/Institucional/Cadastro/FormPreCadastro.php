@@ -62,6 +62,8 @@ class FormPreCadastro extends Component
         
         $cliente->save();
 
+        \DiscordAlert::to('cadastro')->message("O cliente " . $cliente->nome_dono . " (" . $cliente->email . ") acabou de realizar seu pré-cadastro na plataforma.");
+
         session()->put(["cliente" => $cliente->toArray()]);
 
         $this->show = false;

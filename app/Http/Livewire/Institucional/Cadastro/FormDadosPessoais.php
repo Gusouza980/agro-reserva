@@ -90,6 +90,7 @@ class FormDadosPessoais extends Component
         }
 
         $cliente->save();
+        \DiscordAlert::to('cadastro')->message("O cliente " . $cliente->nome_dono . " (" . $cliente->email . ") completou a etapa de dados pessoais.");
 
         session()->forget("cliente");
         session()->put(["cliente" => $cliente->toArray()]);

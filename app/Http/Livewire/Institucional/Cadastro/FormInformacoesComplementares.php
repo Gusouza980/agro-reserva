@@ -41,7 +41,8 @@ class FormInformacoesComplementares extends Component
         $cliente->etapa_cadastro = 5;
 
         $cliente->save();
-        
+        \DiscordAlert::to('cadastro')->message("O cliente " . $cliente->nome_dono . " (" . $cliente->email . ") completou a etapa de informações complementares.");
+
         session()->forget("cliente");
         session()->put(["cliente" => $cliente->toArray()]);
 

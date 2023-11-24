@@ -46,6 +46,7 @@ class FormDadosPropriedade extends Component
         $cliente->etapa_cadastro = 4;
 
         $cliente->save();
+        \DiscordAlert::to('cadastro')->message("O cliente " . $cliente->nome_dono . " (" . $cliente->email . ") completou a etapa de dados de propriedade.");
 
         session()->forget("cliente");
         session()->put(["cliente" => $cliente->toArray()]);
