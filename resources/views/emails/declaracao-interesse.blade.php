@@ -1797,7 +1797,7 @@
                                                         <tr>
                                                             <th style="line-height: 1.5;">
                                                                 <h1 style="font-size: 20px; font-weight: bold;">Declaração de Interesse</h1>
-                                                                <p style="font-weight: normal; font-size: 16px;">O cliente <b>{{$cliente->nome_dono}}</b>, com telefone <a href="tel:{{\App\Classes\Util::limparString($cliente->telefone)}}"><b>{{$cliente->telefone}}</b></a>, email <a href="mailto:{{$cliente->email}}"><b>{{$cliente->email}}</b></a> e status <b>@if($cliente->aprovado) APROVADO @elseif($cliente->aprovado == 0) EM ANÁLISE @else REPROVADO @endif</b> declarou interesse no lote <b>{{$lote->numero . " - " . $lote->nome}}</b> da fazenda <b>{{$lote->fazenda->nome_fazenda}}</b></p>
+                                                                <p style="font-weight: normal; font-size: 16px;">O cliente <b>{{$cliente->nome_dono}}</b>, com telefone <a href="tel:{{\App\Classes\Util::limparString($cliente->telefone)}}"><b>{{$cliente->telefone}}</b></a>, email <a href="mailto:{{$cliente->email}}"><b>{{$cliente->email}}</b></a> declarou interesse no lote <b>{{$lote->numero . " - " . $lote->nome}}</b> da fazenda <b>{{$lote->fazenda->nome_fazenda}}</b></p>
                                                             </th>
                                                         </tr>
                                                     </table>
