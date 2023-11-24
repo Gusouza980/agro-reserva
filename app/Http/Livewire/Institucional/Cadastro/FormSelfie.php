@@ -48,6 +48,7 @@ class FormSelfie extends Component
 
         $cliente->finalizado = true;
         $cliente->save();
+        \DiscordAlert::to('cadastro')->message("O cliente " . $cliente->nome_dono . " (" . $cliente->email . ") completou a etapa de selfie.");
         session()->forget("cliente");
         session()->put(["cliente" => $cliente->toArray()]);
 
