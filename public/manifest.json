@@ -1,0 +1,34 @@
+{
+  "background_color": "#ffffff",
+  "description": "Acesse o site da Agro Reserva e leve os melhores animais, dos principais criatórios do Brasil para a sua fazenda. Experiência humanizada, 100% online e 0% de comissão.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Agroreserva - Respeito pela sua jornada",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Agroreserva",
+  "start_url": "/",
+  "theme_color": "#ed682b",
+  "categories": [
+    "business"
+  ],
+  "screenshots": [],
+  "icons": [
+    {
+      "src": "https://agroreserva.com.br/imagens/logo_agroreserva_leite_min.jpg"
+    },
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Reservas Abertas",
+      "url": "https://agroreserva.com.br/reservas-abertas",
+      "description": "Listagem de lotes das reservas que estão rolando no momento"
+    }
+  ],
+  "id": "agroreserva",
+  "lang": "pt"
+}
