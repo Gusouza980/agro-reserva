@@ -200,19 +200,23 @@
             @else
                 <div class="w1200 slide-lotes mt-10 py-5">
                     @if($reserva && !$reserva->multi_fazendas && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
-                        <div class="w-[350px] shrink-0 flex flex-col items-between justify-between transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] px-6 py-6 bg-white relative">
+                        <div class="w-[280px] shrink-0 flex flex-col items-between justify-between transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] px-6 py-6 bg-white relative">
                             <div class="w-full">
                                 <img class="w-full" src="{{ asset($fazenda->logo) }}" alt="">
                             </div>
-                            <div class="w-full mt-6">
-                                <table class="text-lg w-full">
-                                    <tbody>
-                                        <tr class="border border-slate-300">
-                                            <td class="px-3 py-2"><a href="{{ $reserva->catalogo }}"><i class="fas fa-file mr-3"></i><b>Catálogo</b></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            @if($reserva->catalogo)
+                                <div class="w-full mt-6 grow flex items-end">
+                                    <div class="w-full bg-gray-200 px-2 py-2 rounded-md">
+                                        <table class="text-lg w-full">
+                                            <tbody>
+                                                <tr class="border border-slate-300">
+                                                    <td class="px-3 py-2"><a href="{{ asset($reserva->catalogo) }}"><i class="fas fa-file mr-3"></i><b>Catálogo</b></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     @endif
                     @foreach($lotes->where("fazenda_id", $fazenda_id) as $lote)
@@ -310,7 +314,7 @@
         overflow-x: scroll;
         display: flex;
         flex-wrap: nowrap;
-        gap: 50px;
+        gap: 30px;
         padding: 15px 0;
     }
 
