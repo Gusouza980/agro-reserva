@@ -18,7 +18,7 @@ class ApiaryClientes extends Apiary
             'taxId' => $taxId,
             'birthDate' => $birthDate,
         ]);
-        \DiscordAlert::to('agrisk')->message("Tentativa de criação do cliente" . ((session()->get("cliente")) ? session()->get('cliente')['nome_dono'] : '') . "na Agrisk, obtendo retorno: " . $response->body());
+        \DiscordAlert::to('agrisk')->message("Tentativa de criação do cliente " . ((session()->get("cliente")) ? session()->get('cliente')['nome_dono'] : '') . " na Agrisk, obtendo retorno: " . $response->body());
         \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
         if($this->checkError($response->object())){
             $this->lastError = $response->object();
