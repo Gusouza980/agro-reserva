@@ -19,6 +19,9 @@ class BlogController extends Controller
         }else{
             if($slug){
                 $categoria = Categoria::where("slug", $slug)->first();
+                if(!$categoria){
+                    return redirect()->route('blog');
+                }
                 $noticias = Noticia::where([["publicada", true], ["categoria_id", $categoria->id]])->orderBy("created_at", "DESC")->paginate(6);
                 $mais_visitadas = Noticia::where("publicada", true)->orderBy("visualizacoes", "DESC")->take(3)->get();
                 return view("blog", ["noticias" => $noticias, "mais_visitadas" => $mais_visitadas]);
