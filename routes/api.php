@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::resource('banners', \App\Http\Controllers\Api\BannersController::class);
+
 // LOG DE PÁGINAS
 Route::post('/log/create', [\App\Http\Controllers\LogPaginasController::class, 'create'])->name("log.paginas.create");
 Route::post('/log/update', [\App\Http\Controllers\LogPaginasController::class, 'update'])->name("log.paginas.update");

@@ -2588,7 +2588,10 @@ label {
 }
 
 .form-input-text{
-    padding: 8px 20px;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    height: 37px;
     border-radius: 10px;
     border: 1px solid #C7C9D3;
 }

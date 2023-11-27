@@ -13,7 +13,12 @@ module.exports = {
     "./app/Http/**/*.php"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        inter: ['var(--inter)'],
+        montserrat: ['var(--montserrat)'],
+      }
+    },
   },
   plugins: [
     require("tailwindcss-animate"),

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\BrowserKit\HttpBrowser;
+use App\Http\Livewire\Institucional\CadastroNovo;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,49 +41,6 @@ Route::middleware(['cookie'])->group(function () {
         $cookie = \Cookie::forget("cliente");
         return redirect()->route("index")->withCookie($cookie);
     })->name("sair");
-    
-
-    // Route::get("/scrap", function(){
-    //     // $browser = new HttpBrowser(HttpClient::create(['verify_peer' => false, 'verify_host' => false]));
-    //     $client = new Goutte\Client(HttpClient::create(['verify_peer' => false, 'verify_host' => false]));
-    //     $crawler = $client->request('GET', 'http://www.abcz.org.br/produtos-e-servicos/consulta-publica-de-animais');
-    //     // $form = $crawler->filter('form')->each(function ($node) {
-    //     //     echo "FOI" . "<br>";
-    //     // });
-    //     $form = $crawler->filter('form')->each(function($node) use ($client, $crawler){
-    //         // $url = str_replace($node->getBaseHref(), "", $)
-    //         // dd($node->getBaseHref());
-    //         if($node->getUri() == "https://www.abcz.org.br/produtos-e-servicos/consulta-publica-de-animais"){
-    //             $form = $node->form();
-    //             if($form->has("serie")){
-    //                 $form->setValues([
-    //                     "serie" => "RBBG",
-    //                     "rgn" => "241"
-    //                 ]);
-    //                 $button = $crawler->selectButton("Buscar")->first()->button();
-    //                 dd($button);
-
-    //                 $crawler = $client->click($button);
-    //                 dd($crawler);
-    //             }
-    //         }
-    //         // dd($node->getUri());
-    //     });
-    //     dd($form);
-    //     $crawler->filter('input[name=serie]')->each(function ($node) {
-    //         echo "FOI";
-    //     });
-
-    //     echo "FIM";
-    // });
-    
-    // Route::get('/teste', [\App\Http\Controllers\ContaController::class, 'teste']);
-    
-    // ROTAS DE TESTES
-
-    // Route::get('/testes/index', [\App\Http\Controllers\SiteController::class, 'index2'])->name("index2");
-    // Route::get('/testes/fazenda/{fazenda}/{reserva}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes2'])->name("fazenda.lotes2");
-
 
     // ROTAS DO INSTITUCIONAL
 
@@ -90,31 +48,18 @@ Route::middleware(['cookie'])->group(function () {
     Route::get('/login', [\App\Http\Controllers\SiteController::class, 'login'])->name("login");
     Route::post('/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
     Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");
-    // Route::get('/cadastro/vendedor', [\App\Http\Controllers\ClienteController::class, 'cadastro_vendedor'])->name("cadastro.vendedor");
-    // Route::post('/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastrar'])->name("cadastro.salvar");
-    // Route::post('/cadastrar/vendedor', [\App\Http\Controllers\ClienteController::class, 'cadastrar_vendedor'])->name("cadastro.vendedor.salvar");
-    // Route::get('/cadastro/finalizar', [\App\Http\Controllers\ClienteController::class, 'finalizar_cadastro'])->name("cadastro.finalizar");
-    // Route::post('/cadastro/finalizar/salvar', [\App\Http\Controllers\ClienteController::class, 'cadastro_final'])->name("cadastro.finalizar.salvar");
-    // Route::post('/cadastro/login', [\App\Http\Controllers\ClienteController::class, 'login_cadastro'])->name("cadastro.login");
-    // Route::get('/cadastro/fazenda', [\App\Http\Controllers\SiteController::class, 'cadastro_fazenda'])->name("cadastro.fazenda");
-    // Route::get('/cadastro/passos', [\App\Http\Controllers\SiteController::class, 'cadastro_passos'])->name("cadastro.passos");
+    Route::get('/cadastro_novo', CadastroNovo\Pagina::class)->name("cadastro");
+
     Route::get('/pesquisa', [\App\Http\Controllers\SiteController::class, 'pesquisa'])->name("pesquisa");
     Route::get('/raca/{slug}', [\App\Http\Controllers\SiteController::class, 'raca'])->name("raca");
     Route::get('/reservas-abertas', [\App\Http\Controllers\SiteController::class, 'reservas_abertas'])->name("reservas_abertas");
     Route::get('/navegue-por-racas', [\App\Http\Controllers\SiteController::class, 'navegue_por_racas'])->name("navegue_por_racas");
-    // Route::get('/fazenda/{fazenda}/conheca/{reserva}/', [\App\Http\Controllers\SiteController::class, 'conheca'])->name("fazenda.conheca");
-    // Route::get('/fazenda/{fazenda}/conheca/', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.conheca.antigo");
-    // Route::get('/fazenda/{fazenda}/conheca/lotes', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.conheca.lotes.antigo");
-    // Route::get('/fazenda/{fazenda}/conheca/depoimentos', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.conheca.depoimentos.antigo");
-    // Route::get('/fazenda/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.conheca.avaliacoes.antigo");
-    // Route::get('/fazenda/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.lotes.antigo");
-    // Route::get('/fazenda/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'redirect_fazenda'])->name("fazenda.lote.antigo");
+
     Route::get('/fazenda/{fazenda}/{reserva}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes2'])->name("fazenda.lotes");
     Route::get('/fazenda/{fazenda}/{reserva}/embrioes', [\App\Http\Controllers\SiteController::class, 'embrioes'])->name("fazenda.embrioes");
     Route::get('/fazenda/{fazenda}/{reserva?}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote'])->name("fazenda.lote");
     Route::get('/fazenda/{fazenda}/{reserva}/embriao/{embriao}',  [\App\Http\Controllers\SiteController::class, 'embriao'])->name("fazenda.embriao");
-    // Route::post('/fazenda/lote/{lote}/lance',  [\App\Http\Controllers\SiteController::class, 'lance'])->name("fazenda.lote.lance");
-    // Route::get('/fazenda/lote/{lote}/lance/maior',  [\App\Http\Controllers\SiteController::class, 'maior_lance'])->name("fazenda.lote.lance.maior");
+
     Route::get('/quem-somos', [\App\Http\Controllers\SiteController::class, 'sobre'])->name("sobre");
     // Route::get('/pre_to_main', [\App\Http\Controllers\ClienteController::class, 'pre_to_main']);
     Route::post('/senha/recuperar', [\App\Http\Controllers\ContaController::class, 'recuperar_senha'])->name("conta.senha.recuperar");
@@ -122,22 +67,13 @@ Route::middleware(['cookie'])->group(function () {
     Route::get('/experciencias/ouro-branco', [\App\Http\Controllers\SiteController::class, 'experiencia_ouro_branco'])->name("experiencias.ouro_branco");
 
     // ROTAS DE API
-    // Route::post('/api/senha/recuperar', [\App\Http\Controllers\ApiController::class, 'recuperar_senha'])->name("api.conta.senha.recuperar");
     Route::post('/api2/senha/recuperar', [\App\Http\Controllers\ApiController::class, 'recuperar_senha_test'])->name("api.test.conta.senha.recuperar");
-    // Route::post('/api/cadastrar', [\App\Http\Controllers\ApiController::class, 'cadastrar'])->name("api.cadastro.salvar");
-    // Route::post('/api/cadastro/finalizar/salvar', [\App\Http\Controllers\ApiController::class, 'cadastro_final'])->name("api.cadastro.finalizar.salvar");
+
     Route::post('/api/logar', [\App\Http\Controllers\ApiController::class, 'logar'])->name("api.logar");
     Route::post('/api2/logar', [\App\Http\Controllers\ApiController::class, 'logar_test'])->name("api.test.logar");
 
     //ROTAS DE RESERVAS ANTIGAS
     Route::get('/reservas/finalizadas', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
-    // Route::get('/reservas/finalizadas/{reserva}/{fazenda}', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
-    // Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca");
-    // Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/lotes', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.lotes");
-    // Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/depoimentos', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.depoimentos");
-    // Route::get('/reservas/finalizadas/{reserva}/{fazenda}/conheca/avaliacoes', [\App\Http\Controllers\SiteController::class, 'conheca_finalizadas'])->name("reservas.finalizadas.fazenda.conheca.avaliacoes");
-    // Route::get('/reservas/finalizadas/{reserva}/{fazenda}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes_finalizadas'])->name("reservas.finalizadas.fazenda.lotes");
-    // Route::get('/reservas/finalizadas/{reserva}/{fazenda}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote_finalizadas'])->name("reservas.finalizadas.fazenda.lote");
 
     //Blog
     Route::match(['get','post'], '/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
