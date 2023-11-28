@@ -9,6 +9,6 @@ use Illuminate\Http\Request;
 class BannersController extends Controller
 {
     public function index(){
-        return response()->json(HomeBanner::all());
+        return response()->json(HomeBanner::orderBy("prioridade", "ASC")->get());
     }
 }
