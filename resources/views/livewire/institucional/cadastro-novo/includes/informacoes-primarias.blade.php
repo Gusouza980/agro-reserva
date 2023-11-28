@@ -29,14 +29,22 @@
     <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-x-4">
         <div class="">
             <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Crie a senha de acesso</label>
-            <input type="password" id="senha" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nome_dono" minlength="5" maxlength="100" required>
+            <div class="w-full relative">
+                <input type="password" id="senha" class="w-full form-input-text mt-[10px] pr-[20px]" wire:model.defer="form.nome_dono" minlength="5" maxlength="100" required>
+                <i class="fas fa-eye-slash absolute top-[11px] right-2 cursor-pointer" id="mostrar-senha"></i>
+                <i class="fas fa-eye absolute top-[11px] right-2 cursor-pointer hidden" id="esconder-senha"></i>
+            </div>
             <div class="w-full mt-2 flex justify-end text-[12px] text-[#CACACA] font-inter">
                 Campo Obrigatório *
             </div>
         </div>
         <div>
             <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Confirme a senha</label>
-            <input type="password" id="confirmar-senha" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nome_dono" minlength="5" maxlength="100" required>
+            <div class="w-full relative">
+                <input type="password" id="confirmar-senha" class="w-full form-input-text mt-[10px] pr-[20px]" wire:model.defer="form.nome_dono" minlength="5" maxlength="100" required>
+                <i class="fas fa-eye-slash absolute top-[11px] right-2 cursor-pointer" id="mostrar-confirmar-senha"></i>
+                <i class="fas fa-eye absolute top-[11px] right-2 cursor-pointer hidden" id="esconder-confirmar-senha"></i>
+            </div>
             <div class="w-full mt-2 flex justify-between text-[12px] font-inter">
                 <div class="text-red-600" id="erro-senha">
 
@@ -62,6 +70,30 @@
             console.log('removido');
         }
     });
+
+    $('#mostrar-senha').click(function(){
+        $('#senha').attr('type', 'text');
+        $(this).addClass("hidden");
+        $("#esconder-senha").removeClass("hidden");
+    })
+
+    $('#esconder-senha').click(function(){
+        $('#senha').attr('type', 'password');
+        $(this).addClass("hidden");
+        $("#mostrar-senha").removeClass("hidden");
+    })
+
+    $('#mostrar-confirmar-senha').click(function(){
+        $('#confirmar-senha').attr('type', 'text');
+        $(this).addClass("hidden");
+        $("#esconder-confirmar-senha").removeClass("hidden");
+    })
+
+    $('#esconder-confirmar-senha').click(function(){
+        $('#confirmar-senha').attr('type', 'password');
+        $(this).addClass("hidden");
+        $("#mostrar-confirmar-senha").removeClass("hidden");
+    })
 
     $("#confirmar-senha").on('keyup', function(){
         console.log($("#confirmar-senha").val());
