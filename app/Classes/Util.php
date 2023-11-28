@@ -7,7 +7,7 @@ use Image;
 class Util{
     
     public static function convertYoutube($string, $aspect = '16/9', $height = ""){
-        $iframe = "<iframe class='w-full aspect-video " . $height . "' style='aspect-ratio: " . $aspect . ";' src=\"https://www.youtube.com/embed/$2?&autoplay=1\" frameborder=\"0\" allow=\"accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+        $iframe = "<iframe class='w-full aspect-video " . $height . "' style='aspect-ratio: " . $aspect . ";' src=\"https://www.youtube.com/embed/$2?version=3&mute=1&controls=1&modestbranding=1&showinfo=0&playsinline=1&enablejsapi=1&rel=0&autoplay=1&loop=1&origin=https%3A%2F%2Fwww.agroreserva.com.br&widgetid=1&playlist=$2\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen data-gtm-yt-inspected-9='true'></iframe>";
         return preg_replace(
             "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
             $iframe,
