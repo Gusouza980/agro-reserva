@@ -4,7 +4,7 @@
         x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-0" class="w-full font-montserrat absolute -top-[15vh] pb-10 md:pb-20">
         <div class="w-full">
-            <span wire:click="voltar" class="cursor-pointer transition duration-300 text-[14px] text-[#D7D8E4] hover:scale-105 hover:text-white"><i class="mr-2 fas fa-chevron-left"></i> <span>Voltar</span></span>
+            <a href="{{ route('index') }}" class="cursor-pointer transition duration-300 text-[14px] text-[#D7D8E4] hover:scale-105 hover:text-white"><i class="mr-2 fas fa-chevron-left"></i> <span>Voltar</span></a>
         </div>
         <div class="w-full px-6 md:px-20 pt-10 pb-10 md:pb-20 mt-3 bg-white rounded-[30px] shadow-[0px_6px_60px_0px_rgba(0,0,0,0.06)]">
             <form class="flex flex-wrap w-full mt-4" wire:submit.prevent='salvar' x-data="{tipo_pessoa: @entangle('form.tipo_pessoa')}">
@@ -20,18 +20,21 @@
                 @endif
                 @include('livewire.institucional.cadastro-novo.includes.propriedade-rural')
 
-                <div class="flex items-center w-full mt-2">
-                    <input type="checkbox" class="mr-2 checkbox" wire:model.defer="assinante_newsletter"/>
+                <div class="flex items-center w-full mt-8">
+                    <input type="checkbox" class="mr-2 checkbox" wire:model.defer="form.assinante_newsletter"/>
                     <span class="mt-1 text-black font-montserrat text-[14px] font-medium">Deseja receber novidades da Agroreserva ?</span>
                 </div>
                 <div class="flex items-center w-full mt-3">
-                    <input type="checkbox" class="mr-2 checkbox" wire:model.defer="termos_aceitos" required/>
+                    <input type="checkbox" class="mr-2 checkbox" wire:model.defer="form.termos_aceitos" required/>
                     <span class="mt-1 text-black font-montserrat text-[14px] font-medium">Li e concordo com os <u>TERMOS E CONDIÇÕES DE USO</u> do site e <u>POLITICA DE PRIVACIDADE</u></span>
                 </div>
-                <div class="w-full mt-4 text-center">
-                    <button class="text-white rounded-[0.5rem] btn-warning text-[20px] waving-hand font-montserrat font-medium normal-case px-4 py-[16px] animation duration-500 hover:scale-105">Continuar</button>
+                <div class="w-full mt-8 text-center">
+                    <button class="text-white rounded-[0.5rem] btn-warning text-[20px] waving-hand font-montserrat font-medium normal-case px-4 py-[16px] animation duration-500 hover:scale-105">Cadastrar</button>
                 </div>
             </form>
+            <div class="w-full text-center mt-[40px] text-gray-600 font-montserrat font-semibold">
+                Já tem conta ? <a href="{{ route('login') }}" class="text-blue-500 underline ml-1">Clique aqui</a>
+            </div>
         </div>
     </div>
     <x-loading></x-loading>
