@@ -2,11 +2,11 @@
     <div x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100"
         x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
-        x-transition:leave-end="opacity-0 scale-0" class="w-full font-montserrat absolute -top-[15vh] pb-10">
+        x-transition:leave-end="opacity-0 scale-0" class="w-full font-montserrat absolute -top-[15vh] pb-10 md:pb-20">
         <div class="w-full">
             <span wire:click="voltar" class="cursor-pointer transition duration-300 text-[14px] text-[#D7D8E4] hover:scale-105 hover:text-white"><i class="mr-2 fas fa-chevron-left"></i> <span>Voltar</span></span>
         </div>
-        <div class="w-full px-6 md:px-20 py-10 mt-3 bg-white rounded-[30px] shadow-[0px_6px_60px_0px_rgba(0,0,0,0.06)]">
+        <div class="w-full px-6 md:px-20 pt-10 pb-10 md:pb-20 mt-3 bg-white rounded-[30px] shadow-[0px_6px_60px_0px_rgba(0,0,0,0.06)]">
             <form class="flex flex-wrap w-full mt-4" wire:submit.prevent='salvar' x-data="{tipo_pessoa: @entangle('form.tipo_pessoa')}">
                 <div class="w-full flex items-center justify-center gap-4">
                     <button type="button" wire:click="$set('form.tipo_pessoa', 0)" class="w-[170px] md:w-[200px] rounded-[50px] px-[15px] md:px-[30px] py-[5px] border border-[#FFB02A] text-[14px] md:text-[15px] transition duration-200 @if($form['tipo_pessoa'] == 0) bg-[#FFB02A] text-[#3A4055] @else text-[#ACAEB7] hover:font-semibold hover:text-[#3A4055] @endif">Pessoa Física</button>

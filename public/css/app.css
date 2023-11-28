@@ -6811,6 +6811,9 @@ body[dir="rtl"] .checkbox:checked,
 .pb-10{
     padding-bottom: 2.5rem;
 }
+.pt-10{
+    padding-top: 2.5rem;
+}
 .text-left{
     text-align: left;
 }
@@ -8708,6 +8711,12 @@ body[dir="rtl"] .checkbox:checked,
     }
     .md\:pr-6{
         padding-right: 1.5rem;
+    }
+    .md\:pb-32{
+        padding-bottom: 8rem;
+    }
+    .md\:pb-20{
+        padding-bottom: 5rem;
     }
     .md\:text-left{
         text-align: left;
