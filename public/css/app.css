@@ -7842,6 +7842,10 @@ body[dir="rtl"] .checkbox:checked,
     fill: #5b5d63;
 }
 
+.hover\:font-semibold:hover{
+    font-weight: 600;
+}
+
 .hover\:text-gray-500:hover{
     --tw-text-opacity: 1;
     color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -8507,6 +8511,9 @@ body[dir="rtl"] .checkbox:checked,
     }
     .md\:w-full{
         width: 100%;
+    }
+    .md\:w-\[200px\]{
+        width: 200px;
     }
     .md\:max-w-\[390px\]{
         max-width: 390px;
