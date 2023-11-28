@@ -6808,6 +6808,9 @@ body[dir="rtl"] .checkbox:checked,
 .pl-\[var\(--main-sidebar-width\)\]{
     padding-left: var(--main-sidebar-width);
 }
+.pb-10{
+    padding-bottom: 2.5rem;
+}
 .text-left{
     text-align: left;
 }
