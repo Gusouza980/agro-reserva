@@ -3,10 +3,17 @@
 namespace App\Http\Livewire\Institucional\CadastroNovo;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Pagina extends Component
 {
+    use WithFileUploads;
     public $form = [];
+    public $comprovante_residencial;
+    public $contrato_social;
+    public $documento;
+    public $ficha_sanitaria;
+    public $matricula_imovel;
 
     public function mount(){
         $this->form['tipo_pessoa'] = 0;

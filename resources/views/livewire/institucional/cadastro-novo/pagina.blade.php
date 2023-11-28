@@ -9,63 +9,17 @@
         <div class="w-full px-6 md:px-20 py-5 mt-3 bg-white rounded-[30px] shadow-[0px_6px_60px_0px_rgba(0,0,0,0.06)]">
             <form class="flex flex-wrap w-full mt-4" wire:submit.prevent='salvar' x-data="{tipo_pessoa: @entangle('form.tipo_pessoa')}">
                 <div class="w-full flex items-center justify-center gap-4">
-                    <button class="rounded-[50px] px-[30px] py-[5px] border border-[#FFB02A] text-[15px] transition duration-200 @if($form['tipo_pessoa'] == 0) bg-[#FFB02A] text-[#3A4055] @else text-[#ACAEB7] hover:bg-[#FFB02A] hover:text-[#3A4055] @endif">Pessoa Física</button>
-                    <button class="rounded-[50px] px-[30px] py-[5px] border border-[#FFB02A] text-[15px] transition duration-200 @if($form['tipo_pessoa'] == 1) bg-[#FFB02A] text-[#3A4055] @else text-[#ACAEB7] hover:bg-[#FFB02A] hover:text-[#3A4055] @endif">Pessoa Jurídica</button>
+                    <button type="button" wire:click="$set('form.tipo_pessoa', 0)" class="rounded-[50px] px-[15px] md:px-[30px] py-[5px] border border-[#FFB02A] text-[14px] md:text-[15px] transition duration-200 @if($form['tipo_pessoa'] == 0) bg-[#FFB02A] text-[#3A4055] @else text-[#ACAEB7] hover:bg-[#FFB02A] hover:text-[#3A4055] @endif">Pessoa Física</button>
+                    <button type="button" wire:click="$set('form.tipo_pessoa', 1)" class="rounded-[50px] px-[15px] md:px-[30px] py-[5px] border border-[#FFB02A] text-[14px] md:text-[15px] transition duration-200 @if($form['tipo_pessoa'] == 1) bg-[#FFB02A] text-[#3A4055] @else text-[#ACAEB7] hover:bg-[#FFB02A] hover:text-[#3A4055] @endif">Pessoa Jurídica</button>
                 </div>
-                <div class="w-full text-center mt-[65px]">
-                    <h2 class="text-[20px] font-medium text-[#15171E]">Informações Primárias</h2>
-                </div>
-                <div class="w-full mt-[30px]">
-                    <div class="w-full">
-                        <label class="pl-[30px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Nome Completo</label>
-                        <input type="text" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nome_dono" maxlength="100" required>
-                        <div class="w-full mt-2 flex justify-end text-[12px] text-[#CACACA] font-inter">
-                            Campo Obrigatório *
-                        </div>
-                    </div>
-                    <div class="w-full">
-                        <label class="pl-[30px] text-[16px] font-medium font-montserrat text-[#616887]" for="">E-mail</label>
-                        <input type="email" class="w-full form-input-text mt-[10px]" wire:model.defer="form.email" maxlength="100" required>
-                        <div class="w-full mt-2 flex justify-end text-[12px] text-[#CACACA] font-inter">
-                            Campo Obrigatório *
-                        </div>
-                    </div>
-                    <div class="w-full grid grid-cols-2 gap-x-4">
-                        <div class="">
-                            <label for="ddi" class="pl-[30px] text-[16px] font-medium font-montserrat text-[#616887]">DDI</label>
-                            <select class="w-full form-input-text mt-[10px]" name="ddi" id="ddi" required>
-                                @foreach ($paises as $pais)
-                                    <option value="{{ $pais->code }}"
-                                        @if ($pais->iso == 'BR') selected @endif>{{ $pais->name }}
-                                        ({{ $pais->code }})</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div>
-                            <label class="pl-[30px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Telefone</label>
-                            <input type="text" class="w-full form-input-text mt-[10px]" wire:model.defer="form.email" maxlength="50" required>
-                            <div class="w-full mt-2 flex justify-end text-[12px] text-[#CACACA] font-inter">
-                                Campo Obrigatório *
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full grid grid-cols-2 gap-x-4">
-                        <div class="">
-                            <label class="pl-[30px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Crie a senha de acesso</label>
-                            <input type="password" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nome_dono" maxlength="100" required>
-                            <div class="w-full mt-2 flex justify-end text-[12px] text-[#CACACA] font-inter">
-                                Campo Obrigatório *
-                            </div>
-                        </div>
-                        <div>
-                            <label class="pl-[30px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Confirme a senha</label>
-                            <input type="password" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nome_dono" maxlength="100" required>
-                            <div class="w-full mt-2 flex justify-end text-[12px] text-[#CACACA] font-inter">
-                                Campo Obrigatório *
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @include('livewire.institucional.cadastro-novo.includes.informacoes-primarias')
+                @if($form['tipo_pessoa'] == 0)
+                    @include('livewire.institucional.cadastro-novo.includes.pessoa-fisica')
+                @else
+                    @include('livewire.institucional.cadastro-novo.includes.pessoa-juridica')
+                @endif
+                @include('livewire.institucional.cadastro-novo.includes.propriedade-rural')
+
                 <div class="flex items-center w-full mt-2">
                     <input type="checkbox" class="mr-2 checkbox" wire:model.defer="assinante_newsletter"/>
                     <span class="mt-1 text-black font-montserrat text-[14px] font-medium">Deseja receber novidades da Agroreserva ?</span>
@@ -80,6 +34,7 @@
             </form>
         </div>
     </div>
+    <x-loading></x-loading>
 </div>
 
 @push("scripts")

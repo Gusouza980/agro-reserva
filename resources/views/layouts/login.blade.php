@@ -25,6 +25,7 @@
     {{-- <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" /> --}}
     @toastr_css
     @livewireStyles
+    @laravelTelInputStyles
     @yield("styles")
     @stack("styles")
     <style>
@@ -90,6 +91,7 @@
             $(".data").mask('99/99/9999');
         });
     </script>
+    @laravelTelInputScripts
 </body>
 
 </html>

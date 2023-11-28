@@ -4,6 +4,8 @@
     --montserrat: 'Montserrat', sans-serif;
 }
 
+@import 'intl-tel-input/build/css/intlTelInput.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,6 +14,10 @@
 @layer base{
     .input-base{
         @apply w-full px-3 py-2 bg-transparent border rounded-lg border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary;
+    }
+
+    .input-error{
+        @apply border border-red-600 text-red-600
     }
 }
 

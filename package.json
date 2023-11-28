@@ -21,6 +21,7 @@
     "dependencies": {
         "autoprefixer": "^10.4.7",
         "daisyui": "^2.15.2",
+        "intl-tel-input": "^18.2.1",
         "videojs": "^1.0.0",
         "videojs-youtube": "^3.0.1"
     }

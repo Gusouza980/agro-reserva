@@ -17,3 +17,5 @@ mix.js('resources/js/app.js', 'public/js')
         require("tailwindcss"),
         require("autoprefixer"),
     ]);
+mix.copy('node_modules/intl-tel-input/build/js/utils.js', 'public/vendor/intl-tel-input/build/js');
+

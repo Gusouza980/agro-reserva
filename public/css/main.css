@@ -2594,6 +2594,7 @@ label {
     height: 37px;
     border-radius: 10px;
     border: 1px solid #C7C9D3;
+    color: #616887;
 }
 
 .form-input-text:focus{
