@@ -57,8 +57,8 @@
     </div>
     <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-3 items-end">
         <div class="mb-3 relative">
-            <div class="w-full">
-                <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar Ficha Sanitária</label>
+            <div class="pl-[20px] w-full">
+                <label class="text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar Ficha Sanitária</label>
             </div>
             <label wire:loading.class="blur-sm" wire:target="ficha_sanitaria" for="input-ficha-sanitaria" class="@if($ficha_sanitaria && $ficha_sanitaria->temporaryUrl()) bg-green-500 @endif hover:shadow-md transition duration-200 cursor-pointer w-full h-[95px] px-5 rounded-md border border-[#C7C9D3] flex items-center justify-center gap-3">
                 <div>
@@ -87,8 +87,8 @@
             </div>
         </div>
         <div class="mb-3 relative">
-            <div class="w-full">
-                <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar Matrícula do Imóvel ou Contrato de Arrendamento</label>
+            <div class="w-full pl-[20px] ">
+                <label class="text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar Matrícula do Imóvel ou Contrato de Arrendamento</label>
             </div>
             <label wire:loading.class="blur-sm" wire:target="matricula_imovel" for="input-matricula-imovel" class="@if($matricula_imovel && $matricula_imovel->temporaryUrl()) bg-green-500 @endif hover:shadow-md transition duration-200 cursor-pointer w-full h-[95px] px-5 rounded-md border border-[#C7C9D3] flex items-center justify-center gap-3">
                 <div>
