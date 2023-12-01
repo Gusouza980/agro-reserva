@@ -133,8 +133,8 @@
             <input type="file" id="input-ficha-sanitaria" wire:model="ficha_sanitaria" class="hidden">
             <img src="{{ asset('imagens/gif_relogio.gif') }}" wire:loading.class.remove="hidden" wire:target="ficha_sanitaria" class="absolute hidden" style="top: calc(50% - 15px); left: calc(50% - 15px);" width="30" height="30" alt="">
             @error('ficha_sanitaria')
-                <div class="w-full">
-                    <p class="pl-[20px] text-[12px] font-inter text-red-500 leading-tight">{!! $message !!}</p>
+                <div class="w-full pl-[20px]">
+                    <p class="text-[12px] font-inter text-red-500 leading-tight">{!! $message !!}</p>
                 </div>
             @enderror
         </div>
@@ -165,8 +165,8 @@
             <input type="file" id="input-matricula-imovel" wire:model="matricula_imovel" class="hidden">
             <img src="{{ asset('imagens/gif_relogio.gif') }}" wire:loading.class.remove="hidden" wire:target="matricula_imovel" class="absolute hidden" style="top: calc(50% - 15px); left: calc(50% - 15px);" width="30" height="30" alt="">
             @error('matricula_imovel')
-                <div class="w-full">
-                    <p class="pl-[20px] text-[12px] font-inter text-red-500 leading-tight">{!! $message !!}</p>
+                <div class="w-full pl-[20px]">
+                    <p class="text-[12px] font-inter text-red-500 leading-tight">{!! $message !!}</p>
                 </div>
             @enderror
         </div>

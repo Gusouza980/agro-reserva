@@ -89,7 +89,7 @@ class Pagina extends Component
         'form.pais_comercial' => 'País',
         'form.nascimento_comercial' => 'Nascimento',
     
-        'comprovante_residencial' => 'Comprovante Residencial',
+        'comprovante_residencial' => 'Comprovante de Endereço',
         'contrato_social' => 'Contrato Social',
         'documento' => 'Documento',
         'ficha_sanitaria' => 'Ficha Sanitária',

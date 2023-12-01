@@ -108,7 +108,7 @@
     <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-3 items-end">
         <div class="mb-3 relative">
             <div class="pl-[20px] w-full">
-                <label class="text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar Contrato Social e Última Alteração</label>
+                <label class="text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar Contrato Social e Última Alteração (se houver)</label>
             </div>
             <label wire:loading.class="blur-sm" name="contrato_social" wire:target="contrato-social" for="input-contrato-social" class="@if($contrato_social) bg-green-500 @endif hover:shadow-md transition duration-200 cursor-pointer w-full h-[95px] px-5 rounded-md border border-[#C7C9D3] flex items-center justify-center gap-3">
                 <div>
@@ -133,14 +133,14 @@
             <input type="file" id="input-contrato-social" wire:model="contrato_social" class="hidden">
             <img src="{{ asset('imagens/gif_relogio.gif') }}" wire:loading.class.remove="hidden" wire:target="contrato_social" class="absolute hidden" style="top: calc(50% - 15px); left: calc(50% - 15px);" width="30" height="30" alt="">
             @error('contrato_social')
-                <div class="w-full">
-                    <p class="pl-[20px] text-[12px] font-inter text-red-500 leading-tight">{!! $message !!}</p>
+                <div class="w-full pl-[20px]">
+                    <p class="text-[12px] font-inter text-red-500 leading-tight">{!! $message !!}</p>
                 </div>
             @enderror
         </div>
         <div class="mb-3 relative">
             <div class="w-full">
-                <label name="comprovante_residencial" class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar comprovante residencial</label>
+                <label name="comprovante_residencial" class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar comprovante de endereço</label>
             </div>
             <label wire:loading.class="blur-sm" wire:target="comprovante_residencial" for="input-comprovante-residencial" class="@if($comprovante_residencial) bg-green-500 @endif hover:shadow-md transition duration-200 cursor-pointer w-full h-[95px] px-5 rounded-md border border-[#C7C9D3] flex items-center justify-center gap-3">
                 <div>
@@ -165,8 +165,8 @@
             <input type="file" id="input-comprovante-residencial" wire:model="comprovante_residencial" class="hidden">
             <img src="{{ asset('imagens/gif_relogio.gif') }}" wire:loading.class.remove="hidden" wire:target="comprovante_residencial" class="absolute hidden" style="top: calc(50% - 15px); left: calc(50% - 15px);" width="30" height="30" alt="">
             @error('comprovante_residencial')
-                <div class="w-full">
-                    <p class="pl-[20px] text-[12px] font-inter text-red-500 leading-tight">{!! $message !!}</p>
+                <div class="w-full pl-[20px]">
+                    <p class="text-[12px] font-inter text-red-500 leading-tight">{!! $message !!}</p>
                 </div>
             @enderror
         </div>
