@@ -43,6 +43,23 @@
 @push("scripts")
 <script src="{{ asset('js/jquery.mask.js') }}"></script>
 <script>
+    function scrollToElement(elementname) {
+        var $element = $('[name="' + elementname + '"]');
+
+        if ($element.length) {
+            // Calcula a posição do elemento em relação à janela de visualização
+            var elementTop = $element.offset().top;
+
+            // Calcula a posição para centralizar o elemento na página
+            var centerY = elementTop - ($(window).height() / 2);
+
+            // Rola a página até a posição desejada
+            $('html, body').animate({
+                scrollTop: centerY
+            }, 'slow');
+        }
+    }
+
     $(document).ready(function(){
         $('input[mask="cep"]').mask('00000-000');
         $('input[mask="cpf"]').mask('000.000.000-00');
@@ -50,9 +67,7 @@
     })
     window.addEventListener('scrollToError', function(e) {
         var model = e.detail.model;
-        $('html, body').animate({
-            scrollTop: $('input[name="' + model + '"]').offset().top - 50
-        })
+        scrollToElement(model);
     })
 
     window.addEventListener('loadMasks', function(e) {

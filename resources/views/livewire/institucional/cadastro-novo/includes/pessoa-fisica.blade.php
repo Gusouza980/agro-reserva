@@ -114,7 +114,7 @@
             <div class="w-full">
                 <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar Documento RG ou CNH</label>
             </div>
-            <label wire:loading.class="blur-sm" wire:target="documento" for="input-documento" class="@if($documento && $documento->temporaryUrl()) bg-green-500 @endif hover:shadow-md transition duration-200 cursor-pointer w-full h-[95px] px-5 rounded-md border border-[#C7C9D3] flex items-center justify-center gap-3">
+            <label wire:loading.class="blur-sm" name="documento" wire:target="documento" for="input-documento" class="@if($documento) bg-green-500 @endif hover:shadow-md transition duration-200 cursor-pointer w-full h-[95px] px-5 rounded-md border border-[#C7C9D3] flex items-center justify-center gap-3">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="52" height="44" viewBox="0 0 52 44" fill="none">
                         <path d="M41.0281 31.0222C42.404 31.0239 43.7648 30.7293 45.0222 30.1573C46.2797 29.5853 47.4055 28.7487 48.3267 27.702C49.2479 26.6553 49.9437 25.4218 50.3691 24.0817C50.7944 22.7416 50.9397 21.3248 50.7955 19.9234C50.6514 18.5221 50.221 17.1674 49.5323 15.9475C48.8436 14.7276 47.912 13.6697 46.7981 12.8426C45.6841 12.0155 44.4128 11.4377 43.0665 11.1466C41.7203 10.8556 40.3294 10.8578 38.9841 11.1532C38.2081 8.17859 36.4949 5.54954 34.1105 3.67428C31.7261 1.79902 28.8039 0.782471 25.7976 0.782471C22.7913 0.782471 19.869 1.79902 17.4846 3.67428C15.1002 5.54954 13.387 8.17859 12.6111 11.1532C11.2658 10.8578 9.87482 10.8556 8.52861 11.1466C7.18239 11.4377 5.91102 12.0155 4.79709 12.8426C3.68315 13.6697 2.75158 14.7276 2.06288 15.9475C1.37418 17.1674 0.943768 18.5221 0.799602 19.9234C0.655435 21.3248 0.800741 22.7416 1.22608 24.0817C1.65142 25.4218 2.34727 26.6553 3.26844 27.702C4.1896 28.7487 5.31547 29.5853 6.5729 30.1573C7.83033 30.7293 9.19119 31.0239 10.5671 31.0222H41.0281Z" fill="#EDF5FF"/>
@@ -127,22 +127,18 @@
                     </svg>
                 </div>
                 <div class="break-words text-center text-[#3C3C3C] text-[12px] font-inter max-w-[200px]">
-                    @if($documento && $documento->temporaryUrl())
+                    @if($documento)
                         {{ $documento->getClientOriginalName() }}
                     @else
-                        Clique ou arraste um arquivo para esta área para fazer upload
+                        Clique nesta área para fazer upload
                     @endif
                 </div>
             </label>
-            <input type="file" name="documento" id="input-documento" wire:model="documento" class="hidden">
+            <input type="file" id="input-documento" wire:model="documento" class="hidden">
             <img src="{{ asset('imagens/gif_relogio.gif') }}" wire:loading.class.remove="hidden" wire:target="documento" class="absolute hidden" style="top: calc(50% - 15px); left: calc(50% - 15px);" width="30" height="30" alt="">
             @error('documento')
                 <div class="w-full">
-                    <span class="pl-[20px] text-[12px] font-inter text-red-500">{!! $message !!}</span>
-                </div>
-            @else
-                <div class="w-full">
-                    <span class="pl-[20px] text-[12px] font-inter text-gray-400">Extensões permitidas pdf, doc e docx</span>
+                    <p class="pl-[20px] text-[12px] font-inter text-red-500 leading-tight">{!! $message !!}</p>
                 </div>
             @enderror
         </div>
@@ -150,7 +146,7 @@
             <div class="w-full">
                 <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar comprovante residencial</label>
             </div>
-            <label wire:loading.class="blur-sm" wire:target="comprovante_residencial" for="input-comprovante-residencial" class="@if($comprovante_residencial && $comprovante_residencial->temporaryUrl()) bg-green-500 @endif hover:shadow-md transition duration-200 cursor-pointer w-full h-[95px] px-5 rounded-md border border-[#C7C9D3] flex items-center justify-center gap-3">
+            <label wire:loading.class="blur-sm" name="comprovante_residencial" wire:target="comprovante_residencial" for="input-comprovante-residencial" class="@if($comprovante_residencial) bg-green-500 @endif hover:shadow-md transition duration-200 cursor-pointer w-full h-[95px] px-5 rounded-md border border-[#C7C9D3] flex items-center justify-center gap-3">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="52" height="44" viewBox="0 0 52 44" fill="none">
                         <path d="M41.0281 31.0222C42.404 31.0239 43.7648 30.7293 45.0222 30.1573C46.2797 29.5853 47.4055 28.7487 48.3267 27.702C49.2479 26.6553 49.9437 25.4218 50.3691 24.0817C50.7944 22.7416 50.9397 21.3248 50.7955 19.9234C50.6514 18.5221 50.221 17.1674 49.5323 15.9475C48.8436 14.7276 47.912 13.6697 46.7981 12.8426C45.6841 12.0155 44.4128 11.4377 43.0665 11.1466C41.7203 10.8556 40.3294 10.8578 38.9841 11.1532C38.2081 8.17859 36.4949 5.54954 34.1105 3.67428C31.7261 1.79902 28.8039 0.782471 25.7976 0.782471C22.7913 0.782471 19.869 1.79902 17.4846 3.67428C15.1002 5.54954 13.387 8.17859 12.6111 11.1532C11.2658 10.8578 9.87482 10.8556 8.52861 11.1466C7.18239 11.4377 5.91102 12.0155 4.79709 12.8426C3.68315 13.6697 2.75158 14.7276 2.06288 15.9475C1.37418 17.1674 0.943768 18.5221 0.799602 19.9234C0.655435 21.3248 0.800741 22.7416 1.22608 24.0817C1.65142 25.4218 2.34727 26.6553 3.26844 27.702C4.1896 28.7487 5.31547 29.5853 6.5729 30.1573C7.83033 30.7293 9.19119 31.0239 10.5671 31.0222H41.0281Z" fill="#EDF5FF"/>
@@ -163,22 +159,18 @@
                     </svg>
                 </div>
                 <div class="break-words text-center text-[#3C3C3C] text-[12px] font-inter max-w-[200px]">
-                    @if($comprovante_residencial && $comprovante_residencial->temporaryUrl())
+                    @if($comprovante_residencial)
                         {{ $comprovante_residencial->getClientOriginalName() }}
                     @else
-                        Clique ou arraste um arquivo para esta área para fazer upload
+                        Clique nesta área para fazer upload
                     @endif
                 </div>
             </label>
-            <input type="file" name="comprovante_residencial" id="input-comprovante-residencial" wire:model="comprovante_residencial" class="hidden">
+            <input type="file" id="input-comprovante-residencial" wire:model="comprovante_residencial" class="hidden">
             <img src="{{ asset('imagens/gif_relogio.gif') }}" wire:loading.class.remove="hidden" wire:target="comprovante_residencial" class="absolute hidden" style="top: calc(50% - 15px); left: calc(50% - 15px);" width="30" height="30" alt="">
             @error('comprovante_residencial')
                 <div class="w-full">
-                    <span class="pl-[20px] text-[12px] font-inter text-red-500">{!! $message !!}</span>
-                </div>
-            @else
-                <div class="w-full">
-                    <span class="pl-[20px] text-[12px] font-inter text-gray-400">Extensões permitidas pdf, doc e docx</span>
+                    <p class="pl-[20px] text-[12px] font-inter text-red-500 leading-tight">{!! $message !!}</p>
                 </div>
             @enderror
         </div>
