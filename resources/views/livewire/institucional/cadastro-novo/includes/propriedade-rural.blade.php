@@ -5,54 +5,104 @@
     <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-3">
         <div class="mb-3">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Nome da Fazenda</label>
-            <input type="text" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nome_fazenda" maxlength="150">
+            <input type="text" name="form.nome_fazenda" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nome_fazenda" maxlength="150">
+            <div class="w-full text-[12px] text-red-600 font-inter">
+                @error('form.nome_fazenda')
+                    {{ $message }}
+                @enderror
+            </div>
         </div>
         <div class="mb-3">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Inscrição de Produtor Rural</label>
-            <input type="text" class="w-full form-input-text mt-[10px]" wire:model.defer="form.inscricao_produtor_rural" maxlength="20">
+            <input type="text" name="form.inscricao_produtor_rural" class="w-full form-input-text mt-[10px]" wire:model.defer="form.inscricao_produtor_rural" maxlength="20">
+            <div class="w-full text-[12px] text-red-600 font-inter">
+                @error('form.inscricao_produtor_rural')
+                    {{ $message }}
+                @enderror
+            </div>
         </div>
     </div>
     <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
         <div class="mb-3">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">CEP</label>
-            <input type="text" class="w-full form-input-text mt-[10px]" wire:model.defer="form.cep" maxlength="9">
+            <input type="text" name="form.cep_propriedade" class="w-full form-input-text mt-[10px]" mask="cep" wire:model.defer="form.cep_propriedade" maxlength="9">
+            <div class="w-full text-[12px] text-red-600 font-inter">
+                @error('form.cep_propriedade')
+                    {{ $message }}
+                @enderror
+            </div>
         </div>
         <div class="mb-3 md:col-span-2">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Endereço Residencial</label>
-            <input type="text" class="w-full form-input-text mt-[10px]" wire:model.defer="form.rua" maxlength="255">
+            <input type="text" name="form.rua_propriedade" class="w-full form-input-text mt-[10px]" wire:model.defer="form.rua_propriedade" maxlength="255">
+            <div class="w-full text-[12px] text-red-600 font-inter">
+                @error('form.rua_propriedade')
+                    {{ $message }}
+                @enderror
+            </div>
         </div>
     </div>
     <div class="w-full grid grid-cols-2 md:grid-cols-6 gap-3">
         <div class="mb-3">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Número</label>
-            <input type="text" class="w-full form-input-text mt-[10px]" wire:model.defer="form.numero" maxlength="6">
+            <input type="text" name="form.numero_propriedade" class="w-full form-input-text mt-[10px]" wire:model.defer="form.numero_propriedade" maxlength="6">
+            <div class="w-full text-[12px] text-red-600 font-inter">
+                @error('form.numero_propriedade')
+                    {{ $message }}
+                @enderror
+            </div>
         </div>
         <div class="mb-3 md:col-span-2">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Bairro</label>
-            <input type="text" class="w-full form-input-text mt-[10px]" wire:model.defer="form.bairro" maxlength="50">
+            <input type="text" name="form.bairro_propriedade" class="w-full form-input-text mt-[10px]" wire:model.defer="form.bairro_propriedade" maxlength="50">
+            <div class="w-full text-[12px] text-red-600 font-inter">
+                @error('form.bairro_propriedade')
+                    {{ $message }}
+                @enderror
+            </div>
         </div>
         <div class="mb-3 col-span-2 md:col-span-3">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Cidade</label>
-            <input type="text" class="w-full form-input-text mt-[10px]" wire:model.defer="form.cidade" maxlength="50">
+            <input type="text" name="form.cidade_propriedade" class="w-full form-input-text mt-[10px]" wire:model.defer="form.cidade_propriedade" maxlength="50">
+            <div class="w-full text-[12px] text-red-600 font-inter">
+                @error('form.cidade_propriedade')
+                    {{ $message }}
+                @enderror
+            </div>
         </div>
     </div>
     <div class="w-full grid grid-cols-2 md:grid-cols-3 gap-3">
         <div class="mb-3">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Estado</label>
-            <select class="w-full form-input-text mt-[10px]" wire:model.defer="form.estado">
+            <select class="w-full form-input-text mt-[10px]" name="form.estado_propriedade" wire:model.defer="form.estado_propriedade">
                 <option value="">Selecione</option>
                 @foreach(config('estados.estados') as $uf => $estado)
                     <option value="{{ $uf }}">{{ $estado }}</option>
                 @endforeach
             </select>
+            <div class="w-full text-[12px] text-red-600 font-inter">
+                @error('form.estado_propriedade')
+                    {{ $message }}
+                @enderror
+            </div>
         </div>
         <div class="mb-3">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">País</label>
-            <input type="text" class="w-full form-input-text mt-[10px]" wire:model.defer="form.pais" maxlength="50">
+            <input type="text" name="form.pais_propriedade" class="w-full form-input-text mt-[10px]" wire:model.defer="form.pais_propriedade" maxlength="50">
+            <div class="w-full text-[12px] text-red-600 font-inter">
+                @error('form.pais_propriedade')
+                    {{ $message }}
+                @enderror
+            </div>
         </div>
         <div class="mb-3 col-span-2 md:col-span-1">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Complemento</label>
-            <input type="text" class="w-full form-input-text mt-[10px]" wire:model.defer="form.complemento" maxlength="50">
+            <input type="text" name="form.complemento_propriedade" class="w-full form-input-text mt-[10px]" wire:model.defer="form.complemento_propriedade" maxlength="50">
+            <div class="w-full text-[12px] text-red-600 font-inter">
+                @error('form.complemento_propriedade')
+                    {{ $message }}
+                @enderror
+            </div>
         </div>
     </div>
     <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-3 items-end">
@@ -80,11 +130,17 @@
                     @endif
                 </div>
             </label>
-            <input type="file" name="" id="input-ficha-sanitaria" wire:model="ficha_sanitaria" class="hidden">
+            <input type="file" name="ficha_sanitaria" id="input-ficha-sanitaria" wire:model="ficha_sanitaria" class="hidden">
             <img src="{{ asset('imagens/gif_relogio.gif') }}" wire:loading.class.remove="hidden" wire:target="ficha_sanitaria" class="absolute hidden" style="top: calc(50% - 15px); left: calc(50% - 15px);" width="30" height="30" alt="">
-            <div class="w-full">
-                <span class="pl-[20px] text-[12px] font-inter text-gray-400">Extensões permitidas pdf, doc e docx</span>
-            </div>
+            @error('ficha_sanitaria')
+                <div class="w-full">
+                    <span class="pl-[20px] text-[12px] font-inter text-red-500">{!! $message !!}</span>
+                </div>
+            @else
+                <div class="w-full">
+                    <span class="pl-[20px] text-[12px] font-inter text-gray-400">Extensões permitidas pdf, doc e docx</span>
+                </div>
+            @enderror
         </div>
         <div class="mb-3 relative">
             <div class="w-full pl-[20px] ">
@@ -110,11 +166,17 @@
                     @endif
                 </div>
             </label>
-            <input type="file" name="" id="input-matricula-imovel" wire:model="matricula_imovel" class="hidden">
+            <input type="file" name="matricula_imovel" id="input-matricula-imovel" wire:model="matricula_imovel" class="hidden">
             <img src="{{ asset('imagens/gif_relogio.gif') }}" wire:loading.class.remove="hidden" wire:target="matricula_imovel" class="absolute hidden" style="top: calc(50% - 15px); left: calc(50% - 15px);" width="30" height="30" alt="">
-            <div class="w-full">
-                <span class="pl-[20px] text-[12px] font-inter text-gray-400">Extensões permitidas pdf, doc e docx</span>
-            </div>
+            @error('matricula_imovel')
+                <div class="w-full">
+                    <span class="pl-[20px] text-[12px] font-inter text-red-500">{!! $message !!}</span>
+                </div>
+            @else
+                <div class="w-full">
+                    <span class="pl-[20px] text-[12px] font-inter text-gray-400">Extensões permitidas pdf, doc e docx</span>
+                </div>
+            @enderror
         </div>
     </div>
 </div>

@@ -37,75 +37,28 @@
             </div>
         </div>
     </div>
-    <x-loading></x-loading>
+    {{-- <x-loading wire:target="form.tipo_pessoa"></x-loading> --}}
 </div>
 
 @push("scripts")
 <script src="{{ asset('js/jquery.mask.js') }}"></script>
 <script>
-    $.getJSON("json/mascaras_telefone.json", function(data) {
-        var mascaras = data
-        $(mascaras).each(function(index, element) {
-            if (element.iso == "BR") {
-                var mask = $(element.mask).get(-1);
-                $('input[name="pais"]').val(element.name);
-                $('input[name="telefone"]').mask(mask.replaceAll("#", "0"), );
-                $('input[name="telefone"]').attr("placeholder", mask.replaceAll("#", "0"));
-                $('input[name="telefone"]').attr("minlength", mask.length);
-                $('input[name="telefone"]').attr("maxlength", mask.length);
-                var flag = element.iso.toLowerCase();
-                console.log("https://flagcdn.com/16x12/" + flag + ".webp");
-                $("#flag-icon").attr("src", "https://flagcdn.com/16x12/" + flag + ".webp");
-                $("#flag-icon").show();
-            }
-        });
-    });
+    $(document).ready(function(){
+        $('input[mask="cep"]').mask('00000-000');
+        $('input[mask="cpf"]').mask('000.000.000-00');
+        $('input[mask="cnpj"]').mask('00.000.000/0000-00');
+    })
+    window.addEventListener('scrollToError', function(e) {
+        var model = e.detail.model;
+        $('html, body').animate({
+            scrollTop: $('input[name="' + model + '"]').offset().top - 50
+        })
+    })
 
-    $("#ddi").change(function() {
-        var ddi = $(this).val();
-        $.getJSON("json/mascaras_telefone.json", function(data) {
-            var mascaras = data;
-            var achou = false;
-            $(mascaras).each(function(index, element) {
-                if (element.code == ddi) {
-                    achou = true;
-                    $('input[name="telefone"]').val("");
-                    $('input[name="pais"]').val(element.name);
-                    if (Array.isArray(element.mask)) {
-                        var mask = $(element.mask).get(-1);
-                        $('input[name="telefone"]').mask(mask.replaceAll("#",
-                            "0"), );
-                        $('input[name="telefone"]').attr("placeholder", mask
-                            .replaceAll("#", "0"));
-                        $('input[name="telefone"]').attr("minlength", mask.length);
-                        $('input[name="telefone"]').attr("maxlength", mask.length);
-                        var flag = element.iso.toLowerCase();
-                        console.log("https://flagcdn.com/16x12/" + flag + ".webp");
-                        $("#flag-icon").attr("src", "https://flagcdn.com/16x12/" +
-                            flag + ".webp");
-                    } else {
-                        $('input[name="telefone"]').mask(element.mask.replaceAll(
-                            "#", "0"), );
-                        $('input[name="telefone"]').attr("placeholder", element.mask
-                            .replaceAll("#", "0"));
-                        $('input[name="telefone"]').attr("minlength", element.mask
-                            .length);
-                        $('input[name="telefone"]').attr("maxlength", element.mask
-                            .length);
-                        var flag = element.iso.toLowerCase();
-                        console.log("https://flagcdn.com/16x12/" + flag + ".webp");
-                        $("#flag-icon").attr("src", "https://flagcdn.com/16x12/" +
-                            flag + ".webp");
-                    }
-                }
-            });
-            if (!achou) {
-                $('input[name="telefone"]').mask("#", );
-                $('input[name="telefone"]').attr("placeholder",
-                    "Digite seu telefone completo");
-                $('input[name="telefone"]').removeAttr("minlength");
-            }
-        });
+    window.addEventListener('loadMasks', function(e) {
+        $('input[mask="cep"]').mask('00000-000');
+        $('input[mask="cpf"]').mask('000.000.000-00');
+        $('input[mask="cnpj"]').mask('00.000.000/0000-00');
     })
 </script>
 

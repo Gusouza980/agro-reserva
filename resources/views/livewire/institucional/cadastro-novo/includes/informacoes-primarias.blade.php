@@ -4,25 +4,46 @@
 <div class="w-full mt-[30px]">
     <div class="w-full">
         <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Nome Completo</label>
-        <input type="text" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nome_dono" maxlength="100" required>
-        <div class="w-full mt-2 flex justify-end text-[12px] text-[#CACACA] font-inter">
-            Campo Obrigatório *
+        <input type="text" name="form.nome_dono" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nome_dono" maxlength="100">
+        <div class="flex justify-between mt-2">
+            <div class="text-[12px] text-red-600 font-inter">
+                @error('form.nome_dono')
+                    {{ $message }}
+                @enderror
+            </div>
+            <div class="text-[12px] text-[#CACACA] font-inter">
+                Campo Obrigatório *
+            </div>
         </div>
     </div>
     <div class="w-full">
         <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">E-mail</label>
-        <input type="email" class="w-full form-input-text mt-[10px]" wire:model.defer="form.email" maxlength="100" required>
-        <div class="w-full mt-2 flex justify-end text-[12px] text-[#CACACA] font-inter">
-            Campo Obrigatório *
+        <input type="email" name="form.email" class="w-full form-input-text mt-[10px]" wire:model.defer="form.email" maxlength="100">
+        <div class="flex justify-between mt-2">
+            <div class="text-[12px] text-red-600 font-inter">
+                @error('form.email')
+                    {{ $message }}
+                @enderror
+            </div>
+            <div class="text-[12px] text-[#CACACA] font-inter">
+                Campo Obrigatório *
+            </div>
         </div>
     </div>
     <div class="w-full grid grid-cols-1 gap-x-4">
         <div>
             <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Telefone</label>
-            <x-tel-input name="telefone" id="telefone" class="w-full form-input-text mt-[10px] form-input" phone-country-input="#phone_country" wire:model.defer="form.telefone" required />
+            <x-tel-input name="form.telefone" id="telefone" class="w-full form-input-text mt-[10px] form-input" phone-country-input="#phone_country" wire:model.defer="form.telefone" />
             <input type="hidden" id="phone_country" name="phone_country">
-            <div class="w-full mt-2 flex justify-end text-[12px] text-[#CACACA] font-inter">
-                Campo Obrigatório *
+            <div class="flex justify-between mt-2">
+                <div class="text-[12px] text-red-600 font-inter">
+                    @error('form.telefone')
+                        {{ $message }}
+                    @enderror
+                </div>
+                <div class="text-[12px] text-[#CACACA] font-inter">
+                    Campo Obrigatório *
+                </div>
             </div>
         </div>
     </div>
@@ -30,26 +51,35 @@
         <div class="">
             <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Crie a senha de acesso</label>
             <div class="w-full relative">
-                <input type="password" id="senha" class="w-full form-input-text mt-[10px] pr-[20px]" wire:model.defer="form.nome_dono" minlength="5" maxlength="100" required>
+                <input type="password" name="form.senha" id="senha" class="w-full form-input-text mt-[10px] pr-[20px]" wire:model.defer="form.senha" minlength="5" maxlength="100">
                 <i class="fas fa-eye-slash absolute top-[11px] right-2 cursor-pointer" id="mostrar-senha"></i>
                 <i class="fas fa-eye absolute top-[11px] right-2 cursor-pointer hidden" id="esconder-senha"></i>
             </div>
-            <div class="w-full mt-2 flex justify-end text-[12px] text-[#CACACA] font-inter">
-                Campo Obrigatório *
+            <div class="flex justify-between mt-2">
+                <div class="text-[12px] text-red-600 font-inter">
+                    @error('form.senha')
+                        {{ $message }}
+                    @enderror
+                </div>
+                <div class="text-[12px] text-[#CACACA] font-inter">
+                    Campo Obrigatório *
+                </div>
             </div>
         </div>
         <div>
             <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Confirme a senha</label>
             <div class="w-full relative">
-                <input type="password" id="confirmar-senha" class="w-full form-input-text mt-[10px] pr-[20px]" wire:model.defer="form.nome_dono" minlength="5" maxlength="100" required>
+                <input type="password" name="confirmar_senha" id="confirmar-senha" class="w-full form-input-text mt-[10px] pr-[20px]" wire:model.defer="confirmar_senha" minlength="5" maxlength="100">
                 <i class="fas fa-eye-slash absolute top-[11px] right-2 cursor-pointer" id="mostrar-confirmar-senha"></i>
                 <i class="fas fa-eye absolute top-[11px] right-2 cursor-pointer hidden" id="esconder-confirmar-senha"></i>
             </div>
-            <div class="w-full mt-2 flex justify-between text-[12px] font-inter">
-                <div class="text-red-600" id="erro-senha">
-
+            <div class="flex justify-between mt-2">
+                <div class="text-[12px] text-red-600 font-inter" id="erro-senha">
+                    @error('confirmar_senha')
+                        {{ $message }}
+                    @enderror
                 </div>
-                <div class="text-[#CACACA]">
+                <div class="text-[12px] text-[#CACACA] font-inter">
                     Campo Obrigatório *
                 </div>
             </div>
@@ -60,6 +90,7 @@
 @push('scripts')
 
 <script>
+    
     input = document.getElementById('telefone');
     input.addEventListener('telchange', function(e) {
         if(!e.detail.valid) {
