@@ -48,11 +48,11 @@ class Pagina extends Component
         'form.uf_comercial' => 'max:2',
         'form.pais_comercial' => 'max:50',
 
-        'comprovante_residencial' => 'nullable|file|mimes:pdf,doc,docx|max:3048',
-        'contrato_social' => 'nullable|file|mimes:pdf,doc,docx|max:3048',
-        'documento' => 'nullable|file|mimes:pdf,doc,docx|max:3048',
-        'ficha_sanitaria' => 'nullable|file|mimes:pdf,doc,docx|max:3048',
-        'matricula_imovel' => 'nullable|file|mimes:pdf,doc,docx|max:3048',
+        'comprovante_residencial' => 'nullable|max:3048',
+        'contrato_social' => 'nullable|max:3048',
+        'documento' => 'nullable|max:3048',
+        'ficha_sanitaria' => 'nullable|max:3048',
+        'matricula_imovel' => 'nullable|max:3048',
     ];
 
     protected $validationAttributes = [

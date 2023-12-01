@@ -48,7 +48,10 @@ Route::middleware(['cookie'])->group(function () {
     Route::get('/login', [\App\Http\Controllers\SiteController::class, 'login'])->name("login");
     Route::post('/logar', [\App\Http\Controllers\SiteController::class, 'logar'])->name("logar");
     Route::get('/cadastro', [\App\Http\Controllers\ClienteController::class, 'cadastro'])->name("cadastro");
-    Route::get('/cadastro_novo', CadastroNovo\Pagina::class)->name("cadastro.novo");
+    Route::get('/cadastro_novo', function(){
+        return redirect()->route('cadastro');
+    })->name("cadastro.novo");
+    // Route::get('/cadastro_novo', CadastroNovo\Pagina::class)->name("cadastro.novo");
 
     Route::get('/pesquisa', [\App\Http\Controllers\SiteController::class, 'pesquisa'])->name("pesquisa");
     Route::get('/raca/{slug}', [\App\Http\Controllers\SiteController::class, 'raca'])->name("raca");
