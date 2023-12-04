@@ -126,23 +126,8 @@ class SiteController extends Controller
     }
 
     public function lotes($slug, Reserva $reserva){
-        $fazenda = Fazenda::where("slug", $slug)->first();
-        if($reserva->lotes->count() == 0){
-            return redirect()->route('fazenda.embrioes', ['fazenda' => $fazenda->slug, 'reserva' => $reserva]);
-        }
-        // $reserva = $fazenda->reservas->where("ativo", 1)->first();
-        if(!$reserva->institucional){
-            if(!session()->get("popup_institucional")){
-                $popup_institucional = true;
-                session(["popup_institucional" => true]);
-            }else{
-                $popup_institucional = false;
-            }
-        }else{
-            $popup_institucional = false;
-        }
-        $lotes = $reserva->lotes->where('ativo', true)->where('membro_pacote', false);
-        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "popup_institucional" => $popup_institucional, "lotes" => $lotes, "nome_pagina" => "Lotes"]);
+        $fazenda = $reserva->fazenda;
+        return view("lotes", ["fazenda" => $fazenda, "reserva" => $reserva, "nome_pagina" => "Lotes"]);
     }
 
     public function pesquisa(Request $request){
@@ -161,11 +146,6 @@ class SiteController extends Controller
 
     public function navegue_por_racas(){
         return view("navegue_por_racas");
-    }
-
-    public function lotes2($slug, Reserva $reserva){
-        $fazenda = $reserva->fazenda;
-        return view("lotes2", ["fazenda" => $fazenda, "reserva" => $reserva, "nome_pagina" => "Lotes"]);
     }
 
     public function lote($slug, Reserva $reserva = null, Lote $lote){

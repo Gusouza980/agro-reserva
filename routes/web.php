@@ -58,7 +58,7 @@ Route::middleware(['cookie'])->group(function () {
     Route::get('/reservas-abertas', [\App\Http\Controllers\SiteController::class, 'reservas_abertas'])->name("reservas_abertas");
     Route::get('/navegue-por-racas', [\App\Http\Controllers\SiteController::class, 'navegue_por_racas'])->name("navegue_por_racas");
 
-    Route::get('/fazenda/{fazenda}/{reserva}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes2'])->name("fazenda.lotes");
+    Route::get('/fazenda/{fazenda}/{reserva}/lotes', [\App\Http\Controllers\SiteController::class, 'lotes'])->name("fazenda.lotes");
     Route::get('/fazenda/{fazenda}/{reserva}/embrioes', [\App\Http\Controllers\SiteController::class, 'embrioes'])->name("fazenda.embrioes");
     Route::get('/fazenda/{fazenda}/{reserva?}/lote/{lote}',  [\App\Http\Controllers\SiteController::class, 'lote'])->name("fazenda.lote");
     Route::get('/fazenda/{fazenda}/{reserva}/embriao/{embriao}',  [\App\Http\Controllers\SiteController::class, 'embriao'])->name("fazenda.embriao");
@@ -80,7 +80,6 @@ Route::middleware(['cookie'])->group(function () {
 
     //Blog
     Route::match(['get','post'], '/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
-    // Route::get('/blog2', [\App\Http\Controllers\BlogController::class, 'index2'])->name("blog2");
     Route::get('/blog/{slug}', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog.categoria");
     Route::get('/noticia/{slug}', [\App\Http\Controllers\BlogController::class, 'noticia'])->name("noticia");
     

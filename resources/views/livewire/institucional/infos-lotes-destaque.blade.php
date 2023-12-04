@@ -1,4 +1,4 @@
-<div class="w-full py-5 bg-[#E3E5EA]" x-data="{
+<div class="w-full" x-data="{
     pos: 0,
     total: @entangle('total'),
     mobile: @entangle('mobile'),
@@ -69,66 +69,68 @@
         
     }
 }">
-    <div class="w-full text-center">
-        <h3 class="font-montserrat font-bold text-[25px] text-[#757887]">
-            LOTES EM DESTAQUE
-        </h3>
-    </div>
-    
-    <div class="w1200 mt-3 mt-md-0 md:mt-0 mx-auto md:px-5 flex flex-nowrap overflow-x-scroll snap-mandatory snap-x no-scrollbar" x-swipe:left="proxSlide" x-swipe:right="antSlide" id="slide-info-lotes-destaque">
-        @foreach($lotes as $key => $lote)
-            <div class="snap-center flex-shrink-0 w-full flex items-center flex-wrap md:flex-nowrap md:py-5 relative px-5"  x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100"
-            x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
-            x-transition:leave-end="opacity-0 scale-0">
-                <div class="w-full md:w-2/4 lg:w-3/5">
-                    {!! \Util::convertYoutube($lote["video"]) !!}
-                </div>
-                <div class="md:w-2/5 md:pl-10 text-[#757887]">
-                    <div class="w-full mt-[20px]">
-                        <img src="{{ asset($lote["fazenda"]["logo"]) }}" class="md:mx-0 mx-auto md:w-[150px] md:h-auto h-[100px] mx-md-0" alt="">
+    <div class="w-full py-5 bg-[#E3E5EA]" x-show="total > 0">
+        <div class="w-full text-center">
+            <h3 class="font-montserrat font-bold text-[25px] text-[#757887]">
+                LOTES EM DESTAQUE
+            </h3>
+        </div>
+        
+        <div class="w1200 mt-3 mt-md-0 md:mt-0 mx-auto md:px-5 flex flex-nowrap overflow-x-scroll snap-mandatory snap-x no-scrollbar" x-swipe:left="proxSlide" x-swipe:right="antSlide" id="slide-info-lotes-destaque">
+            @foreach($lotes as $key => $lote)
+                <div class="snap-center flex-shrink-0 w-full flex items-center flex-wrap md:flex-nowrap md:py-5 relative px-5"  x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-0">
+                    <div class="w-full md:w-2/4 lg:w-3/5">
+                        {!! \Util::convertYoutube($lote["video"]) !!}
                     </div>
-                    <div class="w-full mt-[20px]">
-                        <p class="font-montserrat text-[14px]">LOTE: <b>{{ str_pad($lote["numero"], 3, '0', STR_PAD_LEFT) }}</b></p>
-                        <h1 class="font-montserrat font-bold text-[28px] text-[#E8521D] mt-1">{{ $lote["nome"] }}</h1>
-                    </div>
-                    <div class="w-full relative">
-                        <ul class="font-montserrat text-[14px]">
-                            @if($lote["beta_caseina"])
-                                <li>BETA-CASEINA: <b class="ml-2">{{ $lote["beta_caseina"] }}</b></li>
+                    <div class="md:w-2/5 md:pl-10 text-[#757887]">
+                        <div class="w-full mt-[20px]">
+                            <img src="{{ asset($lote["fazenda"]["logo"]) }}" class="md:mx-0 mx-auto md:w-[150px] md:h-auto h-[100px] mx-md-0" alt="">
+                        </div>
+                        <div class="w-full mt-[20px]">
+                            <p class="font-montserrat text-[14px]">LOTE: <b>{{ str_pad($lote["numero"], 3, '0', STR_PAD_LEFT) }}</b></p>
+                            <h1 class="font-montserrat font-bold text-[28px] text-[#E8521D] mt-1">{{ $lote["nome"] }}</h1>
+                        </div>
+                        <div class="w-full relative">
+                            <ul class="font-montserrat text-[14px]">
+                                @if($lote["beta_caseina"])
+                                    <li>BETA-CASEINA: <b class="ml-2">{{ $lote["beta_caseina"] }}</b></li>
+                                @endif
+                                @if($lote["registro"])
+                                    <li>RGD: <b class="ml-2">{{ $lote["registro"] }}</b></li>
+                                @endif
+                                <li>NASCIMENTO: <b class="ml-2">{{ date('d/m/Y', strtotime($lote["nascimento"])) }}</b></li>
+                                <li>RAÇA: <b class="ml-2">{{ $lote["raca"]["nome"] }}</b></li>
+                                <li>SEXO: <b class="ml-2">{{ $lote["sexo"] }}</b></li>
+                            </ul>
+                            <img src="{{ asset('imagens/Scroll-Horizontal.svg') }}" width="50" class="md:hidden absolute top-5 right-0 animate-bounce" alt=""> 
+                        </div>
+                        <div class="w-full mt-[20px] font-montserrat flex items-center">
+                            <span class="font-bold text-[26px]">R$
+                                {{ number_format($lote["produto"]["preco"] - ($lote["produto"]["preco"] * $lote["reserva"]["desconto"]) / 100, 2, ',', '.') }}</span>
+                            <span class="font-medium text-[20px] ml-2">à vista</span>
+                        </div>
+                        <div class="w-full font-montserrat text-[14px] font-medium">
+                            <span>Fator multiplicador: <b>{{ $lote["reserva"]["max_parcelas"] }}x</b> de <b>R$
+                                    {{ number_format($lote["produto"]["preco"] / $lote["reserva"]["max_parcelas"], 2, ',', '.') }}</b></span>
+                        </div>
+                        <div class="w-full mt-[20px] flex gap-x-4">
+                            @if($lote["liberar_compra"])
+                            <a onclick="Livewire.emit('adicionarProduto', {{ $lote['produto']['id'] }})"
+                                class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Comprar</a>
                             @endif
-                            @if($lote["registro"])
-                                <li>RGD: <b class="ml-2">{{ $lote["registro"] }}</b></li>
-                            @endif
-                            <li>NASCIMENTO: <b class="ml-2">{{ date('d/m/Y', strtotime($lote["nascimento"])) }}</b></li>
-                            <li>RAÇA: <b class="ml-2">{{ $lote["raca"]["nome"] }}</b></li>
-                            <li>SEXO: <b class="ml-2">{{ $lote["sexo"] }}</b></li>
-                        </ul>
-                        <img src="{{ asset('imagens/Scroll-Horizontal.svg') }}" width="50" class="md:hidden absolute top-5 right-0 animate-bounce" alt=""> 
-                    </div>
-                    <div class="w-full mt-[20px] font-montserrat flex items-center">
-                        <span class="font-bold text-[26px]">R$
-                            {{ number_format($lote["produto"]["preco"] - ($lote["produto"]["preco"] * $lote["reserva"]["desconto"]) / 100, 2, ',', '.') }}</span>
-                        <span class="font-medium text-[20px] ml-2">à vista</span>
-                    </div>
-                    <div class="w-full font-montserrat text-[14px] font-medium">
-                        <span>Fator multiplicador: <b>{{ $lote["reserva"]["max_parcelas"] }}x</b> de <b>R$
-                                {{ number_format($lote["produto"]["preco"] / $lote["reserva"]["max_parcelas"], 2, ',', '.') }}</b></span>
-                    </div>
-                    <div class="w-full mt-[20px] flex gap-x-4">
-                        @if($lote["liberar_compra"])
-                        <a onclick="Livewire.emit('adicionarProduto', {{ $lote['produto']['id'] }})"
-                            class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Comprar</a>
-                        @endif
-                        <a href="{{ route('fazenda.lote', ['fazenda' => $lote['fazenda']['slug'], 'reserva' => $lote['reserva']['id'], 'lote' => $lote['id']]) }}"
-                            class="cpointer bg-[#E8521D] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Ver Mais</a>
+                            <a href="{{ route('fazenda.lote', ['fazenda' => $lote['fazenda']['slug'], 'reserva' => $lote['reserva']['id'], 'lote' => $lote['id']]) }}"
+                                class="cpointer bg-[#E8521D] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Ver Mais</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
-    </div>
-    <div class="w-full hidden md:flex justify-center gap-x-6">
-        <img @click="antSlide" src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-lotes-visitados-left" class="cpointer" height="25" alt="">
-        <img @click="proxSlide" src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-lotes-visitados-right" class="cpointer" height="25" alt="">
-    </div>
+            @endforeach
+        </div>
+        <div class="w-full hidden md:flex justify-center gap-x-6">
+            <img @click="antSlide" src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-lotes-visitados-left" class="cpointer" height="25" alt="">
+            <img @click="proxSlide" src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-lotes-visitados-right" class="cpointer" height="25" alt="">
+        </div>
+    </div>    
 </div>

@@ -33,12 +33,6 @@ class BlogController extends Controller
         }
     }
 
-    public function index2(){
-        $noticias = Noticia::where("publicada", true)->orderBy("created_at", "DESC")->paginate(6);
-        $mais_visitadas = Noticia::where("publicada", true)->orderBy("visualizacoes", "DESC")->take(3)->get();
-        return view("blog2", ["noticias" => $noticias, "mais_visitadas" => $mais_visitadas]);
-    }
-
     public function noticia($slug){
         $noticia = Noticia::where("slug", $slug)->first();
         $noticia->visualizacoes++;
