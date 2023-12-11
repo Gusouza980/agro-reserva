@@ -150,6 +150,13 @@ class Pagina extends Component
                 $this->form['pais'.$sufix] = 'Brasil';
             }
         }
+
+        if($propertyName == 'form.estado_civil'){
+            if(empty($value) || $value == 0){
+                $this->form["nome_conjugue"] = "";
+                $this->form["cpf_conjugue"] = "";
+            }
+        }
     }
 
     public function removerUpload($variavel, $key){
