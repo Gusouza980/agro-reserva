@@ -127,6 +127,7 @@ class Pagina extends Component
         $cliente = Cliente::create($this->form);
         $clienteService = new ClienteService();
         $clienteService->sendRdstation($cliente);
+        session()->put(["cliente" => $cliente]);
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Cadastro realizado com sucesso!']);
         return redirect()->route('index');
     }
