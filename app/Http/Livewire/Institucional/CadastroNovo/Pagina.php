@@ -153,7 +153,7 @@ class Pagina extends Component
     }
 
     public function removerUpload($variavel, $key){
-        $this->$variavel[$key] = null;
+        unset($this->$variavel[$key]);
         $this->emit('$refresh');
     }
 
