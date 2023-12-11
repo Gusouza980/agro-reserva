@@ -164,6 +164,9 @@
                     </div>
                     <div class="break-words text-center text-[#3C3C3C] text-[12px] font-inter max-w-[200px]">
                         Clique nesta área para fazer upload
+                        <p>
+                            <small class="text-gray-400 font-light text-[10px] tracking-wide">Formatos permitidos: imagem, pdf e doc</small>
+                        </p>
                     </div>
                 </label>
                 <div class="w-full px-2 border border-t-0 rounded-b-md border-slate-300 text-gray-500 text-sm">
@@ -216,6 +219,9 @@
                     </div>
                     <div class="break-words text-center text-[#3C3C3C] text-[12px] font-inter max-w-[200px]">
                         Clique nesta área para fazer upload
+                        <p>
+                            <small class="text-gray-400 font-light text-[10px] tracking-wide">Formatos permitidos: imagem, pdf e doc</small>
+                        </p>
                     </div>
                 </label>
                 <div class="w-full px-2 border border-t-0 rounded-b-md border-slate-300 text-gray-500 text-sm">
