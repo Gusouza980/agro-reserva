@@ -5,11 +5,11 @@
     <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
         <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">RG</label>
-            <input type="text" name="form.rg" class="w-full form-input-text mt-[10px]" wire:model.defer="form.rg" maxlength="20">
+            <input type="text" name="form.rg" class="w-full form-input-text mt-[5px]" wire:model.defer="form.rg" maxlength="20">
         </div>
         <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">CPF</label>
-            <input type="text" name="form.cpf" class="w-full form-input-text mt-[10px]" mask="cpf" wire:model.defer="form.cpf" maxlength="14">
+            <input type="text" name="form.cpf" class="w-full form-input-text mt-[5px]" mask="cpf" wire:model.defer="form.cpf" maxlength="14">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.cpf')
                     {{ $message }}
@@ -18,7 +18,7 @@
         </div>
         <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Nascimento</label>
-            <input type="date" name="form.nascimento" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nascimento">
+            <input type="date" name="form.nascimento" class="w-full form-input-text mt-[5px]" wire:model.defer="form.nascimento">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.nascimento')
                     {{ $message }}
@@ -29,7 +29,7 @@
     <div class="w-full grid grid-cols-1 md:grid-cols-8 gap-3">
         <div class="mb-5 md:col-span-2">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Estado Civil</label>
-            <select class="w-full form-input-text mt-[10px]" name="form.estado_civil" wire:model="form.estado_civil">
+            <select class="w-full form-input-text mt-[5px]" name="form.estado_civil" wire:model="form.estado_civil">
                 <option value="">Selecione</option>
                 @foreach(config('clientes.estados_civis') as $key => $estado)
                     <option value="{{ $key }}">{{ $estado }}</option>
@@ -43,7 +43,7 @@
         </div>
         <div class="mb-5 md:col-span-4">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Nome do Cônjugue</label>
-            <input type="text" @if(!isset($form['estado_civil']) || empty($form['estado_civil']) || $form['estado_civil'] < 3) disabled @endif name="form.nome_conjugue" class="w-full form-input-text mt-[10px] disabled:bg-gray-200" wire:model.defer="form.nome_conjugue" maxlength="50">
+            <input type="text" @if(!isset($form['estado_civil']) || empty($form['estado_civil']) || $form['estado_civil'] < 3) disabled @endif name="form.nome_conjugue" class="w-full form-input-text mt-[5px] disabled:bg-gray-200" wire:model.defer="form.nome_conjugue" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.nome_conjugue')
                     {{ $message }}
@@ -52,7 +52,7 @@
         </div>
         <div class="mb-5 md:col-span-2">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">CPF <small>(Cônjugue)</small></label>
-            <input type="text" @if(!isset($form['estado_civil']) || empty($form['estado_civil']) || $form['estado_civil'] < 3) disabled @endif name="form.cpf_conjugue" class="w-full form-input-text mt-[10px] disabled:bg-gray-200" mask="cpf" wire:model.defer="form.cpf_conjugue" maxlength="14">
+            <input type="text" @if(!isset($form['estado_civil']) || empty($form['estado_civil']) || $form['estado_civil'] < 3) disabled @endif name="form.cpf_conjugue" class="w-full form-input-text mt-[5px] disabled:bg-gray-200" mask="cpf" wire:model.defer="form.cpf_conjugue" maxlength="14">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.cpf_conjugue')
                     {{ $message }}
@@ -63,7 +63,7 @@
     <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
         <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">CEP</label>
-            <input type="text" name="form.cep" class="w-full form-input-text mt-[10px]" mask="cep" x-on:change="$wire.set('form.cep', $event.target.value)" wire:model.defer="form.cep" maxlength="9">
+            <input type="text" name="form.cep" class="w-full form-input-text mt-[5px]" mask="cep" x-on:change="$wire.set('form.cep', $event.target.value)" wire:model.defer="form.cep" maxlength="9">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.cep')
                     {{ $message }}
@@ -72,7 +72,7 @@
         </div>
         <div class="mb-5 md:col-span-2">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Endereço Residencial</label>
-            <input type="text" name="form.rua" wire:loading.attr="disabled" wire:target="form.cep" class="w-full form-input-text mt-[10px]" wire:model.defer="form.rua" maxlength="255">
+            <input type="text" name="form.rua" wire:loading.attr="disabled" wire:target="form.cep" class="w-full form-input-text mt-[5px]" wire:model.defer="form.rua" maxlength="255">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.rua')
                     {{ $message }}
@@ -83,7 +83,7 @@
     <div class="w-full grid grid-cols-2 md:grid-cols-6 gap-3">
         <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Número</label>
-            <input type="text" name="form.numero" wire:loading.attr="disabled" wire:target="form.cep" class="w-full form-input-text mt-[10px]" wire:model.defer="form.numero" maxlength="6">
+            <input type="text" name="form.numero" wire:loading.attr="disabled" wire:target="form.cep" class="w-full form-input-text mt-[5px]" wire:model.defer="form.numero" maxlength="6">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.numero')
                     {{ $message }}
@@ -92,7 +92,7 @@
         </div>
         <div class="mb-5 md:col-span-2">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Bairro</label>
-            <input type="text" name="form.bairro" wire:loading.attr="disabled" wire:target="form.cep" class="w-full form-input-text mt-[10px]" wire:model.defer="form.bairro" maxlength="50">
+            <input type="text" name="form.bairro" wire:loading.attr="disabled" wire:target="form.cep" class="w-full form-input-text mt-[5px]" wire:model.defer="form.bairro" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.bairro')
                     {{ $message }}
@@ -101,7 +101,7 @@
         </div>
         <div class="mb-5 col-span-2 md:col-span-3">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Complemento</label>
-            <input type="text" name="form.complemento" class="w-full form-input-text mt-[10px]" wire:model.defer="form.complemento" maxlength="50">
+            <input type="text" name="form.complemento" class="w-full form-input-text mt-[5px]" wire:model.defer="form.complemento" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.complemento')
                     {{ $message }}
@@ -112,7 +112,7 @@
     <div class="w-full grid grid-cols-2 md:grid-cols-3 gap-3">
         <div class="mb-5 col-span-2 md:col-span-1">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Cidade</label>
-            <input type="text" name="form.cidade" wire:loading.attr="disabled" wire:target="form.cep" class="w-full form-input-text mt-[10px]" wire:model.defer="form.cidade" maxlength="50">
+            <input type="text" name="form.cidade" wire:loading.attr="disabled" wire:target="form.cep" class="w-full form-input-text mt-[5px]" wire:model.defer="form.cidade" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.cidade')
                     {{ $message }}
@@ -121,7 +121,7 @@
         </div>
         <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Estado</label>
-            <select class="w-full form-input-text mt-[10px]" wire:loading.attr="disabled" wire:target="form.cep" name="form.estado" wire:model.defer="form.estado">
+            <select class="w-full form-input-text mt-[5px]" wire:loading.attr="disabled" wire:target="form.cep" name="form.estado" wire:model.defer="form.estado">
                 <option value="">Selecione</option>
                 @foreach(config('estados.estados') as $uf => $estado)
                     <option value="{{ $uf }}">{{ $estado }}</option>
@@ -135,7 +135,7 @@
         </div>
         <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">País</label>
-            <input type="text" name="form.pais" class="w-full form-input-text mt-[10px]" wire:model.defer="form.pais" maxlength="50">
+            <input type="text" name="form.pais" class="w-full form-input-text mt-[5px]" wire:model.defer="form.pais" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.pais')
                     {{ $message }}

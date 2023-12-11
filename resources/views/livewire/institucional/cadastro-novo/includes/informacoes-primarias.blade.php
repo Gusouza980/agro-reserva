@@ -4,7 +4,7 @@
 <div class="w-full mt-[30px]">
     <div class="w-full">
         <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Nome Completo</label>
-        <input type="text" name="form.nome_dono" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nome_dono" maxlength="100">
+        <input type="text" name="form.nome_dono" class="w-full form-input-text mt-[5px]" wire:model.defer="form.nome_dono" maxlength="100">
         <div class="flex justify-between mt-2">
             <div class="text-[12px] text-red-600 font-inter">
                 @error('form.nome_dono')
@@ -18,7 +18,7 @@
     </div>
     <div class="w-full">
         <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">E-mail</label>
-        <input type="email" name="form.email" class="w-full form-input-text mt-[10px]" wire:model.defer="form.email" maxlength="100">
+        <input type="email" name="form.email" class="w-full form-input-text mt-[5px]" wire:model.defer="form.email" maxlength="100">
         <div class="flex justify-between mt-2">
             <div class="text-[12px] text-red-600 font-inter">
                 @error('form.email')
@@ -32,8 +32,10 @@
     </div>
     <div class="w-full grid grid-cols-1 gap-x-4">
         <div>
-            <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Telefone</label>
-            <x-tel-input name="form.telefone" id="telefone" class="w-full form-input-text mt-[10px] form-input" phone-country-input="#phone_country" wire:model.defer="form.telefone" />
+            <div class="w-full pb-[5px]">
+                <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Telefone</label>
+            </div>
+            <x-tel-input name="form.telefone" id="telefone" class="w-full form-input-text form-input" phone-country-input="#phone_country" wire:model.defer="form.telefone" />
             <input type="hidden" id="phone_country" name="phone_country">
             <div class="flex justify-between mt-2">
                 <div class="text-[12px] text-red-600 font-inter">
@@ -51,7 +53,7 @@
         <div class="">
             <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Crie a senha de acesso</label>
             <div class="w-full relative">
-                <input type="password" name="form.senha" id="senha" class="w-full form-input-text mt-[10px] pr-[20px]" wire:model.defer="form.senha" minlength="5" maxlength="100">
+                <input type="password" name="form.senha" id="senha" class="w-full form-input-text mt-[5px] pr-[20px]" wire:model.defer="form.senha" minlength="5" maxlength="100">
                 <i class="fas fa-eye-slash absolute top-[11px] right-2 cursor-pointer" id="mostrar-senha"></i>
                 <i class="fas fa-eye absolute top-[11px] right-2 cursor-pointer hidden" id="esconder-senha"></i>
             </div>
@@ -69,7 +71,7 @@
         <div>
             <label class="pl-[25px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Confirme a senha</label>
             <div class="w-full relative">
-                <input type="password" name="confirmar_senha" id="confirmar-senha" class="w-full form-input-text mt-[10px] pr-[20px]" wire:model.defer="confirmar_senha" minlength="5" maxlength="100">
+                <input type="password" name="confirmar_senha" id="confirmar-senha" class="w-full form-input-text mt-[5px] pr-[20px]" wire:model.defer="confirmar_senha" minlength="5" maxlength="100">
                 <i class="fas fa-eye-slash absolute top-[11px] right-2 cursor-pointer" id="mostrar-confirmar-senha"></i>
                 <i class="fas fa-eye absolute top-[11px] right-2 cursor-pointer hidden" id="esconder-confirmar-senha"></i>
             </div>
