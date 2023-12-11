@@ -30,6 +30,11 @@
             3 => "Dados de Propriedade",
             4 => "Informações Complementares",
             5 => "Selfie"
+        ],
+        "estados_civis" => [
+            0 => "Solteiro(a)",
+            1 => "Casado(a)",
+            2 => "União Estável",
         ]
     ]
 

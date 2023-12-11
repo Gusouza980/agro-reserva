@@ -75,7 +75,17 @@
 
     @yield("scripts")
     @stack("scripts")
-
+    <script>
+        window.addEventListener("notificaToastr", (event) => {
+            switch(event.detail.tipo){
+                case 'success':
+                    toastr.success(event.detail.mensagem)
+                    break;
+                case 'error':
+                    toastr.error(event.detail.mensagem)
+            }
+        })
+    </script>
     <script>
         var telefone = '5534997406445';
     </script>

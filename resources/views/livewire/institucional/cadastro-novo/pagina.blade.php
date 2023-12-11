@@ -41,7 +41,6 @@
 </div>
 
 @push("scripts")
-<script src="{{ asset('js/jquery.mask.js') }}"></script>
 <script>
     function scrollToElement(elementname) {
         var $element = $('[name="' + elementname + '"]');

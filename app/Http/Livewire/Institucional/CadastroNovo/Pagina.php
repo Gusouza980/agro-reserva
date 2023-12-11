@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Institucional\CadastroNovo;
 
+use App\Facades\Viacep;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -11,10 +12,15 @@ class Pagina extends Component
     public $form = [];
     public $confirmar_senha;
     public $comprovante_residencial;
+    public $comprovantes_residenciais = [];
     public $contrato_social;
+    public $contratos_sociais = [];
     public $documento;
+    public $documentos = [];
     public $ficha_sanitaria;
+    public $fichas_sanitarias = [];
     public $matricula_imovel;
+    public $matriculas_imoveis = [];
 
     protected $rules = [
         'form.nome_dono' => 'required|max:100',
@@ -28,7 +34,7 @@ class Pagina extends Component
         'form.rua' => 'max:100',
         'form.bairro' => 'max:50',
         'form.cidade' => 'max:50',
-        'form.uf' => 'max:2',
+        'form.estado' => 'max:2',
         'form.pais' => 'max:50',
         'form.nascimento' => 'date',
 
@@ -36,7 +42,7 @@ class Pagina extends Component
         'form.rua_propriedade' => 'max:100',
         'form.bairro_propriedade' => 'max:50',
         'form.cidade_propriedade' => 'max:50',
-        'form.uf_propriedade' => 'max:2',
+        'form.estado_propriedade' => 'max:2',
         'form.pais_propriedade' => 'max:50',
 
         'form.cnpj' => 'max:20',
@@ -45,14 +51,14 @@ class Pagina extends Component
         'form.rua_comercial' => 'max:100',
         'form.bairro_comercial' => 'max:50',
         'form.cidade_comercial' => 'max:50',
-        'form.uf_comercial' => 'max:2',
+        'form.estado_comercial' => 'max:2',
         'form.pais_comercial' => 'max:50',
 
-        'comprovante_residencial' => 'nullable|file|max:3048',
-        'contrato_social' => 'nullable|file|max:3048',
-        'documento' => 'nullable|file|max:3048',
-        'ficha_sanitaria' => 'nullable|file|max:3048',
-        'matricula_imovel' => 'nullable|file|max:3048',
+        'comprovante_residencial.*' => 'nullable|file|max:3048',
+        'contrato_social.*' => 'nullable|file|max:3048',
+        'documento.*' => 'nullable|file|max:3048',
+        'ficha_sanitaria.*' => 'nullable|file|max:3048',
+        'matricula_imovel.*' => 'nullable|file|max:3048',
     ];
 
     protected $validationAttributes = [
@@ -67,7 +73,7 @@ class Pagina extends Component
         'form.rua' => 'Rua',
         'form.bairro' => 'Bairro',
         'form.cidade' => 'Cidade',
-        'form.uf' => 'Estado',
+        'form.estado' => 'Estado',
         'form.pais' => 'País',
         'form.nascimento' => 'Nascimento',
 
@@ -75,7 +81,7 @@ class Pagina extends Component
         'form.rua_propriedade' => 'Rua',
         'form.bairro_propriedade' => 'Bairro',
         'form.cidade_propriedade' => 'Cidade',
-        'form.uf_propriedade' => 'Estado',
+        'form.estado_propriedade' => 'Estado',
         'form.pais_propriedade' => 'País',
         'form.nascimento_propriedade' => 'Nascimento',
 
@@ -85,7 +91,7 @@ class Pagina extends Component
         'form.rua_comercial' => 'Rua',
         'form.bairro_comercial' => 'Bairro',
         'form.cidade_comercial' => 'Cidade',
-        'form.uf_comercial' => 'Estado',
+        'form.estado_comercial' => 'Estado',
         'form.pais_comercial' => 'País',
         'form.nascimento_comercial' => 'Nascimento',
     
@@ -96,15 +102,57 @@ class Pagina extends Component
         'matricula_imovel' => 'Matrícula do Imóvel',
     ];
 
+    private function getPluralAttribute($attribute){
+        switch($attribute){
+            case('comprovante_residencial'):
+                return 'comprovantes_residenciais';
+            case('contrato_social'):
+                return 'contratos_sociais';
+            case('documento'):
+                return 'documentos';
+            case('ficha_sanitaria'):
+                return 'fichas_sanitarias';
+            case('matricula_imovel'):
+                return 'matriculas_imoveis';
+            default:
+                return $attribute;
+        }
+    }
+
     public function salvar(){
         $this->validate();
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Cadastro realizado com sucesso!']);
         toastr()->success("Cadastrado com sucesso!");
     }
 
-    public function updated($propertyName){
+    public function updated($propertyName, $value){
         if($propertyName == 'comprovante_residencial' || $propertyName == 'contrato_social' || $propertyName == 'documento' || $propertyName == 'ficha_sanitaria' || $propertyName == 'matricula_imovel'){
-            $validate = $this->validateOnly($propertyName);
+            $this->validateOnly($propertyName);
+            $variavel = $this->getPluralAttribute($propertyName);
+            foreach($this->$propertyName as $file){
+                if(!empty($file)){
+                    array_push($this->$variavel, $file);
+                }
+            }
+            $this->$propertyName = null;
         }
+
+        if($propertyName == 'form.cep' || $propertyName == 'form.cep_propriedade' || $propertyName == 'form.cep_comercial'){
+            $sufix = str_replace('form.cep', '', $propertyName);
+            $data = Viacep::getData($value);
+            if($data !== false){
+                $this->form['estado'.$sufix] = $data['uf'] ?? '';
+                $this->form['cidade'.$sufix] = $data['localidade'] ?? '';
+                $this->form['bairro'.$sufix] = $data['bairro'] ?? '';
+                $this->form['rua'.$sufix] = $data['logradouro'] ?? '';
+                $this->form['pais'.$sufix] = 'Brasil';
+            }
+        }
+    }
+
+    public function removerUpload($variavel, $key){
+        $this->$variavel[$key] = null;
+        $this->emit('$refresh');
     }
 
     public function clearIncorrectFiles(){

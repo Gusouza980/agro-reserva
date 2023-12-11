@@ -6059,6 +6059,10 @@ body[dir="rtl"] .checkbox:checked,
     border-top-right-radius: 9999px;
     border-bottom-right-radius: 9999px;
 }
+.rounded-t-md{
+    border-top-left-radius: 0.375rem;
+    border-top-right-radius: 0.375rem;
+}
 .rounded-tl-lg{
     border-top-left-radius: 0.5rem;
 }
@@ -6098,6 +6102,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .border-t{
     border-top-width: 1px;
+}
+.border-t-0{
+    border-top-width: 0px;
 }
 .border-solid{
     border-style: solid;
@@ -6230,6 +6237,10 @@ body[dir="rtl"] .checkbox:checked,
 .border-info{
     --tw-border-opacity: 1;
     border-color: hsl(var(--in) / var(--tw-border-opacity));
+}
+.border-gray-600{
+    --tw-border-opacity: 1;
+    border-color: rgb(75 85 99 / var(--tw-border-opacity));
 }
 .border-b-slate-200{
     --tw-border-opacity: 1;
@@ -7704,6 +7715,11 @@ body[dir="rtl"] .checkbox:checked,
     border-color: rgb(100 116 139 / var(--tw-border-opacity));
 }
 
+.hover\:border-red-500:hover{
+    --tw-border-opacity: 1;
+    border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
 .hover\:bg-red-800:hover{
     --tw-bg-opacity: 1;
     background-color: rgb(153 27 27 / var(--tw-bg-opacity));
@@ -7926,6 +7942,11 @@ body[dir="rtl"] .checkbox:checked,
 .hover\:text-red-600:hover{
     --tw-text-opacity: 1;
     color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
+.hover\:text-red-500:hover{
+    --tw-text-opacity: 1;
+    color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 .hover\:no-underline:hover{

@@ -243,6 +243,7 @@ return [
         "Acessos" => App\Classes\Acessos::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'DiscordAlert' => Spatie\DiscordAlerts\Facades\DiscordAlert::class,
+        'Viacep' => App\Facades\Viacep::class,
     ],
 
 ];
