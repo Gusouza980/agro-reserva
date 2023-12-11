@@ -43,7 +43,7 @@
         </div>
         <div class="mb-5 col-span-4">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Nome do Cônjugue</label>
-            <input type="text" @if(!isset($form['estado_civil']) || empty($form['estado_civil']) || $form['estado_civil'] == 0) disabled @endif name="form.nome_conjugue" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nome_conjugue" maxlength="50">
+            <input type="text" @if(!isset($form['estado_civil']) || empty($form['estado_civil']) || $form['estado_civil'] == 0) disabled @endif name="form.nome_conjugue" class="w-full form-input-text mt-[10px] disabled:bg-gray-200" wire:model.defer="form.nome_conjugue" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.nome_conjugue')
                     {{ $message }}
@@ -52,7 +52,7 @@
         </div>
         <div class="mb-5 col-span-2">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">CPF <small>(Cônjugue)</small></label>
-            <input type="text" @if(!isset($form['estado_civil']) || empty($form['estado_civil']) || $form['estado_civil'] == 0) disabled @endif name="form.cpf_conjugue" class="w-full form-input-text mt-[10px]" mask="cpf" wire:model.defer="form.cpf_conjugue" maxlength="14">
+            <input type="text" @if(!isset($form['estado_civil']) || empty($form['estado_civil']) || $form['estado_civil'] == 0) disabled @endif name="form.cpf_conjugue" class="w-full form-input-text mt-[10px] disabled:bg-gray-200" mask="cpf" wire:model.defer="form.cpf_conjugue" maxlength="14">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.cpf_conjugue')
                     {{ $message }}
