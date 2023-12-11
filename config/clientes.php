@@ -37,6 +37,13 @@
             2 => "Viuvo(a)",
             3 => "Casado(a)",
             4 => "União Estável",
+        ],
+        "tipos_documento" => [
+            0 => "Comprovante de Residência",
+            1 => "Contrato Social",
+            2 => "Documento",
+            3 => "Ficha Sanitária",
+            4 => "Matricula do Imóvel"
         ]
     ]
 

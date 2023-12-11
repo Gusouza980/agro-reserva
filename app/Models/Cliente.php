@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
 class Cliente extends Model
 {
@@ -49,5 +50,9 @@ class Cliente extends Model
 
     public function assessor(){
         return $this->belongsTo(Assessor::class);
+    }
+
+    public function setSenhaAttribute($value){
+        $this->attributes["senha"] = Hash::make($value);
     }
 }

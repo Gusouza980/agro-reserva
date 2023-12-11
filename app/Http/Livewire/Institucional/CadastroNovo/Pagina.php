@@ -5,7 +5,8 @@ namespace App\Http\Livewire\Institucional\CadastroNovo;
 use App\Facades\Viacep;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-
+use App\Models\Cliente;
+use App\Services\ClienteService;
 class Pagina extends Component
 {
     use WithFileUploads;
@@ -123,8 +124,11 @@ class Pagina extends Component
 
     public function salvar(){
         $this->validate();
+        $cliente = Cliente::create($this->form);
+        $clienteService = new ClienteService();
+        $clienteService->sendRdstation($cliente);
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Cadastro realizado com sucesso!']);
-        toastr()->success("Cadastrado com sucesso!");
+        return redirect()->route('index');
     }
 
     public function updated($propertyName, $value){
