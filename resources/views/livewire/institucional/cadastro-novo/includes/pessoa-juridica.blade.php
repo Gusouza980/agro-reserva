@@ -3,7 +3,7 @@
 </div>
 <div class="w-full mt-[30px]">
     <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-3">
-        <div class="mb-3 md:col-span-2">
+        <div class="mb-5 md:col-span-2">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">CNPJ</label>
             <input type="text" name="form.cnpj" class="w-full form-input-text mt-[10px]" mask="cnpj" wire:model.defer="form.cnpj" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
@@ -12,7 +12,7 @@
                 @enderror
             </div>
         </div>
-        <div class="mb-3 md:col-span-3">
+        <div class="mb-5 md:col-span-3">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Nome Fantasia</label>
             <input type="text" name="form.nome_fantasia" class="w-full form-input-text mt-[10px]" wire:model.defer="form.nome_fantasia" maxlength="100">
             <div class="w-full text-[12px] text-red-600 font-inter">
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
-        <div class="mb-3">
+        <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">CEP</label>
             <input type="text" name="form.cep_comercial" class="w-full form-input-text mt-[10px]" x-on:change="$wire.set('form.cep_comercial', $event.target.value)" mask="cep" wire:model.defer="form.cep_comercial" maxlength="9">
             <div class="w-full text-[12px] text-red-600 font-inter">
@@ -32,7 +32,7 @@
                 @enderror
             </div>
         </div>
-        <div class="mb-3 md:col-span-2">
+        <div class="mb-5 md:col-span-2">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Endereço Comercial</label>
             <input type="text" name="form.rua_comercial" class="w-full form-input-text mt-[10px]" wire:loading.attr="disabled" wire:target="form.cep_comercial" wire:model.defer="form.rua_comercial" maxlength="255">
             <div class="w-full text-[12px] text-red-600 font-inter">
@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="w-full grid grid-cols-2 md:grid-cols-6 gap-3">
-        <div class="mb-3">
+        <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Número</label>
             <input type="text" name="form.numero_comercial" class="w-full form-input-text mt-[10px]" wire:loading.attr="disabled" wire:target="form.cep_comercial" wire:model.defer="form.numero_comercial" maxlength="6">
             <div class="w-full text-[12px] text-red-600 font-inter">
@@ -52,7 +52,7 @@
                 @enderror
             </div>
         </div>
-        <div class="mb-3 md:col-span-2">
+        <div class="mb-5 md:col-span-2">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Bairro</label>
             <input type="text" name="form.bairro_comercial" class="w-full form-input-text mt-[10px]" wire:loading.attr="disabled" wire:target="form.cep_comercial" wire:model.defer="form.bairro_comercial" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
@@ -61,7 +61,7 @@
                 @enderror
             </div>
         </div>
-        <div class="mb-3 col-span-2 md:col-span-3">
+        <div class="mb-5 col-span-2 md:col-span-3">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Complemento</label>
             <input type="text" name="form.complemento_comercial" class="w-full form-input-text mt-[10px]" wire:loading.attr="disabled" wire:target="form.cep_comercial" wire:model.defer="form.complemento_comercial" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
@@ -72,7 +72,7 @@
         </div>
     </div>
     <div class="w-full grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="mb-3 col-span-2 md:col-span-1">
+        <div class="mb-5 col-span-2 md:col-span-1">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Cidade</label>
             <input type="text" name="form.cidade_comercial" class="w-full form-input-text mt-[10px]" wire:loading.attr="disabled" wire:target="form.cep_comercial" wire:model.defer="form.cidade_comercial" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
@@ -81,7 +81,7 @@
                 @enderror
             </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Estado</label>
             <select name="form.estado_comercial" class="w-full form-input-text mt-[10px]" wire:loading.attr="disabled" wire:target="form.cep_comercial" wire:model.defer="form.estado_comercial">
                 <option value="">Selecione</option>
@@ -95,7 +95,7 @@
                 @enderror
             </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">País</label>
             <input type="text" name="form.pais_comercial" class="w-full form-input-text mt-[10px]" wire:loading.attr="disabled" wire:target="form.cep_comercial" wire:model.defer="form.pais_comercial" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
@@ -107,7 +107,7 @@
         
     </div>
     <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-3 items-end">
-        <div class="mb-3 relative" >
+        <div class="mb-5 relative" >
             <div class="pl-[20px] w-full mb-2">
                 <label class="text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar Contrato Social e Última Alteração (se houver)</label>
             </div>
@@ -162,7 +162,7 @@
                 @enderror
             </div>
         </div>
-        <div class="mb-3 relative" >
+        <div class="mb-5 relative" >
             <div class="pl-[20px] w-full mb-2">
                 <label class="text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar comprovante residencial</label>
             </div>
