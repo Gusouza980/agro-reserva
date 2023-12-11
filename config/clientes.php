@@ -33,8 +33,10 @@
         ],
         "estados_civis" => [
             0 => "Solteiro(a)",
-            1 => "Casado(a)",
-            2 => "União Estável",
+            1 => "Divorciado(a)",
+            2 => "Viuvo(a)",
+            3 => "Casado(a)",
+            4 => "União Estável",
         ]
     ]
 

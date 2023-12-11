@@ -152,7 +152,7 @@ class Pagina extends Component
         }
 
         if($propertyName == 'form.estado_civil'){
-            if(empty($value) || $value == 0){
+            if(empty($value) || $value < 3){
                 $this->form["nome_conjugue"] = "";
                 $this->form["cpf_conjugue"] = "";
             }
