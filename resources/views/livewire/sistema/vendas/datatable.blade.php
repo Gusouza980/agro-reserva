@@ -103,13 +103,13 @@
                             @endif
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap sm:px-5">
-                            <input type="number" class="px-3 py-2 bg-white border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" value="{{ number_format($venda->entrada, 2) }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'entrada', this.value)">
+                            <input type="number" class="px-3 py-2 bg-white border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" value="{{ $venda->entrada }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'entrada', this.value)">
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap sm:px-5">
                             <input type="number" class="px-3 py-2 bg-white border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" value="{{ $venda->porcentagem_desconto }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'porcentagem_desconto', this.value)">
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap sm:px-5">
-                            <input type="number" class="px-3 py-2 bg-white border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" value="{{ number_format($venda->desconto_extra, 2) }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'desconto_extra', this.value)">
+                            <input type="number" class="px-3 py-2 bg-white border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" value="{{ $venda->desconto_extra }}" onchange="Livewire.emit('atualizaValor', {{ $venda->id }}, 'desconto_extra', this.value)">
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap sm:px-5">
                             R${{number_format($venda->total, 2, ",", ".")}}
