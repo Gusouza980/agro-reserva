@@ -31,33 +31,41 @@
                                 @if(!$cliente->agriskTermosRespondido)
                                     @if(!$reprovado && !$erro_codigo)
                                         <form wire:submit.prevent="enviarRespostas">
-                                            @foreach($questoes as $questao)
-                                                <div class="w-full mt-3">
-                                                    <h5 class="font-bold text-md text-gray-900 mb-3">{{ $questao["questao"] }}</h5>
-                                                    @foreach($questao["alternativas"] as $alternativa)
-                                                        <div class="flex flex-col w-full space-y-5">
-                                                            <div class="flex items-start w-full">
-                                                                <div class="flex items-center h-5">
-                                                                    <input 
-                                                                        type="radio"
-                                                                        class="w-4 h-4 border border-gray-300 rounded-full bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" 
-                                                                        name="{{ $questao["id"] }}"
-                                                                        wire:model.defer="respostas.{{ $questao["id"] }}"
-                                                                        value="{{ $alternativa }}"
-                                                                        required
-                                                                    >
+                                            @if($questoes)
+                                                @foreach($questoes as $questao)
+                                                    <div class="w-full mt-3">
+                                                        <h5 class="font-bold text-md text-gray-900 mb-3">{{ $questao["questao"] }}</h5>
+                                                        @foreach($questao["alternativas"] as $alternativa)
+                                                            <div class="flex flex-col w-full space-y-5">
+                                                                <div class="flex items-start w-full">
+                                                                    <div class="flex items-center h-5">
+                                                                        <input 
+                                                                            type="radio"
+                                                                            class="w-4 h-4 border border-gray-300 rounded-full bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" 
+                                                                            name="{{ $questao["id"] }}"
+                                                                            wire:model.defer="respostas.{{ $questao["id"] }}"
+                                                                            value="{{ $alternativa }}"
+                                                                            required
+                                                                        >
+                                                                    </div>
+                                                                    
+                                                                    <label class="ml-2 text-sm font-medium text-gray-900">{{ $alternativa }}</label>
                                                                 </div>
-                                                                
-                                                                <label class="ml-2 text-sm font-medium text-gray-900">{{ $alternativa }}</label>
                                                             </div>
-                                                        </div>
-                                                    @endforeach
+                                                        @endforeach
+                                                    </div>
+                                                    <hr class="mt-3">
+                                                @endforeach
+                                                <div class="w-full mt-4 text-center">
+                                                    <button type="submit" class="text-white rounded-[0.5rem] btn-warning text-[16px] waving-hand font-montserrat font-medium normal-case px-4 py-[6px] animation duration-500 hover:scale-105">Enviar Respostas</button>
                                                 </div>
-                                                <hr class="mt-3">
-                                            @endforeach
-                                            <div class="w-full mt-4 text-center">
-                                                <button type="submit" class="text-white rounded-[0.5rem] btn-warning text-[16px] waving-hand font-montserrat font-medium normal-case px-4 py-[6px] animation duration-500 hover:scale-105">Enviar Respostas</button>
-                                            </div>
+                                            @else
+                                                <div class="w-full">
+                                                    <div class="p-4 mt-4 text-center text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                                                        <span class="font-medium">Ops.</span> Tivemos um problema para obter as questões para validar sua análise. Por favor, tente novamente em alguns minutos ou fale com nosso comercial.
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </form>
                                     @elseif($reprovado)
                                         <div class="w-full">
