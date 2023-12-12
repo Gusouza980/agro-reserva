@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ffacf6e1843da0c0469186c9051a309",
+    "content-hash": "281b357e0ff4402e53d6f783a5b761f5",
     "packages": [
         {
             "name": "alaouy/youtube",
@@ -4365,22 +4365,22 @@
         },
         {
             "name": "pedroni/laravel-rd-station",
-            "version": "v3.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pedroni/laravel-rd-station.git",
-                "reference": "b7dc6967b5f4e1e29c55bac0e38a72d786c5614e"
+                "reference": "c12048d75303cd3d5c634d50cb2c38cdabc7f426"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pedroni/laravel-rd-station/zipball/b7dc6967b5f4e1e29c55bac0e38a72d786c5614e",
-                "reference": "b7dc6967b5f4e1e29c55bac0e38a72d786c5614e",
+                "url": "https://api.github.com/repos/pedroni/laravel-rd-station/zipball/c12048d75303cd3d5c634d50cb2c38cdabc7f426",
+                "reference": "c12048d75303cd3d5c634d50cb2c38cdabc7f426",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.0",
                 "illuminate/contracts": "^8.0",
-                "php": "^8.1",
+                "php": "^8.0",
                 "spatie/laravel-package-tools": "^1.9.2"
             },
             "require-dev": {
@@ -4430,7 +4430,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pedroni/laravel-rd-station/issues",
-                "source": "https://github.com/pedroni/laravel-rd-station/tree/v3.0.0"
+                "source": "https://github.com/pedroni/laravel-rd-station/tree/2.0.0"
             },
             "funding": [
                 {
@@ -4438,7 +4438,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-09-17T17:55:26+00:00"
+            "time": "2022-07-11T17:19:29+00:00"
         },
         {
             "name": "phenx/php-font-lib",
