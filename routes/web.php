@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\BrowserKit\HttpBrowser;
 use App\Http\Livewire\Institucional\CadastroNovo;
-use Pedroni\RdStation\Controllers\OAuthInstall;
-use Pedroni\RdStation\Controllers\OAuthCallback;
+// use Pedroni\RdStation\Controllers\OAuthInstall;
+// use Pedroni\RdStation\Controllers\OAuthCallback;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +18,8 @@ use Pedroni\RdStation\Controllers\OAuthCallback;
 |
 */
 
-Route::get('rd-station/oauth/install', OAuthInstall::class);
-Route::get('rd-station/oauth/callback', OAuthCallback::class); // recommended
+// Route::get('rd-station/oauth/install', OAuthInstall::class);
+// Route::get('rd-station/oauth/callback', OAuthCallback::class); // recommended
 
 Route::middleware(['cookie'])->group(function () {
     Route::get('/cadastro', function () {
