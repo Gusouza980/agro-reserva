@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa62c317167b4f4a6f61ef6b4b756442",
+    "content-hash": "3ffacf6e1843da0c0469186c9051a309",
     "packages": [
         {
             "name": "alaouy/youtube",
@@ -4362,6 +4362,83 @@
                 "source": "https://github.com/paragonie/random_compat"
             },
             "time": "2020-10-15T08:29:30+00:00"
+        },
+        {
+            "name": "pedroni/laravel-rd-station",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pedroni/laravel-rd-station.git",
+                "reference": "b7dc6967b5f4e1e29c55bac0e38a72d786c5614e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pedroni/laravel-rd-station/zipball/b7dc6967b5f4e1e29c55bac0e38a72d786c5614e",
+                "reference": "b7dc6967b5f4e1e29c55bac0e38a72d786c5614e",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0",
+                "illuminate/contracts": "^8.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.9.2"
+            },
+            "require-dev": {
+                "nunomaduro/collision": "^5.10",
+                "nunomaduro/larastan": "^1.0",
+                "orchestra/testbench": "^6.0",
+                "pestphp/pest": "^1.21",
+                "pestphp/pest-plugin-laravel": "^1.1",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pedroni\\RdStation\\RdStationServiceProvider"
+                    ],
+                    "aliases": {
+                        "RdStation": "Pedroni\\RdStation\\Facades\\RdStation"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pedroni\\RdStation\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lucas Pedroni",
+                    "email": "pedronidegodois@hotmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Integrate your Laravel project with RD Station",
+            "homepage": "https://github.com/pedroni/laravel-rd-station",
+            "keywords": [
+                "laravel",
+                "pedroni",
+                "rd-station"
+            ],
+            "support": {
+                "issues": "https://github.com/pedroni/laravel-rd-station/issues",
+                "source": "https://github.com/pedroni/laravel-rd-station/tree/v3.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/pedroni",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-09-17T17:55:26+00:00"
         },
         {
             "name": "phenx/php-font-lib",

@@ -28,6 +28,7 @@
         "livewire/livewire": "^2.10",
         "maatwebsite/excel": "^3.1",
         "owen-it/laravel-auditing": "^13.5",
+        "pedroni/laravel-rd-station": "^3.0",
         "phpmailer/phpmailer": "^6.5",
         "rap2hpoutre/laravel-log-viewer": "^2.0",
         "realrashid/sweet-alert": "^7.0",
