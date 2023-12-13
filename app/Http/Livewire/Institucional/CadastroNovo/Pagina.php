@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Institucional\CadastroNovo;
 
 use App\Facades\Viacep;
+use App\Models\ClienteDocumento;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Cliente;
@@ -126,7 +127,54 @@ class Pagina extends Component
         $this->validate();
         $cliente = Cliente::create($this->form);
         $clienteService = new ClienteService();
-        $clienteService->sendRdstation($cliente);
+        foreach($this->documentos as $documento){
+            if(!empty($documento)){
+                $anexo = new ClienteDocumento;
+                $anexo->cliente_id = $cliente->id;
+                $anexo->tipo = 2;
+                $anexo->caminho = $documento->store('uploads', 'local');
+                $anexo->save();
+            }
+        }
+        foreach($this->comprovantes_residenciais as $comprovante){
+            if(!empty($comprovante)){
+                $anexo = new ClienteDocumento;
+                $anexo->cliente_id = $cliente->id;
+                $anexo->tipo = 0;
+                $anexo->caminho = $comprovante->store('uploads', 'local');
+                $anexo->save();
+            }
+        }
+        foreach($this->contratos_sociais as $contrato){
+            if(!empty($contrato)){
+                $anexo = new ClienteDocumento;
+                $anexo->cliente_id = $cliente->id;
+                $anexo->tipo = 1;
+                $anexo->caminho = $contrato->store('uploads', 'local');
+                $anexo->save();
+            }
+        }
+        foreach($this->fichas_sanitarias as $ficha){
+            if(!empty($ficha)){
+                $anexo = new ClienteDocumento;
+                $anexo->cliente_id = $cliente->id;
+                $anexo->tipo = 3;
+                $anexo->caminho = $ficha->store('uploads', 'local');
+                $anexo->save();
+            }
+        }
+        foreach($this->matriculas_imoveis as $matricula){
+            if(!empty($matricula)){
+                $anexo = new ClienteDocumento;
+                $anexo->cliente_id = $cliente->id;
+                $anexo->tipo = 4;
+                $anexo->caminho = $matricula->store('uploads', 'local');
+                $anexo->save();
+            }
+        }
+        if(env('APP_ENV') != 'local'){
+            $clienteService->sendRdstation($cliente);
+        }
         session()->put(["cliente" => $cliente]);
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Cadastro realizado com sucesso!']);
         return redirect()->route('index');

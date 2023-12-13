@@ -22,11 +22,11 @@ class ClienteService
             'email' => $cliente->email,
             'name' => $cliente->nome_dono,
             'conversion_identifier' => 'cadastro',
-            'telefone' => $cliente->telefone,
-            'rg' => $cliente->rg,
-            'cpf' => $cliente->cpf,
-            'nascimento' => $cliente->nascimento,
-            'estado_civil' => config("clientes.estados_civis.$cliente->estado_civil") ?? '',
+            'cf_whatsapp' => ($cliente->telefone) ?? '',
+            'cf_rg' => $cliente->rg,
+            'cf_cpf' => $cliente->cpf,
+            'cf_data_de_nascimento' => $cliente->nascimento,
+            'cf_estado_civil' => config("clientes.estados_civis.$cliente->estado_civil") ?? '',
         ]);
     }
 }
