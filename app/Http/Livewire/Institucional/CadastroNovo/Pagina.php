@@ -125,6 +125,7 @@ class Pagina extends Component
 
     public function salvar(){
         $this->validate();
+        $this->form['estado_civil'] = config("clientes.estados_civis_nomes")[$this->form['estado_civil']];
         $cliente = Cliente::create($this->form);
         $clienteService = new ClienteService();
         foreach($this->documentos as $documento){

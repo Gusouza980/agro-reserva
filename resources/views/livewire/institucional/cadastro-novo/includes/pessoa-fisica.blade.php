@@ -32,7 +32,7 @@
             <select class="w-full form-input-text mt-[5px]" name="form.estado_civil" wire:model="form.estado_civil">
                 <option value="">Selecione</option>
                 @foreach(config('clientes.estados_civis') as $key => $estado)
-                    <option value="{{ $key }}">{{ $estado }}</option>
+                    <option value="{{ $estado }}">{{ $estado }}</option>
                 @endforeach
             </select>
             <div class="w-full text-[12px] text-red-600 font-inter">

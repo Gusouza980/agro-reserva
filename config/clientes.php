@@ -38,6 +38,13 @@
             3 => "Casado(a)",
             4 => "União Estável",
         ],
+        "estados_civis_nomes" => [
+            "Solteiro(a)" => 0,
+            "Divorciado(a)" => 1,
+            "Viuvo(a)" => 2,
+            "Casado(a)" => 3,
+            "União Estável" => 4
+        ],
         "tipos_documento" => [
             0 => "Comprovante de Residência",
             1 => "Contrato Social",
