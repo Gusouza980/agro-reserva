@@ -14,9 +14,13 @@
                 </div>
                 @include('livewire.institucional.cadastro-novo.includes.informacoes-primarias')
                 @if($form['tipo_pessoa'] == 0)
-                    @include('livewire.institucional.cadastro-novo.includes.pessoa-fisica')
+                    <div class="w-full" wire:key="pessoa-fisica">
+                        @include('livewire.institucional.cadastro-novo.includes.pessoa-fisica')
+                    </div>
                 @else
-                    @include('livewire.institucional.cadastro-novo.includes.pessoa-juridica')
+                    <div class="w-full" wire:key="pessoa-juridica">
+                        @include('livewire.institucional.cadastro-novo.includes.pessoa-juridica')
+                    </div>
                 @endif
                 @include('livewire.institucional.cadastro-novo.includes.propriedade-rural')
 
