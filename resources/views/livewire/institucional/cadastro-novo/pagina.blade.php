@@ -26,10 +26,13 @@
                 </div>
                 <div class="flex items-center w-full mt-3">
                     <input type="checkbox" class="mr-2 checkbox" wire:model.defer="form.termos_aceitos" required/>
-                    <span class="mt-1 text-black font-montserrat text-[14px] font-medium">Li e concordo com os <u>TERMOS E CONDIÇÕES DE USO</u> do site e <u>POLITICA DE PRIVACIDADE</u></span>
+                    <span class="mt-1 text-black font-montserrat text-[14px] font-medium">Li e concordo com os <a href="{{ route('termos') }}"><u>TERMOS E CONDIÇÕES DE USO</u></a> do site e <a href="{{ route('politicas') }}"><u>POLITICA DE PRIVACIDADE</u></a></span>
                 </div>
-                <div class="w-full mt-8 text-center">
+                <div class="w-full mt-8 text-center" wire:loading.class="hidden" wire:target="salvar">
                     <button class="text-white rounded-[0.5rem] btn-warning text-[20px] waving-hand font-montserrat font-medium normal-case px-4 py-[16px] animation duration-500 hover:scale-105">Cadastrar</button>
+                </div>
+                <div class="w-full mt-8 text-center hidden" wire:loading.class.remove="hidden" wire:target="salvar">
+                    <img src="{{ asset('imagens/gif_relogio.gif') }}" width="40" class="mx-auto" alt="">
                 </div>
             </form>
             <div class="w-full text-center mt-[40px] text-gray-600 font-montserrat font-semibold">

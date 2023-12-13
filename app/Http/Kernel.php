@@ -70,5 +70,6 @@ class Kernel extends HttpKernel
         'cliente_logado' => \App\Http\Middleware\ClienteLogado::class,
         'popup' => \App\Http\Middleware\MostrarPopup::class,
         'cookie' => \App\Http\Middleware\VerificaCookie::class,
+        'nao_logado' => \App\Http\Middleware\NaoLogado::class,
     ];
 }
