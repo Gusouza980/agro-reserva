@@ -52,6 +52,10 @@ class Cliente extends Model
         return $this->belongsTo(Assessor::class);
     }
 
+    public function documentos(){
+        return $this->hasMany(ClienteDocumento::class);
+    }
+
     public function setSenhaAttribute($value){
         $this->attributes["senha"] = Hash::make($value);
     }

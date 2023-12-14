@@ -3,9 +3,9 @@
         <button type="submit" class="w-8 h-8 bg-orange-500 absolute top-1 right-1 rounded-lg"><i class="fas fa-floppy-disk text-white"></i></button>
         <div class="w-full grid grid-cols-1 md:grid-cols-4 2xl:grid-cols-5 gap-3">
             <label class="block">
-                <span>Nome Fantasia</span>
+                <span>Fazenda</span>
                 <span class="relative mt-1.5 flex">
-                    <input wire:model.defer="cliente.nome_fantasia" class="input-base" placeholder="" type="text" maxlength="100">
+                    <input wire:model.defer="cliente.nome_fazenda" class="input-base" placeholder="" type="text" maxlength="150">
                 </span>
             </label>
             <label class="block">

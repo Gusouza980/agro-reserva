@@ -15,12 +15,6 @@
                 </span>
             </label>
             <label class="block">
-                <span>Fazenda</span>
-                <span class="relative mt-1.5 flex">
-                    <input wire:model.defer="cliente.nome_fazenda" class="input-base" placeholder="" type="text" maxlength="150">
-                </span>
-            </label>
-            <label class="block">
                 <span>Data de Nascimento</span>
                 <span class="relative mt-1.5 flex">
                     <input wire:model.defer="cliente.nascimento" class="input-base" placeholder="" type="date">
@@ -36,7 +30,25 @@
                 </span>
             </label>
             <label class="block">
-                <span>Telefone/Whatsapp</span>
+                <span>Nome do Cônjugue</span>
+                <span class="relative mt-1.5 flex">
+                    <input wire:model.defer="cliente.nome_conjugue" class="input-base" placeholder="" type="text" required maxlength="100">
+                </span>
+            </label>
+            <label class="block">
+                <span>CPF do Cônjugue</span>
+                <span class="relative mt-1.5 flex">
+                    <input wire:model.defer="cliente.cpf_conjugue" class="input-base" placeholder="" type="text" required maxlength="100">
+                </span>
+            </label>
+            <label class="block">
+                <span>Telefone</span>
+                <span class="relative mt-1.5 flex">
+                    <input wire:model.defer="cliente.telefone" class="input-base tel" placeholder="" type="text" maxlength="50">
+                </span>
+            </label>
+            <label class="block">
+                <span>Whatsapp</span>
                 <span class="relative mt-1.5 flex">
                     <input wire:model.defer="cliente.whatsapp" class="input-base tel" placeholder="" type="text" maxlength="50">
                 </span>
@@ -104,13 +116,13 @@
             <label class="block">
                 <span>Complemento</span>
                 <span class="relative mt-1.5 flex">
-                    <input wire:model.defer="cliente.complemento" class="input-base" placeholder="" type="text" required maxlength="250">
+                    <input wire:model.defer="cliente.complemento" class="input-base" placeholder="" type="text" maxlength="250">
                 </span>
             </label>
             <label class="block">
                 <span>Assessor</span>
                 <span class="relative mt-1.5 flex">
-                    <select wire:model.defer="cliente.assessor_id" class="input-base" required>
+                    <select wire:model.defer="cliente.assessor_id" class="input-base">
                         <option value="">Nenhum</option>
                         @foreach($this->getAssessoresProperty() as $assessor)
                             <option value="{{ $assessor->id }}">{{ $assessor->nome }}</option>

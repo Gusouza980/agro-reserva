@@ -16,14 +16,21 @@
                 @include('sistema.clientes.includes.informacoes-propriedade')
                 @break
             @case(2)
-                @include('sistema.clientes.includes.referencias')
+                @include('sistema.clientes.includes.informacoes-comerciais')
                 @break
             @case(3)
-                @include('sistema.clientes.includes.visitas')
+                @include('sistema.clientes.includes.documentos')
                 @break
             @case(4)
+                @include('sistema.clientes.includes.referencias')
+                @break
+            @case(5)
+                @include('sistema.clientes.includes.visitas')
+                @break
+            @case(6)
                 @include('sistema.clientes.includes.interesses')
                 @break
+            
         @endswitch
     </div>
     <x-loading></x-loading>
