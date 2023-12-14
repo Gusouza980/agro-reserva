@@ -30,6 +30,17 @@
                 </span>
             </label>
             <label class="block">
+                <span>Tipo de Pessoa</span>
+                <span class="relative mt-1.5 flex">
+                    <select wire:model.defer="cliente.estado_civil" class="input-base" required>
+                        <option value="">Selecionar</option>
+                        @foreach(config('clientes.estados_civis') as $key => $estado)
+                            <option value="{{ $key }}">{{ $estado }}</option>
+                        @endforeach
+                    </select>
+                </span>
+            </label>
+            <label class="block">
                 <span>Nome do Cônjugue</span>
                 <span class="relative mt-1.5 flex">
                     <input wire:model.defer="cliente.nome_conjugue" class="input-base" placeholder="" type="text" required maxlength="100">
