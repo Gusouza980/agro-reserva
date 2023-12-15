@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Facades;
+use Exception;
 use Illuminate\Support\Facades\Facade;
 
 class Viacep extends Facade
@@ -14,8 +15,13 @@ class Viacep extends Facade
         $cep = limparString($cep);
         if(strlen($cep) === 8){
             $url = "https://viacep.com.br/ws/$cep/json/";
-            $data = json_decode(file_get_contents($url), true);
-            return $data;
+            try{
+                $content = file_get_contents($url);
+                $data = json_decode($content, true);
+                return $data;
+            }catch(Exception $e){
+                return false;
+            }
         }else{
             return false;
         }
