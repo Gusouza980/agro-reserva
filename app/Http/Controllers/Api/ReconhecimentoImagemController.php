@@ -10,7 +10,7 @@ class ReconhecimentoImagemController extends Controller
 {
     public function verificarIdentidade(){
         $imagePath = public_path('teste_documento.png');
-        $text = (new TesseractOCR($imagePath))->run();
+        $text = (new TesseractOCR($imagePath))->lang('por')->run();
         dd($text);
     }
 }
