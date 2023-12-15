@@ -9,7 +9,7 @@ use thiagoalessio\TesseractOCR\TesseractOCR;
 class ReconhecimentoImagemController extends Controller
 {
     public function verificarIdentidade(){
-        $imagePath = '/teste_documento.png';
+        $imagePath = public_path('teste_documento.png');
         $text = (new TesseractOCR($imagePath))->run();
         dd($text);
     }
