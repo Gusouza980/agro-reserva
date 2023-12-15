@@ -21,6 +21,7 @@ use Pedroni\RdStation\Controllers\OAuthCallback;
 Route::get('rd-station/oauth/install', OAuthInstall::class);
 Route::get('rd-station/oauth/callback', OAuthCallback::class); // recommended
 
+
 Route::middleware(['cookie'])->group(function () {
     // Route::get('/cadastro', function () {
     //     return view('cadastro.index');
