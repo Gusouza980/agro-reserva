@@ -40,9 +40,7 @@
 
 <x-institucional.comprar_vender></x-institucional.comprar_vender>
 
-<x-institucional.navegue-racas></x-institucional.navegue-racas>
-
-@livewire("institucional.depoimentos")
+{{-- <x-institucional.navegue-racas></x-institucional.navegue-racas> --}}
 
 {{-- <x-institucional.destaques :banners="$banners"></x-institucional.destaques> --}}
 

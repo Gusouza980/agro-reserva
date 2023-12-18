@@ -197,6 +197,10 @@
                 </div>
             </div>
         </div>
+
+        @livewire("institucional.depoimentos")
+
+        
         <div class="mt-4 row">
             <div class="col-12">
                 <a href="{{route('blog')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="mr-2 fas fa-arrow-left"></i> Voltar</span></a>
