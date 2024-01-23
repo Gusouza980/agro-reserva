@@ -197,7 +197,7 @@ class Pagina extends Component
     }
 
     public function createAgriskClient(){
-        if(!$this->form['cpf'] || !$this->form['nascimento']){
+        if(!isset($this->form['cpf']) || !isset($this->form['nascimento'])){
             return true;
         }
         $response = AgriskFacade::createClient(\Util::limparString($this->form['cpf']), date("d/m/Y", strtotime($this->form['nascimento'])));
