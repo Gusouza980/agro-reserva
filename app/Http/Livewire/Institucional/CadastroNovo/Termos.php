@@ -54,16 +54,17 @@ class Termos extends Component
                 $this->erros = [
                     'Não foi possível gerar os termos de análise de crédito. Por favor, entre em contato com o comercial para obter mais informações.'
                 ];
-                return;
+                return '<span style="color: red;">Não foi possível gerar os termos de análise de crédito. Por favor, verifique seu CPF e data de nascimento ou entre em contato com o comercial para obter mais informações.</span>';
             }else{
                 $agriskClient = AgriskFacade::clientDetail($response->id);
                 if($agriskClient instanceof ApiaryError){
                     $this->erros = $agriskClient->getArrayMessages();
-                    return;
+                    return implode('<br>', $this->erros);
                 }else{
                     $response = AgriskFacade::createTerms($agriskClient);
                     if($response instanceof ApiaryError){
                         $this->erros = $response->getArrayMessages();
+                        return implode('<br>', $this->erros);
                     }else{
                         $this->cliente->agriskId = $agriskClient->id;
                         $this->cliente->agriskTaxId = $this->cliente->cpf;
