@@ -132,18 +132,12 @@ class Pagina extends Component
 
     public function salvar(){
         $this->validate();
-<<<<<<< HEAD
-	if(isset($this->form['estado_civil']) && !empty($this->form['estado_civil'])){
-		$this->form['estado_civil'] = config('clientes.estados_civis_nomes')[$this->form['estado_civil']];
-	}
-=======
         if(isset($this->form['estado_civil'])){
             $this->form['estado_civil'] = config("clientes.estados_civis_nomes")[$this->form['estado_civil']];
         }
         
         $this->createAgriskClient();
 
->>>>>>> 99d3ccf8f74b5cb44fe975d69ede570a0898979c
         $cliente = Cliente::create($this->form);
         $clienteService = new ClienteService();
         foreach($this->documentos as $documento){
