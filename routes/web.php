@@ -58,6 +58,7 @@ Route::middleware(['cookie'])->group(function () {
     //     return redirect()->route('cadastro');
     // })->name("cadastro.novo");
     Route::get('/cadastro', CadastroNovo\Pagina::class)->middleware('nao_logado')->name("cadastro");
+    Route::get('/cadastro/termos', CadastroNovo\Termos::class)->middleware('cliente_logado')->name("cadastro.termos");
 
     Route::get('/pesquisa', [\App\Http\Controllers\SiteController::class, 'pesquisa'])->name("pesquisa");
     Route::get('/raca/{slug}', [\App\Http\Controllers\SiteController::class, 'raca'])->name("raca");
@@ -99,13 +100,13 @@ Route::middleware(['cookie'])->group(function () {
         Route::get('/carrinho/concluido',  [\App\Http\Controllers\CarrinhoController::class, 'concluido'])->name("carrinho.concluido");
     
         Route::get('/conta', [\App\Http\Controllers\ContaController::class, 'index'])->name("conta.index");
+        Route::get('/conta/compra/{venda}', [\App\Http\Controllers\ContaController::class, 'compra'])->name("conta.compra");
         Route::get('/conta/reserva/{venda}', [\App\Http\Controllers\ContaController::class, 'reserva'])->name("conta.reserva");
         Route::get('/conta/reserva/comprovante/{venda}', [\App\Http\Controllers\ContaController::class, 'comprovante_reserva'])->name("conta.reserva.comprovante");
         Route::post('/conta/senha/alterar', [\App\Http\Controllers\ContaController::class, 'alterar_senha'])->name("conta.senha.alterar");
         Route::get('/conta/boleto/download/{boleto}', [\App\Http\Controllers\ContaController::class, 'baixar_boleto'])->name("conta.boleto.download");
     
         Route::get('/conta/reserva/{reserva}/relatorio/', [\App\Http\Controllers\ContaController::class, 'relatorio_vendas'])->name("conta.reserva.relatorio");
-
     });
     
     // Route::get('/contato', [\App\Http\Controllers\SiteController::class, 'contato'])->name("contato");

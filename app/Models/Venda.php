@@ -9,6 +9,10 @@ class Venda extends Model
 {
     use HasFactory;
 
+    protected $append = [
+        'num_parcelas'
+    ];
+
     public function assessor(){
         return $this->belongsTo(Assessor::class);
     }
@@ -39,5 +43,9 @@ class Venda extends Model
 
     public function parcelas(){
         return $this->hasMany(VendaParcela::class);
+    }
+
+    public function getNumParcelasAttribute(){
+        return $this->attributes['parcelas'];
     }
 }

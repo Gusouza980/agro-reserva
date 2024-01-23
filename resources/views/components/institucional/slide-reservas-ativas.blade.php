@@ -1,6 +1,6 @@
-<div class="w-full px-0 py-5" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative; min-height: 600px;">
+<div class="w-full px-0 py-5" style="position: relative; min-height: 600px;">
     <div class="relative mx-auto w1200">
-        <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-reservas-ativas" x-show="show" x-transition.opacity.duration.1500ms>
+        <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar" id="slide-reservas-ativas">
             <div class="flex flex-nowrap">
                 @foreach($reservas->sortBy([['encerrada', 'asc'], ['inicio', 'desc']]) as $reserva)
                 <div class="inline-block mx-[6px] slide-item" style="border-radius: 15px; overflow: hidden; position: relative;">
@@ -8,7 +8,7 @@
                         <a href="{{ asset($reserva->catalogo) }}" target="_blank" title="Catálogo - {{ $reserva->fazenda->nome_fazenda }}" class="w-10 h-10 rounded-full flex items-center justify-center bg-orange-600 text-white absolute top-0 right-0 transition duration-200 hover:scale-105"><i class="fas fa-file fa-lg"></i></a>
                     @endif
                     <img src="{{ asset($reserva->imagem_card) }}" class="w-100 @if($reserva->encerrada) brightness-[0.30]" @endif alt="">
-                    <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
+                    <div class="flex items-center justify-center absolute bottom-0 left-0 w-full h-[150px]">
                         <div class="text-center">
                             @if(!$reserva->encerrada)
                                 @if($reserva->mostrar_datas)
@@ -41,8 +41,8 @@
                 @endforeach
             </div>
         </div>
-        <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-reservas-ativas-left" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); left: -50px;" alt="">
-        <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-reservas-ativas-right" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); right: -50px;" alt="">
+        <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-reservas-ativas-left" class="absolute cpointer hidden md:block" height="25" style="top: calc(50% - 25px); left: -50px;" alt="">
+        <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-reservas-ativas-right" class="absolute cpointer hidden md:block" height="25" style="top: calc(50% - 25px); right: -50px;" alt="">
     </div>
     
 </div>

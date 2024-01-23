@@ -6,17 +6,13 @@ use App\Classes\Agrisk\Apiary\ApiaryError;
 
 abstract class Apiary
 {
-    public $url = "https://api.agrisk.digital/";
-    public $url_terms = "https://scr-auth-v2.agrisk.digital/";
-    public $credential = "11102165646";
-    public $password = "Lgserrania22@";
-    public $companyName = "Agro Reserva Pecuaria Digital LTDA";
-    public $companyId = "0676c982-bdad-4f53-93af-ef829bb22148";
-    public $companyTaxId = "41893302000113";
+    protected $url;
+    protected $url_terms;
     private $authenticated = false;
-    private $lastError;
 
     public $token;
+
+    public $config;
 
     // ROTAS
     public $routes = [
@@ -27,14 +23,13 @@ abstract class Apiary
     ];
 
     public function __construct(){
-        
-        if(env("AGRISK_ENV") == 'homologacao'){
-            $this->url = env("AGRISK_URL_HOMOLOGACAO");
-        }
+        $this->config = config("agrisk");
+        $this->url = $this->config["url"];
+        $this->url_terms = $this->config['url_terms'];
 
         $response = Http::post($this->url . $this->routes["login"], [
-            'credential' => $this->credential,
-            'password' => $this->password,
+            'credential' => $this->config['apiary_credential'],
+            'password' => $this->config['apiary_password'],
         ]);
 
         if($response->status() == 200){
@@ -42,28 +37,17 @@ abstract class Apiary
             $this->token = $response->json()["token"];
         }else{
             $this->authenticated = false;
-            $this->lastError = $response->object();
             \Log::emergency('Erro na autenticação da API', ["oject" => $response->object()]);
         }
     }
 
+    public function getHeaders(){
+        return [
+            'Content-Type' => 'application/json'
+        ];
+    }
+
     public function isAuthenticated(){
         return $this->authenticated;
-    }
-
-    public function getLastError(){
-        if($this->lastError){
-            return $this->lastError;
-        }else{
-            return "Sem informações";
-        }
-    }
-
-    public function checkError($response){
-        if(isset($response->statusCode) || (isset($response->status) && $response->status == 'error')){
-            return true;
-        }else{
-            return false;
-        }
     }
 }

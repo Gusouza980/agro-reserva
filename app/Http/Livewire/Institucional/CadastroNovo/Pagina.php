@@ -2,12 +2,16 @@
 
 namespace App\Http\Livewire\Institucional\CadastroNovo;
 
+use App\Classes\Agrisk\Apiary\ApiaryClient;
+use Illuminate\Validation\ValidationException;
+use App\Facades\AgriskFacade;
 use App\Facades\Viacep;
 use App\Models\ClienteDocumento;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Cliente;
 use App\Services\ClienteService;
+use App\Classes\Agrisk\Apiary\ApiaryError;
 class Pagina extends Component
 {
     use WithFileUploads;
@@ -56,6 +60,9 @@ class Pagina extends Component
         'form.cidade_comercial' => 'max:50',
         'form.estado_comercial' => 'max:2',
         'form.pais_comercial' => 'max:50',
+
+        'form.agriskId' => 'nullable',
+        'form.agriskTaxId' => 'nullable',
 
         'comprovante_residencial.*' => 'nullable|file|max:3048',
         'contrato_social.*' => 'nullable|file|max:3048',
@@ -125,7 +132,12 @@ class Pagina extends Component
 
     public function salvar(){
         $this->validate();
-        $this->form['estado_civil'] = config("clientes.estados_civis_nomes")[$this->form['estado_civil']];
+        if(isset($this->form['estado_civil'])){
+            $this->form['estado_civil'] = config("clientes.estados_civis_nomes")[$this->form['estado_civil']];
+        }
+        
+        $this->createAgriskClient();
+
         $cliente = Cliente::create($this->form);
         $clienteService = new ClienteService();
         foreach($this->documentos as $documento){
@@ -177,8 +189,42 @@ class Pagina extends Component
             $clienteService->sendRdstation($cliente);
         }
         session()->put(["cliente" => $cliente]);
-        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Cadastro realizado com sucesso!']);
-        return redirect()->route('index');
+        if($cliente->agriskId){
+            return redirect()->route('cadastro.termos');
+        }else{
+            return redirect()->route('index');
+        }
+    }
+
+    public function createAgriskClient(){
+        if(!$this->form['cpf'] || !$this->form['nascimento']){
+            return true;
+        }
+        $response = AgriskFacade::createClient(\Util::limparString($this->form['cpf']), date("d/m/Y", strtotime($this->form['nascimento'])));
+        if($response instanceof ApiaryError){
+            throw ValidationException::withMessages([
+                'form.cpf' => implode(',', $response->getArrayMessages())
+            ]);
+        }else{
+            $agriskClient = AgriskFacade::clientDetail($response->id);
+            if($agriskClient instanceof ApiaryError){
+                throw ValidationException::withMessages([
+                    'form.cpf' => implode(',', $agriskClient->getArrayMessages())
+                ]);
+            }else{
+                $response = AgriskFacade::createTerms($agriskClient);
+                if($response instanceof ApiaryError){
+                    throw ValidationException::withMessages([
+                        'form.cpf' => implode(',', $response->getArrayMessages())
+                    ]);
+                }else{
+                    $this->form['agriskId'] = $agriskClient->id;
+                    $this->form['agriskTaxId'] = $this->form['cpf'];
+                    $this->form['agriskTermosToken'] = AgriskFacade::getTermsAuthorizationToken($response->url);
+                }
+            }
+        }
+        return true;
     }
 
     public function updated($propertyName, $value){
@@ -236,7 +282,7 @@ class Pagina extends Component
     }
 
     public function mount(){
-        $this->form['tipo_pessoa'] = 0;
+        $this->form['pessoa_fisica'] = 1;
     }
     public function render()
     {

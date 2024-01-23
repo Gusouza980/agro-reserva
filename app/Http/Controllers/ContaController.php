@@ -21,9 +21,17 @@ class ContaController extends Controller
     public function index(){
         if(session()->get("cliente")){
             $cliente = Cliente::find(session()->get("cliente")["id"]);
-            return view("cliente.index", ["cliente" => $cliente]);
+            return view("cliente.index2", ["cliente" => $cliente]);
         }else{
             return redirect()->route("index");
+        }
+    }
+
+    public function compra(Venda $venda){
+        if($venda->cliente_id != session()->get("cliente")["id"]){
+            return redirect()->route("index");
+        }else{
+            return view("cliente.compra", ["venda" => $venda]);
         }
     }
 

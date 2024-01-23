@@ -51,6 +51,18 @@
             2 => "Documento",
             3 => "Ficha Sanitária",
             4 => "Matricula do Imóvel"
+        ],
+        "aprovacao" => [
+            "status" => [
+                0 => "Pendente",
+                1 => "Aprovado",
+                -1 => "Reprovado"
+            ],
+            "cor" => [
+                0 => "bg-yellow-600",
+                1 => "bg-emerald-400",
+                -1 => "bg-red-600"
+            ]
         ]
     ]
 

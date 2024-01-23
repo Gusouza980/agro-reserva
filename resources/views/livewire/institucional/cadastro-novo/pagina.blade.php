@@ -7,13 +7,13 @@
             <a href="{{ route('index') }}" class="cursor-pointer transition duration-300 text-[14px] text-[#D7D8E4] hover:scale-105 hover:text-white"><i class="mr-2 fas fa-chevron-left"></i> <span>Voltar</span></a>
         </div>
         <div class="w-full px-6 md:px-20 pt-10 pb-10 md:pb-20 mt-3 bg-white rounded-[30px] shadow-[0px_6px_60px_0px_rgba(0,0,0,0.06)]">
-            <form class="flex flex-wrap w-full mt-4" wire:submit.prevent='salvar' x-data="{tipo_pessoa: @entangle('form.tipo_pessoa')}">
+            <form class="flex flex-wrap w-full mt-4" wire:submit.prevent='salvar' x-data="{pessoa_fisica: @entangle('form.pessoa_fisica')}">
                 <div class="w-full flex items-center justify-center gap-4">
-                    <button type="button" wire:click="$set('form.tipo_pessoa', 0)" class="w-[170px] md:w-[200px] rounded-[50px] px-[15px] md:px-[30px] py-[5px] border border-[#FFB02A] text-[14px] md:text-[15px] transition duration-200 @if($form['tipo_pessoa'] == 0) bg-[#FFB02A] text-[#3A4055] @else text-[#ACAEB7] hover:font-semibold hover:text-[#3A4055] @endif">Pessoa Física</button>
-                    <button type="button" wire:click="$set('form.tipo_pessoa', 1)" class="w-[170px] md:w-[200px] rounded-[50px] px-[15px] md:px-[30px] py-[5px] border border-[#FFB02A] text-[14px] md:text-[15px] transition duration-200 @if($form['tipo_pessoa'] == 1) bg-[#FFB02A] text-[#3A4055] @else text-[#ACAEB7] hover:font-semibold hover:text-[#3A4055] @endif">Pessoa Jurídica</button>
+                    <button type="button" wire:click="$set('form.pessoa_fisica', 1)" class="w-[170px] md:w-[200px] rounded-[50px] px-[15px] md:px-[30px] py-[5px] border border-[#FFB02A] text-[14px] md:text-[15px] transition duration-200 @if($form['pessoa_fisica'] == 1) bg-[#FFB02A] text-[#3A4055] @else text-[#ACAEB7] hover:font-semibold hover:text-[#3A4055] @endif">Pessoa Física</button>
+                    <button type="button" wire:click="$set('form.pessoa_fisica', 0)" class="w-[170px] md:w-[200px] rounded-[50px] px-[15px] md:px-[30px] py-[5px] border border-[#FFB02A] text-[14px] md:text-[15px] transition duration-200 @if($form['pessoa_fisica'] == 0) bg-[#FFB02A] text-[#3A4055] @else text-[#ACAEB7] hover:font-semibold hover:text-[#3A4055] @endif">Pessoa Jurídica</button>
                 </div>
                 @include('livewire.institucional.cadastro-novo.includes.informacoes-primarias')
-                @if($form['tipo_pessoa'] == 0)
+                @if($form['pessoa_fisica'] == 1)
                     <div class="w-full" wire:key="pessoa-fisica">
                         @include('livewire.institucional.cadastro-novo.includes.pessoa-fisica')
                     </div>
@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    {{-- <x-loading wire:target="form.tipo_pessoa"></x-loading> --}}
+    {{-- <x-loading wire:target="form.pessoa_fisica"></x-loading> --}}
 </div>
 
 @push("scripts")

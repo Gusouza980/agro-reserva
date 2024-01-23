@@ -1,6 +1,6 @@
-<div x-data="{mostrarCarrinho: @entangle('mostrarCarrinho')}" wire:init='init'>
-    <div x-show="mostrarCarrinho" x-cloak @click.outside="mostrarCarrinho = false" class="flex flex-col fixed top-0 right-0 h-full pt-5 px-3 bg-[#FFFFFF] border border-solid border-slate-400 shadow-md w-full md:w-[360px] z-50">
-        <i class="fas fa-times text-[#80828b] fa-lg absolute top-5 right-5 hover:scale-110 duration-300 cpointer" @click="mostrarCarrinho = false"></i>
+<div wire:init='init' x-data>
+    <div x-show="openSideCart" x-cloak @click.outside="openSideCart = false" class="flex flex-col fixed top-0 right-0 h-full pt-5 px-3 bg-[#FFFFFF] border border-solid border-slate-400 shadow-md w-full md:w-[360px] z-50">
+        <i class="fas fa-times text-[#80828b] fa-lg absolute top-5 right-5 hover:scale-110 duration-300 cpointer" @click="openSideCart = false"></i>
         <div class="flex flex-row w-full text-center">
             <div class="flex flex-col flex-wrap justify-center mx-auto">
                 <img src="{{ asset('imagens/icone-caminhao-lateral.svg') }}" class="w-full max-w-[60px] md:max-w-[100px] mx-auto" alt="">
@@ -47,7 +47,7 @@
                         @endforeach
                     </div>
                     <div class="px-6 md:px-0 fixed md:absolute bottom-0 left-0 py-6 grid grid-cols-2 mt-4 gap-x-3 border-t border-[#707070] border-solid w-full">
-                        <button class="border-2 border-slate-400 text-[#9AA2B2] text-[17px] py-1 w-full transition duration-300 font-montserrat font-medium rounded-[10px] hover:bg-[#15171E] hover:text-white" @click="mostrarCarrinho = false">Continuar</button>
+                        <button class="border-2 border-slate-400 text-[#9AA2B2] text-[17px] py-1 w-full transition duration-300 font-montserrat font-medium rounded-[10px] hover:bg-[#15171E] hover:text-white" @click="openSideCart = false">Continuar</button>
                         <button onclick="window.location.href='{{ route('carrinho') }}'" class="border border-[#27C45B] bg-[#27C45B] hover:bg-[#1e9b48] text-[17px] text-white py-1 w-full font-montserrat font-medium rounded-[10px]">Finalizar</button>
                     </div>
                 @else
@@ -63,8 +63,9 @@
 
 @push("scripts")
     <script>
-        $(document).ready(function(){
-            Livewire.emit("atualizaContagemLotes");
-        })
+        // window.addEventListener('atualizaContagemLotes', (event) => {
+        //     var alpineElement = document.querySelector('#app');
+        //     alpineElement.__x.$data.countProducts = event.detail;
+        // });
     </script>
 @endpush

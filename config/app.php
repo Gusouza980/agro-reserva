@@ -183,6 +183,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // MY PROVIDERS
+        App\Providers\AgriskServiceProvider::class,
+
     ],
 
     /*
@@ -244,6 +247,7 @@ return [
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'DiscordAlert' => Spatie\DiscordAlerts\Facades\DiscordAlert::class,
         'Viacep' => App\Facades\Viacep::class,
+        'Agrisk' => App\Facades\AgriskFacade::class,
     ],
 
 ];

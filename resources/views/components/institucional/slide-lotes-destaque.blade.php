@@ -1,12 +1,12 @@
-<div class="w-full px-0 py-2 pb-5" x-data="{ show: false }" x-intersect.enter="show = true"  style="position: relative;">
+<div class="w-full pl-1 md:pl-0 py-2 pb-5" style="position: relative;">
     <div class="relative mx-auto w1200">
-        <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar @if($lotes->count() < 4) justify-center @endif" id="slide-lotes-destaque-{!! $identificador !!}" x-show="show" x-transition.opacity.duration.1500ms>
+        <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar @if($lotes->count() < 4) justify-center @endif" id="slide-lotes-destaque-{!! $identificador !!}">
             <div class="flex flex-nowrap space-x-[6px]">
                 @foreach ($lotes->where("ativo", true) as $lote)
-                    <div class="inline-block py-2 slide-item caixa-lote-home cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
+                    <div class="inline-block py-2 slide-item cpointer" onclick="window.location.href = '{{route('fazenda.lote', ['fazenda' => $lote->fazenda->slug, 'lote' => $lote, 'reserva' => $lote->reserva])}}'">
                         <div class="caixa-lote-home-imagem"
                             style="background: url(/{{ $lote->preview }}); background-size: cover; background-position: center; width: 350px; height: 250px; border-radius: 15px; position: relative; overflow: hidden; border: 1px solid #676464;">
-                            {{-- <div class="text-center justify-content-center align-items-center lote-home-hover">
+                            {{-- <div class="text-center justify-center items-center lote-home-hover">
                                 <p style="margin-top: 12px;">{{ __('messages.botoes.compre_agora') }}</p>
                             </div> --}}
                             @if($lote->reservado || $lote->reserva->encerrada)
@@ -19,12 +19,12 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="px-4 mt-3 row align-items-center justify-content-start">
-                            <div class="caixa-lote-home-logo d-flex align-items-center justify-content-center">
+                        <div class="px-4 mt-3 flex items-center justify-start">
+                            {{-- <div class="w-14 h-14 flex items-center justify-center border rouded-lg px-1 py-1">
                                 <img src="{{ asset($lote->fazenda->logo) }}" class="" alt="">
-                            </div>
-                            <div class="ml-4">
-                                <div class="d-flex justify-content-start align-items-center">
+                            </div> --}}
+                            <div>
+                                <div class="flex justify-start items-center">
                                     <div>
                                         <button class="px-2 badge-lote-home">LOTE {{str_pad($lote->numero, 2, "0", STR_PAD_LEFT)}}@if($lote->letra){{$lote->letra}}@endif</button>
                                     </div>
@@ -45,7 +45,7 @@
                 
                 {{-- <div class="inline-block mx-[6px] slide-item" style="border-radius: 15px; overflow: hidden; position: relative;">
                     <img src="{{ asset('imagens/stories.jpg') }}" class="w-100" alt="">
-                    <div class="d-flex align-items-center justify-content-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
+                    <div class="flex items-center justify-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
                         <div class="text-center">
                             <div>
                                 <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
@@ -61,8 +61,8 @@
                 </div> --}}
             </div>
         </div>
-        <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-lotes-destaque-{!! $identificador !!}-left" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); left: -50px;" alt="">
-        <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-lotes-destaque-{!! $identificador !!}-right" class="absolute cpointer d-none d-md-block md:d-block" height="25" style="top: calc(50% - 25px); right: -50px;" alt="">
+        <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-lotes-destaque-{!! $identificador !!}-left" class="absolute cpointer hidden md:block" height="25" style="top: calc(50% - 25px); left: -50px;" alt="">
+        <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-lotes-destaque-{!! $identificador !!}-right" class="absolute cpointer hidden md:block" height="25" style="top: calc(50% - 25px); right: -50px;" alt="">
     </div>
     
 </div>
