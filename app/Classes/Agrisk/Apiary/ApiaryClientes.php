@@ -66,8 +66,8 @@ class ApiaryClientes extends Apiary
     }
 
     public function verificarCodigo($token, $otpToken, $deviceCode){
-        // $ip = $_SERVER['REMOTE_ADDR'];
-        $ip = '187.102.60.187';
+        $ip = $_SERVER['REMOTE_ADDR'];
+        // $ip = '187.102.60.187';
         $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
         $geolocalizacao = explode(",", $details->loc);
         $latitude = $geolocalizacao[0];
