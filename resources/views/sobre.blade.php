@@ -18,11 +18,6 @@
             <div class="row text-sobre">
                 <h1 class="mb-3">Quem somos</h1>
                 <p>Somos a Agro Reserva. A plataforma digital de comercialização de gado que conecta as grandes marcas produtoras de genética aos compradores do mundo inteiro, 365 dias por ano, 07 dias por semana, 24 horas por dia. Aqui você compra sem pressa, com um atendimento que te acompanha até o pós-venda. Aqui você vende com toda segurança, menor custo promocional e muito mais alcance. Aqui a gente respeita a sua jornada e a sua experiência vale cada @.</p>
-                
-                {{--  <h2 class="mt-3">Nossa visão:</h2>
-                <p>Valorizar o trabalho do produtor, ressignificando o formato da comercialização de animais no Brasil, de forma a torná-la mais fácil, justa, segura e rentável para quem compra e para quem vende.</p>
-                <h2 class="mt-3">Nossos valores:</h2>
-                <p>Valorizar o trabalho do produtor, ressignificando o formato da comercialização de animais no Brasil, de forma a torná-la mais fácil, justa, segura e rentável para quem compra e para quem vende.</p>  --}}
             </div>
             <div class="py-5 my-3 row justify-content-center">
                 <div
@@ -200,7 +195,7 @@
 
         @livewire("institucional.depoimentos")
 
-        
+
         <div class="mt-4 row">
             <div class="col-12">
                 <a href="{{route('blog')}}"><span style="color: #E8521B !important; font-size: 16px; font-family: 'Montserrat', sans-serif; font-weight: bold;"><i class="mr-2 fas fa-arrow-left"></i> Voltar</span></a>

@@ -7,9 +7,9 @@ class ApiaryError
     private $status;
     private $messages;
 
-    public function __construct($response){
-        $this->status = $response["statusCode"];
-        $this->messages = collect($response["message"]);
+    public function __construct($status, $messages){
+        $this->status = $status;
+        $this->messages = collect($messages);
     }
 
     public function getStatusCode(){

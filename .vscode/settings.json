@@ -1,0 +1,7 @@
+{
+    "php.validate.enable": false,
+    "php.suggest.basic": false,
+    "php.suggest.showDeprecated": true,
+    "php.intelephense.diagnostics.undefinedTypes": true,
+    "php.intelephense.diagnostics.undefinedFunctions": true
+}

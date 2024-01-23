@@ -13,121 +13,67 @@ class ApiaryClientes extends Apiary
     // RETORNO: Um Objeto com os campos id, companyId, taxId, kind
     // Caso o cliente já tenha cadastro noa agrisk é retornando um erro normal, porém contendo o campo clientId referente ao cliente 
     public function createClient($taxId, $birthDate){
-        \Log::channel("agrisk_debug")->debug('CREATE CLIENT');
         $response = Http::withToken($this->token)->post($this->url . $this->routes["clients"], [
             'taxId' => $taxId,
             'birthDate' => $birthDate,
         ]);
-        \DiscordAlert::to('agrisk')->message("Tentativa de criação do cliente " . ((session()->get("cliente")) ? session()->get('cliente')['nome_dono'] : '') . " na Agrisk, obtendo retorno: " . $response->body());
-        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
-        if($this->checkError($response->object())){
-            $this->lastError = $response->object();
-            if(isset($this->lastError->clientId)){
-                return $response->object();
-            }
-            return false;
-        }else{
-            return $response->object();
-        }
+        return $response;
     }
 
     public function listClients($taxId, $letter){
-        \Log::channel("agrisk_debug")->debug('LIST CLIENTS');
         $response = Http::withToken($this->token)->get($this->url . $this->routes["clients"] . "?" . "text=" . $taxId . "&client=1&groups=1&letter=" . $letter);
-        \DiscordAlert::to('agrisk')->message("Tentativa de retorno de cliente na Agrisk, obtendo retorno: " . $response->body());
-        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
-        if($this->checkError($response->object())){
-            $this->lastError = $response->object();
-            return false;
-        }else{
-            return $response->object();
-        }
+        return $response;
     }
 
     public function clientDetail($id){
-        \Log::channel("agrisk_debug")->debug('CLIENT DETAIL');
         $response = Http::withToken($this->token)->get($this->url . $this->routes["client.detail"] . "/" . $id);
-        \DiscordAlert::to('agrisk')->message("Tentativa de detalhes de cliente na Agrisk, obtendo retorno: " . $response->body());
-        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
-        if($this->checkError($response->object())){
-            $this->lastError = $response->object();
-            return false;
-        }else{
-            return $response->object();
-        }
+        return $response;
     }
 
     // RETORNA O TOKEN REFERENTE AOS TERMOS PARA O CLIENTE INFORMADO (STRING)
     // EM CASO DE ERRO RETORNA FALSE
-    public function createTerms($id, $name, $taxId, $phone = null){
-        \Log::channel("agrisk_debug")->debug('CREATE TERMS');
+    public function createTerms($id, $name, $taxId){
         $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"], [
             'clientId' => $id,
             'clientName' => $name,
             'clientTaxId' => $taxId,
-            'companyId' => $this->companyId,
-            'companyName' => $this->companyName,
-            'companyTaxId' => $this->companyTaxId,
+            'companyId' => $this->config['company_id'],
+            'companyName' => $this->config['company_name'],
+            'companyTaxId' => $this->config['company_taxid'],
         ]);
-        \DiscordAlert::to('agrisk')->message("Tentativa de criação de termos na Agrisk pro cliente " . $name . " , obtendo retorno: " . $response->body());
-        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
-        if($this->checkError($response->object())){
-            $this->lastError = $response->object();
-            return false;
-        }else{
-            return $this->getTermsAuthorizationToken($response->object());
-        }
+        return $response;
     }
 
     public function termsDetail($termId){
-        \Log::channel("agrisk_debug")->debug('TERMS DETAILS');
         $response = Http::withToken($this->token)->get($this->url_terms . $this->routes["terms"] . "/" . $termId);
-        \DiscordAlert::to('agrisk')->message("Tentativa de detalhes de termos na Agrisk , obtendo retorno: " . $response->body());
-        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
-        if($this->checkError($response->object())){
-            $this->lastError = $response->object();
-            return false;
-        }else{
-            return $response->object();
-        }
+        return $response;
     }
 
     // RETORNA UMA MENSAGEM DE "APPROVED" OU "REPROVED"
     public function sendAnswers($termId, $respostas){
-        \Log::channel("agrisk_debug")->debug('SEND ANSWERS');
         $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"] . "/" . $termId . "/answers", [
             "answers" => $respostas
         ]);
-        \DiscordAlert::to('agrisk')->message("Tentativa de envio de respostas de termos na Agrisk , obtendo retorno: " . $response->body());
-        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
-        return $response->object();
+        return $response;
     }
 
-    public function sendTermsToken($cliente){
-        \Log::channel("agrisk_debug")->debug('SEND TERMS TOKEN');
-        $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"] . "/" . $cliente->agriskTermosToken . "/token", [
+    public function sendTermsToken($token, $telefone){
+        $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"] . "/" . $token . "/token", [
             "method" => "WhatsApp",
-            "phone" => Util::limparString($cliente->telefone)
+            "phone" => Util::limparString($telefone)
         ]);
-        \DiscordAlert::to('agrisk')->message("Tentativa de envio de token pro whatsapp na Agrisk pro cliente " . $cliente->nome ." , obtendo retorno: " . $response->body());
-        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
-        if(!$response->object()){
-            return true;
-        }else{
-            return false;
-        }
+        return $response;
     }
 
-    public function verificarCodigo($cliente, $otpToken, $deviceCode){
-        \Log::channel("agrisk_debug")->debug('VERIFY CODE');
-        $ip = $_SERVER['REMOTE_ADDR'];
-        // $ip = '143.255.112.19';
+    public function verificarCodigo($token, $otpToken, $deviceCode){
+        // $ip = $_SERVER['REMOTE_ADDR'];
+        $ip = '187.102.60.187';
         $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
         $geolocalizacao = explode(",", $details->loc);
         $latitude = $geolocalizacao[0];
         $longitude = $geolocalizacao[1];
-        $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"] . "/" . $cliente->agriskTermosToken . "/sign", [
-            "termId" => $cliente->agriskTermosToken,
+        $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"] . "/" . $token . "/sign", [
+            "termId" => $token,
             "otpToken" => $otpToken,
             "clientIp" => $ip,
             "geolocation" => [
@@ -136,22 +82,12 @@ class ApiaryClientes extends Apiary
             ],
             "deviceCode" => $deviceCode
         ]);
-        \DiscordAlert::to('agrisk')->message("Tentativa de verificação de código na Agrisk pro cliente " . $cliente->nome ." , obtendo retorno: " . $response->body());
-        \Log::channel("agrisk_debug")->debug(json_decode($response->body(), true));
-        if($response->object() == "Term signed"){
-            return true;
-        }else{
-            return false;
-        }
+        return $response;
     }
 
-    private function getTermsAuthorizationToken($response){
-        $url = "https://autorizacao.agrisk.digital/";
-        if(isset($response->url)){
-            $token = str_replace($url, "", $response->url);
-            return $token;
-        }else{
-            return false;
-        }
+    public function getTermsAuthorizationToken($termUrl){
+        $array = explode('/', $termUrl);
+        $token = array_pop($array);
+        return $token;
     }
 }

@@ -14,7 +14,7 @@ class BarraLateralCarrinho extends Component
     public $iniciar = false;
     public $num_produtos;
 
-    protected $listeners = ["abreCarrinhoLateral", "adicionarProduto", "removerProduto", "atualizaContagemLotes"];
+    protected $listeners = ["abreCarrinhoLateral", "adicionarProduto", "removerProduto"];
 
     public function abreCarrinhoLateral(){
         $this->mostrarCarrinho = !$this->mostrarCarrinho;
@@ -106,7 +106,6 @@ class BarraLateralCarrinho extends Component
             $carrinho->delete();
             if($this->carrinhos->count() == 0){
                 session()->forget("carrinho");
-                $this->emit("atualizaIconeCarrinho");
             }
         }else{
             $this->carrinhos = Carrinho::where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
@@ -120,24 +119,12 @@ class BarraLateralCarrinho extends Component
             foreach($this->carrinhos as $carrinho){
                 $lotes += $carrinho->produtos->count();
             }
-            $this->emit("atualizaNumeroProdutos", $lotes);
+            $this->dispatchBrowserEvent("atualizaContagemLotes", $lotes);
         }
     }
 
     public function init(){
-        // $this->cliente = Cliente::find(session()->get("cliente")["id"]);
-        // if(session()->get("carrinho")){
-        //     $this->carrinhos = Carrinho::with("produtos")->with("produtos.produtable")->with("produtos.produtable.reserva")->with("produtos.produtable.fazenda")->where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
-        //     foreach($this->carrinhos as $carrinho){
-        //         if(!$carrinho->reserva || $carrinho->reserva->encerrada || $carrinho->produtos->count() == 0){
-        //             $carrinho->delete();
-        //         }
-        //     }
-        //     $this->carrinhos = Carrinho::where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
-        // }else{
-        //     $this->carrinhos = collect();
-        // }
-        // $this->iniciar = true;
+        $this->atualizaContagemLotes();
     }
 
     public function render()

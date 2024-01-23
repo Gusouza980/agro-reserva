@@ -1,24 +1,13 @@
 <nav class="bg-[#FCFCFC] border-gray-200 px-2 sm:px-4 py-3 sticky top-0 z-30">
-    <div class="flex flex-wrap items-center justify-between mx-auto w1200 align-items-center">
+    <div class="flex flex-wrap items-center justify-between mx-auto w1200">
         <a href="{{ route('index') }}" class="flex items-center">
             <img src="{{ asset('imagens/logo_fundo_branco.svg') }}" class="h-10 mr-3 sm:h-14"
                 alt="Flowbite Logo" />
         </a>
         @if (session()->get('cliente'))
-            <div class="flex items-end md:order-2" style="font-family: 'Montserrat', sans-serif;">
+            <div class="flex items-end md:order-2 gap-x-3" style="font-family: 'Montserrat', sans-serif;">
 
-                {{-- BOTÃO PRECISA DE AJUDA --}}
-                {{-- <div class="mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105" style="font-size: 10px;">
-                    <svg class="mx-auto" id="Grupo_3728" data-name="Grupo 3728" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
-                        <g id="Elipse_309" data-name="Elipse 309" fill="#fcfcfc" stroke="#80828b" stroke-width="1.5">
-                            <circle cx="18" cy="18" r="18" stroke="none"/>
-                            <circle cx="18" cy="18" r="17.25" fill="none"/>
-                        </g>
-                        <text id="_" data-name="?" transform="translate(10 28)" font-size="28" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">?</tspan></text>
-                    </svg>
-                    Precisa de Ajuda
-                </div> --}}
-                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')"  class="mt-2 mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105"
+                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')"  class="mt-2 mr-5 text-center transition duration-500 hidden md:block cpointer hover:scale-105"
                     style="font-size: 10px;">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150"
                         xmlns="http://www.w3.org/2000/svg" width="37.018" height="37" viewBox="0 0 24 24">
@@ -29,7 +18,7 @@
                 </div>
 
                 {{-- BOTÃO MINHA CONTA --}}
-                <div class="mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105"
+                <div class="mr-5 text-center transition duration-500 hidden md:block cpointer hover:scale-105"
                     style="font-size: 10px;" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150" id="Grupo_3722"
                         data-name="Grupo 3722" xmlns="http://www.w3.org/2000/svg"
@@ -96,13 +85,13 @@
 
 
                 {{-- BOTÃO MEU CARRINHO --}}
-                <div class="text-center transition duration-500 ml-md-0 cpointer hover:scale-105"
-                    style="font-size: 10px;" @click="mostrarCarrinho = true">
+                <div class="text-center transition duration-500 cpointer hover:scale-105"
+                    style="font-size: 10px;">
                     @livewire('institucional.icone-carrinho')
                 </div>
 
                 <button data-collapse-toggle="mobile-menu-2" type="button"
-                    class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden"
                     aria-controls="mobile-menu-2" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-6 h-6 fill-[#80828b] hover:fill-[#5b5d63] transition duration-150"
@@ -121,7 +110,7 @@
             </div>
         @else
             <div class="flex items-center md:order-2">
-                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')" class="mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105"
+                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')" class="mr-5 text-center transition duration-500 hidden md:block cpointer hover:scale-105"
                     style="font-size: 10px;">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150" id="Grupo_3728"
                         data-name="Grupo 3728" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
@@ -139,7 +128,7 @@
                     Precisa de Ajuda
                 </div>
 
-                <div class="mr-5 text-center transition duration-500 d-none d-md-block cpointer hover:scale-105"
+                <div class="mr-5 text-center transition duration-500 hidden md:block cpointer hover:scale-105"
                     style="font-size: 10px;" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150" id="Grupo_3722"
                         data-name="Grupo 3722" xmlns="http://www.w3.org/2000/svg"
@@ -194,7 +183,7 @@
                 </div>
 
                 <button data-collapse-toggle="mobile-menu-2" type="button"
-                    class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100"
                     aria-controls="mobile-menu-2" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-6 h-6 fill-[#80828b] hover:fill-[#5b5d63] transition duration-150"
@@ -261,63 +250,23 @@
 
 <div class="hidden md:block w-full bg-[#80828B] border-b-2 border-[#F5B01F] justify-content-center align-items-center text-white"
     style="font-size: 13px; font-weight: 500; font-family: 'Montserrat', sans-serif, sans-serif;">
-    <ul
-        class="flex flex-row justify-center mx-auto mt-0 w1200">
-        <li>
+    <div class="flex flex-row justify-center mx-auto mt-0 w1200">
             <a href="{{ route('reservas_abertas') }}"
-                class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Reservas Abertas</a>
-        </li>
-        <li>
+                class="block py-2 px-5 hover:bg-[#F5B01F] hover:text-white transition-all duration-200">Reservas Abertas</a>
             <a href="{{ route('reservas.finalizadas') }}"
-                class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Reservas Finalizadas</a>
-        </li>
-        <li>
+                class="block py-2 px-5 hover:bg-[#F5B01F] hover:text-white transition-all duration-200">Reservas Finalizadas</a>
             <a href="{{ route('navegue_por_racas') }}"
-                class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Navegue por Raças</a>
-        </li>
-        <li>
+                class="block py-2 px-5 hover:bg-[#F5B01F] hover:text-white transition-all duration-200">Navegue por Raças</a>
             <a href="{{ route('blog') }}"
-                class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Blog</a>
-        </li>
-        <li>
+                class="block py-2 px-5 hover:bg-[#F5B01F] hover:text-white transition-all duration-200">Blog</a>
             <a href="{{ route('sobre') }}"
-                class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Quem Somos</a>
-        </li>
+                class="block py-2 px-5 hover:bg-[#F5B01F] hover:text-white transition-all duration-200">Quem Somos</a>
         @if(!session()->get('cliente'))
-            <li>
                 <a href="{{ route('cadastro') }}"
-                    class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Fazer Cadastro</a>
-            </li>
+                    class="block py-2 px-5 hover:bg-[#F5B01F] hover:text-white transition-all duration-200">Fazer Cadastro</a>
         @elseif(session()->get('cliente') && !session()->get('cliente')['finalizado'])
-            <li>
                 <a href="{{ route('cadastro') }}"
-                    class="block py-2 pr-4 pl-3 hover:!text-[#F5B01F]">Finalizar Cadastro</a>
-            </li>
+                    class="block py-2 px-5 hover:bg-[#F5B01F] hover:text-white transition-all duration-200">Finalizar Cadastro</a>
         @endif
-        {{-- <li class="">
-            <button id="dropdownOutrosLink" data-dropdown-toggle="dropdownOutros"
-                class="py-2 pr-4 pl-3 flex justify-between items-center font-montserrat text-[13px] font-medium focus:outline-none">Outros
-                <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </button>
-            <!-- Dropdown menu -->
-            <div id="dropdownOutros"
-                class="z-10 hidden font-normal divide-y rounded shadow w-44 bg-[#F2F2F2] divide-gray-600">
-                <ul class="py-1 text-sm" aria-labelledby="dropdownLargeButton">
-                    <li>
-                        <a href="{{ route('blog') }}"
-                            class="block px-4 py-2 text-gray-900">Blog</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('sobre') }}"
-                            class="block px-4 py-2 text-gray-900">Quem Somos</a>
-                    </li>
-                </ul>
-            </div>
-        </li> --}}
-    </ul>
+    </div>
 </div>

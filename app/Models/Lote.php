@@ -9,6 +9,10 @@ class Lote extends Model
 {
     use HasFactory;
 
+    protected $append = [
+        'descricao'
+    ];
+
     protected static function boot(){
         parent::boot();
 
@@ -23,6 +27,15 @@ class Lote extends Model
         static::creating(function($lote){
             cache()->forget("reservas_ativas");
         });
+    }
+
+    public function getDescricaoAttribute(){
+        $descricao = "Lote <b>" . $this->sexo . "</b>";
+        if($this->registro){
+            $descricao .= " da raça <b>" . $this->raca->nome . "</b>";
+        }
+        $descricao .= " vendido pela(o) <b>" . $this->fazenda->nome_fazenda . "</b>";
+        return $descricao;
     }
 
     public function raca(){
