@@ -9,7 +9,6 @@
 @endsection
 
 @section('conteudo')
-    @dd($usuario)
     @if(isset($usuario->assessor))
         <livewire:sistema.dashboards.comercial></livewire:sistema.dashboards.comercial>
     @endif
