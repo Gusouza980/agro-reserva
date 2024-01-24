@@ -7,7 +7,7 @@
         @if (session()->get('cliente'))
             <div class="flex items-end md:order-2 gap-x-3" style="font-family: 'Montserrat', sans-serif;">
 
-                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')"  class="mt-2 mr-5 text-center transition duration-500 hidden md:block cpointer hover:scale-105"
+                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')"  class="hidden mt-2 mr-5 text-center transition duration-500 md:block cpointer hover:scale-105"
                     style="font-size: 10px;">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150"
                         xmlns="http://www.w3.org/2000/svg" width="37.018" height="37" viewBox="0 0 24 24">
@@ -18,7 +18,7 @@
                 </div>
 
                 {{-- BOTÃO MINHA CONTA --}}
-                <div class="mr-5 text-center transition duration-500 hidden md:block cpointer hover:scale-105"
+                <div class="hidden mr-5 text-center transition duration-500 md:block cpointer hover:scale-105"
                     style="font-size: 10px;" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150" id="Grupo_3722"
                         data-name="Grupo 3722" xmlns="http://www.w3.org/2000/svg"
@@ -65,13 +65,13 @@
                             class="block text-sm font-medium text-gray-500 truncate">{{ session()->get('cliente')['email'] }}</span>
                     </div>
                     <ul class="py-1" aria-labelledby="dropdown">
-                        @if (session()->get('cliente') && !session()->get('cliente')['finalizado'])
+                        {{-- @if (session()->get('cliente') && !session()->get('cliente')['finalizado'])
                             <li>
                                 <a href="{{ route('cadastro') }}"
                                     class="block px-4 py-2 text-sm text-gray-500 hover:text-gray-900">Finalizar
                                     Cadastro</a>
                             </li>
-                        @endif
+                        @endif --}}
                         <li>
                             <a href="{{ route('conta.index') }}"
                                 class="block px-4 py-2 text-sm text-gray-500 hover:text-gray-900">Perfil</a>
@@ -110,7 +110,7 @@
             </div>
         @else
             <div class="flex items-center md:order-2">
-                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')" class="mr-5 text-center transition duration-500 hidden md:block cpointer hover:scale-105"
+                <div onclick="window.open('https://api.whatsapp.com/send?phone=5534992754132', '_blank')" class="hidden mr-5 text-center transition duration-500 md:block cpointer hover:scale-105"
                     style="font-size: 10px;">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150" id="Grupo_3728"
                         data-name="Grupo 3728" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
@@ -128,7 +128,7 @@
                     Precisa de Ajuda
                 </div>
 
-                <div class="mr-5 text-center transition duration-500 hidden md:block cpointer hover:scale-105"
+                <div class="hidden mr-5 text-center transition duration-500 md:block cpointer hover:scale-105"
                     style="font-size: 10px;" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
                     <svg class="mx-auto fill-[#80828b] hover:fill-[#5b5d63] transition duration-150" id="Grupo_3722"
                         data-name="Grupo 3722" xmlns="http://www.w3.org/2000/svg"
@@ -242,7 +242,7 @@
                     <a href="{{ route('sobre') }}"
                         class="block py-2 pl-3 pr-4 text-gray-400 transition duration-300 ease-in-out pointer md:p-0">Quem Somos</a>
                 </li>
-                
+
             </ul>
         </div>
     </div>
@@ -264,9 +264,9 @@
         @if(!session()->get('cliente'))
                 <a href="{{ route('cadastro') }}"
                     class="block py-2 px-5 hover:bg-[#F5B01F] hover:text-white transition-all duration-200">Fazer Cadastro</a>
-        @elseif(session()->get('cliente') && !session()->get('cliente')['finalizado'])
+        {{-- @elseif(session()->get('cliente') && !session()->get('cliente')['finalizado'])
                 <a href="{{ route('cadastro') }}"
-                    class="block py-2 px-5 hover:bg-[#F5B01F] hover:text-white transition-all duration-200">Finalizar Cadastro</a>
+                    class="block py-2 px-5 hover:bg-[#F5B01F] hover:text-white transition-all duration-200">Finalizar Cadastro</a> --}}
         @endif
     </div>
 </div>
