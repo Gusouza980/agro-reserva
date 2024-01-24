@@ -55,8 +55,8 @@ class AgriskService
                 return new ApiaryClient($object->id);
             }else{
                 // If the response do not has error, create a new ApiaryClient object with the id
-            // If the id is not set, call the "generateError" method with 500 as the error status code and ['Não foi possível realizar seu cadastro. Verifique seu CPF e data de nascimento ou fale com um de nosso assessores.'] as the error messages
-            return (isset($object->clientId)) ? new ApiaryClient($object->clientId) : $this->generateError(500, ['Não foi possível realizar seu cadastro. Verifique seu CPF e data de nascimento ou fale com um de nosso assessores.']);
+                // If the id is not set, call the "generateError" method with 500 as the error status code and ['Não foi possível realizar seu cadastro. Verifique seu CPF e data de nascimento ou fale com um de nosso assessores.'] as the error messages
+                return (isset($object->clientId)) ? new ApiaryClient($object->clientId) : $this->generateError(500, ['Não foi possível realizar seu cadastro. Verifique seu CPF e data de nascimento ou fale com um de nosso assessores.']);
             }
         }
     }
