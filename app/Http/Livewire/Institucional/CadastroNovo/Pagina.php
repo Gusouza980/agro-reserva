@@ -133,7 +133,12 @@ class Pagina extends Component
     public function salvar(){
         $this->validate();
         if(isset($this->form['estado_civil'])){
-            $this->form['estado_civil'] = config("clientes.estados_civis_nomes")[$this->form['estado_civil']];
+            if(is_numeric($this->form['estado_civil'])){
+                $this->form['estado_civil'] = $this->form['estado_civil'];
+            }else{
+                $this->form['estado_civil'] = config("clientes.estados_civis_nomes")[$this->form['estado_civil']];
+            }
+            
         }
         
         $this->createAgriskClient();

@@ -7,7 +7,7 @@
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">RG</label>
             <input type="text" name="form.rg" class="w-full form-input-text mt-[5px]" wire:model.defer="form.rg" maxlength="20">
         </div>
-        <div class="mb-5">
+        <div class="mb-5">\
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">CPF</label>
             <input type="text" name="form.cpf" class="w-full form-input-text mt-[5px]" mask="cpf" wire:model.defer="form.cpf" maxlength="14">
             <div class="w-full text-[12px] text-red-600 font-inter">
