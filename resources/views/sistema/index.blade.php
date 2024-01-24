@@ -10,13 +10,7 @@
 
 @section('conteudo')
     @if(isset($usuario->assessor))
-        @php
-            \Log::debug($usuario);
-        @endphp
         <livewire:sistema.dashboards.comercial></livewire:sistema.dashboards.comercial>
     @else
-        @php
-            \Log::debug($usuario);
-        @endphp
     @endif
 @endsection
