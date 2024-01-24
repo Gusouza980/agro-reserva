@@ -12,6 +12,14 @@ class Cliente extends Model
 
     protected $guarded = ["id"];
 
+    protected static function boot(){
+        parent::boot();
+
+        static::creating(function($model){
+            $model->finalizado = true;
+        });
+    }
+
     public function carrinhos(){
         return $this->hasMany(Carrinho::class);
     }
