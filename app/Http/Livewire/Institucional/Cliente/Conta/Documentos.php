@@ -31,7 +31,7 @@ class Documentos extends Component
                 break;
             case('novo_documento'):
                 $anexo->tipo = 2;
-                $anexo->caminho = $this->novo_standard->store('uploads', 'local');
+                $anexo->caminho = $this->novo_documento->store('uploads', 'local');
                 break;
             case('novo_ficha_sanitaria'):
                 $anexo->tipo = 3;
