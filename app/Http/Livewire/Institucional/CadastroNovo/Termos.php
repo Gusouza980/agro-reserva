@@ -118,7 +118,6 @@ class Termos extends Component
             session()->flash("erros", "Desculpe, estamos com um problema em nosso sistema. Tente novamente mais tarde, ou entre em contato com nosso time comercial.");
         }else{
             $response = AgriskFacade::verificarCodigo($this->cliente->agriskTermosToken, $this->codigo_ativacao, $this->codigo_dispositivo);
-            dd($response);
             if($response){
                 $this->cliente->agriskTermosVerificado = true;
                 $this->cliente->agriskTermosFinalizado = true;
