@@ -2,7 +2,7 @@
     <h2 class="text-[20px] font-medium text-[#15171E]">Dados Pessoais | Pessoa Física</h2>
 </div>
 <div class="w-full mt-[30px]">
-    <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
+    <div class="grid w-full grid-cols-1 gap-3 md:grid-cols-3">
         <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">RG</label>
             <input type="text" name="form.rg" class="w-full form-input-text mt-[5px]" wire:model.defer="form.rg" maxlength="20">
@@ -26,7 +26,7 @@
             </div>
         </div>
     </div>
-    <div class="w-full grid grid-cols-1 md:grid-cols-8 gap-3">
+    <div class="grid w-full grid-cols-1 gap-3 md:grid-cols-8">
         <div class="mb-5 md:col-span-2">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Estado Civil</label>
             <select class="w-full form-input-text mt-[5px]" name="form.estado_civil" wire:model="form.estado_civil">
@@ -60,7 +60,7 @@
             </div>
         </div>
     </div>
-    <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
+    <div class="grid w-full grid-cols-1 gap-3 md:grid-cols-3">
         <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">CEP</label>
             <input type="text" name="form.cep" class="w-full form-input-text mt-[5px]" mask="cep" x-on:change="$wire.set('form.cep', $event.target.value)" wire:model.defer="form.cep" maxlength="9">
@@ -80,7 +80,7 @@
             </div>
         </div>
     </div>
-    <div class="w-full grid grid-cols-2 md:grid-cols-6 gap-3">
+    <div class="grid w-full grid-cols-2 gap-3 md:grid-cols-6">
         <div class="mb-5">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Número</label>
             <input type="text" name="form.numero" wire:loading.attr="disabled" wire:target="form.cep" class="w-full form-input-text mt-[5px]" wire:model.defer="form.numero" maxlength="6">
@@ -99,7 +99,7 @@
                 @enderror
             </div>
         </div>
-        <div class="mb-5 col-span-2 md:col-span-3">
+        <div class="col-span-2 mb-5 md:col-span-3">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Complemento</label>
             <input type="text" name="form.complemento" class="w-full form-input-text mt-[5px]" wire:model.defer="form.complemento" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
@@ -109,8 +109,8 @@
             </div>
         </div>
     </div>
-    <div class="w-full grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="mb-5 col-span-2 md:col-span-1">
+    <div class="grid w-full grid-cols-2 gap-3 md:grid-cols-3">
+        <div class="col-span-2 mb-5 md:col-span-1">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Cidade</label>
             <input type="text" name="form.cidade" wire:loading.attr="disabled" wire:target="form.cep" class="w-full form-input-text mt-[5px]" wire:model.defer="form.cidade" maxlength="50">
             <div class="w-full text-[12px] text-red-600 font-inter">
@@ -142,10 +142,10 @@
                 @enderror
             </div>
         </div>
-        
+
     </div>
-    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-3 items-end">
-        <div class="mb-5 relative" >
+    <div class="grid items-end w-full grid-cols-1 gap-3 md:grid-cols-2">
+        <div class="relative mb-5" >
             <div class="pl-[20px] w-full mb-2">
                 <label class="text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar Documento RG ou CNH (Doc. frente e verso)</label>
             </div>
@@ -169,17 +169,17 @@
                         </p>
                     </div>
                 </label>
-                <div class="w-full px-2 border border-t-0 rounded-b-md border-slate-300 text-gray-500 text-sm">
+                <div class="w-full px-2 text-sm text-gray-500 border border-t-0 rounded-b-md border-slate-300">
                     @if(count($documentos) > 0)
                         @foreach($documentos as $key => $documento)
                             @if($documento)
-                                <div class="w-full py-3 px-2 border-b border-slate-300 flex justify-between items-center">
+                                <div class="flex items-center justify-between w-full px-2 py-3 border-b border-slate-300">
                                     <div>
                                         {{ $documento->getClientOriginalName() }}
                                     </div>
                                     <div>
-                                        <button type="button" wire:click="removerUpload('documentos',{{ $key }})" class="bg-none border border-gray-600 w-6 h-6 flex items-center justify-center rounded-full hover:border-red-500 hover:text-red-500">
-                                            <i class="fas fa-xmark text-sm"></i>
+                                        <button type="button" wire:click="removerUpload('documentos',{{ $key }})" class="flex items-center justify-center w-6 h-6 border border-gray-600 rounded-full bg-none hover:border-red-500 hover:text-red-500">
+                                            <i class="text-sm fas fa-xmark"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@
                 @enderror
             </div>
         </div>
-        <div class="mb-5 relative" >
+        <div class="relative mb-5" >
             <div class="pl-[20px] w-full mb-2">
                 <label class="text-[16px] font-medium font-montserrat text-[#616887]" for="">Anexar comprovante de endereço</label>
             </div>
@@ -224,17 +224,17 @@
                         </p>
                     </div>
                 </label>
-                <div class="w-full px-2 border border-t-0 rounded-b-md border-slate-300 text-gray-500 text-sm">
+                <div class="w-full px-2 text-sm text-gray-500 border border-t-0 rounded-b-md border-slate-300">
                     @if(count($comprovantes_residenciais) > 0)
                         @foreach($comprovantes_residenciais as $key => $comprovante_residencial)
                             @if($comprovante_residencial)
-                                <div class="w-full py-3 px-2 border-b border-slate-300 flex justify-between items-center">
+                                <div class="flex items-center justify-between w-full px-2 py-3 border-b border-slate-300">
                                     <div>
                                         {{ $comprovante_residencial->getClientOriginalName() }}
                                     </div>
                                     <div>
-                                        <button type="button" wire:click="removerUpload('comprovantes_residenciais',{{ $key }})" class="bg-none border border-gray-600 w-6 h-6 flex items-center justify-center rounded-full hover:border-red-500 hover:text-red-500">
-                                            <i class="fas fa-xmark text-sm"></i>
+                                        <button type="button" wire:click="removerUpload('comprovantes_residenciais',{{ $key }})" class="flex items-center justify-center w-6 h-6 border border-gray-600 rounded-full bg-none hover:border-red-500 hover:text-red-500">
+                                            <i class="text-sm fas fa-xmark"></i>
                                         </button>
                                     </div>
                                 </div>
