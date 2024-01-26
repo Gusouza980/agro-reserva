@@ -122,6 +122,7 @@ class Termos extends Component
                 $this->cliente->agriskTermosVerificado = true;
                 $this->cliente->agriskTermosFinalizado = true;
                 $this->cliente->save();
+                return redirect()->route('index');
             }else{
                 $this->erros = "Ocorreu um erro ao validar seu código de ativação. Por favor, verifique se o código está correto.";
                 $this->codigo_ativacao = null;

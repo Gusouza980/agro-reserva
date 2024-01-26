@@ -108,7 +108,7 @@ class AgriskService
         $object = $response->object();
 
         // Checking if the response contains a "detail" property
-        if(isset($object->detail)){
+        if(isset($object->statusCode)){
             // If a "detail" property exists, assign the value of the "statusCode" property to $errorStatus, or 500 if it doesn't exist
             $errorStatus = $object->statusCode ?? 500;
 
