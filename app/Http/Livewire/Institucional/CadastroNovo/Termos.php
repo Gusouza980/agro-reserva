@@ -66,9 +66,16 @@ class Termos extends Component
                         $this->erros = $response->getArrayMessages();
                         return implode('<br>', $this->erros);
                     }else{
+                        if(isset($response->url)){
+                            $url = $response->url;
+                        }elseif(isset($response->detail->url)){
+                            $url = $response->detail->url;
+                        }else{
+                            $url = null;
+                        }
                         $this->cliente->agriskId = $agriskClient->id;
                         $this->cliente->agriskTaxId = $this->cliente->cpf;
-                        $this->cliente->agriskTermosToken = AgriskFacade::getTermsAuthorizationToken($response->url);
+                        $this->cliente->agriskTermosToken = AgriskFacade::getTermsAuthorizationToken($url);
                         $this->cliente->save();
                         unset($this->cliente);
                     }

@@ -225,7 +225,14 @@ class Pagina extends Component
                 }else{
                     $this->form['agriskId'] = $agriskClient->id;
                     $this->form['agriskTaxId'] = $this->form['cpf'];
-                    $this->form['agriskTermosToken'] = AgriskFacade::getTermsAuthorizationToken($response->url);
+                    if(isset($response->url)){
+                        $url = $response->url;
+                    }elseif(isset($response->detail->url)){
+                        $url = $response->detail->url;
+                    }else{
+                        $url = null;
+                    }
+                    $this->form['agriskTermosToken'] = AgriskFacade::getTermsAuthorizationToken($url);
                 }
             }
         }
