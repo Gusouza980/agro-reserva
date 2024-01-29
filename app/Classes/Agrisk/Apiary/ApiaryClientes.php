@@ -58,9 +58,11 @@ class ApiaryClientes extends Apiary
     }
 
     public function sendTermsToken($token, $telefone){
+
+        $telefone = Util::limparString(str_replace("+55", "", $telefone));
         $response = Http::withToken($this->token)->post($this->url_terms . $this->routes["terms"] . "/" . $token . "/token", [
             "method" => "WhatsApp",
-            "phone" => str_replace("+55", "",Util::limparString($telefone))
+            "phone" => str_replace("+55", "",$telefone)
         ]);
         return $response;
     }
