@@ -64,7 +64,7 @@ class ContaController extends Controller
             return redirect()->back();
         }else{
             $nova_senha = Str::random(6);
-            $cliente->senha = Hash::make($nova_senha);
+            $cliente->senha = $nova_senha;
             $cliente->save();
             $file = "Olá <b>" . $cliente->nome . "</b><br>";
             $file .= "Estamos enviando uma senha para que consiga acessar nosso sistema !<br>";
