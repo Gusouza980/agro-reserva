@@ -9,9 +9,9 @@
             </div> --}}
             @foreach ($banners as $banner)
                     @if($agent->isMobile())
-                        <img num="{{ $cont }}" class="banner-item cursor-pointer @if($cont != 0) hidden @endif" onclick="window.location.href='{{ $banner->link }}'" src="{{ asset($banner->caminho_mobile) }}" class="block w-full" alt="..." />
+                        <img num="{{ $cont }}" class="banner-item cursor-pointer @if($cont != 0) hidden @endif" onclick="window.open('{{ $banner->link }}', '_blank')" src="{{ asset($banner->caminho_mobile) }}" class="block w-full" alt="..." />
                     @else
-                        <img num="{{ $cont }}" class="banner-item cursor-pointer @if($cont != 0) hidden @endif" onclick="window.location.href='{{ $banner->link }}'" src="{{ asset($banner->caminho) }}" class="block w-full" alt="..." />
+                        <img num="{{ $cont }}" class="banner-item cursor-pointer @if($cont != 0) hidden @endif" onclick="window.open('{{ $banner->link }}', '_blank')" src="{{ asset($banner->caminho) }}" class="block w-full" alt="..." />
                     @endif
                     @php
                         $cont++;
