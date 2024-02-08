@@ -124,3 +124,21 @@
         </div>
     </div>
 </div>
+
+@push("scripts")
+    <script>
+        window.addEventListener("carregaCodigoDispositivo", (event) => {
+            // Initialize the agent at application startup.
+            const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
+                .then(FingerprintJS => FingerprintJS.load())
+        
+            // Get the visitor identifier when you need it.
+            fpPromise.then(fp => fp.get())
+                .then(result => {
+                    // This is the visitor identifier:
+                    const visitorId = result.visitorId
+                    Livewire.emit('setCodigoDispositivo', visitorId)
+            })
+        });
+    </script>
+@endpush
