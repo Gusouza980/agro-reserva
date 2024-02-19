@@ -35,6 +35,10 @@ class BlogController extends Controller
 
     public function noticia($slug){
         $noticia = Noticia::where("slug", $slug)->first();
+        if(!$noticia){
+            toastr()->error('Noticia não encontrada');
+            return redirect()->route('blog');
+        }
         $noticia->visualizacoes++;
         $noticia->save();
         return view("noticia", ["noticia" => $noticia]);
