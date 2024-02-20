@@ -37,9 +37,11 @@
         [x-cloak] { display: none !important; }
     </style>
     <script src="{{ asset('js/jquery.js') }}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/alpinejs-swipe"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     @include("includes.tags.hotjar")
 </head>
 

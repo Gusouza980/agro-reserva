@@ -1,112 +1,146 @@
-<div class="px-0 container-fluid bg-[#F5F5F5]" x-data="{
-    atual: 0,
-    max: {!! count($banners) !!},
+<style>
+    .banner-home {
+        width: 100%;
+    }
 
-    next() {
-        if (this.atual < this.max - 1) {
-            this.atual++;
-        } else {
-            this.atual = 0;
-        }
-    },
+    .banner-home .swiper-slide {
+        position: relative;
+    }
 
-    prev() {
-        if (this.atual > 0) {
-            this.atual--;
+    .banner-home a {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .banner-home img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .banner-home .img-mobile {
+        display: none;
+    }
+
+    /* nav */
+    .banner-home .swiper-button-lock {
+        display: none !important;
+    }
+
+    .banner-home [class*="swiper-button-"]::after {
+        display: none !important;
+    }
+
+    .banner-home [class*="swiper-button-"] {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        transition: .2s ease;
+    }
+
+    .banner-home [class*="swiper-button-"]:hover {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .banner-home [class*="swiper-button-"] img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .banner-home .swiper-button-next img {
+        transform: rotate(180deg);
+    }
+
+    /* pagination */
+    .banner-home .swiper-pagination-bullet {
+        border: 4px solid rgba(255, 255, 255, 0.8);
+        width: 14px;
+        height: 14px;
+        transition: .1s ease;
+    }
+
+    .banner-home .swiper-pagination-bullet:not(.swiper-pagination-bullet-active):hover {
+        transform: scale(1.15);
+    }
+
+    .banner-home .swiper-pagination-bullet-active {
+        width: 15px;
+        height: 15px;
+        background: transparent;
+    }
+
+
+    @media (max-width: 500px) {
+        .banner-home .img-desktop {
+            display: none !important;
         }
-        else {
-            this.atual = this.max - 1;
+
+        .banner-home .img-mobile {
+            display: block;
+        }
+
+        .banner-home .nav {
+            display: none !important;
+        }
+
+    }
+
+    @media (min-width: 501px) {
+        .banner-home {
+            aspect-ratio: 1920/585;
         }
     }
-}">
-    <div id="carouselBannersHome" class="relative carousel carousel-fade slide h-[500px] md:h-[580px]" data-bs-ride="carousel">
-        <div class="relative w-full overflow-hidden" style="">
-            @php
-                $cont = 0;
-            @endphp
-            {{-- <div class="relative float-left w-full carousel-item active">
-                <img src="{{ asset('imagens/banner1.jpg') }}" class="block w-full" alt="..." />
-            </div> --}}
-            @foreach ($banners as $banner)
-                    @if($agent->isMobile())
-                        <img num="{{ $cont }}" x-transition x-cloak x-show="atual == {{ $cont }}" class="absolute top-0 left-0 w-full banner-item cursor-pointer" onclick="window.open('{{ $banner->link }}', '_blank')" src="{{ asset($banner->caminho_mobile) }}" class="block w-full" alt="..." />
-                    @else
-                        <img num="{{ $cont }}" x-transition x-cloak x-show="atual == {{ $cont }}" class="absolute top-0 left-0 w-full banner-item cursor-pointer" onclick="window.open('{{ $banner->link }}', '_blank')" src="{{ asset($banner->caminho) }}" class="block w-full" alt="..." />
-                    @endif
-                    @php
-                        $cont++;
-                    @endphp
-            @endforeach
+</style>
+
+<div id="banner-home" class="banner-home swiper">
+    <div class="swiper-wrapper">
+        @foreach ($banners as $banner)
+            <div class="swiper-slide">
+                <!-- se precisar inserir link no slide, basta colocar aqui -->
+                <!-- <a target="_blank" href="https://google.com"></a> -->
+                @if ($banner->link)
+                    <a target="_blank" href="{{ $banner->link }}"></a>
+                @endif
+                <img src="{{ asset($banner->caminho) }}" alt="{{ $banner->descricao }}" class="img-desktop">
+                <img src="{{ asset($banner->caminho_mobile) }}" alt="{{ $banner->descricao }}" class="img-mobile">
+            </div>
+        @endforeach
+    </div>
+    <div class="nav">
+        <div class="swiper-button-prev">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNS4xIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTkuNCAyMzMuNGMtMTIuNSAxMi41LTEyLjUgMzIuOCAwIDQ1LjNsMTkyIDE5MmMxMi41IDEyLjUgMzIuOCAxMi41IDQ1LjMgMHMxMi41LTMyLjggMC00NS4zTDc3LjMgMjU2IDI0Ni42IDg2LjZjMTIuNS0xMi41IDEyLjUtMzIuOCAwLTQ1LjNzLTMyLjgtMTIuNS00NS4zIDBsLTE5MiAxOTJ6Ii8+PC9zdmc+"
+                alt="">
         </div>
-        <button
-            class="absolute top-0 bottom-0 left-8 flex items-center justify-center p-0 text-center border-0 carousel-control-prev hover:outline-none hover:no-underline focus:outline-none focus:no-underline"
-            type="button" x-on:click="prev()">
-            <span id="banner-ant" class="bg-no-repeat carousel-control-prev-icon bg-white w-8 h-8 rounded-full flex justify-center items-center hover:bg-emerald-400 hover:text-white duration-100 transition" aria-hidden="true">
-                <i class="fas fa-chevron-left"></i>
-            </span>
-            {{-- <span class="visually-hidden">Anterior</span> --}}
-        </button>
-        <button
-            class="absolute top-0 bottom-0 right-8 flex items-center justify-center p-0 text-center border-0 carousel-control-next hover:outline-none hover:no-underline focus:outline-none focus:no-underline"
-            type="button" data-bs-target="#carouselBannersHome" data-bs-slide="next" x-on:click="next()">
-            <span id="banner-prox" class="bg-no-repeat carousel-control-next-icon bg-white w-8 h-8 rounded-full flex justify-center items-center hover:bg-emerald-400 hover:text-white duration-100 transition" aria-hidden="true">
-                <i class="fas fa-chevron-right"></i>
-            </span>
-            {{-- <span class="visually-hidden">Próximo</span> --}}
-        </button>
-        <div class="absolute bottom-8 md:bottom-12 w-full flex justify-center gap-2">
-            <template x-for="item in max">
-                <button x-on:click="atual = item - 1" :class="atual == item - 1? 'text-emerald-400' : 'text-gray-200'">
-                    <i class="fas fa-circle cursor-pointer"></i>
-                </button>
-            </template>
+        <div class="swiper-button-next">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNS4xIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTkuNCAyMzMuNGMtMTIuNSAxMi41LTEyLjUgMzIuOCAwIDQ1LjNsMTkyIDE5MmMxMi41IDEyLjUgMzIuOCAxMi41IDQ1LjMgMHMxMi41LTMyLjggMC00NS4zTDc3LjMgMjU2IDI0Ni42IDg2LjZjMTIuNS0xMi41IDEyLjUtMzIuOCAwLTQ1LjNzLTMyLjgtMTIuNS00NS4zIDBsLTE5MiAxOTJ6Ii8+PC9zdmc+"
+                alt="">
         </div>
     </div>
+    <div class="swiper-pagination"></div>
 </div>
 
 <script>
-    // $(document).ready(function(){
-    //     var num = 0;
-    //     var max = $(".banner-item").length - 1;
-        
-    //     $("#banner-ant").click(function(){
-    //         antBanner();
-    //     })
+    const sliderHome = new Swiper('#banner-home', {
+        speed: 250,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            // dynamicBullets: true,
+            // dynamicMainBullets: 3,
+        },
+        navigation: {
+            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next',
+        },
 
-    //     $("#banner-prox").click(function(){
-    //         proxBanner();
-    //     })
-
-    //     setInterval(function () {
-    //         proxBanner();
-    //     }, 8000);
-
-    //     function antBanner(){
-    //         if(num > 0){
-    //             num--;
-    //         }else{
-    //             num = max;
-    //         }
-    //         atualizaBanner();
-    //     }
-
-    //     function proxBanner(){
-    //         if(num < max){
-    //             num++;
-    //         }else{
-    //             num = 0;
-    //         }
-    //         atualizaBanner();
-    //     }
-
-    //     function atualizaBanner(){
-    //         $(".banner-item").each(function(item, element){
-    //             if($(element).attr("num") != num){
-    //                 $(element).addClass("hidden");
-    //             }else{
-    //                 $(element).removeClass("hidden");
-    //             }
-    //         })
-    //     }
-    // })
+    });
 </script>
