@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class ReservasController extends Controller
 {
-    public function ativas(){
-        $reservas = Reserva::select('id', 'inicio', 'fim', 'aberto', 'encerrada', 'imagem_card')->where("ativo", true)->orderBy('inicio', 'DESC')->get();
+    public function ativas($page = 1, $qtd = 6) {
+        $reservas = Reserva::select('id', 'inicio', 'fim', 'aberto', 'encerrada', 'imagem_card')->where("ativo", true)->orderBy('inicio', 'DESC')->skip($qtd * ($page - 1))->take($qtd)->get();
         return response()->json($reservas);
     }
 }

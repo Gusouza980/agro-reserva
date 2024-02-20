@@ -24,7 +24,7 @@ Route::get('/reconhecimento/identidade', [\App\Http\Controllers\Api\Reconhecimen
 Route::resource('banners', \App\Http\Controllers\Api\BannersController::class);
 
 // RESERVAS
-Route::get('/reservas/ativas', [\App\Http\Controllers\Api\ReservasController::class, 'ativas']);
+Route::get('/reservas/ativas/{page?}/{qtd?}', [\App\Http\Controllers\Api\ReservasController::class, 'ativas']);
 Route::resource('reservas', \App\Http\Controllers\Api\ReservasController::class);
 
 // LOG DE PÁGINAS
