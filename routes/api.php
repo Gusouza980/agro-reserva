@@ -22,6 +22,11 @@ Route::get('/reconhecimento/identidade', [\App\Http\Controllers\Api\Reconhecimen
 
 
 Route::resource('banners', \App\Http\Controllers\Api\BannersController::class);
+
+// RESERVAS
+Route::get('/reservas/ativas', [\App\Http\Controllers\Api\ReservasController::class, 'ativas']);
+Route::resource('reservas', \App\Http\Controllers\Api\ReservasController::class);
+
 // LOG DE PÁGINAS
 Route::post('/log/create', [\App\Http\Controllers\LogPaginasController::class, 'create'])->name("log.paginas.create");
 Route::post('/log/update', [\App\Http\Controllers\LogPaginasController::class, 'update'])->name("log.paginas.update");
