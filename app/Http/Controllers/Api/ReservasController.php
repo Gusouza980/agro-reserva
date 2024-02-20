@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ReservasController extends Controller
 {
     public function ativas(){
-        $reservas = Reserva::select('id', 'fazenda_id', 'fazendas.nome_fazenda', 'inicio', 'fim', 'aberto', 'encerrada', 'imagem_card')->where("ativo", true)->orderBy('inicio', 'DESC')->get();
+        $reservas = Reserva::select('id', 'inicio', 'fim', 'aberto', 'encerrada', 'imagem_card')->where("ativo", true)->orderBy('inicio', 'DESC')->get();
         return response()->json($reservas);
     }
 }
