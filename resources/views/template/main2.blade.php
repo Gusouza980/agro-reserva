@@ -6,6 +6,18 @@
 <!doctype html>
 <html lang="pt-br" data-theme="light">
 <head>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MRTWDJ5');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
     <title>{{ ($seo->titulo)}}</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -46,6 +58,11 @@
 </head>
 
 <body x-data="container" class="bg-[#F5F5F5]">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRTWDJ5"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class="w-full" id="app" x-data="{openSideCart: false}">
         @include("includes.tags.google-ads")
         <x-institucional.barra-topo></x-institucional.barra-topo>
