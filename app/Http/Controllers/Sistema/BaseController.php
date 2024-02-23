@@ -15,7 +15,11 @@ class BaseController extends Controller
     public function __construct(){
         $this->middleware(function ($request, $next) {
             if(session()->get("admin")){
-                $this->usuario = Usuario::find(session()->get("admin"));
+                if(isset(session()->get('admin')['acesso'])){
+                    $this->usuario = Usuario::find(session()->get("admin")['id']);
+                }else{
+                    $this->usuario = Usuario::find(session()->get("admin"));
+                }
             }
             View::share('usuario', $this->usuario);
             return $next($request);
