@@ -15,7 +15,6 @@ class BaseController extends Controller
     public function __construct(){
         $this->middleware(function ($request, $next) {
             if(session()->get("admin")){
-                dd(session()->get('admin'));
                 if(isset(session()->get('admin')['acesso'])){
                     $this->usuario = Usuario::find(session()->get("admin")['id']);
                 }else{
