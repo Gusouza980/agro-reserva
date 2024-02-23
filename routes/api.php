@@ -25,7 +25,9 @@ Route::resource('banners', \App\Http\Controllers\Api\BannersController::class);
 
 // RESERVAS
 Route::get('/reservas/ativas/{page?}/{qtd?}', [\App\Http\Controllers\Api\ReservasController::class, 'ativas']);
+Route::get('/reserva/{reservaId}/lotes', \App\Http\Controllers\Api\ReservasController::class, 'lotes');
 Route::resource('reservas', \App\Http\Controllers\Api\ReservasController::class);
+
 
 // LOG DE PÁGINAS
 Route::post('/log/create', [\App\Http\Controllers\LogPaginasController::class, 'create'])->name("log.paginas.create");

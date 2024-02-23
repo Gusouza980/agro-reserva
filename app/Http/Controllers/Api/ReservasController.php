@@ -12,4 +12,9 @@ class ReservasController extends Controller
         $reservas = Reserva::select('id', 'inicio', 'fim', 'aberto', 'encerrada', 'imagem_card')->where("ativo", true)->orderBy('inicio', 'DESC')->skip($qtd * ($page - 1))->take($qtd)->get();
         return response()->json($reservas);
     }
+
+    public function lotes($reservaId){
+        $reserva = Reserva::with('lotes')->find($reservaId);
+        return response()->json($reserva);
+    }
 }
