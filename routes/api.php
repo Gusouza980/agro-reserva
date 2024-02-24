@@ -25,7 +25,7 @@ Route::resource('banners', \App\Http\Controllers\Api\BannersController::class);
 
 // RESERVAS
 Route::get('/reservas/ativas/{page?}/{qtd?}', [\App\Http\Controllers\Api\ReservasController::class, 'ativas']);
-// Route::get('/reserva/{reservaId}/lotes', \App\Http\Controllers\Api\ReservasController::class, 'lotes');
+Route::get('/reserva/{reservaId}/lotes', \App\Http\Controllers\Api\ReservasController::class, 'lotes');
 Route::resource('reservas', \App\Http\Controllers\Api\ReservasController::class);
 
 
