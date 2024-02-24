@@ -14,7 +14,7 @@ class ReservasController extends Controller
     }
 
     public function lotes($reservaId){
-        $reserva = Reserva::with('lotes')->with('lotes.fazenda:id,nome_fazenda,logo')->find($reservaId);
+        $reserva = Reserva::with('lotes')->with('lotes.fazenda:id,nome_fazenda,logo')->with('lotes.raca')->find($reservaId);
         return response()->json($reserva);
     }
 }
