@@ -28,7 +28,7 @@
                                     <label class="block">
                                         <span>Pesquisar</span>
                                         <span class="relative mt-1.5 flex">
-                                            <input wire:model.debounce.500ms="filtro_inicio" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" type="text" placeholder="Pesquisar nome ou e-mail" wire:model.debounce.500ms="filtro_clientes">
+                                            <input class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" type="text" placeholder="Pesquisar nome ou e-mail" wire:model.debounce.500ms="filtro_clientes">
                                         </span>
                                     </label>
                                 </div>
