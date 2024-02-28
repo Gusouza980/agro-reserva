@@ -93,7 +93,7 @@ class ProcessaCompra implements ShouldQueue
         // $cliente = $this->venda->cliente;
         $pdf = PDF::loadView('cliente.comprovante3', $data);
         $pdf->save(public_path() . "/comprovantes/".$this->venda->id.".pdf");
-        $file = file_get_contents(public_path() . '/templates/emails/confirmar-compra.html');
+        $file = file_get_contents('https://agroreserva.com.br/templates/emails/confirmar-compra.html');
         Email::enviar($file, "Confirmação de Compra", $this->venda->cliente->email, false, public_path() . "/comprovantes/" . $this->venda->id . ".pdf");
         \Log::channel("vendas")->info("E-mail de confirmação da venda #" . $this->venda->id . " enviado com sucesso.");
     }
