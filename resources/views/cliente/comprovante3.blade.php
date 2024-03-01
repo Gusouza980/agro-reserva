@@ -63,6 +63,108 @@
                     </table>
                 </div>
             </div>
+            @php
+                $cliente = $venda->cliente;
+            @endphp
+
+            <div class="row">
+                <div class="col-12">
+                    <table class="table" style="border-spacing: 0; padding: 0px 0px; margin-top: 15px; margin-left: auto; margin-right: auto; border: 1px solid black; width: 100%;">
+                        <thead style="background-color: black; color: white; padding: 0px 0px;">
+                            <tr style="padding: 0px 0px;">
+                                <th class="text-center" style="font-size: 12px; font-weight: bold; padding: 3px 0px;">DADOS DO COMPRADOR</th>
+                            </tr>
+                        </thead>
+                        <tbody class="">
+                            
+                            <tr class="">
+                                <td class="">
+                                    <table style="border-spacing: 0 1.5px; width: 100%;">
+                                        <tbody>
+                                            <tr class="border: 0px important;">
+                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
+                                                    NOME:
+                                                </td>
+                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 250px; font-size: 10px;">
+                                                    {{$cliente->nome_dono}}
+                                                </td>
+                                                <td style="width: 10px;"></td>
+                                                <td style="width: 10px;"></td>
+                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
+                                                    TEL 01:
+                                                </td>
+                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
+                                                    {{$cliente->whatsapp}}
+                                                </td>
+                                                <td style="width: 10px;"></td>
+                                                <td style="width: 10px;"></td>
+                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
+                                                    TEL 02:
+                                                </td>
+                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
+                                                    {{$cliente->telefone}}
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr class="">
+                                <td class="">
+                                    <table style="border-spacing: 0 1.5px; width: 100%;">
+                                        <tbody>
+                                            <tr class="border: 0px important;">
+                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
+                                                    ENDEREÇO:
+                                                </td>
+                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 427px; font-size: 10px;">
+                                                    {{$cliente->rua . ", n° " . $cliente->numero . " " . $cliente->bairro . " - " . $cliente->cidade . " - " . $cliente->estado . ", CEP:" . $cliente->cep}}
+                                                    {{--  Rua três corações, nº 1009, Exposição - Passos - MG, CEP: 37902-377  --}}
+                                                </td>
+                                                <td style="width: 10px;"></td>
+                                                <td style="width: 10px;"></td>
+                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
+                                                    FAZENDA:
+                                                </td>
+                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
+                                                    {{$cliente->nome_fazenda}}
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr class="">
+                                <td class="">
+                                    <table style="border-spacing: 0 1.5px; width: 100%;">
+                                        <tbody>
+                                            <tr class="border: 0px important;">
+                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
+                                                    CPF/CNPJ:
+                                                </td>
+                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 250px; font-size: 10px;">
+                                                    {{($cliente->pessoa_fisica) ? $cliente->cpf : $cliente->cnpj}} 
+                                                </td>
+                                                <td style="width: 10px;"></td>
+                                                <td style="width: 10px;"></td>
+                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
+                                                    EMAIL:
+                                                </td>
+                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 276px; font-size: 10px;">
+                                                    <a href="mailto:{{$cliente->email}}">{{$cliente->email}}</a>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>          
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             @foreach($fazendas as $key => $produtos)
                 @php
                     $fazenda = \App\Models\Fazenda::find($key);
@@ -259,109 +361,7 @@
                     @endforeach
                 </div>
             @endforeach
-            @php
-                $cliente = $venda->cliente;
-            @endphp
-
-            <div class="row">
-                <div class="col-12">
-                    <table class="table" style="border-spacing: 0; padding: 0px 0px; margin-top: 15px; margin-left: auto; margin-right: auto; border: 1px solid black; width: 100%;">
-                        <thead style="background-color: black; color: white; padding: 0px 0px;">
-                            <tr style="padding: 0px 0px;">
-                                <th class="text-center" style="font-size: 12px; font-weight: bold; padding: 3px 0px;">DADOS DO COMPRADOR</th>
-                            </tr>
-                        </thead>
-                        <tbody class="">
-                            
-                            <tr class="">
-                                <td class="">
-                                    <table style="border-spacing: 0 1.5px; width: 100%;">
-                                        <tbody>
-                                            <tr class="border: 0px important;">
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
-                                                    NOME:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 250px; font-size: 10px;">
-                                                    {{$cliente->nome_dono}}
-                                                </td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
-                                                    TEL 01:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
-                                                    {{$cliente->whatsapp}}
-                                                </td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
-                                                    TEL 02:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
-                                                    {{$cliente->telefone}}
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr class="">
-                                <td class="">
-                                    <table style="border-spacing: 0 1.5px; width: 100%;">
-                                        <tbody>
-                                            <tr class="border: 0px important;">
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
-                                                    ENDEREÇO:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 427px; font-size: 10px;">
-                                                    {{$cliente->rua . ", n° " . $cliente->numero . " " . $cliente->bairro . " - " . $cliente->cidade . " - " . $cliente->estado . ", CEP:" . $cliente->cep}}
-                                                    {{--  Rua três corações, nº 1009, Exposição - Passos - MG, CEP: 37902-377  --}}
-                                                </td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
-                                                    FAZENDA:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 99px; font-size: 10px;">
-                                                    {{$cliente->nome_fazenda}}
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr class="">
-                                <td class="">
-                                    <table style="border-spacing: 0 1.5px; width: 100%;">
-                                        <tbody>
-                                            <tr class="border: 0px important;">
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 70px; text-align: center; font-size: 10px;">
-                                                    CPF/CNPJ:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 250px; font-size: 10px;">
-                                                    {{($cliente->pessoa_fisica) ? $cliente->cpf : $cliente->cnpj}} 
-                                                </td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="width: 10px;"></td>
-                                                <td style="background-color: black; color: white; padding: 2px 0px; border: 1px solid black; width: 60px; text-align: center; font-size: 10px;">
-                                                    EMAIL:
-                                                </td>
-                                                <td style="background-color: white; color: black; border: 1px solid black; padding: 2px 5px; width: 276px; font-size: 10px;">
-                                                    <a href="mailto:{{$cliente->email}}">{{$cliente->email}}</a>
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>          
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
+                       
             <div style="width: 100%; margin-top: 50px; text-align:center; font-weight:bold; font-size: 14px;">
                 RESUMO DA COMPRA
             </div>
