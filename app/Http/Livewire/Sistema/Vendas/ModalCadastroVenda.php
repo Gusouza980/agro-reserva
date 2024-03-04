@@ -132,8 +132,8 @@ class ModalCadastroVenda extends Component
         foreach($this->parcelas as $parcela){
             $total_parcelas += $parcela["valor"];
         }
-        $desconto_extra += $total - $total_parcelas;
         $desconto = $total * $porcentagem_desconto / 100;
+        $desconto_extra += ($total - $desconto - $desconto_extra) - $total_parcelas;
         $total = $total - $desconto - $desconto_extra;
         $valor_parcela = ($total - $entrada) / $qtd_parcelas;
 
