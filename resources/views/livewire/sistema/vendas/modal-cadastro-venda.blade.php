@@ -178,7 +178,7 @@
                                                                 foreach($parcelas as $parcela){
                                                                     $total_parcelas += $parcela["valor"];
                                                                 }
-                                                                $desconto_parcelas = $total_lotes - $total_parcelas;
+                                                                $desconto_parcelas = $total_lotes - ($total_lotes * $desconto / 100) - $desconto_extra - $total_parcelas;
                                                                 $entrada = ($this->venda->entrada) ? $this->venda->entrada : 0;
                                                             @endphp
                                                             <tr>
