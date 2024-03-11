@@ -50,8 +50,6 @@
                                             <a name="" id="" class="dropdown-item py-2"
                                                 href="{{route('painel.fazenda.reservas', ['fazenda' => $fazenda])}}"
                                                 role="button">Reservas</a>
-                                            <a name="" id="" class="dropdown-item py-2" onclick="Livewire.emit('iniciaModal', {{ $fazenda->id }})"
-                                                role="button">Usuários</a>
                                         </div>
                                     </div>
                                 </td>
@@ -70,23 +68,6 @@
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="modalClientes" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Usuários da Fazenda</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                @livewire('fazenda.clientes.modal')
-            </div>
-        </div>
-    </div>
-</div>
-
 
 @endsection
 
