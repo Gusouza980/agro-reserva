@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Facades\AgriskFacade;
 use App\Classes\Agrisk\Apiary\ApiaryClient;
 use App\Classes\Agrisk\Apiary\ApiaryError;
+use Illuminate\Support\Facades\Log;
 
 class Termos extends Component
 {
@@ -24,6 +25,7 @@ class Termos extends Component
     }
 
     public function setCodigoDispositivo($visitorId){
+        Log::debug("setCodigoDispositivo: " . $visitorId);
         if(!$this->codigo_dispositivo && !empty($visitorId)){
             $this->codigo_dispositivo = $visitorId;
         }
