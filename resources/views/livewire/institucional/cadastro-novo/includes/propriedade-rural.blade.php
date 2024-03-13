@@ -34,7 +34,7 @@
         </div>
         <div class="mb-5 md:col-span-2">
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Endereço da Propriedade</label>
-            <input type="text" name="form.rua_propriedade" class="w-full form-input-text mt-[5px]" wire:loading.attr="disabled" wire:target="form.cep_propriedade" wire:model.defer="form.rua_propriedade" maxlength="255">
+            <input type="text" name="form.rua_propriedade" class="w-full form-input-text mt-[5px]" wire:loading.attr="disabled" wire:target="form.cep_propriedade" wire:model.defer="form.rua_propriedade" maxlength="100">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.rua_propriedade')
                     {{ $message }}
