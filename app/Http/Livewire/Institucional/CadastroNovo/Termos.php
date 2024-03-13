@@ -102,6 +102,10 @@ class Termos extends Component
             }, $response->getArrayMessages());
             return;
         }
+        if(is_string($response->questions)){
+            $this->erros = [$response->questions];
+            Log::debug($this->erros);
+        }
         return $response->questions;
     }
 
