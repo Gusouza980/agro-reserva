@@ -266,7 +266,7 @@
                     </div>
                     <div class="row">
                         <div class="mt-5 text-center col-12 text-nav-footer text-lg-left">
-                            <span><a href="tel:+553433052102">+55 34 3305-2102</a></span>
+                            <span><a href="tel:+5534992754132">+55 34 99275-4132</a></span>
                         </div>
                     </div>
                     <div class="row">
