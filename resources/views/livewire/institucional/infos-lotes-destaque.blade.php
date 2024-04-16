@@ -122,7 +122,7 @@
                                     class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Comprar</a>
                             @else
                                 <a href="{{ route('login') }}"
-                                    class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Entre para comrpar</a>
+                                    class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Entre para comprar</a>
                             @endif
                             <a href="{{ route('fazenda.lote', ['fazenda' => $lote['fazenda']['slug'], 'reserva' => $lote['reserva']['id'], 'lote' => $lote['id']]) }}"
                                 class="cpointer bg-[#E8521D] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Ver Mais</a>
