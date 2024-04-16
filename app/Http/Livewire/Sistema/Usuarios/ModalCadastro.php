@@ -45,7 +45,7 @@ class ModalCadastro extends Component
     }
 
     public function carregaModalEdicaoUsuario(Usuario $usuario){
-        $this->usuario = $usuario;
+        $this->usuario = $usuario->toArray();
         $this->show = true;
         $this->op = "edicao";
     }

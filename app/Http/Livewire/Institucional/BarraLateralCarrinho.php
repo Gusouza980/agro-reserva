@@ -29,7 +29,10 @@ class BarraLateralCarrinho extends Component
     }
 
     public function adicionarProduto(Produto $produto){
-        
+        dd("FOI");
+        if(!session()->get('cliente')){
+            return redirect()->route('login');
+        }
         if($produto->produtable->reserva->encerrada){
             $msg = "A reserva " . $produto->produtable->reserva->fazenda->nome_fazenda . " já foi encerrada !";
             $this->emit("mostrarPopup", "erro", $msg);

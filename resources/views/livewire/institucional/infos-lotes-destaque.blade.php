@@ -117,9 +117,12 @@
                                     {{ number_format($lote["produto"]["preco"] / $lote["reserva"]["max_parcelas"], 2, ',', '.') }}</b></span>
                         </div>
                         <div class="w-full mt-[20px] flex gap-x-4">
-                            @if($lote["liberar_compra"])
-                            <a onclick="Livewire.emit('adicionarProduto', {{ $lote['produto']['id'] }})"
-                                class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Comprar</a>
+                            @if(session()->get('cliente'))
+                                <a onclick="Livewire.emit('adicionarProduto', {{ $lote['produto']['id'] }})"
+                                    class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Comprar</a>
+                            @else
+                                <a href="{{ route('login') }}"
+                                    class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Entre para comrpar</a>
                             @endif
                             <a href="{{ route('fazenda.lote', ['fazenda' => $lote['fazenda']['slug'], 'reserva' => $lote['reserva']['id'], 'lote' => $lote['id']]) }}"
                                 class="cpointer bg-[#E8521D] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Ver Mais</a>

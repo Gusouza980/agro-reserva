@@ -9,6 +9,10 @@ class Usuario extends Model
 {
     use HasFactory;
 
+    protected $hidden = [
+        "senha"
+    ];
+
     public function assessor(){
         return $this->belongsTo(Assessor::class);
     }
