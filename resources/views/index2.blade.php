@@ -20,8 +20,8 @@
 
     @if($lotes_destaque->count() > 0)
         <div class="w-full">
-            {{-- <x-institucional.header-reserva-lotes :reserva="$reserva"></x-institucional.header-reserva-lotes> --}}
-            {{-- <x-institucional.slide-lotes-destaque :reserva="$reserva" :lotes="$lotes_destaque"></x-institucional.slide-lotes-destaque> --}}
+            <x-institucional.header-reserva-lotes :reserva="$reserva"></x-institucional.header-reserva-lotes>
+            <x-institucional.slide-lotes-destaque :reserva="$reserva" :lotes="$lotes_destaque"></x-institucional.slide-lotes-destaque>
         </div>
         <hr>
     @endif

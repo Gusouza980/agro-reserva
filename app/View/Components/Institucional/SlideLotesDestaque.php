@@ -17,7 +17,7 @@ class SlideLotesDestaque extends Component
      public $lotes;
      public $reserva;
 
-    public function __construct($lotes, $reserva)
+    public function __construct($lotes, $reserva = null)
     {
         //
         $this->lotes = $lotes;
