@@ -90,7 +90,7 @@
                             <button onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})" class="border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Comprar</button>
                         @endif
                     @else
-                        <a href="https://api.whatsapp.com/send?phone=5534992754132" class="flex items-center justify-center border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Consultar</a>
+                        <a href="https://api.whatsapp.com/send?phone=5534992754132" target="_blank" class="flex items-center justify-center border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Consultar</a>
                     @endif
                 </div>
             </div>

@@ -77,8 +77,8 @@
                                         {{ number_format($lote->preco / $lote->reserva->max_parcelas, 2, ',', '.') }}</b></span>
                             </div>
                         @else
-                            <div class="w-full">
-                                <a href="https://api.whatsapp.com/send?phone=5534992754132" class="w-fit flex items-center justify-center py-1 px-3 bg-emerald-500 hover:bg-emerald-700 text-white transition duration-200">Entrar em contato</a>
+                            <div class="w-full my-4">
+                                <a href="https://api.whatsapp.com/send?phone=5534992754132" target="_blank" class="rounded-md w-fit flex items-center justify-center py-1 px-3 bg-emerald-500 hover:bg-emerald-700 text-white transition duration-200">Entrar em contato</a>
                             </div>
                         @endif
                         <div class="w-full font-montserrat text-[14px]">
