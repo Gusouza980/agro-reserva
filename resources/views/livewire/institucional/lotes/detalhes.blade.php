@@ -353,7 +353,7 @@
                 <div class="w-full mb-3 text-center">
                     <h3 class="font-montserrat font-medium text-[25px] text-[#15171E]">Animais da Reserva</h3>
                 </div>
-                <x-institucional.slide-lotes-destaque :lotes="$lote->reserva->lotes"></x-institucional.slide-lotes-destaque>
+                <x-institucional.slide-lotes-destaque :reserva="$lote->reserva" :lotes="$lote->reserva->lotes"></x-institucional.slide-lotes-destaque>
             </div>
         </div>
     @endif
