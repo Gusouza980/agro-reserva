@@ -38,7 +38,7 @@
                                     @if(!$reserva || $reserva->modalidade == 0)
                                         <span>@if($lote->preco > 0) {{ $lote->reserva->max_parcelas . "x de R$" . number_format($lote->preco / $lote->reserva->max_parcelas, 2, ",", ".")  }}  @else {{ $lote->reserva->desconto }}% de desconto no<br>pagamento à vista @endif</span>
                                     @else
-                                        <a href="https://api.whatsapp.com/send?phone=5534992754132" class="w-fit flex items-center justify-center py-1 px-3 bg-emerald-500 hover:bg-emerald-700 text-white transition duration-200">Entrar em contato</a>
+                                        <a href="https://api.whatsapp.com/send?phone=5534992754132" target="_blank" class="rounded-md w-fit flex items-center justify-center py-1 px-3 bg-emerald-500 hover:bg-emerald-700 text-white transition duration-200">Entrar em contato</a>
                                     @endif
                                 </div>
                             </div>

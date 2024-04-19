@@ -127,7 +127,11 @@
                     @if($reserva && !$reserva->multi_fazendas && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
                         <div class="px-5 py-5 flex flex-col rounded-[15px] bg-white relative">
                             <div class="w-full">
-                                <img class="w-full" src="{{ asset($fazenda->logo) }}" alt="">
+                                @if($fazenda->logo_evento)
+                                    <img class="w-full" src="{{ asset($fazenda->logo_evento) }}" alt="">
+                                @else
+                                    <img class="w-full" src="{{ asset($fazenda->logo) }}" alt="">
+                                @endif
                             </div>
                             @if($reserva->catalogo)
                                 <div class="w-full mt-6 grow flex items-end">
