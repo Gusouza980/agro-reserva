@@ -156,7 +156,7 @@
                 <div class="w-full pl-[10px]">
                     <div class="w1200 slide-lotes mt-10 py-10">
                         @if($reserva && !$reserva->multi_fazendas && $lotes->where("fazenda_id", $fazenda_id)->count() > 0)
-                            <div class="w-[280px] shrink-0 flex flex-col items-between justify-between transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] px-6 py-3 bg-white relative">
+                            <div class="w-[280px] shrink-0 flex flex-col items-between @if($reserva->catalogo) justify-between @else justify-center @endif transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 overflow-hidden rounded-[15px] px-6 py-3 bg-white relative">
                                 <div class="w-full">
                                     <img class="w-full" src="{{ asset($fazenda->logo) }}" alt="">
                                 </div>
