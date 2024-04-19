@@ -36,14 +36,14 @@
             </div>
             
             <div class="relative">
-                @if($lote->membro_pacote)
+                {{-- @if($lote->membro_pacote)
                     @php
                         $membros = $lotes->where("numero", $lote->numero)->where("id", "!=", $lote->id)->pluck("nome")->toArray();
                     @endphp
                     <div title="Esse lote faz parte de um pacote junto com {{ implode(", ", $membros) }}" style="top: -12px; right: -7px;" class="cursor-pointer absolute bg-slate-500 flex items-center justify-center w-[32px] h-[32px] rounded-full">
                         <i class="fas fa-box-open text-white font-medium text-[15px]"></i>
                     </div>
-                @endif
+                @endif --}}
                 <div class="bg-slate-100 rounded-md px-3 py-3 text-[#626262] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
                     @if($lote->beta_caseina)
                         <div class="w-full mb-2 font-bold text-center">
