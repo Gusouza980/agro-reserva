@@ -140,6 +140,15 @@ class FazendaController extends Controller
             toastr()->success("Logo salva com sucesso!");
         }
 
+        if($request->file("logo_evento")){
+            Storage::delete($fazenda->logo_evento);
+            $fazenda->logo_evento = $request->file('logo_evento')->store(
+                'imagens/fazendas/' . Str::slug($fazenda->nome_fazenda) . "/logo_evento", 'local'
+            );
+            $fazenda->save();
+            toastr()->success("Logo salva com sucesso!");
+        }
+
         return redirect()->back();
     }
 

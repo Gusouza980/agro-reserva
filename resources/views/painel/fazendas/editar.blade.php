@@ -138,6 +138,21 @@
                             @endif
                         </div>
                     </div>
+
+                    <div class="row">
+                        
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="">Logo do Evento</label>
+                                <input type="file" class="form-control-file" name="logo_evento" id="" placeholder="" aria-describedby="fileHelpId" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            @if($fazenda->logo_evento)
+                                <img src="{{asset($fazenda->logo_evento)}}" style="max-height: 100px;" alt="">
+                            @endif
+                        </div>
+                    </div>
                     
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
