@@ -14,12 +14,14 @@ class SlideLotesDestaque extends Component
      * @return void
      */
     
-    public $lotes;
+     public $lotes;
+     public $reserva;
 
-    public function __construct($lotes)
+    public function __construct($lotes, $reserva)
     {
         //
         $this->lotes = $lotes;
+        $this->reserva = $reserva;
     }
 
     /**

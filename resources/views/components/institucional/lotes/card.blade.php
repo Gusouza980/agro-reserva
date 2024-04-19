@@ -76,7 +76,11 @@
             <div class="md:left-0 w-full rounded-b-[15px] px-3 pt-3 flex flex-col justify-content-center align-items-center md:h-[100px] bg-white ">
                 @if(!$lote->reserva->encerrada && $lote->produto)
                     <div class="z-[11] w-full text-center">
-                        <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">Em até {{ $lote->reserva->max_parcelas }}x de R${{ number_format($lote->produto->preco / $lote->reserva->max_parcelas, 2, ",", ".") }}</span>
+                        @if($lote->reserva->modalidade == 0)
+                            <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">Em até {{ $lote->reserva->max_parcelas }}x de R${{ number_format($lote->produto->preco / $lote->reserva->max_parcelas, 2, ",", ".") }}</span>
+                        @else
+                            <a href="https://api.whatsapp.com/send?phone=5534992754132" class="w-fit flex items-center justify-center py-1 px-3 bg-emerald-500 hover:bg-emerald-700 text-white transition duration-200">Entrar em contato</a>
+                        @endif
                     </div>
                 @endif
                 <div class="grid w-full @if(!$lote->reservado && !$lote->reserva->encerrada && $lote->liberar_compra) grid-cols-2 @else grid-cols-1 @endif gap-3 mt-3">

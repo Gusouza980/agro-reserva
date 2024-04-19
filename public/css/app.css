@@ -4861,12 +4861,6 @@ body[dir="rtl"] .checkbox:checked,
 .bottom-0{
     bottom: 0px;
 }
-.left-5{
-    left: 1.25rem;
-}
-.right-0{
-    right: 0px;
-}
 .-top-\[400px\]{
     top: -400px;
 }
@@ -4875,6 +4869,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .right-\[5px\]{
     right: 5px;
+}
+.right-0{
+    right: 0px;
 }
 .bottom-\[10px\]{
     bottom: 10px;
@@ -4920,21 +4917,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 .-right-px{
     right: -1px;
-}
-.left-8{
-    left: 2rem;
-}
-.right-8{
-    right: 2rem;
-}
-.bottom-10{
-    bottom: 2.5rem;
-}
-.bottom-12{
-    bottom: 3rem;
-}
-.bottom-8{
-    bottom: 2rem;
 }
 .z-0{
     z-index: 0;
@@ -5378,15 +5360,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 .h-\[32px\]{
     height: 32px;
-}
-.h-\[600px\]{
-    height: 600px;
-}
-.h-\[5800px\]{
-    height: 5800px;
-}
-.h-\[580px\]{
-    height: 580px;
 }
 .max-h-\[200px\]{
     max-height: 200px;
@@ -7355,10 +7328,6 @@ body[dir="rtl"] .checkbox:checked,
 .text-transparent{
     color: transparent;
 }
-.text-emerald-400{
-    --tw-text-opacity: 1;
-    color: rgb(52 211 153 / var(--tw-text-opacity));
-}
 .underline{
     -webkit-text-decoration-line: underline;
             text-decoration-line: underline;
@@ -7532,9 +7501,6 @@ body[dir="rtl"] .checkbox:checked,
 .duration-1000{
     transition-duration: 1000ms;
 }
-.duration-100{
-    transition-duration: 100ms;
-}
 .ease-in-out{
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -7611,10 +7577,6 @@ body[dir="rtl"] .checkbox:checked,
 .duration-1000{
     -webkit-animation-duration: 1000ms;
             animation-duration: 1000ms;
-}
-.duration-100{
-    -webkit-animation-duration: 100ms;
-            animation-duration: 100ms;
 }
 .delay-300{
     -webkit-animation-delay: 300ms;
@@ -8022,11 +7984,6 @@ body[dir="rtl"] .checkbox:checked,
 
 .hover\:bg-success\/20:hover{
     background-color: hsl(var(--su) / 0.2);
-}
-
-.hover\:bg-emerald-400:hover{
-    --tw-bg-opacity: 1;
-    background-color: rgb(52 211 153 / var(--tw-bg-opacity));
 }
 
 .hover\:fill-\[\#5b5d63\]:hover{
@@ -8575,9 +8532,6 @@ body[dir="rtl"] .checkbox:checked,
     .md\:bottom-\[-90px\]{
         bottom: -90px;
     }
-    .md\:bottom-12{
-        bottom: 3rem;
-    }
     .md\:order-2{
         order: 2;
     }
@@ -8642,9 +8596,6 @@ body[dir="rtl"] .checkbox:checked,
     }
     .md\:h-64{
         height: 16rem;
-    }
-    .md\:h-\[580px\]{
-        height: 580px;
     }
     .md\:max-h-full{
         max-height: 100%;

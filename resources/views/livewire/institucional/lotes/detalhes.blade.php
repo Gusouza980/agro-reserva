@@ -61,17 +61,23 @@
                         </ul>
                     </div>
                     @if(!$lote->reserva->encerrada)
-                        <div class="w-full mt-[35px] font-montserrat flex items-center">
-                            <span class="font-bold text-[33px]">R$
-                                {{ number_format($lote->preco - ($lote->preco * $lote->reserva->desconto) / 100, 2, ',', '.') }}</span>
-                            <span class="font-medium text-[25px] ml-2">à vista</span>
-                        </div>
-                        <div class="w-full font-montserrat text-[19px] font-medium">
-                            <span>Fator multiplicador: <b>{{ $lote->reserva->max_parcelas }}x</b> de <b>R$
-                                    {{ number_format($lote->preco / $lote->reserva->max_parcelas, 2, ',', '.') }}</b></span>
-                        </div>
+                        @if($lote->reserva->modalidade == 0)
+                            <div class="w-full mt-[35px] font-montserrat flex items-center">
+                                <span class="font-bold text-[33px]">R$
+                                    {{ number_format($lote->preco - ($lote->preco * $lote->reserva->desconto) / 100, 2, ',', '.') }}</span>
+                                <span class="font-medium text-[25px] ml-2">à vista</span>
+                            </div>
+                            <div class="w-full font-montserrat text-[19px] font-medium">
+                                <span>Fator multiplicador: <b>{{ $lote->reserva->max_parcelas }}x</b> de <b>R$
+                                        {{ number_format($lote->preco / $lote->reserva->max_parcelas, 2, ',', '.') }}</b></span>
+                            </div>
+                        @else
+                            <div class="w-full">
+                                <a href="https://api.whatsapp.com/send?phone=5534992754132" class="w-fit flex items-center justify-center py-1 px-3 bg-emerald-500 hover:bg-emerald-700 text-white transition duration-200">Entrar em contato</a>
+                            </div>
+                        @endif
                         <div class="w-full font-montserrat text-[14px]">
-                            <p>
+                            {{-- <p>
                                 @php
                                     $forma_pagamento = $lote->reserva->formas_pagamento->where("maximo", $lote->reserva->max_parcelas)->first();
                                     $cont_parcelas = 0;
@@ -88,13 +94,13 @@
                                         com o restante das parcelas sendo únicas.
                                     @endif
                                 @else
-                                    {{-- <b>Pagamento em parcelas únicas</b> --}}
+                                    <b>Pagamento em parcelas únicas</b>
                                 @endif
-                            </p>
+                            </p> --}}
                             <span>Mais informações relacionadas a forma de pagamento e frete, consulte <a href="#condicoes" class="font-bold text-black underline">FRETE E RETIRADA</a> e <a href="#condicoes" class="font-bold text-black underline">PAGAMENTOS E CONDIÇÕES</a> abaixo.</span>
                         </div>
                     @endif
-                    @if(!$lote->reservado && !$lote->reserva->encerrada && $lote->liberar_compra)
+                    @if(!$lote->reservado && !$lote->reserva->encerrada && $lote->liberar_compra && $lote->reserva->modalidade == 0)
                         @php
                             $numeros = ['5534992754132', '5534996920202'];
                             $sorteado = array_rand($numeros, 1);
