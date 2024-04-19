@@ -32,7 +32,7 @@
                             @endif
                             @if($reserva->aberto)
                                 <div class="mt-3">
-                                    <a href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva->id]) }}" name="" id="" class="px-[30px] py-[10px] @if($reserva->encerrada) border-2 border-[#E8521B] @else bg-[#E8521B] @endif text-[#FFFFFF] rounded-[6px] transition duration-300 font-montserrat text-[17px] font-bold hover:text-white hover:bg-[#b83f13]" href="#" role="button">Ver Reserva</a>
+                                    <a href="{{ route('fazenda.lotes', ['fazenda' => $reserva->fazenda->slug, 'reserva' => $reserva->id]) }}" name="" id="" class="px-[30px] py-[10px] @if($reserva->encerrada) border-2 border-[#E8521B] @else bg-[#E8521B] @endif text-[#FFFFFF] rounded-[6px] transition duration-300 font-montserrat text-[17px] font-bold hover:text-white hover:bg-[#b83f13]" href="#" role="button">Ver Lotes</a>
                                 </div>
                             @endif
                         </div>
