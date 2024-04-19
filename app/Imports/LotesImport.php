@@ -33,7 +33,7 @@ class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
         $lote->fazenda_id = $this->fazenda_id;
 
         foreach($row as $coluna => $value){
-            if(!empty($coluna) && $coluna != "skip"){
+            if(!empty($coluna) && $coluna != "skip" && !is_numeric($coluna)){
                 $lote->$coluna = $value;
             }
         }
