@@ -35,6 +35,7 @@ class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
 
         foreach($row as $coluna => $value){
             Log::info($coluna);
+            Log::debug($value);
             if(!empty($coluna)){
                 break;
             }
