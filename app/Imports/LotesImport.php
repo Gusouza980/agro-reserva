@@ -35,7 +35,10 @@ class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
 
         foreach($row as $coluna => $value){
             Log::info($coluna);
-            if(!empty($coluna) && $coluna != "skip" && !is_numeric($coluna)){
+            if(!empty($coluna)){
+                break;
+            }
+            if($coluna != "skip" && !is_numeric($coluna)){
                 $lote->$coluna = $value;
             }
         }
