@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 use App\Classes\Util;
+use Illuminate\Support\Facades\Log;
 
 class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
 {
@@ -33,6 +34,7 @@ class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
         $lote->fazenda_id = $this->fazenda_id;
 
         foreach($row as $coluna => $value){
+            Log::info($coluna);
             if(!empty($coluna) && $coluna != "skip" && !is_numeric($coluna)){
                 $lote->$coluna = $value;
             }
