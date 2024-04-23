@@ -144,7 +144,7 @@
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label for="">Logo do Evento</label>
-                                <input type="file" class="form-control-file" name="logo_evento" id="" placeholder="" aria-describedby="fileHelpId" required>
+                                <input type="file" class="form-control-file" name="logo_evento" id="" placeholder="" aria-describedby="fileHelpId">
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
