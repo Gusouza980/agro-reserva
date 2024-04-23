@@ -29,7 +29,6 @@ class BarraLateralCarrinho extends Component
     }
 
     public function adicionarProduto(Produto $produto){
-        dd("FOI");
         if(!session()->get('cliente')){
             return redirect()->route('login');
         }
