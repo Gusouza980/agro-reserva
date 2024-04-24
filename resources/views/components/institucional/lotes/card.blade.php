@@ -91,7 +91,7 @@
                                 <button onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})" class="border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Comprar</button>
                             @else
                                 <a href="{{ route('login') }}"
-                                    class="flex items-center justify-center border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Entre para comprar</a>
+                                    class="flex w-full col-span-2 items-center justify-center border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 font-semibold rounded-[30px]">Entre para comprar</a>
                             @endif
                         @endif
                     @else
