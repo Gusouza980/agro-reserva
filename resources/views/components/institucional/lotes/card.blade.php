@@ -84,10 +84,10 @@
                     </div>
                 @endif
                 <div class="grid w-full @if(!$lote->reservado && !$lote->reserva->encerrada && $lote->liberar_compra) grid-cols-2 @else grid-cols-1 @endif gap-3 mt-3">
-                    <button onclick="window.location.href = '{{ route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $lote->reserva, 'lote' => $lote]) }}'" class="border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba Mais</button>
                     @if($lote->reserva->modalidade == 0)
                         @if(!$lote->reservado && !$lote->reserva->encerrada && $lote->liberar_compra)
                             @if(session()->get('cliente'))
+                                <button onclick="window.location.href = '{{ route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $lote->reserva, 'lote' => $lote]) }}'" class="border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba Mais</button>
                                 <button onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})" class="border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Comprar</button>
                             @else
                                 <a href="{{ route('login') }}"
