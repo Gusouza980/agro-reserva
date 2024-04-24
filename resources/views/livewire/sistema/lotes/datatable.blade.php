@@ -24,6 +24,7 @@
                         <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Nome</th>
                         <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">RGD</th>
                         <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Preço</th>
+                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Vídeo</th>
                         <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Reservado</th>
                         <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Lib. Preço</th>
                         <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Lib. Compra</th>
@@ -46,6 +47,9 @@
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">{{ $lote['registro'] }}</td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5 w-fit">
                                 <input class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" onchange="Livewire.emit('atualizaValor', {{ $lote['id'] }}, 'preco', this.value)" value="{{ $lote['preco'] }}" />
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap sm:px-5 w-fit">
+                                <input class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" onchange="Livewire.emit('atualizaValor', {{ $lote['id'] }}, 'video', this.value)" value="{{ $lote['video'] }}" />
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
                                 <select class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" onchange="Livewire.emit('atualizaValor', {{ $lote['id'] }}, 'reservado', this.value)">

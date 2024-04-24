@@ -104,7 +104,7 @@
                                     <label for="ativo">Raça Pré-definida</label>
                                     <select
                                         class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                        name="raca_id" wire:model.defer="reserva.raca_id" required>
+                                        name="raca_id" wire:model.defer="reserva.raca_id">
                                         <option value="">Selecione uma Opção</option>
                                         <option value="-1">Nenhuma</option>
                                         @foreach (\App\Models\Raca::all() as $raca)
@@ -251,11 +251,16 @@
                                             </div>
                                         @endforeach
                                     </div>
-                                    <div class="w-full">
+                                    <div class="w-full flex gap-4 mt-4">
                                         <button type="submit"
-                                            class="w-full font-medium text-white bg-green-600 btn hover:bg-green-800"
+                                            class="grow font-medium text-white bg-green-600 btn hover:bg-green-800"
                                         >
                                             Salvar
+                                        </button>
+                                        <button type="button" @click="show = false"
+                                            class="grow font-medium text-gray-600 hover:text-white transition duration-200 bg-gray-300 btn hover:bg-gray-600"
+                                        >
+                                            Cancelar
                                         </button>
                                     </div>
                                 @endif

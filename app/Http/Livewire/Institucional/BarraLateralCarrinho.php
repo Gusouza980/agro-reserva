@@ -7,6 +7,7 @@ use App\Models\Carrinho;
 use App\Models\Cliente;
 use App\Models\Produto;
 use App\Models\CarrinhoProduto;
+use App\Models\Lote;
 
 class BarraLateralCarrinho extends Component
 {

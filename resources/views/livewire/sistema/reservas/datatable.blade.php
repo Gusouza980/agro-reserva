@@ -87,12 +87,12 @@
                                                         class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Editar Reserva</a>
                                                 </li>
                                             </ul>
-                                            <ul>
+                                            {{-- <ul>
                                                 <li @click="isShowPopper = false">
                                                     <a onclick="Livewire.emit('carregaModalEdicaoUsuario', {{ $reserva->id }})"
                                                         class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Editar Fazenda</a>
                                                 </li>
-                                            </ul>
+                                            </ul> --}}
                                             <ul>
                                                 <li @click="isShowPopper = false">
                                                     <a href="{{route('sistema.lotes.consultar', ['reserva' => $reserva->id])}}"
@@ -101,20 +101,8 @@
                                             </ul>
                                             <ul>
                                                 <li @click="isShowPopper = false">
-                                                    <a onclick="Livewire.emit('carregaModalEdicaoUsuario', {{ $reserva->id }})"
-                                                        class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Embriões</a>
-                                                </li>
-                                            </ul>
-                                            <ul>
-                                                <li @click="isShowPopper = false">
-                                                    <a onclick="Livewire.emit('carregaModalEdicaoUsuario', {{ $reserva->id }})"
+                                                    <a href="{{ route('painel.fazenda.reservas.relatorio', ['reserva' => $reserva]) }}"
                                                         class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Relatório</a>
-                                                </li>
-                                            </ul>
-                                            <ul>
-                                                <li @click="isShowPopper = false">
-                                                    <a onclick="Livewire.emit('carregaModalEdicaoUsuario', {{ $reserva->id }})"
-                                                        class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Mapa de Compra</a>
                                                 </li>
                                             </ul>
                                             <div class="h-px my-1 bg-slate-150 dark:bg-navy-500"></div>
