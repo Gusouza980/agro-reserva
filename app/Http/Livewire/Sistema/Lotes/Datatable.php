@@ -126,7 +126,7 @@ class Datatable extends Component
         $this->toDelete = null;
     }
     public function atualizaLotes(){
-        $this->lotes = Lote::where("reserva_id", $this->reserva["id"])->orderBy('numero')->get()->toArray();
+        $this->lotes = Lote::where("reserva_id", $this->reserva["id"])->get()->toArray();
     }
     public function mount(Reserva $reserva){
         $this->reserva = $reserva->toArray();
