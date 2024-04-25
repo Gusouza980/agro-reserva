@@ -98,9 +98,9 @@
                                 <p class="font-montserrat text-[14px]">
                                     LOTE: <b>{{ str_pad($lote["numero"], 3, '0', STR_PAD_LEFT) }}</b>
                                 </p>
-                                {{-- <div class="bg-emerald-500 text-white rounded-full w-10 h-10 flex items-center justify-center" title="{{ config('tipos_animais.nomes')[$lote["tipo"]] }}">
+                                <div class="bg-emerald-500 text-white rounded-full w-10 h-10 flex items-center justify-center" title="{{ config('tipos_animais.nomes')[$lote["tipo"]] }}">
                                     <i class="{{ config('tipos_animais.icones')[$lote["tipo"]] }}"></i>
-                                </div> --}}
+                                </div>
                             </div>
                             
                             <h1 class="font-montserrat font-bold text-[28px] text-[#E8521D] mt-1">{{ $lote["nome"] }}</h1>
