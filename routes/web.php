@@ -380,6 +380,7 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
         Route::prefix('reservas')->name('reservas.')->controller(\App\Http\Controllers\Sistema\ReservasController::class)->group(function(){
             // LISTAGEM DE RESERVAS
             Route::get('consultar', 'consultar')->name('consultar');
+            Route::post('uploadCatalogo', 'uploadCatalogo')->name('uploadCatalogo');
         });
 
         // ROTAS DE LOTES

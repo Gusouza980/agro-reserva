@@ -31,9 +31,21 @@
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5 text-center">
                                 @if($reserva->catalogo)
-                                    <a href="{{ asset($reserva->catalogo) }}" target="_blank" class="rounded-lg py-2 px-3 bg-orange-600 text-white">Ver</a>
+                                    <a href="{{ asset($reserva->catalogo) }}" target="_blank" class="rounded-lg py-2 px-3 bg-orange-600 text-white">Visualizar</a>
                                 @else
-                                    Não Cadastrado
+                                    <div class="w-full" x-data="{
+                                        subirCatalogo()
+                                        {
+                                            $refs.formCatalogo.submit();
+                                        }
+                                    }">
+                                        <form x-ref="formCatalogo" action="{{ route('sistema.reservas.uploadCatalogo') }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="reserva_id" value="{{ $reserva->id }}">
+                                            <input id="inputCatalogo{{ $reserva->id }}" type="file" x-on:change="subirCatalogo()" class="hidden" name="catalogo">
+                                            <label for="inputCatalogo{{ $reserva->id }}" class="bg-emerald-500 text-white py-2 px-3 rounded-md">Subir Catálogo</label>
+                                        </form>
+                                    </div>
                                 @endif
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">#{{$reserva->fazenda->id}} {{ $reserva->fazenda->nome_fazenda }}</td>
