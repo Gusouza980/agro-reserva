@@ -81,6 +81,7 @@ class Datatable extends Component
         }
         Util::limparLivewireTemp();
         $this->fotos = null;
+        $this->atualizaLotes();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Imagens atualizadas com sucesso!']);
     }
     public function atualizaValor(Lote $lote, $campo, $valor){
@@ -125,7 +126,7 @@ class Datatable extends Component
         $this->toDelete = null;
     }
     public function atualizaLotes(){
-        $this->lotes = Lote::where("reserva_id", $this->reserva["id"])->get()->toArray();
+        $this->lotes = Lote::where("reserva_id", $this->reserva["id"])->orderBy('numero')->get()->toArray();
     }
     public function mount(Reserva $reserva){
         $this->reserva = $reserva->toArray();
