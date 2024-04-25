@@ -20,6 +20,7 @@ class SecaoLotes extends Component
     public $filtro_disponibilidade = -1;
     public $filtro_raca = -1;
     public $filtro_sexo = -1;
+    public $filtro_especie = -1;
 
     public $pagina_raca = false;
     public $pagina_multi_racas = false;
@@ -97,6 +98,10 @@ class SecaoLotes extends Component
 
         if($this->filtro_sexo != -1){
             $lotes = $lotes->where("sexo", $this->filtro_sexo);
+        }
+
+        if($this->filtro_especie != -1){
+            $lotes = $lotes->where("tipo", $this->filtro_especie);
         }
 
         $lotes = $lotes->where("ativo", true)->orderByRaw("reservado ASC, id ASC")->get();

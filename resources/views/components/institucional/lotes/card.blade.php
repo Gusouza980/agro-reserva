@@ -65,12 +65,26 @@
                             <b>CCG:.</b> <span class="ml-2 font-medium">{{ $lote->ccg }}</span>
                         </div>
                     @endif
-                    <div class="">
-                        <b>RAÇA:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->raca->nome, 'UTF-8') }}</span>
-                    </div>
-                    <div class="">
-                        <b>SEXO:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->sexo, 'UTF-8') }}</span>
-                    </div>
+                    @if($lote->raca)
+                        <div class="">
+                            <b>RAÇA:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->raca?->nome, 'UTF-8') }}</span>
+                        </div>
+                    @endif
+                    @if($lote->sexo)
+                        <div class="">
+                            <b>SEXO:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->sexo, 'UTF-8') }}</span>
+                        </div>
+                    @endif
+                    @if($lote->especie)
+                        <div class="">
+                            <b>TIPO:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->especie, 'UTF-8') }}</span>
+                        </div>
+                    @endif
+                    @if($lote->pelagem)
+                        <div class="">
+                            <b>PELAGEM:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->pelagem, 'UTF-8') }}</span>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="md:left-0 w-full rounded-b-[15px] px-3 pt-3 flex flex-col justify-content-center align-items-center md:h-[100px] bg-white ">

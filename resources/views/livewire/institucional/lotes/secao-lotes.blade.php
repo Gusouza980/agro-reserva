@@ -41,6 +41,14 @@
                                 <option value="Macho">Macho</option>
                             </select>
                         </div>
+                        <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
+                            <label for="" class="font-montserrat text-[12px] text-gray-400">Espécie</label>
+                            <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_especie">
+                                <option value="-1">Todos</option>
+                                <option value="0">Bovinos(as)</option>
+                                <option value="1">Equinos(as)</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,41 +63,47 @@
     </div>
 
     @if($view == 'desktop')
-        <div class="grid grid-cols-1 gap-4 px-3 mx-auto md:grid-cols-2 align-items-center w1200 md:px-0">
-            <div class="relative flex flex-col w-full mr-3 text-gray-400 mt-md-0">
+        <div class="flex gap-4 px-3 mx-auto align-items-center w1200 md:px-0">
+            <div class="relative flex flex-col w-full max-w-[400px] text-gray-400 mt-md-0">
                 <label for="" class="font-montserrat text-[12px] text-gray-400">Pesquisar</label>
-                <input class="w-full pl-3 pr-10 mx-auto text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400"
+                <input class="w-full max-w-[400px] pl-3 pr-10 mx-auto text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400"
                 type="text" name="search" placeholder="Pesquise por nome, número do lote ou registro" wire:model.debounce.400ms="pesquisa_lote"></input>
                 <i class="fas fa-search text-grey-400 absolute bottom-[10px] right-[10px]"></i>
             </div>
-            <div class="flex flex-wrap justify-between w-full md:space-x-4 md:justify-start">
+            <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
+                <label for="" class="font-montserrat text-[12px] text-gray-400">Disponibilidade</label>
+                <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_disponibilidade">
+                    <option value="-1"> Todos</option>
+                    <option value="0"> Disponíveis</option>
+                    <option value="1"> Vendidos</option>
+                </select>
+            </div>
+            @if(!$pagina_raca)
                 <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
-                    <label for="" class="font-montserrat text-[12px] text-gray-400">Disponibilidade</label>
-                    <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_disponibilidade">
-                        <option value="-1"> Todos</option>
-                        <option value="0"> Disponíveis</option>
-                        <option value="1"> Vendidos</option>
+                    <label for="" class="font-montserrat text-[12px] text-gray-400">Raça</label>
+                    <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_raca">
+                        <option value="-1">Todas</option>
+                        @foreach(\App\Models\Raca::orderBy("nome", "ASC")->get() as $raca)
+                            <option value="{{ $raca->id }}">{{ $raca->nome }}</option>
+                        @endforeach
                     </select>
                 </div>
-                @if(!$pagina_raca)
-                    <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
-                        <label for="" class="font-montserrat text-[12px] text-gray-400">Raça</label>
-                        <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_raca">
-                            <option value="-1">Todas</option>
-                            @foreach(\App\Models\Raca::orderBy("nome", "ASC")->get() as $raca)
-                                <option value="{{ $raca->id }}">{{ $raca->nome }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                @endif
-                <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
-                    <label for="" class="font-montserrat text-[12px] text-gray-400">Sexo</label>
-                    <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_sexo">
-                        <option value="-1">Todos</option>
-                        <option value="Fêmea">Fêmea</option>
-                        <option value="Macho">Macho</option>
-                    </select>
-                </div>
+            @endif
+            <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
+                <label for="" class="font-montserrat text-[12px] text-gray-400">Sexo</label>
+                <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_sexo">
+                    <option value="-1">Todos</option>
+                    <option value="Fêmea">Fêmea</option>
+                    <option value="Macho">Macho</option>
+                </select>
+            </div>
+            <div class="flex flex-col mt-3 mt-md-0 md:mt-0 w-[calc(50%-5px)] md:w-auto">
+                <label for="" class="font-montserrat text-[12px] text-gray-400">Espécie</label>
+                <select name="" class="px-4 text-sm bg-white border border-gray-400 border-solid placeholder:text-gray-400 h-9 rounded-3xl focus:outline-none focus:ring-gray-400 focus:border-gray-400" wire:model="filtro_especie">
+                    <option value="-1">Todos</option>
+                    <option value="0">Bovinos(as)</option>
+                    <option value="1">Equinos(as)</option>
+                </select>
             </div>
         </div>
     @endif

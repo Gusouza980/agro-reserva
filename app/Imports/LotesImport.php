@@ -8,8 +8,9 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 use App\Classes\Util;
 use Illuminate\Support\Facades\Log;
+use Maatwebsite\Excel\Concerns\WithMapping;
 
-class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
+class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas, WithMapping
 {
     /**
     * @param array $row
@@ -42,11 +43,15 @@ class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
         }
 
         if($lote->nascimento){
-            $lote->nascimento = Util::convertDateToString($lote->nascimento);
+            $lote->nascimento = $lote->nascimento;
         }
 
         if($lote->parto){
-            $lote->parto = Util::convertDateToString($lote->parto);
+            $lote->parto = $lote->parto;
+        }
+
+        if($lote->cobert){
+            $lote->cobert = $lote->cobert;
         }
 
         $lote->liberar_compra = true;
@@ -56,5 +61,22 @@ class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas
         }
 
         return $lote;
+    }
+
+    public function map($row): array
+    {
+        if(isset($row['nascimento']) && gettype($row['nascimento']) == 'double'){
+            $row['nascimento'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['nascimento'])->format('Y-m-d');
+        }
+
+        if(isset($row['parto']) && gettype($row['parto']) == 'double'){
+            $row['parto'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['parto'])->format('Y-m-d');
+        }
+
+        if(isset($row['cobert']) && gettype($row['cobert']) == 'double'){
+            $row['cobert'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['cobert'])->format('Y-m-d');
+        }
+
+        return $row;
     }
 }

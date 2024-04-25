@@ -49,7 +49,18 @@
 
                     </div>
                     <div class="w-full my-[20px]">
-                        <p class="font-montserrat text-[14px]">LOTE: <b>{{ str_pad($lote->numero, 3, '0', STR_PAD_LEFT) }}</b></p>
+                        <div class="flex items-center justify-start gap-4">
+                            {{-- <span class="font-montserrat text-[14px]">
+                                <b>{{ config('tipos_animais.nomes')[$lote->tipo] }}</b>
+                            </span> --}}
+                            <div class="font-montserrat text-[14px]">
+                                LOTE: <b>{{ str_pad($lote->numero, 3, '0', STR_PAD_LEFT) }}</b>
+                            </div>
+                            <div class="bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center" title="{{ config('tipos_animais.nomes')[$lote->tipo] }}">
+                                <i class="{{ config('tipos_animais.icones')[$lote->tipo] }}"></i>
+                            </div>
+                        </div>
+                        
                         <h1 class="font-montserrat font-bold text-[28px] text-[#E8521D]">{{ $lote->nome }}</h1>
                     </div>
                     <div class="w-full">
@@ -60,9 +71,21 @@
                             @if($lote->registro)
                                 <li>RGD: <b class="ml-2">{{ $lote->registro }}</b></li>
                             @endif
-                            <li>NASCIMENTO: <b class="ml-2">{{ date('d/m/Y', strtotime($lote->nascimento)) }}</b></li>
-                            <li>RAÇA: <b class="ml-2">{{ $lote->raca->nome }}</b></li>
-                            <li>SEXO: <b class="ml-2">{{ $lote->sexo }}</b></li>
+                            @if($lote->nascimento)
+                                <li>NASCIMENTO: <b class="ml-2">{{ date('d/m/Y', strtotime($lote->nascimento)) }}</b></li>
+                            @endif
+                            @if($lote->raca)
+                                <li>RAÇA: <b class="ml-2">{{ $lote->raca->nome }}</b></li>
+                            @endif
+                            @if($lote->sexo)
+                                <li>SEXO: <b class="ml-2">{{ $lote->sexo }}</b></li>
+                            @endif
+                            @if($lote->especie)
+                                <li>TIPO: <b class="ml-2">{{ $lote->especie }}</b></li>
+                            @endif
+                            @if($lote->pelagem)
+                                <li>PELAGEM: <b class="ml-2">{{ $lote->pelagem }}</b></li>
+                            @endif
                         </ul>
                     </div>
                     @if(!$lote->reserva->encerrada)
@@ -194,6 +217,15 @@
                     @endif
                     @if ($lote->botton)
                         <p><b class="mr-2">BOTTON:</b> {{ $lote->botton }}</p>
+                    @endif
+                    @if ($lote->lact_atual)
+                        <p><b class="mr-2">LACT. ATUAL:</b> {{ $lote->lact_atual }} Kg/dia</p>
+                    @endif
+                    @if ($lote->lact_atual)
+                        <p><b class="mr-2">CHIP:</b> {{ $lote->chip }}</p>
+                    @endif
+                    @if ($lote->lact_atual)
+                        <p><b class="mr-2">COBERT:</b> {{ $lote->lact_atual }} Kg/dia</p>
                     @endif
                     @if ($lote->lact_atual)
                         <p><b class="mr-2">LACT. ATUAL:</b> {{ $lote->lact_atual }} Kg/dia</p>

@@ -62,12 +62,26 @@
                         <b>CCG:.</b> <span class="ml-2 font-medium">{{ $lote->ccg }}</span>
                     </div>
                 @endif
-                <div class="">
-                    <b>RAÇA:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->raca->nome, 'UTF-8') }}</span>
-                </div>
-                <div class="">
-                    <b>SEXO:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->sexo, 'UTF-8') }}</span>
-                </div>
+                @if($lote->raca)
+                    <div class="">
+                        <b>RAÇA:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->raca?->nome, 'UTF-8') }}</span>
+                    </div>
+                @endif
+                @if($lote->sexo)
+                    <div class="">
+                        <b>SEXO:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->sexo, 'UTF-8') }}</span>
+                    </div>
+                @endif
+                @if($lote->especie)
+                    <div class="">
+                        <b>TIPO:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->especie, 'UTF-8') }}</span>
+                    </div>
+                @endif
+                @if($lote->pelagem)
+                    <div class="">
+                        <b>PELAGEM:.</b> <span class="ml-2 font-medium">{{ mb_strtoupper($lote->pelagem, 'UTF-8') }}</span>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="@if($lote->reservado) md:border-l-2 md:border-b-2 md:border-r-2 border-[#FFB02A] md:left-[-2px] md:w-[calc(100%+4px)] @else md:left-0 w-full @endif rounded-b-[15px] px-3 pt-3 mais-info md:hidden md:shadow-md transition duration-800 md:group-hover:flex flex-col justify-content-center align-items-center md:h-[100px] md:absolute md:bottom-[-90px]  bg-white ">

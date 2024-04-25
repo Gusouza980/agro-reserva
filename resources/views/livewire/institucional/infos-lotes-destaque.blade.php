@@ -94,7 +94,15 @@
                             @endif
                         </div>
                         <div class="w-full mt-[20px]">
-                            <p class="font-montserrat text-[14px]">LOTE: <b>{{ str_pad($lote["numero"], 3, '0', STR_PAD_LEFT) }}</b></p>
+                            <div class="w-full flex items-center gap-4">
+                                <p class="font-montserrat text-[14px]">
+                                    LOTE: <b>{{ str_pad($lote["numero"], 3, '0', STR_PAD_LEFT) }}</b>
+                                </p>
+                                <div class="bg-emerald-500 text-white rounded-full w-10 h-10 flex items-center justify-center" title="{{ config('tipos_animais.nomes')[$lote["tipo"]] }}">
+                                    <i class="{{ config('tipos_animais.icones')[$lote["tipo"]] }}"></i>
+                                </div>
+                            </div>
+                            
                             <h1 class="font-montserrat font-bold text-[28px] text-[#E8521D] mt-1">{{ $lote["nome"] }}</h1>
                         </div>
                         <div class="w-full relative">
@@ -105,9 +113,21 @@
                                 @if($lote["registro"])
                                     <li>RGD: <b class="ml-2">{{ $lote["registro"] }}</b></li>
                                 @endif
-                                <li>NASCIMENTO: <b class="ml-2">{{ date('d/m/Y', strtotime($lote["nascimento"])) }}</b></li>
-                                <li>RAÇA: <b class="ml-2">{{ $lote["raca"]["nome"] }}</b></li>
-                                <li>SEXO: <b class="ml-2">{{ $lote["sexo"] }}</b></li>
+                                @if(!empty($lote['nascimento']))
+                                    <li>NASCIMENTO: <b class="ml-2">{{ date('d/m/Y', strtotime($lote["nascimento"])) }}</b></li>
+                                @endif
+                                @if(!empty($lote['raca']))
+                                    <li>RAÇA: <b class="ml-2">{{ $lote["raca"]["nome"] }}</b></li>
+                                @endif
+                                @if(!empty($lote['sexo']))
+                                    <li>SEXO: <b class="ml-2">{{ $lote["sexo"] }}</b></li>
+                                @endif
+                                @if(!empty($lote['especie']))
+                                    <li>TIPO: <b class="ml-2">{{ $lote["especie"] }}</b></li>
+                                @endif
+                                @if(!empty($lote['pelagem']))
+                                    <li>PELAGEM: <b class="ml-2">{{ $lote["pelagem"] }}</b></li>
+                                @endif
                             </ul>
                             <img src="{{ asset('imagens/Scroll-Horizontal.svg') }}" width="50" class="md:hidden absolute top-5 right-0 animate-bounce" alt=""> 
                         </div>
