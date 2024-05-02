@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-use App\Classes\Funcoes\Usuarios as FuncoesUsuarios;
 
 class LoginController extends Controller
 {
@@ -33,5 +32,11 @@ class LoginController extends Controller
             toastr()->error("Dados de login incorretos. Tente novamente");
             return redirect()->back();
         }
+    }
+
+    public function sair()
+    {
+        session()->forget("admin");
+        return redirect()->route("sistema.login");
     }
 }

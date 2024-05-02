@@ -173,6 +173,14 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/weidner/goutte" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yoeunes/toastr" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/aws/aws-sdk-php" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzle/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravellegends/pt-br-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pedroni/laravel-rd-station" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-discord-alerts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-package-tools" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/thiagoalessio/tesseract_ocr" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/victorybiz/laravel-tel-input" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
