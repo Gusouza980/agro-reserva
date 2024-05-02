@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Sistema;
 use App\Http\Controllers\Controller;
 use App\Models\Fazenda;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class FazendasController extends BaseController
 {
@@ -29,12 +30,14 @@ class FazendasController extends BaseController
         {
             $fazenda = Fazenda::find($request->fazenda_id);
             $fazenda->update($request->except(['_token']));
+            $fazenda->slug = Str::slug($fazenda->nome_fazenda);
             $fazenda->save();
         }
         else
         {
             $fazenda = new Fazenda();
             $fazenda->fill($request->except(['_token']));
+            $fazenda->slug = Str::slug($fazenda->nome_fazenda);
             $fazenda->save();
         }
 

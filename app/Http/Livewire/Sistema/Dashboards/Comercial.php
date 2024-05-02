@@ -55,12 +55,12 @@ class Comercial extends Component
     }
 
     public function getDeclaracaoInteresseClientes(){
-        $interesses = InteresseLote::with("cliente:id, nome_dono, created_at")->with("lote:id, nome, numero, fazenda_id")->with("lote.fazenda:id,nome_fazenda")->whereIn("cliente_id", Cliente::where("assessor_id", $this->assessor['id'])->pluck("id"))->orderBy("created_at", "DESC")->take($this->qtd)->get()->toArray();
+        $interesses = InteresseLote::with("cliente:id,nome_dono,created_at")->with("lote:id,nome,numero,fazenda_id")->with("lote.fazenda:id,nome_fazenda")->whereIn("cliente_id", Cliente::where("assessor_id", $this->assessor['id'])->pluck("id"))->orderBy("created_at", "DESC")->take($this->qtd)->get()->toArray();
         return $interesses;
     }
 
     public function getDeclaracaoInteresseClientesSemAssessor(){
-        $interesses = InteresseLote::with("cliente:id, nome_dono, created_at")->with("lote:id, nome, numero, fazenda_id")->with("lote.fazenda:id,nome_fazenda")->orderBy("created_at", "DESC")->take($this->qtd)->get()->toArray();
+        $interesses = InteresseLote::with("cliente:id,nome_dono,telefone,aprovado,email,created_at")->with("lote:id,nome,numero,fazenda_id")->with("lote.fazenda:id,nome_fazenda")->orderBy("created_at", "DESC")->take($this->qtd)->get()->toArray();
         return $interesses;
     }
 

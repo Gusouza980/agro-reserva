@@ -1,13 +1,13 @@
 <div class="w-full">
     <div class="w-full">
-        <div class="w-full flex justify-end">
+        <div class="flex justify-end w-full">
             <a href="{{ route('sistema.fazendas.cadastrar') }}"
-               class="flex items-center transition duration-200 justify-center font-medium rounded-t-md text-white px-5 py-2 bg-green-600 hover:bg-green-800 cursor-pointer"
+               class="flex items-center justify-center px-5 py-2 font-medium text-white transition duration-200 bg-green-600 cursor-pointer rounded-t-md hover:bg-green-800"
             >
                 Nova Fazenda
             </a>
         </div>
-        <div class="card rounded-none min-w-full overflow-x-auto is-scrollbar-hidden" x-data="pages.tables.initExample1">
+        <div class="min-w-full overflow-x-auto rounded-none card is-scrollbar-hidden" x-data="pages.tables.initExample1">
             <table class="w-full text-left is-hoverable" style="vertical-align: middle;">
                 <thead>
                     <tr>
@@ -58,7 +58,7 @@
                                         <ul>
                                             <li @click="isShowPopper = false">
                                                 <a href="{{ route('sistema.fazendas.editar', ['fazenda' => $fazenda]) }}"
-                                                   class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Editar Notícia</a>
+                                                   class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Editar Fazenda</a>
                                             </li>
                                         </ul>
                                         <ul>
@@ -76,7 +76,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="w-full flex justify-center mt-8">
+        <div class="flex justify-center w-full mt-8">
             {{ $fazendas->links() }}
         </div>
     </div>

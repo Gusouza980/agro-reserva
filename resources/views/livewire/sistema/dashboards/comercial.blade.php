@@ -3,14 +3,14 @@
        <div class="w-full">
             <h2 class="text-lg font-medium">Dashboard Comercial - {{ $assessor["nome"] }}</h2>
        </div>
-       <div class="flex justify-start flex-nowrap overflow-x-scroll md:overflow-x-hidden w-full mt-5">
+       <div class="flex justify-start w-full mt-5 overflow-x-scroll flex-nowrap md:overflow-x-hidden">
             @foreach($menus as $key => $nome)
                 <button wire:click="$set('menu', '{{ $key }}')" class="flex-grow @if($menu == $key) bg-orange-600 border text-white @else bg-gray-200 hover:bg-orange-600 hover:text-white border border-slate-300 text-gray-500 @endif px-5 py-3">{{ $nome }}</button>
             @endforeach
         </div>
        <div class="w-full">
-            <div class="w-full px-2 md:px-8 py-8 rounded-none card">
-                <div class="flex items-start md:items-end md:flex-row flex-col md:justify-between w-full mb-4">
+            <div class="w-full px-2 py-8 rounded-none md:px-8 card">
+                <div class="flex flex-col items-start w-full mb-4 md:items-end md:flex-row md:justify-between">
                     <label class="block">
                         <span>Quantidade de Dados</span>
                         <select wire:model="qtd"
@@ -189,6 +189,7 @@
                                         <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Cliente</th>
                                         <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Telefone</th>
                                         <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Lote</th>
+                                        <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">Aprovado ?</th>
                                         <th class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5"></th>
                                     </tr>
                                 </thead>
@@ -200,18 +201,18 @@
                                                 {{ $interesse['cliente']['nome_dono'] }}<br>
                                             </td>
                                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
-                                                {{ $interesse['telefone'] }}<br>
+                                                {{ $interesse['cliente']['telefone'] }}<br>
                                             </td>
                                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
                                                 {{ $interesse['lote']['numero'] . " - " . $interesse['lote']['nome'] }}<br>
                                                 <small>{{ $interesse['lote']['fazenda']['nome_fazenda'] }}</small>
                                             </td>
                                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
-                                                {{ ($interesse['aprovado']) ? 'Sim' : 'Não' }}<br>
+                                                {{ ($interesse['cliente']['aprovado']) ? 'Sim' : 'Não' }}<br>
                                             </td>
                                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
-                                                <a target="_blank" href="https://api.whatsapp.com/send?phone=55{{ \Util::limparString($interesse['telefone']) }}"><i class="text-gray-400 fab fa-whatsapp-square fa-2x"></i></a>
-                                                <a href="mailto:{{ $cliente['email'] }}"><i class="ml-2 text-gray-400 fas fa-envelope fa-2x"></i></a>
+                                                <a target="_blank" href="https://api.whatsapp.com/send?phone=55{{ \Util::limparString($interesse['cliente']['telefone']) }}"><i class="text-gray-400 fab fa-whatsapp-square fa-2x"></i></a>
+                                                <a href="mailto:{{ $interesse['cliente']['email'] }}"><i class="ml-2 text-gray-400 fas fa-envelope fa-2x"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -220,7 +221,7 @@
                         </div>
                         @break
                 @endswitch
-                
+
             </div>
        </div>
     </div>

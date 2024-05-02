@@ -14,4 +14,9 @@ class InteresseLote extends Model
     public function lote(){
         return $this->belongsTo(Lote::class);
     }
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class);
+    }
 }

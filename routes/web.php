@@ -441,6 +441,9 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
             Route::get('consultar', 'consultar')->name('consultar');
         });
 
+        Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+
     });
 
 });
