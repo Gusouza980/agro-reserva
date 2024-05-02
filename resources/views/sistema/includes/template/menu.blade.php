@@ -23,6 +23,17 @@
     @endif
 
     @if(\Acessos::getPermissao('reservas', $usuario))
+        <!-- Notícias -->
+        <a
+            href="{{ route('sistema.fazendas.consultar') }}"
+            class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+            x-tooltip.placement.right="'Fazendas'"
+        >
+            <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/fazendas.svg') }}" />
+        </a>
+    @endif
+
+    @if(\Acessos::getPermissao('reservas', $usuario))
         <!-- Reservas -->
         <a
         href="{{ route('sistema.reservas.consultar') }}"
@@ -30,6 +41,17 @@
         x-tooltip.placement.right="'Reservas'"
         >
             <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/reservas.svg') }}" />
+        </a>
+    @endif
+
+    @if(\Acessos::getPermissao('reservas', $usuario))
+        <!-- Notícias -->
+        <a
+            href="{{ route('sistema.noticias.consultar') }}"
+            class="flex items-center justify-center transition-colors duration-200 rounded-lg outline-none hover:scale-105 h-11 w-11 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+            x-tooltip.placement.right="'Notícias'"
+        >
+            <img class="h-7 w-7" src="{{ asset('system/images/icones/menu/noticias.svg') }}" />
         </a>
     @endif
 
@@ -97,7 +119,7 @@
                 class="absolute right-0 h-3.5 w-3.5 rounded-full border-2 border-white bg-success dark:border-navy-700"></span>
         </button>
 
-        
+
         <div :class="isShowPopper && 'show'" class="fixed popper-root" x-ref="popperRoot">
             <div
                 class="w-64 bg-white border rounded-lg popper-box border-slate-150 shadow-soft dark:border-navy-600 dark:bg-navy-700">
@@ -137,7 +159,7 @@
                     </a>
                     <div class="px-4 mt-3">
                         <a href="{{ route('sistema.sair') }}"
-                            class="w-full space-x-2 text-white btn h-9 bg-primary hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+                            class="flex items-center justify-center w-full rounded-md hover:bg-red-800 transition duration-200 space-x-2 text-white py-2 bg-red-500 ">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
                                 fill="none" viewbox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round"

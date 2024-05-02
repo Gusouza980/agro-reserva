@@ -9,6 +9,8 @@ class Fazenda extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function depoimentos(){
         return $this->hasMany(Depoimento::class);
     }

@@ -18,6 +18,9 @@ class ImageUpload
         'foto_assessor' => [300, 300],
         'vitrine_reserva' => [700],
         'lote' => [700],
+        'noticia_banner' => [1920],
+        'noticia_thumbnail' => [260],
+        'logo_fazenda' => [300]
     ];
 
     public function __construct($origin){
@@ -45,6 +48,18 @@ class ImageUpload
 
     public function makeBannerMobile(){
         $this->resizeWidthWithAspectRatio($this->types["banner_mobile"][0]);
+    }
+
+    public function makeNoticiaBanner(){
+        $this->resizeWidthWithAspectRatio($this->types["noticia_banner"][0]);
+    }
+
+    public function makeNoticiaThumbnail(){
+        $this->resizeWidthWithAspectRatio($this->types["noticia_thumbnail"][0]);
+    }
+
+    public function makeLogoFazenda(){
+        $this->resizeWidthWithAspectRatio($this->types["logo_fazenda"][0]);
     }
 
     public function makeThumbnail(){
