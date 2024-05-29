@@ -1,4 +1,14 @@
 <div class="w-full">
+    <div class="w-full flex justify-start">
+        @if($cliente['aprovado'] == 0)
+            <button wire:click="aprovar" class="flex items-center justify-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-700 transition duration-200 text-white">
+                <i class="fas fa-check"></i> Aprovar Cliente
+            </button>
+            <button wire:click="reprovar" class="flex items-center justify-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-700 transition duration-200 text-white">
+                <i class="fas fa-times"></i> Reprovar Cliente
+            </button>
+        @endif
+    </div>
     <form wire:submit.prevent='salvar_informacoes_gerais' class="w-full relative border border-slate-300 rounded-lg py-5 px-5">
         <button type="submit" class="w-8 h-8 bg-orange-500 absolute top-1 right-1 rounded-lg"><i class="fas fa-floppy-disk text-white"></i></button>
         <div class="w-full grid grid-cols-1 md:grid-cols-4 2xl:grid-cols-5 gap-3">

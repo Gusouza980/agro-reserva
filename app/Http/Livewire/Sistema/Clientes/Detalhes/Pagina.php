@@ -37,6 +37,20 @@ class Pagina extends Component
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Informações salvas com sucesso!']);
     }
 
+    public function aprovar()
+    {
+        Cliente::find($this->cliente['id'])->update(["aprovado" => 1]);
+        $this->cliente['aprovado'] = 1;
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Cliente aprovado com sucesso!']);
+    }
+
+    public function reprovar()
+    {
+        Cliente::find($this->cliente['id'])->update(["aprovado" => -1]);
+        $this->cliente['aprovado'] = -1;
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Cliente reprovado com sucesso!']);
+    }
+
     public function mount($cliente_id){
         $this->cliente = Cliente::with("documentos")->find($cliente_id)->toArray();
     }
