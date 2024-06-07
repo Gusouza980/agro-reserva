@@ -7,7 +7,7 @@
             var slide = document.getElementById('slide-info-lotes-destaque');
             var scrollPos = slide.scrollLeft;
             if(this.pos == this.total - 1){
-                var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
+                var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight,
                     document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );
                 slide.scroll({top:0, left: scrollPos - limit, behavior: 'smooth'});
             }else{
@@ -24,7 +24,7 @@
             var scrollPos = slide.scrollLeft;
             console.log('POS: ' + this.pos + ' - TOTAL: ' + this.total)
             if(this.pos == this.total - 1){
-                var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
+                var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight,
                     document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );
                 slide.scroll({top:0, left: scrollPos - limit, behavior: 'smooth'});
             }
@@ -34,14 +34,14 @@
                 this.pos++;
             }
         }
-        
+
     },
     antSlide(){
         if(!this.mobile){
             var slide = document.getElementById('slide-info-lotes-destaque');
             var scrollPos = slide.scrollLeft;
             if(this.pos == 0){
-                var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
+                var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight,
                        document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );
                 slide.scroll({top:0, left: scrollPos + limit, behavior: 'smooth'});
             }else{
@@ -56,7 +56,7 @@
             var slide = document.getElementById('slide-info-lotes-destaque');
             var scrollPos = slide.scrollLeft;
             if(this.pos == 0){
-                var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
+                var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight,
                        document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );
                 slide.scroll({top:0, left: scrollPos + limit, behavior: 'smooth'});
             }
@@ -66,7 +66,7 @@
                 this.pos--;
             }
         }
-        
+
     }
 }">
     <div class="w-full py-5 bg-[#E3E5EA]" x-show="total > 0">
@@ -75,10 +75,10 @@
                 LOTES EM DESTAQUE
             </h3>
         </div>
-        
-        <div class="w1200 mt-3 mt-md-0 md:mt-0 mx-auto md:px-5 flex flex-nowrap overflow-x-scroll snap-mandatory snap-x no-scrollbar" x-swipe:left="proxSlide" x-swipe:right="antSlide" id="slide-info-lotes-destaque">
+
+        <div class="flex mx-auto mt-3 overflow-x-scroll w1200 mt-md-0 md:mt-0 md:px-5 flex-nowrap snap-mandatory snap-x no-scrollbar" x-swipe:left="proxSlide" x-swipe:right="antSlide" id="slide-info-lotes-destaque">
             @foreach($lotes as $key => $lote)
-                <div class="snap-center flex-shrink-0 w-full flex items-center flex-wrap md:flex-nowrap md:py-5 relative px-5"  x-transition:enter="transition ease-out duration-300"
+                <div class="relative flex flex-wrap items-center flex-shrink-0 w-full px-5 snap-center md:flex-nowrap md:py-5"  x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100"
                 x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
                 x-transition:leave-end="opacity-0 scale-0">
@@ -94,18 +94,18 @@
                             @endif
                         </div>
                         <div class="w-full mt-[20px]">
-                            <div class="w-full flex items-center gap-4">
+                            <div class="flex items-center w-full gap-4">
                                 <p class="font-montserrat text-[14px]">
                                     LOTE: <b>{{ str_pad($lote["numero"], 3, '0', STR_PAD_LEFT) }}</b>
                                 </p>
-                                <div class="bg-emerald-500 text-white rounded-full w-10 h-10 flex items-center justify-center" title="{{ config('tipos_animais.nomes')[$lote["tipo"]] }}">
+                                <div class="flex items-center justify-center w-10 h-10 text-white rounded-full bg-emerald-500" title="{{ config('tipos_animais.nomes')[$lote["tipo"]] }}">
                                     <i class="{{ config('tipos_animais.icones')[$lote["tipo"]] }}"></i>
                                 </div>
                             </div>
-                            
+
                             <h1 class="font-montserrat font-bold text-[28px] text-[#E8521D] mt-1">{{ $lote["nome"] }}</h1>
                         </div>
-                        <div class="w-full relative">
+                        <div class="relative w-full">
                             <ul class="font-montserrat text-[14px]">
                                 @if($lote["beta_caseina"])
                                     <li>BETA-CASEINA: <b class="ml-2">{{ $lote["beta_caseina"] }}</b></li>
@@ -129,7 +129,7 @@
                                     <li>PELAGEM: <b class="ml-2">{{ $lote["pelagem"] }}</b></li>
                                 @endif
                             </ul>
-                            <img src="{{ asset('imagens/Scroll-Horizontal.svg') }}" width="50" class="md:hidden absolute top-5 right-0 animate-bounce" alt=""> 
+                            <img src="{{ asset('imagens/Scroll-Horizontal.svg') }}" width="50" class="absolute right-0 md:hidden top-5 animate-bounce" alt="">
                         </div>
                         <div class="w-full mt-[20px] font-montserrat flex items-center">
                             <span class="font-bold text-[26px]">R$
@@ -141,12 +141,17 @@
                                     {{ number_format($lote["produto"]["preco"] / $lote["reserva"]["max_parcelas"], 2, ',', '.') }}</b></span>
                         </div>
                         <div class="w-full mt-[20px] flex gap-x-4">
-                            @if(session()->get('cliente'))
-                                <a onclick="Livewire.emit('adicionarProduto', {{ $lote['produto']['id'] }})"
-                                    class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Comprar</a>
+                            @if($lote['reserva']['modalidade'] == 0)
+                                @if(session()->get('cliente'))
+                                    <a onclick="Livewire.emit('adicionarProduto', {{ $lote['produto']['id'] }})"
+                                        class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Comprar</a>
+                                @else
+                                    <a href="{{ route('login') }}"
+                                        class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Entre para comprar</a>
+                                @endif
                             @else
-                                <a href="{{ route('login') }}"
-                                    class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Entre para comprar</a>
+                                <a href="https://api.whatsapp.com/send?phone=5534992754132" target="_blank"
+                                    class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Consultar</a>
                             @endif
                             <a href="{{ route('fazenda.lote', ['fazenda' => $lote['fazenda']['slug'], 'reserva' => $lote['reserva']['id'], 'lote' => $lote['id']]) }}"
                                 class="cpointer bg-[#E8521D] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Ver Mais</a>
@@ -155,9 +160,9 @@
                 </div>
             @endforeach
         </div>
-        <div class="w-full hidden md:flex justify-center gap-x-6">
+        <div class="justify-center hidden w-full md:flex gap-x-6">
             <img @click="antSlide" src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-lotes-visitados-left" class="cpointer" height="25" alt="">
             <img @click="proxSlide" src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-lotes-visitados-right" class="cpointer" height="25" alt="">
         </div>
-    </div>    
+    </div>
 </div>
