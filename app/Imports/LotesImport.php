@@ -67,6 +67,10 @@ class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas, Wi
     {
         if(isset($row['nascimento']) && gettype($row['nascimento']) == 'double'){
             $row['nascimento'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['nascimento'])->format('Y-m-d');
+        }elseif(isset($row['nascimento']) && strpos($row['nascimento'], '/'))
+        {
+            [$dia, $mes, $ano] = explode('/', $row['nascimento']);
+            $row['nascimento'] = $ano . "-" . $mes . "-" . $dia;
         }
 
         if(isset($row['parto']) && gettype($row['parto']) == 'double'){
