@@ -110,9 +110,9 @@
                         @endif
                     @else
                         @if(session()->get('cliente'))
-                            <button onclick="window.location.href = '{{ route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $lote->reserva, 'lote' => $lote]) }}'" class="border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba Mais</button>
+                            <button onclick="window.location.href = '{{ route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $lote->reserva, 'lote' => $lote]) }}'" class="grow border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba Mais</button>
                         @endif
-                        <a href="https://api.whatsapp.com/send?phone=5534992754132" target="_blank" class="flex items-center justify-center border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Consultar</a>
+                        <a href="https://api.whatsapp.com/send?phone=5534992754132" target="_blank" class="grow flex items-center justify-center border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Consultar</a>
                     @endif
                 </div>
             </div>
