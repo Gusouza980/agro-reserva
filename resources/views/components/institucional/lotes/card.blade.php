@@ -87,7 +87,7 @@
                     @endif
                 </div>
             </div>
-            <div class="md:left-0 w-full rounded-b-[15px] px-3 pt-3 flex flex-col justify-content-center align-items-center md:h-[100px] bg-white ">
+            <div class="md:left-0 w-full rounded-b-[15px] px-3 pt-3 flex flex-col justify-content-center align-items-center bg-white ">
                 @if(!$lote->reserva->encerrada && $lote->produto)
                     <div class="z-[11] w-full text-center">
                         @if($lote->reserva->modalidade == 0)
