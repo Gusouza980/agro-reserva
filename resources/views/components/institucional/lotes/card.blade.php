@@ -1,6 +1,6 @@
 <div {{ $attributes->merge(['class' => 'transition duration-500 hover:scale-105 hover:shadow-md group hover:z-20 rounded-[15px] bg-white']) }} >
     <div class="w-full h-full px-3 py-3 rounded-[15px] @if($lote->reservado) border-2 border-solid border-[#FFB02A] @endif">
-        <div class="flex flex-col h-full justify-between">
+        <div class="flex flex-col justify-between h-full">
             <div class="w-full">
                 <div class="relative">
                     <div class="absolute flex justify-content-center h-[45px] top-[-30px] px-2 pt-1 z-0 rounded-t-[12px] bg-slate-500 text-white" style="font-family: 'Montserrat', sans-serif;">
@@ -24,7 +24,7 @@
                         @endif
                     </div>
                 </div>
-                
+
                 <div class="mt-2 text-center">
                     <h4 class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">{{ $lote->nome }}</h4>
                     <div class="px-2 mx-auto rounded-md w-fit h-[23px]">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="relative">
                 {{-- @if($lote->membro_pacote)
                     @php
@@ -93,11 +93,11 @@
                         @if($lote->reserva->modalidade == 0)
                             <span class="text-[#626262] font-semibold" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">Em até {{ $lote->reserva->max_parcelas }}x de R${{ number_format($lote->produto->preco / $lote->reserva->max_parcelas, 2, ",", ".") }}</span>
                         @else
-                            {{-- <a href="https://api.whatsapp.com/send?phone=5534992754132" class="w-fit flex items-center justify-center py-1 px-3 bg-emerald-500 hover:bg-emerald-700 text-white transition duration-200">Entrar em contato</a> --}}
+                            {{-- <a href="https://api.whatsapp.com/send?phone=5534992754132" class="flex items-center justify-center px-3 py-1 text-white transition duration-200 w-fit bg-emerald-500 hover:bg-emerald-700">Entrar em contato</a> --}}
                         @endif
                     </div>
                 @endif
-                <div class="grid w-full @if(!$lote->reservado && !$lote->reserva->encerrada && $lote->liberar_compra) grid-cols-2 @else grid-cols-1 @endif gap-3 mt-3">
+                <div class="grid w-full @if(!$lote->reservado && !$lote->reserva->encerrada && $lote->liberar_compra && $lote->reserva->modalidade == 0) grid-cols-2 @else grid-cols-1 @endif gap-3 mt-3">
                     @if($lote->reserva->modalidade == 0)
                         @if(!$lote->reservado && !$lote->reserva->encerrada && $lote->liberar_compra)
                             @if(session()->get('cliente'))
