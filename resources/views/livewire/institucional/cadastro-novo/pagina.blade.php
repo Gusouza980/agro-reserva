@@ -8,7 +8,7 @@
         </div>
         <div class="w-full px-6 md:px-20 pt-10 pb-10 md:pb-20 mt-3 bg-white rounded-[30px] shadow-[0px_6px_60px_0px_rgba(0,0,0,0.06)]">
             <form class="flex flex-wrap w-full mt-4" wire:submit.prevent='salvar' x-data="{pessoa_fisica: @entangle('form.pessoa_fisica')}">
-                <div class="w-full flex items-center justify-center gap-4">
+                <div class="flex items-center justify-center w-full gap-4">
                     <button type="button" wire:click="$set('form.pessoa_fisica', 1)" class="w-[170px] md:w-[200px] rounded-[50px] px-[15px] md:px-[30px] py-[5px] border border-[#FFB02A] text-[14px] md:text-[15px] transition duration-200 @if($form['pessoa_fisica'] == 1) bg-[#FFB02A] text-[#3A4055] @else text-[#ACAEB7] hover:font-semibold hover:text-[#3A4055] @endif">Pessoa Física</button>
                     <button type="button" wire:click="$set('form.pessoa_fisica', 0)" class="w-[170px] md:w-[200px] rounded-[50px] px-[15px] md:px-[30px] py-[5px] border border-[#FFB02A] text-[14px] md:text-[15px] transition duration-200 @if($form['pessoa_fisica'] == 0) bg-[#FFB02A] text-[#3A4055] @else text-[#ACAEB7] hover:font-semibold hover:text-[#3A4055] @endif">Pessoa Jurídica</button>
                 </div>
@@ -35,12 +35,12 @@
                 <div class="w-full mt-8 text-center" wire:loading.class="hidden" wire:target="salvar">
                     <button class="text-white rounded-[0.5rem] btn-warning text-[20px] waving-hand font-montserrat font-medium normal-case px-4 py-[16px] animation duration-500 hover:scale-105">Cadastrar</button>
                 </div>
-                <div class="w-full mt-8 text-center hidden" wire:loading.class.remove="hidden" wire:target="salvar">
+                <div class="hidden w-full mt-8 text-center" wire:loading.class.remove="hidden" wire:target="salvar">
                     <img src="{{ asset('imagens/gif_relogio.gif') }}" width="40" class="mx-auto" alt="">
                 </div>
             </form>
             <div class="w-full text-center mt-[40px] text-gray-600 font-montserrat font-semibold">
-                Já tem conta ? <a href="{{ route('login') }}" class="text-blue-500 underline ml-1">Clique aqui</a>
+                Já tem conta ? <a href="{{ route('login') }}" class="ml-1 text-blue-500 underline">Clique aqui</a>
             </div>
         </div>
     </div>
@@ -68,6 +68,7 @@
 
     $(document).ready(function(){
         $('input[mask="cep"]').mask('00000-000');
+        $('input[mask="nascimento"]').mask('99/99/9999');
         $('input[mask="cpf"]').mask('000.000.000-00');
         $('input[mask="cnpj"]').mask('00.000.000/0000-00');
     })
@@ -79,6 +80,7 @@
     window.addEventListener('loadMasks', function(e) {
         $('input[mask="cep"]').mask('00000-000');
         $('input[mask="cpf"]').mask('000.000.000-00');
+        $('input[mask="nascimento"]').mask('99/99/9999');
         $('input[mask="cnpj"]').mask('00.000.000/0000-00');
     })
 </script>

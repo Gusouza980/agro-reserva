@@ -16,9 +16,9 @@
                 @enderror
             </div>
         </div>
-        <div class="mb-5">
+        <div class="mb-5" x-data>
             <label class="pl-[20px] text-[16px] font-medium font-montserrat text-[#616887]" for="">Nascimento</label>
-            <input type="date" name="form.nascimento" class="w-full form-input-text mt-[5px]" wire:model.defer="form.nascimento">
+            <input type="text" mask="nascimento" placeholder="__/__/____" name="form.nascimento" class="w-full form-input-text mt-[5px]" wire:model.defer="form.nascimento">
             <div class="w-full text-[12px] text-red-600 font-inter">
                 @error('form.nascimento')
                     {{ $message }}

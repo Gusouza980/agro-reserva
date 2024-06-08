@@ -43,7 +43,7 @@ class Pagina extends Component
         'form.cidade' => 'max:50',
         'form.estado' => 'max:2',
         'form.pais' => 'max:50',
-        'form.nascimento' => 'date',
+        'form.nascimento' => 'max:10',
 
         'form.cep_propriedade' => 'max:20',
         'form.rua_propriedade' => 'max:100',
@@ -105,7 +105,7 @@ class Pagina extends Component
         'form.estado_comercial' => 'Estado',
         'form.pais_comercial' => 'País',
         'form.nascimento_comercial' => 'Nascimento',
-    
+
         'comprovante_residencial' => 'Comprovante de Endereço',
         'contrato_social' => 'Contrato Social',
         'documento' => 'Documento',
@@ -138,12 +138,18 @@ class Pagina extends Component
             }else{
                 $this->form['estado_civil'] = config("clientes.estados_civis_nomes")[$this->form['estado_civil']];
             }
-            
+
         }
-        
-        $this->createAgriskClient();
+
+        if(isset($this->form['nascimento'])){
+            [$dia, $mes, $ano] = explode('/', $this->form['nascimento']);
+            $this->form['nascimento'] = $ano.'-'.$mes.'-'.$dia;
+        }
+
+        // $this->createAgriskClient();
 
         $cliente = Cliente::create($this->form);
+        dd("FOI");
         $clienteService = new ClienteService();
         foreach($this->documentos as $documento){
             if(!empty($documento)){
