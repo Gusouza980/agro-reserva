@@ -146,10 +146,9 @@ class Pagina extends Component
             $this->form['nascimento'] = $ano.'-'.$mes.'-'.$dia;
         }
 
-        // $this->createAgriskClient();
+        $this->createAgriskClient();
 
         $cliente = Cliente::create($this->form);
-        dd("FOI");
         $clienteService = new ClienteService();
         foreach($this->documentos as $documento){
             if(!empty($documento)){
