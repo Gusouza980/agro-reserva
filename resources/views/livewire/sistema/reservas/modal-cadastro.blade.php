@@ -7,8 +7,7 @@
         <div x-show="show" x-transition:enter="transition ease-out duration-150"
             x-transition:enter-start="opacity-0 transform translate-y-1/2" x-transition:enter-end="opacity-100"
             x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
-            x-transition:leave-end="opacity-0  transform translate-y-1/2"
-            @keydown.escape="show = false"
+            x-transition:leave-end="opacity-0  transform translate-y-1/2" @keydown.escape="show = false"
             class="w-full px-6 py-4 overflow-hidden max-h-[100vh] overflow-y-scroll bg-white rounded-t-lg dark:bg-navy-700 sm:rounded-lg sm:m-4 sm:max-w-[800px]"
             role="dialog">
             <!-- Modal body -->
@@ -123,14 +122,22 @@
                             <label
                                 class="font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80">
                                 <input tabindex="-1" type="file"
-                                    class="pointer-events-none absolute inset-0 h-full w-full opacity-0" wire:model="catalogo" />
-                                <div class="cursor-pointer mb-3 rounded-lg py-2 px-4 @if(!$catalogo) bg-slate-300 @else bg-green-500 @endif flex items-center space-x-2">
+                                    class="pointer-events-none absolute inset-0 h-full w-full opacity-0"
+                                    wire:model="catalogo" />
+                                <div
+                                    class="cursor-pointer mb-3 rounded-lg py-2 px-4 @if (!$catalogo) bg-slate-300 @else bg-green-500 @endif flex items-center space-x-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                                     </svg>
-                                    <span>@if(!$catalogo) Escolher Arquivo de Catálogo @else Catálogo carregado. Já pode salvar ! @endif</span>
+                                    <span>
+                                        @if (!$catalogo)
+                                            Escolher Arquivo de Catálogo
+                                        @else
+                                            Catálogo carregado. Já pode salvar !
+                                        @endif
+                                    </span>
                                 </div>
                             </label>
                             <hr>
@@ -138,13 +145,42 @@
                                 @if ($formas_pagamento)
                                     <div x-data="{ expandedItem: null }"
                                         class="flex flex-col divide-y divide-slate-150 dark:divide-navy-500">
-                                        {{-- @dd($formas_pagamento) --}}
+                                        <div class="w-full my-3 border rounded-md p-3">
+                                            <div class="w-full mb-3 font-semibold">
+                                                Adicionar Intervalo
+                                            </div>
+                                            <div class="flex items-end gap-3">
+                                                <div class="flex flex-col gap-2">
+                                                    <label for="">Mínimo</label>
+                                                    <input type="text"
+                                                        class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                        wire:model="novo_intervalo.minimo">
+                                                </div>
+                                                <div class="flex flex-col gap-2">
+                                                    <label for="">Máximo</label>
+                                                    <input type="text"
+                                                        class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                        wire:model="novo_intervalo.maximo">
+                                                </div>
+                                                <div class="flex flex-col gap-2">
+                                                    <label for="">Desconto (%)</label>
+                                                    <input type="text"
+                                                        class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                        wire:model="novo_intervalo.desconto">
+                                                </div>
+                                                <div class="flex flex-col gap-2">
+                                                    <button type="button" class="btn btn-primary"
+                                                        wire:click="adicionar_intervalo">Adicionar</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                         @foreach ($formas_pagamento as $key => $forma_pagamento)
                                             <div x-data="accordionItem('item-{{ $key }}')" class="px-3 py-3 border border-gray-300">
                                                 <div @click="expanded = !expanded"
                                                     class="flex items-center justify-between px-2 py-2 py-4 text-base font-medium bg-gray-200 cursor-pointer text-slate-700 dark:text-navy-100">
                                                     <p>
-                                                        De {{ $forma_pagamento['minimo'] }} a {{ $forma_pagamento['maximo'] }} parcela(as)
+                                                        De {{ $forma_pagamento['minimo'] }} a
+                                                        {{ $forma_pagamento['maximo'] }} parcela(as)
                                                     </p>
                                                     <div :class="expanded && '-rotate-180'"
                                                         class="text-sm font-normal leading-none transition-transform duration-300 text-slate-400 dark:text-navy-300">
@@ -159,17 +195,20 @@
                                                         <div class="flex items-end w-full gap-x-4">
                                                             <div class="mb-3">
                                                                 <label for="">Mínimo</label>
-                                                                <input type="text" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                                <input type="text"
+                                                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                                                     wire:model="atualizacoes_intervalos.{{ $key }}.minimo">
                                                             </div>
                                                             <div class="mb-3 ms-3">
                                                                 <label for="">Máximo</label>
-                                                                <input type="text" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                                <input type="text"
+                                                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                                                     wire:model="atualizacoes_intervalos.{{ $key }}.maximo">
                                                             </div>
                                                             <div class="mb-3 ms-3">
                                                                 <label for="">Desconto(%)</label>
-                                                                <input type="text" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                                <input type="text"
+                                                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                                                     wire:model="atualizacoes_intervalos.{{ $key }}.desconto">
                                                             </div>
                                                             <div class="mb-3 ms-3">
@@ -184,16 +223,16 @@
                                                         <div class="flex items-end w-full gap-x-4">
                                                             <div class="mb-3">
                                                                 <label for="">Número de Meses</label>
-                                                                <input type="text" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                                                    wire:model="regras.{{ $key }}.meses"
-                                                                    >
+                                                                <input type="text"
+                                                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                                    wire:model="regras.{{ $key }}.meses">
                                                             </div>
                                                             <div class="mb-3 ms-3">
                                                                 <label for="">Número de
                                                                     Parcelas</label>
-                                                                <input type="text" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                                                                    wire:model="regras.{{ $key }}.parcelas"
-                                                                    >
+                                                                <input type="text"
+                                                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                                                    wire:model="regras.{{ $key }}.parcelas">
                                                             </div>
                                                             <div class="mb-3 ms-3">
                                                                 <button type="button" class="btn btn-primary"
@@ -201,13 +240,14 @@
                                                             </div>
                                                         </div>
                                                         <hr>
-                                                        <div>
+                                                        <div class="w-full mt-3">
                                                             @if (count($forma_pagamento['parcelas']) == 0)
-                                                                <div class="w-full px-3 py-3 text-blue-500 border border-blue-600">
+                                                                <div
+                                                                    class="w-full px-3 py-3 text-blue-500 border border-blue-600">
                                                                     Todas parcelas únicas
                                                                 </div>
                                                             @else
-                                                                <table class="table">
+                                                                <table class="table w-full">
                                                                     <thead>
                                                                         <tr>
                                                                             <th>Meses</th>
@@ -225,12 +265,18 @@
                                                                                     {{ $regra['meses'] }}</td>
                                                                                 <td>{{ $regra['parcelas'] }}
                                                                                 </td>
-                                                                                <td><i class="fas fa-times-circle text-danger fa-lg cpointer"
-                                                                                        wire:click="remover_regra({{ $key }}, {{ $key_regra }})"></i>
+                                                                                <td>
+                                                                                    <button type="button"
+                                                                                        wire:click="remover_regra({{ $key }}, {{ $key_regra }})">
+                                                                                        <i
+                                                                                            class="fas fa-times-circle text-danger fa-lg cpointer hover:bg-red-500"></i>
+                                                                                    </button>
                                                                                 </td>
                                                                             </tr>
                                                                             @php
-                                                                                $total_parcelas += $regra['meses'] * $regra['parcelas'];
+                                                                                $total_parcelas +=
+                                                                                    $regra['meses'] *
+                                                                                    $regra['parcelas'];
                                                                             @endphp
                                                                         @endforeach
                                                                         @if ($total_parcelas < $forma_pagamento['maximo'])
@@ -253,13 +299,11 @@
                                     </div>
                                     <div class="w-full flex gap-4 mt-4">
                                         <button type="submit"
-                                            class="grow font-medium text-white bg-green-600 btn hover:bg-green-800"
-                                        >
+                                            class="grow font-medium text-white bg-green-600 btn hover:bg-green-800">
                                             Salvar
                                         </button>
                                         <button type="button" @click="show = false"
-                                            class="grow font-medium text-gray-600 hover:text-white transition duration-200 bg-gray-300 btn hover:bg-gray-600"
-                                        >
+                                            class="grow font-medium text-gray-600 hover:text-white transition duration-200 bg-gray-300 btn hover:bg-gray-600">
                                             Cancelar
                                         </button>
                                     </div>

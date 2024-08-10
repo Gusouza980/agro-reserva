@@ -38,8 +38,9 @@ class ModalCadastro extends Component
         "reserva.max_parcelas" => "",
     ];
 
-    public function updatedReservaMaxParcelas(){
-        if($this->reserva->desconto){
+    public function updatedReservaMaxParcelas()
+    {
+        if ($this->reserva->desconto) {
             $this->formas_pagamento[0] = [
                 "minimo" => 1,
                 "maximo" => 1,
@@ -53,16 +54,16 @@ class ModalCadastro extends Component
                 "desconto" => 0,
                 "parcelas" => []
             ];
-    
+
             $this->atualizacoes_intervalos = $this->formas_pagamento;
-        }else{
+        } else {
             $this->formas_pagamento[0] = [
                 "minimo" => 1,
                 "maximo" => $this->reserva->max_parcelas,
                 "desconto" => 0,
                 "parcelas" => []
             ];
-    
+
             $this->atualizacoes_intervalos[0] = [
                 "minimo" => 1,
                 "maximo" => $this->reserva->max_parcelas,
@@ -70,28 +71,31 @@ class ModalCadastro extends Component
                 "parcelas" => []
             ];
         }
-        
     }
 
-    public function carregaModalCadastroReserva(){
+    public function carregaModalCadastroReserva()
+    {
+        $this->resetaModalReservas();
         $this->reserva = new Reserva;
         $this->op = 'cadastro';
         $this->show = true;
     }
 
-    public function carregaModalEdicaoReserva(Reserva $reserva){
+    public function carregaModalEdicaoReserva(Reserva $reserva)
+    {
+        $this->resetaModalReservas();
         $this->reserva = $reserva;
         $this->fazenda_selecionada = $reserva->fazenda_id;
         $this->op = 'edicao';
-        foreach($reserva->formas_pagamento->sortBy("minimo") as $forma_pagamento){
+        foreach ($reserva->formas_pagamento->sortBy("minimo") as $forma_pagamento) {
             $regras = [];
-            foreach($forma_pagamento->regras->sortBy("posicao") as $regra){
+            foreach ($forma_pagamento->regras->sortBy("posicao") as $regra) {
                 $regras[$regra->posicao] = [
                     "meses" => $regra->meses,
                     "parcelas" => $regra->parcelas,
                 ];
             }
-            
+
             $this->formas_pagamento[] = [
                 "minimo" => $forma_pagamento->minimo,
                 "maximo" => $forma_pagamento->maximo,
@@ -104,10 +108,11 @@ class ModalCadastro extends Component
         $this->show = true;
     }
 
-    public function adicionar_intervalo(){
-        if(!FuncoesPagamento::validaAtualizacaoIntervalos($this->formas_pagamento, null, $this->novo_intervalo)){
+    public function adicionar_intervalo()
+    {
+        if (!FuncoesPagamento::validaAtualizacaoIntervalos($this->formas_pagamento, null, $this->novo_intervalo)) {
             $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'error', 'mensagem' => 'O novo intervalo não pode sobrepor intervalos existentes!']);
-        }else{
+        } else {
             $this->novo_intervalo["parcelas"] = [];
             array_push($this->formas_pagamento, $this->novo_intervalo);
             $this->atualizacoes_intervalos = $this->formas_pagamento;
@@ -115,10 +120,11 @@ class ModalCadastro extends Component
         }
     }
 
-    public function atualizar_intervalo($key){
-        if(!FuncoesPagamento::validaAtualizacaoIntervalos($this->formas_pagamento, $key, $this->atualizacoes_intervalos[$key])){
+    public function atualizar_intervalo($key)
+    {
+        if (!FuncoesPagamento::validaAtualizacaoIntervalos($this->formas_pagamento, $key, $this->atualizacoes_intervalos[$key])) {
             $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'error', 'mensagem' => 'O intervalo não pode sobrepor intervalos existentes!']);
-        }else{
+        } else {
             $this->formas_pagamento[$key]["minimo"] = $this->atualizacoes_intervalos[$key]["minimo"];
             $this->formas_pagamento[$key]["maximo"] = $this->atualizacoes_intervalos[$key]["maximo"];
             $this->formas_pagamento[$key]["desconto"] = $this->atualizacoes_intervalos[$key]["desconto"];
@@ -127,13 +133,14 @@ class ModalCadastro extends Component
         }
     }
 
-    public function adicionar_regra($key){
-        if(!$this->regras || !isset($this->regras[$key]) || !isset($this->regras[$key]["meses"]) || !isset($this->regras[$key]["parcelas"])){
+    public function adicionar_regra($key)
+    {
+        if (!$this->regras || !isset($this->regras[$key]) || !isset($this->regras[$key]["meses"]) || !isset($this->regras[$key]["parcelas"])) {
             $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'error', 'mensagem' => 'Por favor, preencha ambos os campos.']);
             return;
         }
 
-        if(!FuncoesPagamento::validaParcelasRegras($this->formas_pagamento[$key], $this->regras[$key])){
+        if (!FuncoesPagamento::validaParcelasRegras($this->formas_pagamento[$key], $this->regras[$key])) {
             $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'error', 'mensagem' => 'A soma das parcelas das regras não pode ultrapassar o número mínimo de parcelas do intervalo.']);
             return;
         }
@@ -150,38 +157,42 @@ class ModalCadastro extends Component
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Regra adicionada com sucesso!']);
     }
 
-    public function remover_regra($key, $posicao){
+    public function remover_regra($key, $posicao)
+    {
         unset($this->formas_pagamento[$key]["parcelas"][$posicao]);
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Regra removida com sucesso!']);
     }
 
-    public function resetaModalReservas(){
+    public function resetaModalReservas()
+    {
         $this->resetExcept();
     }
 
-    public function mount($fazenda = null){
-        if($fazenda){
+    public function mount($fazenda = null)
+    {
+        if ($fazenda) {
             $this->fazenda = $fazenda;
             $this->fazenda_selecionada = $fazenda;
-        }else{
+        } else {
             $this->fazenda = null;
         }
     }
 
-    public function salvar(){
-        if(!FuncoesPagamento::verificaFormasPagamento($this->formas_pagamento, $this->reserva->max_parcelas)){
+    public function salvar()
+    {
+        if (!FuncoesPagamento::verificaFormasPagamento($this->formas_pagamento, $this->reserva->max_parcelas)) {
             $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'error', 'mensagem' => 'A soma das parcelas das regras não pode ultrapassar o número mínimo de parcelas do intervalo.']);
             return;
         }
 
-        if($this->op == 'cadastro'){
+        if ($this->op == 'cadastro') {
             $this->reserva->fazenda_id = $this->fazenda_selecionada;
             $this->reserva->aberto = false;
             $this->reserva->preco_disponivel = false;
             $this->reserva->compra_disponivel = false;
         }
 
-        if($this->reserva->raca_id == -1){
+        if ($this->reserva->raca_id == -1) {
             $this->reserva->raca_id = null;
         }
 
@@ -189,7 +200,7 @@ class ModalCadastro extends Component
 
         ReservaFormasPagamento::where("reserva_id", $this->reserva->id)->delete();
 
-        foreach($this->formas_pagamento as $forma_pagamento){
+        foreach ($this->formas_pagamento as $forma_pagamento) {
             $nova_forma = new ReservaFormasPagamento;
             $nova_forma->reserva_id = $this->reserva->id;
             $nova_forma->minimo = $forma_pagamento["minimo"];
@@ -197,7 +208,7 @@ class ModalCadastro extends Component
             $nova_forma->desconto = $forma_pagamento["desconto"];
             $nova_forma->save();
 
-            foreach($forma_pagamento["parcelas"] as $key => $regra){
+            foreach ($forma_pagamento["parcelas"] as $key => $regra) {
                 $nova_regra = new ReservaFormasPagamentoRegra;
                 $nova_regra->reserva_formas_pagamento_id = $nova_forma->id;
                 $nova_regra->meses = $regra["meses"];
@@ -207,7 +218,7 @@ class ModalCadastro extends Component
             }
         }
 
-        if($this->catalogo){
+        if ($this->catalogo) {
             $this->reserva->catalogo = $this->catalogo->store('uploads');
             $this->reserva->save();
             \Util::limparLivewireTemp();

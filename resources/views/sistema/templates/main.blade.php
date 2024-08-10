@@ -12,13 +12,15 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
-    <title>{{ env("SYSTEM_TITLE") }} - Painel Administrativo</title>
+    <title>{{ env('SYSTEM_TITLE') }} - Painel Administrativo</title>
     <link rel="icon" type="image/png" href="images/favicon.png" />
 
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{ asset('system/css/app.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1.1"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1.1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Javascript Assets -->
     <script src="{{ asset('system/js/app.js') }}" defer></script>
 
@@ -29,16 +31,18 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
         rel="stylesheet" />
     <style>
-        [x-cloak] { display: none !important; }
+        [x-cloak] {
+            display: none !important;
+        }
     </style>
     <style>
-        .note-modal-backdrop{
-            display: none !important; 
+        .note-modal-backdrop {
+            display: none !important;
         }
     </style>
     @toastr_css
-    @yield("styles")
-    @stack("styles")
+    @yield('styles')
+    @stack('styles')
     @livewireStyles()
 </head>
 
@@ -64,14 +68,14 @@
                         </a>
                     </div>
 
-                    @include("sistema.includes.template.menu")
+                    @include('sistema.includes.template.menu')
                 </div>
             </div>
 
             <!-- Sidebar Panel -->
             {{-- <div class="sidebar-panel">
                 <div class="flex h-full grow flex-col bg-white pl-[var(--main-sidebar-width)] dark:bg-navy-750">
-                    
+
                 </div>
             </div> --}}
         </div>
@@ -214,7 +218,7 @@
                                     </div>
 
                                     <div class="flex flex-col overflow-hidden tab-content">
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -251,21 +255,21 @@
                     <li class="flex items-center space-x-2">
                         <a class="rounded-lg border border-slate-200 px-1.5 py-1 leading-none text-primary transition-colors hover:text-primary-focus dark:border-navy-500 dark:text-accent-light dark:hover:text-accent"
                             href="{{ route('sistema.index') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                             </svg>
                         </a>
-                        <svg x-ignore xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
+                        <svg x-ignore xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </li>
-                    @yield("breadcrumb")
+                    @yield('breadcrumb')
                 </ul>
             </div>
-            @yield("conteudo")
+            @yield('conteudo')
         </main>
     </div>
     @livewire('sistema.senha.modal-alterar')
@@ -280,7 +284,7 @@
     <script>
         window.addEventListener("DOMContentLoaded", () => Alpine.start());
         window.addEventListener("notificaToastr", (event) => {
-            switch(event.detail.tipo){
+            switch (event.detail.tipo) {
                 case 'success':
                     toastr.success(event.detail.mensagem)
                     break;
@@ -290,12 +294,14 @@
         })
     </script>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+        integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @livewireScripts()
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <x-livewire-alert::scripts />
-    @yield("scripts")
-    @stack("scripts")
+    @yield('scripts')
+    @stack('scripts')
     @include('sweetalert::alert')
 </body>
 

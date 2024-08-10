@@ -13,14 +13,15 @@
                             <div class="card-body">
                                 <form wire:submit.prevent='salvar' method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    @if(!$fazenda)
+                                    @if (!$fazenda)
                                         <div class="row">
                                             <div class="mb-3 col-12 form-group">
                                                 <label for="" class="form-label">Fazenda</label>
                                                 <select class="form-control" wire:model="fazenda_selecionada">
                                                     <option>Selecione uma Fazenda</option>
-                                                    @foreach(\App\Models\Fazenda::orderBy("nome_fazenda", "ASC")->get() as $faz)
-                                                        <option value="{{ $faz->id }}">{{ $faz->nome_fazenda }}</option>
+                                                    @foreach (\App\Models\Fazenda::orderBy('nome_fazenda', 'ASC')->get() as $faz)
+                                                        <option value="{{ $faz->id }}">{{ $faz->nome_fazenda }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -61,7 +62,8 @@
                                         </div>
                                         <div class="mb-3 form-group col-12 col-md-4">
                                             <label for="ativo">Ativo</label>
-                                            <select class="form-control" name="ativo" wire:model="reserva.ativo" required>
+                                            <select class="form-control" name="ativo" wire:model="reserva.ativo"
+                                                required>
                                                 <option value="">Selecione uma Opção</option>
                                                 <option value="0">Não</option>
                                                 <option value="1">Sim</option>
@@ -80,7 +82,8 @@
                                         </div>
                                         <div class="mb-3 form-group col-12 col-md-4">
                                             <label for="ativo">Raça Pré-definida</label>
-                                            <select class="form-control" name="raca_id" wire:model="reserva.raca_id" required>
+                                            <select class="form-control" name="raca_id" wire:model="reserva.raca_id"
+                                                required>
                                                 <option value="">Selecione uma Opção</option>
                                                 <option value="-1">Nenhuma</option>
                                                 @foreach (\App\Models\Raca::all() as $raca)
@@ -95,8 +98,8 @@
                                                 wire:model.debounce.500ms="reserva.max_parcelas" required>
                                         </div>
                                         <div class="mb-3 form-group col-12">
-                                              <label for="" class="form-label">Imagem do Card</label>
-                                              <input type="file" class="form-control" wire:model="arquivo">
+                                            <label for="" class="form-label">Imagem do Card</label>
+                                            <input type="file" class="form-control" wire:model="arquivo">
                                         </div>
                                     </div>
                                     @if ($reserva && $reserva->max_parcelas)
@@ -116,17 +119,17 @@
                                                 <div class="mb-3">
                                                     <label for="">Mínimo</label>
                                                     <input type="text" class="form-control"
-                                                        wire:model="novo_intervalo.minimo" >
+                                                        wire:model="novo_intervalo.minimo">
                                                 </div>
                                                 <div class="mb-3 ms-3">
                                                     <label for="">Máximo</label>
                                                     <input type="text" class="form-control"
-                                                        wire:model="novo_intervalo.maximo" >
+                                                        wire:model="novo_intervalo.maximo">
                                                 </div>
                                                 <div class="mb-3 ms-3">
                                                     <label for="">Desconto (%)</label>
                                                     <input type="text" class="form-control"
-                                                        wire:model="novo_intervalo.desconto" >
+                                                        wire:model="novo_intervalo.desconto">
                                                 </div>
                                                 <div class="mb-3 ms-3">
                                                     <button type="button" class="btn btn-primary"
@@ -139,13 +142,16 @@
                                                         <h2 class="accordion-header" id="headingTwo" wire:ignore.self>
                                                             <button class="accordion-button fw-medium collapsed"
                                                                 type="button" data-bs-toggle="collapse"
-                                                                data-bs-target="#collapse{{ $key }}" aria-expanded="false"
-                                                                aria-controls="collapse{{ $key }}" wire:ignore.self>
+                                                                data-bs-target="#collapse{{ $key }}"
+                                                                aria-expanded="false"
+                                                                aria-controls="collapse{{ $key }}"
+                                                                wire:ignore.self>
                                                                 De {{ $forma_pagamento['minimo'] }} a
                                                                 {{ $forma_pagamento['maximo'] }} parcela(as)
                                                             </button>
                                                         </h2>
-                                                        <div id="collapse{{ $key }}" class="accordion-collapse collapse"
+                                                        <div id="collapse{{ $key }}"
+                                                            class="accordion-collapse collapse"
                                                             aria-labelledby="headingTwo"
                                                             data-bs-parent="#accordionExample" wire:ignore.self>
                                                             <div class="accordion-body">
@@ -183,15 +189,13 @@
                                                                     <div class="mb-3">
                                                                         <label for="">Número de Meses</label>
                                                                         <input type="text" class="form-control"
-                                                                            wire:model="regras.{{ $key }}.meses"
-                                                                            >
+                                                                            wire:model="regras.{{ $key }}.meses">
                                                                     </div>
                                                                     <div class="mb-3 ms-3">
                                                                         <label for="">Número de
                                                                             Parcelas</label>
                                                                         <input type="text" class="form-control"
-                                                                            wire:model="regras.{{ $key }}.parcelas"
-                                                                            >
+                                                                            wire:model="regras.{{ $key }}.parcelas">
                                                                     </div>
                                                                     <div class="mb-3 ms-3">
                                                                         <button type="button" class="btn btn-primary"
@@ -226,7 +230,9 @@
                                                                                         </td>
                                                                                     </tr>
                                                                                     @php
-                                                                                        $total_parcelas += $regra['meses'] * $regra['parcelas'];
+                                                                                        $total_parcelas +=
+                                                                                            $regra['meses'] *
+                                                                                            $regra['parcelas'];
                                                                                     @endphp
                                                                                 @endforeach
                                                                                 @if ($total_parcelas < $forma_pagamento['maximo'])
