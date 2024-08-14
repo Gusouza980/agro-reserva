@@ -36,6 +36,7 @@ class ModalCadastro extends Component
         "reserva.mostrar_datas" => "",
         "reserva.raca_id" => "",
         "reserva.max_parcelas" => "",
+        "reserva.modalidade" => "",
     ];
 
     public function updatedReservaMaxParcelas()

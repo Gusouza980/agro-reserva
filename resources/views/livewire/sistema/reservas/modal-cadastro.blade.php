@@ -11,11 +11,16 @@
             class="w-full px-6 py-4 overflow-hidden max-h-[100vh] overflow-y-scroll bg-white rounded-t-lg dark:bg-navy-700 sm:rounded-lg sm:m-4 sm:max-w-[800px]"
             role="dialog">
             <!-- Modal body -->
-            <div class="mt-4 mb-6">
+            <div class="mt-4 mb-6 relative">
                 <!-- Modal title -->
                 <p class="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-700">
                     Cadastro de Reserva
                 </p>
+
+                <button @click="show = false"
+                    class="absolute top-0 right-0 bg-gray-700 flex items-center justify-center w-6 h-6 rounded-full">
+                    <i class="fas fa-times text-white cpointer"></i>
+                </button>
 
                 @include('sistema.includes.divider')
 
@@ -37,6 +42,16 @@
                                 @error('fazenda_selecionada')
                                     <small class="text-red-600"> {{ $message }} </small>
                                 @enderror
+                            </div>
+                            <div class="w-full mb-3">
+                                <label for="modalidade">Modalidade</label>
+                                <select
+                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                    name="modalidade" wire:model.defer="reserva.modalidade" required>
+                                    <option value="">Selecione uma Opção</option>
+                                    <option value="0">Reserva</option>
+                                    <option value="1">Leilão</option>
+                                </select>
                             </div>
                             <div class="grid w-full grid-cols-3 gap-x-4">
                                 <div class="mb-3">
