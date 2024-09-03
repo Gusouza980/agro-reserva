@@ -86,7 +86,7 @@ Route::middleware(['cookie'])->group(function () {
     Route::get('/reservas/finalizadas', [\App\Http\Controllers\SiteController::class, 'reservas_finalizadas'])->name("reservas.finalizadas");
 
     //Blog
-    Route::match(['get','post'], '/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
+    Route::match(['get', 'post'], '/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog");
     Route::get('/blog/{slug}', [\App\Http\Controllers\BlogController::class, 'index'])->name("blog.categoria");
     Route::get('/noticia/{slug}', [\App\Http\Controllers\BlogController::class, 'noticia'])->name("noticia");
 
@@ -115,7 +115,6 @@ Route::middleware(['cookie'])->group(function () {
     // Route::get('/facebook/callback', [\App\Http\Controllers\FacebookController::class, 'callback'])->name("facebook.callback");
 
     Route::get('lang/change/{lang}', [\App\Http\Controllers\LangController::class, 'trocar'])->name('lang.change');
-
 });
 
 Route::get('/painel/login', [\App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
@@ -245,7 +244,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/painel/assessor/excluir/{assessor}', [\App\Http\Controllers\AssessoresController::class, 'excluir'])->name("painel.assessor.excluir");
 
     // ROTAS RELACIONADAS A CLIENTES
-    Route::match(['get','post'], '/painel/clientes', [\App\Http\Controllers\ClienteController::class, 'index'])->name("painel.clientes");
+    Route::match(['get', 'post'], '/painel/clientes', [\App\Http\Controllers\ClienteController::class, 'index'])->name("painel.clientes");
     Route::post('/painel/clientes/pesquisar', [\App\Http\Controllers\ClienteController::class, 'pesquisar'])->name("painel.cliente.pesquisar");
     Route::get('/painel/clientes/export', [\App\Http\Controllers\ClienteController::class, 'export'])->name("painel.clientes.export");
     Route::post('/painel/cliente/cadastrar', [\App\Http\Controllers\ClienteController::class, 'cadastro_painel'])->name("painel.cliente.cadastrar");
@@ -263,8 +262,8 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/painel/vendedor/{cliente}/informacoes/salvar', [\App\Http\Controllers\VendedoresController::class, 'salvar_informacoes'])->name("painel.vendedor.informacoes.salvar");
 
     // ROTAS RELACIONADAS A VENDAS
-    Route::match(['get', 'post'],'/painel/visitas', [\App\Http\Controllers\PainelController::class, 'visitas'])->name("painel.visitas");
-    Route::match(['get', 'post'],'/painel/vendas', [\App\Http\Controllers\VendasController::class, 'index'])->name("painel.vendas");
+    Route::match(['get', 'post'], '/painel/visitas', [\App\Http\Controllers\PainelController::class, 'visitas'])->name("painel.visitas");
+    Route::match(['get', 'post'], '/painel/vendas', [\App\Http\Controllers\VendasController::class, 'index'])->name("painel.vendas");
     Route::get('/painel/compradores', [\App\Http\Controllers\VendasController::class, 'compradores'])->name("painel.compradores");
     Route::get('/painel/vendas/lotes', [\App\Http\Controllers\VendasController::class, 'lotes'])->name("painel.vendas.lotes");
     Route::post('/painel/vendas/nova', [\App\Http\Controllers\VendasController::class, 'venda_manual'])->name("painel.vendas.nova");
@@ -338,7 +337,6 @@ Route::middleware(['admin'])->group(function () {
 
     // LIMPAR CACHE
     Route::get('/painel/limpar-cache', [\App\Http\Controllers\PainelController::class, 'limparCache'])->name("painel.cache.limpar");
-
 });
 
 // ROTAS DO NOVO PAINEL
@@ -350,7 +348,6 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
 
         Route::get('/login', 'login')->name("login");
         Route::post('/logar', 'logar')->name("logar");
-
     });
 
     Route::middleware(['admin'])->group(function () {
@@ -365,14 +362,14 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
         });
 
         // ROTAS DE CLIENTES
-        Route::prefix('clientes')->name('clientes.')->controller(\App\Http\Controllers\Sistema\ClientesController::class)->group(function(){
+        Route::prefix('clientes')->name('clientes.')->controller(\App\Http\Controllers\Sistema\ClientesController::class)->group(function () {
             // LISTAGEM DE CLIENTES
             Route::get('consultar', 'consultar')->name('consultar');
             Route::get('detalhes/{cliente}', 'detalhes')->name('detalhes');
         });
 
         // ROTAS DE FAZENDAS
-        Route::prefix('fazendas')->name('fazendas.')->controller(\App\Http\Controllers\Sistema\FazendasController::class)->group(function(){
+        Route::prefix('fazendas')->name('fazendas.')->controller(\App\Http\Controllers\Sistema\FazendasController::class)->group(function () {
             // LISTAGEM DE FAZENDAS
             Route::get('consultar', 'consultar')->name('consultar');
             Route::get('cadastrar', 'cadastrar')->name('cadastrar');
@@ -381,7 +378,7 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
         });
 
         // ROTAS DE NOTICIAS
-        Route::prefix('noticias')->name('noticias.')->controller(\App\Http\Controllers\Sistema\NoticiasController::class)->group(function(){
+        Route::prefix('noticias')->name('noticias.')->controller(\App\Http\Controllers\Sistema\NoticiasController::class)->group(function () {
             // LISTAGEM DE NOTICIAS
             Route::get('consultar', 'consultar')->name('consultar');
             Route::get('cadastrar', 'cadastrar')->name('cadastrar');
@@ -390,32 +387,35 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
         });
 
         // ROTAS DE USUÁRIOS
-        Route::prefix('usuarios')->name('usuarios.')->controller(\App\Http\Controllers\Sistema\UsuariosController::class)->group(function(){
+        Route::prefix('usuarios')->name('usuarios.')->controller(\App\Http\Controllers\Sistema\UsuariosController::class)->group(function () {
             // LISTAGEM DE USUÁRIOS
             Route::get('consultar', 'consultar')->name('consultar');
         });
 
         // ROTAS DE RESERVAS
-        Route::prefix('reservas')->name('reservas.')->controller(\App\Http\Controllers\Sistema\ReservasController::class)->group(function(){
+        Route::prefix('reservas')->name('reservas.')->controller(\App\Http\Controllers\Sistema\ReservasController::class)->group(function () {
             // LISTAGEM DE RESERVAS
             Route::get('consultar', 'consultar')->name('consultar');
             Route::post('uploadCatalogo', 'uploadCatalogo')->name('uploadCatalogo');
         });
 
         // ROTAS DE LOTES
-        Route::prefix('lotes')->name('lotes.')->controller(\App\Http\Controllers\Sistema\LotesController::class)->group(function(){
+        Route::prefix('lotes')->name('lotes.')->controller(\App\Http\Controllers\Sistema\LotesController::class)->group(function () {
             // LISTAGEM DE LOTES
             Route::get('{reserva}/consultar', 'consultar')->name('consultar');
+            Route::get('{reserva}/cadastro', 'cadastro')->name('cadastro');
+            Route::post('{reserva}/cadastrar', 'cadastrar')->name('cadastrar');
+            Route::get('{reserva}/importacao', 'importacao')->name('importacao');
         });
 
         // ROTAS DE BANNERS
-        Route::prefix('banners')->name('banners.')->controller(\App\Http\Controllers\Sistema\BannersController::class)->group(function(){
+        Route::prefix('banners')->name('banners.')->controller(\App\Http\Controllers\Sistema\BannersController::class)->group(function () {
             // LISTAGEM DE BANNERS
             Route::get('consultar', 'consultar')->name('consultar');
         });
 
         // ROTAS DE VENDAS
-        Route::prefix('vendas')->name('vendas.')->controller(\App\Http\Controllers\Sistema\VendasController::class)->group(function(){
+        Route::prefix('vendas')->name('vendas.')->controller(\App\Http\Controllers\Sistema\VendasController::class)->group(function () {
             // LISTAGEM DE VENDAS
             Route::get('consultar', 'consultar')->name('consultar');
 
@@ -424,28 +424,25 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
         });
 
         // ROTAS DE DEMANDAS
-        Route::prefix('demandas')->name('demandas.')->controller(\App\Http\Controllers\Sistema\DemandasController::class)->group(function(){
+        Route::prefix('demandas')->name('demandas.')->controller(\App\Http\Controllers\Sistema\DemandasController::class)->group(function () {
             // LISTAGEM DE DEMANDAS
             Route::get('consultar', 'consultar')->name('consultar');
         });
 
         // ROTAS DE GUIAS
-        Route::prefix('guias')->name('guias.')->controller(\App\Http\Controllers\Sistema\GuiasController::class)->group(function(){
+        Route::prefix('guias')->name('guias.')->controller(\App\Http\Controllers\Sistema\GuiasController::class)->group(function () {
             // LISTAGEM DE GUIAS
             Route::get('consultar', 'consultar')->name('consultar');
         });
 
         // ROTAS DE RELATÓRIOS
-        Route::prefix('relatorios')->name('relatorios.')->controller(\App\Http\Controllers\Sistema\RelatoriosController::class)->group(function(){
+        Route::prefix('relatorios')->name('relatorios.')->controller(\App\Http\Controllers\Sistema\RelatoriosController::class)->group(function () {
             // LISTAGEM DE RELATÓRIOS
             Route::get('consultar', 'consultar')->name('consultar');
         });
 
         Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-
-
     });
-
 });
 
 
@@ -457,7 +454,7 @@ Route::get('/loja/vendedor/{slug}/{produto}', [\App\Http\Controllers\Marketplace
 Route::get('/loja/vendedor/{slug}', [\App\Http\Controllers\MarketplaceController::class, 'vendedor'])->name("marketplace.vendedor");
 
 Route::get('/teste', [\App\Http\Controllers\SiteController::class, 'testes']);
-Route::get('/email', function(){
+Route::get('/email', function () {
     return view("emails.declaracao-interesse");
 });
 Route::get('/api/getCidadesByUf/{uf}', [\App\Http\Controllers\ApiController::class, 'getCidadesByUf']);
@@ -467,7 +464,7 @@ Route::get('/api/curtirLote/{lote}', [\App\Http\Controllers\ApiController::class
 Route::get('/api/descurtirLote/{lote}', [\App\Http\Controllers\ApiController::class, 'descurtirLote']);
 
 
-Route::get('/girolando-bx/catalogo', function(){
+Route::get('/girolando-bx/catalogo', function () {
     // header('Content-Type: application/pdf');
     $data = file_get_contents(asset('catalogos/Girolando_BX.pdf'));
     header('Content-Type: application/pdf');

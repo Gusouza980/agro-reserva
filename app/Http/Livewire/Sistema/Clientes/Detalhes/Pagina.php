@@ -24,15 +24,18 @@ class Pagina extends Component
         5 => "Visitas",
         6 => "Declarações de Interesse"
     ];
-    public function getAssessoresProperty(){
+    public function getAssessoresProperty()
+    {
         return Assessor::orderBy("nome", "ASC")->get();
     }
 
-    public function getDocumentos($tipo){
+    public function getDocumentos($tipo)
+    {
         return ClienteDocumento::where("cliente_id", $this->cliente['id'])->where("tipo", $tipo)->get();
     }
 
-    public function salvar_informacoes_gerais(){
+    public function salvar_informacoes_gerais()
+    {
         Cliente::find($this->cliente['id'])->update($this->cliente);
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Informações salvas com sucesso!']);
     }
@@ -51,17 +54,25 @@ class Pagina extends Component
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Cliente reprovado com sucesso!']);
     }
 
-    public function mount($cliente_id){
+    public function reavaliar()
+    {
+        Cliente::find($this->cliente['id'])->update(["aprovado" => 0]);
+        $this->cliente['aprovado'] = 0;
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Cliente colocado em reavaliação!']);
+    }
+
+    public function mount($cliente_id)
+    {
         $this->cliente = Cliente::with("documentos")->find($cliente_id)->toArray();
     }
     public function render()
     {
         $parametros = [];
-        switch($this->menu){
-            case(5):
+        switch ($this->menu) {
+            case (5):
                 $parametros['visitas'] = Visita::with("lote:id,nome,fazenda_id,numero")->with("lote.fazenda:id,nome_fazenda")->where("cliente_id", $this->cliente['id'])->orderBy("created_at")->paginate(20);
                 break;
-            case(6):
+            case (6):
                 $parametros['interesses'] = InteresseLote::with("lote:id, nome, numero, fazenda_id")->with("lote.fazenda:id,nome_fazenda")->where("cliente_id", $this->cliente['id'])->orderBy("created_at", "DESC")->paginate(20);
                 break;
         }

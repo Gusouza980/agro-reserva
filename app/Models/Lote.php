@@ -9,80 +9,96 @@ class Lote extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     protected $append = [
         'descricao'
     ];
 
-    protected static function boot(){
+    protected static function boot()
+    {
         parent::boot();
 
-        static::deleting(function($lote){
+        static::deleting(function ($lote) {
             cache()->forget("reservas_ativas");
         });
 
-        static::updating(function($lote){
+        static::updating(function ($lote) {
             cache()->forget("reservas_ativas");
         });
 
-        static::creating(function($lote){
+        static::creating(function ($lote) {
             cache()->forget("reservas_ativas");
         });
     }
 
-    public function getDescricaoAttribute(){
+    public function getDescricaoAttribute()
+    {
         $descricao = "Lote <b>" . $this->sexo . "</b>";
-        if($this->registro){
+        if ($this->registro) {
             $descricao .= " da raça <b>" . $this->raca->nome . "</b>";
         }
         $descricao .= " vendido pela(o) <b>" . $this->fazenda->nome_fazenda . "</b>";
         return $descricao;
     }
 
-    public function raca(){
+    public function raca()
+    {
         return $this->belongsTo(Raca::class);
     }
 
-    public function membros(){
+    public function membros()
+    {
         return $this->hasMany(Lote::class, "pacote_id", "id");
     }
 
-    public function fazenda(){
+    public function fazenda()
+    {
         return $this->belongsTo(Fazenda::class);
     }
 
-    public function carrinhos(){
+    public function carrinhos()
+    {
         return $this->belongsToMany(Carrinho::class, 'carrinho_produtos');
     }
 
-    public function curtidas(){
+    public function curtidas()
+    {
         return $this->hasMany(CurtidaLote::class);
     }
 
-    public function interesses(){
+    public function interesses()
+    {
         return $this->hasMany(InteresseLote::class, "lote_id", "id");
     }
 
-    public function visitas(){
+    public function visitas()
+    {
         return $this->hasMany(Visita::class);
     }
 
-    public function reserva(){
+    public function reserva()
+    {
         return $this->belongsTo(Reserva::class);
     }
 
-    public function chaves(){
+    public function chaves()
+    {
         return $this->belongsToMany(Chave::class, "lote_chaves", "lote_id", "chave_id");
     }
 
-    public function recomendados(){
+    public function recomendados()
+    {
         return $this->belongsToMany(Lote::class, "lote_recomendacaos", "lote_id", "lote_recomendado_id");
     }
 
-    public function lances(){
+    public function lances()
+    {
         return $this->hasMany(Lance::class);
     }
 
-    public function produto(){
+    public function produto()
+    {
         return $this->morphOne(Produto::class, "produtable");
     }
 }
