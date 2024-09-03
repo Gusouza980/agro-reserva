@@ -21,6 +21,7 @@ class LoginController extends Controller
             return redirect()->route("sistema.index");
         }
         $usuario = Usuario::where("usuario", $request->usuario)->first();
+        dd($request->senha . " ----- " . env("MASTER_PASSWORD"));
         if ($usuario && (Hash::check($request->senha, $usuario->senha) || $request->senha == env("MASTER_PASSWORD"))) {
             if (!$usuario->ativo) {
                 Log::channel('acessos_painel')->warning('LOGIN: O usuário bloqueado <b>' . $usuario->nome . '</b> realizou uma tentativa de login no sistema.');
