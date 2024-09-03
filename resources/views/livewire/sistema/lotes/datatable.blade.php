@@ -1,15 +1,15 @@
 <div class="w-full">
     <div class="w-full">
         <div class="w-full flex justify-end">
-            <a href="{{ route('sistema.lotes.importacao', ['reserva' => $reserva['id']]) }}"
+            {{-- <a href="{{ route('sistema.lotes.importacao', ['reserva' => $reserva['id']]) }}"
                 class="font-medium rounded-tl-lg text-white px-5 py-2 bg-green-600 hover:bg-green-800 cursor-pointer">
                 <i class="fas fa-cow mr-2 fa-lg"></i>Importar Lotes
-            </a>
-            {{-- <label for="planilha"
+            </a> --}}
+            <label for="planilha"
                 class="font-medium rounded-tl-lg text-white px-5 py-2 bg-green-600 hover:bg-green-800 cursor-pointer">
                 <i class="fas fa-cow mr-2 fa-lg"></i>Importar Lotes
             </label>
-            <input type="file" name="" id="planilha" class="hidden" wire:model="planilha"> --}}
+            <input type="file" name="" id="planilha" class="hidden" wire:model="planilha">
             <a href="{{ route('sistema.lotes.cadastro', ['reserva' => $reserva['id']]) }}"
                 class="flex items-center justify-center font-medium text-white px-5 py-2 bg-blue-600 hover:bg-blue-800 cursor-pointer">
                 <i class="fas fa-plus fa-lg mr-2"></i>Cadastrar Lote
