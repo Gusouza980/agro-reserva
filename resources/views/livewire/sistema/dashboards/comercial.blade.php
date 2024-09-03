@@ -314,47 +314,47 @@
                                     <tr>
                                         <th
                                             class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                                            Data</th>
+                                            Cliente</th>
                                         <th
                                             class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                                            Cliente</th>
+                                            E-mail</th>
                                         <th
                                             class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                                             Telefone</th>
                                         <th
                                             class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                                            Lote</th>
+                                            Aprovado ?</th>
                                         <th
                                             class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                                            Aprovado ?</th>
+                                            Potencial</th>
                                         <th
                                             class="px-4 py-3 font-semibold uppercase whitespace-nowrap bg-slate-200 text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($this->getDeclaracaoInteresseClientesSemAssessor() as $interesse)
+                                    @foreach ($this->getClientesComPotencialInteresse() as $cliente)
                                         <tr class="border-transparent border-y border-b-slate-200 dark:border-b-navy-500">
                                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
-                                                {{ date('d/m/Y H:i:s', strtotime($interesse['created_at'])) }}</td>
-                                            <td class="px-4 py-3 whitespace-nowrap sm:px-5">
-                                                {{ $interesse['cliente']['nome_dono'] }}<br>
+                                                {{ $cliente['nome_dono'] }}<br>
                                             </td>
                                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
-                                                {{ $interesse['cliente']['telefone'] }}<br>
+                                                {{ $cliente['telefone'] }}<br>
                                             </td>
                                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
-                                                {{ $interesse['lote']['numero'] . ' - ' . $interesse['lote']['nome'] }}<br>
-                                                <small>{{ $interesse['lote']['fazenda']['nome_fazenda'] }}</small>
+                                                {{ $cliente['email'] }}<br>
                                             </td>
                                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
-                                                {{ $interesse['cliente']['aprovado'] ? 'Sim' : 'Não' }}<br>
+                                                {{ $cliente['aprovado'] ? 'Sim' : 'Não' }}<br>
+                                            </td>
+                                            <td class="px-4 py-3 whitespace-nowrap sm:px-5">
+                                                {{ $cliente['potencial'] }}
                                             </td>
                                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
                                                 <a target="_blank"
-                                                    href="https://api.whatsapp.com/send?phone=55{{ \Util::limparString($interesse['cliente']['telefone']) }}"><i
+                                                    href="https://api.whatsapp.com/send?phone=55{{ \Util::limparString($cliente['telefone']) }}"><i
                                                         class="text-gray-400 fab fa-whatsapp-square fa-2x"></i></a>
-                                                <a href="mailto:{{ $interesse['cliente']['email'] }}"><i
+                                                <a href="mailto:{{ $cliente['email'] }}"><i
                                                         class="ml-2 text-gray-400 fas fa-envelope fa-2x"></i></a>
                                             </td>
                                         </tr>

@@ -72,6 +72,12 @@ class Comercial extends Component
         return $interesses;
     }
 
+    public function getClientesComPotencialInteresse()
+    {
+        $clientes = Cliente::select("id", "nome_dono", "telefone", "aprovado", "email", "potencial")->orderBy("potencial", "DESC")->take($this->qtd)->get()->toArray();
+        return $clientes;
+    }
+
     public function render()
     {
         return view('livewire.sistema.dashboards.comercial');
