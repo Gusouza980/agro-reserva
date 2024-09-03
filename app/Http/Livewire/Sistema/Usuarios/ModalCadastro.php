@@ -17,7 +17,8 @@ class ModalCadastro extends Component
 
     protected $listeners = ["carregaModalCadastroUsuario", "carregaModalEdicaoUsuario"];
 
-    protected function rules(){
+    protected function rules()
+    {
         $rules = [
             "usuario.nome" => "max:60|required",
             "usuario.usuario" => "max:60|required",
@@ -26,8 +27,8 @@ class ModalCadastro extends Component
             "senha" =>  ["required", Password::min(6)->letters()->mixedCase()->numbers()]
         ];
 
-        if($this->op == 'edicao'){
-            $rules["usuario.email"] = $rules["usuario.email"]. "," . $this->usuario->id;
+        if ($this->op == 'edicao') {
+            $rules["usuario.email"] = $rules["usuario.email"] . "," . $this->usuario->id;
             // $rules["senha"] = [Password::min(6)->letters()->mixedCase()->numbers()];
             $rules["senha"] = [
                 "nullable",
@@ -38,27 +39,31 @@ class ModalCadastro extends Component
         return $rules;
     }
 
-    public function updatedShow(){
-        if($this->show == false){
+    public function updatedShow()
+    {
+        if ($this->show == false) {
             $this->resetExcept("profissionais");
         }
     }
 
-    public function carregaModalEdicaoUsuario(Usuario $usuario){
-        $this->usuario = $usuario->toArray();
+    public function carregaModalEdicaoUsuario(Usuario $usuario)
+    {
+        $this->usuario = $usuario;
         $this->show = true;
         $this->op = "edicao";
     }
 
-    public function carregaModalCadastroUsuario(){
+    public function carregaModalCadastroUsuario()
+    {
         $this->usuario = new Usuario;
         $this->show = true;
         $this->op = "cadastro";
     }
 
-    public function salvar(){
+    public function salvar()
+    {
         $this->validate();
-        if($this->senha){
+        if ($this->senha) {
             $this->usuario->senha = Hash::make($this->senha);
             $this->senha = null;
         }

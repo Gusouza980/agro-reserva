@@ -12,59 +12,77 @@ class Cliente extends Model
 
     protected $guarded = ["id"];
 
-    protected static function boot(){
+    protected static function boot()
+    {
         parent::boot();
 
-        static::creating(function($model){
+        static::creating(function ($model) {
             $model->finalizado = true;
         });
     }
 
-    public function carrinhos(){
+    public function carrinhos()
+    {
         return $this->hasMany(Carrinho::class);
     }
-    
-    public function Cidade(){
+
+    public function Cidade()
+    {
         return $this->belongsTo(Cidade::class, "cidade", "id");
     }
 
-    public function Estado(){
+    public function Estado()
+    {
         return $this->belongsTo(Estado::class, "estado", "id");
     }
 
-    public function racas(){
+    public function racas()
+    {
         return $this->belongsToMany(Raca::class, 'cliente_racas');
     }
 
-    public function compras(){
+    public function compras()
+    {
         return $this->hasMany(Venda::class);
     }
 
-    public function lotes_interessados(){
+    public function lotes_interessados()
+    {
         return $this->hasMany(InteresseLote::class);
     }
 
-    public function curtidas(){
+    public function curtidas()
+    {
         return $this->hasMany(CurtidaLote::class);
     }
 
-    public function analises(){
+    public function analises()
+    {
         return $this->hasMany(CreditoAnalise::class);
     }
 
-    public function fazendas(){
+    public function fazendas()
+    {
         return $this->belongsToMany(Fazenda::class, "fazenda_clientes");
     }
 
-    public function assessor(){
+    public function assessor()
+    {
         return $this->belongsTo(Assessor::class);
     }
 
-    public function documentos(){
+    public function documentos()
+    {
         return $this->hasMany(ClienteDocumento::class);
     }
 
-    public function setSenhaAttribute($value){
+    public function setSenhaAttribute($value)
+    {
         $this->attributes["senha"] = Hash::make($value);
+    }
+
+    public function visitas()
+    {
+        return $this->hasMany(Visita::class);
     }
 }
