@@ -16,7 +16,8 @@
             </h2>
         </div>
         <div class="mt-3">
-            <form action="{{ route('sistema.lotes.cadastrar', $reserva) }}" method="POST" class="w-full">
+            <form action="{{ route('sistema.lotes.editar', ['reserva' => $reserva, 'lote' => $lote]) }}" method="POST"
+                class="w-full">
                 @csrf
                 <div class="w-full bg-white rounded-md mt-10 p-8">
                     <div class="w-full">
@@ -30,7 +31,7 @@
                                 <span>Número *</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="numero" class="input-base" placeholder="Número do Lote" type="text"
-                                        required maxlength="5" value="{{ old('numero') }}">
+                                        required maxlength="5" value="{{ $lote->numero }}">
                                 </span>
                             </label>
                         </div>
@@ -39,7 +40,7 @@
                                 <span>Nome *</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="nome" class="input-base" placeholder="Nome do Lote" type="text"
-                                        required maxlength="100" value="{{ old('nome') }}">
+                                        required maxlength="100" value="{{ $lote->nome }}">
                                 </span>
                             </label>
                         </div>
@@ -48,7 +49,7 @@
                                 <span>Data de Nascimento</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="nascimento" class="input-base" type="date"
-                                        value="{{ old('nascimento') }}">
+                                        value="{{ $lote->nascimento }}">
                                 </span>
                             </label>
                         </div>
@@ -57,7 +58,7 @@
                                 <span>RGD</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="registro" class="input-base" placeholder="Nº do RGD" type="text"
-                                        required maxlength="30" value="{{ old('registro') }}">
+                                        required maxlength="30" value="{{ $lote->registro }}">
                                 </span>
                             </label>
                         </div>
@@ -66,7 +67,7 @@
                                 <span>RGN</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="rgn" class="input-base" placeholder="Nº do RGN" type="text"
-                                        maxlength="20" value="{{ old('rgn') }}">
+                                        maxlength="20" value="{{ $lote->rgn }}">
                                 </span>
                             </label>
                         </div>
@@ -75,8 +76,8 @@
                                 <span>Sexo</span>
                                 <span class="relative mt-1.5 flex">
                                     <select name="sexo" class="input-base" required>
-                                        <option value="Macho" {{ old('sexo') == 'Macho' ? 'selected' : '' }}>Macho</option>
-                                        <option value="Fêmea" {{ old('sexo') == 'Fêmea' ? 'selected' : '' }}>Fêmea</option>
+                                        <option value="Macho" {{ $lote->sexo == 'Macho' ? 'selected' : '' }}>Macho</option>
+                                        <option value="Fêmea" {{ $lote->sexo == 'Fêmea' ? 'selected' : '' }}>Fêmea</option>
                                     </select>
                                 </span>
                             </label>
@@ -98,7 +99,7 @@
                                     <select name="raca_id" class="input-base" required>
                                         @foreach (\App\Models\Raca::orderBy('nome')->get() as $raca)
                                             <option value="{{ $raca->id }}"
-                                                {{ old('raca_id') == $raca->id ? 'selected' : '' }}>{{ $raca->nome }}
+                                                {{ $lote->raca_id == $raca->id ? 'selected' : '' }}>{{ $raca->nome }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -110,7 +111,7 @@
                                 <span>GPTA</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="gpta" class="input-base" placeholder="" type="text" maxlength="12"
-                                        value="{{ old('gpta') }}">
+                                        value="{{ $lote->gpta }}">
                                 </span>
                             </label>
                         </div>
@@ -119,7 +120,7 @@
                                 <span>CCG</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="ccg" class="input-base" placeholder="" type="text" maxlength="20"
-                                        value="{{ old('ccg') }}">
+                                        value="{{ $lote->ccg }}">
                                 </span>
                             </label>
                         </div>
@@ -128,7 +129,7 @@
                                 <span>BOTTON</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="botton" class="input-base" placeholder="" type="text" maxlength="10"
-                                        value="{{ old('botton') }}">
+                                        value="{{ $lote->botton }}">
                                 </span>
                             </label>
                         </div>
@@ -137,7 +138,7 @@
                                 <span>Lactação</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="lactacao_total" class="input-base" placeholder="" type="text"
-                                        maxlength="60" value="{{ old('lactacao_total') }}">
+                                        maxlength="60" value="{{ $lote->lactacao_total }}">
                                 </span>
                             </label>
                         </div>
@@ -146,7 +147,7 @@
                                 <span>Peso</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="peso" class="input-base" placeholder="" type="text"
-                                        maxlength="10" value="{{ old('peso') }}">
+                                        maxlength="10" value="{{ $lote->peso }}">
                                 </span>
                             </label>
                         </div>
@@ -155,7 +156,7 @@
                                 <span>iABCZg</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="iabczg" class="input-base" placeholder="" type="text"
-                                        maxlength="10" value="{{ old('iabczg') }}">
+                                        maxlength="10" value="{{ $lote->iabczg }}">
                                 </span>
                             </label>
                         </div>
@@ -164,7 +165,7 @@
                                 <span>CE</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="ce" class="input-base" placeholder="" type="text"
-                                        maxlength="10" value="{{ old('ce') }}">
+                                        maxlength="10" value="{{ $lote->ce }}">
                                 </span>
                             </label>
                         </div>
@@ -173,7 +174,7 @@
                                 <span>DECA</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="deca" class="input-base" placeholder="" type="text"
-                                        maxlength="10" value="{{ old('deca') }}">
+                                        maxlength="10" value="{{ $lote->deca }}">
                                 </span>
                             </label>
                         </div>
@@ -182,7 +183,7 @@
                                 <span>Ocitocina</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="ocitocina" class="input-base" placeholder="" type="text"
-                                        maxlength="10" value="{{ old('ocitocina') }}">
+                                        maxlength="10" value="{{ $lote->ocitocina }}">
                                 </span>
                             </label>
                         </div>
@@ -191,8 +192,8 @@
                                 <span>Está com Prenhez ?</span>
                                 <span class="relative mt-1.5 flex">
                                     <select name="prenhez" class="input-base">
-                                        <option value="0" {{ old('prenhez') == '0' ? 'selected' : '' }}>Não</option>
-                                        <option value="1" {{ old('prenhez') == '1' ? 'selected' : '' }}>Sim</option>
+                                        <option value="0" {{ $lote->prenhez == '0' ? 'selected' : '' }}>Não</option>
+                                        <option value="1" {{ $lote->prenhez == '1' ? 'selected' : '' }}>Sim</option>
                                     </select>
                                 </span>
                             </label>
@@ -212,7 +213,7 @@
                                 <span>Nome do Pai</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="pai" class="input-base" placeholder="" type="text"
-                                        maxlength="50" value="{{ old('pai') }}">
+                                        maxlength="50" value="{{ $lote->pai }}">
                                 </span>
                             </label>
                         </div>
@@ -221,7 +222,7 @@
                                 <span>RGD do Pai</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="rgd_pai" class="input-base" placeholder="" type="text"
-                                        maxlength="20" value="{{ old('rgd_pai') }}">
+                                        maxlength="20" value="{{ $lote->rgd_pai }}">
                                 </span>
                             </label>
                         </div>
@@ -230,7 +231,7 @@
                                 <span>Nome do Avô Paterno</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="avo_paterno" class="input-base" placeholder="" type="text"
-                                        maxlength="50" value="{{ old('avo_paterno') }}">
+                                        maxlength="50" value="{{ $lote->avo_paterno }}">
                                 </span>
                             </label>
                         </div>
@@ -239,7 +240,7 @@
                                 <span>RGD do Avô Paterno</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="rgd_avo_paterno" class="input-base" placeholder="" type="text"
-                                        maxlength="20" value="{{ old('rgd_avo_paterno') }}">
+                                        maxlength="20" value="{{ $lote->rgd_avo_paterno }}">
                                 </span>
                             </label>
                         </div>
@@ -248,7 +249,7 @@
                                 <span>Nome da Avó Paterna</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="avo_paterna" class="input-base" placeholder="" type="text"
-                                        maxlength="50" value="{{ old('avo_paterna') }}">
+                                        maxlength="50" value="{{ $lote->avo_paterna }}">
                                 </span>
                             </label>
                         </div>
@@ -257,7 +258,7 @@
                                 <span>RGD da Avó Paterna</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="rgd_avo_paterna" class="input-base" placeholder="" type="text"
-                                        maxlength="20" value="{{ old('rgd_avo_paterna') }}">
+                                        maxlength="20" value="{{ $lote->rgd_avo_paterna }}">
                                 </span>
                             </label>
                         </div>
@@ -266,7 +267,7 @@
                                 <span>Lactação da Avó Paterna</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="lactacao_avo_paterna" class="input-base" placeholder="" type="text"
-                                        maxlength="50" value="{{ old('lactacao_avo_paterna') }}">
+                                        maxlength="50" value="{{ $lote->lactacao_avo_paterna }}">
                                 </span>
                             </label>
                         </div>
@@ -276,7 +277,7 @@
                                 <span>Nome da Mãe</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="mae" class="input-base" placeholder="" type="text"
-                                        maxlength="50" value="{{ old('mae') }}">
+                                        maxlength="50" value="{{ $lote->mae }}">
                                 </span>
                             </label>
                         </div>
@@ -285,7 +286,7 @@
                                 <span>RGD da Mãe</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="rgd_mae" class="input-base" placeholder="" type="text"
-                                        maxlength="20" value="{{ old('rgd_mae') }}">
+                                        maxlength="20" value="{{ $lote->rgd_mae }}">
                                 </span>
                             </label>
                         </div>
@@ -294,7 +295,7 @@
                                 <span>Lactação da Mãe</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="lactacao_mae" class="input-base" placeholder="" type="text"
-                                        maxlength="50" value="{{ old('lactacao_mae') }}">
+                                        maxlength="50" value="{{ $lote->lactacao_mae }}">
                                 </span>
                             </label>
                         </div>
@@ -303,7 +304,7 @@
                                 <span>Nome do Avô Materno</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="avo_materno" class="input-base" placeholder="" type="text"
-                                        maxlength="50" value="{{ old('avo_materno') }}">
+                                        maxlength="50" value="{{ $lote->avo_materno }}">
                                 </span>
                             </label>
                         </div>
@@ -312,7 +313,7 @@
                                 <span>RGD do Avô Materno</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="rgd_avo_materno" class="input-base" placeholder="" type="text"
-                                        maxlength="20" value="{{ old('rgd_avo_materno') }}">
+                                        maxlength="20" value="{{ $lote->rgd_avo_materno }}">
                                 </span>
                             </label>
                         </div>
@@ -321,7 +322,7 @@
                                 <span>Nome da Avó Materna</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="avo_materna" class="input-base" placeholder="" type="text"
-                                        maxlength="50" value="{{ old('avo_materna') }}">
+                                        maxlength="50" value="{{ $lote->avo_materna }}">
                                 </span>
                             </label>
                         </div>
@@ -330,7 +331,7 @@
                                 <span>RGD da Avó Materna</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="rgd_avo_materna" class="input-base" placeholder="" type="text"
-                                        maxlength="20" value="{{ old('rgd_avo_materna') }}">
+                                        maxlength="20" value="{{ $lote->rgd_avo_materna }}">
                                 </span>
                             </label>
                         </div>
@@ -339,7 +340,7 @@
                                 <span>Lactação da Avó Materna</span>
                                 <span class="relative mt-1.5 flex">
                                     <input name="lactacao_avo_materna" class="input-base" placeholder="" type="text"
-                                        maxlength="50" value="{{ old('lactacao_avo_materna') }}">
+                                        maxlength="50" value="{{ $lote->lactacao_avo_materna }}">
                                 </span>
                             </label>
                         </div>
@@ -356,7 +357,7 @@
                             <label class="block">
                                 <span>Coloque aqui as observações e comentários do animal</span>
                                 <span class="relative mt-1.5 flex">
-                                    <textarea name="observacoes" class="input-base" maxlength="600" rows="4">{{ old('observacoes') }}</textarea>
+                                    <textarea name="observacoes" class="input-base" maxlength="600" rows="4">{{ $lote->observacoes }}</textarea>
                                 </span>
                             </label>
                         </div>

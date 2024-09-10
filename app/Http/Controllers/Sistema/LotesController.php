@@ -19,7 +19,7 @@ class LotesController extends BaseController
         return view("sistema.lotes.consultar", ["reserva" => $reserva]);
     }
 
-    public function importar(Request $request)
+    public function importar(Reserva $reserva, Request $request)
     {
         if ($request->file("planilha")) {
             $caminho = $request->file('planilha')->store(
@@ -28,25 +28,48 @@ class LotesController extends BaseController
             );
         }
 
-        Excel::import(new LotesImport($request->reserva_id, $request->fazenda_id), $caminho);
+        try {
+            Excel::import(new LotesImport($request->campos, $reserva->id, $reserva->fazenda_id), $caminho);
 
-        Storage::delete($caminho);
+            Storage::delete($caminho);
 
-        $lotes = Lote::where("reserva_id", $request->reserva_id)->get();
-        foreach ($lotes as $lote) {
-            $lote->produto()->create([
-                "nome" => $lote->nome,
-                "preco" => ($lote->preco) ? $lote->preco : 0
-            ]);
+            $lotes = Lote::where("reserva_id", $reserva->id)->get();
+            foreach ($lotes as $lote) {
+                $lote->produto()->create([
+                    "nome" => $lote->nome,
+                    "preco" => ($lote->preco) ? $lote->preco : 0
+                ]);
+            }
+
+            toastr()->success("Lotes importados com sucesso!");
+        } catch (Exception $e) {
+            toastr()->error($e->getMessage(), "Erro ao importar lotes!");
         }
 
-        toastr()->success("Lotes importados com sucesso!");
         return redirect()->back();
     }
 
     public function cadastro(Reserva $reserva)
     {
         return view("sistema.lotes.cadastro", ["reserva" => $reserva]);
+    }
+
+    public function edicao(Reserva $reserva, Lote $lote)
+    {
+        return view("sistema.lotes.edicao", ["reserva" => $reserva, "lote" => $lote]);
+    }
+
+    public function editar(Request $request, Reserva $reserva, Lote $lote)
+    {
+        $dados = $request->all();
+        try {
+            $lote->update($dados);
+            toastr()->success("Lote salvo com sucesso!");
+            return redirect()->route('sistema.lotes.consultar', $reserva);
+        } catch (Exception $e) {
+            toastr()->error($e->getMessage(), "Erro ao editar lote!");
+            return redirect()->back();
+        }
     }
 
     public function cadastrar(Request $request, Reserva $reserva)

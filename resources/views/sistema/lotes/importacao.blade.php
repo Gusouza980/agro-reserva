@@ -9,76 +9,78 @@
 @endsection
 
 @section('conteudo')
-    <div class="grid justify-center grid-cols-1 px-6 py-6" x-data="{
-        selecionados: [],
-        arquivo: null,
-        campos: [
-            ['numero', 'Número do Lote'],
-            ['nome', 'Nome do Lote'],
-            ['preco', 'Preço'],
-            ['registro', 'Registro (RGD)'],
-            ['botton', 'Botton'],
-            ['ccg', 'CCG (CGC)'],
-            ['nascimento', 'Data de Nascimento'],
-    
-            ['pai', 'Nome do Pai'],
-            ['rgd_pai', 'RGD do Pai'],
-    
-            ['avo_paterno', 'Nome do Avô Paterno'],
-            ['rgd_avo_paterno', 'RGD do Avô Paterno'],
-    
-            ['avo_paterna', 'Nome da Avó Paterna'],
-            ['rgd_avo_paterna', 'RGD da Avó Paterna'],
-            ['lactacao_avo_paterna', 'Lactação da Avó Paterna'],
-    
-            ['mae', 'Nome da Mãe'],
-            ['rgd_mae', 'RGD da Mãe'],
-            ['lactacao_mae', 'Lactação da Mãe'],
-    
-            ['avo_materno', 'Nome do Avô Materno'],
-            ['rgd_avo_materno', 'RGD do Avô Materno'],
-    
-            ['avo_materna', 'Nome da Avó Materna'],
-            ['rgd_avo_materna', 'RGD da Avó Materna'],
-            ['lactacao_avo_materna', 'Lactação da Avó Materna'],
-    
-            ['observacoes', 'Observações (Comentários)'],
-        ],
-        selecionar: function(campo) {
-            if (this.selecionados.includes(campo)) {
+    <form method="POST" action="{{ route('sistema.lotes.importar', ['reserva' => $reserva]) }}" enctype="multipart/form-data"
+        class="grid justify-center grid-cols-1 px-6 py-6" x-data="{
+            selecionados: [],
+            arquivo: null,
+            campos: [
+                ['numero', 'Número do Lote'],
+                ['nome', 'Nome do Lote'],
+                ['preco', 'Preço'],
+                ['registro', 'Registro (RGD)'],
+                ['botton', 'Botton'],
+                ['ccg', 'CCG (CGC)'],
+                ['nascimento', 'Data de Nascimento'],
+        
+                ['pai', 'Nome do Pai'],
+                ['rgd_pai', 'RGD do Pai'],
+        
+                ['avo_paterno', 'Nome do Avô Paterno'],
+                ['rgd_avo_paterno', 'RGD do Avô Paterno'],
+        
+                ['avo_paterna', 'Nome da Avó Paterna'],
+                ['rgd_avo_paterna', 'RGD da Avó Paterna'],
+                ['lactacao_avo_paterna', 'Lactação da Avó Paterna'],
+        
+                ['mae', 'Nome da Mãe'],
+                ['rgd_mae', 'RGD da Mãe'],
+                ['lactacao_mae', 'Lactação da Mãe'],
+        
+                ['avo_materno', 'Nome do Avô Materno'],
+                ['rgd_avo_materno', 'RGD do Avô Materno'],
+        
+                ['avo_materna', 'Nome da Avó Materna'],
+                ['rgd_avo_materna', 'RGD da Avó Materna'],
+                ['lactacao_avo_materna', 'Lactação da Avó Materna'],
+        
+                ['observacoes', 'Observações (Comentários)'],
+            ],
+            selecionar: function(campo) {
+                if (this.selecionados.includes(campo)) {
+                    this.selecionados = this.selecionados.filter(item => item !== campo);
+                } else {
+                    this.selecionados.push(campo);
+                }
+            },
+            remover: function(campo) {
                 this.selecionados = this.selecionados.filter(item => item !== campo);
-            } else {
-                this.selecionados.push(campo);
-            }
-        },
-        remover: function(campo) {
-            this.selecionados = this.selecionados.filter(item => item !== campo);
-        },
-        mover: function(campo, direcao) {
-            let index = this.selecionados.indexOf(campo);
-            if (direcao === 'left') {
-                if (index > 0) {
-                    let temp = this.selecionados[index - 1];
-                    this.selecionados[index - 1] = campo;
-                    this.selecionados[index] = temp;
+            },
+            mover: function(campo, direcao) {
+                let index = this.selecionados.indexOf(campo);
+                if (direcao === 'left') {
+                    if (index > 0) {
+                        let temp = this.selecionados[index - 1];
+                        this.selecionados[index - 1] = campo;
+                        this.selecionados[index] = temp;
+                    }
+                } else {
+                    if (index < this.selecionados.length - 1) {
+                        let temp = this.selecionados[index + 1];
+                        this.selecionados[index + 1] = campo;
+                        this.selecionados[index] = temp;
+                    }
                 }
-            } else {
-                if (index < this.selecionados.length - 1) {
-                    let temp = this.selecionados[index + 1];
-                    this.selecionados[index + 1] = campo;
-                    this.selecionados[index] = temp;
+            },
+            verificarPosicao: function(campo, direcao) {
+                let index = this.selecionados.indexOf(campo);
+                if (direcao === 'left') {
+                    return index > 0;
+                } else {
+                    return index < this.selecionados.length - 1;
                 }
             }
-        },
-        verificarPosicao: function(campo, direcao) {
-            let index = this.selecionados.indexOf(campo);
-            if (direcao === 'left') {
-                return index > 0;
-            } else {
-                return index < this.selecionados.length - 1;
-            }
-        }
-    }">
+        }">
+        @csrf
         <div class="flex items-center justify-between w-full">
             <h2 class="text-base font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">
                 Importação de Lotes para a Reserva #{{ $reserva->id }}
@@ -108,7 +110,7 @@
                 <template x-for="campo in selecionados">
                     <div
                         class="cursor-pointer w-fit bg-green-300 text-green-800 flex justify-between px-3 py-2 rounded-md transition duration-300 gap-3">
-
+                        <input type="hidden" name="campos[]" x-bind:value="campo[0]">
                         <button x-show="verificarPosicao(campo, 'left')" x-on:click="mover(campo, 'left')"
                             class="w-5 h-5 hover:bg-green-700 hover:text-white transition duration-200 hover:scale-105 rounded-full flex items-center justify-center">
                             <i class="fa-solid fa-arrow-left"></i>
@@ -147,12 +149,12 @@
                     </div>
                 </template>
             </label>
-            <input type="file" id="planilha" class="hidden" x-model="arquivo">
+            <input type="file" id="planilha" name="planilha" class="hidden" x-model="arquivo">
         </div>
 
         <div class="w-full mt-3">
             <button x-bind:disabled="!arquivo || selecionados.length === 0"
                 class="disabled:opacity-30 w-full bg-green-300 text-green-700 hover:bg-green-600 hover:text-white transition duration-200 py-2 rounded-md text-[17px] font-semibold">Importar</button>
         </div>
-    </div>
+    </form>
 @endsection

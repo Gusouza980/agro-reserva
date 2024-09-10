@@ -1,14 +1,14 @@
 <div class="w-full">
     <div class="w-full">
         <div class="w-full flex justify-end">
-            {{-- <a href="{{ route('sistema.lotes.importacao', ['reserva' => $reserva['id']]) }}"
+            <a href="{{ route('sistema.lotes.importacao', ['reserva' => $reserva['id']]) }}"
                 class="font-medium rounded-tl-lg text-white px-5 py-2 bg-green-600 hover:bg-green-800 cursor-pointer">
                 <i class="fas fa-cow mr-2 fa-lg"></i>Importar Lotes
-            </a> --}}
-            <label for="planilha"
+            </a>
+            {{-- <label for="planilha"
                 class="font-medium rounded-tl-lg text-white px-5 py-2 bg-green-600 hover:bg-green-800 cursor-pointer">
                 <i class="fas fa-cow mr-2 fa-lg"></i>Importar Lotes
-            </label>
+            </label> --}}
             <input type="file" name="" id="planilha" class="hidden" wire:model="planilha">
             <a href="{{ route('sistema.lotes.cadastro', ['reserva' => $reserva['id']]) }}"
                 class="flex items-center justify-center font-medium text-white px-5 py-2 bg-blue-600 hover:bg-blue-800 cursor-pointer">
@@ -78,7 +78,7 @@
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">{{ $lote['registro'] }}</td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5 w-fit">
                                 <input
-                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                     onchange="Livewire.emit('atualizaValor', {{ $lote['id'] }}, 'preco', this.value)"
                                     value="{{ $lote['preco'] }}" />
                             </td>
@@ -90,7 +90,7 @@
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
                                 <select
-                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                     onchange="Livewire.emit('atualizaValor', {{ $lote['id'] }}, 'reservado', this.value)">
                                     <option value="1" @if ($lote['reservado']) selected @endif>Sim
                                     </option>
@@ -100,7 +100,7 @@
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
                                 <select
-                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                     onchange="Livewire.emit('atualizaValor', {{ $lote['id'] }}, 'liberar_preco', this.value)">
                                     <option value="1" @if ($lote['liberar_preco']) selected @endif>Sim
                                     </option>
@@ -110,7 +110,7 @@
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
                                 <select
-                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                     onchange="Livewire.emit('atualizaValor', {{ $lote['id'] }}, 'liberar_compra', this.value)">
                                     <option value="1" @if ($lote['liberar_compra']) selected @endif>Sim
                                     </option>
@@ -120,7 +120,7 @@
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
                                 <select
-                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                     onchange="Livewire.emit('atualizaValor', {{ $lote['id'] }}, 'ativo', this.value)">
                                     <option value="1" @if ($lote['ativo']) selected @endif>Sim
                                     </option>
@@ -146,13 +146,13 @@
                                         wire:ignore.self>
                                         <div
                                             class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700">
-                                            {{-- <ul>
+                                            <ul>
                                                 <li @click="isShowPopper = false">
-                                                    <a
+                                                    <a href="{{ route('sistema.lotes.edicao', ['reserva' => $reserva['id'], 'lote' => $lote['id']]) }}"
                                                         class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Editar</a>
                                                 </li>
                                             </ul>
-                                            <div class="h-px my-1 bg-slate-150 dark:bg-navy-500"></div> --}}
+                                            <div class="h-px my-1 bg-slate-150 dark:bg-navy-500"></div>
                                             <ul>
                                                 <li @click="isShowPopper = false">
                                                     <a wire:click="solicitarExcluir({{ $lote['id'] }})"

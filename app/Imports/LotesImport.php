@@ -7,24 +7,28 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 use App\Classes\Util;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas, WithMapping
+class LotesImport implements ToModel, WithCalculatedFormulas, WithStartRow
 {
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
 
     public $reserva_id;
     public $fazenda_id;
+    public $campos;
 
-    public function __construct($reserva_id = null, $fazenda_id = null)
+    public function __construct($campos, $reserva_id = null, $fazenda_id = null)
     {
-        $this->reserva_id= $reserva_id;
-        $this->fazenda_id= $fazenda_id;
+        $this->campos = $campos;
+        $this->reserva_id = $reserva_id;
+        $this->fazenda_id = $fazenda_id;
     }
 
     public function model(array $row)
@@ -33,54 +37,84 @@ class LotesImport implements ToModel, WithHeadingRow, WithCalculatedFormulas, Wi
 
         $lote->reserva_id = $this->reserva_id;
         $lote->fazenda_id = $this->fazenda_id;
+        $lote->sexo = 'Fêmea';
+        $values = array_values($row);
+        foreach ($this->campos as $key => $campo) {
+            if (!empty($values[$key])) {
 
-        foreach($row as $coluna => $value){
-            // Log::info($coluna);
-            // Log::debug($value);
-            if(!empty($coluna) && $coluna != "skip" && !is_numeric($coluna)){
-                $lote->$coluna = $value;
+                if ($campo == 'nascimento' || $campo == 'parto' || $campo == 'cobert') {
+                    $lote->$campo = $this->formataCampoData($values[$key]);
+                    continue;
+                }
+
+                if ($campo == 'preco') {
+                    $lote->$campo = $this->formataCampoPreco($values[$key]);
+                    continue;
+                }
+
+                $lote->$campo = $values[$key];
             }
         }
 
-        if($lote->nascimento){
-            $lote->nascimento = $lote->nascimento;
-        }
-
-        if($lote->parto){
-            $lote->parto = $lote->parto;
-        }
-
-        if($lote->cobert){
-            $lote->cobert = $lote->cobert;
-        }
-
         $lote->liberar_compra = true;
-        
-        if($lote->numero == null){
+
+        if ($lote->numero == null) {
             return null;
         }
 
         return $lote;
     }
 
-    public function map($row): array
+    public function formataCampoData($valor)
     {
-        if(isset($row['nascimento']) && gettype($row['nascimento']) == 'double'){
-            $row['nascimento'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['nascimento'])->format('Y-m-d');
-        }elseif(isset($row['nascimento']) && strpos($row['nascimento'], '/'))
-        {
-            [$dia, $mes, $ano] = explode('/', $row['nascimento']);
-            $row['nascimento'] = $ano . "-" . $mes . "-" . $dia;
+        try {
+            if (gettype($valor == 'double' || gettype($valor) == 'integer')) {
+                return \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($valor)->format('Y-m-d');
+            } elseif (isset($row['nascimento']) && strpos($row['nascimento'], '/')) {
+                [$dia, $mes, $ano] = explode('/', $valor);
+                return $ano . "-" . $mes . "-" . $dia;
+            }
+        } catch (\Exception $e) {
+            throw new \Exception("Erro ao formatar data: " . $valor);
         }
-
-        if(isset($row['parto']) && gettype($row['parto']) == 'double'){
-            $row['parto'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['parto'])->format('Y-m-d');
-        }
-
-        if(isset($row['cobert']) && gettype($row['cobert']) == 'double'){
-            $row['cobert'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['cobert'])->format('Y-m-d');
-        }
-
-        return $row;
     }
+
+    public function formataCampoPreco($valor)
+    {
+        if (strpos($valor, 'R$') > -1) {
+            // Remove caracteres não numéricos, exceto vírgula e ponto
+            $valor = preg_replace('/[^0-9,]/', '', $valor);
+            $valor = str_replace(',', '.', $valor);
+            // Converte para double
+            $valor = (float) $valor;
+
+            return $valor;
+        } else {
+            return $valor;
+        }
+    }
+
+    public function startRow(): int
+    {
+        return 2;
+    }
+
+    // public function map($row): array
+    // {
+    //     if (isset($row['nascimento']) && (gettype($row['nascimento']) == 'double' || gettype($row['nascimento']) == 'integer')) {
+    //         $row['nascimento'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['nascimento'])->format('Y-m-d');
+    //     } elseif (isset($row['nascimento']) && strpos($row['nascimento'], '/')) {
+    //         [$dia, $mes, $ano] = explode('/', $row['nascimento']);
+    //         $row['nascimento'] = $ano . "-" . $mes . "-" . $dia;
+    //     }
+    //     if (isset($row['parto']) && gettype($row['parto']) == 'double') {
+    //         $row['parto'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['parto'])->format('Y-m-d');
+    //     }
+
+    //     if (isset($row['cobert']) && gettype($row['cobert']) == 'double') {
+    //         $row['cobert'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['cobert'])->format('Y-m-d');
+    //     }
+
+    //     return $row;
+    // }
 }

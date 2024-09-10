@@ -405,7 +405,10 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
             Route::get('{reserva}/consultar', 'consultar')->name('consultar');
             Route::get('{reserva}/cadastro', 'cadastro')->name('cadastro');
             Route::post('{reserva}/cadastrar', 'cadastrar')->name('cadastrar');
+            Route::get('{reserva}/edicao/{lote}', 'edicao')->name('edicao');
+            Route::post('{reserva}/edicao/{lote}/editar', 'editar')->name('editar');
             Route::get('{reserva}/importacao', 'importacao')->name('importacao');
+            Route::post('{reserva}/importacao/importar', 'importar')->name('importar');
         });
 
         // ROTAS DE BANNERS
