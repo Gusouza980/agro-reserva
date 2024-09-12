@@ -48,8 +48,8 @@
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=2.3" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1.7" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=2.4" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1.8" />
     @toastr_css
     @livewireStyles
     @yield('styles')
@@ -64,6 +64,25 @@
 
         [x-cloak] {
             display: none !important;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(128, 128, 128, 0.418);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 15px;
+            border: 3px solid #FFB02A;
+            background: #FFB02A;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFB02A;
         }
     </style>
     <script src="{{ asset('js/jquery.js') }}"></script>

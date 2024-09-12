@@ -80,9 +80,12 @@
             <template x-if="previews.length > 0">
                 <div class="w-full flex gap-3 p-4 border mt-6">
                     <template x-for="(arquivo, index) in arquivos" :key="index">
-                        <div class="w-[100px] h-auto">
-                            <img :src="previews[index]" alt="">
+                        <div class="w-[100px] flex flex-col">
+                            <div class="w-[100px] h-auto">
+                                <img :src="previews[index]" alt="">
+                            </div>
                         </div>
+
                     </template>
                 </div>
             </template>

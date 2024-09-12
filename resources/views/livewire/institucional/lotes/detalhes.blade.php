@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="w-full md:hidden">
-                        <div class="flex mx-auto overflow-x-scroll w1200 hide-scroll-bar">
+                        <div class="flex mx-auto overflow-x-scroll w1200 py-4">
                             <div class="flex flex-nowrap">
                                 <div class="inline-block mx-[6px] slide-item w-[340px]">
                                     {!! \App\Classes\Util::convertYoutube($lote->video, '16/9', 'h-full') !!}
@@ -276,37 +276,37 @@
                     </div>
                 </div>
                 <div class="flex justify-center w-full mt-4 space-x-32">
-                    <div class="genealogia_esquerda w-[300px] px-4 py-4 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative"
+                    <div class="genealogia_esquerda w-[300px] px-4 py-6 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative"
                         id="avo-paterno">
                         <div class="w-full">{{ $lote->avo_paterno }}</div>
                         <div class="text-[13px] font-normal w-full mt-1">{{ $lote->rgd_avo_paterno }}</div>
-                        <div class="absolute bottom-[5px] right-[15px] text-[13px] font-medium">
+                        <div class="absolute top-[5px] right-[15px] text-[9px] font-medium">
                             AVÔ
                         </div>
                     </div>
-                    <div class="genealogia_direita w-[300px] px-4 py-4 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative"
+                    <div class="genealogia_direita w-[300px] px-4 py-6 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative"
                         id="avo-materno">
                         <div class="w-full">{{ $lote->avo_materno }}</div>
                         <div class="text-[13px] font-normal w-full mt-1">{{ $lote->rgd_avo_materno }}</div>
-                        <div class="absolute bottom-[5px] right-[15px] text-[13px] font-medium">
+                        <div class="absolute top-[5px] right-[15px] text-[9px] font-medium">
                             AVÔ
                         </div>
                     </div>
                 </div>
                 <div class="flex justify-center w-full mt-4 space-x-10">
-                    <div class="w-[300px] px-4 py-4 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative"
+                    <div class="w-[300px] px-4 py-6 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative"
                         id="pai">
                         <div class="w-full">{{ $lote->pai }}</div>
                         <div class="text-[13px] font-normal w-full mt-1">{{ $lote->rgd_pai }}</div>
-                        <div class="absolute bottom-[5px] right-[15px] text-[13px] font-medium">
+                        <div class="absolute top-[5px] right-[15px] text-[9px] font-medium">
                             PAI
                         </div>
                     </div>
-                    <div class="w-[300px] px-4 py-4 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative"
+                    <div class="w-[300px] px-4 py-6 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative"
                         id="mae">
                         <div class="w-full">{{ $lote->mae }}</div>
                         <div class="text-[13px] font-normal w-full mt-1">{{ $lote->rgd_mae }}</div>
-                        <div class="absolute bottom-[5px] right-[15px] text-[13px] font-medium">
+                        <div class="absolute top-[5px] right-[15px] text-[9px] font-medium">
                             MÃE
                         </div>
                         <div class="absolute bottom-[5px] mt-3 text-[11px] font-medium">
@@ -315,22 +315,22 @@
                     </div>
                 </div>
                 <div class="flex justify-center w-full mt-4 space-x-32">
-                    <div class="genealogia_esquerda w-[300px] px-4 py-4 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative"
+                    <div class="genealogia_esquerda w-[300px] px-4 py-6 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative"
                         id="avo-paterna">
                         <div class="w-full">{{ $lote->avo_paterna }}</div>
                         <div class="text-[13px] font-normal w-full mt-1">{{ $lote->rgd_avo_paterna }}</div>
-                        <div class="absolute bottom-[5px] right-[15px] text-[13px] font-medium">
+                        <div class="absolute top-[5px] right-[15px] text-[9px] font-medium">
                             AVÓ
                         </div>
                         <div class="absolute bottom-[5px] mt-3 text-[11px] font-medium">
                             {{ $lote->lactacao_avo_paterna }}
                         </div>
                     </div>
-                    <div class="genealogia_direita w-[300px] px-4 py-4 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative"
+                    <div class="genealogia_direita w-[300px] px-4 py-6 text-center flex-wrap flex justify-center items-center border border-[#D7D7D7] bg-[#32343E] rounded-[15px] text-white font-montserrat text-[17px] font-medium relative"
                         id="avo-materna">
                         <div class="w-full">{{ $lote->avo_materna }}</div>
                         <div class="text-[13px] font-normal w-full mt-1">{{ $lote->rgd_avo_materna }}</div>
-                        <div class="absolute bottom-[5px] right-[15px] text-[13px] font-medium">
+                        <div class="absolute top-[5px] right-[15px] text-[9px] font-medium">
                             AVÓ
                         </div>
                         <div class="absolute bottom-[5px] mt-3 text-[11px] font-medium">
@@ -342,7 +342,7 @@
         </div>
     @endif
     <div id="condicoes" class="w-full bg-[#F5F5F5] py-5">
-        <div class="flex flex-wrap items-start px-4 mx-auto space-y-5 md:px-0 px-md-0 md:space-y-0 md:space-x-5 w1200">
+        <div class="grid lg:grid-cols-3 grid-cols-1 items-start px-4 gap-4 w1200 mx-auto">
             <div class="flex-1 px-[25px] py-[25px] border-2 border-[#D7D7D7] rounded-[15px]" x-data="{ open: false }">
                 <div class="flex items-center justify-center w-full space-x-6">
                     <div class="">
@@ -437,6 +437,9 @@
         </div>
     @endif
 </div>
+
+@push('styles')
+@endpush
 
 @push('scripts')
     <script>

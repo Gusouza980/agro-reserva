@@ -47,7 +47,7 @@ class LotesController extends BaseController
             toastr()->error($e->getMessage(), "Erro ao importar lotes!");
         }
 
-        return redirect()->back();
+        return redirect()->route('sistema.lotes.consultar', $reserva);
     }
 
     public function cadastro(Reserva $reserva)
@@ -100,8 +100,10 @@ class LotesController extends BaseController
 
     public function importar_imagens(Request $request, Reserva $reserva)
     {
+        $lotes = $request->lotes;
+        sort($lotes);
         // dd($request->all());
-        foreach ($request->lotes as $key => $id) {
+        foreach ($lotes as $key => $id) {
             $lote = Lote::find($id);
             if ($lote->preview) {
                 Storage::delete($lote->preview);
