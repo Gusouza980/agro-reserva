@@ -19,76 +19,101 @@
                 </p>
 
                 @include('sistema.includes.divider')
-                
+
                 <div class="w-full">
-                    @if($show)
+                    @if ($show)
                         <form wire:submit.prevent='salvar'>
                             <div class="w-full mb-3">
                                 <label class="block">
-                                    <span>Nome Completo</span>
+                                    <span>Nome Completo *</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input wire:model.defer="usuario.nome" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Digite o nome completo do usuário" type="text" required>
-                                        <span class="absolute flex items-center justify-center w-10 h-full pointer-events-none text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                        <input wire:model.defer="usuario.nome" class="input-base pl-9"
+                                            placeholder="Digite o nome completo do usuário" type="text" required>
+                                        <span
+                                            class="absolute flex items-center justify-center w-10 h-full pointer-events-none text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                             <i class="text-base far fa-user"></i>
                                         </span>
                                     </span>
                                 </label>
-                                @error("usuario.nome") <small class="text-red-600"> {{ $message }} </small> @enderror
+                                @error('usuario.nome')
+                                    <small class="text-red-600"> {{ $message }} </small>
+                                @enderror
                             </div>
                             <div class="w-full mb-3">
                                 <label class="block">
-                                    <span>Usuário</span>
+                                    <span>Usuário *</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input wire:model.defer="usuario.usuario" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Digite o nome de usuario" type="text" required>
-                                        <span class="absolute flex items-center justify-center w-10 h-full pointer-events-none text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                        <input wire:model.defer="usuario.usuario" class="input-base pl-9"
+                                            placeholder="Digite o nome de usuario" type="text" required>
+                                        <span
+                                            class="absolute flex items-center justify-center w-10 h-full pointer-events-none text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                             <i class="text-base far fa-user"></i>
                                         </span>
                                     </span>
                                 </label>
-                                @error("usuario.usuario") <small class="text-red-600"> {{ $message }} </small> @enderror
+                                @error('usuario.usuario')
+                                    <small class="text-red-600"> {{ $message }} </small>
+                                @enderror
                             </div>
                             <div class="w-full mb-3">
                                 <label class="block">
-                                    <span>E-mail</span>
+                                    <span>E-mail *</span>
                                     <span class="relative mt-1.5 flex">
-                                        <input wire:model.defer="usuario.email" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="exemplo@exemplo.com" type="email" required>
-                                        <span class="absolute flex items-center justify-center w-10 h-full pointer-events-none text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                        <input wire:model.defer="usuario.email" class="input-base pl-9"
+                                            placeholder="exemplo@exemplo.com" type="email" required>
+                                        <span
+                                            class="absolute flex items-center justify-center w-10 h-full pointer-events-none text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                             <i class="text-base fa-regular fa-envelope"></i>
                                         </span>
                                     </span>
                                 </label>
-                                @error("usuario.email") <small class="text-red-600"> {{ $message }} </small> @enderror
+                                @error('usuario.email')
+                                    <small class="text-red-600"> {{ $message }} </small>
+                                @enderror
                             </div>
                             <div class="w-full mb-3">
                                 <label class="block">
-                                    <span>Senha</span>
+                                    <span>Senha @if ($op == 'cadastro')
+                                            *
+                                        @endif
+                                    </span>
                                     <span class="relative mt-1.5 flex">
-                                        <input wire:model.defer="senha" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Informe uma senha de acesso" type="password" @if($op == "cadastro") required @endif>
-                                        <span class="absolute flex items-center justify-center w-10 h-full pointer-events-none text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                                        <input wire:model.defer="senha" class="input-base pl-9"
+                                            placeholder="Informe uma senha de acesso" type="password"
+                                            @if ($op == 'cadastro') required @endif>
+                                        <span
+                                            class="absolute flex items-center justify-center w-10 h-full pointer-events-none text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                             <i class="text-base fa-solid fa-key"></i>
                                         </span>
                                     </span>
-                                    @if($op == 'edicao') <small>Preencha esse campo para trocar a senha atual</small> @endif
+                                    @if ($op == 'edicao')
+                                        <small>Preencha esse campo para trocar a senha atual</small>
+                                    @endif
                                 </label>
-                                @error("senha") <small class="text-red-600"> {{ $message }} </small> @enderror
+                                @error('senha')
+                                    <small class="text-red-600"> {{ $message }} </small>
+                                @enderror
                             </div>
                             <div class="w-full mb-3">
                                 <label class="block">
-                                    <span>Nível de Acesso</span>
-                                    <select wire:model.defer="usuario.acesso" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent" required>
+                                    <span>Nível de Acesso *</span>
+                                    <select wire:model.defer="usuario.acesso"
+                                        class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
+                                        required>
                                         <option value="">Selecionar...</option>
-                                        @foreach(\Acessos::$niveis as $key => $acesso)
+                                        @foreach (\Acessos::$niveis as $key => $acesso)
                                             <option value="{{ $key }}">{{ $acesso }}</option>
                                         @endforeach
                                     </select>
                                 </label>
-                                @error("usuario.acesso") <small class="text-red-600"> {{ $message }} </small> @enderror
+                                @error('usuario.acesso')
+                                    <small class="text-red-600"> {{ $message }} </small>
+                                @enderror
                             </div>
-                            @include("sistema.includes.divider")
+                            @include('sistema.includes.divider')
                             <div class="w-full">
                                 <button type="submit"
-                                    class="w-full font-medium text-white bg-green-600 btn hover:bg-green-800"
-                                >
+                                    class="w-full font-medium text-white bg-green-600 btn hover:bg-green-800">
                                     Salvar
                                 </button>
                             </div>

@@ -20,13 +20,15 @@ class Datatable extends Component
     use WithPagination;
 
     public $logos = [];
+    public $filtro;
 
     protected $listeners = ['excluir', 'cancelar'];
 
-    public function updatedLogos($value, $key){
+    public function updatedLogos($value, $key)
+    {
         $fazenda = Fazenda::find($key);
-        if($this->logos[$key]){
-            if($fazenda->logo){
+        if ($this->logos[$key]) {
+            if ($fazenda->logo) {
                 Storage::delete($fazenda->logo);
             }
             // CRIA UMA IMAGEM NO FORMATO DE AVATAR E SALVA NO CLIENTE
@@ -40,7 +42,8 @@ class Datatable extends Component
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Logo atualizada com sucesso!']);
     }
 
-    public function solicitarExcluir(Fazenda $fazenda){
+    public function solicitarExcluir(Fazenda $fazenda)
+    {
         $this->alert('warning', 'Tem certeza de que deseja excluir a fazenda <b>' . $fazenda->nome_fazenda . '</b> ?', [
             'position' => 'center',
             'showConfirmButton' => true,
@@ -54,30 +57,32 @@ class Datatable extends Component
             ]
         ]);
     }
-    public function excluir($alert){
+    public function excluir($alert)
+    {
         $fazenda = Fazenda::with('reservas:id,fazenda_id', 'lotes:id,fazenda_id',)->find($alert['data']['id']);
 
-        if($fazenda->reservas->count() > 0)
-        {
+        if ($fazenda->reservas->count() > 0) {
             $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'error', 'mensagem' => 'Não é possível excluir a fazenda, pois existem reservas vinculadas a ela!']);
             return;
         }
 
-        if($fazenda->lotes->count() > 0)
-        {
+        if ($fazenda->lotes->count() > 0) {
             $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'error', 'mensagem' => 'Não é possível excluir a fazenda, pois existem lotes vinculadas a ela!']);
             return;
         }
 
         Storage::delete($fazenda->logo);
-        Storage::delete($fazenda->  logo_evento);
+        Storage::delete($fazenda->logo_evento);
         $fazenda->delete();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Fazenda removida com sucesso!']);
     }
 
     public function render()
     {
-        $fazendas = Fazenda::with('reservas:id,fazenda_id', 'lotes:id,fazenda_id',)->orderBy('nome_fazenda', 'ASC')->paginate(30);
+        $filtro = $this->filtro;
+        $fazendas = Fazenda::when(isset($filtro) && isset($filtro["texto"]), function ($q) use ($filtro) {
+            $q->where("nome_fazenda", "LIKE", "%" . $filtro['texto'] . "%");
+        })->with('reservas:id,fazenda_id', 'lotes:id,fazenda_id',)->orderBy('nome_fazenda', 'ASC')->paginate(30);
         return view('livewire.sistema.fazendas.datatable', compact('fazendas'));
     }
 }
