@@ -48,8 +48,8 @@
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=2.4" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1.8" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v=2.5" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1.9" />
     @toastr_css
     @livewireStyles
     @yield('styles')
