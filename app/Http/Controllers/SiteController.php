@@ -363,7 +363,7 @@ class SiteController extends Controller
                     session()->forget("pagina_retorno");
                     return redirect($pagina);
                 } else {
-                    return redirect()->route("index");
+                    return redirect(url()->previous());
                 }
             } else {
                 session()->flash("erro", "Usuário ou senha incorretos");
