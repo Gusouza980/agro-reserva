@@ -335,6 +335,9 @@ class SiteController extends Controller
         if (session()->get("cliente")) {
             return redirect()->route("index");
         }
+        if (!session()->get("pagina_retorno")) {
+            session()->put(['pagina_retorno' => url()->previous()]);
+        }
         session()->flash("nome_pagina", "Login");
         return view('login', ["nome_pagina" => "Login"]);
     }
