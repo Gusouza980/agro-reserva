@@ -156,10 +156,10 @@
                                     ao Caminhão</a>
                             @else
                                 <a href="{{ route('login') }}"
-                                    class="md:w-full w-fit cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Entre para comprar</a>
+                                    class="md:w-full w-fit text-center cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Entre para comprar</a>
                             @endif
                             <a href="https://wa.me/{{ $numeros[$sorteado] }}" target="_blank"
-                                class="md:w-full w-fit cpointer bg-gray-600 text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Comprar
+                                class="md:w-full text-center w-fit cpointer bg-gray-600 text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Comprar
                                 com Consultor</a>
                         </div>
                     @endif
