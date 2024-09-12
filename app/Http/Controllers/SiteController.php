@@ -160,12 +160,12 @@ class SiteController extends Controller
 
     public function lote($slug, Reserva $reserva = null, Lote $lote)
     {
-        if (!session()->get("cliente")) {
+        /*if (!session()->get("cliente")) {
             session()->flash("erro", "Para acessar os lotes, faça seu login.");
             session()->put(["pagina_retorno" => url()->full()]);
             session()->put(["lote_origem" => $lote->id]);
             return redirect()->route("login");
-        }
+        }*/
 
         if (!$reserva) {
             $reserva = $lote->reserva;

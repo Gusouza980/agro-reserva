@@ -120,26 +120,18 @@
                 <div class="flex justify-between w-full gap-3 mt-3">
                     @if ($lote->reserva->modalidade == 0)
                         @if (!$lote->reservado && !$lote->reserva->encerrada && $lote->liberar_compra)
-                            @if (session()->get('cliente'))
                                 <button
                                     onclick="window.location.href = '{{ route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $lote->reserva, 'lote' => $lote]) }}'"
                                     class="border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba
                                     Mais</button>
                                 <button onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})"
                                     class="border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Comprar</button>
-                            @else
-                                <a href="{{ route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $lote->reserva, 'lote' => $lote]) }}"
-                                    class="flex w-full col-span-2 items-center justify-center border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 font-semibold rounded-[30px]">Entre
-                                    para comprar</a>
-                            @endif
                         @endif
                     @else
-                        @if (session()->get('cliente'))
                             <button
                                 onclick="window.location.href = '{{ route('fazenda.lote', ['fazenda' => $lote->reserva->fazenda->slug, 'reserva' => $lote->reserva, 'lote' => $lote]) }}'"
                                 class="grow border-2 border-slate-300 hover:border-[#80828B] text-[#80828B] py-2 w-full font-medium rounded-[30px]">Saiba
                                 Mais</button>
-                        @endif
                         <a href="https://api.whatsapp.com/send?phone=5534992754132" target="_blank"
                             class="grow flex items-center justify-center border border-[#14C656] bg-[#14C656] hover:bg-[#0d8f3d] text-white py-2 w-full font-semibold rounded-[30px]">Consultar</a>
                     @endif
