@@ -7,24 +7,29 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div>
-                <div onclick="window.open('https://berrantecomunicacao.com.br/', '_blank')" class="rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer">
+                <a href="https://berrantecomunicacao.com.br/" target="_blank"
+                    class="flex flex-col max-w-[720px] mx-auto rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer">
                     <div class="">
-                        <img src="{{ asset('imagens/banner-experiencia-berrante.jpg') }}" style="max-width: 100%;" alt="">
+                        <img src="{{ asset('imagens/banner-experiencia-berrante.jpg') }}" style="max-width: 100%;"
+                            alt="">
                     </div>
-                    <div class="py-2 text-center bg-inherit rounded-b-md cpointer text-inherit" style="width: 100%; font-family: Montserrat; font-size: 18px;">
+                    <div class="py-2 text-center bg-inherit rounded-b-md cpointer text-inherit"
+                        style="width: 100%; font-family: Montserrat; font-size: 18px;">
                         BERRANTE - AGRO EXPERIENCE
                     </div>
-                </div>
+                </a>
             </div>
             <div>
-                <div class="rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer" onclick="window.location.href = '{{ route('experiencias.ouro_branco') }}'">
+                <a class="flex flex-col max-w-[720px] mx-auto rounded-md overflow-hidden shadow-sm bg-branco transition duration-500 hover:scale-105 hover:bg-[#E8521B] hover:text-white cpointer"
+                    href="{{ route('experiencias.ouro_branco') }}">
                     <div class="">
                         <img src="{{ asset('imagens/banner-ourobranco.jpg') }}" style="max-width: 100%;" alt="">
                     </div>
-                    <div class="py-2 text-center bg-inherit rounded-b-md cpointer text-inherit" style="width: 100%; font-family: Montserrat; font-size: 18px;">
+                    <div class="py-2 text-center bg-inherit rounded-b-md cpointer text-inherit"
+                        style="width: 100%; font-family: Montserrat; font-size: 18px;">
                         OURO BRANCO
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
