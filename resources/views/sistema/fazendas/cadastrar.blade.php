@@ -16,7 +16,8 @@
             </h2>
         </div>
         <div class="mt-3 card p-5">
-            <form action="{{ route('sistema.fazendas.salvar') }}" method="POST" enctype="multipart/form-data" class="w-full flex flex-col gap-4">
+            <form action="{{ route('sistema.fazendas.salvar') }}" method="POST" enctype="multipart/form-data"
+                class="w-full flex flex-col gap-4">
                 @csrf
                 <div class="w-full flex items-center justify-start gap-4">
                     <div class="grow">
@@ -24,8 +25,10 @@
                             <label class="block">
                                 <span>Nome da Fazenda *</span>
                                 <span class="relative mt-1.5 flex">
-                                <input name="nome_fazenda" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400" type="text" maxlength="200" required>
-                            </span>
+                                    <input name="nome_fazenda"
+                                        class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400"
+                                        type="text" maxlength="200" required>
+                                </span>
                             </label>
                         </div>
                     </div>
@@ -34,8 +37,10 @@
                             <label class="block">
                                 <span>Nome do Dono *</span>
                                 <span class="relative mt-1.5 flex">
-                                <input name="nome_dono" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400" type="text" maxlength="200" required>
-                            </span>
+                                    <input name="nome_dono"
+                                        class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400"
+                                        type="text" maxlength="200" required>
+                                </span>
                             </label>
                         </div>
                     </div>
@@ -44,8 +49,10 @@
                             <label class="block">
                                 <span>CNPJ *</span>
                                 <span class="relative mt-1.5 flex">
-                                <input name="cnpj" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400" type="text" maxlength="50" required>
-                            </span>
+                                    <input name="cnpj"
+                                        class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400"
+                                        type="text" maxlength="50" required>
+                                </span>
                             </label>
                         </div>
                     </div>
@@ -55,23 +62,29 @@
                         <label class="block">
                             <span>Telefone</span>
                             <span class="relative mt-1.5 flex">
-                                <input name="telefone" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400" type="text" maxlength="50">
+                                <input name="telefone"
+                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400"
+                                    type="text" maxlength="50">
                             </span>
                         </label>
                     </div>
                     <div class="">
                         <label class="block">
-                            <span>Whatsapp</span>
+                            <span>Whatsapp *</span>
                             <span class="relative mt-1.5 flex">
-                                <input name="whatsapp" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400" type="text" maxlength="50" required>
+                                <input name="whatsapp"
+                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400"
+                                    type="text" maxlength="50" required>
                             </span>
                         </label>
                     </div>
                     <div class="">
                         <label class="block">
-                            <span>E-mail</span>
+                            <span>E-mail *</span>
                             <span class="relative mt-1.5 flex">
-                                <input name="email" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400" type="email" maxlength="100" required>
+                                <input name="email"
+                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400"
+                                    type="email" maxlength="100" required>
                             </span>
                         </label>
                     </div>
@@ -79,7 +92,9 @@
                         <label class="block">
                             <span>Endereço</span>
                             <span class="relative mt-1.5 flex">
-                                <input name="endereco" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400" type="text" maxlength="255">
+                                <input name="endereco"
+                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400"
+                                    type="text" maxlength="255">
                             </span>
                         </label>
                     </div>
@@ -87,15 +102,15 @@
                         <label class="block">
                             <span>Iframe google</span>
                             <span class="relative mt-1.5 flex">
-                                <input name="iframe_google" class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400" type="text" maxlength="500">
+                                <input name="iframe_google"
+                                    class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400"
+                                    type="text" maxlength="500">
                             </span>
                         </label>
                     </div>
                 </div>
                 <div class="w-full">
-                    <button type="submit"
-                            class="w-full font-medium text-white bg-green-600 btn hover:bg-green-800"
-                    >
+                    <button type="submit" class="w-full font-medium text-white bg-green-600 btn hover:bg-green-800">
                         Salvar
                     </button>
                 </div>

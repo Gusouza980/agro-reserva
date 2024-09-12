@@ -1,24 +1,42 @@
 <div class="w-full">
     <div class="w-full">
-        <div class="w-full flex justify-end">
-            <a href="{{ route('sistema.lotes.importacao', ['reserva' => $reserva['id']]) }}"
-                class="font-medium rounded-tl-lg text-white px-5 py-2 bg-green-600 hover:bg-green-800 cursor-pointer">
-                <i class="fas fa-cow mr-2 fa-lg"></i>Importar Lotes
-            </a>
-            {{-- <label for="planilha"
-                class="font-medium rounded-tl-lg text-white px-5 py-2 bg-green-600 hover:bg-green-800 cursor-pointer">
-                <i class="fas fa-cow mr-2 fa-lg"></i>Importar Lotes
-            </label> --}}
-            <input type="file" name="" id="planilha" class="hidden" wire:model="planilha">
-            <a href="{{ route('sistema.lotes.cadastro', ['reserva' => $reserva['id']]) }}"
-                class="flex items-center justify-center font-medium text-white px-5 py-2 bg-blue-600 hover:bg-blue-800 cursor-pointer">
-                <i class="fas fa-plus fa-lg mr-2"></i>Cadastrar Lote
-            </a>
-            <label class="font-medium rounded-tr-lg text-white px-5 py-2 bg-gray-600 hover:bg-gray-800 cursor-pointer"
-                for="imagens">
-                <i class="fas fa-image mr-2 fa-lg"></i>Importar Imagens
-            </label>
-            <input type="file" name="" id="imagens" class="hidden" wire:model="fotos" multiple>
+        <div class="w-full flex justify-between">
+            <div class="w-full flex">
+                <button wire:click="confirmaRemoverTodasImagens"
+                    class="font-medium rounded-tl-lg text-white px-5 py-2 bg-orange-600 hover:bg-orange-800 cursor-pointer">
+                    <i class="fas fa-times mr-2 fa-lg"></i>Remover Todas as Imagens
+                </button>
+                <button wire:click="confirmaRemoverTodosLotes"
+                    class="font-medium rounded-tr-lg text-white px-5 py-2 bg-red-600 hover:bg-red-800 cursor-pointer">
+                    <i class="fas fa-times mr-2 fa-lg"></i>Remover Todos os Lotes
+                </button>
+            </div>
+            <div class="w-full flex justify-end">
+                <a href="{{ route('sistema.lotes.importacao', ['reserva' => $reserva['id']]) }}"
+                    class="font-medium rounded-tl-lg text-white px-5 py-2 bg-green-600 hover:bg-green-800 cursor-pointer">
+                    <i class="fas fa-cow mr-2 fa-lg"></i>Importar Lotes
+                </a>
+                {{-- <label for="planilha"
+                    class="font-medium rounded-tl-lg text-white px-5 py-2 bg-green-600 hover:bg-green-800 cursor-pointer">
+                    <i class="fas fa-cow mr-2 fa-lg"></i>Importar Lotes
+                </label> --}}
+                <input type="file" name="" id="planilha" class="hidden" wire:model="planilha">
+                <a href="{{ route('sistema.lotes.cadastro', ['reserva' => $reserva['id']]) }}"
+                    class="flex items-center justify-center font-medium text-white px-5 py-2 bg-blue-600 hover:bg-blue-800 cursor-pointer">
+                    <i class="fas fa-plus fa-lg mr-2"></i>Cadastrar Lote
+                </a>
+                <a href="{{ route('sistema.lotes.importacao_imagens', ['reserva' => $reserva['id']]) }}"
+                    class="flex items-center justify-center font-medium rounded-tr-lg text-white px-5 py-2 bg-gray-600 hover:bg-gray-800 cursor-pointer">
+                    <i class="fas fa-image fa-lg mr-2"></i>Importar Imagens
+                </a>
+                {{-- <label
+                    class="font-medium rounded-tr-lg text-white px-5 py-2 bg-gray-600 hover:bg-gray-800 cursor-pointer"
+                    for="imagens">
+                    <i class="fas fa-image mr-2 fa-lg"></i>Importar Imagens
+                </label>
+                <input type="file" name="" id="imagens" class="hidden" wire:model="fotos" multiple> --}}
+            </div>
+
         </div>
         <div class="card rounded-none min-w-full overflow-x-auto is-scrollbar-hidden" x-data="pages.tables.initExample1">
             <table class="w-full text-left is-hoverable" style="vertical-align: middle;">
@@ -63,7 +81,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($lotes as $lote)
+                    @forelse ($lotes as $lote)
                         <tr class="border-transparent border-y border-b-slate-200 dark:border-b-navy-500">
                             <td class="px-4 py-3 whitespace-nowrap sm:px-5">
                                 <label for="input_preview_{{ $lote['id'] }}" class="cursor-pointer">
@@ -152,6 +170,13 @@
                                                         class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Editar</a>
                                                 </li>
                                             </ul>
+                                            <ul>
+                                                <li @click="isShowPopper = false">
+                                                    <button wire:click="removerImagem({{ $lote['id'] }})"
+                                                        class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Remover
+                                                        Imagem</button>
+                                                </li>
+                                            </ul>
                                             <div class="h-px my-1 bg-slate-150 dark:bg-navy-500"></div>
                                             <ul>
                                                 <li @click="isShowPopper = false">
@@ -164,7 +189,11 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="10" class="text-center py-2">Nenhum lote cadastrado</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

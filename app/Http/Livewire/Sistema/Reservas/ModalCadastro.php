@@ -45,7 +45,7 @@ class ModalCadastro extends Component
             $this->formas_pagamento[0] = [
                 "minimo" => 1,
                 "maximo" => 1,
-                "desconto" => $this->reserva->desconto,
+                "desconto" => ($this->reserva->desconto) ?? 0,
                 "parcelas" => []
             ];
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Sistema;
 
+use App\Classes\ImageUpload;
 use App\Http\Controllers\Controller;
 use App\Imports\LotesImport;
 use App\Models\Lote;
@@ -89,5 +90,30 @@ class LotesController extends BaseController
     public function importacao(Reserva $reserva)
     {
         return view("sistema.lotes.importacao", ["reserva" => $reserva]);
+    }
+
+    public function importacao_imagens(Reserva $reserva)
+    {
+        $lotes = Lote::where("reserva_id", $reserva->id)->get();
+        return view("sistema.lotes.imagens", ["reserva" => $reserva, "lotes" => $lotes]);
+    }
+
+    public function importar_imagens(Request $request, Reserva $reserva)
+    {
+        // dd($request->all());
+        foreach ($request->lotes as $key => $id) {
+            $lote = Lote::find($id);
+            if ($lote->preview) {
+                Storage::delete($lote->preview);
+            }
+            // CRIA UMA IMAGEM NO FORMATO DE AVATAR E SALVA NO CLIENTE
+            $image = new ImageUpload($request->arquivos[$key]);
+            $image->makeLote();
+            $lote->preview = $image->save("uploads");
+            $lote->save();
+        }
+
+        toastr()->success("Imagens importadas com sucesso!");
+        return redirect()->route('sistema.lotes.consultar', $reserva);
     }
 }

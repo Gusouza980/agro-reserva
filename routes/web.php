@@ -409,6 +409,8 @@ Route::prefix('sistema')->name("sistema.")->group(function () {
             Route::post('{reserva}/edicao/{lote}/editar', 'editar')->name('editar');
             Route::get('{reserva}/importacao', 'importacao')->name('importacao');
             Route::post('{reserva}/importacao/importar', 'importar')->name('importar');
+            Route::get('{reserva}/importacao/imagens', 'importacao_imagens')->name('importacao_imagens');
+            Route::post('{reserva}/importacao/imagens/importar', 'importar_imagens')->name('importar_imagens');
         });
 
         // ROTAS DE BANNERS

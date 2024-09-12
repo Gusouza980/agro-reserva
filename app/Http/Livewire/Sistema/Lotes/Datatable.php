@@ -23,11 +23,12 @@ class Datatable extends Component
     public $lotes;
     public $planilha;
     public $toDelete;
-    protected $listeners = ["atualizaValor", "atualizaDatatableLotes" => '$refresh', 'excluir', 'cancelar'];
-    public function updatedArquivos($value, $key){
+    protected $listeners = ["atualizaValor", "atualizaDatatableLotes" => '$refresh', 'excluir', 'cancelar', 'removerTodasImagens', 'removerTodasLotes'];
+    public function updatedArquivos($value, $key)
+    {
         $lote = Lote::find($key);
-        if($this->arquivos[$key]){
-            if($lote->preview){
+        if ($this->arquivos[$key]) {
+            if ($lote->preview) {
                 Storage::delete($lote->preview);
             }
             // CRIA UMA IMAGEM NO FORMATO DE AVATAR E SALVA NO CLIENTE
@@ -42,10 +43,12 @@ class Datatable extends Component
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Imagem atualizada com sucesso!']);
     }
 
-    public function updatedPlanilha(){
-        if($this->planilha){
+    public function updatedPlanilha()
+    {
+        if ($this->planilha) {
             $caminho = $this->planilha->store(
-                'tmp_planilha/', 'local'
+                'tmp_planilha/',
+                'local'
             );
         }
 
@@ -54,7 +57,7 @@ class Datatable extends Component
         Storage::delete($caminho);
 
         $lotes = Lote::where("reserva_id", $this->reserva['id'])->get();
-        foreach($lotes as $lote){
+        foreach ($lotes as $lote) {
             $lote->produto()->create([
                 "nome" => $lote->nome,
                 "preco" => ($lote->preco) ? $lote->preco : 0
@@ -65,11 +68,12 @@ class Datatable extends Component
         toastr()->success("Lotes importados com sucesso!");
     }
 
-    public function updatedFotos(){
+    public function updatedFotos()
+    {
         $cont = 0;
-        foreach($this->lotes as $lote){
+        foreach ($this->lotes as $lote) {
             $lote = Lote::find($lote['id']);
-            if($lote->preview){
+            if ($lote->preview) {
                 Storage::delete($lote->preview);
             }
             // CRIA UMA IMAGEM NO FORMATO DE AVATAR E SALVA NO CLIENTE
@@ -84,18 +88,29 @@ class Datatable extends Component
         $this->atualizaLotes();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Imagens atualizadas com sucesso!']);
     }
-    public function atualizaValor(Lote $lote, $campo, $valor){
+
+    public function removerImagem($id)
+    {
+        $lote = Lote::find($id);
+        Storage::delete($lote->preview);
+        $lote->save();
+        $this->atualizaLotes();
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Imagens removida com sucesso!']);
+    }
+
+    public function atualizaValor(Lote $lote, $campo, $valor)
+    {
         $lote->$campo = $valor;
-        if($campo == "preco"){
-            if(!$lote->produto){
+        if ($campo == "preco") {
+            if (!$lote->produto) {
                 $lote->produto()->create([
                     "nome" => $lote->nome,
                     "preco" => ($lote->preco) ? $lote->preco : 0
                 ]);
             }
-            if(!empty($valor)){
+            if (!empty($valor)) {
                 $lote->produto->preco = $valor;
-            }else{
+            } else {
                 $lote->produto->preco = 0;
                 $lote->preco = 0;
             }
@@ -104,7 +119,8 @@ class Datatable extends Component
         $lote->save();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Dado atualizado com sucesso!']);
     }
-    public function solicitarExcluir(Lote $lote){
+    public function solicitarExcluir(Lote $lote)
+    {
         $this->toDelete = $lote;
         $this->alert('warning', 'Tem certeza de que deseja excluir o lote <b>' . $lote->nome . '</b> ?', [
             'position' => 'center',
@@ -117,18 +133,65 @@ class Datatable extends Component
             'timer' => null,
         ]);
     }
-    public function excluir(){
+    public function excluir()
+    {
         $this->toDelete->delete();
         $this->atualizaLotes();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Lote removido com sucesso!']);
     }
-    public function cancelar(){
+    public function cancelar()
+    {
         $this->toDelete = null;
     }
-    public function atualizaLotes(){
+    public function confirmaRemoverTodasImagens()
+    {
+        $this->alert('warning', 'Tem certeza de que deseja remover todas as imagens ?', [
+            'position' => 'center',
+            'showConfirmButton' => true,
+            'confirmButtonText' => 'Sim',
+            'onConfirmed' => "removerTodasImagens",
+            'showCancelButton' => true,
+            'cancelButtonText' => 'Não',
+            'onDismissed' => 'cancelar',
+            'timer' => null,
+        ]);
+    }
+    public function removerTodasImagens()
+    {
+        $lotes = Lote::where("reserva_id", $this->reserva['id'])->get();
+        foreach ($lotes as $lote) {
+            Storage::delete($lote->preview);
+            $lote->preview = null;
+            $lote->save();
+        }
+        $this->atualizaLotes();
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Imagens removidas com sucesso!']);
+    }
+    public function confirmaRemoverTodosLotes()
+    {
+        $this->alert('warning', 'Tem certeza de que deseja remover todas os Lotes ?', [
+            'position' => 'center',
+            'showConfirmButton' => true,
+            'confirmButtonText' => 'Sim',
+            'onConfirmed' => "removerTodasLotes",
+            'showCancelButton' => true,
+            'cancelButtonText' => 'Não',
+            'onDismissed' => 'cancelar',
+            'timer' => null,
+        ]);
+    }
+    public function removerTodasLotes()
+    {
+        $lotes = Lote::where("reserva_id", $this->reserva['id'])->delete();
+        $this->atualizaLotes();
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Lotes removidos com sucesso!']);
+    }
+    public function atualizaLotes()
+    {
         $this->lotes = Lote::where("reserva_id", $this->reserva["id"])->get()->toArray();
     }
-    public function mount(Reserva $reserva){
+    public function mount(Reserva $reserva)
+    {
         $this->reserva = $reserva->toArray();
         $this->atualizaLotes();
     }

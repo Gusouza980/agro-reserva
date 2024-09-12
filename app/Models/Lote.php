@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Lote extends Model
 {
@@ -20,6 +21,7 @@ class Lote extends Model
         parent::boot();
 
         static::deleting(function ($lote) {
+            Storage::delete($lote->preview);
             cache()->forget("reservas_ativas");
         });
 
