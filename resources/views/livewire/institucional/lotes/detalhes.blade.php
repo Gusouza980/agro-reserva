@@ -150,9 +150,14 @@
                         @endphp
                         <div
                             class="w-full flex md:flex-row flex-col gap-4 mt-[20px] items-center justify-center md:justify-start">
-                            <a onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})"
-                                class="md:w-full w-fit cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Adicionar
-                                ao Caminhão</a>
+                            @if(session()->get('cliente'))
+                                <a onclick="Livewire.emit('adicionarProduto', {{ $lote->produto->id }})"
+                                    class="md:w-full w-fit cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Adicionar
+                                    ao Caminhão</a>
+                            @else
+                                <a href="{{ route('login') }}"
+                                    class="md:w-full w-fit cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Entre para comprar</a>
+                            @endif
                             <a href="https://wa.me/{{ $numeros[$sorteado] }}" target="_blank"
                                 class="md:w-full w-fit cpointer bg-gray-600 text-white font-montserrat text-[14px] font-medium py-[12px] px-[20px] rounded-[15px]">Comprar
                                 com Consultor</a>
