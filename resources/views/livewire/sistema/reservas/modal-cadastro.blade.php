@@ -27,9 +27,13 @@
                 <div class="w-full">
                     @if ($show)
                         <form wire:submit.prevent='salvar' class="w-full">
+                            {{-- <div class="w-full text-sm px-6 py-3 bg-blue-200 text-blue-700 rounded-md mb-3">
+                                É importante definir o número de parcelas para que seja possível finalizar o cadastro da
+                                reserva.
+                            </div> --}}
                             <div class="w-full mb-3">
                                 <label class="block">
-                                    <span>Fazenda</span>
+                                    <span>Fazenda *</span>
                                     <select wire:model.defer="fazenda_selecionada"
                                         class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
                                         required>
@@ -44,7 +48,7 @@
                                 @enderror
                             </div>
                             <div class="w-full mb-3">
-                                <label for="modalidade">Modalidade</label>
+                                <label for="modalidade">Modalidade *</label>
                                 <select
                                     class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                     name="modalidade" wire:model.defer="reserva.modalidade" required>
@@ -55,13 +59,13 @@
                             </div>
                             <div class="grid w-full grid-cols-3 gap-x-4">
                                 <div class="mb-3">
-                                    <label for="inicio">Início</label>
+                                    <label for="inicio">Início *</label>
                                     <input type="date"
                                         class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                         name="inicio" wire:model.defer="reserva.inicio" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="fim">Fim</label>
+                                    <label for="fim">Fim *</label>
                                     <input type="date"
                                         class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                         name="fim" wire:model.defer="reserva.fim" required>
@@ -71,7 +75,7 @@
                                     <input type="number"
                                         class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                         name="desconto_live_valor" min="0" step="0.01"
-                                        wire:model.defer="reserva.desconto" required>
+                                        wire:model.defer="reserva.desconto">
                                 </div>
                             </div>
                             <div class="grid w-full grid-cols-3 gap-x-4">
@@ -80,10 +84,10 @@
                                     <input type="number"
                                         class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                         name="desconto_live_valor" min="0" step="0.01"
-                                        wire:model.defer="reserva.desconto_live_valor" required>
+                                        wire:model.defer="reserva.desconto_live_valor">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="multi_fazendas">Reserva Multi Fazendas ?</label>
+                                    <label for="multi_fazendas">Reserva Multi Fazendas ? *</label>
                                     <select
                                         class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                         name="multi_fazendas" wire:model.defer="reserva.multi_fazendas" required>
@@ -93,7 +97,7 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="ativo">Ativo</label>
+                                    <label for="ativo">Ativo *</label>
                                     <select
                                         class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                         name="ativo" wire:model.defer="reserva.ativo" required>
@@ -105,7 +109,7 @@
                             </div>
                             <div class="grid w-full grid-cols-3 gap-x-4">
                                 <div class="mb-3">
-                                    <label for="mostrar_datas">Mostrar Data</label>
+                                    <label for="mostrar_datas">Mostrar Data *</label>
                                     <select
                                         class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                         name="mostrar_datas" wire:model.defer="reserva.mostrar_datas" required>
@@ -127,7 +131,7 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="mostrar_datas">Número de Parcelas</label>
+                                    <label for="mostrar_datas">Número de Parcelas *</label>
                                     <input type="number"
                                         class="w-full px-3 py-2 bg-transparent border rounded-lg form-input peer border-slate-300 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                                         name="max_parcelas" min="1" step="1"
@@ -156,7 +160,7 @@
                                 </div>
                             </label>
                             <hr>
-                            @if ($reserva && $reserva->max_parcelas)
+                            {{-- @if ($reserva && $reserva->max_parcelas)
                                 @if ($formas_pagamento)
                                     <div x-data="{ expandedItem: null }"
                                         class="flex flex-col divide-y divide-slate-150 dark:divide-navy-500">
@@ -312,18 +316,19 @@
                                             </div>
                                         @endforeach
                                     </div>
-                                    <div class="w-full flex gap-4 mt-4">
-                                        <button type="submit"
-                                            class="grow font-medium text-white bg-green-600 btn hover:bg-green-800">
-                                            Salvar
-                                        </button>
-                                        <button type="button" @click="show = false"
-                                            class="grow font-medium text-gray-600 hover:text-white transition duration-200 bg-gray-300 btn hover:bg-gray-600">
-                                            Cancelar
-                                        </button>
-                                    </div>
+
                                 @endif
-                            @endif
+                            @endif --}}
+                            <div class="w-full flex gap-4 mt-4">
+                                <button type="submit"
+                                    class="grow font-medium text-white bg-green-600 btn hover:bg-green-800">
+                                    Salvar
+                                </button>
+                                <button type="button" @click="show = false"
+                                    class="grow font-medium text-gray-600 hover:text-white transition duration-200 bg-gray-300 btn hover:bg-gray-600">
+                                    Cancelar
+                                </button>
+                            </div>
                         </form>
                     @endif
                 </div>

@@ -17,57 +17,61 @@ class BarraLateralCarrinho extends Component
 
     protected $listeners = ["abreCarrinhoLateral", "adicionarProduto", "removerProduto"];
 
-    public function abreCarrinhoLateral(){
+    public function abreCarrinhoLateral()
+    {
         $this->mostrarCarrinho = !$this->mostrarCarrinho;
     }
 
-    public function getClienteProperty(){
+    public function getClienteProperty()
+    {
         return Cliente::find(session()->get("cliente")["id"]);
     }
 
-    public function getCarrinhosProperty(){
-       return Carrinho::with("produtos")->with("produtos.produtable")->with("produtos.produtable.reserva")->with("produtos.produtable.fazenda")->where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
+    public function getCarrinhosProperty()
+    {
+        return Carrinho::with("produtos")->with("produtos.produtable")->with("produtos.produtable.reserva")->with("produtos.produtable.fazenda")->where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
     }
 
-    public function adicionarProduto(Produto $produto){
-        if(!session()->get('cliente')){
+    public function adicionarProduto(Produto $produto)
+    {
+        if (!session()->get('cliente')) {
             return redirect()->route('login');
         }
-        if($produto->produtable->reserva->encerrada){
+        if ($produto->produtable->reserva->encerrada) {
             $msg = "A reserva " . $produto->produtable->reserva->fazenda->nome_fazenda . " já foi encerrada !";
             $this->emit("mostrarPopup", "erro", $msg);
             return;
         }
 
-        if($this->cliente->aprovado != 1){
+        if ($this->cliente->aprovado != 1) {
             $msg = "Para comprar na Agroreserva seu cadastro precisa estar <b>finalizado</b> e <b>aprovado</b>. Bora que ainda da tempo ! Entre em contato com nosso comercial para regularizar seu cadastro.";
             $this->emit("mostrarPopup", "erro", $msg);
             return;
         }
 
-        if($produto->produtable->reservado){
+        if ($produto->produtable->reservado) {
             $msg = "Este lote já foi vendido, mas não fique triste ! Temos muito mais pra te oferecer !";
             $this->emit("mostrarPopup", "erro", $msg);
             return;
         }
 
-        if(!$this->carrinhos || $this->carrinhos->where("reserva_id", $produto->produtable->reserva_id)->count() == 0){
+        if (!$this->carrinhos || $this->carrinhos->where("reserva_id", $produto->produtable->reserva_id)->count() == 0) {
             $carrinho = new Carrinho;
             $carrinho->cliente_id = session()->get("cliente")["id"];
             $carrinho->reserva_id = $produto->produtable->reserva_id;
             $carrinho->save();
             session()->put(["carrinho" => true]);
-        }else{
+        } else {
             $carrinho = $this->carrinhos->where("reserva_id", $produto->produtable->reserva_id)->first();
         }
 
-        if($carrinho->produtos->where("id", $produto->id)->count() > 0){
+        if ($carrinho->produtos->where("id", $produto->id)->count() > 0) {
             $msg = "Este lote já está em seu carrinho. Bora procurar outro ?";
             $this->emit("mostrarPopup", "erro", $msg);
             return;
         }
 
-        if($produto->produtable->membro_pacote){
+        if ($produto->produtable->membro_pacote) {
             $membros = Lote::where("reserva_id", $produto->produtable->reserva_id)->where("id", "<>", $produto->produtable->id)->where("numero", $produto->produtable->numero)->get();
         }
 
@@ -78,8 +82,8 @@ class BarraLateralCarrinho extends Component
         $carrinho_produto->total = $produto->preco * $carrinho_produto->quantidade;
         $carrinho_produto->save();
 
-        if(isset($membros)){
-            foreach($membros as $membro){
+        if (isset($membros)) {
+            foreach ($membros as $membro) {
                 $carrinho_produto = new CarrinhoProduto;
                 $carrinho_produto->carrinho_id = $carrinho->id;
                 $carrinho_produto->produto_id = $membro->produto->id;
@@ -96,37 +100,42 @@ class BarraLateralCarrinho extends Component
         $this->atualizaContagemLotes();
     }
 
-    public function removerProduto(Carrinho $carrinho, Produto $produto){
+    public function removerProduto(Carrinho $carrinho, Produto $produto)
+    {
         $carrinho_produto = $carrinho->carrinho_produtos->where("produto_id", $produto->id)->first();
         $carrinho_produto->delete();
         $carrinho->refresh();
-        if($carrinho->produtos->count() == 0){
-            foreach($this->carrinhos as $key => $value){
-                if($value->id == $carrinho->id){
+        if ($carrinho->produtos->count() == 0) {
+            foreach ($this->carrinhos as $key => $value) {
+                if ($value->id == $carrinho->id) {
                     unset($this->carrinhos[$key]);
                 }
             }
             $carrinho->delete();
-            if($this->carrinhos->count() == 0){
+            if ($this->carrinhos->count() == 0) {
                 session()->forget("carrinho");
             }
-        }else{
+        } else {
             $this->carrinhos = Carrinho::where([["cliente_id", session()->get("cliente")["id"]], ["aberto", true]])->get();
         }
         $this->atualizaContagemLotes();
     }
 
-    public function atualizaContagemLotes(){
-        if($this->carrinhos && $this->carrinhos->count() > 0){
-            $lotes = 0;
-            foreach($this->carrinhos as $carrinho){
+    public function atualizaContagemLotes()
+    {
+        $lotes = 0;
+        if ($this->carrinhos && $this->carrinhos->count() > 0) {
+            foreach ($this->carrinhos as $carrinho) {
                 $lotes += $carrinho->produtos->count();
             }
-            $this->dispatchBrowserEvent("atualizaContagemLotes", $lotes);
+            $this->dispatchBrowserEvent("atualizaContagemLotes", ['cont' => $lotes]);
+        } else {
+            $this->dispatchBrowserEvent("atualizaContagemLotes", ['cont' => $lotes]);
         }
     }
 
-    public function init(){
+    public function init()
+    {
         $this->atualizaContagemLotes();
     }
 

@@ -17,7 +17,7 @@
 
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{ asset('system/css/app.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1.1" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=1.2" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -33,6 +33,24 @@
     <style>
         [x-cloak] {
             display: none !important;
+        }
+
+        div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+            border: 0;
+            border-radius: .25em;
+            background: initial;
+            background-color: #7066e0 !important;
+            color: #fff !important;
+            font-size: 1em;
+        }
+
+        div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel) {
+            border: 0;
+            border-radius: .25em;
+            background: initial;
+            background-color: #6e7881 !important;
+            color: #fff !important;
+            font-size: 1em;
         }
     </style>
     <style>
