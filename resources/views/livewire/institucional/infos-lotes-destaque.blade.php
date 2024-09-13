@@ -154,7 +154,7 @@
                                         class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Adicionar
                                         ao Caminhão</a>
                                 @else
-                                    <a href="{{ route('fazenda.lote', ['fazenda' => $lote['fazenda']['slug'], 'reserva' => $lote['reserva']['id'], 'lote' => $lote['id']]) }}"
+                                    <a href="{{ route('login') }}"
                                         class="cpointer bg-[#14C656] text-white font-montserrat text-[14px] font-medium py-[8px] px-[30px] rounded-[15px]">Entre
                                         para comprar</a>
                                 @endif
