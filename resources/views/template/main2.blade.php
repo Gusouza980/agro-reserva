@@ -92,6 +92,7 @@
     <script src="https://unpkg.com/alpinejs-swipe"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     @include('includes.tags.hotjar')
+    @include('includes.tags.clarity')
 </head>
 
 <body x-data="container" class="bg-[#F5F5F5]">
