@@ -1,10 +1,12 @@
 @php
-    $agent = new Jenssegers\Agent\Agent;
+    $agent = new Jenssegers\Agent\Agent();
 @endphp
 
 <!doctype html>
 <html lang="pt-br">
+
 <head>
+    @include('includes.tags.google-tm-start')
     <title>Agroreserva - Cadastro</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -21,13 +23,13 @@
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/floating-wpp.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     {{-- <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" /> --}}
     @toastr_css
     @livewireStyles
     @laravelTelInputStyles
-    @yield("styles")
-    @stack("styles")
+    @yield('styles')
+    @stack('styles')
     <style>
         a,
         a:hover,
@@ -35,30 +37,36 @@
         a:active {
             text-decoration: none;
         }
-        body{
+
+        body {
             background-color: #F5F5F5 !important;
         }
-        html{
+
+        html {
             background-color: #F5F5F5 !important;
         }
-        [x-cloak] { display: none !important; }
+
+        [x-cloak] {
+            display: none !important;
+        }
     </style>
     <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
-    @include("includes.tags.hotjar")
+    @include('includes.tags.hotjar')
 </head>
+
 <body>
-    @include("includes.tags.google-ads")
+    @include('includes.tags.google-tm-end')
     <div class="w-full">
         <div class="w-full min-h-[30vh] bg-[#32343E] flex items-center justify-center">
-            <img class="max-w-[200px] -mt-[10vh]" src="{{ asset('imagens/logo_agroreserva_leite.svg') }}" alt="">
+            <img class="max-w-[200px] -mt-[10vh]" src="{{ asset('imagens/logo_agroreserva_leite.svg') }}"
+                alt="">
         </div>
         <div class="w-full bg-[#F5F5F5] px-4 px-md-0 md:px-0">
             {{ $slot }}
         </div>
     </div>
-    <script src="{{ asset('js/jquery.js') }}">
-    </script>
+    <script src="{{ asset('js/jquery.js') }}"></script>
     {{-- <script src="{{ asset('js/floating-wpp.js') }}"></script> --}}
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
@@ -73,11 +81,11 @@
     @toastr_render
     @livewireScripts
 
-    @yield("scripts")
-    @stack("scripts")
+    @yield('scripts')
+    @stack('scripts')
     <script>
         window.addEventListener("notificaToastr", (event) => {
-            switch(event.detail.tipo){
+            switch (event.detail.tipo) {
                 case 'success':
                     toastr.success(event.detail.mensagem)
                     break;
