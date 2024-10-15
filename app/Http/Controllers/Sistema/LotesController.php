@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Sistema;
 use App\Classes\ImageUpload;
 use App\Http\Controllers\Controller;
 use App\Imports\LotesImport;
+use App\Models\Fazenda;
 use App\Models\Lote;
 use Illuminate\Http\Request;
 use App\Models\Reserva;
@@ -63,6 +64,11 @@ class LotesController extends BaseController
     public function editar(Request $request, Reserva $reserva, Lote $lote)
     {
         $dados = $request->all();
+        $fazenda = Fazenda::find($request->fazenda_id);
+        if(!$fazenda){
+            toastr()->error("Código da fazenda inválido!", "Erro ao editar lote!");
+            return redirect()->back();
+        }
         try {
             $lote->update($dados);
             toastr()->success("Lote salvo com sucesso!");

@@ -14,6 +14,7 @@
             selecionados: [],
             arquivo: null,
             campos: [
+                ['fazenda_id', 'Código da Fazenda'],
                 ['numero', 'Número do Lote'],
                 ['nome', 'Nome do Lote'],
                 ['preco', 'Preço'],
@@ -21,28 +22,31 @@
                 ['botton', 'Botton'],
                 ['ccg', 'CCG (CGC)'],
                 ['nascimento', 'Data de Nascimento'],
-        
+
                 ['pai', 'Nome do Pai'],
                 ['rgd_pai', 'RGD do Pai'],
-        
+
                 ['avo_paterno', 'Nome do Avô Paterno'],
                 ['rgd_avo_paterno', 'RGD do Avô Paterno'],
-        
+
                 ['avo_paterna', 'Nome da Avó Paterna'],
                 ['rgd_avo_paterna', 'RGD da Avó Paterna'],
                 ['lactacao_avo_paterna', 'Lactação da Avó Paterna'],
-        
+
                 ['mae', 'Nome da Mãe'],
                 ['rgd_mae', 'RGD da Mãe'],
                 ['lactacao_mae', 'Lactação da Mãe'],
-        
+
                 ['avo_materno', 'Nome do Avô Materno'],
                 ['rgd_avo_materno', 'RGD do Avô Materno'],
-        
+
                 ['avo_materna', 'Nome da Avó Materna'],
                 ['rgd_avo_materna', 'RGD da Avó Materna'],
                 ['lactacao_avo_materna', 'Lactação da Avó Materna'],
-        
+
+                ['beta_caseina', 'Beta Caseína'],
+                ['video', 'Vídeo'],
+
                 ['observacoes', 'Observações (Comentários)'],
             ],
             selecionar: function(campo) {

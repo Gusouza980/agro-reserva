@@ -25,7 +25,7 @@
                             Informações Principais
                         </h3>
                     </div>
-                    <div class="w-full flex mt-8 gap-3">
+                    <div class="w-full flex flex-wrap mt-8 gap-3">
                         <div class="w-fit">
                             <label class="block">
                                 <span>Número *</span>
@@ -80,6 +80,16 @@
                                         <option value="Fêmea" {{ $lote->sexo == 'Fêmea' ? 'selected' : '' }}>Fêmea</option>
                                     </select>
                                 </span>
+                            </label>
+                        </div>
+                        <div class="w-fit">
+                            <label class="block">
+                                <span>Código da Fazenda *</span>
+                                <span class="relative mt-1.5 flex">
+                                    <input name="fazenda_id" class="input-base" placeholder="Código da Fazenda" type="text"
+                                        maxlength="20" value="{{ $lote->fazenda_id }}">
+                                </span>
+                                <small>O código da fazenda pode ser obtido na listagem de fazendas</small>
                             </label>
                         </div>
                     </div>

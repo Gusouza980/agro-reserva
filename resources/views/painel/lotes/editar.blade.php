@@ -54,6 +54,13 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="fazenda_id" class="form-label">Código da Fazenda *</label>
+                                    <input type="text" class="form-control" name="fazenda_id" id="fazenda_id" maxlength="100"
+                                        value="{{ $lote->fazenda_id }}" required>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-2">
