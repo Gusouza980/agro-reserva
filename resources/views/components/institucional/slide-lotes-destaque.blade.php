@@ -1,5 +1,11 @@
 <div class="w-full pl-1 md:pl-0 py-2 pb-5" style="position: relative;">
     <div class="relative mx-auto w1200">
+        <div class="w-full flex justify-start md:hidden gap-3">
+            <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}"
+                id="slide-lotes-destaque-{!! $identificador !!}-left" class="cpointer" height="25" alt="">
+            <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}"
+                id="slide-lotes-destaque-{!! $identificador !!}-right" class="cpointer" height="25" alt="">
+        </div>
         <div class="flex mx-auto overflow-x-scroll w-full md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1100px] @if ($lotes->count() < 4) justify-center @endif"
             id="slide-lotes-destaque-{!! $identificador !!}">
             <div class="flex flex-nowrap space-x-[6px]">
@@ -62,23 +68,6 @@
                         </div>
                     </div>
                 @endforeach
-
-                {{-- <div class="inline-block mx-[6px] slide-item" style="border-radius: 15px; overflow: hidden; position: relative;">
-                    <img src="{{ asset('imagens/stories.jpg') }}" class="w-100" alt="">
-                    <div class="flex items-center justify-center" style="position: absolute; bottom: 0px; left: 0px; width: 100%; height: 150px;">
-                        <div class="text-center">
-                            <div>
-                                <b style="font-family: Montserrat; font-size: 16px; color: white;">Inicia em</b>
-                            </div>
-                            <div class="mt-2 mb-3">
-                                <h3 style="color: white; font-size: 30px; font-weight: bold;">27/08/2022</h3>
-                            </div>
-                            <div>
-                                <a name="" id="" class="px-4 py-1 btn-laranja" href="#" role="button">Ver Reserva</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
         <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}"

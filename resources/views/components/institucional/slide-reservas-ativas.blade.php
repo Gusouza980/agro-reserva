@@ -1,5 +1,11 @@
 <div class="w-full px-0 py-5" style="position: relative; min-height: 600px;">
     <div class="relative mx-auto w1200">
+        <div class="w-full flex justify-start md:hidden gap-3">
+            <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" id="slide-reservas-ativas-left" class="cpointer"
+                height="25" alt="">
+            <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" id="slide-reservas-ativas-right"
+                class="cpointer" height="25" alt="">
+        </div>
         <div class="flex mx-auto overflow-x-scroll md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1100px]"
             id="slide-reservas-ativas">
             <div class="flex flex-nowrap">

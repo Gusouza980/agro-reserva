@@ -23,31 +23,25 @@
                         </div>
                     </div>
                     <div class="w-full md:hidden">
+                        <div class="w-full flex justify-start md:hidden gap-3 px-2 mb-2">
+                            <img src="{{ asset('imagens/slide-lotes-arrow-left.png') }}" class="cpointer"
+                                id="swiper-button-prev" height="25" alt="">
+                            <img src="{{ asset('imagens/slide-lotes-arrow-right.png') }}" class="cpointer"
+                                id="swiper-button-next" height="25" alt="">
+                        </div>
                         <div class="swiper"id="imagens-lote">
                             <div class="swiper-wrapper cursor-pointer">
                                 <div
-                                    class="inline-block mx-[6px] w-[340px] !h-[292px] swiper-slide rounded-md overflow-hidden cursor-pointer">
+                                    class="inline-block mx-[6px] w-[340px] !h-[250px] swiper-slide rounded-md overflow-hidden cursor-pointer">
                                     {!! \App\Classes\Util::convertYoutube($lote->video, '16/9', 'h-full') !!}
                                 </div>
-                                <div class="inline-block mx-[6px] w-[340px] swiper-slide cursor-pointer">
+                                <div class="inline-block mx-[6px] w-[340px]  swiper-slide cursor-pointer">
                                     <img src="{{ asset($lote->preview) }}"
-                                        class="w-full transition duration-150 rounded-md hover:scale-105"
+                                        class="w-full transition duration-150 !h-[250px] rounded-md hover:scale-105"
                                         alt="">
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="flex mx-auto overflow-x-scroll w1200 py-4">
-                            <div class="flex flex-nowrap">
-                                <div class="inline-block mx-[6px] slide-item w-[340px]">
-                                    {!! \App\Classes\Util::convertYoutube($lote->video, '16/9', 'h-full') !!}
-                                </div>
-                                <div class="inline-block mx-[6px] slide-item w-[340px]">
-                                    <img src="{{ asset($lote->preview) }}"
-                                        class="w-full transition duration-150 rounded-md hover:scale-105"
-                                        alt="">
-                                </div>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
                 <div class="order-1 w-full md:order-2 md:w-2/5 md:pl-10">
@@ -475,8 +469,8 @@
                     // dynamicMainBullets: 3,
                 },
                 navigation: {
-                    prevEl: '.swiper-button-prev',
-                    nextEl: '.swiper-button-next',
+                    prevEl: '#swiper-button-prev',
+                    nextEl: '#swiper-button-next',
                 },
 
             });
