@@ -67,16 +67,16 @@ class LotesImport implements ToModel, WithCalculatedFormulas, WithStartRow
 
     public function formataCampoData($valor)
     {
-        try {
-            if (gettype($valor == 'double' || gettype($valor) == 'integer')) {
-                return \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($valor)->format('Y-m-d');
-            } elseif (isset($row['nascimento']) && strpos($row['nascimento'], '/')) {
+        //try {
+        //    if (gettype($valor == 'double' || gettype($valor) == 'integer')) {
+        //        return \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($valor)->format('Y-m-d');
+        //    } elseif (isset($row['nascimento']) && strpos($row['nascimento'], '/')) {
                 [$dia, $mes, $ano] = explode('/', $valor);
                 return $ano . "-" . $mes . "-" . $dia;
-            }
-        } catch (\Exception $e) {
-            throw new \Exception("Erro ao formatar data: " . $valor);
-        }
+        //    }
+        //} catch (\Exception $e) {
+        //    throw new \Exception("Erro ao formatar data: " . $valor);
+        //}
     }
 
     public function formataCampoPreco($valor)
