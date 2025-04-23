@@ -1,5 +1,25 @@
 <div class="w-full px-5 py-5">
-    <div class="w-full flex mb-4">
+    <div class="w-full flex gap-6 mb-6">
+        <a href="{{ route('sistema.clientes.exportar', ['tipo' => 'todos']) }}" class="btn btn-primary">
+            <span>Exportar Todos</span>
+        </a>
+        <a href="{{ route('sistema.clientes.exportar', ['tipo' => 'aprovados']) }}" class="btn btn-primary">
+            <span>Exportar Aprovados</span>
+        </a>
+        <a href="{{ route('sistema.clientes.exportar', ['tipo' => 'reprovados']) }}" class="btn btn-primary">
+            <span>Exportar Reprovados</span>
+        </a>
+        <a href="{{ route('sistema.clientes.exportar', ['tipo' => 'em_analise']) }}" class="btn btn-primary">
+            <span>Exportar Em Análise</span>
+        </a>
+        <a href="{{ route('sistema.clientes.exportar', ['tipo' => 'finalizados']) }}" class="btn btn-primary">
+            <span>Exportar Finalizados</span>
+        </a>
+        <a href="{{ route('sistema.clientes.exportar', ['tipo' => 'nao_finalizados']) }}" class="btn btn-primary">
+            <span>Exportar Não Finalizados</span>
+        </a>
+    </div>
+    <div class="w-full flex mb-4 items-center justify-between">
         <div class="w-full md:w-1/5">
             <label class="block">
                 <span>Pesquisar por nome, email ou código</span>
