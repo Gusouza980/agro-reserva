@@ -1,0 +1,63 @@
+version: '3'
+services:
+  # PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: agro-reserva-app
+    container_name: agro-reserva-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    networks:
+      - agro-reserva-network
+
+  # Nginx Service
+  nginx:
+    image: nginx:alpine
+    container_name: agro-reserva-nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - agro-reserva-network
+
+  # MySQL Service
+  db:
+    image: mysql:8.0
+    container_name: agro-reserva-db
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - agro-reserva-network
+
+  # Redis Service
+  redis:
+    image: redis:alpine
+    container_name: agro-reserva-redis
+    restart: unless-stopped
+    networks:
+      - agro-reserva-network
+
+networks:
+  agro-reserva-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
