@@ -97,7 +97,7 @@
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap sm:px-5">#{{ $venda->codigo }}</td>
                         <td class="px-3 py-3 font-medium whitespace-nowrap text-slate-700 dark:text-navy-100 lg:px-5">
-                            <a href="{{ route('painel.cliente.visualizar', ['cliente' => $venda->cliente_id]) }}">{{ $venda->cliente->nome_dono }}</a>
+                            <a href="{{ route('sistema.clientes.detalhes', ['cliente' => $venda->cliente_id]) }}">{{ $venda->cliente->nome_dono }}</a>
                             @if($venda->assessor_id)
                                 <p style="font-size: 11px;">{{ $venda->assessor->nome }}</p>
                             @endif
