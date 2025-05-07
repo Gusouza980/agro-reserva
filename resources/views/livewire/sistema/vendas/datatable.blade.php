@@ -152,18 +152,6 @@
                                                     class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Detalhes</a>
                                             </li>
                                         </ul>
-                                        <!-- <ul>
-                                            <li @click="isShowPopper = false">
-                                                <a href="{{route('painel.vendas.comprovante', ['venda' => $venda])}}" target="_blank"
-                                                    class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Visualizar Comprovante</a>
-                                            </li>
-                                        </ul>
-                                        <ul>
-                                            <li @click="isShowPopper = false">
-                                                <a href="{{route('painel.vendas.comprovante.enviar', ['venda' => $venda])}}"
-                                                    class="flex items-center h-8 px-3 pr-12 font-medium tracking-wide transition-all outline-none cursor-pointer hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100">Enviar Comprovante</a>
-                                            </li>
-                                        </ul> -->
                                         <div class="h-px my-1 bg-slate-150 dark:bg-navy-500"></div>
                                         <ul>
                                             <li @click="isShowPopper = false">
