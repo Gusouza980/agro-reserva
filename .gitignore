@@ -15,3 +15,7 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 public/imagens/
+docker-compose.yml
+docker
+Dockerfile
+/database/seeders
